@@ -16,7 +16,7 @@ def run_notebook(in_filepath):
 
     nb = nbformat.read(in_filepath.open(), as_version=4)
     ep = ExecutePreprocessor(
-        timeout=3600, kernel_name='python%d' % sys.version_info[0])
+        timeout=300, kernel_name='python%d' % sys.version_info[0])
 
     try:
         ep.preprocess(nb, {'metadata': {'path': run_path}})
