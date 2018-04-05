@@ -1,14 +1,23 @@
 language: python
 
 python:
-    - "3.5"
     - "3.6"
 
 before_install:
+    - sudo apt-get update
     - sudo apt-get install graphviz
 
 install:
-    - pip install -r requirements.txt
+    # Install conda
+    - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+    - bash miniconda.sh -b -p $HOME/miniconda
+    - export PATH="$HOME/miniconda/bin:$PATH"
+    - conda config --set always_yes yes --set changeps1 no
+    - conda update conda
+
+    #install dependencies
+    - conda env create -n test -f environment.yml
+    - source activate test
 
 script:
     - python $TRAVIS_BUILD_DIR/tests/nbrun.py
