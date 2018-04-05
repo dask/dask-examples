@@ -15,12 +15,15 @@ install:
     - conda config --set always_yes yes --set changeps1 no
     - conda update conda
 
-    #install dependencies
+    # Install dependencies
     - conda env create -n test -f environment.yml
     - source activate test
 
+    # Install testing dependencies
+    - conda install pathlib nbconvert nbformat jupyter_client ipykernel
+
 script:
     - python $TRAVIS_BUILD_DIR/tests/nbrun.py
-  
+
 notifications:
   email: false
