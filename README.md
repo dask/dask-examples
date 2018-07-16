@@ -31,3 +31,17 @@ guidelines:
     As an example "how to do dataframe joins" is a great topic while "how to
     do dataframe joins in the particular case when one column is a categorical
     and the other is object dtype" is probably too specific
+7.  If the example requires a library not included in `binder/environment.yml`
+    then it would be `pip` installed` in the first cell of the notebook, with a
+    brief explanation about what functionality the library adds.  A brief
+    example follows:
+
+    ```
+    ### Install Extra Dependencies
+
+    We first install the library X for interacting with Y
+    ```
+
+    ```
+    !pip install X
+    ```
