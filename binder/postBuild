@@ -7,6 +7,6 @@ jupyter labextension install dask-labextension
 sed -i -e "s|DASK_DASHBOARD_URL|/user/${JUPYTERHUB_USER}/proxy/8787|g" binder/jupyterlab-workspace.json
 
 # Copy into the workspaces directory
-# TODO: what is the right filename to specify?
-# cp jupyterlab-workspace.json /home/jovyan/.jupyter/lab/workspaces 
+mkdir -p /home/jovyan/.jupyter/lab/workspaces
+cp ./binder/jupyterlab-workspace.json /home/jovyan/.jupyter/lab/workspaces/user${JUPYTERHUB_USER}lab-2f5d.jupyterlab-workspace
 
