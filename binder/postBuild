@@ -2,11 +2,3 @@
 
 # Install the JupyterLab dask-labextension
 jupyter labextension install dask-labextension
-
-# Replace DASK_DASHBOARD_URL with the proxy location
-sed -i -e "s|DASK_DASHBOARD_URL|/user/${JUPYTERHUB_USER}/proxy/8787|g" binder/jupyterlab-workspace.json
-
-# Copy into the workspaces directory
-mkdir -p /home/jovyan/.jupyter/lab/workspaces
-cp ./binder/jupyterlab-workspace.json /home/jovyan/.jupyter/lab/workspaces/user${JUPYTERHUB_USER}lab-2f5d.jupyterlab-workspace
-
