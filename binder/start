@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Replace DASK_DASHBOARD_URL with the proxy location
+sed -i -e "s|DASK_DASHBOARD_URL|/user/${JUPYTERHUB_USER}/proxy/8787|g" binder/jupyterlab-workspace.json
+
+# Copy into the workspaces directory
+# NOTE: this relies on internal path logic to the JupyterLab workspaces handler.
+# As soon as a CLI becomes available for this, we should use that.
+mkdir -p ${HOME}/.jupyter/lab/workspaces
+python ./binder/make_workspace.py
+
+exec "$@"
