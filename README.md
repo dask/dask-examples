@@ -7,7 +7,7 @@ They are intended to be educational and give users a start on common workflows.
 They should be easy to run locally if you download this repository.
 They are also available on the cloud by clicking on the link below:
 
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/dask/dask-examples/master)
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab)
 [![Build Status](https://travis-ci.org/dask/dask-examples.svg?branch=master)](https://travis-ci.org/dask/dask-examples)
 
 
