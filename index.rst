@@ -40,3 +40,9 @@ You can run these examples in a live session here: |Binder|
    machine-learning/xgboost
    machine-learning/voting-classifier
    machine-learning/tpot
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Applications:
+
+   embarrassingly-parallel
