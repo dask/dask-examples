@@ -19,8 +19,8 @@ You can run these examples in a live session here: |Binder|
 
    array
    dataframe
-   futures
    delayed
+   futures
    machine-learning
 
 .. toctree::
