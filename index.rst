@@ -5,7 +5,7 @@ These examples show how to use Dask in a variety of situations.
 
 First, there are some high level examples about various Dask APIs like arrays,
 dataframes, and futures, then there are more in-depth examples about
-particularly features or use cases.
+particular features or use cases.
 
 You can run these examples in a live session here: |Binder|
 
