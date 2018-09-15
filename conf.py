@@ -42,7 +42,7 @@ extensions = [
     'nbsphinx',
 ]
 
-nbsphinx_timeout = 120
+nbsphinx_timeout = 240
 
 nbsphinx_prolog = """
 {% set docname = env.doc2path(env.docname, base=None) %}
