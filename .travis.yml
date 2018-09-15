@@ -28,10 +28,12 @@ install:
     # Install testing dependencies
     - conda install pathlib nbconvert nbformat jupyter_client ipykernel
 
+    # Install documentation dependencies
+    - pip install nbsphinx dask-sphinx-theme
+
 script:
     - set -e
     - source activate test
-    - cd docs
     - make html
     - cd ..
     - pip install doctr
