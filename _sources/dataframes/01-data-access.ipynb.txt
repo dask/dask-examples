@@ -1,0 +1,365 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# DataFrames: Read and Write Data\n",
+    "     \n",
+    "Dask Dataframes can read and store data in many of the same formats as Pandas dataframes.  In this example we read and write data with the popular CSV and Parquet formats, and discuss best practices when using these formats."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/0eEsIA0O1iE?rel=0&amp;controls=0&amp;showinfo=0\" frameborder=\"0\" allowfullscreen></iframe>"
+      ],
+      "text/plain": [
+       "<IPython.core.display.HTML object>"
+      ]
+     },
+     "execution_count": 1,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "from IPython.display import HTML\n",
+    "\n",
+    "HTML('<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/0eEsIA0O1iE?rel=0&amp;controls=0&amp;showinfo=0\" frameborder=\"0\" allowfullscreen></iframe>')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Start Dask Client for Dashboard\n",
+    "\n",
+    "Starting the Dask Client is optional.  It will provide a dashboard which \n",
+    "is useful to gain insight on the computation.  \n",
+    "\n",
+    "The link to the dashboard will become visible when you create the client below.  We recommend having it open on one side of your screen while using your notebook on the other side.  This can take some effort to arrange your windows, but seeing them both at the same is very useful when learning."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from dask.distributed import Client\n",
+    "client = Client(n_workers=1, threads_per_worker=4, processes=False, memory_limit='2GB')\n",
+    "client"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Create artificial dataset\n",
+    "\n",
+    "First we create an artificial dataset and write it to many CSV files.\n",
+    "\n",
+    "You don't need to understand this section, we're just creating a dataset for the rest of the notebook."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import dask\n",
+    "df = dask.datasets.timeseries()\n",
+    "df"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import os\n",
+    "import datetime\n",
+    "\n",
+    "if not os.path.exists('data'):\n",
+    "    os.mkdir('data')\n",
+    "\n",
+    "def name(i):\n",
+    "    \"\"\" Provide date for filename given index\n",
+    "    \n",
+    "    Examples\n",
+    "    --------\n",
+    "    >>> name(0)\n",
+    "    '2000-01-01'\n",
+    "    >>> name(10)\n",
+    "    '2000-01-11'\n",
+    "    \"\"\"\n",
+    "    return str(datetime.date(2000, 1, 1) + i * datetime.timedelta(days=1))\n",
+    "    \n",
+    "df.to_csv('data/*.csv', name_function=name);"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Read CSV files\n",
+    "\n",
+    "We now have many CSV files in our data directory, one for each day in the month of January 2000.  Each CSV file holds timeseries data for that day.  We can read all of them as one logical dataframe using the `dd.read_csv` function with a glob string."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "!ls data/*.csv | head"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "!head data/2000-01-01.csv"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "!head data/2000-01-30.csv"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We can read one file with `pandas.read_csv` or many files with `dask.dataframe.read_csv`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "\n",
+    "df = pd.read_csv('data/2000-01-01.csv')\n",
+    "df.head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import dask.dataframe as dd\n",
+    "\n",
+    "df = dd.read_csv('data/2000-*-*.csv')\n",
+    "df"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df.head()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Tuning read_csv\n",
+    "\n",
+    "The Pandas `read_csv` function has *many* options to help you parse files.  The Dask version uses the Pandas function internally, and so supports many of the same options.  You can use the `?` operator to see the full documentation string."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "pd.read_csv?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "dd.read_csv?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In this case we use the `parse_dates` keyword to parse the timestamp column to be a datetime.  This will make things more efficient in the future.  Notice that the dtype of the timestamp column has changed from `object` to `datetime64[ns]`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df = dd.read_csv('data/2000-*-*.csv', parse_dates=['timestamp'])\n",
+    "df"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Do a simple computation\n",
+    "\n",
+    "Whenever we operate on our dataframe we read through all of our CSV data so that we don't fill up RAM.  This is very efficient for memory use, but reading through all of the CSV files every time can be slow."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "%time df.groupby('name').x.mean().compute()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Write to Parquet\n",
+    "\n",
+    "Instead, we'll store our data in Parquet, a format that is more efficient for computers to read and write."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df.to_parquet('data/2000-01.parquet', engine='pyarrow')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "!ls data/2000-01.parquet/"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Read from Parquet"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df = dd.read_parquet('data/2000-01.parquet', engine='pyarrow')\n",
+    "df"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "%time df.groupby('name').x.mean().compute()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Select only the columns that you plan to use\n",
+    "\n",
+    "Parquet is a column-store, which means that it can efficiently pull out only a few columns from your dataset.  This is good because it helps to avoid unnecessary data loading."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "%%time\n",
+    "df = dd.read_parquet('data/2000-01.parquet', columns=['name', 'x'], engine='pyarrow')\n",
+    "df.groupby('name').x.mean().compute()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Here the difference is not that large, but with larger datasets this can save a great deal of time."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Learn more\n",
+    "\n",
+    "http://dask.pydata.org/en/latest/dataframe-create.html"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

@@ -1,0 +1,1766 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Embarrassingly parallel Workloads &mdash; Dask Examples  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/explore.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Automate Machine Learning with TPOT" href="machine-learning/tpot.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  
+
+<nav id="explore-links">
+  <a href="https://dask.pydata.org/">
+    <img class="caption" src="_static/images/dask-horizontal-white.svg"/>
+  </a>
+
+  <ul>
+    <li>
+      <a>Get Started</a>
+      <ul>
+        <li><a href="https://dask.pydata.org/en/latest/install.html"> Install </a></li>
+        <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Examples </a></li>
+        <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
+        <li><a href="https://dask.pydata.org/en/latest/why.html"> Why Dask? </a></li>
+        <li><a href="https://dask-stories.readthedocs.io/en/latest"> Use Cases </a></li>
+        <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a href="">Algorithms</a>
+      <ul>
+        <li><a href="https://dask.pydata.org/en/latest/array.html">Arrays</a></li>
+        <li><a href="https://dask.pydata.org/en/latest/dataframe.html">Dataframes</a></li>
+        <li><a href="https://dask.pydata.org/en/latest/bag.html">Bags</a></li>
+        <li><a href="https://dask.pydata.org/en/latest/delayed.html">Delayed (custom)</a></li>
+        <li><a href="https://dask.pydata.org/en/latest/futures.html">Futures (real-time)</a></li>
+        <li><a href="http://ml.dask.org">Machine Learning</a></li>
+        <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a href="https://dask.pydata.org/en/latest/setup.html">Deploy</a>
+      <ul>
+        <li><a href="https://dask-yarn.readthedocs.io/en/latest/"> Hadoop / Yarn </a></li>
+        <li><a href="https://dask.pydata.org/en/latest/setup/kubernetes-helm.html"> Helm </a></li>
+        <li><a href="https://dask.pydata.org/en/latest/setup/hpc.html"> HPC </a></li>
+        <li><a href="https://dask-kubernetes.readthedocs.io/en/latest/"> Kubernetes </a></li>
+        <li><a href="https://dask.pydata.org/en/latest/setup/single-machine.html"> Local </a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a>Community</a>
+      <ul>
+        <li><a href="http://dask.pydata.org/en/latest/support.html">Ask for Help</a></li>
+        <li><a href="https://github.com/dask">Github</a></li>
+        <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
+        <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
+      </ul>
+    </li>
+  </ul>
+
+</nav>
+
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Dask Examples
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Basic Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="array.html">Dask Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataframe.html">Dask DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="delayed.html">Custom Workloads with Dask Delayed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="futures.html">Custom Workloads with Futures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning.html">Dask for Machine Learning</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Dataframes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dataframes/01-data-access.html">DataFrames: Read and Write Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataframes/02-groupby.html">DataFrames: Groupby</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Machine Learning:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning/scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning/parallel-prediction.html">Score and Predict Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning/training-on-large-datasets.html">Train Models on Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning/xgboost.html">Scale XGBoost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning/voting-classifier.html">Use Voting Classifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning/tpot.html">Automate Machine Learning with TPOT</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Applications:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Embarrassingly parallel Workloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Start-Dask-Client-for-Dashboard">Start Dask Client for Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Define-your-computation-calling-function">Define your computation calling function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Define-the-set-of-input-parameters-to-call-the-function">Define the set of input parameters to call the function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Use-Dask-Delayed-to-make-our-function-lazy">Use Dask Delayed to make our function lazy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Run-in-parallel">Run in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Using-the-Futures-API">Using the Futures API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Doing-some-analysis-on-the-results">Doing some analysis on the results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Handling-very-large-simulation-with-Bags">Handling very large simulation with Bags</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Dask Examples</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Embarrassingly parallel Workloads</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/embarrassingly-parallel.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #303F9F;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #D84315;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 9ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+</style>
+<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/embarrassingly-parallel.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/embarrassingly-parallel.ipynb&gt;"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/embarrassingly-parallel.ipynb">on Github</a>.</p>
+<div class="section" id="Embarrassingly-parallel-Workloads">
+<h1>Embarrassingly parallel Workloads<a class="headerlink" href="#Embarrassingly-parallel-Workloads" title="Permalink to this headline">¶</a></h1>
+<p>This notebook shows how to use Dask to parallelize embarrassingly
+parallel workloads where you want to apply one function to many pieces
+of data independently. It will show three different ways of doing this
+with Dask:</p>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://dask.pydata.org/en/latest/delayed.html">dask.delayed</a></li>
+<li><a class="reference external" href="https://dask.pydata.org/en/latest/futures.html">concurrent.Futures</a></li>
+<li><a class="reference external" href="https://dask.pydata.org/en/latest/bag.html">dask.bag</a></li>
+</ol>
+<p>This example focuses on using Dask for building large embarrassingly
+parallel computation as often seen in scientific communities and on High
+Performance Computing facilities, for example with Monte Carlo methods.
+This kind of simulation assume the following:</p>
+<ul class="simple">
+<li>We have a function that runs a heavy computation given some
+parameters.</li>
+<li>We need to compute this function on many different input parameters,
+each function call being independent.</li>
+<li>We want to gather all the results in one place for further analysis.</li>
+</ul>
+</div>
+<div class="section" id="Start-Dask-Client-for-Dashboard">
+<h1>Start Dask Client for Dashboard<a class="headerlink" href="#Start-Dask-Client-for-Dashboard" title="Permalink to this headline">¶</a></h1>
+<p>Starting the Dask Client will provide a dashboard which is useful to
+gain insight on the computation. We will also need it for the Futures
+API part of this example. Moreover, as this kind of computation is often
+launched on super computer or in the Cloud, you will probably end up
+having to start a cluster and connect a client to scale. See
+<a class="reference external" href="https://github.com/dask/dask-jobqueue">dask-jobqueue</a>,
+<a class="reference external" href="https://github.com/dask/dask-kubernetes">dask-kubernetes</a> or
+<a class="reference external" href="https://github.com/dask/dask-yarn">dask-yarn</a> for easy ways to
+achieve this on respectively an HPC, Cloud or Big Data infrastructure.</p>
+<p>The link to the dashboard will become visible when you create the client
+below. We recommend having it open on one side of your screen while
+using your notebook on the other side. This can take some effort to
+arrange your windows, but seeing them both at the same time is very
+useful when learning.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="k">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">progress</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">client</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[1]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<table style="border: 2px solid white;">
+<tr>
+<td style="vertical-align: top; border: 0px solid white">
+<h3>Client</h3>
+<ul>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:45895
+  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
+</ul>
+</td>
+<td style="vertical-align: top; border: 0px solid white">
+<h3>Cluster</h3>
+<ul>
+  <li><b>Workers: </b>1</li>
+  <li><b>Cores: </b>4</li>
+  <li><b>Memory: </b>7.84 GB</li>
+</ul>
+</td>
+</tr>
+</table></div>
+</div>
+</div>
+<div class="section" id="Define-your-computation-calling-function">
+<h1>Define your computation calling function<a class="headerlink" href="#Define-your-computation-calling-function" title="Permalink to this headline">¶</a></h1>
+<p>This function does a simple operation: add all numbers of a list/array
+together, but it also sleeps for a random amount of time to simulate
+real work. In real use cases, this could call another python module, or
+even run an executable using subprocess module.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">costly_simulation</span><span class="p">(</span><span class="n">list_param</span><span class="p">):</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">list_param</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We try it locally below</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">time</span> costly_simulation([1, 2, 3, 4])
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+CPU times: user 8 ms, sys: 0 ns, total: 8 ms
+Wall time: 200 ms
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[3]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Define-the-set-of-input-parameters-to-call-the-function">
+<h1>Define the set of input parameters to call the function<a class="headerlink" href="#Define-the-set-of-input-parameters-to-call-the-function" title="Permalink to this headline">¶</a></h1>
+<p>We will generate a set of inputs on which we want to run our simulation
+function. Here we use Pandas dataframe, but we could also use a simple
+list. Lets say that our simulation is run with four parameters called
+param_[a-d].</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">input_params</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">4</span><span class="p">)),</span>
+                            <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;param_a&#39;</span><span class="p">,</span> <span class="s1">&#39;param_b&#39;</span><span class="p">,</span> <span class="s1">&#39;param_c&#39;</span><span class="p">,</span> <span class="s1">&#39;param_d&#39;</span><span class="p">])</span>
+<span class="n">input_params</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>param_a</th>
+      <th>param_b</th>
+      <th>param_c</th>
+      <th>param_d</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.899633</td>
+      <td>0.723136</td>
+      <td>0.904976</td>
+      <td>0.899996</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.538927</td>
+      <td>0.265567</td>
+      <td>0.358191</td>
+      <td>0.918034</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.053843</td>
+      <td>0.320213</td>
+      <td>0.889324</td>
+      <td>0.507533</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.042285</td>
+      <td>0.584830</td>
+      <td>0.973689</td>
+      <td>0.503991</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.558527</td>
+      <td>0.186914</td>
+      <td>0.670885</td>
+      <td>0.387871</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Without using Dask, we could call our simulation on all of these
+parameters using normal Python for loops.</p>
+<p>Let’s only do this on a sample of our parameters as it would be quite
+long otherwise.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%</span><span class="k">time</span>
+results = []
+for parameters in input_params.values[:10]:
+    result = costly_simulation(parameters)
+    results.append(result)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+CPU times: user 208 ms, sys: 16 ms, total: 224 ms
+Wall time: 5.01 s
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[6]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>[3.427741546857968,
+ 2.080718063977332,
+ 1.7709137852125107,
+ 2.104795068937322,
+ 1.8041967431960901,
+ 1.520910070349767,
+ 1.5710770203620055,
+ 1.4171929498657851,
+ 2.7941624615708394,
+ 1.3561953957319852]
+</pre></div>
+</div>
+</div>
+<p>Note that this is not very clever as we can easily parallelize code.</p>
+<p>There are many ways to parallelize this function in Python with
+libraries like <code class="docutils literal notranslate"><span class="pre">multiprocessing</span></code>, <code class="docutils literal notranslate"><span class="pre">concurrent.futures</span></code>, <code class="docutils literal notranslate"><span class="pre">joblib</span></code>
+or others. These are good first steps. Dask is a good second step,
+especially when you want to scale across many machines.</p>
+</div>
+<div class="section" id="Use-Dask-Delayed-to-make-our-function-lazy">
+<h1>Use <a class="reference external" href="http://dask.pydata.org/en/latest/delayed.html">Dask Delayed</a> to make our function lazy<a class="headerlink" href="#Use-Dask-Delayed-to-make-our-function-lazy" title="Permalink to this headline">¶</a></h1>
+<p>We can call <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code> on our funtion to make it lazy. Rather than
+compute its result immediately, it records what we want to compute as a
+task into a graph that we’ll run later on parallel hardware. Using
+<code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code> is a relatively straightforward way to parallelize an
+existing code base, even if the computation isn’t embarrassingly
+parallel like this one.</p>
+<p>Calling these lazy functions is now almost free. In the cell below we
+only construct a simple graph.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%</span><span class="k">time</span>
+import dask
+lazy_results = []
+
+for parameters in input_params.values[:10]:
+    lazy_result = dask.delayed(costly_simulation)(parameters)
+    lazy_results.append(lazy_result)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+CPU times: user 4 ms, sys: 0 ns, total: 4 ms
+Wall time: 2.46 ms
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">lazy_results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[8]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Delayed(&#39;costly_simulation-1b7abd2d-b01c-4e92-9cf3-abe2dd8d4cba&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Run-in-parallel">
+<h1>Run in parallel<a class="headerlink" href="#Run-in-parallel" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">lazy_results</span></code> list contains information about ten calls to
+<code class="docutils literal notranslate"><span class="pre">costly_simulation</span></code> that have not yet been run. Call <code class="docutils literal notranslate"><span class="pre">.compute()</span></code>
+when you want your result as normal Python objects.</p>
+<p>If you started <code class="docutils literal notranslate"><span class="pre">Client()</span></code> above then you may want to watch the status
+page during computation.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">time</span> dask.compute(*lazy_results)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+CPU times: user 92 ms, sys: 8 ms, total: 100 ms
+Wall time: 1.31 s
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[9]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>(3.427741546857968,
+ 2.080718063977332,
+ 1.7709137852125107,
+ 2.104795068937322,
+ 1.8041967431960901,
+ 1.520910070349767,
+ 1.5710770203620055,
+ 1.4171929498657851,
+ 2.7941624615708394,
+ 1.3561953957319852)
+</pre></div>
+</div>
+</div>
+<p>Notice that this was faster than running these same computations
+sequentially with a for loop.</p>
+<p>We can now run this on all of our input parameters:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">dask</span>
+<span class="n">lazy_results</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">parameters</span> <span class="ow">in</span> <span class="n">input_params</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
+    <span class="n">lazy_result</span> <span class="o">=</span> <span class="n">dask</span><span class="o">.</span><span class="n">delayed</span><span class="p">(</span><span class="n">costly_simulation</span><span class="p">)(</span><span class="n">parameters</span><span class="p">)</span>
+    <span class="n">lazy_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lazy_result</span><span class="p">)</span>
+
+<span class="n">futures</span> <span class="o">=</span> <span class="n">dask</span><span class="o">.</span><span class="n">persist</span><span class="p">(</span><span class="o">*</span><span class="n">lazy_results</span><span class="p">)</span>  <span class="c1"># trigger computation in the background</span>
+</pre></div>
+</div>
+</div>
+<p>To make this go faster, we can add additional workers.</p>
+<p>(although we’re still only working on our local machine, this is more
+practical when using an actual cluster)</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">cluster</span><span class="o">.</span><span class="n">start_worker</span><span class="p">(</span><span class="n">ncores</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>By looking at the Dask dashboard we can see that Dask spreads this work
+around our cluster, managing load balancing, dependencies, etc..</p>
+<p>Then get the result:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">results</span> <span class="o">=</span> <span class="n">dask</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="o">*</span><span class="n">futures</span><span class="p">)</span>
+<span class="n">results</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[12]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>(3.427741546857968,
+ 2.080718063977332,
+ 1.7709137852125107,
+ 2.104795068937322,
+ 1.8041967431960901)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Using-the-Futures-API">
+<h1>Using the <a class="reference external" href="http://dask.pydata.org/en/latest/futures.html">Futures API</a><a class="headerlink" href="#Using-the-Futures-API" title="Permalink to this headline">¶</a></h1>
+<p>The same example can be implemented using Dask’s Futures API by using
+the <code class="docutils literal notranslate"><span class="pre">client</span></code> object itself. For our use case of applying a function
+across many inputs both Dask delayed and Dask Futures are equally
+useful. The Futures API is a little bit different because it starts work
+immediately rather than being completely lazy.</p>
+<p>For example, notice that work starts immediately in the cell below as we
+submit work to the cluster:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">futures</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">parameters</span> <span class="ow">in</span> <span class="n">input_params</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
+    <span class="n">future</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">costly_simulation</span><span class="p">,</span> <span class="n">parameters</span><span class="p">)</span>
+    <span class="n">futures</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">future</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We can explicitly wait until this work is done and gather the results to
+our local process by calling <code class="docutils literal notranslate"><span class="pre">client.gather</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">client</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">futures</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[14]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>[3.427741546857968,
+ 2.080718063977332,
+ 1.7709137852125107,
+ 2.104795068937322,
+ 1.8041967431960901,
+ 1.520910070349767,
+ 1.5710770203620055,
+ 1.4171929498657851,
+ 2.7941624615708394,
+ 1.3561953957319852,
+ 2.136881562308114,
+ 3.112766368330641,
+ 2.580744234924616,
+ 1.8603103294444867,
+ 2.3382540817698,
+ 2.4005911622963954,
+ 2.3856687215661596,
+ 2.5627763621623147,
+ 2.1988035728663027,
+ 1.1503652646778488,
+ 2.1339084600996494,
+ 2.7595287344699755,
+ 2.3029527691104206,
+ 1.2917938724112732,
+ 2.8426105832721404,
+ 1.97776579609865,
+ 1.7347027460711892,
+ 1.8654449931823276,
+ 1.4934689303708177,
+ 0.9689102925170292,
+ 2.284383378317237,
+ 3.408077781089917,
+ 3.0265288745768015,
+ 0.9243705040799505,
+ 0.7078279528124752,
+ 2.441191953193413,
+ 1.1952602952266684,
+ 2.160962356938326,
+ 2.3036708531768806,
+ 2.399955080954156,
+ 2.081362734326,
+ 2.160126693005428,
+ 3.222301057896594,
+ 2.3197433262146676,
+ 1.5254235382789405,
+ 1.1534002924852151,
+ 2.5396010393443995,
+ 2.6384034834913943,
+ 1.160264822694668,
+ 1.46996539484957,
+ 2.2722790870911527,
+ 1.0842422144170611,
+ 1.5937358137519277,
+ 1.719936547740637,
+ 2.289979837824293,
+ 2.0755158071727164,
+ 2.62018783412545,
+ 2.560964407721406,
+ 2.3584801273653264,
+ 2.5361985576374866,
+ 1.7548024018372659,
+ 2.488855999130596,
+ 2.2013737975027303,
+ 2.3545818449772202,
+ 2.0664560815717454,
+ 1.77516388629946,
+ 2.294619312720529,
+ 2.7211127680469174,
+ 3.1153846458241725,
+ 1.6105483558220812,
+ 1.6569916904644377,
+ 2.9266695441152923,
+ 1.6450508776929038,
+ 2.044431139803341,
+ 2.490002877770279,
+ 2.267961053960938,
+ 2.1629929486717656,
+ 2.8784425529936657,
+ 1.3743227979974506,
+ 2.5699412946861857,
+ 2.0922133496537665,
+ 2.4116894156210145,
+ 1.9110064454234434,
+ 1.5531630750179692,
+ 2.133992944309999,
+ 2.0132321002047417,
+ 2.978352675969517,
+ 0.5291207203376402,
+ 0.8297886835757411,
+ 1.6783795746635557,
+ 2.3330056766305916,
+ 1.7582127279857187,
+ 1.9526982458442435,
+ 1.4238393071728364,
+ 1.4791867959988758,
+ 2.287789823110227,
+ 1.9497469072630307,
+ 1.2204202921559242,
+ 2.351860504523014,
+ 2.4139822481773248,
+ 1.4412564510187162,
+ 2.774839887521181,
+ 1.3130498255314542,
+ 2.2446686451534177,
+ 2.898027138220754,
+ 1.78439615271681,
+ 1.9912466282021009,
+ 2.0695129641213375,
+ 1.85276005708881,
+ 2.6765730288742193,
+ 1.7373019227511288,
+ 2.378518268107192,
+ 1.087072571166452,
+ 3.2393403737045077,
+ 1.6092550880141645,
+ 1.1572856190291934,
+ 3.1963495393834904,
+ 2.095229793221261,
+ 1.414719468174386,
+ 2.3441260421998313,
+ 2.899174913133764,
+ 0.9858446661847385,
+ 1.5896816855610205,
+ 2.321550982966132,
+ 1.4705249791150772,
+ 1.6348731318509238,
+ 1.483685937694795,
+ 1.7817770941488935,
+ 2.1861615559827117,
+ 2.0479826654314,
+ 1.8211276305032271,
+ 2.302516907764293,
+ 1.999180844534599,
+ 1.9525515671045761,
+ 2.4794480238462775,
+ 1.0834058039670502,
+ 2.182560943137368,
+ 1.509429659974889,
+ 1.0030220841881943,
+ 2.2005177641041307,
+ 1.4866680528835374,
+ 1.6937629566742802,
+ 1.746381991125504,
+ 0.8023805007306416,
+ 2.275822439413028,
+ 1.808401446579588,
+ 2.263570620204134,
+ 1.2795267084259594,
+ 1.9542491538425448,
+ 1.1072111143222476,
+ 1.2553369437167514,
+ 1.0249643157913941,
+ 2.0186186189963866,
+ 1.8594252280221717,
+ 2.1927017313367587,
+ 1.6947793923771046,
+ 3.083037472684431,
+ 1.4935938155351418,
+ 1.7090286229952851,
+ 2.489074617925722,
+ 2.075236060569888,
+ 2.3828295003175564,
+ 2.1736394300554127,
+ 2.3955740927194116,
+ 2.793163689957075,
+ 2.617375897039974,
+ 2.2401834096441977,
+ 2.1480276402234573,
+ 1.5101445697400142,
+ 1.6310248372152392,
+ 2.4135401026146965,
+ 1.7284720160382303,
+ 2.454664424700429,
+ 2.6355539145394755,
+ 2.638895698110509,
+ 2.1285435599593714,
+ 1.87183158444001,
+ 1.2388109243576646,
+ 1.6313971784197907,
+ 2.190557905552504,
+ 2.093256927310321,
+ 2.2766200357611193,
+ 2.0363662120635104,
+ 2.0745499777760195,
+ 1.1690623479087148,
+ 1.951727430306807,
+ 2.266575874575119,
+ 2.1252005700150134,
+ 1.3171978347331048,
+ 1.2626446602245505,
+ 1.344779678067582,
+ 1.2077124044394876,
+ 2.34134804338473,
+ 1.3427640953918831,
+ 2.3222603352665216,
+ 2.0811974514767937,
+ 2.6058040043914454,
+ 1.4466453796635486,
+ 2.3648772551585426,
+ 1.8001209169159147,
+ 1.8954618267745544,
+ 2.17950172339348,
+ 2.280797699173793,
+ 2.322372892976587,
+ 1.8439176734265745,
+ 2.2996898292198296,
+ 1.1488542391113223,
+ 2.252138112912123,
+ 1.9156432771583827,
+ 1.4321905710759475,
+ 2.19855510962047,
+ 1.6009870006473905,
+ 2.00779102190018,
+ 2.6340279282837615,
+ 2.356801829068313,
+ 1.3127824868835514,
+ 1.3394504017977809,
+ 1.8524355765389877,
+ 2.997216144913639,
+ 2.5595871262703467,
+ 1.3020801053347593,
+ 1.3784137297992014,
+ 1.6692007728091742,
+ 2.446759998487663,
+ 2.055790407918901,
+ 2.088743488125553,
+ 2.3641218635476418,
+ 2.09010777472942,
+ 1.8975574381020044,
+ 2.242835762774856,
+ 2.089095600636088,
+ 0.9835411178342909,
+ 1.3440309349208581,
+ 1.9204926085952532,
+ 2.3397529094148926,
+ 1.625416761144707,
+ 1.8536331488040865,
+ 2.8086053920859224,
+ 2.1009343291241525,
+ 0.8595584479917586,
+ 1.4437979904111935,
+ 2.176650903456026,
+ 1.8835771758391888,
+ 1.524475540036804,
+ 1.6063615056201832,
+ 1.5437406015442359,
+ 1.8579177570100116,
+ 2.2860626237762656,
+ 2.2891205095623244,
+ 2.33100118951748,
+ 1.4697898694140343,
+ 3.1368855633639128,
+ 1.167642439999916,
+ 1.4381123445148745,
+ 2.771830127776803,
+ 1.3741442031838988,
+ 2.104821257162926,
+ 2.5860891805321202,
+ 2.015896550055463,
+ 3.602144454573946,
+ 2.576113477591674,
+ 2.4473574802411564,
+ 2.3734046398914592,
+ 2.139027331856607,
+ 2.623901649052362,
+ 1.3924488256188121,
+ 1.2735176316394896,
+ 2.3516227062566193,
+ 1.7179565593139177,
+ 1.6527371868108103,
+ 3.492700854738011,
+ 1.905687622531556,
+ 1.6887119049544634,
+ 1.9184018044421927,
+ 2.1404560186633166,
+ 1.7736057699606573,
+ 1.8125336983176092,
+ 1.2680205991284317,
+ 1.3716365284716328,
+ 1.6533532920894665,
+ 1.161798237052091,
+ 1.5116597844970934,
+ 1.6365102142707229,
+ 1.9875265658394048,
+ 2.4726318159181613,
+ 0.24502832094519134,
+ 1.2405705634857187,
+ 2.359460626321061,
+ 1.2241690762241362,
+ 2.4016452720193797,
+ 1.2942027146844102,
+ 2.2601571161996814,
+ 2.3508568918055373,
+ 1.0682345408437075,
+ 1.5583126437835753,
+ 2.1385444086109926,
+ 2.4365728150059485,
+ 1.6776360034189142,
+ 2.278440703639745,
+ 1.7782912374939381,
+ 3.0239782381049025,
+ 1.9790740671355653,
+ 1.8813796062784065,
+ 2.3924253347011555,
+ 2.3703173973152083,
+ 1.7674609698582613,
+ 0.6148795491785168,
+ 1.9159442978129706,
+ 2.195114301651482,
+ 2.402313281681403,
+ 1.5981174417161914,
+ 2.0931210339460318,
+ 2.3139454573004765,
+ 1.5048626640330833,
+ 1.907882610810122,
+ 1.3762563077570282,
+ 1.6024105334036451,
+ 2.4686160177616703,
+ 2.469849564193868,
+ 2.1382660188255698,
+ 2.2718834055117405,
+ 1.7300431227211215,
+ 1.9911933749363504,
+ 2.0765235325130234,
+ 1.4246369934376037,
+ 2.963250507964889,
+ 2.110092653497837,
+ 1.7934577923448147,
+ 2.1776359161324867,
+ 3.0510717489749983,
+ 2.8663122470970928,
+ 2.7980442151073306,
+ 2.5097328076904946,
+ 1.0841706507232565,
+ 2.5433399506096137,
+ 2.5619056546014263,
+ 1.1917452316598065,
+ 2.1616700485146385,
+ 1.2181807819279584,
+ 1.3690847134153574,
+ 2.5593980654773603,
+ 2.054365599899889,
+ 1.5700634257100547,
+ 1.2899384943588796,
+ 1.907951176143202,
+ 1.7097631492032406,
+ 1.7341267662888882,
+ 2.189325836018146,
+ 2.3641659667092774,
+ 1.1804197818215494,
+ 1.4747343088944636,
+ 1.9069299804725568,
+ 2.5949955954075663,
+ 1.7643902673508025,
+ 1.7479979859232553,
+ 2.2476581312771993,
+ 1.546326852732833,
+ 0.9618210779547721,
+ 2.113203095116435,
+ 2.6327444515100904,
+ 0.7057573146902049,
+ 0.7986796787621528,
+ 1.6200790239504361,
+ 1.5855075921656598,
+ 0.8485560961216677,
+ 1.4369735157835173,
+ 1.5448655009073289,
+ 2.55916527760014,
+ 0.6906962289157568,
+ 2.1582750354402527,
+ 1.950609127242949,
+ 1.651001689957617,
+ 1.4921516470768026,
+ 3.1404585974244843,
+ 0.7324167986339178,
+ 2.5586220213989503,
+ 1.682862193542649,
+ 1.400574463145953,
+ 1.2759347552552036,
+ 2.596162627629626,
+ 1.6460799355574767,
+ 2.5364369778180618,
+ 1.926530532912544,
+ 1.9939311367513,
+ 1.4192864183146252,
+ 2.018733906447731,
+ 1.671506341502194,
+ 1.359614042219661,
+ 2.924014788956925,
+ 1.9160956829444524,
+ 1.4621562194978521,
+ 3.18066936068873,
+ 2.341099323809127,
+ 2.335202407248476,
+ 0.9553583569089872,
+ 1.9601149345901143,
+ 2.8908182682649093,
+ 1.2822349854025696,
+ 1.8040573119994747,
+ 2.4048681911725547,
+ 2.72533111218489,
+ 1.9970201900668467,
+ 1.7803230725022356,
+ 1.6198600127787148,
+ 2.1431995530466965,
+ 2.206230532905765,
+ 2.956813881730895,
+ 2.490564381563032,
+ 2.3740678663286827,
+ 2.9719967055242758,
+ 2.6860955881369932,
+ 2.0069433697698975,
+ 1.1315864859058085,
+ 1.2063754945725143,
+ 2.960119082080458,
+ 1.2920812174909408,
+ 1.7854940947814888,
+ 2.401174187501323,
+ 2.1539198853453496,
+ 1.5976488047950603,
+ 3.028096562510387,
+ 1.016906518552252,
+ 2.1904433216129835,
+ 2.215530225385552,
+ 2.422755909308867,
+ 1.136930453210894,
+ 2.548470753492267,
+ 1.4346165928878276,
+ 2.7120350165700824,
+ 1.954873946100443,
+ 1.4645015119386147,
+ 1.165517336221876,
+ 2.5669505687597955,
+ 2.2427883873110233,
+ 1.9000413924651738,
+ 1.9320833341581538,
+ 2.771427610582283,
+ 2.732437850522693,
+ 2.2964803112998813,
+ 2.7334613242989962,
+ 2.385341248356578,
+ 2.504504299260858,
+ 2.7212160518308934,
+ 2.1340033914657903,
+ 2.2152021124043486,
+ 0.9303255674948188,
+ 1.3812353975363214,
+ 1.0251689184799595,
+ 2.6402430998764777,
+ 1.986223979296408,
+ 2.3476995807470087,
+ 2.302625544137193,
+ 2.1589641484691886,
+ 2.3249684827808967,
+ 1.8370971183147866,
+ 2.26823842825387,
+ 2.502179351552352,
+ 1.7939004791762847,
+ 2.9176014128864938,
+ 2.1723463843150275,
+ 2.8664449743609794,
+ 1.830912859544156,
+ 2.6717304120095364,
+ 0.9813220821263504,
+ 0.9833027815324344,
+ 3.098402424752832,
+ 1.6339932776243202,
+ 1.4034711774614839,
+ 2.3190376708720146,
+ 1.897921057044353,
+ 2.4743747834263203,
+ 2.3719807421426506,
+ 1.608358697325854,
+ 2.116311831822979,
+ 1.3164243290967343,
+ 1.6394154936536758,
+ 2.1296910935757625,
+ 2.2278359286533673,
+ 2.6577221013799326,
+ 1.7906313115615309,
+ 2.5257225767286413,
+ 2.672412679418416,
+ 3.1314881666560246,
+ 2.269123117433269,
+ 1.440440946626298,
+ 2.6541237891970444,
+ 1.959211069375982,
+ 2.0461211178402103,
+ 2.29654120166354,
+ 1.7446416961117575,
+ 1.6614104969110275,
+ 2.381812506282418,
+ 1.9040078077102862,
+ 2.1818062139063943,
+ 1.4335068107703528,
+ 1.7846189659960587,
+ 2.3950397195409097,
+ 1.2587524275328423,
+ 1.6412571523364445,
+ 1.232848909240531]
+</pre></div>
+</div>
+</div>
+<p>But the code above can be run in fewer lines with <code class="docutils literal notranslate"><span class="pre">client.map()</span></code>
+function, allowing to call a given function on a list of parameters.</p>
+<p>As for delayed, we can only start the computation and not wait for
+results by not calling <code class="docutils literal notranslate"><span class="pre">client.gather()</span></code> right now.</p>
+<p>It shall be noted that as Dask cluster has already performed tasks
+launching <code class="docutils literal notranslate"><span class="pre">costly_simulation</span></code> with Futures API on the given input
+parameters, the call to <code class="docutils literal notranslate"><span class="pre">client.map()</span></code> won’t actually trigger any
+computation, and just retrieve already computed results.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">futures</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">costly_simulation</span><span class="p">,</span> <span class="n">input_params</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Then just get the results later:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">results</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">futures</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[16]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>500
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3.427741546857968
+</pre></div></div>
+</div>
+<p>We encourage you to watch the <a class="reference external" href="../proxy/8787/status">dashboard’s status
+page</a> to watch on going computation.</p>
+</div>
+<div class="section" id="Doing-some-analysis-on-the-results">
+<h1>Doing some analysis on the results<a class="headerlink" href="#Doing-some-analysis-on-the-results" title="Permalink to this headline">¶</a></h1>
+<p>One of the interests of Dask here, outside from API simplicity, is that
+you are able to gather the result for all your simulations in one call.
+There is no need to implement a complex mechanism or to write individual
+results in a shared file system or object store.</p>
+<p>Just get your result, and do some computation.</p>
+<p>Here, we will just get the results and expand our initial dataframe to
+have a nice view of parameters vs results for our computation</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">output</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">output</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">output</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">output</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[18]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>param_a</th>
+      <th>param_b</th>
+      <th>param_c</th>
+      <th>param_d</th>
+      <th>result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>106</th>
+      <td>0.136009</td>
+      <td>0.874341</td>
+      <td>0.330232</td>
+      <td>0.650664</td>
+      <td>1.991247</td>
+    </tr>
+    <tr>
+      <th>360</th>
+      <td>0.239780</td>
+      <td>0.128133</td>
+      <td>0.236325</td>
+      <td>0.101519</td>
+      <td>0.705757</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>0.391310</td>
+      <td>0.692666</td>
+      <td>0.747584</td>
+      <td>0.845013</td>
+      <td>2.676573</td>
+    </tr>
+    <tr>
+      <th>181</th>
+      <td>0.897621</td>
+      <td>0.618387</td>
+      <td>0.280896</td>
+      <td>0.479715</td>
+      <td>2.276620</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>0.231430</td>
+      <td>0.720253</td>
+      <td>0.057327</td>
+      <td>0.304040</td>
+      <td>1.313050</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Then we can do some nice statistical plots or save result locally with
+pandas interface here</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">output</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[19]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe9e9e05be0&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/embarrassingly-parallel_39_1.png" src="_images/embarrassingly-parallel_39_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[20]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>1.9858052901710526
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">filtered_output</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">filtered_output</span><span class="p">))</span>
+<span class="n">filtered_output</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/tmp/simulation_result.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+256
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Handling-very-large-simulation-with-Bags">
+<h1>Handling very large simulation with <a class="reference external" href="http://dask.pydata.org/en/latest/bag.html">Bags</a><a class="headerlink" href="#Handling-very-large-simulation-with-Bags" title="Permalink to this headline">¶</a></h1>
+<p>The methods above work well for a size of input parameters up to about
+100,000. Above that, the Dask scheduler has trouble handling the amount
+of tasks to schedule to workers. The solution to this problem is to
+bundle many parameters into a single task. You could do this either by
+making a new function that operated on a batch of parameters and using
+the delayed or futures APIs on that function. You could also use the
+Dask Bag API. This is described more in the documentation about
+<a class="reference external" href="http://dask.pydata.org/en/latest/delayed-best-practices.html#avoid-too-many-tasks">avoiding too many
+tasks</a>.</p>
+<p>Dask Bags hold onto large sequences in a few partitions. We can convert
+our <code class="docutils literal notranslate"><span class="pre">input_params</span></code> sequence into a <code class="docutils literal notranslate"><span class="pre">dask.bag</span></code> collection, asking for
+fewer partitions (so at most 100,000, which is already huge), and apply
+our function on every item of the bag.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">dask.bag</span> <span class="k">as</span> <span class="nn">db</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">from_sequence</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">input_params</span><span class="o">.</span><span class="n">values</span><span class="p">),</span> <span class="n">npartitions</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">costly_simulation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">time</span> results_bag = b.compute()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+CPU times: user 1.6 s, sys: 108 ms, total: 1.71 s
+Wall time: 8.51 s
+</pre></div></div>
+</div>
+<p>Looking on Dashboard here, you should see only 100 tasks to run instead
+of 500, each taking 5x more time in average, because each one is
+actually calling our function 5 times.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">results_bag</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[24]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>True
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="machine-learning/tpot.html" class="btn btn-neutral" title="Automate Machine Learning with TPOT" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Dask Developers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
