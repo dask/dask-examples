@@ -34,10 +34,10 @@ install:
 script:
     - set -e
     - source activate test
-    - sphinx-build -M html . _build -vvv
+    - sphinx-build -M html . _build -vv
     - cd ..
     - pip install doctr
-    - doctr deploy --built-docs _build/html
+    - doctr deploy --built-docs _build/html .
 
 notifications:
   email: false
