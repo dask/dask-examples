@@ -34,7 +34,7 @@ install:
 script:
     - set -e
     - source activate test
-    - make html
+    - sphinx-build -M html . _build -vvv
     - cd ..
     - pip install doctr
     - doctr deploy --built-docs docs/build/html .
