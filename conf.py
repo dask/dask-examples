@@ -39,10 +39,11 @@ release = ''
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    "sphinx.ext.mathjax",
     'nbsphinx',
 ]
 
-nbsphinx_timeout = 120
+nbsphinx_timeout = 600
 
 nbsphinx_prolog = """
 {% set docname = env.doc2path(env.docname, base=None) %}
