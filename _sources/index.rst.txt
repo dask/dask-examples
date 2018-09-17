@@ -37,6 +37,7 @@ You can run these examples in a live session here: |Binder|
    machine-learning/scale-scikit-learn
    machine-learning/parallel-prediction
    machine-learning/training-on-large-datasets
+   machine-learning/incremental
    machine-learning/xgboost
    machine-learning/voting-classifier
    machine-learning/tpot

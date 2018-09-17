@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/explore.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/nbsphinx.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Custom Workloads with Dask Delayed" href="delayed.html" />
@@ -163,6 +164,7 @@
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/parallel-prediction.html">Score and Predict Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/training-on-large-datasets.html">Train Models on Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning/incremental.html">Incrementally Train Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/xgboost.html">Scale XGBoost</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/voting-classifier.html">Use Voting Classifiers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/tpot.html">Automate Machine Learning with TPOT</a></li>
@@ -170,14 +172,6 @@
 <p class="caption"><span class="caption-text">Applications:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
-<li class="toctree-l1"><a class="reference internal" href="embarrassingly-parallel.html#Start-Dask-Client-for-Dashboard">Start Dask Client for Dashboard</a></li>
-<li class="toctree-l1"><a class="reference internal" href="embarrassingly-parallel.html#Define-your-computation-calling-function">Define your computation calling function</a></li>
-<li class="toctree-l1"><a class="reference internal" href="embarrassingly-parallel.html#Define-the-set-of-input-parameters-to-call-the-function">Define the set of input parameters to call the function</a></li>
-<li class="toctree-l1"><a class="reference internal" href="embarrassingly-parallel.html#Use-Dask-Delayed-to-make-our-function-lazy">Use Dask Delayed to make our function lazy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="embarrassingly-parallel.html#Run-in-parallel">Run in parallel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="embarrassingly-parallel.html#Using-the-Futures-API">Using the Futures API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="embarrassingly-parallel.html#Doing-some-analysis-on-the-results">Doing some analysis on the results</a></li>
-<li class="toctree-l1"><a class="reference internal" href="embarrassingly-parallel.html#Handling-very-large-simulation-with-Bags">Handling very large simulation with Bags</a></li>
 </ul>
 
             
@@ -445,7 +439,7 @@ when learning.</p>
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:35204
+  <li><b>Scheduler: </b>tcp://127.0.0.1:33918
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -601,9 +595,21 @@ dtype: object
 </div>
 </div>
 <p>Some operations will automatically display the data.</p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">precision</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_rows</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -613,7 +619,7 @@ dtype: object
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[5]:
+<span></span>Out[6]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -651,24 +657,24 @@ dtype: object
   <tbody>
     <tr>
       <th>2000-01-01 00:00:00</th>
-      <td>996</td>
-      <td>Edith</td>
-      <td>0.964149</td>
-      <td>0.319118</td>
+      <td>961</td>
+      <td>Norbert</td>
+      <td>-0.68</td>
+      <td>0.52</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:01</th>
-      <td>970</td>
+      <td>1009</td>
       <td>Zelda</td>
-      <td>-0.852095</td>
-      <td>0.238282</td>
+      <td>-0.46</td>
+      <td>0.26</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:02</th>
-      <td>1015</td>
-      <td>Ursula</td>
-      <td>-0.730184</td>
-      <td>0.513515</td>
+      <td>1044</td>
+      <td>Laura</td>
+      <td>-0.10</td>
+      <td>0.67</td>
     </tr>
   </tbody>
 </table>
@@ -680,7 +686,7 @@ dtype: object
 <p>Most common Pandas operations operate identically on Dask dataframes</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [6]:
+<span></span>In [7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -692,7 +698,7 @@ dtype: object
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[6]:
+<span></span>Out[7]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -710,7 +716,7 @@ Dask Name: sqrt, 157 tasks
 page during computation.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [7]:
+<span></span>In [8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -721,7 +727,7 @@ page during computation.</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[7]:
+<span></span>Out[8]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -731,7 +737,7 @@ page during computation.</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [8]:
+<span></span>In [9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -741,38 +747,23 @@ page during computation.</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[8]:
+<span></span>Out[9]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>name
-Alice       0.578668
-Bob         0.577676
-Charlie     0.576960
-Dan         0.577930
-Edith       0.576907
-Frank       0.577605
-George      0.578885
-Hannah      0.578816
-Ingrid      0.575441
-Jerry       0.579544
-Kevin       0.579086
-Laura       0.577254
-Michael     0.576109
-Norbert     0.576852
-Oliver      0.579505
-Patricia    0.578320
-Quinn       0.575125
-Ray         0.578294
-Sarah       0.578930
-Tim         0.577980
-Ursula      0.577382
-Victor      0.576172
-Wendy       0.578065
-Xavier      0.578683
-Yvonne      0.577754
-Zelda       0.575745
-Name: x, dtype: float64
+Alice      0.58
+Bob        0.58
+Charlie    0.58
+Dan        0.58
+Edith      0.58
+           ...
+Victor     0.58
+Wendy      0.58
+Xavier     0.58
+Yvonne     0.58
+Zelda      0.58
+Name: x, Length: 26, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -784,7 +775,7 @@ in memory.</p>
 <p>This allows future computations to be much faster.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [9]:
+<span></span>In [10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -798,7 +789,7 @@ in memory.</p>
 <p>Because we have a datetime index time-series operations work efficiently</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [10]:
+<span></span>In [11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -808,7 +799,7 @@ in memory.</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [11]:
+<span></span>In [12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -818,7 +809,7 @@ in memory.</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[11]:
+<span></span>Out[12]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -852,28 +843,28 @@ in memory.</p>
   <tbody>
     <tr>
       <th>2000-01-01 00:00:00</th>
-      <td>0.007952</td>
-      <td>0.003628</td>
+      <td>8.99e-03</td>
+      <td>-7.51e-03</td>
     </tr>
     <tr>
       <th>2000-01-01 01:00:00</th>
-      <td>-0.008343</td>
-      <td>-0.019205</td>
+      <td>6.58e-03</td>
+      <td>4.70e-03</td>
     </tr>
     <tr>
       <th>2000-01-01 02:00:00</th>
-      <td>0.016362</td>
-      <td>-0.014436</td>
+      <td>1.54e-02</td>
+      <td>2.95e-03</td>
     </tr>
     <tr>
       <th>2000-01-01 03:00:00</th>
-      <td>-0.005320</td>
-      <td>-0.004875</td>
+      <td>-6.54e-03</td>
+      <td>-8.69e-04</td>
     </tr>
     <tr>
       <th>2000-01-01 04:00:00</th>
-      <td>-0.018829</td>
-      <td>0.005451</td>
+      <td>6.62e-03</td>
+      <td>5.29e-03</td>
     </tr>
   </tbody>
 </table>
@@ -881,7 +872,7 @@ in memory.</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [12]:
+<span></span>In [13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -891,11 +882,11 @@ in memory.</p>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[12]:
+<span></span>Out[13]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7ff1083fe5c0&gt;
+<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f318bf37d30&gt;
 </pre></div>
 </div>
 </div>
@@ -903,12 +894,12 @@ in memory.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/dataframe_21_1.png" src="_images/dataframe_21_1.png" />
+<img alt="_images/dataframe_22_1.png" src="_images/dataframe_22_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [13]:
+<span></span>In [14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -918,7 +909,7 @@ in memory.</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[13]:
+<span></span>Out[14]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -952,28 +943,28 @@ in memory.</p>
   <tbody>
     <tr>
       <th>2000-01-01 00:00:00</th>
-      <td>0.964149</td>
-      <td>0.319118</td>
+      <td>-0.68</td>
+      <td>0.52</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:01</th>
-      <td>0.056027</td>
-      <td>0.278700</td>
+      <td>-0.57</td>
+      <td>0.39</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:02</th>
-      <td>-0.206043</td>
-      <td>0.356972</td>
+      <td>-0.41</td>
+      <td>0.48</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:03</th>
-      <td>-0.094927</td>
-      <td>0.355940</td>
+      <td>-0.19</td>
+      <td>0.46</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:04</th>
-      <td>-0.126982</td>
-      <td>0.402597</td>
+      <td>-0.17</td>
+      <td>0.22</td>
     </tr>
   </tbody>
 </table>
@@ -982,7 +973,7 @@ in memory.</p>
 <p>Random access is cheap along the index, but must still be computed.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [14]:
+<span></span>In [15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -992,7 +983,7 @@ in memory.</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[14]:
+<span></span>Out[15]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1050,7 +1041,7 @@ in memory.</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [15]:
+<span></span>In [16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1063,13 +1054,13 @@ in memory.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 36 ms, sys: 16 ms, total: 52 ms
-Wall time: 74.5 ms
+CPU times: user 44 ms, sys: 12 ms, total: 56 ms
+Wall time: 73.4 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[15]:
+<span></span>Out[16]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1107,213 +1098,38 @@ Wall time: 74.5 ms
   <tbody>
     <tr>
       <th>2000-01-05 00:00:00</th>
-      <td>931</td>
-      <td>Frank</td>
-      <td>-0.487465</td>
-      <td>0.987371</td>
+      <td>1005</td>
+      <td>Patricia</td>
+      <td>-0.39</td>
+      <td>0.26</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:01</th>
-      <td>1012</td>
-      <td>George</td>
-      <td>0.839178</td>
-      <td>-0.623056</td>
+      <td>1009</td>
+      <td>Alice</td>
+      <td>0.94</td>
+      <td>-0.12</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:02</th>
-      <td>1081</td>
-      <td>Edith</td>
-      <td>-0.588858</td>
-      <td>0.728163</td>
+      <td>1000</td>
+      <td>Quinn</td>
+      <td>-0.59</td>
+      <td>-0.08</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:03</th>
-      <td>1011</td>
-      <td>Norbert</td>
-      <td>-0.993895</td>
-      <td>-0.948026</td>
+      <td>1027</td>
+      <td>Edith</td>
+      <td>-0.12</td>
+      <td>0.93</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:04</th>
-      <td>1001</td>
-      <td>Michael</td>
-      <td>-0.335235</td>
-      <td>-0.177998</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:05</th>
-      <td>1058</td>
-      <td>Norbert</td>
-      <td>0.856075</td>
-      <td>0.998046</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:06</th>
-      <td>1009</td>
-      <td>Frank</td>
-      <td>0.685753</td>
-      <td>0.873472</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:07</th>
-      <td>1028</td>
-      <td>Ingrid</td>
-      <td>0.278999</td>
-      <td>-0.944866</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:08</th>
-      <td>920</td>
-      <td>Ingrid</td>
-      <td>-0.292303</td>
-      <td>-0.218876</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:09</th>
-      <td>1039</td>
-      <td>Yvonne</td>
-      <td>-0.485051</td>
-      <td>0.507407</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:10</th>
-      <td>1058</td>
-      <td>Xavier</td>
-      <td>-0.115296</td>
-      <td>-0.251822</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:11</th>
-      <td>1007</td>
-      <td>Jerry</td>
-      <td>-0.754899</td>
-      <td>0.157385</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:12</th>
-      <td>988</td>
-      <td>Kevin</td>
-      <td>0.016207</td>
-      <td>0.756106</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:13</th>
-      <td>991</td>
-      <td>Zelda</td>
-      <td>-0.518981</td>
-      <td>-0.769068</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:14</th>
-      <td>1058</td>
-      <td>Hannah</td>
-      <td>0.168522</td>
-      <td>-0.730890</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:15</th>
-      <td>1009</td>
-      <td>Zelda</td>
-      <td>-0.981634</td>
-      <td>0.852917</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:16</th>
-      <td>1039</td>
-      <td>Ursula</td>
-      <td>0.150632</td>
-      <td>0.686565</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:17</th>
-      <td>1039</td>
-      <td>Oliver</td>
-      <td>0.268274</td>
-      <td>-0.725729</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:18</th>
-      <td>960</td>
-      <td>Frank</td>
-      <td>0.294752</td>
-      <td>0.144533</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:19</th>
-      <td>969</td>
-      <td>Norbert</td>
-      <td>0.851869</td>
-      <td>0.339481</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:20</th>
-      <td>1020</td>
-      <td>Edith</td>
-      <td>-0.507137</td>
-      <td>0.381116</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:21</th>
-      <td>934</td>
-      <td>Edith</td>
-      <td>0.027068</td>
-      <td>0.813428</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:22</th>
-      <td>955</td>
-      <td>Frank</td>
-      <td>-0.079324</td>
-      <td>-0.177703</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:23</th>
-      <td>980</td>
-      <td>Ray</td>
-      <td>0.637600</td>
-      <td>-0.423289</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:24</th>
-      <td>950</td>
-      <td>Tim</td>
-      <td>-0.366678</td>
-      <td>0.405042</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:25</th>
-      <td>1011</td>
-      <td>Alice</td>
-      <td>-0.485266</td>
-      <td>0.769237</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:26</th>
-      <td>951</td>
-      <td>Michael</td>
-      <td>-0.054795</td>
-      <td>-0.486009</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:27</th>
-      <td>979</td>
-      <td>Charlie</td>
-      <td>-0.995983</td>
-      <td>-0.252571</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:28</th>
       <td>1048</td>
-      <td>Victor</td>
-      <td>0.418636</td>
-      <td>0.077154</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 00:00:29</th>
-      <td>969</td>
-      <td>Quinn</td>
-      <td>0.023735</td>
-      <td>-0.052097</td>
+      <td>Xavier</td>
+      <td>-0.63</td>
+      <td>-0.33</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1323,214 +1139,39 @@ Wall time: 74.5 ms
       <td>...</td>
     </tr>
     <tr>
-      <th>2000-01-05 23:59:30</th>
-      <td>985</td>
-      <td>Bob</td>
-      <td>0.705033</td>
-      <td>-0.328292</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:31</th>
-      <td>1055</td>
-      <td>Edith</td>
-      <td>0.266444</td>
-      <td>-0.930810</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:32</th>
-      <td>1015</td>
-      <td>Laura</td>
-      <td>0.617238</td>
-      <td>-0.283847</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:33</th>
-      <td>971</td>
-      <td>Wendy</td>
-      <td>0.692398</td>
-      <td>-0.398328</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:34</th>
-      <td>989</td>
-      <td>Bob</td>
-      <td>0.409832</td>
-      <td>-0.792071</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:35</th>
-      <td>1018</td>
-      <td>Ursula</td>
-      <td>-0.304100</td>
-      <td>0.049640</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:36</th>
-      <td>1039</td>
-      <td>Norbert</td>
-      <td>0.546873</td>
-      <td>-0.301350</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:37</th>
-      <td>1022</td>
-      <td>Kevin</td>
-      <td>-0.912782</td>
-      <td>-0.192459</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:38</th>
-      <td>1057</td>
-      <td>Jerry</td>
-      <td>0.602239</td>
-      <td>-0.337901</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:39</th>
-      <td>1025</td>
-      <td>Yvonne</td>
-      <td>-0.094060</td>
-      <td>0.194182</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:40</th>
-      <td>1042</td>
-      <td>Patricia</td>
-      <td>-0.924058</td>
-      <td>-0.429625</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:41</th>
-      <td>1006</td>
-      <td>George</td>
-      <td>-0.511206</td>
-      <td>0.964647</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:42</th>
-      <td>1015</td>
-      <td>Ursula</td>
-      <td>0.703445</td>
-      <td>-0.918912</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:43</th>
-      <td>1024</td>
-      <td>George</td>
-      <td>0.105369</td>
-      <td>0.272583</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:44</th>
-      <td>1026</td>
-      <td>Sarah</td>
-      <td>0.855395</td>
-      <td>0.659441</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:45</th>
-      <td>980</td>
-      <td>Ingrid</td>
-      <td>0.395247</td>
-      <td>0.926241</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:46</th>
-      <td>1032</td>
-      <td>Alice</td>
-      <td>0.158908</td>
-      <td>0.800398</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:47</th>
-      <td>990</td>
-      <td>Frank</td>
-      <td>-0.994384</td>
-      <td>-0.143630</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:48</th>
-      <td>959</td>
-      <td>Bob</td>
-      <td>-0.204987</td>
-      <td>0.317789</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:49</th>
-      <td>1023</td>
-      <td>Charlie</td>
-      <td>0.869681</td>
-      <td>0.344000</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:50</th>
-      <td>962</td>
-      <td>Edith</td>
-      <td>-0.085241</td>
-      <td>-0.801857</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:51</th>
-      <td>979</td>
-      <td>George</td>
-      <td>0.162932</td>
-      <td>-0.051531</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:52</th>
-      <td>999</td>
-      <td>Ursula</td>
-      <td>-0.009046</td>
-      <td>0.513356</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:53</th>
-      <td>919</td>
-      <td>Tim</td>
-      <td>0.817513</td>
-      <td>0.499403</td>
-    </tr>
-    <tr>
-      <th>2000-01-05 23:59:54</th>
-      <td>1012</td>
-      <td>Laura</td>
-      <td>0.840310</td>
-      <td>0.021814</td>
-    </tr>
-    <tr>
       <th>2000-01-05 23:59:55</th>
-      <td>991</td>
-      <td>Wendy</td>
-      <td>0.070732</td>
-      <td>0.017623</td>
+      <td>1040</td>
+      <td>Victor</td>
+      <td>-0.64</td>
+      <td>-0.97</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:56</th>
       <td>983</td>
       <td>Yvonne</td>
-      <td>0.657252</td>
-      <td>0.876976</td>
+      <td>0.53</td>
+      <td>0.20</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:57</th>
-      <td>1032</td>
-      <td>Yvonne</td>
-      <td>-0.190032</td>
-      <td>0.481215</td>
+      <td>959</td>
+      <td>Wendy</td>
+      <td>-0.27</td>
+      <td>-0.32</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:58</th>
-      <td>956</td>
+      <td>1010</td>
       <td>Laura</td>
-      <td>0.290195</td>
-      <td>0.549944</td>
+      <td>-0.75</td>
+      <td>-0.21</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:59</th>
-      <td>1019</td>
-      <td>Xavier</td>
-      <td>0.709693</td>
-      <td>-0.790635</td>
+      <td>1042</td>
+      <td>Sarah</td>
+      <td>-0.44</td>
+      <td>-0.88</td>
     </tr>
   </tbody>
 </table>
@@ -1546,7 +1187,7 @@ costly to do in parallel, so setting the index is both important to do,
 but only infrequently.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [16]:
+<span></span>In [17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1557,7 +1198,7 @@ but only infrequently.</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[16]:
+<span></span>Out[17]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1631,7 +1272,7 @@ but only infrequently.</p>
 available RAM, we persist the dataset to memory.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [17]:
+<span></span>In [18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1643,7 +1284,7 @@ available RAM, we persist the dataset to memory.</p>
 result oerations like random access are cheap and efficient</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [18]:
+<span></span>In [19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1656,13 +1297,13 @@ result oerations like random access are cheap and efficient</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 940 ms, sys: 72 ms, total: 1.01 s
+CPU times: user 944 ms, sys: 52 ms, total: 996 ms
 Wall time: 3.93 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[18]:
+<span></span>Out[19]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1698,183 +1339,33 @@ Wall time: 3.93 s
   <tbody>
     <tr>
       <th>Alice</th>
-      <td>1015</td>
-      <td>-0.861491</td>
-      <td>0.345343</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
       <td>948</td>
-      <td>0.655632</td>
-      <td>-0.782884</td>
+      <td>0.25</td>
+      <td>0.92</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1042</td>
-      <td>0.721626</td>
-      <td>-0.212700</td>
+      <td>973</td>
+      <td>-0.85</td>
+      <td>-0.42</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1017</td>
-      <td>-0.360104</td>
-      <td>-0.904409</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>977</td>
-      <td>-0.758540</td>
-      <td>-0.426593</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>992</td>
-      <td>0.237511</td>
-      <td>-0.267511</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>976</td>
-      <td>-0.103402</td>
-      <td>0.476239</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1019</td>
-      <td>-0.779449</td>
-      <td>-0.281318</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>944</td>
-      <td>0.255215</td>
-      <td>0.151282</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>999</td>
-      <td>0.529760</td>
-      <td>-0.849276</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>990</td>
-      <td>-0.017371</td>
-      <td>-0.152248</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>906</td>
-      <td>0.581563</td>
-      <td>0.703162</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>938</td>
-      <td>-0.620794</td>
-      <td>-0.932938</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1001</td>
-      <td>-0.166825</td>
-      <td>0.660974</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>964</td>
-      <td>-0.298365</td>
-      <td>0.288769</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1072</td>
-      <td>0.790722</td>
-      <td>-0.476565</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>997</td>
-      <td>0.767849</td>
-      <td>0.191069</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1002</td>
-      <td>-0.216572</td>
-      <td>0.821717</td>
+      <td>983</td>
+      <td>0.55</td>
+      <td>-0.07</td>
     </tr>
     <tr>
       <th>Alice</th>
       <td>1006</td>
-      <td>0.696431</td>
-      <td>-0.590733</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1021</td>
-      <td>0.086697</td>
-      <td>0.823046</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>957</td>
-      <td>-0.328496</td>
-      <td>-0.248459</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1045</td>
-      <td>-0.567410</td>
-      <td>-0.052291</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>961</td>
-      <td>-0.061416</td>
-      <td>0.927136</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>988</td>
-      <td>-0.017651</td>
-      <td>0.673241</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>996</td>
-      <td>-0.676006</td>
-      <td>-0.486122</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1017</td>
-      <td>-0.613786</td>
-      <td>0.999508</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>991</td>
-      <td>-0.145142</td>
-      <td>-0.583167</td>
+      <td>-0.36</td>
+      <td>0.47</td>
     </tr>
     <tr>
       <th>Alice</th>
       <td>1003</td>
-      <td>-0.500543</td>
-      <td>0.537674</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1008</td>
-      <td>-0.951048</td>
-      <td>0.689986</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1006</td>
-      <td>0.400020</td>
-      <td>0.553455</td>
+      <td>0.05</td>
+      <td>-0.25</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1884,187 +1375,37 @@ Wall time: 3.93 s
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1005</td>
-      <td>-0.797635</td>
-      <td>-0.718213</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>980</td>
-      <td>0.997159</td>
-      <td>-0.855258</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>998</td>
-      <td>0.743934</td>
-      <td>-0.026626</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1018</td>
-      <td>-0.144620</td>
-      <td>-0.499857</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>943</td>
-      <td>-0.018380</td>
-      <td>-0.922240</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>971</td>
-      <td>0.800047</td>
-      <td>-0.571512</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1002</td>
-      <td>0.381257</td>
-      <td>0.701039</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1024</td>
-      <td>-0.885033</td>
-      <td>0.645001</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1070</td>
-      <td>0.597955</td>
-      <td>-0.199717</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1032</td>
-      <td>0.798858</td>
-      <td>0.023451</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>968</td>
-      <td>0.385763</td>
-      <td>0.669082</td>
+      <td>972</td>
+      <td>-0.81</td>
+      <td>0.33</td>
     </tr>
     <tr>
       <th>Alice</th>
       <td>995</td>
-      <td>0.694289</td>
-      <td>-0.048540</td>
+      <td>0.54</td>
+      <td>0.92</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>993</td>
-      <td>0.630068</td>
-      <td>-0.950926</td>
+      <td>979</td>
+      <td>0.95</td>
+      <td>0.50</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>998</td>
-      <td>0.854528</td>
-      <td>-0.809650</td>
+      <td>970</td>
+      <td>-0.20</td>
+      <td>-0.94</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1027</td>
-      <td>-0.557361</td>
-      <td>0.124995</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>973</td>
-      <td>0.966724</td>
-      <td>0.755317</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>958</td>
-      <td>0.181091</td>
-      <td>-0.543507</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1014</td>
-      <td>0.673205</td>
-      <td>0.800025</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1021</td>
-      <td>-0.565208</td>
-      <td>-0.001309</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>983</td>
-      <td>0.120993</td>
-      <td>-0.645086</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>997</td>
-      <td>0.234433</td>
-      <td>-0.445744</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>989</td>
-      <td>-0.664457</td>
-      <td>0.393407</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>944</td>
-      <td>-0.617843</td>
-      <td>0.327259</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>973</td>
-      <td>-0.903451</td>
-      <td>0.658898</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>991</td>
-      <td>0.924327</td>
-      <td>-0.343195</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1011</td>
-      <td>-0.823545</td>
-      <td>-0.859828</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1078</td>
-      <td>-0.984333</td>
-      <td>-0.451367</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1039</td>
-      <td>-0.431657</td>
-      <td>-0.056583</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1000</td>
-      <td>-0.967597</td>
-      <td>-0.847912</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1011</td>
-      <td>-0.733882</td>
-      <td>0.209408</td>
+      <td>1016</td>
+      <td>0.03</td>
+      <td>-0.85</td>
     </tr>
   </tbody>
 </table>
-<p>99640 rows × 3 columns</p>
+<p>99692 rows × 3 columns</p>
 </div></div>
 </div>
 </div>
@@ -2076,7 +1417,7 @@ random access on name, or groupby-apply with custom functions.</p>
 name.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [19]:
+<span></span>In [20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2091,7 +1432,7 @@ name.</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [20]:
+<span></span>In [21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2101,44 +1442,29 @@ name.</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[20]:
+<span></span>Out[21]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>name
-Alice       LinearRegression(copy_X=True, fit_intercept=Tr...
-Bob         LinearRegression(copy_X=True, fit_intercept=Tr...
-Charlie     LinearRegression(copy_X=True, fit_intercept=Tr...
-Dan         LinearRegression(copy_X=True, fit_intercept=Tr...
-Edith       LinearRegression(copy_X=True, fit_intercept=Tr...
-Frank       LinearRegression(copy_X=True, fit_intercept=Tr...
-George      LinearRegression(copy_X=True, fit_intercept=Tr...
-Hannah      LinearRegression(copy_X=True, fit_intercept=Tr...
-Ingrid      LinearRegression(copy_X=True, fit_intercept=Tr...
-Jerry       LinearRegression(copy_X=True, fit_intercept=Tr...
-Kevin       LinearRegression(copy_X=True, fit_intercept=Tr...
-Laura       LinearRegression(copy_X=True, fit_intercept=Tr...
-Michael     LinearRegression(copy_X=True, fit_intercept=Tr...
-Norbert     LinearRegression(copy_X=True, fit_intercept=Tr...
-Oliver      LinearRegression(copy_X=True, fit_intercept=Tr...
-Patricia    LinearRegression(copy_X=True, fit_intercept=Tr...
-Quinn       LinearRegression(copy_X=True, fit_intercept=Tr...
-Ray         LinearRegression(copy_X=True, fit_intercept=Tr...
-Sarah       LinearRegression(copy_X=True, fit_intercept=Tr...
-Tim         LinearRegression(copy_X=True, fit_intercept=Tr...
-Ursula      LinearRegression(copy_X=True, fit_intercept=Tr...
-Victor      LinearRegression(copy_X=True, fit_intercept=Tr...
-Wendy       LinearRegression(copy_X=True, fit_intercept=Tr...
-Xavier      LinearRegression(copy_X=True, fit_intercept=Tr...
-Yvonne      LinearRegression(copy_X=True, fit_intercept=Tr...
-Zelda       LinearRegression(copy_X=True, fit_intercept=Tr...
-dtype: object
+Alice      LinearRegression(copy_X=True, fit_intercept=Tr...
+Bob        LinearRegression(copy_X=True, fit_intercept=Tr...
+Charlie    LinearRegression(copy_X=True, fit_intercept=Tr...
+Dan        LinearRegression(copy_X=True, fit_intercept=Tr...
+Edith      LinearRegression(copy_X=True, fit_intercept=Tr...
+                                 ...
+Victor     LinearRegression(copy_X=True, fit_intercept=Tr...
+Wendy      LinearRegression(copy_X=True, fit_intercept=Tr...
+Xavier     LinearRegression(copy_X=True, fit_intercept=Tr...
+Yvonne     LinearRegression(copy_X=True, fit_intercept=Tr...
+Zelda      LinearRegression(copy_X=True, fit_intercept=Tr...
+Length: 26, dtype: object
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [21]:
+<span></span>In [22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>

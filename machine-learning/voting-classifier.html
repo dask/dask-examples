@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Automate Machine Learning with TPOT" href="tpot.html" />
@@ -154,6 +155,7 @@
 <li class="toctree-l1"><a class="reference internal" href="scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parallel-prediction.html">Score and Predict Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="training-on-large-datasets.html">Train Models on Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="incremental.html">Incrementally Train Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xgboost.html">Scale XGBoost</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Use Voting Classifiers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tpot.html">Automate Machine Learning with TPOT</a></li>
@@ -161,14 +163,6 @@
 <p class="caption"><span class="caption-text">Applications:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Start-Dask-Client-for-Dashboard">Start Dask Client for Dashboard</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Define-your-computation-calling-function">Define your computation calling function</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Define-the-set-of-input-parameters-to-call-the-function">Define the set of input parameters to call the function</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Use-Dask-Delayed-to-make-our-function-lazy">Use Dask Delayed to make our function lazy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Run-in-parallel">Run in parallel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Using-the-Futures-API">Using the Futures API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Doing-some-analysis-on-the-results">Doing some analysis on the results</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Handling-very-large-simulation-with-Bags">Handling very large simulation with Bags</a></li>
 </ul>
 
             
@@ -416,7 +410,7 @@ their single machine (because sklearn already enables users to
 parallelize training across cores on a single machine).</p>
 <p>What follows is an example of how one would deploy a voting classifier
 model in dask (using a local cluster).</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [1]:
 </pre></div>
@@ -430,6 +424,15 @@ model in dask (using a local cluster).</p>
 <span class="kn">import</span> <span class="nn">sklearn.datasets</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="stderr output_area docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/sklearn/ensemble/weight_boosting.py:29: DeprecationWarning: numpy.core.umath_tests is an internal NumPy module and should not be imported. It will be removed in a future NumPy release.
+  from numpy.core.umath_tests import inner1d
+</pre></div></div>
 </div>
 <p>We create a synthetic dataset (with 1000 rows and 20 columns) that we
 can give to the voting classifier model.</p>
@@ -479,8 +482,8 @@ used dask).</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 54.2 ms, sys: 29.7 ms, total: 83.9 ms
-Wall time: 282 ms
+CPU times: user 52 ms, sys: 16 ms, total: 68 ms
+Wall time: 158 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -533,16 +536,16 @@ cluster</a>
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:40451
+  <li><b>Scheduler: </b>tcp://127.0.0.1:39652
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Cluster</h3>
 <ul>
-  <li><b>Workers: </b>4</li>
-  <li><b>Cores: </b>4</li>
-  <li><b>Memory: </b>4.02 GB</li>
+  <li><b>Workers: </b>2</li>
+  <li><b>Cores: </b>2</li>
+  <li><b>Memory: </b>7.84 GB</li>
 </ul>
 </td>
 </tr>
@@ -582,8 +585,8 @@ VotingClassifier(estimators=[(&#39;sgd&#39;, SGDClassifier(alpha=0.0001, average
   max_iter=-1, probability=False, random_state=None, shrinking=True,
   tol=0.001, verbose=False))],
          flatten_transform=None, n_jobs=-1, voting=&#39;hard&#39;, weights=None)
-CPU times: user 164 ms, sys: 23.9 ms, total: 188 ms
-Wall time: 1.01 s
+CPU times: user 96 ms, sys: 24 ms, total: 120 ms
+Wall time: 837 ms
 </pre></div></div>
 </div>
 <p>Note, that we see no advantage of using dask because we are using a

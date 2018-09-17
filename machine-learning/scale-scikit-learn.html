@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Score and Predict Large Datasets" href="parallel-prediction.html" />
@@ -158,6 +159,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="parallel-prediction.html">Score and Predict Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="training-on-large-datasets.html">Train Models on Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="incremental.html">Incrementally Train Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xgboost.html">Scale XGBoost</a></li>
 <li class="toctree-l1"><a class="reference internal" href="voting-classifier.html">Use Voting Classifiers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tpot.html">Automate Machine Learning with TPOT</a></li>
@@ -165,14 +167,6 @@
 <p class="caption"><span class="caption-text">Applications:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Start-Dask-Client-for-Dashboard">Start Dask Client for Dashboard</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Define-your-computation-calling-function">Define your computation calling function</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Define-the-set-of-input-parameters-to-call-the-function">Define the set of input parameters to call the function</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Use-Dask-Delayed-to-make-our-function-lazy">Use Dask Delayed to make our function lazy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Run-in-parallel">Run in parallel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Using-the-Futures-API">Using the Futures API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Doing-some-analysis-on-the-results">Doing some analysis on the results</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Handling-very-large-simulation-with-Bags">Handling very large simulation with Bags</a></li>
 </ul>
 
             
@@ -412,7 +406,7 @@ grid-search over many hyper-parameters, on a small dataset.</p>
 <p>This video talks demonstrates the same example on a larger cluster.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [ ]:
+<span></span>In [1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -423,22 +417,51 @@ grid-search over many hyper-parameters, on a small dataset.</p>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[1]:
+</pre></div>
 </div>
 <div class="output_area docutils container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5Zf6DQaf7jk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen> </iframe></div>
 </div>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [ ]:
+<span></span>In [2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="k">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">progress</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">memory_limit</span><span class="o">=</span><span class="s1">&#39;2GB&#39;</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                <span class="n">n_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">memory_limit</span><span class="o">=</span><span class="s1">&#39;2GB&#39;</span><span class="p">)</span>
 <span class="n">client</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<table style="border: 2px solid white;">
+<tr>
+<td style="vertical-align: top; border: 0px solid white">
+<h3>Client</h3>
+<ul>
+  <li><b>Scheduler: </b>inproc://10.20.2.10/8518/1
+  <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
+</ul>
+</td>
+<td style="vertical-align: top; border: 0px solid white">
+<h3>Cluster</h3>
+<ul>
+  <li><b>Workers: </b>1</li>
+  <li><b>Cores: </b>4</li>
+  <li><b>Memory: </b>2.00 GB</li>
+</ul>
+</td>
+</tr>
+</table></div>
 </div>
 <div class="section" id="Distributed-Training">
 <h2>Distributed Training<a class="headerlink" href="#Distributed-Training" title="Permalink to this headline">¶</a></h2>
@@ -458,7 +481,7 @@ able to cope (though Dask-ML provides other ways for working with larger
 than memory datasets).</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [ ]:
+<span></span>In [3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -477,9 +500,9 @@ than memory datasets).</p>
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [ ]:
+<span></span>In [4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -499,11 +522,32 @@ than memory datasets).</p>
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="stderr output_area docutils container">
+<div class="highlight"><pre>
+Downloading 20news dataset. This may take a few minutes.
+Downloading dataset from https://ndownloader.figshare.com/files/5975967 (14 MB)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Loading 20 newsgroups dataset for categories:
+[&#39;alt.atheism&#39;, &#39;talk.religion.misc&#39;]
+857 documents
+2 categories
+
+</pre></div></div>
+</div>
 <p>We’ll define a small pipeline that combines text feature extraction with
 a simple classifier.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [ ]:
+<span></span>In [5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -518,7 +562,7 @@ a simple classifier.</p>
 <p>Grid search over some parameters.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [ ]:
+<span></span>In [6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -537,7 +581,7 @@ a simple classifier.</p>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [ ]:
+<span></span>In [7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -555,7 +599,7 @@ cluster of machines to train the model, perform the fit in a
 <code class="docutils literal notranslate"><span class="pre">parallel_backend</span></code> context.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [ ]:
+<span></span>In [8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -563,9 +607,9 @@ cluster of machines to train the model, perform the fit in a
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [ ]:
+<span></span>In [9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -573,6 +617,22 @@ cluster of machines to train the model, perform the fit in a
     <span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Fitting 3 folds for each of 6 candidates, totalling 18 fits
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="stderr output_area docutils container">
+<div class="highlight"><pre>
+[Parallel(n_jobs=-1)]: Done  18 out of  18 | elapsed:   28.0s finished
+</pre></div></div>
 </div>
 <p>If you had your distributed dashboard open during that fit, you’ll
 notice that each worker performs some of the fit tasks.</p>
@@ -596,7 +656,7 @@ meta-estimator like <code class="docutils literal notranslate"><span class="pre"
 prefix your parameter names with <code class="docutils literal notranslate"><span class="pre">estimator__</span></code>.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [ ]:
+<span></span>In [10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -607,9 +667,9 @@ prefix your parameter names with <code class="docutils literal notranslate"><spa
 </div>
 </div>
 <p>We’ll load the small NumPy arrays for training.</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [ ]:
+<span></span>In [11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -618,9 +678,19 @@ prefix your parameter names with <code class="docutils literal notranslate"><spa
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[11]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>(1797, 64)
+</pre></div>
+</div>
+</div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [ ]:
+<span></span>In [12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -636,9 +706,9 @@ prefix your parameter names with <code class="docutils literal notranslate"><spa
 </div>
 </div>
 <p>And fit as usual.</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [ ]:
+<span></span>In [13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -646,11 +716,30 @@ prefix your parameter names with <code class="docutils literal notranslate"><spa
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[13]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>GridSearchCV(cv=None, error_score=&#39;raise&#39;,
+       estimator=ParallelPostFit(estimator=SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0,
+  decision_function_shape=&#39;ovr&#39;, degree=3, gamma=&#39;auto&#39;, kernel=&#39;rbf&#39;,
+  max_iter=-1, probability=False, random_state=0, shrinking=True,
+  tol=0.001, verbose=False),
+        scoring=None),
+       fit_params=None, iid=False, n_jobs=1,
+       param_grid={&#39;estimator__C&#39;: [0.01, 1.0, 10]},
+       pre_dispatch=&#39;2*n_jobs&#39;, refit=True, return_train_score=&#39;warn&#39;,
+       scoring=None, verbose=0)
+</pre></div>
+</div>
+</div>
 <p>We’ll simulate a large dask array by replicating the training data a few
 times. In reality, you would load this from your file system.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [ ]:
+<span></span>In [14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -658,9 +747,9 @@ times. In reality, you would load this from your file system.</p>
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [ ]:
+<span></span>In [15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -672,17 +761,37 @@ times. In reality, you would load this from your file system.</p>
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[15]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>dask.array&lt;concatenate, shape=(17970, 64), dtype=float64, chunksize=(1797, 64)&gt;
+</pre></div>
+</div>
+</div>
 <p>Operations like <code class="docutils literal notranslate"><span class="pre">predict</span></code>, or <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> return dask, rather
 than NumPy arrays. When you compute, the work will be done in parallel,
 out of core or distributed on the cluster.</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [ ]:
+<span></span>In [16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">predicted</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">big_X</span><span class="p">)</span>
 <span class="n">predicted</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[16]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>dask.array&lt;predict, shape=(17970,), dtype=int64, chunksize=(1797,)&gt;
 </pre></div>
 </div>
 </div>

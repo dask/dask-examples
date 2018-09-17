@@ -28,13 +28,12 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "metadata": {},
    "outputs": [],
    "source": [
     "from dask.distributed import Client, progress\n",
-    "client = Client(processes=False, threads_per_worker=4, n_workers=1, memory_limit='2GB')\n",
+    "client = Client(processes=False, threads_per_worker=4,\n",
+    "                n_workers=1, memory_limit='2GB')\n",
     "client"
    ]
   },
@@ -50,9 +49,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "metadata": {},
    "outputs": [],
    "source": [
     "import dask.array as da\n",
@@ -70,9 +67,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "metadata": {},
    "outputs": [],
    "source": [
     "y = x + x.T\n",
@@ -92,9 +87,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "metadata": {},
    "outputs": [],
    "source": [
     "z.compute()"
@@ -114,9 +107,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "metadata": {},
    "outputs": [],
    "source": [
     "y = y.persist()"
@@ -125,9 +116,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "metadata": {},
    "outputs": [],
    "source": [
     "%time y[0, 0].compute()"
@@ -136,9 +125,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "metadata": {},
    "outputs": [],
    "source": [
     "%time y.sum().compute()"
@@ -161,7 +148,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.6.4"
+   "version": "3.6.5"
   }
  },
  "nbformat": 4,

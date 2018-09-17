@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Scale Scikit-Learn for Small Data Problems" href="../machine-learning/scale-scikit-learn.html" />
@@ -161,6 +162,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/parallel-prediction.html">Score and Predict Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/training-on-large-datasets.html">Train Models on Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/incremental.html">Incrementally Train Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/xgboost.html">Scale XGBoost</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/voting-classifier.html">Use Voting Classifiers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/tpot.html">Automate Machine Learning with TPOT</a></li>
@@ -168,14 +170,6 @@
 <p class="caption"><span class="caption-text">Applications:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Start-Dask-Client-for-Dashboard">Start Dask Client for Dashboard</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Define-your-computation-calling-function">Define your computation calling function</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Define-the-set-of-input-parameters-to-call-the-function">Define the set of input parameters to call the function</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Use-Dask-Delayed-to-make-our-function-lazy">Use Dask Delayed to make our function lazy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Run-in-parallel">Run in parallel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Using-the-Futures-API">Using the Futures API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Doing-some-analysis-on-the-results">Doing some analysis on the results</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html#Handling-very-large-simulation-with-Bags">Handling very large simulation with Bags</a></li>
 </ul>
 
             
@@ -444,7 +438,7 @@ when learning.</p>
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>inproc://10.20.0.111/7182/1
+  <li><b>Scheduler: </b>inproc://10.20.2.10/7361/1
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -595,32 +589,32 @@ million).</p>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>name
-Alice      -0.000711
-Bob         0.000716
-Charlie    -0.002865
-Dan         0.003732
-Edith       0.001432
-Frank      -0.000853
-George      0.000367
-Hannah      0.000995
-Ingrid      0.000820
-Jerry      -0.001443
-Kevin       0.000795
-Laura      -0.002304
-Michael    -0.004415
-Norbert    -0.000643
-Oliver      0.000474
-Patricia   -0.000892
-Quinn      -0.001544
-Ray        -0.001080
-Sarah      -0.000017
-Tim         0.000591
-Ursula     -0.000582
-Victor     -0.001755
-Wendy       0.001167
-Xavier      0.000565
-Yvonne      0.001763
-Zelda       0.001009
+Alice       0.002309
+Bob        -0.002426
+Charlie     0.004711
+Dan        -0.002098
+Edith      -0.000599
+Frank       0.000248
+George     -0.000825
+Hannah     -0.000179
+Ingrid     -0.000600
+Jerry      -0.000499
+Kevin      -0.002227
+Laura       0.001648
+Michael    -0.000020
+Norbert    -0.004745
+Oliver      0.001710
+Patricia    0.001886
+Quinn      -0.001194
+Ray        -0.001555
+Sarah      -0.003607
+Tim         0.001612
+Ursula      0.000643
+Victor     -0.000534
+Wendy       0.000213
+Xavier     -0.002501
+Yvonne      0.003987
+Zelda       0.000258
 Name: x, dtype: float64
 </pre></div>
 </div>
@@ -642,8 +636,8 @@ on which you group (name vs id), and the number of total groups</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 324 ms, sys: 32 ms, total: 356 ms
-Wall time: 265 ms
+CPU times: user 356 ms, sys: 16 ms, total: 372 ms
+Wall time: 278 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -661,8 +655,8 @@ Wall time: 265 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 704 ms, sys: 20 ms, total: 724 ms
-Wall time: 509 ms
+CPU times: user 724 ms, sys: 16 ms, total: 740 ms
+Wall time: 522 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -680,8 +674,8 @@ Wall time: 509 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.05 s, sys: 84 ms, total: 1.14 s
-Wall time: 848 ms
+CPU times: user 1.14 s, sys: 52 ms, total: 1.19 s
+Wall time: 896 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -733,38 +727,38 @@ Wall time: 848 ms
   <tbody>
     <tr>
       <th>Alice</th>
-      <td>-0.000711</td>
-      <td>0.578004</td>
-      <td>0.000695</td>
-      <td>99373</td>
+      <td>0.002309</td>
+      <td>0.578313</td>
+      <td>-0.000397</td>
+      <td>99463</td>
     </tr>
     <tr>
       <th>Bob</th>
-      <td>0.000716</td>
-      <td>0.577590</td>
-      <td>0.000104</td>
-      <td>100030</td>
+      <td>-0.002426</td>
+      <td>0.577882</td>
+      <td>-0.000049</td>
+      <td>99928</td>
     </tr>
     <tr>
       <th>Charlie</th>
-      <td>-0.002865</td>
-      <td>0.577502</td>
-      <td>0.000129</td>
-      <td>99761</td>
+      <td>0.004711</td>
+      <td>0.575976</td>
+      <td>0.000248</td>
+      <td>99992</td>
     </tr>
     <tr>
       <th>Dan</th>
-      <td>0.003732</td>
-      <td>0.577665</td>
-      <td>0.001031</td>
-      <td>99764</td>
+      <td>-0.002098</td>
+      <td>0.577886</td>
+      <td>-0.001228</td>
+      <td>99488</td>
     </tr>
     <tr>
       <th>Edith</th>
-      <td>0.001432</td>
-      <td>0.576559</td>
-      <td>0.001570</td>
-      <td>99674</td>
+      <td>-0.000599</td>
+      <td>0.576910</td>
+      <td>-0.000965</td>
+      <td>100147</td>
     </tr>
   </tbody>
 </table>
@@ -822,7 +816,7 @@ output into multiple partitions. You can control this with the
 </div>
 <div class="stderr output_area docutils container">
 <div class="highlight"><pre>
-dot: graph is too large for cairo-renderer bitmaps. Scaling by 0.717677 to fit
+dot: graph is too large for cairo-renderer bitmaps. Scaling by 0.717646 to fit
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -878,8 +872,8 @@ model on every person’s name.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 6.14 s, sys: 596 ms, total: 6.74 s
-Wall time: 5.49 s
+CPU times: user 6.39 s, sys: 604 ms, total: 7 s
+Wall time: 5.66 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
