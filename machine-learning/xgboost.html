@@ -445,7 +445,7 @@ via the dashboard.</p>
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:43158
+  <li><b>Scheduler: </b>tcp://127.0.0.1:43778
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -539,12 +539,12 @@ using all the workers Dask has available.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%</span><span class="k">time</span>
-params = {&#39;objective&#39;: &#39;binary:logistic&#39;,
-          &#39;max_depth&#39;: 4, &#39;eta&#39;: 0.01, &#39;subsample&#39;: 0.5,
-          &#39;min_child_weight&#39;: 0.5}
+<span></span><span class="o">%%time</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;objective&#39;</span><span class="p">:</span> <span class="s1">&#39;binary:logistic&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;eta&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;subsample&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+          <span class="s1">&#39;min_child_weight&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">}</span>
 
-bst = dask_xgboost.train(client, params, X_train, y_train, num_boost_round=10)
+<span class="n">bst</span> <span class="o">=</span> <span class="n">dask_xgboost</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">num_boost_round</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -553,8 +553,8 @@ bst = dask_xgboost.train(client, params, X_train, y_train, num_boost_round=10)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3.21 s, sys: 164 ms, total: 3.37 s
-Wall time: 12.8 s
+CPU times: user 2.81 s, sys: 120 ms, total: 2.93 s
+Wall time: 12.1 s
 </pre></div></div>
 </div>
 </div>
@@ -577,7 +577,7 @@ Wall time: 12.8 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;xgboost.core.Booster at 0x7f508f9b0320&gt;
+<span></span>&lt;xgboost.core.Booster at 0x7f3222c86550&gt;
 </pre></div>
 </div>
 </div>
@@ -726,7 +726,7 @@ chosen instance.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Dask Developers.
+        &copy; Copyright 2018, Dask Developers
 
     </p>
   </div>
@@ -745,21 +745,14 @@ chosen instance.</p>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
 
   
 

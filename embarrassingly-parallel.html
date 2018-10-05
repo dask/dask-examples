@@ -466,7 +466,7 @@ useful when learning.</p>
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:42348
+  <li><b>Scheduler: </b>tcp://127.0.0.1:40092
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -519,8 +519,8 @@ even run an executable using subprocess module.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 20 ms, sys: 0 ns, total: 20 ms
-Wall time: 521 ms
+CPU times: user 8 ms, sys: 0 ns, total: 8 ms
+Wall time: 228 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -588,38 +588,38 @@ param_[a-d].</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.818041</td>
-      <td>0.941991</td>
-      <td>0.261115</td>
-      <td>0.720258</td>
+      <td>0.899333</td>
+      <td>0.852474</td>
+      <td>0.291674</td>
+      <td>0.957916</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.047411</td>
-      <td>0.274807</td>
-      <td>0.385081</td>
-      <td>0.746920</td>
+      <td>0.095217</td>
+      <td>0.111637</td>
+      <td>0.096566</td>
+      <td>0.855989</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.565944</td>
-      <td>0.503812</td>
-      <td>0.377197</td>
-      <td>0.631327</td>
+      <td>0.828422</td>
+      <td>0.185106</td>
+      <td>0.528243</td>
+      <td>0.136314</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.554489</td>
-      <td>0.208443</td>
-      <td>0.056799</td>
-      <td>0.721162</td>
+      <td>0.991381</td>
+      <td>0.270120</td>
+      <td>0.865961</td>
+      <td>0.188609</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.805677</td>
-      <td>0.274043</td>
-      <td>0.656549</td>
-      <td>0.024583</td>
+      <td>0.023114</td>
+      <td>0.145675</td>
+      <td>0.320173</td>
+      <td>0.613854</td>
     </tr>
   </tbody>
 </table>
@@ -635,11 +635,11 @@ long otherwise.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%</span><span class="k">time</span>
-results = []
-for parameters in input_params.values[:10]:
-    result = costly_simulation(parameters)
-    results.append(result)
+<span></span><span class="o">%%time</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">parameters</span> <span class="ow">in</span> <span class="n">input_params</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">costly_simulation</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -648,8 +648,8 @@ for parameters in input_params.values[:10]:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 204 ms, sys: 12 ms, total: 216 ms
-Wall time: 3.47 s
+CPU times: user 248 ms, sys: 4 ms, total: 252 ms
+Wall time: 6.09 s
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -668,16 +668,16 @@ Wall time: 3.47 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[2.741404707524878,
- 1.4542194644283448,
- 2.0782796074382595,
- 1.5408938157145413,
- 1.7608524966019545,
- 3.0851928507454645,
- 2.238639486027188,
- 2.321976441898386,
- 3.2705529642040796,
- 1.3117440379400982]
+<span></span>[3.0013982136026325,
+ 1.1594091735837657,
+ 1.6780850038018285,
+ 2.316070438563014,
+ 1.1028165765683922,
+ 2.0819350224337403,
+ 2.5362369186606637,
+ 2.600915604467522,
+ 1.788044230839792,
+ 1.5842868964960688]
 </pre></div>
 </div>
 </div>
@@ -703,13 +703,13 @@ only construct a simple graph.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%</span><span class="k">time</span>
-import dask
-lazy_results = []
+<span></span><span class="o">%%time</span>
+<span class="kn">import</span> <span class="nn">dask</span>
+<span class="n">lazy_results</span> <span class="o">=</span> <span class="p">[]</span>
 
-for parameters in input_params.values[:10]:
-    lazy_result = dask.delayed(costly_simulation)(parameters)
-    lazy_results.append(lazy_result)
+<span class="k">for</span> <span class="n">parameters</span> <span class="ow">in</span> <span class="n">input_params</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
+    <span class="n">lazy_result</span> <span class="o">=</span> <span class="n">dask</span><span class="o">.</span><span class="n">delayed</span><span class="p">(</span><span class="n">costly_simulation</span><span class="p">)(</span><span class="n">parameters</span><span class="p">)</span>
+    <span class="n">lazy_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lazy_result</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -718,8 +718,8 @@ for parameters in input_params.values[:10]:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 0 ns, sys: 0 ns, total: 0 ns
-Wall time: 1.54 ms
+CPU times: user 4 ms, sys: 0 ns, total: 4 ms
+Wall time: 2.39 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -738,7 +738,7 @@ Wall time: 1.54 ms
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Delayed(&#39;costly_simulation-a48d3e85-6722-4442-9b65-8fd0ebc8063f&#39;)
+<span></span>Delayed(&#39;costly_simulation-55ef75e9-13a5-42b8-8ff1-5e7163ede25d&#39;)
 </pre></div>
 </div>
 </div>
@@ -765,8 +765,8 @@ page during computation.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 124 ms, sys: 8 ms, total: 132 ms
-Wall time: 1.95 s
+CPU times: user 104 ms, sys: 8 ms, total: 112 ms
+Wall time: 1.63 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -775,16 +775,16 @@ Wall time: 1.95 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(2.741404707524878,
- 1.4542194644283448,
- 2.0782796074382595,
- 1.5408938157145413,
- 1.7608524966019545,
- 3.0851928507454645,
- 2.238639486027188,
- 2.321976441898386,
- 3.2705529642040796,
- 1.3117440379400982)
+<span></span>(3.0013982136026325,
+ 1.1594091735837657,
+ 1.6780850038018285,
+ 2.316070438563014,
+ 1.1028165765683922,
+ 2.0819350224337403,
+ 2.5362369186606637,
+ 2.600915604467522,
+ 1.788044230839792,
+ 1.5842868964960688)
 </pre></div>
 </div>
 </div>
@@ -842,11 +842,11 @@ around our cluster, managing load balancing, dependencies, etc..</p>
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(2.741404707524878,
- 1.4542194644283448,
- 2.0782796074382595,
- 1.5408938157145413,
- 1.7608524966019545)
+<span></span>(3.0013982136026325,
+ 1.1594091735837657,
+ 1.6780850038018285,
+ 2.316070438563014,
+ 1.1028165765683922)
 </pre></div>
 </div>
 </div>
@@ -892,11 +892,11 @@ our local process by calling <code class="docutils literal notranslate"><span cl
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[2.741404707524878,
- 1.4542194644283448,
- 2.0782796074382595,
- 1.5408938157145413,
- 1.7608524966019545]
+<span></span>[3.0013982136026325,
+ 1.1594091735837657,
+ 1.6780850038018285,
+ 2.316070438563014,
+ 1.1028165765683922]
 </pre></div>
 </div>
 </div>
@@ -955,7 +955,7 @@ computation, and just retrieve already computed results.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2.741404707524878
+3.0013982136026325
 </pre></div></div>
 </div>
 <p>We encourage you to watch the <a class="reference external" href="../proxy/8787/status">dashboard’s status
@@ -1015,44 +1015,44 @@ have a nice view of parameters vs results for our computation</p>
   </thead>
   <tbody>
     <tr>
-      <th>116</th>
-      <td>0.477654</td>
-      <td>0.290869</td>
-      <td>0.289053</td>
-      <td>0.519599</td>
-      <td>1.577175</td>
+      <th>157</th>
+      <td>0.198095</td>
+      <td>0.411102</td>
+      <td>0.873600</td>
+      <td>0.412797</td>
+      <td>1.895595</td>
     </tr>
     <tr>
-      <th>321</th>
-      <td>0.247775</td>
-      <td>0.202315</td>
-      <td>0.437312</td>
-      <td>0.070657</td>
-      <td>0.958059</td>
+      <th>476</th>
+      <td>0.829574</td>
+      <td>0.009366</td>
+      <td>0.910263</td>
+      <td>0.557948</td>
+      <td>2.307150</td>
     </tr>
     <tr>
-      <th>334</th>
-      <td>0.138893</td>
-      <td>0.902513</td>
-      <td>0.229151</td>
-      <td>0.190749</td>
-      <td>1.461305</td>
+      <th>103</th>
+      <td>0.586258</td>
+      <td>0.563987</td>
+      <td>0.434022</td>
+      <td>0.581172</td>
+      <td>2.165440</td>
     </tr>
     <tr>
-      <th>242</th>
-      <td>0.804717</td>
-      <td>0.666957</td>
-      <td>0.722267</td>
-      <td>0.727400</td>
-      <td>2.921340</td>
+      <th>475</th>
+      <td>0.472204</td>
+      <td>0.477199</td>
+      <td>0.371904</td>
+      <td>0.397873</td>
+      <td>1.719179</td>
     </tr>
     <tr>
-      <th>176</th>
-      <td>0.495121</td>
-      <td>0.818358</td>
-      <td>0.972568</td>
-      <td>0.328246</td>
-      <td>2.614294</td>
+      <th>5</th>
+      <td>0.662055</td>
+      <td>0.489749</td>
+      <td>0.527323</td>
+      <td>0.402809</td>
+      <td>2.081935</td>
     </tr>
   </tbody>
 </table>
@@ -1077,7 +1077,7 @@ pandas interface here</p>
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f826308d400&gt;
+<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f44ca091da0&gt;
 </pre></div>
 </div>
 </div>
@@ -1104,7 +1104,7 @@ pandas interface here</p>
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>1.9758879459585517
+<span></span>1.99916256905583
 </pre></div>
 </div>
 </div>
@@ -1125,7 +1125,7 @@ pandas interface here</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-236
+260
 </pre></div></div>
 </div>
 </div>
@@ -1171,8 +1171,8 @@ our function on every item of the bag.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.6 s, sys: 112 ms, total: 1.71 s
-Wall time: 7.95 s
+CPU times: user 1.41 s, sys: 96 ms, total: 1.51 s
+Wall time: 7.62 s
 </pre></div></div>
 </div>
 <p>Looking on Dashboard here, you should see only 100 tasks to run instead
@@ -1219,7 +1219,7 @@ actually calling our function 5 times.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Dask Developers.
+        &copy; Copyright 2018, Dask Developers
 
     </p>
   </div>
@@ -1238,21 +1238,14 @@ actually calling our function 5 times.</p>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
 
   
 

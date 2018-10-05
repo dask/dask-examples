@@ -146,7 +146,10 @@
 <li class="toctree-l1"><a class="reference internal" href="delayed.html">Custom Workloads with Dask Delayed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="futures.html">Custom Workloads with Futures</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Dask for Machine Learning</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Distributed-Training">Distributed Training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Distributed-Training">Distributed Training</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Create-Scikit-Learn-Estimator">Create Scikit-Learn Estimator</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#Training-on-Large-Datasets">Training on Large Datasets</a></li>
 </ul>
 </li>
@@ -429,7 +432,7 @@ or explore some of the other machine-learning examples.</p>
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>inproc://10.20.1.156/8198/1
+  <li><b>Scheduler: </b>inproc://10.20.3.171/8372/1
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -450,8 +453,9 @@ or explore some of the other machine-learning examples.</p>
 single-machine parallelism. This lets you train most estimators
 (anything that accepts an <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> parameter) using all the cores of
 your laptop or workstation.</p>
-<p>Dask registers a joblib backend. This lets you train those estimators
-using all the cores of your <em>cluster</em>, by changing one line of code.</p>
+<p>Alternatively, Scikit-Learn can use Dask for parallelism. This lets you
+train those estimators using all the cores of your <em>cluster</em> without
+significantly changing your code.</p>
 <p>This is most useful for training large models on medium-sized datasets.
 You may have a large model when searching over many hyper-parameters, or
 when using an ensemble method with many individual estimators. For too
@@ -459,14 +463,15 @@ small datasets, training times will typically be small enough that
 cluster-wide parallelism isn’t helpful. For too large datasets (larger
 than a single machine’s memory), the scikit-learn estimators may not be
 able to cope (see below).</p>
+<div class="section" id="Create-Scikit-Learn-Estimator">
+<h3>Create Scikit-Learn Estimator<a class="headerlink" href="#Create-Scikit-Learn-Estimator" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">dask_ml.joblib</span>  <span class="c1"># register the distriubted backend</span>
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">make_classification</span>
+<span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">make_classification</span>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="k">import</span> <span class="n">SVC</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">GridSearchCV</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -539,13 +544,12 @@ to find the best value of the <span class="math notranslate nohighlight">\(C\)</
 </pre></div>
 </div>
 </div>
-<p>To fit that normally, we’d call</p>
+<p>To fit that normally, we would call</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>To fit it using the cluster, we just need to use a context manager
-provided by joblib. We’ll pre-scatter the data to each worker, which can
-help with performance.</p>
+provided by joblib.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [5]:
@@ -554,7 +558,7 @@ help with performance.</p>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">sklearn.externals</span> <span class="k">import</span> <span class="n">joblib</span>
 
-<span class="k">with</span> <span class="n">joblib</span><span class="o">.</span><span class="n">parallel_backend</span><span class="p">(</span><span class="s1">&#39;dask&#39;</span><span class="p">,</span> <span class="n">scatter</span><span class="o">=</span><span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">]):</span>
+<span class="k">with</span> <span class="n">joblib</span><span class="o">.</span><span class="n">parallel_backend</span><span class="p">(</span><span class="s1">&#39;dask&#39;</span><span class="p">):</span>
     <span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -616,10 +620,10 @@ etc.</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.435367</td>
-      <td>0.032675</td>
-      <td>0.045307</td>
-      <td>0.002826</td>
+      <td>0.357487</td>
+      <td>0.059347</td>
+      <td>0.040295</td>
+      <td>0.005915</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>True</td>
@@ -633,10 +637,10 @@ etc.</p>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.458289</td>
-      <td>0.051133</td>
-      <td>0.038043</td>
-      <td>0.013562</td>
+      <td>0.443713</td>
+      <td>0.063963</td>
+      <td>0.029355</td>
+      <td>0.007618</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>False</td>
@@ -650,10 +654,10 @@ etc.</p>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.285536</td>
-      <td>0.031310</td>
-      <td>0.027270</td>
-      <td>0.005577</td>
+      <td>0.286621</td>
+      <td>0.009290</td>
+      <td>0.027144</td>
+      <td>0.005953</td>
       <td>0.001</td>
       <td>poly</td>
       <td>True</td>
@@ -667,10 +671,10 @@ etc.</p>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.253588</td>
-      <td>0.009619</td>
-      <td>0.022035</td>
-      <td>0.006144</td>
+      <td>0.281647</td>
+      <td>0.019293</td>
+      <td>0.022059</td>
+      <td>0.002551</td>
       <td>0.001</td>
       <td>poly</td>
       <td>False</td>
@@ -684,10 +688,10 @@ etc.</p>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.482313</td>
-      <td>0.011786</td>
-      <td>0.043134</td>
-      <td>0.004606</td>
+      <td>0.460701</td>
+      <td>0.008907</td>
+      <td>0.040218</td>
+      <td>0.008993</td>
       <td>0.001</td>
       <td>sigmoid</td>
       <td>True</td>
@@ -746,6 +750,7 @@ etc.</p>
 <p>For more on training scikit-learn models with distributed joblib, see
 the <a class="reference external" href="http://dask-ml.readthedocs.io/en/latest/joblib.html">dask-ml
 documentation</a>.</p>
+</div>
 </div>
 <div class="section" id="Training-on-Large-Datasets">
 <h2>Training on Large Datasets<a class="headerlink" href="#Training-on-Large-Datasets" title="Permalink to this headline">¶</a></h2>
@@ -849,7 +854,7 @@ parallel.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/machine-learning_23_0.png" src="_images/machine-learning_23_0.png" />
+<img alt="_images/machine-learning_24_0.png" src="_images/machine-learning_24_0.png" />
 </div>
 </div>
 <p>For all the estimators implemented in Dask-ML, see the <a class="reference external" href="http://dask-ml.readthedocs.io/en/latest/modules/api.html">API
@@ -877,7 +882,7 @@ documentation</a>.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Dask Developers.
+        &copy; Copyright 2018, Dask Developers
 
     </p>
   </div>
@@ -896,21 +901,14 @@ documentation</a>.</p>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
 
   
 

@@ -451,7 +451,7 @@ when learning.</p>
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:43267
+  <li><b>Scheduler: </b>tcp://127.0.0.1:37620
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -501,11 +501,11 @@ they sleep for a random amount of time to simulate real work.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%</span><span class="k">time</span>
-x = inc(1)
-y = dec(2)
-z = add(x, y)
-z
+<span></span><span class="o">%%time</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">inc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">dec</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">z</span>
 </pre></div>
 </div>
 </div>
@@ -514,8 +514,8 @@ z
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 80 ms, sys: 12 ms, total: 92 ms
-Wall time: 2.01 s
+CPU times: user 40 ms, sys: 4 ms, total: 44 ms
+Wall time: 1.22 s
 </pre></div></div>
 </div>
 <p>These ran one after the other, in sequence. Note though that the first
@@ -549,11 +549,11 @@ a graph</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%</span><span class="k">time</span>
-x = inc(1)
-y = dec(2)
-z = add(x, y)
-z
+<span></span><span class="o">%%time</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">inc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">dec</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">z</span>
 </pre></div>
 </div>
 </div>
@@ -562,8 +562,8 @@ z
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 4 ms, sys: 0 ns, total: 4 ms
-Wall time: 1.12 ms
+CPU times: user 0 ns, sys: 0 ns, total: 0 ns
+Wall time: 522 µs
 </pre></div></div>
 </div>
 </div>
@@ -628,15 +628,15 @@ workflows.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%</span><span class="k">time</span>
-zs = []
-for i in range(256):
-    x = inc(i)
-    y = dec(x)
-    z = add(x, y)
-    zs.append(z)
+<span></span><span class="o">%%time</span>
+<span class="n">zs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">256</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">inc</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">dec</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">zs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
 
-zs = dask.persist(*zs)  # trigger computation in the background
+<span class="n">zs</span> <span class="o">=</span> <span class="n">dask</span><span class="o">.</span><span class="n">persist</span><span class="p">(</span><span class="o">*</span><span class="n">zs</span><span class="p">)</span>  <span class="c1"># trigger computation in the background</span>
 </pre></div>
 </div>
 </div>
@@ -645,8 +645,8 @@ zs = dask.persist(*zs)  # trigger computation in the background
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 80 ms, sys: 4 ms, total: 84 ms
-Wall time: 82.4 ms
+CPU times: user 72 ms, sys: 4 ms, total: 76 ms
+Wall time: 74.8 ms
 </pre></div></div>
 </div>
 <p>To make this go faster, add additional workers.</p>
@@ -752,7 +752,7 @@ will be able to see the task graph evolve during the computation.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Dask Developers.
+        &copy; Copyright 2018, Dask Developers
 
     </p>
   </div>
@@ -771,21 +771,14 @@ will be able to see the task graph evolve during the computation.</p>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
 
   
 
