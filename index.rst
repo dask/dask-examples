@@ -18,6 +18,7 @@ You can run these examples in a live session here: |Binder|
    :caption: Basic Examples:
 
    array
+   bag
    dataframe
    delayed
    futures
