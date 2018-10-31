@@ -1,0 +1,1051 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Dask Bags &mdash; Dask Examples  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/explore.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/nbsphinx.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Dask DataFrames" href="dataframe.html" />
+    <link rel="prev" title="Dask Arrays" href="array.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+  
+
+<nav id="explore-links">
+  <a href="https://docs.dask.org/">
+    <img class="caption" src="_static/images/dask-horizontal-white.svg"/>
+  </a>
+
+  <ul>
+    <li>
+      <a>Get Started</a>
+      <ul>
+        <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
+        <li><a href="https://examples.dask.org"> Examples </a></li>
+        <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
+        <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
+        <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
+        <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
+        <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a href="">Algorithms</a>
+      <ul>
+        <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
+        <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
+        <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
+        <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
+        <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
+        <li><a href="http://ml.dask.org">Machine Learning</a></li>
+        <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a href="https://docs.dask.org/en/latest/setup.html">Deploy</a>
+      <ul>
+        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
+        <li><a href="https://docs.dask.org/en/latest/setup/kubernetes-helm.html"> Helm </a></li>
+        <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
+        <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
+        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a>Community</a>
+      <ul>
+        <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
+        <li><a href="https://github.com/dask">Github</a></li>
+        <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
+        <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
+        <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
+      </ul>
+    </li>
+  </ul>
+
+</nav>
+
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Dask Examples
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Basic Examples:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="array.html">Dask Arrays</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Dask Bags</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Start-Dask-Client-for-Dashboard">Start Dask Client for Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Create-Random-Data">Create Random Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Read-JSON-data">Read JSON data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Map,-Filter,-Aggregate">Map, Filter, Aggregate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Chain-computations">Chain computations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Transform-and-Store">Transform and Store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Convert-to-Dask-Dataframes">Convert to Dask Dataframes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Learn-More">Learn More</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dataframe.html">Dask DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="delayed.html">Custom Workloads with Dask Delayed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="futures.html">Custom Workloads with Futures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning.html">Dask for Machine Learning</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Dataframes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dataframes/01-data-access.html">DataFrames: Read and Write Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataframes/02-groupby.html">DataFrames: Groupby</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Machine Learning:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning/scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning/parallel-prediction.html">Score and Predict Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning/training-on-large-datasets.html">Train Models on Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning/incremental.html">Incrementally Train Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning/xgboost.html">Scale XGBoost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning/voting-classifier.html">Use Voting Classifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning/tpot.html">Automate Machine Learning with TPOT</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Applications:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Dask Examples</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Dask Bags</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/bag.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #303F9F;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #D84315;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 9ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+</style>
+<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/bag.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/bag.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/bag.ipynb">on Github</a>.</p>
+<div class="section" id="Dask-Bags">
+<h1>Dask Bags<a class="headerlink" href="#Dask-Bags" title="Permalink to this headline">¶</a></h1>
+<p>Dask Bag implements operations like <code class="docutils literal notranslate"><span class="pre">map</span></code>, <code class="docutils literal notranslate"><span class="pre">filter</span></code>, <code class="docutils literal notranslate"><span class="pre">groupby</span></code> and
+aggregations on collections of Python objects. It does this in parallel
+and in small memory using Python iterators. It is similar to a parallel
+version of itertools or a Pythonic version of the PySpark RDD.</p>
+<p>Dask Bags are often used to do simple preprocessing on log files, JSON
+records, or other user defined Python objects.</p>
+<p>Full API documentation is available here:
+<a class="reference external" href="http://docs.dask.org/en/latest/bag-api.html">http://docs.dask.org/en/latest/bag-api.html</a></p>
+<div class="section" id="Start-Dask-Client-for-Dashboard">
+<h2>Start Dask Client for Dashboard<a class="headerlink" href="#Start-Dask-Client-for-Dashboard" title="Permalink to this headline">¶</a></h2>
+<p>Starting the Dask Client is optional. It will provide a dashboard which
+is useful to gain insight on the computation.</p>
+<p>The link to the dashboard will become visible when you create the client
+below. We recommend having it open on one side of your screen while
+using your notebook on the other side. This can take some effort to
+arrange your windows, but seeing them both at the same is very useful
+when learning.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="k">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">progress</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">n_workers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">client</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[1]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<table style="border: 2px solid white;">
+<tr>
+<td style="vertical-align: top; border: 0px solid white">
+<h3>Client</h3>
+<ul>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:37721
+  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
+</ul>
+</td>
+<td style="vertical-align: top; border: 0px solid white">
+<h3>Cluster</h3>
+<ul>
+  <li><b>Workers: </b>4</li>
+  <li><b>Cores: </b>4</li>
+  <li><b>Memory: </b>15.69 GB</li>
+</ul>
+</td>
+</tr>
+</table></div>
+</div>
+</div>
+<div class="section" id="Create-Random-Data">
+<h2>Create Random Data<a class="headerlink" href="#Create-Random-Data" title="Permalink to this headline">¶</a></h2>
+<p>We create a random set of record data and store it to disk as many JSON
+files. This will serve as our data for this notebook.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">dask</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>              <span class="c1"># Create data/ directory</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">dask</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">make_people</span><span class="p">()</span>                 <span class="c1"># Make records of people</span>
+<span class="n">b</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">)</span><span class="o">.</span><span class="n">to_textfiles</span><span class="p">(</span><span class="s1">&#39;data/*.json&#39;</span><span class="p">)</span>   <span class="c1"># Encode as JSON, write to disk</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[2]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>[&#39;data/0.json&#39;,
+ &#39;data/1.json&#39;,
+ &#39;data/2.json&#39;,
+ &#39;data/3.json&#39;,
+ &#39;data/4.json&#39;,
+ &#39;data/5.json&#39;,
+ &#39;data/6.json&#39;,
+ &#39;data/7.json&#39;,
+ &#39;data/8.json&#39;,
+ &#39;data/9.json&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Read-JSON-data">
+<h2>Read JSON data<a class="headerlink" href="#Read-JSON-data" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have some JSON data in a file lets take a look at it with
+Dask Bag and Python JSON module.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span>head data/0.json -n <span class="m">2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#34;age&#34;: 29, &#34;name&#34;: [&#34;Preston&#34;, &#34;Ray&#34;], &#34;occupation&#34;: &#34;Haulage Contractor&#34;, &#34;telephone&#34;: &#34;113.919.6933&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;438 Southwood Spur&#34;, &#34;city&#34;: &#34;St. Charles&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;2471 7972 2251 8059&#34;, &#34;expiration-date&#34;: &#34;06/21&#34;}}
+{&#34;age&#34;: 57, &#34;name&#34;: [&#34;Beverlee&#34;, &#34;Price&#34;], &#34;occupation&#34;: &#34;Service Engineer&#34;, &#34;telephone&#34;: &#34;045-216-5761&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;326 San Bruno Stravenue&#34;, &#34;city&#34;: &#34;Coronado&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3406 240769 42065&#34;, &#34;expiration-date&#34;: &#34;09/25&#34;}}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">dask.bag</span> <span class="k">as</span> <span class="nn">db</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="s1">&#39;data/*.json&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">)</span>
+<span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[4]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>dask.bag&lt;map-loa..., npartitions=10&gt;
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">b</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[5]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>({&#39;age&#39;: 29,
+  &#39;name&#39;: [&#39;Preston&#39;, &#39;Ray&#39;],
+  &#39;occupation&#39;: &#39;Haulage Contractor&#39;,
+  &#39;telephone&#39;: &#39;113.919.6933&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;438 Southwood Spur&#39;, &#39;city&#39;: &#39;St. Charles&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2471 7972 2251 8059&#39;,
+   &#39;expiration-date&#39;: &#39;06/21&#39;}},
+ {&#39;age&#39;: 57,
+  &#39;name&#39;: [&#39;Beverlee&#39;, &#39;Price&#39;],
+  &#39;occupation&#39;: &#39;Service Engineer&#39;,
+  &#39;telephone&#39;: &#39;045-216-5761&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;326 San Bruno Stravenue&#39;, &#39;city&#39;: &#39;Coronado&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3406 240769 42065&#39;, &#39;expiration-date&#39;: &#39;09/25&#39;}})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Map,-Filter,-Aggregate">
+<h2>Map, Filter, Aggregate<a class="headerlink" href="#Map,-Filter,-Aggregate" title="Permalink to this headline">¶</a></h2>
+<p>We can process this data by filtering out only certain records of
+interest, mapping functions over it to process our data, and aggregating
+those results to a total value.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">b</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">record</span><span class="p">:</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Select only people over 30</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[6]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>({&#39;age&#39;: 57,
+  &#39;name&#39;: [&#39;Beverlee&#39;, &#39;Price&#39;],
+  &#39;occupation&#39;: &#39;Service Engineer&#39;,
+  &#39;telephone&#39;: &#39;045-216-5761&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;326 San Bruno Stravenue&#39;, &#39;city&#39;: &#39;Coronado&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3406 240769 42065&#39;, &#39;expiration-date&#39;: &#39;09/25&#39;}},
+ {&#39;age&#39;: 65,
+  &#39;name&#39;: [&#39;Shery&#39;, &#39;Bradley&#39;],
+  &#39;occupation&#39;: &#39;Bus Company&#39;,
+  &#39;telephone&#39;: &#39;+1-(919)-146-4994&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;253 Walkway Avenue&#39;, &#39;city&#39;: &#39;Rockwall&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2671 6820 1040 3714&#39;,
+   &#39;expiration-date&#39;: &#39;10/17&#39;}})
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">b</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">record</span><span class="p">:</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;occupation&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Select the occupation field</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[7]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>(&#39;Haulage Contractor&#39;, &#39;Service Engineer&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">b</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>  <span class="c1"># Count total number of records</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[8]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>10000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Chain-computations">
+<h2>Chain computations<a class="headerlink" href="#Chain-computations" title="Permalink to this headline">¶</a></h2>
+<p>It is common to do many of these steps in one pipeline, only calling
+<code class="docutils literal notranslate"><span class="pre">compute</span></code> or <code class="docutils literal notranslate"><span class="pre">take</span></code> at the end.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">record</span><span class="p">:</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">)</span>
+           <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">record</span><span class="p">:</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;occupation&#39;</span><span class="p">])</span>
+           <span class="o">.</span><span class="n">frequencies</span><span class="p">(</span><span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+           <span class="o">.</span><span class="n">topk</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[9]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>dask.bag&lt;topk-ag..., npartitions=1&gt;
+</pre></div>
+</div>
+</div>
+<p>As with all lazy Dask collections, we need to call <code class="docutils literal notranslate"><span class="pre">compute</span></code> to
+actually evaluate our result. The <code class="docutils literal notranslate"><span class="pre">take</span></code> method used in earlier
+examples is also like <code class="docutils literal notranslate"><span class="pre">compute</span></code> and will also trigger computation.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">result</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[10]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>[(&#39;Advertising Executive&#39;, 14),
+ (&#39;Heating Engineer&#39;, 14),
+ (&#39;Quantity Surveyor&#39;, 14),
+ (&#39;Labelling Operator&#39;, 14),
+ (&#39;Wheel Clamper&#39;, 13),
+ (&#39;Parts Supervisor&#39;, 13),
+ (&#39;Hospital Worker&#39;, 13),
+ (&#39;Barmaid&#39;, 13),
+ (&#39;Screen Writer&#39;, 13),
+ (&#39;Landowner&#39;, 13)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Transform-and-Store">
+<h2>Transform and Store<a class="headerlink" href="#Transform-and-Store" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes we want to compute aggregations as above, but sometimes we
+want to store results to disk for future analyses. For that we can use
+methods like <code class="docutils literal notranslate"><span class="pre">to_textfiles</span></code> and <code class="docutils literal notranslate"><span class="pre">json.dumps</span></code>, or we can convert to
+Dask Dataframes and use their storage systems, which we’ll see more of
+in the next section.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">record</span><span class="p">:</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">)</span>  <span class="c1"># Select records of interest</span>
+  <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">)</span>                            <span class="c1"># Convert Python objects to text</span>
+  <span class="o">.</span><span class="n">to_textfiles</span><span class="p">(</span><span class="s1">&#39;data/processed.*.json&#39;</span><span class="p">))</span>     <span class="c1"># Write to local disk</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[11]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>[&#39;data/processed.0.json&#39;,
+ &#39;data/processed.1.json&#39;,
+ &#39;data/processed.2.json&#39;,
+ &#39;data/processed.3.json&#39;,
+ &#39;data/processed.4.json&#39;,
+ &#39;data/processed.5.json&#39;,
+ &#39;data/processed.6.json&#39;,
+ &#39;data/processed.7.json&#39;,
+ &#39;data/processed.8.json&#39;,
+ &#39;data/processed.9.json&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Convert-to-Dask-Dataframes">
+<h2>Convert to Dask Dataframes<a class="headerlink" href="#Convert-to-Dask-Dataframes" title="Permalink to this headline">¶</a></h2>
+<p>Dask Bags are good for reading in initial data, doing a bit of
+pre-processing, and then handing off to some other more efficient form
+like Dask Dataframes. Dask Dataframes use Pandas internally, and so can
+be much faster on numeric data and also have more complex algorithms.</p>
+<p>However, Dask Dataframes also expect data that is organized as flat
+columns. It does not support nested JSON data very well (Bag is better
+for this).</p>
+<p>Here we make a function to flatten down our nested data structure, map
+that across our records, and then convert that to a Dask Dataframe.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">b</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[12]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>({&#39;age&#39;: 29,
+  &#39;name&#39;: [&#39;Preston&#39;, &#39;Ray&#39;],
+  &#39;occupation&#39;: &#39;Haulage Contractor&#39;,
+  &#39;telephone&#39;: &#39;113.919.6933&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;438 Southwood Spur&#39;, &#39;city&#39;: &#39;St. Charles&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2471 7972 2251 8059&#39;,
+   &#39;expiration-date&#39;: &#39;06/21&#39;}},)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;occupation&#39;</span><span class="p">:</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;occupation&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;telephone&#39;</span><span class="p">:</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;telephone&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;credit-card-number&#39;</span><span class="p">:</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;credit-card&#39;</span><span class="p">][</span><span class="s1">&#39;number&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;credit-card-expiration&#39;</span><span class="p">:</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;credit-card&#39;</span><span class="p">][</span><span class="s1">&#39;expiration-date&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]),</span>
+        <span class="s1">&#39;street-address&#39;</span><span class="p">:</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;address&#39;</span><span class="p">][</span><span class="s1">&#39;address&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;address&#39;</span><span class="p">][</span><span class="s1">&#39;city&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+<span class="n">b</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">flatten</span><span class="p">)</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[13]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>({&#39;age&#39;: 29,
+  &#39;occupation&#39;: &#39;Haulage Contractor&#39;,
+  &#39;telephone&#39;: &#39;113.919.6933&#39;,
+  &#39;credit-card-number&#39;: &#39;2471 7972 2251 8059&#39;,
+  &#39;credit-card-expiration&#39;: &#39;06/21&#39;,
+  &#39;name&#39;: &#39;Preston Ray&#39;,
+  &#39;street-address&#39;: &#39;438 Southwood Spur&#39;,
+  &#39;city&#39;: &#39;St. Charles&#39;},)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">flatten</span><span class="p">)</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>city</th>
+      <th>credit-card-expiration</th>
+      <th>credit-card-number</th>
+      <th>name</th>
+      <th>occupation</th>
+      <th>street-address</th>
+      <th>telephone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>29</td>
+      <td>St. Charles</td>
+      <td>06/21</td>
+      <td>2471 7972 2251 8059</td>
+      <td>Preston Ray</td>
+      <td>Haulage Contractor</td>
+      <td>438 Southwood Spur</td>
+      <td>113.919.6933</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>57</td>
+      <td>Coronado</td>
+      <td>09/25</td>
+      <td>3406 240769 42065</td>
+      <td>Beverlee Price</td>
+      <td>Service Engineer</td>
+      <td>326 San Bruno Stravenue</td>
+      <td>045-216-5761</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>23</td>
+      <td>Vallejo</td>
+      <td>08/20</td>
+      <td>2530 0178 3032 2946</td>
+      <td>Stacey Day</td>
+      <td>Aerobic Instructor</td>
+      <td>266 Euclid Pike</td>
+      <td>1-184-180-5009</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>65</td>
+      <td>Rockwall</td>
+      <td>10/17</td>
+      <td>2671 6820 1040 3714</td>
+      <td>Shery Bradley</td>
+      <td>Bus Company</td>
+      <td>253 Walkway Avenue</td>
+      <td>+1-(919)-146-4994</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>26</td>
+      <td>Homestead</td>
+      <td>03/17</td>
+      <td>4516 2827 7997 9973</td>
+      <td>Shoshana Gould</td>
+      <td>Racehorse Groom</td>
+      <td>1293 Mountain Spring Parkway</td>
+      <td>+1-(787)-615-3979</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>We can now perform the same computation as before, but now using Pandas
+and Dask dataframe.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">age</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">]</span><span class="o">.</span><span class="n">occupation</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[15]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Labelling Operator       14
+Advertising Executive    14
+Quantity Surveyor        14
+Heating Engineer         14
+Opera Singer             13
+Landowner                13
+Parts Supervisor         13
+Hospital Worker          13
+Barmaid                  13
+Screen Writer            13
+Name: occupation, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Learn-More">
+<h2>Learn More<a class="headerlink" href="#Learn-More" title="Permalink to this headline">¶</a></h2>
+<p>You may be interested in the following links:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://docs.dask.org/en/latest/bag-overview.html">Dask Bag
+Documentation</a></li>
+<li><a class="reference external" href="http://docs.dask.org/en/latest/bag-api.html">API Documentation</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dataframe.html" class="btn btn-neutral float-right" title="Dask DataFrames" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="array.html" class="btn btn-neutral" title="Dask Arrays" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Dask Developers
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

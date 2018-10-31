@@ -142,6 +142,7 @@
               <p class="caption"><span class="caption-text">Basic Examples:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../array.html">Dask Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bag.html">Dask Bags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataframe.html">Dask DataFrames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../delayed.html">Custom Workloads with Dask Delayed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../futures.html">Custom Workloads with Futures</a></li>
@@ -453,28 +454,28 @@ shows a larger version of this notebook on a cluster.</p>
 <div class="highlight"><pre>
 Collecting tpot
   Downloading https://files.pythonhosted.org/packages/c5/6c/f1806e5b31d65a195bcd94fd80079318d5a9e54c2239b395404c25496792/TPOT-0.9.5.tar.gz (891kB)
-    100% |████████████████████████████████| 901kB 4.9MB/s
-Requirement already satisfied: numpy&gt;=1.12.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from tpot) (1.15.2)
+    100% |████████████████████████████████| 901kB 7.4MB/s
+Requirement already satisfied: numpy&gt;=1.12.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from tpot) (1.15.3)
 Requirement already satisfied: scipy&gt;=0.19.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from tpot) (1.1.0)
 Requirement already satisfied: scikit-learn&gt;=0.18.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from tpot) (0.20.0)
 Collecting deap&gt;=1.0 (from tpot)
   Downloading https://files.pythonhosted.org/packages/af/29/e7f2ecbe02997b16a768baed076f5fc4781d7057cd5d9adf7c94027845ba/deap-1.2.2.tar.gz (936kB)
-    100% |████████████████████████████████| 942kB 6.4MB/s
+    100% |████████████████████████████████| 942kB 9.5MB/s
 Collecting update_checker&gt;=0.16 (from tpot)
   Downloading https://files.pythonhosted.org/packages/17/c9/ab11855af164d03be0ff4fddd4c46a5bd44799a9ecc1770e01a669c21168/update_checker-0.16-py2.py3-none-any.whl
 Collecting tqdm&gt;=4.11.2 (from tpot)
-  Downloading https://files.pythonhosted.org/packages/16/33/6d8bd6a7c4238f383426b7593bf05bfd6d9e1f10c3084b56c0f14d973754/tqdm-4.27.0-py2.py3-none-any.whl (44kB)
-    100% |████████████████████████████████| 51kB 13.9MB/s
+  Downloading https://files.pythonhosted.org/packages/91/55/8cb23a97301b177e9c8e3226dba45bb454411de2cbd25746763267f226c2/tqdm-4.28.1-py2.py3-none-any.whl (45kB)
+    100% |████████████████████████████████| 51kB 20.0MB/s
 Collecting stopit&gt;=1.1.1 (from tpot)
   Downloading https://files.pythonhosted.org/packages/35/58/e8bb0b0fb05baf07bbac1450c447d753da65f9701f551dca79823ce15d50/stopit-1.1.2.tar.gz
 Requirement already satisfied: pandas&gt;=0.20.2 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from tpot) (0.23.4)
-Requirement already satisfied: requests&gt;=2.3.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from update_checker&gt;=0.16-&gt;tpot) (2.19.1)
-Requirement already satisfied: python-dateutil&gt;=2.5.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from pandas&gt;=0.20.2-&gt;tpot) (2.7.3)
-Requirement already satisfied: pytz&gt;=2011k in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from pandas&gt;=0.20.2-&gt;tpot) (2018.5)
+Requirement already satisfied: requests&gt;=2.3.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from update_checker&gt;=0.16-&gt;tpot) (2.20.0)
+Requirement already satisfied: python-dateutil&gt;=2.5.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from pandas&gt;=0.20.2-&gt;tpot) (2.7.5)
+Requirement already satisfied: pytz&gt;=2011k in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from pandas&gt;=0.20.2-&gt;tpot) (2018.7)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (2018.10.15)
 Requirement already satisfied: idna&lt;2.8,&gt;=2.5 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (2.7)
+Requirement already satisfied: urllib3&lt;1.25,&gt;=1.21.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (1.24)
 Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (3.0.4)
-Requirement already satisfied: urllib3&lt;1.24,&gt;=1.21.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (1.23)
 Requirement already satisfied: six&gt;=1.5 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from python-dateutil&gt;=2.5.0-&gt;pandas&gt;=0.20.2-&gt;tpot) (1.11.0)
 Building wheels for collected packages: tpot, deap, stopit
   Running setup.py bdist_wheel for tpot ... - done
@@ -485,7 +486,7 @@ Building wheels for collected packages: tpot, deap, stopit
   Stored in directory: /home/travis/.cache/pip/wheels/3c/85/2b/2580190404636bfc63e8de3dff629c03bb795021e1983a6cc7
 Successfully built tpot deap stopit
 Installing collected packages: deap, update-checker, tqdm, stopit, tpot
-Successfully installed deap-1.2.2 stopit-1.1.2 tpot-0.9.5 tqdm-4.27.0 update-checker-0.16
+Successfully installed deap-1.2.2 stopit-1.1.2 tpot-0.9.5 tqdm-4.28.1 update-checker-0.16
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -529,7 +530,7 @@ run the cell.</p>
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:33059
+  <li><b>Scheduler: </b>tcp://127.0.0.1:38157
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>

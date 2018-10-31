@@ -142,6 +142,7 @@
               <p class="caption"><span class="caption-text">Basic Examples:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../array.html">Dask Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bag.html">Dask Bags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataframe.html">Dask DataFrames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../delayed.html">Custom Workloads with Dask Delayed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../futures.html">Custom Workloads with Futures</a></li>
@@ -425,6 +426,15 @@ these formats.</p>
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="stderr output_area docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/IPython/core/display.py:689: UserWarning: Consider using IPython.display.IFrame instead
+  warnings.warn(&#34;Consider using IPython.display.IFrame instead&#34;)
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>Out[1]:
@@ -465,7 +475,7 @@ when learning.</p>
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>inproc://10.20.0.93/7353/1
+  <li><b>Scheduler: </b>inproc://10.20.2.186/7482/1
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -655,15 +665,15 @@ data/2000-01-10.csv
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 timestamp,id,name,x,y
-2000-01-01 00:00:00,998,Patricia,0.33475813814044963,-0.8292231038415936
-2000-01-01 00:00:01,983,Ursula,0.24337760174118594,0.9293650692598106
-2000-01-01 00:00:02,1015,Quinn,-0.23081826103977976,-0.10118345119980932
-2000-01-01 00:00:03,1015,Edith,0.9336850018181555,-0.7059772975277991
-2000-01-01 00:00:04,1026,Sarah,-0.3784751283059411,0.8717097238706213
-2000-01-01 00:00:05,1002,Oliver,-0.33491204970139354,0.2668022172317035
-2000-01-01 00:00:06,1040,Victor,0.48263177649141453,0.371634633270838
-2000-01-01 00:00:07,967,Zelda,-0.3206940711305899,-0.43193849040181087
-2000-01-01 00:00:08,1026,Kevin,0.35460055573621485,-0.7603524023314367
+2000-01-01 00:00:00,994,Alice,-0.18965000428464318,0.40185901334900387
+2000-01-01 00:00:01,997,Ray,-0.9878792900579152,0.7262983988729725
+2000-01-01 00:00:02,994,Ray,0.49197195121379234,-0.31655436199318987
+2000-01-01 00:00:03,968,Wendy,-0.2551931249290731,-0.5632693620347848
+2000-01-01 00:00:04,1008,Ray,-0.15034571925999063,-0.1585889694378544
+2000-01-01 00:00:05,1001,Yvonne,-0.4844970397302528,0.4767920873403344
+2000-01-01 00:00:06,975,Norbert,0.33175511233673394,-0.7962492116062827
+2000-01-01 00:00:07,1010,Ingrid,-0.15070203009234784,-0.08898373156661599
+2000-01-01 00:00:08,956,Dan,0.5334017031973775,0.1328777374270096
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -682,15 +692,15 @@ timestamp,id,name,x,y
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 timestamp,id,name,x,y
-2000-01-30 00:00:00,1004,Ursula,0.9356820499494627,-0.33241045348528364
-2000-01-30 00:00:01,1006,Bob,-0.07471714709898003,0.4344768482018815
-2000-01-30 00:00:02,1022,Frank,0.5203634267599635,-0.8257151433244958
-2000-01-30 00:00:03,1002,Bob,0.18835456294685815,-0.6316044967600491
-2000-01-30 00:00:04,1039,Hannah,-0.11715463282320693,0.26160287835395346
-2000-01-30 00:00:05,1037,Ray,-0.8748967366188021,-0.6762115941657878
-2000-01-30 00:00:06,1030,Edith,0.5329699747528958,-0.5985666316018217
-2000-01-30 00:00:07,992,Zelda,-0.908219804748313,0.2845219814148039
-2000-01-30 00:00:08,1017,Ray,0.03951378745698797,0.38803087963407146
+2000-01-30 00:00:00,1009,Ingrid,-0.8422015943655032,0.9328895152726109
+2000-01-30 00:00:01,1006,Yvonne,-0.7858884103772514,-0.9217685141801719
+2000-01-30 00:00:02,989,Charlie,-0.19912937651613816,0.41703079128786547
+2000-01-30 00:00:03,967,Michael,0.44989586013333827,-0.3649415378035117
+2000-01-30 00:00:04,1033,Jerry,0.9916278167944677,-0.12322569374086645
+2000-01-30 00:00:05,987,George,0.8607627861590261,-0.14430554374870375
+2000-01-30 00:00:06,993,Sarah,0.47241835966756063,0.05996545053573832
+2000-01-30 00:00:07,996,Bob,0.6419598793054246,0.8285705471403713
+2000-01-30 00:00:08,979,Wendy,-0.34907691583348255,0.7603009918203001
 </pre></div></div>
 </div>
 <p>We can read one file with <code class="docutils literal notranslate"><span class="pre">pandas.read_csv</span></code> or many files with
@@ -743,42 +753,42 @@ timestamp,id,name,x,y
     <tr>
       <th>0</th>
       <td>2000-01-01 00:00:00</td>
-      <td>998</td>
-      <td>Patricia</td>
-      <td>0.334758</td>
-      <td>-0.829223</td>
+      <td>994</td>
+      <td>Alice</td>
+      <td>-0.189650</td>
+      <td>0.401859</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2000-01-01 00:00:01</td>
-      <td>983</td>
-      <td>Ursula</td>
-      <td>0.243378</td>
-      <td>0.929365</td>
+      <td>997</td>
+      <td>Ray</td>
+      <td>-0.987879</td>
+      <td>0.726298</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2000-01-01 00:00:02</td>
-      <td>1015</td>
-      <td>Quinn</td>
-      <td>-0.230818</td>
-      <td>-0.101183</td>
+      <td>994</td>
+      <td>Ray</td>
+      <td>0.491972</td>
+      <td>-0.316554</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2000-01-01 00:00:03</td>
-      <td>1015</td>
-      <td>Edith</td>
-      <td>0.933685</td>
-      <td>-0.705977</td>
+      <td>968</td>
+      <td>Wendy</td>
+      <td>-0.255193</td>
+      <td>-0.563269</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2000-01-01 00:00:04</td>
-      <td>1026</td>
-      <td>Sarah</td>
-      <td>-0.378475</td>
-      <td>0.871710</td>
+      <td>1008</td>
+      <td>Ray</td>
+      <td>-0.150346</td>
+      <td>-0.158589</td>
     </tr>
   </tbody>
 </table>
@@ -928,42 +938,42 @@ timestamp,id,name,x,y
     <tr>
       <th>0</th>
       <td>2000-01-01 00:00:00</td>
-      <td>998</td>
-      <td>Patricia</td>
-      <td>0.334758</td>
-      <td>-0.829223</td>
+      <td>994</td>
+      <td>Alice</td>
+      <td>-0.189650</td>
+      <td>0.401859</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2000-01-01 00:00:01</td>
-      <td>983</td>
-      <td>Ursula</td>
-      <td>0.243378</td>
-      <td>0.929365</td>
+      <td>997</td>
+      <td>Ray</td>
+      <td>-0.987879</td>
+      <td>0.726298</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2000-01-01 00:00:02</td>
-      <td>1015</td>
-      <td>Quinn</td>
-      <td>-0.230818</td>
-      <td>-0.101183</td>
+      <td>994</td>
+      <td>Ray</td>
+      <td>0.491972</td>
+      <td>-0.316554</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2000-01-01 00:00:03</td>
-      <td>1015</td>
-      <td>Edith</td>
-      <td>0.933685</td>
-      <td>-0.705977</td>
+      <td>968</td>
+      <td>Wendy</td>
+      <td>-0.255193</td>
+      <td>-0.563269</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2000-01-01 00:00:04</td>
-      <td>1026</td>
-      <td>Sarah</td>
-      <td>-0.378475</td>
-      <td>0.871710</td>
+      <td>1008</td>
+      <td>Ray</td>
+      <td>-0.150346</td>
+      <td>-0.158589</td>
     </tr>
   </tbody>
 </table>
@@ -1118,8 +1128,8 @@ reading through all of the CSV files every time can be slow.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 7.71 s, sys: 548 ms, total: 8.26 s
-Wall time: 5.67 s
+CPU times: user 7.65 s, sys: 556 ms, total: 8.2 s
+Wall time: 5.6 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1129,32 +1139,32 @@ Wall time: 5.67 s
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>name
-Alice      -0.001528
-Bob        -0.000903
-Charlie    -0.001080
-Dan         0.002284
-Edith      -0.000903
-Frank       0.001646
-George      0.000376
-Hannah      0.001348
-Ingrid     -0.000970
-Jerry      -0.001469
-Kevin      -0.001467
-Laura      -0.000348
-Michael     0.000335
-Norbert    -0.001168
-Oliver     -0.000121
-Patricia    0.004192
-Quinn      -0.000542
-Ray        -0.002814
-Sarah      -0.000073
-Tim         0.000856
-Ursula     -0.002640
-Victor      0.001734
-Wendy      -0.001270
-Xavier     -0.003706
-Yvonne      0.001670
-Zelda      -0.001847
+Alice      -0.000485
+Bob         0.002645
+Charlie     0.000763
+Dan        -0.000220
+Edith      -0.002685
+Frank      -0.001568
+George     -0.002056
+Hannah      0.001327
+Ingrid      0.000537
+Jerry      -0.000760
+Kevin       0.000860
+Laura      -0.004510
+Michael     0.000503
+Norbert     0.001735
+Oliver      0.000016
+Patricia    0.002992
+Quinn       0.001035
+Ray         0.000823
+Sarah      -0.001467
+Tim        -0.000702
+Ursula      0.002708
+Victor     -0.000376
+Wendy      -0.000234
+Xavier     -0.000164
+Yvonne     -0.002010
+Zelda      -0.000736
 Name: x, dtype: float64
 </pre></div>
 </div>
@@ -1324,8 +1334,8 @@ part.15.parquet   part.22.parquet  part.2.parquet
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.68 s, sys: 248 ms, total: 1.93 s
-Wall time: 1.37 s
+CPU times: user 1.67 s, sys: 328 ms, total: 2 s
+Wall time: 1.41 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1335,32 +1345,32 @@ Wall time: 1.37 s
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>name
-Alice      -0.001528
-Bob        -0.000903
-Charlie    -0.001080
-Dan         0.002284
-Edith      -0.000903
-Frank       0.001646
-George      0.000376
-Hannah      0.001348
-Ingrid     -0.000970
-Jerry      -0.001469
-Kevin      -0.001467
-Laura      -0.000348
-Michael     0.000335
-Norbert    -0.001168
-Oliver     -0.000121
-Patricia    0.004192
-Quinn      -0.000542
-Ray        -0.002814
-Sarah      -0.000073
-Tim         0.000856
-Ursula     -0.002640
-Victor      0.001734
-Wendy      -0.001270
-Xavier     -0.003706
-Yvonne      0.001670
-Zelda      -0.001847
+Alice      -0.000485
+Bob         0.002645
+Charlie     0.000763
+Dan        -0.000220
+Edith      -0.002685
+Frank      -0.001568
+George     -0.002056
+Hannah      0.001327
+Ingrid      0.000537
+Jerry      -0.000760
+Kevin       0.000860
+Laura      -0.004510
+Michael     0.000503
+Norbert     0.001735
+Oliver      0.000016
+Patricia    0.002992
+Quinn       0.001035
+Ray         0.000823
+Sarah      -0.001467
+Tim        -0.000702
+Ursula      0.002708
+Victor     -0.000376
+Wendy      -0.000234
+Xavier     -0.000164
+Yvonne     -0.002010
+Zelda      -0.000736
 Name: x, dtype: float64
 </pre></div>
 </div>
@@ -1388,8 +1398,8 @@ avoid unnecessary data loading.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.56 s, sys: 204 ms, total: 1.77 s
-Wall time: 1.32 s
+CPU times: user 1.56 s, sys: 224 ms, total: 1.79 s
+Wall time: 1.33 s
 </pre></div></div>
 </div>
 <p>Here the difference is not that large, but with larger datasets this can

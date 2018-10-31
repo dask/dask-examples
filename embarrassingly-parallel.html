@@ -141,6 +141,7 @@
               <p class="caption"><span class="caption-text">Basic Examples:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="array.html">Dask Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bag.html">Dask Bags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataframe.html">Dask DataFrames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="delayed.html">Custom Workloads with Dask Delayed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="futures.html">Custom Workloads with Futures</a></li>
@@ -466,7 +467,7 @@ useful when learning.</p>
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:34001
+  <li><b>Scheduler: </b>tcp://127.0.0.1:42636
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -519,8 +520,8 @@ even run an executable using subprocess module.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 32 ms, sys: 4 ms, total: 36 ms
-Wall time: 867 ms
+CPU times: user 12 ms, sys: 0 ns, total: 12 ms
+Wall time: 191 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -588,38 +589,38 @@ param_[a-d].</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.657184</td>
-      <td>0.078099</td>
-      <td>0.139875</td>
-      <td>0.320062</td>
+      <td>0.831499</td>
+      <td>0.012514</td>
+      <td>0.883766</td>
+      <td>0.237989</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.325651</td>
-      <td>0.944907</td>
-      <td>0.503949</td>
-      <td>0.341174</td>
+      <td>0.792196</td>
+      <td>0.529474</td>
+      <td>0.449769</td>
+      <td>0.860705</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.432180</td>
-      <td>0.936602</td>
-      <td>0.618820</td>
-      <td>0.337300</td>
+      <td>0.136540</td>
+      <td>0.256082</td>
+      <td>0.879215</td>
+      <td>0.595899</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.574111</td>
-      <td>0.820811</td>
-      <td>0.945581</td>
-      <td>0.525230</td>
+      <td>0.939097</td>
+      <td>0.887667</td>
+      <td>0.001532</td>
+      <td>0.991466</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.095555</td>
-      <td>0.464455</td>
-      <td>0.398472</td>
-      <td>0.652515</td>
+      <td>0.440915</td>
+      <td>0.977699</td>
+      <td>0.504589</td>
+      <td>0.453680</td>
     </tr>
   </tbody>
 </table>
@@ -648,8 +649,8 @@ long otherwise.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 252 ms, sys: 28 ms, total: 280 ms
-Wall time: 6.56 s
+CPU times: user 184 ms, sys: 16 ms, total: 200 ms
+Wall time: 4.31 s
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -668,16 +669,16 @@ Wall time: 6.56 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[1.1952185811722993,
- 2.1156816994648806,
- 2.324902457348232,
- 2.865732562374301,
- 1.6109976162284456,
- 1.937725814268236,
- 1.420267767868185,
- 1.688742155166051,
- 2.3889094367396595,
- 1.0899662923674898]
+<span></span>[1.9657675620121111,
+ 2.632143177141037,
+ 1.8677364842775241,
+ 2.819762139463247,
+ 2.376883771291495,
+ 0.949525352654632,
+ 2.683537988595758,
+ 1.5278240566637113,
+ 1.7156633836443302,
+ 2.9229733363112924]
 </pre></div>
 </div>
 </div>
@@ -719,7 +720,7 @@ only construct a simple graph.</p>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 CPU times: user 4 ms, sys: 0 ns, total: 4 ms
-Wall time: 2.01 ms
+Wall time: 2.41 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -738,7 +739,7 @@ Wall time: 2.01 ms
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Delayed(&#39;costly_simulation-bdb15d11-d287-4307-ac38-4d171e36b48c&#39;)
+<span></span>Delayed(&#39;costly_simulation-3c08bbb4-e3f0-4d82-b8b7-5ce7ebec186e&#39;)
 </pre></div>
 </div>
 </div>
@@ -765,8 +766,8 @@ page during computation.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 88 ms, sys: 12 ms, total: 100 ms
-Wall time: 1.37 s
+CPU times: user 132 ms, sys: 4 ms, total: 136 ms
+Wall time: 1.87 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -775,16 +776,16 @@ Wall time: 1.37 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(1.1952185811722993,
- 2.1156816994648806,
- 2.324902457348232,
- 2.865732562374301,
- 1.6109976162284456,
- 1.937725814268236,
- 1.420267767868185,
- 1.688742155166051,
- 2.3889094367396595,
- 1.0899662923674898)
+<span></span>(1.9657675620121111,
+ 2.632143177141037,
+ 1.8677364842775241,
+ 2.819762139463247,
+ 2.376883771291495,
+ 0.949525352654632,
+ 2.683537988595758,
+ 1.5278240566637113,
+ 1.7156633836443302,
+ 2.9229733363112924)
 </pre></div>
 </div>
 </div>
@@ -842,11 +843,11 @@ around our cluster, managing load balancing, dependencies, etc..</p>
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(1.1952185811722993,
- 2.1156816994648806,
- 2.324902457348232,
- 2.865732562374301,
- 1.6109976162284456)
+<span></span>(1.9657675620121111,
+ 2.632143177141037,
+ 1.8677364842775241,
+ 2.819762139463247,
+ 2.376883771291495)
 </pre></div>
 </div>
 </div>
@@ -892,11 +893,11 @@ our local process by calling <code class="docutils literal notranslate"><span cl
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[1.1952185811722993,
- 2.1156816994648806,
- 2.324902457348232,
- 2.865732562374301,
- 1.6109976162284456]
+<span></span>[1.9657675620121111,
+ 2.632143177141037,
+ 1.8677364842775241,
+ 2.819762139463247,
+ 2.376883771291495]
 </pre></div>
 </div>
 </div>
@@ -955,7 +956,7 @@ computation, and just retrieve already computed results.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-1.1952185811722993
+1.9657675620121111
 </pre></div></div>
 </div>
 <p>We encourage you to watch the <a class="reference external" href="../proxy/8787/status">dashboard’s status
@@ -1015,44 +1016,44 @@ have a nice view of parameters vs results for our computation</p>
   </thead>
   <tbody>
     <tr>
-      <th>375</th>
-      <td>0.825070</td>
-      <td>0.819973</td>
-      <td>0.979178</td>
-      <td>0.626726</td>
-      <td>3.250946</td>
+      <th>390</th>
+      <td>0.425560</td>
+      <td>0.329860</td>
+      <td>0.449316</td>
+      <td>0.530277</td>
+      <td>1.735013</td>
     </tr>
     <tr>
-      <th>177</th>
-      <td>0.671517</td>
-      <td>0.079377</td>
-      <td>0.834713</td>
-      <td>0.647360</td>
-      <td>2.232968</td>
+      <th>338</th>
+      <td>0.876114</td>
+      <td>0.542568</td>
+      <td>0.850862</td>
+      <td>0.191994</td>
+      <td>2.461538</td>
     </tr>
     <tr>
-      <th>163</th>
-      <td>0.260210</td>
-      <td>0.931742</td>
-      <td>0.910438</td>
-      <td>0.406094</td>
-      <td>2.508485</td>
+      <th>471</th>
+      <td>0.255616</td>
+      <td>0.556455</td>
+      <td>0.148708</td>
+      <td>0.904605</td>
+      <td>1.865384</td>
     </tr>
     <tr>
-      <th>262</th>
-      <td>0.705608</td>
-      <td>0.268936</td>
-      <td>0.369859</td>
-      <td>0.002461</td>
-      <td>1.346865</td>
+      <th>484</th>
+      <td>0.300414</td>
+      <td>0.464684</td>
+      <td>0.200835</td>
+      <td>0.610515</td>
+      <td>1.576447</td>
     </tr>
     <tr>
-      <th>492</th>
-      <td>0.078838</td>
-      <td>0.069780</td>
-      <td>0.644952</td>
-      <td>0.764520</td>
-      <td>1.558090</td>
+      <th>284</th>
+      <td>0.779851</td>
+      <td>0.143986</td>
+      <td>0.231381</td>
+      <td>0.775128</td>
+      <td>1.930345</td>
     </tr>
   </tbody>
 </table>
@@ -1077,7 +1078,7 @@ pandas interface here</p>
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f22c6112c50&gt;
+<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f5d893140f0&gt;
 </pre></div>
 </div>
 </div>
@@ -1104,7 +1105,7 @@ pandas interface here</p>
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>2.0084461049977578
+<span></span>2.023481737783638
 </pre></div>
 </div>
 </div>
@@ -1125,7 +1126,7 @@ pandas interface here</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-251
+257
 </pre></div></div>
 </div>
 </div>
@@ -1171,8 +1172,8 @@ our function on every item of the bag.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.48 s, sys: 92 ms, total: 1.57 s
-Wall time: 8.06 s
+CPU times: user 1.46 s, sys: 160 ms, total: 1.62 s
+Wall time: 8.17 s
 </pre></div></div>
 </div>
 <p>Looking on Dashboard here, you should see only 100 tasks to run instead

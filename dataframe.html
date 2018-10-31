@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Custom Workloads with Dask Delayed" href="delayed.html" />
-    <link rel="prev" title="Dask Arrays" href="array.html" /> 
+    <link rel="prev" title="Dask Bags" href="bag.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -142,6 +142,7 @@
               <p class="caption"><span class="caption-text">Basic Examples:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="array.html">Dask Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bag.html">Dask Bags</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Dask DataFrames</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Start-Dask-Client-for-Dashboard">Start Dask Client for Dashboard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Create-Random-Dataframe">Create Random Dataframe</a></li>
@@ -441,7 +442,7 @@ when learning.</p>
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:37878
+  <li><b>Scheduler: </b>tcp://127.0.0.1:45747
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -659,24 +660,24 @@ dtype: object
   <tbody>
     <tr>
       <th>2000-01-01 00:00:00</th>
-      <td>1043</td>
-      <td>Dan</td>
-      <td>0.31</td>
-      <td>-3.80e-03</td>
+      <td>1007</td>
+      <td>Zelda</td>
+      <td>0.81</td>
+      <td>0.71</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:01</th>
-      <td>1018</td>
-      <td>George</td>
-      <td>0.93</td>
-      <td>-1.72e-01</td>
+      <td>974</td>
+      <td>Patricia</td>
+      <td>-0.07</td>
+      <td>0.34</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:02</th>
-      <td>1043</td>
-      <td>Alice</td>
-      <td>0.29</td>
-      <td>3.56e-01</td>
+      <td>984</td>
+      <td>George</td>
+      <td>-0.67</td>
+      <td>-0.93</td>
     </tr>
   </tbody>
 </table>
@@ -845,28 +846,28 @@ in memory.</p>
   <tbody>
     <tr>
       <th>2000-01-01 00:00:00</th>
-      <td>-1.13e-02</td>
-      <td>-1.55e-03</td>
+      <td>-1.66e-03</td>
+      <td>-5.39e-03</td>
     </tr>
     <tr>
       <th>2000-01-01 01:00:00</th>
-      <td>8.41e-03</td>
-      <td>-9.68e-04</td>
+      <td>6.29e-03</td>
+      <td>1.20e-02</td>
     </tr>
     <tr>
       <th>2000-01-01 02:00:00</th>
-      <td>2.80e-03</td>
-      <td>2.30e-03</td>
+      <td>3.46e-03</td>
+      <td>-1.08e-03</td>
     </tr>
     <tr>
       <th>2000-01-01 03:00:00</th>
-      <td>-1.01e-02</td>
-      <td>5.46e-03</td>
+      <td>7.77e-04</td>
+      <td>2.15e-03</td>
     </tr>
     <tr>
       <th>2000-01-01 04:00:00</th>
-      <td>-1.15e-02</td>
-      <td>3.55e-03</td>
+      <td>-2.05e-02</td>
+      <td>-3.36e-03</td>
     </tr>
   </tbody>
 </table>
@@ -888,7 +889,7 @@ in memory.</p>
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fefd055b160&gt;
+<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f84c4f88f28&gt;
 </pre></div>
 </div>
 </div>
@@ -945,28 +946,28 @@ in memory.</p>
   <tbody>
     <tr>
       <th>2000-01-01 00:00:00</th>
-      <td>3.05e-01</td>
-      <td>-3.80e-03</td>
+      <td>0.81</td>
+      <td>0.71</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:01</th>
-      <td>6.15e-01</td>
-      <td>-8.79e-02</td>
+      <td>0.37</td>
+      <td>0.53</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:02</th>
-      <td>5.06e-01</td>
-      <td>5.99e-02</td>
+      <td>0.02</td>
+      <td>0.04</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:03</th>
-      <td>1.97e-01</td>
-      <td>1.21e-01</td>
+      <td>-0.04</td>
+      <td>0.17</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:04</th>
-      <td>-9.19e-03</td>
-      <td>2.94e-01</td>
+      <td>-0.14</td>
+      <td>0.03</td>
     </tr>
   </tbody>
 </table>
@@ -1056,8 +1057,8 @@ in memory.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 32 ms, sys: 16 ms, total: 48 ms
-Wall time: 68.1 ms
+CPU times: user 44 ms, sys: 12 ms, total: 56 ms
+Wall time: 76.6 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1100,38 +1101,38 @@ Wall time: 68.1 ms
   <tbody>
     <tr>
       <th>2000-01-05 00:00:00</th>
-      <td>980</td>
-      <td>Charlie</td>
-      <td>-0.45</td>
-      <td>-0.06</td>
+      <td>1045</td>
+      <td>George</td>
+      <td>-0.15</td>
+      <td>0.73</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:01</th>
-      <td>943</td>
-      <td>Xavier</td>
-      <td>-0.28</td>
-      <td>0.53</td>
+      <td>1043</td>
+      <td>Patricia</td>
+      <td>-0.94</td>
+      <td>-0.54</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:02</th>
-      <td>981</td>
-      <td>Oliver</td>
-      <td>0.73</td>
-      <td>0.44</td>
+      <td>972</td>
+      <td>Ursula</td>
+      <td>0.80</td>
+      <td>0.21</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:03</th>
-      <td>1036</td>
-      <td>Alice</td>
-      <td>0.74</td>
-      <td>0.47</td>
+      <td>1031</td>
+      <td>Wendy</td>
+      <td>-0.98</td>
+      <td>-0.27</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:04</th>
-      <td>1017</td>
-      <td>Edith</td>
-      <td>-0.56</td>
-      <td>0.17</td>
+      <td>998</td>
+      <td>Laura</td>
+      <td>-0.72</td>
+      <td>-0.18</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1142,38 +1143,38 @@ Wall time: 68.1 ms
     </tr>
     <tr>
       <th>2000-01-05 23:59:55</th>
-      <td>949</td>
-      <td>Laura</td>
-      <td>0.59</td>
-      <td>-0.39</td>
+      <td>965</td>
+      <td>Sarah</td>
+      <td>-0.56</td>
+      <td>0.28</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:56</th>
-      <td>1029</td>
-      <td>Dan</td>
-      <td>-0.02</td>
-      <td>0.40</td>
+      <td>1019</td>
+      <td>Ray</td>
+      <td>-0.47</td>
+      <td>-0.59</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:57</th>
-      <td>1009</td>
-      <td>Kevin</td>
-      <td>0.87</td>
-      <td>0.23</td>
+      <td>1001</td>
+      <td>Xavier</td>
+      <td>0.59</td>
+      <td>-0.89</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:58</th>
-      <td>1022</td>
-      <td>Sarah</td>
-      <td>0.38</td>
-      <td>-0.41</td>
+      <td>963</td>
+      <td>Hannah</td>
+      <td>0.81</td>
+      <td>0.45</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:59</th>
-      <td>955</td>
-      <td>Wendy</td>
-      <td>-0.33</td>
-      <td>0.52</td>
+      <td>1021</td>
+      <td>Zelda</td>
+      <td>-0.09</td>
+      <td>0.16</td>
     </tr>
   </tbody>
 </table>
@@ -1299,8 +1300,8 @@ result oerations like random access are cheap and efficient</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 876 ms, sys: 60 ms, total: 936 ms
-Wall time: 3.78 s
+CPU times: user 800 ms, sys: 32 ms, total: 832 ms
+Wall time: 3.58 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1341,33 +1342,33 @@ Wall time: 3.78 s
   <tbody>
     <tr>
       <th>Alice</th>
-      <td>1043</td>
-      <td>0.29</td>
-      <td>0.36</td>
+      <td>1017</td>
+      <td>-0.62</td>
+      <td>-0.71</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>996</td>
-      <td>-0.84</td>
-      <td>0.99</td>
+      <td>978</td>
+      <td>0.45</td>
+      <td>-0.96</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>979</td>
-      <td>0.76</td>
-      <td>-0.05</td>
+      <td>1057</td>
+      <td>-0.35</td>
+      <td>-0.59</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1000</td>
-      <td>-0.69</td>
+      <td>1020</td>
+      <td>-0.56</td>
+      <td>0.11</td>
+    </tr>
+    <tr>
+      <th>Alice</th>
+      <td>1045</td>
       <td>0.27</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>933</td>
-      <td>0.40</td>
-      <td>-0.48</td>
+      <td>0.10</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1377,37 +1378,37 @@ Wall time: 3.78 s
     </tr>
     <tr>
       <th>Alice</th>
-      <td>956</td>
-      <td>0.06</td>
-      <td>-0.15</td>
+      <td>1018</td>
+      <td>0.47</td>
+      <td>-0.12</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>998</td>
-      <td>0.23</td>
-      <td>0.50</td>
+      <td>996</td>
+      <td>0.32</td>
+      <td>0.14</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1037</td>
-      <td>0.88</td>
-      <td>0.97</td>
+      <td>987</td>
+      <td>0.84</td>
+      <td>-0.97</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>966</td>
-      <td>0.15</td>
-      <td>0.68</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1024</td>
+      <td>981</td>
+      <td>0.37</td>
       <td>0.21</td>
-      <td>0.83</td>
+    </tr>
+    <tr>
+      <th>Alice</th>
+      <td>981</td>
+      <td>-0.56</td>
+      <td>-0.43</td>
     </tr>
   </tbody>
 </table>
-<p>99642 rows × 3 columns</p>
+<p>99942 rows × 3 columns</p>
 </div></div>
 </div>
 </div>
@@ -1488,7 +1489,7 @@ Length: 26, dtype: object
         <a href="delayed.html" class="btn btn-neutral float-right" title="Custom Workloads with Dask Delayed" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="array.html" class="btn btn-neutral" title="Dask Arrays" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="bag.html" class="btn btn-neutral" title="Dask Bags" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
