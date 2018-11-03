@@ -3,6 +3,12 @@ language: python
 python:
     - "3.6"
 
+env:
+    global:
+    # Doctr deploy key for dask/dask-examples
+    - secure: "KWjbk0SJb+om3KCgIp0n/z2cVUKZSew272NMkXtBcvtYE5VH/r7z551O4JP1sXOqus0SX/OnflFgcyT2JYdbdTy2zHWOFKjAQmhTW4uX4CuR7dvAA5GJydG0cDh2Vn4FmXspGe6LhVxIFc7ifNlWc3jcpjmmFTvYamZuM/fJHHu9QrF0HB9QbVfpjBsQoCS5BsKeFb0Z8lDcOH/kckOhMM7RQmLrVNWmwqJupT8acUuBkAOU781sLHXw+7MBDxjdCh774NXcZj7vKGQmawVBou90XpCb8K8JjTtr9QTvp2woQGQ4ttQH5qqZPtlpsxgrcUf9qw+DZomqJ/rdA5Zz06E8D0TTugWV0Cj/kLWzTeuIJkKlu6WoKt7OgIZM0+hxnF85eqp3pkbLkfflfpPOUXVv5K7LcMk7xOGtr5fQ+nyqsjMszT51zX6J3lYjJkd4W51Dg44WwqQ396JtDpv5PztUvU0/J1OBm5TOPWc2dvUOa4Yr5PnLyCpOt2YfThywXrWHI+sJa9gnR1vqSLY7EaGTcSehXzjLEG5rfchRudgD5vNOSy+F1LUoneKXUZXhE14KYQs1LaBPuiJHQrpZhZkhYdUpxA2QnR9LcdJI6YU4MckTCJw25YvAZFB7uCMaKcVGTRS1Wjii0+zKsfv7Y+7EmrMIKIIwkTvr/j5PWyg="
+
+
 before_install:
     - sudo apt-get update
     - sudo apt-get install graphviz
@@ -22,8 +28,15 @@ install:
     # Install testing dependencies
     - conda install pathlib nbconvert nbformat jupyter_client ipykernel
 
+    # Install documentation dependencies
+    - pip install nbsphinx dask-sphinx-theme
+
 script:
-    - python $TRAVIS_BUILD_DIR/.tests/nbrun.py
+    - set -e
+    - source activate test
+    - sphinx-build -M html . _build -vv
+    - pip install doctr
+    - doctr deploy --built-docs _build/html .
 
 notifications:
   email: false
