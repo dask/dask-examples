@@ -157,6 +157,7 @@
 <li class="toctree-l1"><a class="reference internal" href="delayed.html">Custom Workloads with Dask Delayed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="futures.html">Custom Workloads with Futures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning.html">Dask for Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xarray.html">Xarray with Dask Arrays</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Dataframes:</span></p>
 <ul>
@@ -449,7 +450,7 @@ when learning.</p>
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:37721
+  <li><b>Scheduler: </b>tcp://127.0.0.1:34318
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -525,8 +526,8 @@ Dask Bag and Python JSON module.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 29, &#34;name&#34;: [&#34;Preston&#34;, &#34;Ray&#34;], &#34;occupation&#34;: &#34;Haulage Contractor&#34;, &#34;telephone&#34;: &#34;113.919.6933&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;438 Southwood Spur&#34;, &#34;city&#34;: &#34;St. Charles&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;2471 7972 2251 8059&#34;, &#34;expiration-date&#34;: &#34;06/21&#34;}}
-{&#34;age&#34;: 57, &#34;name&#34;: [&#34;Beverlee&#34;, &#34;Price&#34;], &#34;occupation&#34;: &#34;Service Engineer&#34;, &#34;telephone&#34;: &#34;045-216-5761&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;326 San Bruno Stravenue&#34;, &#34;city&#34;: &#34;Coronado&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3406 240769 42065&#34;, &#34;expiration-date&#34;: &#34;09/25&#34;}}
+{&#34;age&#34;: 64, &#34;name&#34;: [&#34;Winfred&#34;, &#34;Mcfarland&#34;], &#34;occupation&#34;: &#34;Cable Jointer&#34;, &#34;telephone&#34;: &#34;426-189-6039&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1217 Lydia Circle&#34;, &#34;city&#34;: &#34;Summit&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3799 164742 17478&#34;, &#34;expiration-date&#34;: &#34;12/16&#34;}}
+{&#34;age&#34;: 48, &#34;name&#34;: [&#34;Efren&#34;, &#34;Castaneda&#34;], &#34;occupation&#34;: &#34;Marble Mason&#34;, &#34;telephone&#34;: &#34;826-457-7312&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;778 Laura Street&#34;, &#34;city&#34;: &#34;Florissant&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;4375 4885 2239 5942&#34;, &#34;expiration-date&#34;: &#34;04/17&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -569,19 +570,19 @@ Dask Bag and Python JSON module.</p>
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 29,
-  &#39;name&#39;: [&#39;Preston&#39;, &#39;Ray&#39;],
-  &#39;occupation&#39;: &#39;Haulage Contractor&#39;,
-  &#39;telephone&#39;: &#39;113.919.6933&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;438 Southwood Spur&#39;, &#39;city&#39;: &#39;St. Charles&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2471 7972 2251 8059&#39;,
-   &#39;expiration-date&#39;: &#39;06/21&#39;}},
- {&#39;age&#39;: 57,
-  &#39;name&#39;: [&#39;Beverlee&#39;, &#39;Price&#39;],
-  &#39;occupation&#39;: &#39;Service Engineer&#39;,
-  &#39;telephone&#39;: &#39;045-216-5761&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;326 San Bruno Stravenue&#39;, &#39;city&#39;: &#39;Coronado&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3406 240769 42065&#39;, &#39;expiration-date&#39;: &#39;09/25&#39;}})
+<span></span>({&#39;age&#39;: 64,
+  &#39;name&#39;: [&#39;Winfred&#39;, &#39;Mcfarland&#39;],
+  &#39;occupation&#39;: &#39;Cable Jointer&#39;,
+  &#39;telephone&#39;: &#39;426-189-6039&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1217 Lydia Circle&#39;, &#39;city&#39;: &#39;Summit&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3799 164742 17478&#39;, &#39;expiration-date&#39;: &#39;12/16&#39;}},
+ {&#39;age&#39;: 48,
+  &#39;name&#39;: [&#39;Efren&#39;, &#39;Castaneda&#39;],
+  &#39;occupation&#39;: &#39;Marble Mason&#39;,
+  &#39;telephone&#39;: &#39;826-457-7312&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;778 Laura Street&#39;, &#39;city&#39;: &#39;Florissant&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4375 4885 2239 5942&#39;,
+   &#39;expiration-date&#39;: &#39;04/17&#39;}})
 </pre></div>
 </div>
 </div>
@@ -607,19 +608,19 @@ those results to a total value.</p>
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 57,
-  &#39;name&#39;: [&#39;Beverlee&#39;, &#39;Price&#39;],
-  &#39;occupation&#39;: &#39;Service Engineer&#39;,
-  &#39;telephone&#39;: &#39;045-216-5761&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;326 San Bruno Stravenue&#39;, &#39;city&#39;: &#39;Coronado&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3406 240769 42065&#39;, &#39;expiration-date&#39;: &#39;09/25&#39;}},
- {&#39;age&#39;: 65,
-  &#39;name&#39;: [&#39;Shery&#39;, &#39;Bradley&#39;],
-  &#39;occupation&#39;: &#39;Bus Company&#39;,
-  &#39;telephone&#39;: &#39;+1-(919)-146-4994&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;253 Walkway Avenue&#39;, &#39;city&#39;: &#39;Rockwall&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2671 6820 1040 3714&#39;,
-   &#39;expiration-date&#39;: &#39;10/17&#39;}})
+<span></span>({&#39;age&#39;: 64,
+  &#39;name&#39;: [&#39;Winfred&#39;, &#39;Mcfarland&#39;],
+  &#39;occupation&#39;: &#39;Cable Jointer&#39;,
+  &#39;telephone&#39;: &#39;426-189-6039&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1217 Lydia Circle&#39;, &#39;city&#39;: &#39;Summit&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3799 164742 17478&#39;, &#39;expiration-date&#39;: &#39;12/16&#39;}},
+ {&#39;age&#39;: 48,
+  &#39;name&#39;: [&#39;Efren&#39;, &#39;Castaneda&#39;],
+  &#39;occupation&#39;: &#39;Marble Mason&#39;,
+  &#39;telephone&#39;: &#39;826-457-7312&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;778 Laura Street&#39;, &#39;city&#39;: &#39;Florissant&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4375 4885 2239 5942&#39;,
+   &#39;expiration-date&#39;: &#39;04/17&#39;}})
 </pre></div>
 </div>
 </div>
@@ -639,7 +640,7 @@ those results to a total value.</p>
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(&#39;Haulage Contractor&#39;, &#39;Service Engineer&#39;)
+<span></span>(&#39;Cable Jointer&#39;, &#39;Marble Mason&#39;)
 </pre></div>
 </div>
 </div>
@@ -711,16 +712,16 @@ examples is also like <code class="docutils literal notranslate"><span class="pr
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[(&#39;Advertising Executive&#39;, 14),
- (&#39;Heating Engineer&#39;, 14),
- (&#39;Quantity Surveyor&#39;, 14),
- (&#39;Labelling Operator&#39;, 14),
- (&#39;Wheel Clamper&#39;, 13),
- (&#39;Parts Supervisor&#39;, 13),
- (&#39;Hospital Worker&#39;, 13),
- (&#39;Barmaid&#39;, 13),
- (&#39;Screen Writer&#39;, 13),
- (&#39;Landowner&#39;, 13)]
+<span></span>[(&#39;Parts Manager&#39;, 14),
+ (&#39;Machine Tool Fitter&#39;, 14),
+ (&#39;Lithographer&#39;, 14),
+ (&#39;Rig Worker&#39;, 13),
+ (&#39;Stage Manager&#39;, 13),
+ (&#39;Fraud Investigator&#39;, 13),
+ (&#39;Shunter&#39;, 13),
+ (&#39;Mill Operator&#39;, 13),
+ (&#39;Claims Adjustor&#39;, 13),
+ (&#39;Loss Assessor&#39;, 13)]
 </pre></div>
 </div>
 </div>
@@ -791,13 +792,12 @@ that across our records, and then convert that to a Dask Dataframe.</p>
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 29,
-  &#39;name&#39;: [&#39;Preston&#39;, &#39;Ray&#39;],
-  &#39;occupation&#39;: &#39;Haulage Contractor&#39;,
-  &#39;telephone&#39;: &#39;113.919.6933&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;438 Southwood Spur&#39;, &#39;city&#39;: &#39;St. Charles&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2471 7972 2251 8059&#39;,
-   &#39;expiration-date&#39;: &#39;06/21&#39;}},)
+<span></span>({&#39;age&#39;: 64,
+  &#39;name&#39;: [&#39;Winfred&#39;, &#39;Mcfarland&#39;],
+  &#39;occupation&#39;: &#39;Cable Jointer&#39;,
+  &#39;telephone&#39;: &#39;426-189-6039&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1217 Lydia Circle&#39;, &#39;city&#39;: &#39;Summit&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3799 164742 17478&#39;, &#39;expiration-date&#39;: &#39;12/16&#39;}},)
 </pre></div>
 </div>
 </div>
@@ -829,14 +829,14 @@ that across our records, and then convert that to a Dask Dataframe.</p>
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 29,
-  &#39;occupation&#39;: &#39;Haulage Contractor&#39;,
-  &#39;telephone&#39;: &#39;113.919.6933&#39;,
-  &#39;credit-card-number&#39;: &#39;2471 7972 2251 8059&#39;,
-  &#39;credit-card-expiration&#39;: &#39;06/21&#39;,
-  &#39;name&#39;: &#39;Preston Ray&#39;,
-  &#39;street-address&#39;: &#39;438 Southwood Spur&#39;,
-  &#39;city&#39;: &#39;St. Charles&#39;},)
+<span></span>({&#39;age&#39;: 64,
+  &#39;occupation&#39;: &#39;Cable Jointer&#39;,
+  &#39;telephone&#39;: &#39;426-189-6039&#39;,
+  &#39;credit-card-number&#39;: &#39;3799 164742 17478&#39;,
+  &#39;credit-card-expiration&#39;: &#39;12/16&#39;,
+  &#39;name&#39;: &#39;Winfred Mcfarland&#39;,
+  &#39;street-address&#39;: &#39;1217 Lydia Circle&#39;,
+  &#39;city&#39;: &#39;Summit&#39;},)
 </pre></div>
 </div>
 </div>
@@ -888,58 +888,58 @@ that across our records, and then convert that to a Dask Dataframe.</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>29</td>
-      <td>St. Charles</td>
-      <td>06/21</td>
-      <td>2471 7972 2251 8059</td>
-      <td>Preston Ray</td>
-      <td>Haulage Contractor</td>
-      <td>438 Southwood Spur</td>
-      <td>113.919.6933</td>
+      <td>64</td>
+      <td>Summit</td>
+      <td>12/16</td>
+      <td>3799 164742 17478</td>
+      <td>Winfred Mcfarland</td>
+      <td>Cable Jointer</td>
+      <td>1217 Lydia Circle</td>
+      <td>426-189-6039</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>57</td>
-      <td>Coronado</td>
-      <td>09/25</td>
-      <td>3406 240769 42065</td>
-      <td>Beverlee Price</td>
-      <td>Service Engineer</td>
-      <td>326 San Bruno Stravenue</td>
-      <td>045-216-5761</td>
+      <td>48</td>
+      <td>Florissant</td>
+      <td>04/17</td>
+      <td>4375 4885 2239 5942</td>
+      <td>Efren Castaneda</td>
+      <td>Marble Mason</td>
+      <td>778 Laura Street</td>
+      <td>826-457-7312</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>23</td>
-      <td>Vallejo</td>
-      <td>08/20</td>
-      <td>2530 0178 3032 2946</td>
-      <td>Stacey Day</td>
-      <td>Aerobic Instructor</td>
-      <td>266 Euclid Pike</td>
-      <td>1-184-180-5009</td>
+      <td>58</td>
+      <td>Westland</td>
+      <td>08/23</td>
+      <td>3708 052438 55222</td>
+      <td>Lacy Clarke</td>
+      <td>Gravel Merchant</td>
+      <td>315 Clara Thruway</td>
+      <td>268.206.5074</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>65</td>
-      <td>Rockwall</td>
-      <td>10/17</td>
-      <td>2671 6820 1040 3714</td>
-      <td>Shery Bradley</td>
-      <td>Bus Company</td>
-      <td>253 Walkway Avenue</td>
-      <td>+1-(919)-146-4994</td>
+      <td>23</td>
+      <td>Inglewood</td>
+      <td>10/23</td>
+      <td>5431 1898 0263 1555</td>
+      <td>Kirk Montoya</td>
+      <td>Tax Inspector</td>
+      <td>561 Shipley Alley</td>
+      <td>(071) 359-0811</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>26</td>
-      <td>Homestead</td>
-      <td>03/17</td>
-      <td>4516 2827 7997 9973</td>
-      <td>Shoshana Gould</td>
-      <td>Racehorse Groom</td>
-      <td>1293 Mountain Spring Parkway</td>
-      <td>+1-(787)-615-3979</td>
+      <td>50</td>
+      <td>New Britain</td>
+      <td>10/17</td>
+      <td>3403 538588 26045</td>
+      <td>Humberto Weber</td>
+      <td>Assistant Cook</td>
+      <td>752 Hopkins Turnpike</td>
+      <td>654.628.8636</td>
     </tr>
   </tbody>
 </table>
@@ -963,16 +963,16 @@ and Dask dataframe.</p>
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Labelling Operator       14
-Advertising Executive    14
-Quantity Surveyor        14
-Heating Engineer         14
-Opera Singer             13
-Landowner                13
-Parts Supervisor         13
-Hospital Worker          13
-Barmaid                  13
-Screen Writer            13
+<span></span>Parts Manager          14
+Lithographer           14
+Machine Tool Fitter    14
+Stage Manager          13
+Rig Worker             13
+Literary Editor        13
+Shunter                13
+Mill Operator          13
+Fraud Investigator     13
+Loss Assessor          13
 Name: occupation, dtype: int64
 </pre></div>
 </div>
