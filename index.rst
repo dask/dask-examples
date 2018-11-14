@@ -23,6 +23,7 @@ You can run these examples in a live session here: |Binder|
    delayed
    futures
    machine-learning
+   xarray
 
 .. toctree::
    :maxdepth: 1
