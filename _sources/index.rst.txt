@@ -49,3 +49,4 @@ You can run these examples in a live session here: |Binder|
    :caption: Applications:
 
    embarrassingly-parallel
+   json-data-on-the-web

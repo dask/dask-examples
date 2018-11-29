@@ -178,6 +178,7 @@
 <p class="caption"><span class="caption-text">Applications:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 </ul>
 
             
@@ -476,7 +477,7 @@ when learning.</p>
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>inproc://10.20.1.93/7455/1
+  <li><b>Scheduler: </b>inproc://10.20.1.215/7450/1
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -666,15 +667,15 @@ data/2000-01-10.csv
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 timestamp,id,name,x,y
-2000-01-01 00:00:00,973,Norbert,-0.4723451966403507,0.10305921596780077
-2000-01-01 00:00:01,976,Norbert,-0.9477914961171292,0.8851911283669192
-2000-01-01 00:00:02,1025,Hannah,-0.703386339918626,0.43627424503679135
-2000-01-01 00:00:03,1003,Frank,-0.10201457818248638,-0.3183755923307301
-2000-01-01 00:00:04,1015,Wendy,-0.2731902607401624,-0.4403397304831884
-2000-01-01 00:00:05,986,Ingrid,0.5231505917124382,0.559479925593833
-2000-01-01 00:00:06,967,Tim,-0.31071154860394734,0.3565301288937972
-2000-01-01 00:00:07,1014,Edith,-0.19665583096506856,0.9623234034465216
-2000-01-01 00:00:08,975,Ingrid,-0.9694113972094658,0.47774799660279177
+2000-01-01 00:00:00,1003,Wendy,0.9068767718361423,-0.09895815815303677
+2000-01-01 00:00:01,994,Edith,0.8023581054544191,-0.03835902817212933
+2000-01-01 00:00:02,957,Alice,0.5584101403090014,0.5712874987758869
+2000-01-01 00:00:03,987,Patricia,-0.7690012664335104,-0.8693651135905465
+2000-01-01 00:00:04,965,Patricia,-0.8480272891281364,0.7849923875546234
+2000-01-01 00:00:05,1037,Frank,-0.7523075117435809,0.41089263412330856
+2000-01-01 00:00:06,968,Frank,-0.5273882502875367,0.5545070715007021
+2000-01-01 00:00:07,1059,Kevin,-0.773360863138385,0.07683728509115784
+2000-01-01 00:00:08,1006,Patricia,-0.1105832694479083,-0.7645897789134963
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -693,15 +694,15 @@ timestamp,id,name,x,y
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 timestamp,id,name,x,y
-2000-01-30 00:00:00,975,Charlie,-0.7032477974336637,-0.19801404524973454
-2000-01-30 00:00:01,1019,Tim,-0.9055211582144,0.3920558320489389
-2000-01-30 00:00:02,1074,Yvonne,0.7508939595201714,0.792738570628148
-2000-01-30 00:00:03,989,Ursula,-0.8750557265293639,0.0695073944069402
-2000-01-30 00:00:04,1007,Edith,0.2778669734657806,-0.320363195980613
-2000-01-30 00:00:05,1020,Quinn,0.14896853543674582,0.8178513719639648
-2000-01-30 00:00:06,968,Quinn,0.4793941388210914,0.6504846790926089
-2000-01-30 00:00:07,967,Oliver,0.9287124975501992,-0.40451100265180107
-2000-01-30 00:00:08,973,Quinn,0.6143389925113552,-0.154956529398518
+2000-01-30 00:00:00,1024,Patricia,-0.9122132935685445,0.5789736655013109
+2000-01-30 00:00:01,974,Zelda,-0.11653331594666683,-0.45193830917542765
+2000-01-30 00:00:02,1021,George,0.5655223629045216,0.021971199151218812
+2000-01-30 00:00:03,945,Michael,0.3372687025216068,-0.4250861796033574
+2000-01-30 00:00:04,982,Xavier,-0.6103896903570327,-0.615569756988664
+2000-01-30 00:00:05,1016,Frank,-0.3575482407061661,-0.11771302730203725
+2000-01-30 00:00:06,995,Michael,-0.5296729223352488,-0.7740817306349721
+2000-01-30 00:00:07,1003,Alice,0.6700543685926015,-0.8944101451471238
+2000-01-30 00:00:08,1037,Norbert,0.7613426557651188,0.7003633080307459
 </pre></div></div>
 </div>
 <p>We can read one file with <code class="docutils literal notranslate"><span class="pre">pandas.read_csv</span></code> or many files with
@@ -754,42 +755,42 @@ timestamp,id,name,x,y
     <tr>
       <th>0</th>
       <td>2000-01-01 00:00:00</td>
-      <td>973</td>
-      <td>Norbert</td>
-      <td>-0.472345</td>
-      <td>0.103059</td>
+      <td>1003</td>
+      <td>Wendy</td>
+      <td>0.906877</td>
+      <td>-0.098958</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2000-01-01 00:00:01</td>
-      <td>976</td>
-      <td>Norbert</td>
-      <td>-0.947791</td>
-      <td>0.885191</td>
+      <td>994</td>
+      <td>Edith</td>
+      <td>0.802358</td>
+      <td>-0.038359</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2000-01-01 00:00:02</td>
-      <td>1025</td>
-      <td>Hannah</td>
-      <td>-0.703386</td>
-      <td>0.436274</td>
+      <td>957</td>
+      <td>Alice</td>
+      <td>0.558410</td>
+      <td>0.571287</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2000-01-01 00:00:03</td>
-      <td>1003</td>
-      <td>Frank</td>
-      <td>-0.102015</td>
-      <td>-0.318376</td>
+      <td>987</td>
+      <td>Patricia</td>
+      <td>-0.769001</td>
+      <td>-0.869365</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2000-01-01 00:00:04</td>
-      <td>1015</td>
-      <td>Wendy</td>
-      <td>-0.273190</td>
-      <td>-0.440340</td>
+      <td>965</td>
+      <td>Patricia</td>
+      <td>-0.848027</td>
+      <td>0.784992</td>
     </tr>
   </tbody>
 </table>
@@ -939,42 +940,42 @@ timestamp,id,name,x,y
     <tr>
       <th>0</th>
       <td>2000-01-01 00:00:00</td>
-      <td>973</td>
-      <td>Norbert</td>
-      <td>-0.472345</td>
-      <td>0.103059</td>
+      <td>1003</td>
+      <td>Wendy</td>
+      <td>0.906877</td>
+      <td>-0.098958</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2000-01-01 00:00:01</td>
-      <td>976</td>
-      <td>Norbert</td>
-      <td>-0.947791</td>
-      <td>0.885191</td>
+      <td>994</td>
+      <td>Edith</td>
+      <td>0.802358</td>
+      <td>-0.038359</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2000-01-01 00:00:02</td>
-      <td>1025</td>
-      <td>Hannah</td>
-      <td>-0.703386</td>
-      <td>0.436274</td>
+      <td>957</td>
+      <td>Alice</td>
+      <td>0.558410</td>
+      <td>0.571287</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2000-01-01 00:00:03</td>
-      <td>1003</td>
-      <td>Frank</td>
-      <td>-0.102015</td>
-      <td>-0.318376</td>
+      <td>987</td>
+      <td>Patricia</td>
+      <td>-0.769001</td>
+      <td>-0.869365</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2000-01-01 00:00:04</td>
-      <td>1015</td>
-      <td>Wendy</td>
-      <td>-0.273190</td>
-      <td>-0.440340</td>
+      <td>965</td>
+      <td>Patricia</td>
+      <td>-0.848027</td>
+      <td>0.784992</td>
     </tr>
   </tbody>
 </table>
@@ -1129,8 +1130,8 @@ reading through all of the CSV files every time can be slow.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 7.5 s, sys: 536 ms, total: 8.04 s
-Wall time: 5.52 s
+CPU times: user 7.82 s, sys: 596 ms, total: 8.41 s
+Wall time: 5.69 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1140,32 +1141,32 @@ Wall time: 5.52 s
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>name
-Alice      -0.004018
-Bob        -0.004489
-Charlie    -0.000540
-Dan         0.001096
-Edith      -0.002902
-Frank      -0.000488
-George      0.003727
-Hannah     -0.001071
-Ingrid     -0.000118
-Jerry      -0.001363
-Kevin       0.001761
-Laura      -0.000496
-Michael    -0.002273
-Norbert     0.000123
-Oliver     -0.001355
-Patricia    0.001939
-Quinn      -0.000609
-Ray        -0.000956
-Sarah      -0.004014
-Tim         0.003091
-Ursula      0.000472
-Victor     -0.001264
-Wendy      -0.001262
-Xavier      0.000605
-Yvonne     -0.000698
-Zelda      -0.001972
+Alice       0.000682
+Bob        -0.000157
+Charlie     0.000683
+Dan         0.000825
+Edith      -0.001019
+Frank      -0.003104
+George      0.000628
+Hannah      0.001303
+Ingrid      0.001547
+Jerry      -0.002151
+Kevin      -0.001782
+Laura      -0.000116
+Michael    -0.001839
+Norbert    -0.000199
+Oliver      0.000901
+Patricia    0.001524
+Quinn       0.000173
+Ray         0.002703
+Sarah       0.001585
+Tim        -0.002244
+Ursula     -0.000009
+Victor     -0.001751
+Wendy      -0.001101
+Xavier      0.001207
+Yvonne      0.002348
+Zelda       0.002034
 Name: x, dtype: float64
 </pre></div>
 </div>
@@ -1335,8 +1336,8 @@ part.15.parquet   part.22.parquet  part.2.parquet
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.56 s, sys: 280 ms, total: 1.84 s
-Wall time: 1.3 s
+CPU times: user 1.56 s, sys: 284 ms, total: 1.84 s
+Wall time: 1.28 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1346,32 +1347,32 @@ Wall time: 1.3 s
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>name
-Alice      -0.004018
-Bob        -0.004489
-Charlie    -0.000540
-Dan         0.001096
-Edith      -0.002902
-Frank      -0.000488
-George      0.003727
-Hannah     -0.001071
-Ingrid     -0.000118
-Jerry      -0.001363
-Kevin       0.001761
-Laura      -0.000496
-Michael    -0.002273
-Norbert     0.000123
-Oliver     -0.001355
-Patricia    0.001939
-Quinn      -0.000609
-Ray        -0.000956
-Sarah      -0.004014
-Tim         0.003091
-Ursula      0.000472
-Victor     -0.001264
-Wendy      -0.001262
-Xavier      0.000605
-Yvonne     -0.000698
-Zelda      -0.001972
+Alice       0.000682
+Bob        -0.000157
+Charlie     0.000683
+Dan         0.000825
+Edith      -0.001019
+Frank      -0.003104
+George      0.000628
+Hannah      0.001303
+Ingrid      0.001547
+Jerry      -0.002151
+Kevin      -0.001782
+Laura      -0.000116
+Michael    -0.001839
+Norbert    -0.000199
+Oliver      0.000901
+Patricia    0.001524
+Quinn       0.000173
+Ray         0.002703
+Sarah       0.001585
+Tim        -0.002244
+Ursula     -0.000009
+Victor     -0.001751
+Wendy      -0.001101
+Xavier      0.001207
+Yvonne      0.002348
+Zelda       0.002034
 Name: x, dtype: float64
 </pre></div>
 </div>
@@ -1399,8 +1400,8 @@ avoid unnecessary data loading.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.38 s, sys: 188 ms, total: 1.57 s
-Wall time: 1.14 s
+CPU times: user 1.45 s, sys: 208 ms, total: 1.66 s
+Wall time: 1.23 s
 </pre></div></div>
 </div>
 <p>Here the difference is not that large, but with larger datasets this can
