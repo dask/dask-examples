@@ -174,11 +174,6 @@
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/voting-classifier.html">Use Voting Classifiers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/tpot.html">Automate Machine Learning with TPOT</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Applications:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
-<li class="toctree-l1"><a class="reference internal" href="json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
-</ul>
 
             
           
@@ -451,7 +446,7 @@ when learning.</p>
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:39441
+  <li><b>Scheduler: </b>tcp://127.0.0.1:45101
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -527,8 +522,8 @@ Dask Bag and Python JSON module.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 49, &#34;name&#34;: [&#34;Linn&#34;, &#34;Leblanc&#34;], &#34;occupation&#34;: &#34;Groundsman&#34;, &#34;telephone&#34;: &#34;(752) 779-2352&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1066 Adele Nene&#34;, &#34;city&#34;: &#34;New Albany&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3448 201833 45939&#34;, &#34;expiration-date&#34;: &#34;03/20&#34;}}
-{&#34;age&#34;: 36, &#34;name&#34;: [&#34;Rich&#34;, &#34;Martinez&#34;], &#34;occupation&#34;: &#34;Print Finisher&#34;, &#34;telephone&#34;: &#34;(521) 074-1779&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;316 Battery Cranston Concession road&#34;, &#34;city&#34;: &#34;South Holland&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;4554 4495 6978 5414&#34;, &#34;expiration-date&#34;: &#34;09/20&#34;}}
+{&#34;age&#34;: 61, &#34;name&#34;: [&#34;Alan&#34;, &#34;Merrill&#34;], &#34;occupation&#34;: &#34;Moneylender&#34;, &#34;telephone&#34;: &#34;526.604.8013&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1215 Romolo Alley&#34;, &#34;city&#34;: &#34;Placentia&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3790 942789 35412&#34;, &#34;expiration-date&#34;: &#34;03/23&#34;}}
+{&#34;age&#34;: 46, &#34;name&#34;: [&#34;Karyl&#34;, &#34;Guthrie&#34;], &#34;occupation&#34;: &#34;Auditor&#34;, &#34;telephone&#34;: &#34;1-008-719-9779&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;578 Edgehill Thruway&#34;, &#34;city&#34;: &#34;Muscatine&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5182 5371 4500 6060&#34;, &#34;expiration-date&#34;: &#34;01/20&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -571,20 +566,19 @@ Dask Bag and Python JSON module.</p>
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 49,
-  &#39;name&#39;: [&#39;Linn&#39;, &#39;Leblanc&#39;],
-  &#39;occupation&#39;: &#39;Groundsman&#39;,
-  &#39;telephone&#39;: &#39;(752) 779-2352&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1066 Adele Nene&#39;, &#39;city&#39;: &#39;New Albany&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3448 201833 45939&#39;, &#39;expiration-date&#39;: &#39;03/20&#39;}},
- {&#39;age&#39;: 36,
-  &#39;name&#39;: [&#39;Rich&#39;, &#39;Martinez&#39;],
-  &#39;occupation&#39;: &#39;Print Finisher&#39;,
-  &#39;telephone&#39;: &#39;(521) 074-1779&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;316 Battery Cranston Concession road&#39;,
-   &#39;city&#39;: &#39;South Holland&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4554 4495 6978 5414&#39;,
-   &#39;expiration-date&#39;: &#39;09/20&#39;}})
+<span></span>({&#39;age&#39;: 61,
+  &#39;name&#39;: [&#39;Alan&#39;, &#39;Merrill&#39;],
+  &#39;occupation&#39;: &#39;Moneylender&#39;,
+  &#39;telephone&#39;: &#39;526.604.8013&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1215 Romolo Alley&#39;, &#39;city&#39;: &#39;Placentia&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3790 942789 35412&#39;, &#39;expiration-date&#39;: &#39;03/23&#39;}},
+ {&#39;age&#39;: 46,
+  &#39;name&#39;: [&#39;Karyl&#39;, &#39;Guthrie&#39;],
+  &#39;occupation&#39;: &#39;Auditor&#39;,
+  &#39;telephone&#39;: &#39;1-008-719-9779&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;578 Edgehill Thruway&#39;, &#39;city&#39;: &#39;Muscatine&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5182 5371 4500 6060&#39;,
+   &#39;expiration-date&#39;: &#39;01/20&#39;}})
 </pre></div>
 </div>
 </div>
@@ -610,20 +604,19 @@ those results to a total value.</p>
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 49,
-  &#39;name&#39;: [&#39;Linn&#39;, &#39;Leblanc&#39;],
-  &#39;occupation&#39;: &#39;Groundsman&#39;,
-  &#39;telephone&#39;: &#39;(752) 779-2352&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1066 Adele Nene&#39;, &#39;city&#39;: &#39;New Albany&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3448 201833 45939&#39;, &#39;expiration-date&#39;: &#39;03/20&#39;}},
- {&#39;age&#39;: 36,
-  &#39;name&#39;: [&#39;Rich&#39;, &#39;Martinez&#39;],
-  &#39;occupation&#39;: &#39;Print Finisher&#39;,
-  &#39;telephone&#39;: &#39;(521) 074-1779&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;316 Battery Cranston Concession road&#39;,
-   &#39;city&#39;: &#39;South Holland&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4554 4495 6978 5414&#39;,
-   &#39;expiration-date&#39;: &#39;09/20&#39;}})
+<span></span>({&#39;age&#39;: 61,
+  &#39;name&#39;: [&#39;Alan&#39;, &#39;Merrill&#39;],
+  &#39;occupation&#39;: &#39;Moneylender&#39;,
+  &#39;telephone&#39;: &#39;526.604.8013&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1215 Romolo Alley&#39;, &#39;city&#39;: &#39;Placentia&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3790 942789 35412&#39;, &#39;expiration-date&#39;: &#39;03/23&#39;}},
+ {&#39;age&#39;: 46,
+  &#39;name&#39;: [&#39;Karyl&#39;, &#39;Guthrie&#39;],
+  &#39;occupation&#39;: &#39;Auditor&#39;,
+  &#39;telephone&#39;: &#39;1-008-719-9779&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;578 Edgehill Thruway&#39;, &#39;city&#39;: &#39;Muscatine&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5182 5371 4500 6060&#39;,
+   &#39;expiration-date&#39;: &#39;01/20&#39;}})
 </pre></div>
 </div>
 </div>
@@ -643,7 +636,7 @@ those results to a total value.</p>
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(&#39;Groundsman&#39;, &#39;Print Finisher&#39;)
+<span></span>(&#39;Moneylender&#39;, &#39;Auditor&#39;)
 </pre></div>
 </div>
 </div>
@@ -715,16 +708,16 @@ examples is also like <code class="docutils literal notranslate"><span class="pr
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[(&#39;Carpenter&#39;, 15),
- (&#39;Mechanic&#39;, 14),
- (&#39;Auctioneer&#39;, 14),
- (&#39;Circus Proprietor&#39;, 14),
- (&#39;Taxi Controller&#39;, 13),
- (&#39;Biochemist&#39;, 13),
- (&#39;Classroom Aide&#39;, 13),
- (&#39;Sales Executive&#39;, 13),
- (&#39;Slaughterman&#39;, 12),
- (&#39;Bacon Curer&#39;, 12)]
+<span></span>[(&#39;Stable Hand&#39;, 17),
+ (&#39;Travel Guide&#39;, 16),
+ (&#39;Airport Controller&#39;, 15),
+ (&#39;Service Manager&#39;, 14),
+ (&#39;Bus Mechanic&#39;, 14),
+ (&#39;Warehousewoman&#39;, 13),
+ (&#39;Organist&#39;, 13),
+ (&#39;Quality Technician&#39;, 13),
+ (&#39;Gun Smith&#39;, 13),
+ (&#39;Property Manager&#39;, 13)]
 </pre></div>
 </div>
 </div>
@@ -795,12 +788,12 @@ that across our records, and then convert that to a Dask Dataframe.</p>
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 49,
-  &#39;name&#39;: [&#39;Linn&#39;, &#39;Leblanc&#39;],
-  &#39;occupation&#39;: &#39;Groundsman&#39;,
-  &#39;telephone&#39;: &#39;(752) 779-2352&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1066 Adele Nene&#39;, &#39;city&#39;: &#39;New Albany&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3448 201833 45939&#39;, &#39;expiration-date&#39;: &#39;03/20&#39;}},)
+<span></span>({&#39;age&#39;: 61,
+  &#39;name&#39;: [&#39;Alan&#39;, &#39;Merrill&#39;],
+  &#39;occupation&#39;: &#39;Moneylender&#39;,
+  &#39;telephone&#39;: &#39;526.604.8013&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1215 Romolo Alley&#39;, &#39;city&#39;: &#39;Placentia&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3790 942789 35412&#39;, &#39;expiration-date&#39;: &#39;03/23&#39;}},)
 </pre></div>
 </div>
 </div>
@@ -832,14 +825,14 @@ that across our records, and then convert that to a Dask Dataframe.</p>
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 49,
-  &#39;occupation&#39;: &#39;Groundsman&#39;,
-  &#39;telephone&#39;: &#39;(752) 779-2352&#39;,
-  &#39;credit-card-number&#39;: &#39;3448 201833 45939&#39;,
-  &#39;credit-card-expiration&#39;: &#39;03/20&#39;,
-  &#39;name&#39;: &#39;Linn Leblanc&#39;,
-  &#39;street-address&#39;: &#39;1066 Adele Nene&#39;,
-  &#39;city&#39;: &#39;New Albany&#39;},)
+<span></span>({&#39;age&#39;: 61,
+  &#39;occupation&#39;: &#39;Moneylender&#39;,
+  &#39;telephone&#39;: &#39;526.604.8013&#39;,
+  &#39;credit-card-number&#39;: &#39;3790 942789 35412&#39;,
+  &#39;credit-card-expiration&#39;: &#39;03/23&#39;,
+  &#39;name&#39;: &#39;Alan Merrill&#39;,
+  &#39;street-address&#39;: &#39;1215 Romolo Alley&#39;,
+  &#39;city&#39;: &#39;Placentia&#39;},)
 </pre></div>
 </div>
 </div>
@@ -891,58 +884,58 @@ that across our records, and then convert that to a Dask Dataframe.</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>49</td>
-      <td>New Albany</td>
-      <td>03/20</td>
-      <td>3448 201833 45939</td>
-      <td>Linn Leblanc</td>
-      <td>Groundsman</td>
-      <td>1066 Adele Nene</td>
-      <td>(752) 779-2352</td>
+      <td>61</td>
+      <td>Placentia</td>
+      <td>03/23</td>
+      <td>3790 942789 35412</td>
+      <td>Alan Merrill</td>
+      <td>Moneylender</td>
+      <td>1215 Romolo Alley</td>
+      <td>526.604.8013</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>36</td>
-      <td>South Holland</td>
-      <td>09/20</td>
-      <td>4554 4495 6978 5414</td>
-      <td>Rich Martinez</td>
-      <td>Print Finisher</td>
-      <td>316 Battery Cranston Concession road</td>
-      <td>(521) 074-1779</td>
+      <td>46</td>
+      <td>Muscatine</td>
+      <td>01/20</td>
+      <td>5182 5371 4500 6060</td>
+      <td>Karyl Guthrie</td>
+      <td>Auditor</td>
+      <td>578 Edgehill Thruway</td>
+      <td>1-008-719-9779</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>42</td>
-      <td>Dunedin</td>
-      <td>11/24</td>
-      <td>2561 7572 1629 3458</td>
-      <td>Jae Pacheco</td>
-      <td>Marketing Coordinator</td>
-      <td>1343 The Embarcadero Highway</td>
-      <td>+1-(688)-670-9390</td>
+      <td>18</td>
+      <td>San Benito</td>
+      <td>10/17</td>
+      <td>4790 3322 0864 0964</td>
+      <td>Hipolito Alvarado</td>
+      <td>Scientific Officer</td>
+      <td>1174 Harriet Place</td>
+      <td>1-192-348-5674</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>26</td>
-      <td>Cliffside Park</td>
-      <td>02/18</td>
-      <td>3788 020945 10727</td>
-      <td>Fae Clements</td>
-      <td>Travel Guide Writer</td>
-      <td>639 Nauman Glen</td>
-      <td>+1-(027)-893-8016</td>
+      <td>60</td>
+      <td>Montebello</td>
+      <td>12/20</td>
+      <td>5294 8675 5977 5743</td>
+      <td>Eugenio Ellis</td>
+      <td>Stable Hand</td>
+      <td>544 Brant Esplanade</td>
+      <td>168-887-4726</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>25</td>
-      <td>Fontana</td>
-      <td>12/18</td>
-      <td>5468 8124 9935 5206</td>
-      <td>Corey Soto</td>
-      <td>Photographer</td>
-      <td>619 Richards Wynd</td>
-      <td>837.580.8394</td>
+      <td>24</td>
+      <td>Madisonville</td>
+      <td>03/20</td>
+      <td>2353 4293 4246 2314</td>
+      <td>Roosevelt Carr</td>
+      <td>Art Restorer</td>
+      <td>31 Standish Ferry</td>
+      <td>1-608-472-6868</td>
     </tr>
   </tbody>
 </table>
@@ -966,16 +959,16 @@ and Dask dataframe.</p>
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Carpenter            15
-Auctioneer           14
-Mechanic             14
-Circus Proprietor    14
-Taxi Controller      13
-Classroom Aide       13
-Sales Executive      13
-Biochemist           13
-Training Advisor     12
-Mortgage Broker      12
+<span></span>Stable Hand           17
+Travel Guide          16
+Airport Controller    15
+Bus Mechanic          14
+Service Manager       14
+Butcher               13
+Organist              13
+Investment Banker     13
+Warehousewoman        13
+Gun Smith             13
 Name: occupation, dtype: int64
 </pre></div>
 </div>
