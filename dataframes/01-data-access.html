@@ -293,18 +293,18 @@ div.nblast {
 
 /* input prompt */
 div.nbinput div.prompt pre {
-    color: #303F9F;
+    color: #307FC1;
 }
 
 /* output prompt */
 div.nboutput div.prompt pre {
-    color: #D84315;
+    color: #BF5B3D;
 }
 
 /* all prompts */
 div.nbinput div.prompt,
 div.nboutput div.prompt {
-    min-width: 9ex;
+    min-width: 7ex;
     padding-top: 0.4em;
     padding-right: 0.4em;
     text-align: right;
@@ -344,9 +344,9 @@ div.nboutput div.output_area {
 
 /* input area */
 div.nbinput div.input_area {
-    border: 1px solid #cfcfcf;
+    border: 1px solid #e0e0e0;
     border-radius: 2px;
-    background: #f7f7f7;
+    background: #f5f5f5;
 }
 
 /* override MathJax center alignment in output cells */
@@ -354,7 +354,7 @@ div.nboutput div[class*=MathJax] {
     text-align: left !important;
 }
 
-/* override sphinx.ext.pngmath center alignment in output cells */
+/* override sphinx.ext.imgmath center alignment in output cells */
 div.nboutput div.math p {
     text-align: left;
 }
@@ -403,17 +403,47 @@ div.nboutput div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/dataframes/01-data-access.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/dataframes/01-data-access.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/dataframes/01-data-access.ipynb">on Github</a>.</p>
 <div class="section" id="DataFrames:-Read-and-Write-Data">
 <h1>DataFrames: Read and Write Data<a class="headerlink" href="#DataFrames:-Read-and-Write-Data" title="Permalink to this headline">¶</a></h1>
-<p>Dask Dataframes can read and store data in many of the same formats as
-Pandas dataframes. In this example we read and write data with the
-popular CSV and Parquet formats, and discuss best practices when using
-these formats.</p>
+<p>Dask Dataframes can read and store data in many of the same formats as Pandas dataframes. In this example we read and write data with the popular CSV and Parquet formats, and discuss best practices when using these formats.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -426,32 +456,25 @@ these formats.</p>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="stderr output_area docutils container">
+<div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 /home/travis/miniconda/envs/test/lib/python3.6/site-packages/IPython/core/display.py:689: UserWarning: Consider using IPython.display.IFrame instead
   warnings.warn(&#34;Consider using IPython.display.IFrame instead&#34;)
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="output_area docutils container">
+<div class="output_area rendered_html docutils container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0eEsIA0O1iE?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></div>
 </div>
 <div class="section" id="Start-Dask-Client-for-Dashboard">
 <h2>Start Dask Client for Dashboard<a class="headerlink" href="#Start-Dask-Client-for-Dashboard" title="Permalink to this headline">¶</a></h2>
-<p>Starting the Dask Client is optional. It will provide a dashboard which
-is useful to gain insight on the computation.</p>
-<p>The link to the dashboard will become visible when you create the client
-below. We recommend having it open on one side of your screen while
-using your notebook on the other side. This can take some effort to
-arrange your windows, but seeing them both at the same is very useful
-when learning.</p>
+<p>Starting the Dask Client is optional. It will provide a dashboard which is useful to gain insight on the computation.</p>
+<p>The link to the dashboard will become visible when you create the client below. We recommend having it open on one side of your screen while using your notebook on the other side. This can take some effort to arrange your windows, but seeing them both at the same is very useful when learning.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -462,17 +485,16 @@ when learning.</p>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="output_area docutils container">
+<div class="output_area rendered_html docutils container">
 <table style="border: 2px solid white;">
 <tr>
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>inproc://10.20.4.17/8065/1
+  <li><b>Scheduler: </b>inproc://10.20.2.9/6964/1
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -491,11 +513,9 @@ when learning.</p>
 <div class="section" id="Create-artificial-dataset">
 <h2>Create artificial dataset<a class="headerlink" href="#Create-artificial-dataset" title="Permalink to this headline">¶</a></h2>
 <p>First we create an artificial dataset and write it to many CSV files.</p>
-<p>You don’t need to understand this section, we’re just creating a dataset
-for the rest of the notebook.</p>
+<p>You don’t need to understand this section, we’re just creating a dataset for the rest of the notebook.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -505,12 +525,22 @@ for the rest of the notebook.</p>
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/dask/dataframe/io/demo.py:91: FutureWarning: Creating a DatetimeIndex by passing range endpoints is deprecated.  Use `pandas.date_range` instead.
+  freq=partition_freq))
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/dask/dataframe/io/demo.py:45: FutureWarning: Creating a DatetimeIndex by passing range endpoints is deprecated.  Use `pandas.date_range` instead.
+  index = pd.DatetimeIndex(start=start, end=end, freq=freq, name=&#39;timestamp&#39;)
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="output_area docutils container">
+<div class="output_area rendered_html docutils container">
 <div><strong>Dask DataFrame Structure:</strong></div>
 <div>
 <style scoped>
@@ -585,8 +615,7 @@ for the rest of the notebook.</p>
 <div>Dask Name: make-timeseries, 30 tasks</div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -615,13 +644,9 @@ for the rest of the notebook.</p>
 </div>
 <div class="section" id="Read-CSV-files">
 <h2>Read CSV files<a class="headerlink" href="#Read-CSV-files" title="Permalink to this headline">¶</a></h2>
-<p>We now have many CSV files in our data directory, one for each day in
-the month of January 2000. Each CSV file holds timeseries data for that
-day. We can read all of them as one logical dataframe using the
-<code class="docutils literal notranslate"><span class="pre">dd.read_csv</span></code> function with a glob string.</p>
+<p>We now have many CSV files in our data directory, one for each day in the month of January 2000. Each CSV file holds timeseries data for that day. We can read all of them as one logical dataframe using the <code class="docutils literal notranslate"><span class="pre">dd.read_csv</span></code> function with a glob string.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -647,8 +672,7 @@ data/2000-01-10.csv
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -662,20 +686,19 @@ data/2000-01-10.csv
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 timestamp,id,name,x,y
-2000-01-01 00:00:00,966,Patricia,-0.8084939870066306,-0.7710739294530797
-2000-01-01 00:00:01,991,Charlie,-0.7945776320546729,-0.964224365628507
-2000-01-01 00:00:02,972,Jerry,-0.31433450401086116,0.5761011184842018
-2000-01-01 00:00:03,995,Kevin,-0.6740486607314147,-0.8132252476668265
-2000-01-01 00:00:04,980,Hannah,0.012616857066028997,-0.39662196393027704
-2000-01-01 00:00:05,950,Zelda,-0.7994168561245698,-0.9736960965532464
-2000-01-01 00:00:06,1004,Laura,-0.7361684053748219,-0.6870298568967275
-2000-01-01 00:00:07,1006,Edith,0.1144035619295074,-0.8389967321195322
-2000-01-01 00:00:08,964,Alice,0.7044046196285507,-0.6784299889508858
+2000-01-01 00:00:00,1000,Ursula,0.3867466609957202,0.37744804894999406
+2000-01-01 00:00:01,962,Ray,-0.6924027833869402,-0.7817267547965123
+2000-01-01 00:00:02,1024,Bob,-0.06497632034855316,0.5027367195168921
+2000-01-01 00:00:03,1021,Jerry,-0.3572061506739417,0.8162578935156353
+2000-01-01 00:00:04,986,Kevin,-0.06065044435359712,-0.17825615014681784
+2000-01-01 00:00:05,946,Quinn,0.9025653654304338,0.6244759875588399
+2000-01-01 00:00:06,976,Bob,-0.8187375722283516,0.1722607364146156
+2000-01-01 00:00:07,972,Ursula,0.5371073038499461,-0.8246453892979839
+2000-01-01 00:00:08,1020,Edith,-0.9168786519119367,-0.7974684982280993
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -689,22 +712,20 @@ timestamp,id,name,x,y
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 timestamp,id,name,x,y
-2000-01-30 00:00:00,985,Ingrid,-0.6427537429917249,0.8590611614597978
-2000-01-30 00:00:01,1017,Ingrid,0.27258421767284813,0.677370286499851
-2000-01-30 00:00:02,1004,Kevin,-0.020798591147440204,-0.9305609199539306
-2000-01-30 00:00:03,1011,Hannah,0.22767744076402208,-0.37900872516849926
-2000-01-30 00:00:04,936,George,-0.8600604018135654,0.4071770735275315
-2000-01-30 00:00:05,989,Xavier,-0.3182731127321907,0.8849712909185561
-2000-01-30 00:00:06,1042,Kevin,0.8155731835833879,-0.5404474716618333
-2000-01-30 00:00:07,974,Victor,-0.9176872159663572,-0.6834177265926906
-2000-01-30 00:00:08,1050,Frank,0.6705057427848988,0.8777418091815345
+2000-01-30 00:00:00,992,Hannah,-0.8268747622508543,0.1093635575110512
+2000-01-30 00:00:01,973,Oliver,-0.04950435579134438,-0.7082615446967244
+2000-01-30 00:00:02,1047,Patricia,0.026108952990280487,-0.7734164803373638
+2000-01-30 00:00:03,979,Hannah,-0.46849645636204684,-0.23006234371578493
+2000-01-30 00:00:04,1002,Wendy,0.9333329410073088,-0.674209897348323
+2000-01-30 00:00:05,1024,Sarah,0.16610001036347488,-0.5976695321305259
+2000-01-30 00:00:06,1004,Sarah,-0.954111266039958,0.8496827827928837
+2000-01-30 00:00:07,1003,Kevin,-0.7824805286609802,-0.7286703635007965
+2000-01-30 00:00:08,983,Sarah,0.0791857972725476,0.35904407352740053
 </pre></div></div>
 </div>
-<p>We can read one file with <code class="docutils literal notranslate"><span class="pre">pandas.read_csv</span></code> or many files with
-<code class="docutils literal notranslate"><span class="pre">dask.dataframe.read_csv</span></code></p>
+<p>We can read one file with <code class="docutils literal notranslate"><span class="pre">pandas.read_csv</span></code> or many files with <code class="docutils literal notranslate"><span class="pre">dask.dataframe.read_csv</span></code></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -716,11 +737,10 @@ timestamp,id,name,x,y
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="output_area docutils container">
+<div class="output_area rendered_html docutils container">
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -750,50 +770,49 @@ timestamp,id,name,x,y
     <tr>
       <th>0</th>
       <td>2000-01-01 00:00:00</td>
-      <td>966</td>
-      <td>Patricia</td>
-      <td>-0.808494</td>
-      <td>-0.771074</td>
+      <td>1000</td>
+      <td>Ursula</td>
+      <td>0.386747</td>
+      <td>0.377448</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2000-01-01 00:00:01</td>
-      <td>991</td>
-      <td>Charlie</td>
-      <td>-0.794578</td>
-      <td>-0.964224</td>
+      <td>962</td>
+      <td>Ray</td>
+      <td>-0.692403</td>
+      <td>-0.781727</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2000-01-01 00:00:02</td>
-      <td>972</td>
-      <td>Jerry</td>
-      <td>-0.314335</td>
-      <td>0.576101</td>
+      <td>1024</td>
+      <td>Bob</td>
+      <td>-0.064976</td>
+      <td>0.502737</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2000-01-01 00:00:03</td>
-      <td>995</td>
-      <td>Kevin</td>
-      <td>-0.674049</td>
-      <td>-0.813225</td>
+      <td>1021</td>
+      <td>Jerry</td>
+      <td>-0.357206</td>
+      <td>0.816258</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2000-01-01 00:00:04</td>
-      <td>980</td>
-      <td>Hannah</td>
-      <td>0.012617</td>
-      <td>-0.396622</td>
+      <td>986</td>
+      <td>Kevin</td>
+      <td>-0.060650</td>
+      <td>-0.178256</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -805,11 +824,10 @@ timestamp,id,name,x,y
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="output_area docutils container">
+<div class="output_area rendered_html docutils container">
 <div><strong>Dask DataFrame Structure:</strong></div>
 <div>
 <style scoped>
@@ -891,8 +909,7 @@ timestamp,id,name,x,y
 <div>Dask Name: from-delayed, 90 tasks</div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -901,11 +918,10 @@ timestamp,id,name,x,y
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="output_area docutils container">
+<div class="output_area rendered_html docutils container">
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -935,42 +951,42 @@ timestamp,id,name,x,y
     <tr>
       <th>0</th>
       <td>2000-01-01 00:00:00</td>
-      <td>966</td>
-      <td>Patricia</td>
-      <td>-0.808494</td>
-      <td>-0.771074</td>
+      <td>1000</td>
+      <td>Ursula</td>
+      <td>0.386747</td>
+      <td>0.377448</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2000-01-01 00:00:01</td>
-      <td>991</td>
-      <td>Charlie</td>
-      <td>-0.794578</td>
-      <td>-0.964224</td>
+      <td>962</td>
+      <td>Ray</td>
+      <td>-0.692403</td>
+      <td>-0.781727</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2000-01-01 00:00:02</td>
-      <td>972</td>
-      <td>Jerry</td>
-      <td>-0.314335</td>
-      <td>0.576101</td>
+      <td>1024</td>
+      <td>Bob</td>
+      <td>-0.064976</td>
+      <td>0.502737</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2000-01-01 00:00:03</td>
-      <td>995</td>
-      <td>Kevin</td>
-      <td>-0.674049</td>
-      <td>-0.813225</td>
+      <td>1021</td>
+      <td>Jerry</td>
+      <td>-0.357206</td>
+      <td>0.816258</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2000-01-01 00:00:04</td>
-      <td>980</td>
-      <td>Hannah</td>
-      <td>0.012617</td>
-      <td>-0.396622</td>
+      <td>986</td>
+      <td>Kevin</td>
+      <td>-0.060650</td>
+      <td>-0.178256</td>
     </tr>
   </tbody>
 </table>
@@ -979,13 +995,9 @@ timestamp,id,name,x,y
 </div>
 <div class="section" id="Tuning-read_csv">
 <h2>Tuning read_csv<a class="headerlink" href="#Tuning-read_csv" title="Permalink to this headline">¶</a></h2>
-<p>The Pandas <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function has <em>many</em> options to help you parse
-files. The Dask version uses the Pandas function internally, and so
-supports many of the same options. You can use the <code class="docutils literal notranslate"><span class="pre">?</span></code> operator to see
-the full documentation string.</p>
+<p>The Pandas <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function has <em>many</em> options to help you parse files. The Dask version uses the Pandas function internally, and so supports many of the same options. You can use the <code class="docutils literal notranslate"><span class="pre">?</span></code> operator to see the full documentation string.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -994,8 +1006,7 @@ the full documentation string.</p>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1003,13 +1014,9 @@ the full documentation string.</p>
 </pre></div>
 </div>
 </div>
-<p>In this case we use the <code class="docutils literal notranslate"><span class="pre">parse_dates</span></code> keyword to parse the timestamp
-column to be a datetime. This will make things more efficient in the
-future. Notice that the dtype of the timestamp column has changed from
-<code class="docutils literal notranslate"><span class="pre">object</span></code> to <code class="docutils literal notranslate"><span class="pre">datetime64[ns]</span></code>.</p>
+<p>In this case we use the <code class="docutils literal notranslate"><span class="pre">parse_dates</span></code> keyword to parse the timestamp column to be a datetime. This will make things more efficient in the future. Notice that the dtype of the timestamp column has changed from <code class="docutils literal notranslate"><span class="pre">object</span></code> to <code class="docutils literal notranslate"><span class="pre">datetime64[ns]</span></code>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1019,11 +1026,10 @@ future. Notice that the dtype of the timestamp column has changed from
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="output_area docutils container">
+<div class="output_area rendered_html docutils container">
 <div><strong>Dask DataFrame Structure:</strong></div>
 <div>
 <style scoped>
@@ -1107,12 +1113,9 @@ future. Notice that the dtype of the timestamp column has changed from
 </div>
 <div class="section" id="Do-a-simple-computation">
 <h2>Do a simple computation<a class="headerlink" href="#Do-a-simple-computation" title="Permalink to this headline">¶</a></h2>
-<p>Whenever we operate on our dataframe we read through all of our CSV data
-so that we don’t fill up RAM. This is very efficient for memory use, but
-reading through all of the CSV files every time can be slow.</p>
+<p>Whenever we operate on our dataframe we read through all of our CSV data so that we don’t fill up RAM. This is very efficient for memory use, but reading through all of the CSV files every time can be slow.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1125,50 +1128,48 @@ reading through all of the CSV files every time can be slow.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 6.72 s, sys: 516 ms, total: 7.24 s
-Wall time: 4.8 s
+CPU times: user 6.61 s, sys: 544 ms, total: 7.16 s
+Wall time: 4.94 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>name
-Alice      -0.000824
-Bob         0.002829
-Charlie     0.002991
-Dan        -0.000555
-Edith      -0.002074
-Frank      -0.001394
-George     -0.000501
-Hannah     -0.000727
-Ingrid     -0.002006
-Jerry      -0.001193
-Kevin      -0.000590
-Laura      -0.000761
-Michael     0.001220
-Norbert    -0.000153
-Oliver      0.002355
-Patricia   -0.001196
-Quinn      -0.001985
-Ray        -0.000461
-Sarah       0.000012
-Tim         0.001353
-Ursula      0.003912
-Victor     -0.001516
-Wendy       0.003660
-Xavier     -0.001425
-Yvonne     -0.004744
-Zelda      -0.005541
+Alice      -0.002671
+Bob         0.000183
+Charlie     0.000507
+Dan         0.002850
+Edith      -0.002042
+Frank      -0.001119
+George     -0.000402
+Hannah      0.000090
+Ingrid      0.000559
+Jerry      -0.000028
+Kevin       0.000744
+Laura      -0.000500
+Michael     0.001023
+Norbert    -0.001141
+Oliver      0.000494
+Patricia   -0.001107
+Quinn      -0.001311
+Ray        -0.000212
+Sarah      -0.001717
+Tim         0.000470
+Ursula     -0.000280
+Victor      0.003300
+Wendy      -0.000875
+Xavier      0.000576
+Yvonne     -0.000477
+Zelda      -0.000790
 Name: x, dtype: float64
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1179,11 +1180,9 @@ Name: x, dtype: float64
 </div>
 <div class="section" id="Write-to-Parquet">
 <h2>Write to Parquet<a class="headerlink" href="#Write-to-Parquet" title="Permalink to this headline">¶</a></h2>
-<p>Instead, we’ll store our data in Parquet, a format that is more
-efficient for computers to read and write.</p>
+<p>Instead, we’ll store our data in Parquet, a format that is more efficient for computers to read and write.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1192,8 +1191,7 @@ efficient for computers to read and write.</p>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1220,8 +1218,7 @@ part.15.parquet   part.22.parquet  part.2.parquet
 <div class="section" id="Read-from-Parquet">
 <h2>Read from Parquet<a class="headerlink" href="#Read-from-Parquet" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1231,11 +1228,10 @@ part.15.parquet   part.22.parquet  part.2.parquet
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="output_area docutils container">
+<div class="output_area rendered_html docutils container">
 <div><strong>Dask DataFrame Structure:</strong></div>
 <div>
 <style scoped>
@@ -1317,8 +1313,7 @@ part.15.parquet   part.22.parquet  part.2.parquet
 <div>Dask Name: read-parquet, 30 tasks</div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1329,45 +1324,82 @@ part.15.parquet   part.22.parquet  part.2.parquet
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:707: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
+  labels = getattr(columns, &#39;labels&#39;, None) or [
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:734: FutureWarning: the &#39;labels&#39; keyword is deprecated, use &#39;codes&#39; instead
+  return pd.MultiIndex(levels=new_levels, labels=labels, names=columns.names)
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:751: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
+  labels, = index.labels
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:707: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
+  labels = getattr(columns, &#39;labels&#39;, None) or [
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:734: FutureWarning: the &#39;labels&#39; keyword is deprecated, use &#39;codes&#39; instead
+  return pd.MultiIndex(levels=new_levels, labels=labels, names=columns.names)
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:751: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
+  labels, = index.labels
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:707: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
+  labels = getattr(columns, &#39;labels&#39;, None) or [
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:734: FutureWarning: the &#39;labels&#39; keyword is deprecated, use &#39;codes&#39; instead
+  return pd.MultiIndex(levels=new_levels, labels=labels, names=columns.names)
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:751: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
+  labels, = index.labels
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.47 s, sys: 208 ms, total: 1.68 s
-Wall time: 1.15 s
+CPU times: user 1.65 s, sys: 220 ms, total: 1.87 s
+Wall time: 1.3 s
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:707: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
+  labels = getattr(columns, &#39;labels&#39;, None) or [
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:734: FutureWarning: the &#39;labels&#39; keyword is deprecated, use &#39;codes&#39; instead
+  return pd.MultiIndex(levels=new_levels, labels=labels, names=columns.names)
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:751: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
+  labels, = index.labels
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>name
-Alice      -0.000824
-Bob         0.002829
-Charlie     0.002991
-Dan        -0.000555
-Edith      -0.002074
-Frank      -0.001394
-George     -0.000501
-Hannah     -0.000727
-Ingrid     -0.002006
-Jerry      -0.001193
-Kevin      -0.000590
-Laura      -0.000761
-Michael     0.001220
-Norbert    -0.000153
-Oliver      0.002355
-Patricia   -0.001196
-Quinn      -0.001985
-Ray        -0.000461
-Sarah       0.000012
-Tim         0.001353
-Ursula      0.003912
-Victor     -0.001516
-Wendy       0.003660
-Xavier     -0.001425
-Yvonne     -0.004744
-Zelda      -0.005541
+Alice      -0.002671
+Bob         0.000183
+Charlie     0.000507
+Dan         0.002850
+Edith      -0.002042
+Frank      -0.001119
+George     -0.000402
+Hannah      0.000090
+Ingrid      0.000559
+Jerry      -0.000028
+Kevin       0.000744
+Laura      -0.000500
+Michael     0.001023
+Norbert    -0.001141
+Oliver      0.000494
+Patricia   -0.001107
+Quinn      -0.001311
+Ray        -0.000212
+Sarah      -0.001717
+Tim         0.000470
+Ursula     -0.000280
+Victor      0.003300
+Wendy      -0.000875
+Xavier      0.000576
+Yvonne     -0.000477
+Zelda      -0.000790
 Name: x, dtype: float64
 </pre></div>
 </div>
@@ -1375,12 +1407,9 @@ Name: x, dtype: float64
 </div>
 <div class="section" id="Select-only-the-columns-that-you-plan-to-use">
 <h2>Select only the columns that you plan to use<a class="headerlink" href="#Select-only-the-columns-that-you-plan-to-use" title="Permalink to this headline">¶</a></h2>
-<p>Parquet is a column-store, which means that it can efficiently pull out
-only a few columns from your dataset. This is good because it helps to
-avoid unnecessary data loading.</p>
+<p>Parquet is a column-store, which means that it can efficiently pull out only a few columns from your dataset. This is good because it helps to avoid unnecessary data loading.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1390,17 +1419,60 @@ avoid unnecessary data loading.</p>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:707: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
+  labels = getattr(columns, &#39;labels&#39;, None) or [
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:734: FutureWarning: the &#39;labels&#39; keyword is deprecated, use &#39;codes&#39; instead
+  return pd.MultiIndex(levels=new_levels, labels=labels, names=columns.names)
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:751: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
+  labels, = index.labels
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:707: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
+  labels = getattr(columns, &#39;labels&#39;, None) or [
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:734: FutureWarning: the &#39;labels&#39; keyword is deprecated, use &#39;codes&#39; instead
+  return pd.MultiIndex(levels=new_levels, labels=labels, names=columns.names)
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:751: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
+  labels, = index.labels
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:707: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
+  labels = getattr(columns, &#39;labels&#39;, None) or [
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:734: FutureWarning: the &#39;labels&#39; keyword is deprecated, use &#39;codes&#39; instead
+  return pd.MultiIndex(levels=new_levels, labels=labels, names=columns.names)
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:751: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
+  labels, = index.labels
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:707: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
+  labels = getattr(columns, &#39;labels&#39;, None) or [
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:734: FutureWarning: the &#39;labels&#39; keyword is deprecated, use &#39;codes&#39; instead
+  return pd.MultiIndex(levels=new_levels, labels=labels, names=columns.names)
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:751: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
+  labels, = index.labels
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.27 s, sys: 188 ms, total: 1.46 s
-Wall time: 1.03 s
+CPU times: user 1.42 s, sys: 236 ms, total: 1.65 s
+Wall time: 1.22 s
 </pre></div></div>
 </div>
-<p>Here the difference is not that large, but with larger datasets this can
-save a great deal of time.</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:707: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
+  labels = getattr(columns, &#39;labels&#39;, None) or [
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:734: FutureWarning: the &#39;labels&#39; keyword is deprecated, use &#39;codes&#39; instead
+  return pd.MultiIndex(levels=new_levels, labels=labels, names=columns.names)
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:751: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
+  labels, = index.labels
+</pre></div></div>
+</div>
+<p>Here the difference is not that large, but with larger datasets this can save a great deal of time.</p>
 </div>
 <div class="section" id="Learn-more">
 <h2>Learn more<a class="headerlink" href="#Learn-more" title="Permalink to this headline">¶</a></h2>
@@ -1453,7 +1525,9 @@ save a great deal of time.</p>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
 
   

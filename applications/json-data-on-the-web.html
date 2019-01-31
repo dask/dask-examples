@@ -280,18 +280,18 @@ div.nblast {
 
 /* input prompt */
 div.nbinput div.prompt pre {
-    color: #303F9F;
+    color: #307FC1;
 }
 
 /* output prompt */
 div.nboutput div.prompt pre {
-    color: #D84315;
+    color: #BF5B3D;
 }
 
 /* all prompts */
 div.nbinput div.prompt,
 div.nboutput div.prompt {
-    min-width: 9ex;
+    min-width: 7ex;
     padding-top: 0.4em;
     padding-right: 0.4em;
     text-align: right;
@@ -331,9 +331,9 @@ div.nboutput div.output_area {
 
 /* input area */
 div.nbinput div.input_area {
-    border: 1px solid #cfcfcf;
+    border: 1px solid #e0e0e0;
     border-radius: 2px;
-    background: #f7f7f7;
+    background: #f5f5f5;
 }
 
 /* override MathJax center alignment in output cells */
@@ -341,7 +341,7 @@ div.nboutput div[class*=MathJax] {
     text-align: left !important;
 }
 
-/* override sphinx.ext.pngmath center alignment in output cells */
+/* override sphinx.ext.imgmath center alignment in output cells */
 div.nboutput div.math p {
     text-align: left;
 }
@@ -390,26 +390,51 @@ div.nboutput div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/applications/json-data-on-the-web.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/applications/json-data-on-the-web.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/applications/json-data-on-the-web.ipynb">on Github</a>.</p>
 <div class="section" id="Analyze-web-hosted-JSON-data">
 <h1>Analyze web-hosted JSON data<a class="headerlink" href="#Analyze-web-hosted-JSON-data" title="Permalink to this headline">¶</a></h1>
-<p>This notebook reads and processes JSON-encoded data hosted on the web
-using a combination of <a class="reference external" href="https://docs.dask.org/en/latest/bag.html">Dask
-Bag</a> and <a class="reference external" href="https://docs.dask.org/en/latest/dataframe.html">Dask
-Dataframe</a>.</p>
-<p>This data comes from <a class="reference external" href="https://mybinder.org">mybinder.org</a> a web
-service to run Jupyter notebooks live on the web (you may be running
-this notebook there now). My Binder publishes records for every time
-someone launches a live notebook like this one, and stores that record
-in a publicly accessible JSON file, one file per day.</p>
+<p>This notebook reads and processes JSON-encoded data hosted on the web using a combination of <a class="reference external" href="https://docs.dask.org/en/latest/bag.html">Dask Bag</a> and <a class="reference external" href="https://docs.dask.org/en/latest/dataframe.html">Dask Dataframe</a>.</p>
+<p>This data comes from <a class="reference external" href="https://mybinder.org">mybinder.org</a> a web service to run Jupyter notebooks live on the web (you may be running this notebook there now). My Binder publishes records for every time someone launches a live notebook like this one, and stores that record in a publicly accessible JSON file, one file per day.</p>
 <div class="section" id="Introduction-to-the-dataset">
 <h2>Introduction to the dataset<a class="headerlink" href="#Introduction-to-the-dataset" title="Permalink to this headline">¶</a></h2>
-<p>This data is stored as JSON-encoded text files on the public web. Here
-are some example lines.</p>
+<p>This data is stored as JSON-encoded text files on the public web. Here are some example lines.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -419,8 +444,7 @@ are some example lines.</p>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -430,20 +454,14 @@ are some example lines.</p>
 </pre></div>
 </div>
 </div>
-<p>We see that it includes one line for every time someone started a live
-notebook on the site. It includes the time that the notebook was
-started, as well as the repository from which it was served.</p>
-<p>In this notebook we’ll look at many such files, parse them from JSON to
-Python dictionaries, and then from there to Pandas dataframes. We’ll
-then do some simple analyses on this data.</p>
+<p>We see that it includes one line for every time someone started a live notebook on the site. It includes the time that the notebook was started, as well as the repository from which it was served.</p>
+<p>In this notebook we’ll look at many such files, parse them from JSON to Python dictionaries, and then from there to Pandas dataframes. We’ll then do some simple analyses on this data.</p>
 </div>
 <div class="section" id="Start-Dask-Client-for-Dashboard">
 <h2>Start Dask Client for Dashboard<a class="headerlink" href="#Start-Dask-Client-for-Dashboard" title="Permalink to this headline">¶</a></h2>
-<p>Starting the Dask Client is optional. It will start the dashboard which
-is useful to gain insight on the computation.</p>
+<p>Starting the Dask Client is optional. It will start the dashboard which is useful to gain insight on the computation.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -456,17 +474,16 @@ is useful to gain insight on the computation.</p>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="output_area docutils container">
+<div class="output_area rendered_html docutils container">
 <table style="border: 2px solid white;">
 <tr>
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:39712
+  <li><b>Scheduler: </b>tcp://127.0.0.1:44831
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -484,12 +501,9 @@ is useful to gain insight on the computation.</p>
 </div>
 <div class="section" id="Get-a-list-of-files-on-the-web">
 <h2>Get a list of files on the web<a class="headerlink" href="#Get-a-list-of-files-on-the-web" title="Permalink to this headline">¶</a></h2>
-<p>The mybinder.org team maintains an index file that points to all other
-available JSON files of data. Lets convert this to a list of URLs that
-we’ll read in the next section.</p>
+<p>The mybinder.org team maintains an index file that points to all other available JSON files of data. Lets convert this to a list of URLs that we’ll read in the next section.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -499,8 +513,7 @@ we’ll read in the next section.</p>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -509,8 +522,7 @@ we’ll read in the next section.</p>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -553,13 +565,62 @@ we’ll read in the next section.</p>
  {&#39;name&#39;: &#39;events-2018-12-09.jsonl&#39;, &#39;date&#39;: &#39;2018-12-09&#39;, &#39;count&#39;: &#39;6639&#39;},
  {&#39;name&#39;: &#39;events-2018-12-10.jsonl&#39;, &#39;date&#39;: &#39;2018-12-10&#39;, &#39;count&#39;: &#39;12782&#39;},
  {&#39;name&#39;: &#39;events-2018-12-11.jsonl&#39;, &#39;date&#39;: &#39;2018-12-11&#39;, &#39;count&#39;: &#39;13442&#39;},
- {&#39;name&#39;: &#39;events-2018-12-12.jsonl&#39;, &#39;date&#39;: &#39;2018-12-12&#39;, &#39;count&#39;: &#39;7875&#39;}]
+ {&#39;name&#39;: &#39;events-2018-12-12.jsonl&#39;, &#39;date&#39;: &#39;2018-12-12&#39;, &#39;count&#39;: &#39;13069&#39;},
+ {&#39;name&#39;: &#39;events-2018-12-13.jsonl&#39;, &#39;date&#39;: &#39;2018-12-13&#39;, &#39;count&#39;: &#39;15279&#39;},
+ {&#39;name&#39;: &#39;events-2018-12-14.jsonl&#39;, &#39;date&#39;: &#39;2018-12-14&#39;, &#39;count&#39;: &#39;9941&#39;},
+ {&#39;name&#39;: &#39;events-2018-12-15.jsonl&#39;, &#39;date&#39;: &#39;2018-12-15&#39;, &#39;count&#39;: &#39;5358&#39;},
+ {&#39;name&#39;: &#39;events-2018-12-16.jsonl&#39;, &#39;date&#39;: &#39;2018-12-16&#39;, &#39;count&#39;: &#39;6441&#39;},
+ {&#39;name&#39;: &#39;events-2018-12-17.jsonl&#39;, &#39;date&#39;: &#39;2018-12-17&#39;, &#39;count&#39;: &#39;11332&#39;},
+ {&#39;name&#39;: &#39;events-2018-12-18.jsonl&#39;, &#39;date&#39;: &#39;2018-12-18&#39;, &#39;count&#39;: &#39;11971&#39;},
+ {&#39;name&#39;: &#39;events-2018-12-19.jsonl&#39;, &#39;date&#39;: &#39;2018-12-19&#39;, &#39;count&#39;: &#39;10818&#39;},
+ {&#39;name&#39;: &#39;events-2018-12-20.jsonl&#39;, &#39;date&#39;: &#39;2018-12-20&#39;, &#39;count&#39;: &#39;9408&#39;},
+ {&#39;name&#39;: &#39;events-2018-12-21.jsonl&#39;, &#39;date&#39;: &#39;2018-12-21&#39;, &#39;count&#39;: &#39;7741&#39;},
+ {&#39;name&#39;: &#39;events-2018-12-22.jsonl&#39;, &#39;date&#39;: &#39;2018-12-22&#39;, &#39;count&#39;: &#39;4818&#39;},
+ {&#39;name&#39;: &#39;events-2018-12-23.jsonl&#39;, &#39;date&#39;: &#39;2018-12-23&#39;, &#39;count&#39;: &#39;4870&#39;},
+ {&#39;name&#39;: &#39;events-2018-12-24.jsonl&#39;, &#39;date&#39;: &#39;2018-12-24&#39;, &#39;count&#39;: &#39;5974&#39;},
+ {&#39;name&#39;: &#39;events-2018-12-25.jsonl&#39;, &#39;date&#39;: &#39;2018-12-25&#39;, &#39;count&#39;: &#39;4737&#39;},
+ {&#39;name&#39;: &#39;events-2018-12-26.jsonl&#39;, &#39;date&#39;: &#39;2018-12-26&#39;, &#39;count&#39;: &#39;6725&#39;},
+ {&#39;name&#39;: &#39;events-2018-12-27.jsonl&#39;, &#39;date&#39;: &#39;2018-12-27&#39;, &#39;count&#39;: &#39;7998&#39;},
+ {&#39;name&#39;: &#39;events-2018-12-28.jsonl&#39;, &#39;date&#39;: &#39;2018-12-28&#39;, &#39;count&#39;: &#39;8155&#39;},
+ {&#39;name&#39;: &#39;events-2018-12-29.jsonl&#39;, &#39;date&#39;: &#39;2018-12-29&#39;, &#39;count&#39;: &#39;5108&#39;},
+ {&#39;name&#39;: &#39;events-2018-12-30.jsonl&#39;, &#39;date&#39;: &#39;2018-12-30&#39;, &#39;count&#39;: &#39;4428&#39;},
+ {&#39;name&#39;: &#39;events-2018-12-31.jsonl&#39;, &#39;date&#39;: &#39;2018-12-31&#39;, &#39;count&#39;: &#39;4561&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-01.jsonl&#39;, &#39;date&#39;: &#39;2019-01-01&#39;, &#39;count&#39;: &#39;4194&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-02.jsonl&#39;, &#39;date&#39;: &#39;2019-01-02&#39;, &#39;count&#39;: &#39;8559&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-03.jsonl&#39;, &#39;date&#39;: &#39;2019-01-03&#39;, &#39;count&#39;: &#39;9687&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-04.jsonl&#39;, &#39;date&#39;: &#39;2019-01-04&#39;, &#39;count&#39;: &#39;10048&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-05.jsonl&#39;, &#39;date&#39;: &#39;2019-01-05&#39;, &#39;count&#39;: &#39;6012&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-06.jsonl&#39;, &#39;date&#39;: &#39;2019-01-06&#39;, &#39;count&#39;: &#39;6019&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-07.jsonl&#39;, &#39;date&#39;: &#39;2019-01-07&#39;, &#39;count&#39;: &#39;11903&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-08.jsonl&#39;, &#39;date&#39;: &#39;2019-01-08&#39;, &#39;count&#39;: &#39;12777&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-09.jsonl&#39;, &#39;date&#39;: &#39;2019-01-09&#39;, &#39;count&#39;: &#39;13294&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-10.jsonl&#39;, &#39;date&#39;: &#39;2019-01-10&#39;, &#39;count&#39;: &#39;13112&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-11.jsonl&#39;, &#39;date&#39;: &#39;2019-01-11&#39;, &#39;count&#39;: &#39;10327&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-12.jsonl&#39;, &#39;date&#39;: &#39;2019-01-12&#39;, &#39;count&#39;: &#39;6434&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-13.jsonl&#39;, &#39;date&#39;: &#39;2019-01-13&#39;, &#39;count&#39;: &#39;7004&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-14.jsonl&#39;, &#39;date&#39;: &#39;2019-01-14&#39;, &#39;count&#39;: &#39;12898&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-15.jsonl&#39;, &#39;date&#39;: &#39;2019-01-15&#39;, &#39;count&#39;: &#39;12363&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-16.jsonl&#39;, &#39;date&#39;: &#39;2019-01-16&#39;, &#39;count&#39;: &#39;13444&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-17.jsonl&#39;, &#39;date&#39;: &#39;2019-01-17&#39;, &#39;count&#39;: &#39;14452&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-18.jsonl&#39;, &#39;date&#39;: &#39;2019-01-18&#39;, &#39;count&#39;: &#39;12056&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-19.jsonl&#39;, &#39;date&#39;: &#39;2019-01-19&#39;, &#39;count&#39;: &#39;7590&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-20.jsonl&#39;, &#39;date&#39;: &#39;2019-01-20&#39;, &#39;count&#39;: &#39;6740&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-21.jsonl&#39;, &#39;date&#39;: &#39;2019-01-21&#39;, &#39;count&#39;: &#39;12507&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-22.jsonl&#39;, &#39;date&#39;: &#39;2019-01-22&#39;, &#39;count&#39;: &#39;15355&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-23.jsonl&#39;, &#39;date&#39;: &#39;2019-01-23&#39;, &#39;count&#39;: &#39;16319&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-24.jsonl&#39;, &#39;date&#39;: &#39;2019-01-24&#39;, &#39;count&#39;: &#39;16732&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-25.jsonl&#39;, &#39;date&#39;: &#39;2019-01-25&#39;, &#39;count&#39;: &#39;13642&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-26.jsonl&#39;, &#39;date&#39;: &#39;2019-01-26&#39;, &#39;count&#39;: &#39;6976&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-27.jsonl&#39;, &#39;date&#39;: &#39;2019-01-27&#39;, &#39;count&#39;: &#39;7570&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-28.jsonl&#39;, &#39;date&#39;: &#39;2019-01-28&#39;, &#39;count&#39;: &#39;15906&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-29.jsonl&#39;, &#39;date&#39;: &#39;2019-01-29&#39;, &#39;count&#39;: &#39;15534&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-30.jsonl&#39;, &#39;date&#39;: &#39;2019-01-30&#39;, &#39;count&#39;: &#39;15183&#39;},
+ {&#39;name&#39;: &#39;events-2019-01-31.jsonl&#39;, &#39;date&#39;: &#39;2019-01-31&#39;, &#39;count&#39;: &#39;10620&#39;}]
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -574,8 +635,7 @@ we’ll read in the next section.</p>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -590,13 +650,9 @@ we’ll read in the next section.</p>
 </div>
 <div class="section" id="Create-Bag-of-all-events">
 <h2>Create Bag of all events<a class="headerlink" href="#Create-Bag-of-all-events" title="Permalink to this headline">¶</a></h2>
-<p>We now create a <a class="reference external" href="https://docs.dask.org/en/latest/bag.html">Dask Bag</a>
-around that list of URLs, and then call the <code class="docutils literal notranslate"><span class="pre">json.loads</span></code> function on
-every line to turn those lines of JSON-encoded text into Python
-dictionaries that can be more easily manipulated.</p>
+<p>We now create a <a class="reference external" href="https://docs.dask.org/en/latest/bag.html">Dask Bag</a> around that list of URLs, and then call the <code class="docutils literal notranslate"><span class="pre">json.loads</span></code> function on every line to turn those lines of JSON-encoded text into Python dictionaries that can be more easily manipulated.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -606,8 +662,7 @@ dictionaries that can be more easily manipulated.</p>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -629,11 +684,9 @@ dictionaries that can be more easily manipulated.</p>
 </div>
 <div class="section" id="Most-Popular-Binders">
 <h2>Most Popular Binders<a class="headerlink" href="#Most-Popular-Binders" title="Permalink to this headline">¶</a></h2>
-<p>Lets do a simple frequency count to find those binders that are run the
-most often.</p>
+<p>Lets do a simple frequency count to find those binders that are run the most often.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -642,44 +695,40 @@ most often.</p>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>((&#39;ipython/ipython-in-depth/master&#39;, 220718),
- (&#39;jupyterlab/jupyterlab-demo/master&#39;, 56210),
- (&#39;ines/spacy-io-binder/live&#39;, 19704),
- (&#39;bokeh/bokeh-notebooks/master&#39;, 11225),
- (&#39;binder-examples/r/master&#39;, 10361),
- (&#39;DS-100/textbook/master&#39;, 7398),
- (&#39;rationalmatter/juno-demo-notebooks/master&#39;, 6678),
- (&#39;QuantStack/xeus-cling/stable&#39;, 5901),
- (&#39;RasaHQ/rasa_core/master&#39;, 4280),
- (&#39;QISKit/qiskit-tutorial/master&#39;, 3518),
- (&#39;binder-examples/julia-python/master&#39;, 3431),
- (&#39;numba/numba-examples/master&#39;, 3192),
- (&#39;nteract/examples/master&#39;, 2126),
- (&#39;dask/dask-examples/master&#39;, 2036),
- (&#39;mkozturk/CMPE140/master&#39;, 2022),
- (&#39;quasiben/fiftyfizzbuzzes/master&#39;, 1794),
- (&#39;data-8/textbook/gh-pages&#39;, 1754),
- (&#39;wshuyi/demo-spacy-text-processing/master&#39;, 1546),
- (&#39;annierak/desert_open_space_geometry/master&#39;, 1466),
- (&#39;SoftmatterLMU-RaedlerGroup/notebooks_e3_ws1819/master&#39;, 1387))
+<span></span>((&#39;ipython/ipython-in-depth/master&#39;, 450634),
+ (&#39;jupyterlab/jupyterlab-demo/master&#39;, 116796),
+ (&#39;ines/spacy-io-binder/live&#39;, 41072),
+ (&#39;bokeh/bokeh-notebooks/master&#39;, 22481),
+ (&#39;binder-examples/r/master&#39;, 19823),
+ (&#39;DS-100/textbook/master&#39;, 19449),
+ (&#39;rationalmatter/juno-demo-notebooks/master&#39;, 14107),
+ (&#39;QuantStack/xeus-cling/stable&#39;, 12775),
+ (&#39;RasaHQ/rasa_core/master&#39;, 10174),
+ (&#39;QISKit/qiskit-tutorial/master&#39;, 9950),
+ (&#39;numba/numba-examples/master&#39;, 7000),
+ (&#39;binder-examples/julia-python/master&#39;, 6849),
+ (&#39;minrk/ligo-binder/master&#39;, 5285),
+ (&#39;nteract/examples/master&#39;, 4615),
+ (&#39;annierak/desert_open_space_geometry/master&#39;, 4315),
+ (&#39;data-8/textbook/gh-pages&#39;, 3922),
+ (&#39;dask/dask-examples/master&#39;, 3554),
+ (&#39;trekhleb/homemade-machine-learning/master&#39;, 3197),
+ (&#39;mkozturk/CMPE140/master&#39;, 3159),
+ (&#39;binder-examples/requirements/master&#39;, 3138))
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="Convert-to-Dask-Dataframe">
 <h2>Convert to Dask Dataframe<a class="headerlink" href="#Convert-to-Dask-Dataframe" title="Permalink to this headline">¶</a></h2>
-<p>Finally, we can convert our bag of Python dictionaries into a <a class="reference external" href="https://docs.dask.org/en/latest/dataframe.html">Dask
-Dataframe</a>, and
-follow up with more Pandas-like computations.</p>
+<p>Finally, we can convert our bag of Python dictionaries into a <a class="reference external" href="https://docs.dask.org/en/latest/dataframe.html">Dask Dataframe</a>, and follow up with more Pandas-like computations.</p>
 <p>We’ll do the same computation as above, now with Pandas syntax.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -689,11 +738,10 @@ follow up with more Pandas-like computations.</p>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="output_area docutils container">
+<div class="output_area rendered_html docutils container">
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -771,8 +819,7 @@ follow up with more Pandas-like computations.</p>
 </div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -781,11 +828,10 @@ follow up with more Pandas-like computations.</p>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="output_area docutils container">
+<div class="output_area rendered_html docutils container">
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -810,83 +856,83 @@ follow up with more Pandas-like computations.</p>
   <tbody>
     <tr>
       <th>ipython/ipython-in-depth/master</th>
-      <td>220718</td>
+      <td>450634</td>
     </tr>
     <tr>
       <th>jupyterlab/jupyterlab-demo/master</th>
-      <td>56210</td>
+      <td>116796</td>
     </tr>
     <tr>
       <th>ines/spacy-io-binder/live</th>
-      <td>19704</td>
+      <td>41072</td>
     </tr>
     <tr>
       <th>bokeh/bokeh-notebooks/master</th>
-      <td>11225</td>
+      <td>22481</td>
     </tr>
     <tr>
       <th>binder-examples/r/master</th>
-      <td>10361</td>
+      <td>19823</td>
     </tr>
     <tr>
       <th>DS-100/textbook/master</th>
-      <td>7398</td>
+      <td>19449</td>
     </tr>
     <tr>
       <th>rationalmatter/juno-demo-notebooks/master</th>
-      <td>6678</td>
+      <td>14107</td>
     </tr>
     <tr>
       <th>QuantStack/xeus-cling/stable</th>
-      <td>5901</td>
+      <td>12775</td>
     </tr>
     <tr>
       <th>RasaHQ/rasa_core/master</th>
-      <td>4280</td>
+      <td>10174</td>
     </tr>
     <tr>
       <th>QISKit/qiskit-tutorial/master</th>
-      <td>3518</td>
-    </tr>
-    <tr>
-      <th>binder-examples/julia-python/master</th>
-      <td>3431</td>
+      <td>9950</td>
     </tr>
     <tr>
       <th>numba/numba-examples/master</th>
-      <td>3192</td>
+      <td>7000</td>
+    </tr>
+    <tr>
+      <th>binder-examples/julia-python/master</th>
+      <td>6849</td>
+    </tr>
+    <tr>
+      <th>minrk/ligo-binder/master</th>
+      <td>5285</td>
     </tr>
     <tr>
       <th>nteract/examples/master</th>
-      <td>2126</td>
-    </tr>
-    <tr>
-      <th>dask/dask-examples/master</th>
-      <td>2036</td>
-    </tr>
-    <tr>
-      <th>mkozturk/CMPE140/master</th>
-      <td>2022</td>
-    </tr>
-    <tr>
-      <th>quasiben/fiftyfizzbuzzes/master</th>
-      <td>1794</td>
-    </tr>
-    <tr>
-      <th>data-8/textbook/gh-pages</th>
-      <td>1754</td>
-    </tr>
-    <tr>
-      <th>wshuyi/demo-spacy-text-processing/master</th>
-      <td>1546</td>
+      <td>4615</td>
     </tr>
     <tr>
       <th>annierak/desert_open_space_geometry/master</th>
-      <td>1466</td>
+      <td>4315</td>
     </tr>
     <tr>
-      <th>SoftmatterLMU-RaedlerGroup/notebooks_e3_ws1819/master</th>
-      <td>1387</td>
+      <th>data-8/textbook/gh-pages</th>
+      <td>3922</td>
+    </tr>
+    <tr>
+      <th>dask/dask-examples/master</th>
+      <td>3554</td>
+    </tr>
+    <tr>
+      <th>trekhleb/homemade-machine-learning/master</th>
+      <td>3197</td>
+    </tr>
+    <tr>
+      <th>mkozturk/CMPE140/master</th>
+      <td>3159</td>
+    </tr>
+    <tr>
+      <th>binder-examples/requirements/master</th>
+      <td>3138</td>
     </tr>
   </tbody>
 </table>
@@ -895,11 +941,9 @@ follow up with more Pandas-like computations.</p>
 </div>
 <div class="section" id="Persist-in-memory">
 <h2>Persist in memory<a class="headerlink" href="#Persist-in-memory" title="Permalink to this headline">¶</a></h2>
-<p>This dataset fits nicely into memory. Lets avoid downloading data every
-time we do an operation and instead keep the data local in memory.</p>
+<p>This dataset fits nicely into memory. Lets avoid downloading data every time we do an operation and instead keep the data local in memory.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -907,16 +951,13 @@ time we do an operation and instead keep the data local in memory.</p>
 </pre></div>
 </div>
 </div>
-<p>Honestly, at this point it makes more sense to just switch to Pandas,
-but this is a Dask example, so we’ll continue with Dask dataframe.</p>
+<p>Honestly, at this point it makes more sense to just switch to Pandas, but this is a Dask example, so we’ll continue with Dask dataframe.</p>
 </div>
 <div class="section" id="Investigate-providers-other-than-Github">
 <h2>Investigate providers other than Github<a class="headerlink" href="#Investigate-providers-other-than-Github" title="Permalink to this headline">¶</a></h2>
-<p>Most binders are specified as git repositories on GitHub, but not all.
-Lets investigate other providers.</p>
+<p>Most binders are specified as git repositories on GitHub, but not all. Lets investigate other providers.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -925,8 +966,7 @@ Lets investigate other providers.</p>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -935,21 +975,19 @@ Lets investigate other providers.</p>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>GitHub    448489
-GitLab      1569
-Git          504
+<span></span>GitHub    941846
+GitLab      4115
+Git          715
 Name: provider, dtype: int64
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -963,11 +1001,10 @@ Name: provider, dtype: int64
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="output_area docutils container">
+<div class="output_area rendered_html docutils container">
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -991,40 +1028,68 @@ Name: provider, dtype: int64
   </thead>
   <tbody>
     <tr>
-      <th>dbernhard/PythonM1/master</th>
-      <td>320</td>
-    </tr>
-    <tr>
       <th>rruizz/inforfis/master</th>
-      <td>179</td>
-    </tr>
-    <tr>
-      <th>dbernhard/JavaM2/master</th>
-      <td>160</td>
+      <td>739</td>
     </tr>
     <tr>
       <th>rruizz/inforfis/R</th>
-      <td>148</td>
+      <td>465</td>
+    </tr>
+    <tr>
+      <th>bhugueney/cxx-init-for-python-dev/master</th>
+      <td>458</td>
+    </tr>
+    <tr>
+      <th>dbernhard/PythonM1/master</th>
+      <td>378</td>
+    </tr>
+    <tr>
+      <th>shadaba/lss-handson/master</th>
+      <td>244</td>
+    </tr>
+    <tr>
+      <th>dbernhard/JavaM2/master</th>
+      <td>233</td>
+    </tr>
+    <tr>
+      <th>albert.van.breemen/masterclassdeeplearning/master</th>
+      <td>161</td>
     </tr>
     <tr>
       <th>clemej/data601-clemens-fall18/master</th>
-      <td>89</td>
+      <td>130</td>
+    </tr>
+    <tr>
+      <th>DGothrek/ipyaggrid/binder-demo</th>
+      <td>121</td>
+    </tr>
+    <tr>
+      <th>dbernhard/ProgHumaNumTAL/master</th>
+      <td>100</td>
     </tr>
     <tr>
       <th>wichit2s/programmingfundamentals/master</th>
-      <td>68</td>
+      <td>100</td>
     </tr>
     <tr>
       <th>andrey.kovalev/imagination/master</th>
-      <td>68</td>
+      <td>69</td>
+    </tr>
+    <tr>
+      <th>dbernhard/pythonm1s2/master</th>
+      <td>59</td>
     </tr>
     <tr>
       <th>PersonalDataIO/toronto-letter/master</th>
-      <td>50</td>
+      <td>54</td>
     </tr>
     <tr>
       <th>wichit2s/pythonintro/master</th>
-      <td>37</td>
+      <td>54</td>
+    </tr>
+    <tr>
+      <th>rruizz/inforfis/autin</th>
+      <td>52</td>
     </tr>
     <tr>
       <th>rokm/informed_action/master</th>
@@ -1036,23 +1101,35 @@ Name: provider, dtype: int64
     </tr>
     <tr>
       <th>amarandon/presentation-jupyter/master</th>
-      <td>32</td>
-    </tr>
-    <tr>
-      <th>DGothrek/ipyaggrid/binder-demo</th>
-      <td>31</td>
-    </tr>
-    <tr>
-      <th>rruizz/inforfis/autin</th>
-      <td>30</td>
-    </tr>
-    <tr>
-      <th>open-scientist/python-express/urfist-strasbourg/cocreation</th>
-      <td>26</td>
+      <td>33</td>
     </tr>
     <tr>
       <th>kitsunix/pyHIBP/pyHIBP-binder/master</th>
-      <td>22</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>slloyd/python-introduction/master</th>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>thoma.rey/FV_HipoDiff/master</th>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>open-scientist/python-express/urfist-strasbourg/cocreation</th>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>codeearth/drawdown/master</th>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>PersonalDataIO/gdpr-rights-notebook/master</th>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>davecg/introduction-to-python/master</th>
+      <td>23</td>
     </tr>
     <tr>
       <th>jibe-b/prof/dev</th>
@@ -1060,94 +1137,22 @@ Name: provider, dtype: int64
     </tr>
     <tr>
       <th>rruizz/inforfis/autin-test</th>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>butzked/pylolaos/master</th>
       <td>14</td>
     </tr>
     <tr>
-      <th>bhugueney/cxx-init-for-python-dev/master</th>
-      <td>12</td>
-    </tr>
-    <tr>
-      <th>jampekka/soundloc18/master</th>
-      <td>12</td>
-    </tr>
-    <tr>
-      <th>tbalem/sml/master</th>
-      <td>12</td>
-    </tr>
-    <tr>
       <th>jumson/sdr-lab-machines/master</th>
-      <td>12</td>
-    </tr>
-    <tr>
-      <th>wichit2s/csububooks/master</th>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>swa_mi/gdtscheme_analysescores/master</th>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>dlab-indecol/tutorial_notebooks/master</th>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>jdhp/pywi-cta-analysis/master</th>
-      <td>9</td>
-    </tr>
-    <tr>
-      <th>davecg/introduction-to-python/master</th>
-      <td>9</td>
-    </tr>
-    <tr>
-      <th>thoma.rey/FV_HipoDiff/master</th>
-      <td>9</td>
-    </tr>
-    <tr>
-      <th>rruizz/inforfis/R-test</th>
-      <td>8</td>
-    </tr>
-    <tr>
-      <th>rruizz/inforfis/test</th>
-      <td>8</td>
+      <td>14</td>
     </tr>
     <tr>
       <th>...</th>
       <td>...</td>
     </tr>
     <tr>
-      <th>jrdurandt/alchemist-journal/master</th>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>PersonalDataIO/notebook-example/master</th>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>eferrante/dlmi-uba/master</th>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>gitlab-org/release/docs/master</th>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>butzked/pylolaos/master</th>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>zergh/stratagem_one/master</th>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>gitlab-org/release/tasks/master</th>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>timkittel/2012-12-6-julia-introduction-at-pik/master</th>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>jibe-b/bac-a-sable/strasbourg-curieux-en-iframe</th>
+      <th>ricarthor/testing_binder/master</th>
       <td>2</td>
     </tr>
     <tr>
@@ -1155,31 +1160,15 @@ Name: provider, dtype: int64
       <td>2</td>
     </tr>
     <tr>
-      <th>ricarthor/testing_binder/master</th>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>lvidarte/learning-python/master</th>
+      <th>damonlh/puma/master</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>PersonalDataIO/facebook-birthday-breach/master</th>
+      <th>Sabanov/cs231n.stanford.edu/master</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>PersonalDataIO/notebook-example/db60921d05c0424b6639f6ac4c95661530a30574</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>thearbiter/public-notebooks/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>ssorcerer/reports/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>rdubwiley/mi_campaign_finance/master</th>
+      <th>RTDS_DEV/RTDS_Summary/master</th>
       <td>1</td>
     </tr>
     <tr>
@@ -1187,39 +1176,39 @@ Name: provider, dtype: int64
       <td>1</td>
     </tr>
     <tr>
+      <th>vaulter82/Prion-stats/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>prokopevav85/geojsontest/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>hassakura/integracao_low_eans/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>PersonalDataIO/notebook-example/db60921d05c0424b6639f6ac4c95661530a30574</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>wallacmj/notebooks/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>PersonalDataIO/facebook-birthday-breach/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>hassakura/teste_exportcsv/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>rdubwiley/mi_campaign_finance/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
       <th>mfleck/test_mybinder_org/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>ktiwari9/gaussian-process/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>gabrielbckr/larva_movement_quantification/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>kerel-fs/jupyter-notebooks/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>daksh7011/metis/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>damonlh/puma/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>jibe-b/sens-de-la-vie-workflow-brouillon-tests-tuto/dev</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>jibe-b/crowdsource-science-improvement/dev</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>hixi/colloqium-presentation/master</th>
       <td>1</td>
     </tr>
     <tr>
@@ -1231,17 +1220,64 @@ Name: provider, dtype: int64
       <td>1</td>
     </tr>
     <tr>
+      <th>daksh7011/metis/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>agrumery/aGrUM/0.13.5</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>lokeller/matrix-bot/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>ktiwari9/gaussian-process/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>jibe-b/crowdsource-science-improvement/dev</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>anarcat/terms-benchmarks/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>kerel-fs/jupyter-notebooks/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>david-chen/test/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>ssorcerer/reports/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>jibe-b/sens-de-la-vie-workflow-brouillon-tests-tuto/dev</th>
+      <td>1</td>
+    </tr>
+    <tr>
       <th>jibe-b/sabre/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>s-boardman/peco/8d95e4fa08541d2521d2a3ecf43414a8aa6b79bc</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>hixi/colloqium-presentation/master</th>
       <td>1</td>
     </tr>
   </tbody>
 </table>
-<p>70 rows × 1 columns</p>
+<p>119 rows × 1 columns</p>
 </div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1255,11 +1291,10 @@ Name: provider, dtype: int64
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="output_area docutils container">
+<div class="output_area rendered_html docutils container">
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1284,39 +1319,51 @@ Name: provider, dtype: int64
   <tbody>
     <tr>
       <th>https://bitbucket.org/gaur/1820/a4027afe0aa592d49f3989b2e9c8136c36322a77</th>
-      <td>68</td>
+      <td>75</td>
     </tr>
     <tr>
       <th>https://gricad-gitlab.univ-grenoble-alpes.fr/nonsmooth/siconos-tutorial.git/b08a0514b22b3927b58bddce3c4018f27ac0fc7d</th>
       <td>52</td>
     </tr>
     <tr>
+      <th>https://collaborating.tuhh.de/cip3725/ib_base.git/0a1f4f66a1a3c29ff347b2abc79bb292b0be17ca</th>
+      <td>51</td>
+    </tr>
+    <tr>
       <th>https://git.rcc.uchicago.edu/jhskone/multiproc_py.git/38f9bb6ce3602b73a8ddd1dbcad3f5f9a8d21f6a</th>
       <td>34</td>
     </tr>
     <tr>
-      <th>https://collaborating.tuhh.de/cip3725/ib_base.git/0a1f4f66a1a3c29ff347b2abc79bb292b0be17ca</th>
-      <td>30</td>
-    </tr>
-    <tr>
-      <th>https://gitlab.oceantrack.org/otndc/fact-workshop/a174f5bc60cf9f0c5b86851204c7c85fcfb98131</th>
-      <td>28</td>
-    </tr>
-    <tr>
-      <th>https://bitbucket.org/qlouder/lumc-ml-caffe/acc2701f43f267361594e72980ec59602dab7fd7</th>
-      <td>26</td>
+      <th>https://risk-engineering.org/git/notebooks.git/527b4fdaa5fe43294ed5de196b96262b1c60522b</th>
+      <td>33</td>
     </tr>
     <tr>
       <th>https://gitlab.mech.kuleuven.be/rob-expressiongraphs/docker/etasl-binder.git/127d6c9f33a938a98607505ef30237b5223000e4</th>
-      <td>23</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>https://gitlab.oceantrack.org/otndc/fact-workshop/a174f5bc60cf9f0c5b86851204c7c85fcfb98131</th>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>https://bitbucket.org/qlouder/lumc-ml-caffe/acc2701f43f267361594e72980ec59602dab7fd7</th>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>https://framagit.org/mfauvel/omp_machine_learning/77d246991186d758147fc280eeef0eed563d525f</th>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>https://risk-engineering.org/git/notebooks.git/eab9bdb1a9bbf59833b26d39b02c5a5e743807c4</th>
+      <td>20</td>
     </tr>
     <tr>
       <th>https://risk-engineering.org/git/notebooks.git/0af42a9c5987be368b6e1fef1ad11816703e0db9</th>
       <td>19</td>
     </tr>
     <tr>
-      <th>https://framagit.org/mfauvel/omp_machine_learning/77d246991186d758147fc280eeef0eed563d525f</th>
-      <td>13</td>
+      <th>https://github.com/camilo912/research_rating/6fe3d52d8dce4cbc548cfd2a19299beafa0eeff2</th>
+      <td>14</td>
     </tr>
     <tr>
       <th>https://boismenux@bitbucket.org/boismenux/ml.git/0f140be32895f01d66392b4081e6589e42395f53</th>
@@ -1339,16 +1386,44 @@ Name: provider, dtype: int64
       <td>9</td>
     </tr>
     <tr>
-      <th>https://bitbucket.org/qlouder/lumc-ml-caffe/282d090e1b04f0df3b155879c68469347e45afff</th>
-      <td>7</td>
+      <th>https://risk-engineering.org/git/notebooks.git/e3148cfc261033f42465d024547935f920bf04ad</th>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>https://collaborating.tuhh.de/xldrkp/jupyter-notebook-beispiel/e895284be3c0a128ed97dc007fcd7497ef19d2bc</th>
+      <td>8</td>
     </tr>
     <tr>
       <th>https://opensource.ncsa.illinois.edu/bitbucket/scm/smm/smm-network-analysis.git/44acd332da1571acb412db803991e5f1dfc7a329</th>
       <td>7</td>
     </tr>
     <tr>
-      <th>https://risk-engineering.org/git/notebooks.git/eab9bdb1a9bbf59833b26d39b02c5a5e743807c4</th>
+      <th>https://risk-engineering.org/git/notebooks.git/6948d6d25e0852620053abcdca93914f749cae56</th>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>https://bitbucket.org/qlouder/lumc-ml-caffe/282d090e1b04f0df3b155879c68469347e45afff</th>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>https://gitlab.physik.uni-muenchen.de/Magnus.Bauer/fak_analysis.git/e0669aff9716e7905b0dca28b6b5967ec6423c69</th>
       <td>6</td>
+    </tr>
+    <tr>
+      <th>https://gitlab.com/uchicago-ime/python-programming-primer/435796a3e2e4956aa311caad51d4bad9925de6b4</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>https://risk-engineering.org/git/notebooks.git/d9e2cefae0f150b23f7fcfb04757033742cba339</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>https://bitbucket.org/sigfox_france/sigfox_france_public_notebooks.git/77ad31d6a7079bd43319ba5a17b3a7c4e4a2d3b0</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>https://framagit.org/mfauvel/omp_machine_learning/bb53322ad48d521bbbd81100e116e4289b56b036</th>
+      <td>5</td>
     </tr>
     <tr>
       <th>https://bitbucket.org/qlouder/lumc-ml-caffe.git/282d090e1b04f0df3b155879c68469347e45afff</th>
@@ -1359,63 +1434,15 @@ Name: provider, dtype: int64
       <td>5</td>
     </tr>
     <tr>
-      <th>https://framagit.org/mfauvel/omp_machine_learning/bb53322ad48d521bbbd81100e116e4289b56b036</th>
+      <th>https://git.rwth-aachen.de/rohlfing/gdet3-demos/0a7a375fb148bcdd963ba4e8beea36268a2022be</th>
       <td>5</td>
-    </tr>
-    <tr>
-      <th>https://github.com/camilo912/research_rating/6fe3d52d8dce4cbc548cfd2a19299beafa0eeff2</th>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>https://risk-engineering.org/git/notebooks.git/d9e2cefae0f150b23f7fcfb04757033742cba339</th>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>https://bitbucket.org/qlouder/lumc-ml-caffe/401ed427028043488a599dc7d11093c8aa73eb6b</th>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>https://gitlab.fhnw.ch/michael.graber/fhnw_ml.git/e09f41f82c0179b596c9cd8a048f23915af9ebf8</th>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>http://code.datamode.com/datamode/binder.git/a5e84398ad7171ec79ab1d410e78f0ba8d1e2d34</th>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>https://github.com/HAMID-ALI/Python3_programs/6b1af958ac574f9be5d43504e161a57c351425ea</th>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>https://gaur@bitbucket.org/gaur/1820.git/b455e5db47da15dc468083d830a08b7e460abbcd</th>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>https://risk-engineering.org/git/notebooks.git/c8502540d59987f7f892819963fdb1971ea3a97d</th>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>https://:@gitlab.cern.ch:8443/nethemis/beuaty_stuff.git/5700d921cd5df0d5f8973600324579a1d2c5ba04</th>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>https://c4science.ch/source/mindlin.git/a72093f775ac56918ef14c83333aacb9d8195027</th>
-      <td>4</td>
     </tr>
     <tr>
       <th>...</th>
       <td>...</td>
     </tr>
     <tr>
-      <th>https://risk-engineering.org/git/notebooks.git/c936b39650349fbd9b8ca1189aecfe1121f05e81</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>https://risk-engineering.org/git/notebooks.git/c8ab952a75bdc2e2930270b076e758adae039aac</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>https://risk-engineering.org/git/notebooks.git/4b2eaf78fa0a87ed10e3ef570144b9d91950281b</th>
+      <th>https://randburns@bitbucket.org/randburns/gigantum_baltimore-sun-bridge-data.git/457473d07fb435476e4b3d23a898b5b10b34abfa</th>
       <td>1</td>
     </tr>
     <tr>
@@ -1423,27 +1450,15 @@ Name: provider, dtype: int64
       <td>1</td>
     </tr>
     <tr>
-      <th>https://opensource.ncsa.illinois.edu/bitbucket/scm/smm/smm-network-analysis.git/fdc417158238cfabed8ddec6e9a1de36eb2e469f</th>
+      <th>https://risk-engineering.org/git/notebooks.git/4b2eaf78fa0a87ed10e3ef570144b9d91950281b</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://gricad-gitlab.univ-grenoble-alpes.fr/nonsmooth/siconos-tutorials.git/b7ce70e869084ff0c2f93c1be34a9dda8a513c44</th>
+      <th>https://risk-engineering.org/git/notebooks.git/c8ab952a75bdc2e2930270b076e758adae039aac</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://gricad-gitlab.univ-grenoble-alpes.fr/bettegap/first_jupyter.git/064491298933cce8a41f3fb7d34fbfce195c84f6</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>https://gitlab.socsci.ru.nl/nips1819/Neural-Information-Processing-Systems-Assignments/adbec4f9aacdcb4a298dbacc38fd5a97ea65f06d</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>https://gitlab.oceantrack.org/otndc/fact-workshop/c631ee43a05abd62569262f1e599a1e5ee7ec95d</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>https://gitlab.oceantrack.org/otndc/fact-workshop/c3853384f803253544d9b7333cc01d4d7bfa72a6</th>
+      <th>https://risk-engineering.org/git/notebooks.git/c936b39650349fbd9b8ca1189aecfe1121f05e81</th>
       <td>1</td>
     </tr>
     <tr>
@@ -1451,59 +1466,7 @@ Name: provider, dtype: int64
       <td>1</td>
     </tr>
     <tr>
-      <th>https://gitlab.oceantrack.org/otndc/fact-workshop/43f79d279af700880ca372d42b94d191e53a0a87</th>
-      <td>1</td>
-    </tr>
-    <tr>
       <th>https://gitlab.mech.kuleuven.be/rob-expressiongraphs/docker/etasl-binder.git/63596595694d466c4fb4a2c544042291f0a05a94</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>https://gitlab.inria.fr/vdrevell/istic-robm/e345fd81cb6f70ba1fa4646ee80c0a619dd4feac</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>https://gitlab.inria.fr/vdrevell/istic-robm/b45ab9de12dbf06c92d3dd5dd7b884e75dad2c35</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>https://gitlab.inria.fr/vdrevell/istic-robm/4b79f44a45ffbd2a52c12585d119901edd7c9b29</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>https://gitlab.inria.fr/vdrevell/istic-robm/23b80d226348758b877263952f520d8264016d77</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>https://gitlab.in2p3.fr/gregoire.henning/tiipp-invprob-2018/d874f3b9dcfa20c04266ad852246cd43178d0f42</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>https://gitlab.gwdg.de/publications/NanoMAX18_JSR.git/48cbcc2390cf0fb8e85e8c8890ce693c6681d9fe</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>https://gitlab.flux.utah.edu/emulab/osdi18-analysis/cc10c099b2cdf46f473a30340433d42b04dac39c</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>https://gitlab.com/ricarthor/testing_binder.git/ac37cd61fe29d17301a6380cea61b95de60cdea9</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>https://gitlab.com/jhskone/multiproc_py.git/54224bf1159ac6d5c3b5b9268deea5c1890581b8</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>https://github.uconn.edu/rcc02007/ME3263_Lab-0.git/f25072f2e708c231ea05040cab6aae2699a7be6f</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>https://github.molgen.mpg.de/ledwards/FLASHcalculator/9da41d5d86cd75d9f96ac779b2b64e3e79932d9f</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>https://github.com/ostapkharysh/Data_visualisation/42c00131e615ae8444d3ccf680fa24e81050f275</th>
       <td>1</td>
     </tr>
     <tr>
@@ -1511,15 +1474,87 @@ Name: provider, dtype: int64
       <td>1</td>
     </tr>
     <tr>
-      <th>https://git.rwth-aachen.de/rohlfing/gdet3-demos/9ecb214cb8ee5898dc3d73f11b2006a82199e665</th>
+      <th>https://gitlab.com/ricarthor/testing_binder.git/ac37cd61fe29d17301a6380cea61b95de60cdea9</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://git.rwth-aachen.de/rohlfing/gdet3-demos/18361041135e7bce58af5d9410bc9f97197cf011</th>
+      <th>https://gitee.com/roadlabs/hacking-mpython.git/ff937b165003bcb6eb47ce2fa2ae2ad4a9cf0279</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://git.rwth-aachen.de/rohlfing/gdet3-demos/0b317acd0bab8708c405d6e52db448c3976a5efb</th>
+      <th>https://github.com/MelodyC117/Trial.git/08c1720f667110b719daf6f5b654ddd7f3d46076</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>https://github.com/MelodyC117/Trial.git/acdea1996ff3dc3ea7730256e5fbdc1a0b242289</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>https://github.com/MelodyC117/Trial.git/eb8ac5ddc2a4707b707277ac150973bd894f5d67</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>https://github.com/MelodyC117/Trial.git/fd7119c7c2d6f3ed322d7326a3921f337b55a91c</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>https://github.com/camilo912/research_rating/ee7b91c6973f1bafad64adc938edf53c7ff30362</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>https://github.com/ostapkharysh/Data_visualisation/42c00131e615ae8444d3ccf680fa24e81050f275</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>https://github.molgen.mpg.de/ledwards/FLASHcalculator/9da41d5d86cd75d9f96ac779b2b64e3e79932d9f</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>https://github.uconn.edu/rcc02007/ME3263_Lab-0.git/f25072f2e708c231ea05040cab6aae2699a7be6f</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>https://gitlab.flux.utah.edu/emulab/osdi18-analysis/cc10c099b2cdf46f473a30340433d42b04dac39c</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>https://gitlab.inria.fr/vdrevell/istic-robm/e345fd81cb6f70ba1fa4646ee80c0a619dd4feac</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>https://gitlab.gwdg.de/publications/NanoMAX18_JSR.git/48cbcc2390cf0fb8e85e8c8890ce693c6681d9fe</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>https://gitlab.in2p3.fr/gregoire.henning/tiipp-invprob-2018/6662fe629ebb3ad62c6d9de8348c73cac781c7e3</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>https://gitlab.in2p3.fr/gregoire.henning/tiipp-invprob-2018/6f330c93098d605b1fc3edfe63b1382de4bc9be4</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>https://gitlab.in2p3.fr/gregoire.henning/tiipp-invprob-2018/d874f3b9dcfa20c04266ad852246cd43178d0f42</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>https://gitlab.in2p3.fr/julien.bey/tiipp-invprob-2018/7f529faef8e27d397d5c63d286cb251342c70655</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>https://gitlab.in2p3.fr/julien.bey/tiipp-invprob-2018/a6b016ac3fff072f339dfc3cc43c65709f95a357</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>https://gitlab.inria.fr/vdrevell/istic-robm/23b80d226348758b877263952f520d8264016d77</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>https://gitlab.inria.fr/vdrevell/istic-robm/4b79f44a45ffbd2a52c12585d119901edd7c9b29</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>https://gitlab.inria.fr/vdrevell/istic-robm/b45ab9de12dbf06c92d3dd5dd7b884e75dad2c35</th>
       <td>1</td>
     </tr>
     <tr>
@@ -1528,12 +1563,11 @@ Name: provider, dtype: int64
     </tr>
   </tbody>
 </table>
-<p>89 rows × 1 columns</p>
+<p>132 rows × 1 columns</p>
 </div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1580,7 +1614,9 @@ Name: provider, dtype: int64
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
 
   
