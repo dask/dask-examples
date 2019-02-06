@@ -29,7 +29,8 @@
   <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Embarrassingly parallel Workloads" href="embarrassingly-parallel.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -161,6 +162,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/xgboost.html">Scale XGBoost</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/voting-classifier.html">Use Voting Classifiers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/tpot.html">Automate Machine Learning with TPOT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/glm.html">Generalized Linear Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/svd.html">Singular Value Decomposition</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Applications:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Analyze web-hosted JSON data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Introduction-to-the-dataset">Introduction to the dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Start-Dask-Client-for-Dashboard">Start Dask Client for Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Get-a-list-of-files-on-the-web">Get a list of files on the web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Create-Bag-of-all-events">Create Bag of all events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Most-Popular-Binders">Most Popular Binders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Convert-to-Dask-Dataframe">Convert to Dask Dataframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Persist-in-memory">Persist in memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Investigate-providers-other-than-Github">Investigate providers other than Github</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -483,7 +501,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:40750
+  <li><b>Scheduler: </b>tcp://127.0.0.1:39006
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -621,7 +639,7 @@ div.rendered_html tbody tr:hover {
  {&#39;name&#39;: &#39;events-2019-02-03.jsonl&#39;, &#39;date&#39;: &#39;2019-02-03&#39;, &#39;count&#39;: &#39;7331&#39;},
  {&#39;name&#39;: &#39;events-2019-02-04.jsonl&#39;, &#39;date&#39;: &#39;2019-02-04&#39;, &#39;count&#39;: &#39;14493&#39;},
  {&#39;name&#39;: &#39;events-2019-02-05.jsonl&#39;, &#39;date&#39;: &#39;2019-02-05&#39;, &#39;count&#39;: &#39;14053&#39;},
- {&#39;name&#39;: &#39;events-2019-02-06.jsonl&#39;, &#39;date&#39;: &#39;2019-02-06&#39;, &#39;count&#39;: &#39;9136&#39;}]
+ {&#39;name&#39;: &#39;events-2019-02-06.jsonl&#39;, &#39;date&#39;: &#39;2019-02-06&#39;, &#39;count&#39;: &#39;14072&#39;}]
 </pre></div>
 </div>
 </div>
@@ -705,24 +723,24 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>((&#39;ipython/ipython-in-depth/master&#39;, 483163),
- (&#39;jupyterlab/jupyterlab-demo/master&#39;, 124457),
- (&#39;ines/spacy-io-binder/live&#39;, 43856),
- (&#39;bokeh/bokeh-notebooks/master&#39;, 24003),
- (&#39;DS-100/textbook/master&#39;, 22319),
- (&#39;binder-examples/r/master&#39;, 21131),
- (&#39;rationalmatter/juno-demo-notebooks/master&#39;, 15203),
- (&#39;QuantStack/xeus-cling/stable&#39;, 13556),
- (&#39;RasaHQ/rasa_core/master&#39;, 10916),
- (&#39;QISKit/qiskit-tutorial/master&#39;, 10601),
- (&#39;numba/numba-examples/master&#39;, 7472),
- (&#39;binder-examples/julia-python/master&#39;, 7368),
- (&#39;minrk/ligo-binder/master&#39;, 5303),
- (&#39;nteract/examples/master&#39;, 4938),
+<span></span>((&#39;ipython/ipython-in-depth/master&#39;, 485501),
+ (&#39;jupyterlab/jupyterlab-demo/master&#39;, 124944),
+ (&#39;ines/spacy-io-binder/live&#39;, 44059),
+ (&#39;bokeh/bokeh-notebooks/master&#39;, 24069),
+ (&#39;DS-100/textbook/master&#39;, 22542),
+ (&#39;binder-examples/r/master&#39;, 21242),
+ (&#39;rationalmatter/juno-demo-notebooks/master&#39;, 15256),
+ (&#39;QuantStack/xeus-cling/stable&#39;, 13600),
+ (&#39;RasaHQ/rasa_core/master&#39;, 10952),
+ (&#39;QISKit/qiskit-tutorial/master&#39;, 10648),
+ (&#39;numba/numba-examples/master&#39;, 7507),
+ (&#39;binder-examples/julia-python/master&#39;, 7401),
+ (&#39;minrk/ligo-binder/master&#39;, 5305),
+ (&#39;nteract/examples/master&#39;, 4976),
  (&#39;annierak/desert_open_space_geometry/master&#39;, 4466),
- (&#39;data-8/textbook/gh-pages&#39;, 4347),
- (&#39;dask/dask-examples/master&#39;, 3715),
- (&#39;binder-examples/requirements/master&#39;, 3416),
+ (&#39;data-8/textbook/gh-pages&#39;, 4390),
+ (&#39;dask/dask-examples/master&#39;, 3721),
+ (&#39;binder-examples/requirements/master&#39;, 3424),
  (&#39;trekhleb/homemade-machine-learning/master&#39;, 3238),
  (&#39;mkozturk/CMPE140/master&#39;, 3159))
 </pre></div>
@@ -862,59 +880,59 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>ipython/ipython-in-depth/master</th>
-      <td>483163</td>
+      <td>485501</td>
     </tr>
     <tr>
       <th>jupyterlab/jupyterlab-demo/master</th>
-      <td>124457</td>
+      <td>124944</td>
     </tr>
     <tr>
       <th>ines/spacy-io-binder/live</th>
-      <td>43856</td>
+      <td>44059</td>
     </tr>
     <tr>
       <th>bokeh/bokeh-notebooks/master</th>
-      <td>24003</td>
+      <td>24069</td>
     </tr>
     <tr>
       <th>DS-100/textbook/master</th>
-      <td>22319</td>
+      <td>22542</td>
     </tr>
     <tr>
       <th>binder-examples/r/master</th>
-      <td>21131</td>
+      <td>21242</td>
     </tr>
     <tr>
       <th>rationalmatter/juno-demo-notebooks/master</th>
-      <td>15203</td>
+      <td>15256</td>
     </tr>
     <tr>
       <th>QuantStack/xeus-cling/stable</th>
-      <td>13556</td>
+      <td>13600</td>
     </tr>
     <tr>
       <th>RasaHQ/rasa_core/master</th>
-      <td>10916</td>
+      <td>10952</td>
     </tr>
     <tr>
       <th>QISKit/qiskit-tutorial/master</th>
-      <td>10601</td>
+      <td>10648</td>
     </tr>
     <tr>
       <th>numba/numba-examples/master</th>
-      <td>7472</td>
+      <td>7507</td>
     </tr>
     <tr>
       <th>binder-examples/julia-python/master</th>
-      <td>7368</td>
+      <td>7401</td>
     </tr>
     <tr>
       <th>minrk/ligo-binder/master</th>
-      <td>5303</td>
+      <td>5305</td>
     </tr>
     <tr>
       <th>nteract/examples/master</th>
-      <td>4938</td>
+      <td>4976</td>
     </tr>
     <tr>
       <th>annierak/desert_open_space_geometry/master</th>
@@ -922,15 +940,15 @@ div.rendered_html tbody tr:hover {
     </tr>
     <tr>
       <th>data-8/textbook/gh-pages</th>
-      <td>4347</td>
+      <td>4390</td>
     </tr>
     <tr>
       <th>dask/dask-examples/master</th>
-      <td>3715</td>
+      <td>3721</td>
     </tr>
     <tr>
       <th>binder-examples/requirements/master</th>
-      <td>3416</td>
+      <td>3424</td>
     </tr>
     <tr>
       <th>trekhleb/homemade-machine-learning/master</th>
@@ -985,9 +1003,9 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>GitHub    1009917
-GitLab       4257
-Git           781
+<span></span>GitHub    1014840
+GitLab       4266
+Git           785
 Name: provider, dtype: int64
 </pre></div>
 </div>
@@ -1062,12 +1080,12 @@ Name: provider, dtype: int64
       <td>161</td>
     </tr>
     <tr>
-      <th>clemej/data601-clemens-fall18/master</th>
+      <th>DGothrek/ipyaggrid/binder-demo</th>
       <td>132</td>
     </tr>
     <tr>
-      <th>DGothrek/ipyaggrid/binder-demo</th>
-      <td>131</td>
+      <th>clemej/data601-clemens-fall18/master</th>
+      <td>132</td>
     </tr>
     <tr>
       <th>dbernhard/ProgHumaNumTAL/master</th>
@@ -1079,7 +1097,7 @@ Name: provider, dtype: int64
     </tr>
     <tr>
       <th>dbernhard/pythonm1s2/master</th>
-      <td>75</td>
+      <td>78</td>
     </tr>
     <tr>
       <th>andrey.kovalev/imagination/master</th>
@@ -1090,11 +1108,11 @@ Name: provider, dtype: int64
       <td>56</td>
     </tr>
     <tr>
-      <th>PersonalDataIO/toronto-letter/master</th>
+      <th>wichit2s/pythonintro/master</th>
       <td>54</td>
     </tr>
     <tr>
-      <th>wichit2s/pythonintro/master</th>
+      <th>PersonalDataIO/toronto-letter/master</th>
       <td>54</td>
     </tr>
     <tr>
@@ -1106,11 +1124,11 @@ Name: provider, dtype: int64
       <td>34</td>
     </tr>
     <tr>
-      <th>sgmarkets/sgmarkets-api-notebooks/master</th>
+      <th>amarandon/presentation-jupyter/master</th>
       <td>33</td>
     </tr>
     <tr>
-      <th>amarandon/presentation-jupyter/master</th>
+      <th>sgmarkets/sgmarkets-api-notebooks/master</th>
       <td>33</td>
     </tr>
     <tr>
@@ -1127,7 +1145,7 @@ Name: provider, dtype: int64
     </tr>
     <tr>
       <th>PersonalDataIO/gdpr-rights-notebook/master</th>
-      <td>26</td>
+      <td>27</td>
     </tr>
     <tr>
       <th>codeearth/drawdown/master</th>
@@ -1146,11 +1164,11 @@ Name: provider, dtype: int64
       <td>15</td>
     </tr>
     <tr>
-      <th>butzked/pylolaos/master</th>
+      <th>dlab-indecol/tutorial_notebooks/master</th>
       <td>14</td>
     </tr>
     <tr>
-      <th>jumson/sdr-lab-machines/master</th>
+      <th>butzked/pylolaos/master</th>
       <td>14</td>
     </tr>
     <tr>
@@ -1174,10 +1192,6 @@ Name: provider, dtype: int64
       <td>1</td>
     </tr>
     <tr>
-      <th>PersonalDataIO/facebook-birthday-breach/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
       <th>s-boardman/peco/8d95e4fa08541d2521d2a3ecf43414a8aa6b79bc</th>
       <td>1</td>
     </tr>
@@ -1186,11 +1200,15 @@ Name: provider, dtype: int64
       <td>1</td>
     </tr>
     <tr>
-      <th>vaulter82/Prion-stats/master</th>
+      <th>PersonalDataIO/facebook-birthday-breach/master</th>
       <td>1</td>
     </tr>
     <tr>
       <th>Sabanov/cs231n.stanford.edu/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>vaulter82/Prion-stats/master</th>
       <td>1</td>
     </tr>
     <tr>
@@ -1218,7 +1236,7 @@ Name: provider, dtype: int64
       <td>1</td>
     </tr>
     <tr>
-      <th>david-chen/test/master</th>
+      <th>g_money/folio_track/master</th>
       <td>1</td>
     </tr>
     <tr>
@@ -1250,11 +1268,11 @@ Name: provider, dtype: int64
       <td>1</td>
     </tr>
     <tr>
-      <th>kerel-fs/jupyter-notebooks/master</th>
+      <th>anarcat/terms-benchmarks/master</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>anarcat/terms-benchmarks/master</th>
+      <th>kerel-fs/jupyter-notebooks/master</th>
       <td>1</td>
     </tr>
     <tr>
@@ -1266,7 +1284,7 @@ Name: provider, dtype: int64
       <td>1</td>
     </tr>
     <tr>
-      <th>g_money/folio_track/master</th>
+      <th>david-chen/test/master</th>
       <td>1</td>
     </tr>
     <tr>
@@ -1279,7 +1297,7 @@ Name: provider, dtype: int64
     </tr>
   </tbody>
 </table>
-<p>126 rows × 1 columns</p>
+<p>127 rows × 1 columns</p>
 </div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1337,7 +1355,7 @@ Name: provider, dtype: int64
     </tr>
     <tr>
       <th>https://gricad-gitlab.univ-grenoble-alpes.fr/chatelaf/conference-ia/d98a199f66d603b0b1e7c25fbe1341d29a40cd39</th>
-      <td>39</td>
+      <td>41</td>
     </tr>
     <tr>
       <th>https://git.rcc.uchicago.edu/jhskone/multiproc_py.git/38f9bb6ce3602b73a8ddd1dbcad3f5f9a8d21f6a</th>
@@ -1480,19 +1498,23 @@ Name: provider, dtype: int64
       <td>1</td>
     </tr>
     <tr>
-      <th>https://gricad-gitlab.univ-grenoble-alpes.fr/bettegap/first_jupyter.git/064491298933cce8a41f3fb7d34fbfce195c84f6</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>https://gitlab.in2p3.fr/gregoire.henning/tiipp-invprob-2018/6f330c93098d605b1fc3edfe63b1382de4bc9be4</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>https://git.rwth-aachen.de/rohlfing/gdet3-demos/18361041135e7bce58af5d9410bc9f97197cf011</th>
+      <th>https://gitlab.in2p3.fr/gregoire.henning/tiipp-invprob-2018/d874f3b9dcfa20c04266ad852246cd43178d0f42</th>
       <td>1</td>
     </tr>
     <tr>
       <th>https://gitlab.in2p3.fr/gregoire.henning/tiipp-invprob-2018/6662fe629ebb3ad62c6d9de8348c73cac781c7e3</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>https://git.rcc.uchicago.edu/jhskone/multiproc_py.git/d03a0f4c7bffe7f919acd3fa494b200404b2e717</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>https://gitlab.gwdg.de/publications/NanoMAX18_JSR.git/48cbcc2390cf0fb8e85e8c8890ce693c6681d9fe</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>https://git.rwth-aachen.de/rohlfing/gdet3-demos/18361041135e7bce58af5d9410bc9f97197cf011</th>
       <td>1</td>
     </tr>
     <tr>
@@ -1560,10 +1582,6 @@ Name: provider, dtype: int64
       <td>1</td>
     </tr>
     <tr>
-      <th>https://gitlab.gwdg.de/publications/NanoMAX18_JSR.git/48cbcc2390cf0fb8e85e8c8890ce693c6681d9fe</th>
-      <td>1</td>
-    </tr>
-    <tr>
       <th>http://code.datamode.com/datamode/binder.git/85bd134f3713f8a8cb3e22612929987b49b675a5</th>
       <td>1</td>
     </tr>
@@ -1589,6 +1607,13 @@ Name: provider, dtype: int64
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="embarrassingly-parallel.html" class="btn btn-neutral" title="Embarrassingly parallel Workloads" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

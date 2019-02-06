@@ -29,7 +29,9 @@
   <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Embarrassingly parallel Workloads" href="../applications/embarrassingly-parallel.html" />
+    <link rel="prev" title="Generalized Linear Models" href="glm.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -153,7 +155,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../dataframes/02-groupby.html">DataFrames: Groupby</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Machine Learning:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parallel-prediction.html">Score and Predict Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="training-on-large-datasets.html">Train Models on Large Datasets</a></li>
@@ -161,6 +163,18 @@
 <li class="toctree-l1"><a class="reference internal" href="xgboost.html">Scale XGBoost</a></li>
 <li class="toctree-l1"><a class="reference internal" href="voting-classifier.html">Use Voting Classifiers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tpot.html">Automate Machine Learning with TPOT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glm.html">Generalized Linear Models</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Singular Value Decomposition</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Start-Dask-Client-for-Dashboard">Start Dask Client for Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Compute-SVD-of-Tall-and-Skinny-Matrix">Compute SVD of Tall-and-Skinny Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Compute-SVD-of-General-Non-Skinny-Matrix-with-Approximate-algorithm">Compute SVD of General Non-Skinny Matrix with Approximate algorithm</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Applications:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 </ul>
 
             
@@ -455,7 +469,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>inproc://10.20.2.86/8010/1
+  <li><b>Scheduler: </b>inproc://10.20.5.127/7982/1
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -519,19 +533,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([[ 0.0998771 ,  0.10001197,  0.10007367, ...,  0.09979672,
-         0.09980366,  0.10005194],
-       [ 0.17670541,  0.09249804, -0.00331324, ..., -0.13447879,
-        -0.18364828,  0.09885024],
-       [-0.03218078,  0.02767662,  0.02323867, ...,  0.01672477,
-         0.06337074,  0.19088246],
+<span></span>array([[ 0.09992952,  0.10003789,  0.09999012, ...,  0.09999754,
+         0.10017743,  0.09998011],
+       [-0.17331577, -0.12563545,  0.0031982 , ..., -0.1475058 ,
+         0.12585613,  0.10102274],
+       [ 0.00287102,  0.02641634,  0.02005194, ..., -0.17246398,
+         0.07809273,  0.04995427],
        ...,
-       [-0.01448256,  0.18969276,  0.07472788, ..., -0.05635644,
-        -0.1950211 ,  0.05380011],
-       [ 0.04207209,  0.17282104, -0.15811302, ..., -0.13826537,
-         0.04927477,  0.06791389],
-       [-0.09146206,  0.07926682,  0.01601679, ...,  0.18206446,
-        -0.20007237,  0.09443097]])
+       [ 0.06827316, -0.0591521 ,  0.06424492, ..., -0.00741496,
+        -0.16701209, -0.07846654],
+       [-0.03900961,  0.06247069,  0.07207701, ...,  0.06760448,
+        -0.01691451, -0.18643168],
+       [ 0.16275485,  0.00687019, -0.00968308, ...,  0.18021551,
+         0.00351344, -0.11381074]])
 </pre></div>
 </div>
 </div>
@@ -584,16 +598,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([[ 0.00997335,  0.01000212,  0.01007755, ...,  0.01003145,
-         0.00994387,  0.00995951],
-       [-0.00390036, -0.0023196 , -0.0051879 , ..., -0.00511698,
-        -0.00382715, -0.00988661],
-       [-0.01102099,  0.00791674, -0.0104634 , ...,  0.006171  ,
-        -0.00039044,  0.01022202],
-       [-0.00561046,  0.00543705, -0.00857161, ...,  0.01488042,
-         0.00293992,  0.00801828],
-       [-0.00974496, -0.009877  , -0.00136918, ...,  0.01105028,
-         0.01032964, -0.00280167]])
+<span></span>array([[ 0.00997229,  0.00996533,  0.00993201, ...,  0.0099881 ,
+         0.00997576,  0.00991255],
+       [-0.0068068 , -0.01109704,  0.01221606, ..., -0.00531097,
+         0.00436369, -0.00018594],
+       [-0.0070237 , -0.00453914,  0.00135349, ...,  0.00368379,
+        -0.00272717, -0.01328056],
+       [ 0.00109952,  0.00528763,  0.00308816, ..., -0.00564211,
+        -0.00558971, -0.01981711],
+       [-0.00745073,  0.00508417, -0.01831567, ...,  0.00092429,
+        -0.00591737, -0.0037469 ]])
 </pre></div>
 </div>
 </div>
@@ -605,6 +619,15 @@ div.rendered_html tbody tr:hover {
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../applications/embarrassingly-parallel.html" class="btn btn-neutral float-right" title="Embarrassingly parallel Workloads" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="glm.html" class="btn btn-neutral" title="Generalized Linear Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

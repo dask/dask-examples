@@ -173,6 +173,13 @@
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/xgboost.html">Scale XGBoost</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/voting-classifier.html">Use Voting Classifiers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/tpot.html">Automate Machine Learning with TPOT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning/glm.html">Generalized Linear Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning/svd.html">Singular Value Decomposition</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Applications:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 </ul>
 
             
@@ -468,7 +475,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:43081
+  <li><b>Scheduler: </b>tcp://127.0.0.1:37908
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -539,8 +546,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 31, &#34;name&#34;: [&#34;Morgan&#34;, &#34;Le&#34;], &#34;occupation&#34;: &#34;Telephone Engineer&#34;, &#34;telephone&#34;: &#34;651-642-9666&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;502 Otis Side road&#34;, &#34;city&#34;: &#34;Natchitoches&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5300 8973 9499 9325&#34;, &#34;expiration-date&#34;: &#34;11/17&#34;}}
-{&#34;age&#34;: 17, &#34;name&#34;: [&#34;Elvis&#34;, &#34;Roman&#34;], &#34;occupation&#34;: &#34;Mineralologist&#34;, &#34;telephone&#34;: &#34;(396) 842-3171&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1261 Sternberg Glen&#34;, &#34;city&#34;: &#34;Tracy&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;4294 3580 4249 1919&#34;, &#34;expiration-date&#34;: &#34;06/23&#34;}}
+{&#34;age&#34;: 63, &#34;name&#34;: [&#34;Isis&#34;, &#34;French&#34;], &#34;occupation&#34;: &#34;Stonemason&#34;, &#34;telephone&#34;: &#34;104.817.8306&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1179 Glenbrook Glen&#34;, &#34;city&#34;: &#34;Hackensack&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3434 970720 66925&#34;, &#34;expiration-date&#34;: &#34;12/23&#34;}}
+{&#34;age&#34;: 58, &#34;name&#34;: [&#34;Fernando&#34;, &#34;Barber&#34;], &#34;occupation&#34;: &#34;Storeman&#34;, &#34;telephone&#34;: &#34;(028) 733-1426&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1193 Santiago Avenue&#34;, &#34;city&#34;: &#34;St. Clair Shores&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3709 063097 85046&#34;, &#34;expiration-date&#34;: &#34;12/21&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -579,20 +586,18 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 31,
-  &#39;name&#39;: [&#39;Morgan&#39;, &#39;Le&#39;],
-  &#39;occupation&#39;: &#39;Telephone Engineer&#39;,
-  &#39;telephone&#39;: &#39;651-642-9666&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;502 Otis Side road&#39;, &#39;city&#39;: &#39;Natchitoches&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5300 8973 9499 9325&#39;,
-   &#39;expiration-date&#39;: &#39;11/17&#39;}},
- {&#39;age&#39;: 17,
-  &#39;name&#39;: [&#39;Elvis&#39;, &#39;Roman&#39;],
-  &#39;occupation&#39;: &#39;Mineralologist&#39;,
-  &#39;telephone&#39;: &#39;(396) 842-3171&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1261 Sternberg Glen&#39;, &#39;city&#39;: &#39;Tracy&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4294 3580 4249 1919&#39;,
-   &#39;expiration-date&#39;: &#39;06/23&#39;}})
+<span></span>({&#39;age&#39;: 63,
+  &#39;name&#39;: [&#39;Isis&#39;, &#39;French&#39;],
+  &#39;occupation&#39;: &#39;Stonemason&#39;,
+  &#39;telephone&#39;: &#39;104.817.8306&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1179 Glenbrook Glen&#39;, &#39;city&#39;: &#39;Hackensack&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3434 970720 66925&#39;, &#39;expiration-date&#39;: &#39;12/23&#39;}},
+ {&#39;age&#39;: 58,
+  &#39;name&#39;: [&#39;Fernando&#39;, &#39;Barber&#39;],
+  &#39;occupation&#39;: &#39;Storeman&#39;,
+  &#39;telephone&#39;: &#39;(028) 733-1426&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1193 Santiago Avenue&#39;, &#39;city&#39;: &#39;St. Clair Shores&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3709 063097 85046&#39;, &#39;expiration-date&#39;: &#39;12/21&#39;}})
 </pre></div>
 </div>
 </div>
@@ -614,19 +619,18 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 31,
-  &#39;name&#39;: [&#39;Morgan&#39;, &#39;Le&#39;],
-  &#39;occupation&#39;: &#39;Telephone Engineer&#39;,
-  &#39;telephone&#39;: &#39;651-642-9666&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;502 Otis Side road&#39;, &#39;city&#39;: &#39;Natchitoches&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5300 8973 9499 9325&#39;,
-   &#39;expiration-date&#39;: &#39;11/17&#39;}},
- {&#39;age&#39;: 51,
-  &#39;name&#39;: [&#39;Jonie&#39;, &#39;Hooper&#39;],
-  &#39;occupation&#39;: &#39;Tanker Driver&#39;,
-  &#39;telephone&#39;: &#39;(118) 690-7887&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1240 Jerome Gardens&#39;, &#39;city&#39;: &#39;Chandler&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3707 367241 78331&#39;, &#39;expiration-date&#39;: &#39;07/23&#39;}})
+<span></span>({&#39;age&#39;: 63,
+  &#39;name&#39;: [&#39;Isis&#39;, &#39;French&#39;],
+  &#39;occupation&#39;: &#39;Stonemason&#39;,
+  &#39;telephone&#39;: &#39;104.817.8306&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1179 Glenbrook Glen&#39;, &#39;city&#39;: &#39;Hackensack&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3434 970720 66925&#39;, &#39;expiration-date&#39;: &#39;12/23&#39;}},
+ {&#39;age&#39;: 58,
+  &#39;name&#39;: [&#39;Fernando&#39;, &#39;Barber&#39;],
+  &#39;occupation&#39;: &#39;Storeman&#39;,
+  &#39;telephone&#39;: &#39;(028) 733-1426&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1193 Santiago Avenue&#39;, &#39;city&#39;: &#39;St. Clair Shores&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3709 063097 85046&#39;, &#39;expiration-date&#39;: &#39;12/21&#39;}})
 </pre></div>
 </div>
 </div>
@@ -644,7 +648,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(&#39;Telephone Engineer&#39;, &#39;Mineralologist&#39;)
+<span></span>(&#39;Stonemason&#39;, &#39;Storeman&#39;)
 </pre></div>
 </div>
 </div>
@@ -707,16 +711,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[(&#39;Bakery Manager&#39;, 15),
- (&#39;Researcher&#39;, 14),
- (&#39;Shepherd&#39;, 13),
- (&#39;Instructor&#39;, 13),
- (&#39;Lock Keeper&#39;, 13),
- (&#39;Microbiologist&#39;, 13),
- (&#39;Textile Technician&#39;, 13),
- (&#39;Garda&#39;, 13),
- (&#39;Legal Assistant&#39;, 12),
- (&#39;China Restorer&#39;, 12)]
+<span></span>[(&#39;Administration Staff&#39;, 16),
+ (&#39;Almoner&#39;, 15),
+ (&#39;Branch Manager&#39;, 14),
+ (&#39;Plastics Engineer&#39;, 14),
+ (&#39;Travel Consultant&#39;, 14),
+ (&#39;Fork Lift Truck Driver&#39;, 14),
+ (&#39;Insurance Agent&#39;, 13),
+ (&#39;Steward&#39;, 13),
+ (&#39;Car Dealer&#39;, 13),
+ (&#39;Independent Means&#39;, 13)]
 </pre></div>
 </div>
 </div>
@@ -773,13 +777,12 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 31,
-  &#39;name&#39;: [&#39;Morgan&#39;, &#39;Le&#39;],
-  &#39;occupation&#39;: &#39;Telephone Engineer&#39;,
-  &#39;telephone&#39;: &#39;651-642-9666&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;502 Otis Side road&#39;, &#39;city&#39;: &#39;Natchitoches&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5300 8973 9499 9325&#39;,
-   &#39;expiration-date&#39;: &#39;11/17&#39;}},)
+<span></span>({&#39;age&#39;: 63,
+  &#39;name&#39;: [&#39;Isis&#39;, &#39;French&#39;],
+  &#39;occupation&#39;: &#39;Stonemason&#39;,
+  &#39;telephone&#39;: &#39;104.817.8306&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1179 Glenbrook Glen&#39;, &#39;city&#39;: &#39;Hackensack&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3434 970720 66925&#39;, &#39;expiration-date&#39;: &#39;12/23&#39;}},)
 </pre></div>
 </div>
 </div>
@@ -809,14 +812,14 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 31,
-  &#39;occupation&#39;: &#39;Telephone Engineer&#39;,
-  &#39;telephone&#39;: &#39;651-642-9666&#39;,
-  &#39;credit-card-number&#39;: &#39;5300 8973 9499 9325&#39;,
-  &#39;credit-card-expiration&#39;: &#39;11/17&#39;,
-  &#39;name&#39;: &#39;Morgan Le&#39;,
-  &#39;street-address&#39;: &#39;502 Otis Side road&#39;,
-  &#39;city&#39;: &#39;Natchitoches&#39;},)
+<span></span>({&#39;age&#39;: 63,
+  &#39;occupation&#39;: &#39;Stonemason&#39;,
+  &#39;telephone&#39;: &#39;104.817.8306&#39;,
+  &#39;credit-card-number&#39;: &#39;3434 970720 66925&#39;,
+  &#39;credit-card-expiration&#39;: &#39;12/23&#39;,
+  &#39;name&#39;: &#39;Isis French&#39;,
+  &#39;street-address&#39;: &#39;1179 Glenbrook Glen&#39;,
+  &#39;city&#39;: &#39;Hackensack&#39;},)
 </pre></div>
 </div>
 </div>
@@ -866,58 +869,58 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>31</td>
-      <td>Natchitoches</td>
-      <td>11/17</td>
-      <td>5300 8973 9499 9325</td>
-      <td>Morgan Le</td>
-      <td>Telephone Engineer</td>
-      <td>502 Otis Side road</td>
-      <td>651-642-9666</td>
+      <td>63</td>
+      <td>Hackensack</td>
+      <td>12/23</td>
+      <td>3434 970720 66925</td>
+      <td>Isis French</td>
+      <td>Stonemason</td>
+      <td>1179 Glenbrook Glen</td>
+      <td>104.817.8306</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>17</td>
-      <td>Tracy</td>
-      <td>06/23</td>
-      <td>4294 3580 4249 1919</td>
-      <td>Elvis Roman</td>
-      <td>Mineralologist</td>
-      <td>1261 Sternberg Glen</td>
-      <td>(396) 842-3171</td>
+      <td>58</td>
+      <td>St. Clair Shores</td>
+      <td>12/21</td>
+      <td>3709 063097 85046</td>
+      <td>Fernando Barber</td>
+      <td>Storeman</td>
+      <td>1193 Santiago Avenue</td>
+      <td>(028) 733-1426</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>51</td>
-      <td>Chandler</td>
-      <td>07/23</td>
-      <td>3707 367241 78331</td>
-      <td>Jonie Hooper</td>
-      <td>Tanker Driver</td>
-      <td>1240 Jerome Gardens</td>
-      <td>(118) 690-7887</td>
+      <td>61</td>
+      <td>Madison Heights</td>
+      <td>02/19</td>
+      <td>4963 2274 5326 8910</td>
+      <td>Eustolia Sparks</td>
+      <td>Refrigeration Engineer</td>
+      <td>953 Dichiera Brae</td>
+      <td>(167) 153-4024</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>53</td>
-      <td>Godfrey</td>
-      <td>03/18</td>
-      <td>2412 9147 8792 1691</td>
-      <td>Caprice Hicks</td>
-      <td>Heating Engineer</td>
-      <td>1300 Chaves Street</td>
-      <td>595.283.7384</td>
+      <td>43</td>
+      <td>Winchester</td>
+      <td>11/22</td>
+      <td>2558 1976 8714 3160</td>
+      <td>Lamar Lane</td>
+      <td>Doctor</td>
+      <td>843 Dewitt Thruway</td>
+      <td>(178) 846-2217</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>30</td>
-      <td>Andover</td>
-      <td>02/23</td>
-      <td>2477 9240 4687 4344</td>
-      <td>Clinton Kinney</td>
-      <td>Aircraft Designer</td>
-      <td>473 Mccann Walk</td>
-      <td>406.230.2554</td>
+      <td>51</td>
+      <td>Peoria</td>
+      <td>11/20</td>
+      <td>4828 5813 5297 0702</td>
+      <td>Elvina Gilbert</td>
+      <td>Journalist</td>
+      <td>1028 Moneta Boulevard</td>
+      <td>827-828-5747</td>
     </tr>
   </tbody>
 </table>
@@ -938,16 +941,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Bakery Manager        15
-Researcher            14
-Shepherd              13
-Textile Technician    13
-Instructor            13
-Microbiologist        13
-Garda                 13
-Lock Keeper           13
-Purser                12
-Lavatory Attendant    12
+<span></span>Administration Staff      16
+Almoner                   15
+Travel Consultant         14
+Fork Lift Truck Driver    14
+Branch Manager            14
+Plastics Engineer         14
+Road Worker               13
+Log Merchant              13
+Kitchen Worker            13
+Insurance Agent           13
 Name: occupation, dtype: int64
 </pre></div>
 </div>

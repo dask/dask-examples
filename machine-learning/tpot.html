@@ -30,6 +30,7 @@
   <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Generalized Linear Models" href="glm.html" />
     <link rel="prev" title="Use Voting Classifiers" href="voting-classifier.html" /> 
 
   
@@ -168,6 +169,13 @@
 <li class="toctree-l2"><a class="reference internal" href="#Learn-More">Learn More</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="glm.html">Generalized Linear Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="svd.html">Singular Value Decomposition</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Applications:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 </ul>
 
             
@@ -488,12 +496,12 @@ Collecting stopit&gt;=1.1.1 (from tpot)
   Downloading https://files.pythonhosted.org/packages/35/58/e8bb0b0fb05baf07bbac1450c447d753da65f9701f551dca79823ce15d50/stopit-1.1.2.tar.gz
 Requirement already satisfied: pandas&gt;=0.20.2 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from tpot) (0.24.1)
 Requirement already satisfied: requests&gt;=2.3.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from update_checker&gt;=0.16-&gt;tpot) (2.21.0)
-Requirement already satisfied: python-dateutil&gt;=2.5.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from pandas&gt;=0.20.2-&gt;tpot) (2.8.0)
 Requirement already satisfied: pytz&gt;=2011k in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from pandas&gt;=0.20.2-&gt;tpot) (2018.9)
+Requirement already satisfied: python-dateutil&gt;=2.5.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from pandas&gt;=0.20.2-&gt;tpot) (2.8.0)
 Requirement already satisfied: urllib3&lt;1.25,&gt;=1.21.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (1.24.1)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (2018.11.29)
 Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (3.0.4)
 Requirement already satisfied: idna&lt;2.9,&gt;=2.5 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (2.8)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (2018.11.29)
 Requirement already satisfied: six&gt;=1.5 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from python-dateutil&gt;=2.5.0-&gt;pandas&gt;=0.20.2-&gt;tpot) (1.12.0)
 Building wheels for collected packages: tpot, deap, stopit
   Building wheel for tpot (setup.py) ... - done
@@ -543,7 +551,7 @@ Successfully installed deap-1.2.2 stopit-1.1.2 tpot-0.9.5 tqdm-4.30.0 update-che
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:46003
+  <li><b>Scheduler: </b>tcp://127.0.0.1:38238
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -610,6 +618,31 @@ Successfully installed deap-1.2.2 stopit-1.1.2 tpot-0.9.5 tqdm-4.30.0 update-che
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+distributed.utils - ERROR - Worker already exists tcp://127.0.0.1:46060
+Traceback (most recent call last):
+  File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/utils.py&#34;, line 648, in log_errors
+    yield
+  File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/scheduler.py&#34;, line 1278, in add_worker
+    raise ValueError(&#34;Worker already exists %s&#34; % address)
+ValueError: Worker already exists tcp://127.0.0.1:46060
+distributed.core - ERROR - Worker already exists tcp://127.0.0.1:46060
+Traceback (most recent call last):
+  File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/core.py&#34;, line 346, in handle_comm
+    result = yield result
+  File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/tornado/gen.py&#34;, line 1133, in run
+    value = future.result()
+  File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/tornado/gen.py&#34;, line 326, in wrapper
+    yielded = next(result)
+  File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/scheduler.py&#34;, line 1278, in add_worker
+    raise ValueError(&#34;Worker already exists %s&#34; % address)
+ValueError: Worker already exists tcp://127.0.0.1:46060
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
@@ -639,6 +672,8 @@ Successfully installed deap-1.2.2 stopit-1.1.2 tpot-0.9.5 tqdm-4.30.0 update-che
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="glm.html" class="btn btn-neutral float-right" title="Generalized Linear Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="voting-classifier.html" class="btn btn-neutral" title="Use Voting Classifiers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
