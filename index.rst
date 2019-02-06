@@ -43,10 +43,12 @@ You can run these examples in a live session here: |Binder|
    machine-learning/xgboost
    machine-learning/voting-classifier
    machine-learning/tpot
+   machine-learning/glm
+   machine-learning/svd
 
 .. toctree::
    :maxdepth: 1
    :caption: Applications:
 
-   embarrassingly-parallel
-   json-data-on-the-web
+   applications/embarrassingly-parallel
+   applications/json-data-on-the-web
