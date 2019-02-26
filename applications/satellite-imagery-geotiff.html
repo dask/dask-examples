@@ -38,7 +38,8 @@
   <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Analyze web-hosted JSON data" href="json-data-on-the-web.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -169,9 +170,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/svd.html">Singular Value Decomposition</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Applications:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Reading and manipulating tiled GeoTIFF datasets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Download-data">Download data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Check-image-metadata">Check image metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Create-XArray-datasets">Create XArray datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Optional:-create-a-Dask-client">Optional: create a Dask client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Rescale-bands-using-Landsat-metadata">Rescale bands using Landsat metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Calculate-and-display-NDVI">Calculate and display NDVI</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -455,19 +465,19 @@ div.rendered_html tbody tr:hover {
 Collecting rasterio
   Downloading https://files.pythonhosted.org/packages/2e/4b/d76692106127b9446cb7d6775bf69eeed813fd5aac217194ecc96bb73601/rasterio-1.0.18-cp36-cp36m-manylinux1_x86_64.whl (19.6MB)
 
+Collecting snuggs&gt;=1.4.1 (from rasterio)
+  Downloading https://files.pythonhosted.org/packages/a5/8a/abb0803f05feb4401ab9e4c776ce11f0048b6cb0f2d84ace97cd93d7da04/snuggs-1.4.3-py3-none-any.whl
+Collecting cligj&gt;=0.5 (from rasterio)
+  Downloading https://files.pythonhosted.org/packages/e4/be/30a58b4b0733850280d01f8bd132591b4668ed5c7046761098d665ac2174/cligj-0.5.0-py3-none-any.whl
 Requirement already satisfied: numpy in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from rasterio) (1.16.1)
-Requirement already satisfied: click&lt;8,&gt;=4.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from rasterio) (7.0)
 Collecting click-plugins (from rasterio)
   Downloading https://files.pythonhosted.org/packages/95/dd/fef84cf1678418f241ef542c0288bdf215bdd3e35f1fe03dc5223a2e80ba/click_plugins-1.0.4-py2.py3-none-any.whl
 Collecting affine (from rasterio)
   Downloading https://files.pythonhosted.org/packages/56/5d/6877929932d17850fa4903d0db8233ec8ed35aab7ceae96fa44ea6d479bd/affine-2.2.2-py2.py3-none-any.whl
-Collecting cligj&gt;=0.5 (from rasterio)
-  Downloading https://files.pythonhosted.org/packages/e4/be/30a58b4b0733850280d01f8bd132591b4668ed5c7046761098d665ac2174/cligj-0.5.0-py3-none-any.whl
-Collecting snuggs&gt;=1.4.1 (from rasterio)
-  Downloading https://files.pythonhosted.org/packages/a5/8a/abb0803f05feb4401ab9e4c776ce11f0048b6cb0f2d84ace97cd93d7da04/snuggs-1.4.3-py3-none-any.whl
 Requirement already satisfied: attrs in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from rasterio) (18.2.0)
+Requirement already satisfied: click&lt;8,&gt;=4.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from rasterio) (7.0)
 Requirement already satisfied: pyparsing in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from snuggs&gt;=1.4.1-&gt;rasterio) (2.3.1)
-Installing collected packages: click-plugins, affine, cligj, snuggs, rasterio
+Installing collected packages: snuggs, cligj, click-plugins, affine, rasterio
 Successfully installed affine-2.2.2 click-plugins-1.0.4 cligj-0.5.0 rasterio-1.0.18 snuggs-1.4.3
 </pre></div></div>
 </div>
@@ -631,7 +641,7 @@ Attributes:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>dask.array&lt;open_rasterio-22f7d83fa3d488c7574ef8d96a60d20e&lt;this-array&gt;, shape=(1, 7841, 7721), dtype=uint16, chunksize=(1, 1024, 1024)&gt;
+<span></span>dask.array&lt;open_rasterio-ec9731c07836166bdd43874ef26ffd14&lt;this-array&gt;, shape=(1, 7841, 7721), dtype=uint16, chunksize=(1, 1024, 1024)&gt;
 </pre></div>
 </div>
 </div>
@@ -661,7 +671,7 @@ Attributes:
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>inproc://10.20.1.192/6662/1
+  <li><b>Scheduler: </b>inproc://10.20.5.47/6720/1
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -818,6 +828,13 @@ dask.array&lt;add, shape=(1, 7841, 7721), dtype=float64, chunksize=(1, 1024, 102
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="json-data-on-the-web.html" class="btn btn-neutral float-left" title="Analyze web-hosted JSON data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
