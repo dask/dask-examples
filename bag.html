@@ -17,13 +17,22 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/explore.css" type="text/css" />
@@ -32,10 +41,6 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Dask DataFrames" href="dataframe.html" />
     <link rel="prev" title="Dask Arrays" href="array.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
@@ -101,11 +106,10 @@
 
 
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -475,7 +479,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:37908
+  <li><b>Scheduler: </b>tcp://127.0.0.1:35389
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -546,8 +550,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 63, &#34;name&#34;: [&#34;Isis&#34;, &#34;French&#34;], &#34;occupation&#34;: &#34;Stonemason&#34;, &#34;telephone&#34;: &#34;104.817.8306&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1179 Glenbrook Glen&#34;, &#34;city&#34;: &#34;Hackensack&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3434 970720 66925&#34;, &#34;expiration-date&#34;: &#34;12/23&#34;}}
-{&#34;age&#34;: 58, &#34;name&#34;: [&#34;Fernando&#34;, &#34;Barber&#34;], &#34;occupation&#34;: &#34;Storeman&#34;, &#34;telephone&#34;: &#34;(028) 733-1426&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1193 Santiago Avenue&#34;, &#34;city&#34;: &#34;St. Clair Shores&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3709 063097 85046&#34;, &#34;expiration-date&#34;: &#34;12/21&#34;}}
+{&#34;age&#34;: 31, &#34;name&#34;: [&#34;Yasmine&#34;, &#34;Mcintosh&#34;], &#34;occupation&#34;: &#34;Reflexologist&#34;, &#34;telephone&#34;: &#34;821-816-6528&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;491 Godeus Wynd&#34;, &#34;city&#34;: &#34;Park Forest&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5210 3046 2361 0830&#34;, &#34;expiration-date&#34;: &#34;05/23&#34;}}
+{&#34;age&#34;: 52, &#34;name&#34;: [&#34;Williams&#34;, &#34;Strickland&#34;], &#34;occupation&#34;: &#34;Furnace Man&#34;, &#34;telephone&#34;: &#34;(015) 235-9428&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;805 Havenside Boulevard&#34;, &#34;city&#34;: &#34;West Allis&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3792 965043 89369&#34;, &#34;expiration-date&#34;: &#34;10/23&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -586,18 +590,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 63,
-  &#39;name&#39;: [&#39;Isis&#39;, &#39;French&#39;],
-  &#39;occupation&#39;: &#39;Stonemason&#39;,
-  &#39;telephone&#39;: &#39;104.817.8306&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1179 Glenbrook Glen&#39;, &#39;city&#39;: &#39;Hackensack&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3434 970720 66925&#39;, &#39;expiration-date&#39;: &#39;12/23&#39;}},
- {&#39;age&#39;: 58,
-  &#39;name&#39;: [&#39;Fernando&#39;, &#39;Barber&#39;],
-  &#39;occupation&#39;: &#39;Storeman&#39;,
-  &#39;telephone&#39;: &#39;(028) 733-1426&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1193 Santiago Avenue&#39;, &#39;city&#39;: &#39;St. Clair Shores&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3709 063097 85046&#39;, &#39;expiration-date&#39;: &#39;12/21&#39;}})
+<span></span>({&#39;age&#39;: 31,
+  &#39;name&#39;: [&#39;Yasmine&#39;, &#39;Mcintosh&#39;],
+  &#39;occupation&#39;: &#39;Reflexologist&#39;,
+  &#39;telephone&#39;: &#39;821-816-6528&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;491 Godeus Wynd&#39;, &#39;city&#39;: &#39;Park Forest&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5210 3046 2361 0830&#39;,
+   &#39;expiration-date&#39;: &#39;05/23&#39;}},
+ {&#39;age&#39;: 52,
+  &#39;name&#39;: [&#39;Williams&#39;, &#39;Strickland&#39;],
+  &#39;occupation&#39;: &#39;Furnace Man&#39;,
+  &#39;telephone&#39;: &#39;(015) 235-9428&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;805 Havenside Boulevard&#39;, &#39;city&#39;: &#39;West Allis&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3792 965043 89369&#39;, &#39;expiration-date&#39;: &#39;10/23&#39;}})
 </pre></div>
 </div>
 </div>
@@ -619,18 +624,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 63,
-  &#39;name&#39;: [&#39;Isis&#39;, &#39;French&#39;],
-  &#39;occupation&#39;: &#39;Stonemason&#39;,
-  &#39;telephone&#39;: &#39;104.817.8306&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1179 Glenbrook Glen&#39;, &#39;city&#39;: &#39;Hackensack&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3434 970720 66925&#39;, &#39;expiration-date&#39;: &#39;12/23&#39;}},
- {&#39;age&#39;: 58,
-  &#39;name&#39;: [&#39;Fernando&#39;, &#39;Barber&#39;],
-  &#39;occupation&#39;: &#39;Storeman&#39;,
-  &#39;telephone&#39;: &#39;(028) 733-1426&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1193 Santiago Avenue&#39;, &#39;city&#39;: &#39;St. Clair Shores&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3709 063097 85046&#39;, &#39;expiration-date&#39;: &#39;12/21&#39;}})
+<span></span>({&#39;age&#39;: 31,
+  &#39;name&#39;: [&#39;Yasmine&#39;, &#39;Mcintosh&#39;],
+  &#39;occupation&#39;: &#39;Reflexologist&#39;,
+  &#39;telephone&#39;: &#39;821-816-6528&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;491 Godeus Wynd&#39;, &#39;city&#39;: &#39;Park Forest&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5210 3046 2361 0830&#39;,
+   &#39;expiration-date&#39;: &#39;05/23&#39;}},
+ {&#39;age&#39;: 52,
+  &#39;name&#39;: [&#39;Williams&#39;, &#39;Strickland&#39;],
+  &#39;occupation&#39;: &#39;Furnace Man&#39;,
+  &#39;telephone&#39;: &#39;(015) 235-9428&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;805 Havenside Boulevard&#39;, &#39;city&#39;: &#39;West Allis&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3792 965043 89369&#39;, &#39;expiration-date&#39;: &#39;10/23&#39;}})
 </pre></div>
 </div>
 </div>
@@ -648,7 +654,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(&#39;Stonemason&#39;, &#39;Storeman&#39;)
+<span></span>(&#39;Reflexologist&#39;, &#39;Furnace Man&#39;)
 </pre></div>
 </div>
 </div>
@@ -711,16 +717,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[(&#39;Administration Staff&#39;, 16),
- (&#39;Almoner&#39;, 15),
- (&#39;Branch Manager&#39;, 14),
- (&#39;Plastics Engineer&#39;, 14),
- (&#39;Travel Consultant&#39;, 14),
- (&#39;Fork Lift Truck Driver&#39;, 14),
- (&#39;Insurance Agent&#39;, 13),
- (&#39;Steward&#39;, 13),
- (&#39;Car Dealer&#39;, 13),
- (&#39;Independent Means&#39;, 13)]
+<span></span>[(&#39;Signalman&#39;, 16),
+ (&#39;Gate Keeper&#39;, 15),
+ (&#39;Furnace Man&#39;, 14),
+ (&#39;Printer&#39;, 14),
+ (&#39;Motor Mechanic&#39;, 14),
+ (&#39;Health And Safety&#39;, 14),
+ (&#39;Insurance Inspector&#39;, 14),
+ (&#39;Judge&#39;, 13),
+ (&#39;Arbitrator&#39;, 13),
+ (&#39;Sand Blaster&#39;, 13)]
 </pre></div>
 </div>
 </div>
@@ -777,12 +783,13 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 63,
-  &#39;name&#39;: [&#39;Isis&#39;, &#39;French&#39;],
-  &#39;occupation&#39;: &#39;Stonemason&#39;,
-  &#39;telephone&#39;: &#39;104.817.8306&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1179 Glenbrook Glen&#39;, &#39;city&#39;: &#39;Hackensack&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3434 970720 66925&#39;, &#39;expiration-date&#39;: &#39;12/23&#39;}},)
+<span></span>({&#39;age&#39;: 31,
+  &#39;name&#39;: [&#39;Yasmine&#39;, &#39;Mcintosh&#39;],
+  &#39;occupation&#39;: &#39;Reflexologist&#39;,
+  &#39;telephone&#39;: &#39;821-816-6528&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;491 Godeus Wynd&#39;, &#39;city&#39;: &#39;Park Forest&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5210 3046 2361 0830&#39;,
+   &#39;expiration-date&#39;: &#39;05/23&#39;}},)
 </pre></div>
 </div>
 </div>
@@ -812,14 +819,14 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 63,
-  &#39;occupation&#39;: &#39;Stonemason&#39;,
-  &#39;telephone&#39;: &#39;104.817.8306&#39;,
-  &#39;credit-card-number&#39;: &#39;3434 970720 66925&#39;,
-  &#39;credit-card-expiration&#39;: &#39;12/23&#39;,
-  &#39;name&#39;: &#39;Isis French&#39;,
-  &#39;street-address&#39;: &#39;1179 Glenbrook Glen&#39;,
-  &#39;city&#39;: &#39;Hackensack&#39;},)
+<span></span>({&#39;age&#39;: 31,
+  &#39;occupation&#39;: &#39;Reflexologist&#39;,
+  &#39;telephone&#39;: &#39;821-816-6528&#39;,
+  &#39;credit-card-number&#39;: &#39;5210 3046 2361 0830&#39;,
+  &#39;credit-card-expiration&#39;: &#39;05/23&#39;,
+  &#39;name&#39;: &#39;Yasmine Mcintosh&#39;,
+  &#39;street-address&#39;: &#39;491 Godeus Wynd&#39;,
+  &#39;city&#39;: &#39;Park Forest&#39;},)
 </pre></div>
 </div>
 </div>
@@ -869,58 +876,58 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>63</td>
-      <td>Hackensack</td>
-      <td>12/23</td>
-      <td>3434 970720 66925</td>
-      <td>Isis French</td>
-      <td>Stonemason</td>
-      <td>1179 Glenbrook Glen</td>
-      <td>104.817.8306</td>
+      <td>31</td>
+      <td>Park Forest</td>
+      <td>05/23</td>
+      <td>5210 3046 2361 0830</td>
+      <td>Yasmine Mcintosh</td>
+      <td>Reflexologist</td>
+      <td>491 Godeus Wynd</td>
+      <td>821-816-6528</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>58</td>
-      <td>St. Clair Shores</td>
-      <td>12/21</td>
-      <td>3709 063097 85046</td>
-      <td>Fernando Barber</td>
-      <td>Storeman</td>
-      <td>1193 Santiago Avenue</td>
-      <td>(028) 733-1426</td>
+      <td>52</td>
+      <td>West Allis</td>
+      <td>10/23</td>
+      <td>3792 965043 89369</td>
+      <td>Williams Strickland</td>
+      <td>Furnace Man</td>
+      <td>805 Havenside Boulevard</td>
+      <td>(015) 235-9428</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>61</td>
-      <td>Madison Heights</td>
-      <td>02/19</td>
-      <td>4963 2274 5326 8910</td>
-      <td>Eustolia Sparks</td>
-      <td>Refrigeration Engineer</td>
-      <td>953 Dichiera Brae</td>
-      <td>(167) 153-4024</td>
+      <td>54</td>
+      <td>Encinitas</td>
+      <td>02/24</td>
+      <td>4738 3993 5099 2969</td>
+      <td>Micheline Watson</td>
+      <td>Artist</td>
+      <td>545 Quickstep Drung</td>
+      <td>1-153-656-2571</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>43</td>
-      <td>Winchester</td>
-      <td>11/22</td>
-      <td>2558 1976 8714 3160</td>
-      <td>Lamar Lane</td>
-      <td>Doctor</td>
-      <td>843 Dewitt Thruway</td>
-      <td>(178) 846-2217</td>
+      <td>63</td>
+      <td>Schenectady</td>
+      <td>12/25</td>
+      <td>4100 9585 4183 6805</td>
+      <td>Brittny Lucas</td>
+      <td>Merchant Seaman</td>
+      <td>797 Clifford Bend</td>
+      <td>348-485-4390</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>51</td>
-      <td>Peoria</td>
-      <td>11/20</td>
-      <td>4828 5813 5297 0702</td>
-      <td>Elvina Gilbert</td>
-      <td>Journalist</td>
-      <td>1028 Moneta Boulevard</td>
-      <td>827-828-5747</td>
+      <td>52</td>
+      <td>Hanford</td>
+      <td>01/23</td>
+      <td>3484 605775 68386</td>
+      <td>Natalya Horn</td>
+      <td>Soldier</td>
+      <td>1332 Walkway High Street</td>
+      <td>1-206-446-2504</td>
     </tr>
   </tbody>
 </table>
@@ -941,16 +948,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Administration Staff      16
-Almoner                   15
-Travel Consultant         14
-Fork Lift Truck Driver    14
-Branch Manager            14
-Plastics Engineer         14
-Road Worker               13
-Log Merchant              13
-Kitchen Worker            13
-Insurance Agent           13
+<span></span>Signalman              16
+Gate Keeper            15
+Furnace Man            14
+Printer                14
+Health And Safety      14
+Motor Mechanic         14
+Insurance Inspector    14
+Arbitrator             13
+Training Consultant    13
+Warehouseman           13
 Name: occupation, dtype: int64
 </pre></div>
 </div>
@@ -977,7 +984,7 @@ Name: occupation, dtype: int64
         <a href="dataframe.html" class="btn btn-neutral float-right" title="Dask DataFrames" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="array.html" class="btn btn-neutral" title="Dask Arrays" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="array.html" class="btn btn-neutral float-left" title="Dask Arrays" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -1003,28 +1010,16 @@ Name: occupation, dtype: int64
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
-    
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
