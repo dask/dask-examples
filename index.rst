@@ -53,3 +53,4 @@ You can run these examples in a live session here: |Binder|
    applications/embarrassingly-parallel
    applications/json-data-on-the-web
    applications/satellite-imagery-geotiff
+   applications/dask-image-quickstart
