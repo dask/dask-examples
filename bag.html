@@ -185,6 +185,7 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/dask-image-quickstart.html">Quickstart to dask-image</a></li>
 </ul>
 
             
@@ -470,6 +471,17 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/dask/config.py:168: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  data = yaml.load(f.read()) or {}
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/config.py:20: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  defaults = yaml.load(f)
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -480,7 +492,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:46212
+  <li><b>Scheduler: </b>tcp://127.0.0.1:38142
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -551,8 +563,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 57, &#34;name&#34;: [&#34;Zenia&#34;, &#34;Richards&#34;], &#34;occupation&#34;: &#34;Wood Carver&#34;, &#34;telephone&#34;: &#34;1-327-488-9074&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1342 Egbert Pike&#34;, &#34;city&#34;: &#34;Cypress&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3489 852523 65500&#34;, &#34;expiration-date&#34;: &#34;04/23&#34;}}
-{&#34;age&#34;: 33, &#34;name&#34;: [&#34;Marleen&#34;, &#34;Odom&#34;], &#34;occupation&#34;: &#34;Spring Maker&#34;, &#34;telephone&#34;: &#34;874-504-5497&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;713 Excelsior Heights&#34;, &#34;city&#34;: &#34;Zanesville&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;4278 2577 0569 8408&#34;, &#34;expiration-date&#34;: &#34;05/22&#34;}}
+{&#34;age&#34;: 31, &#34;name&#34;: [&#34;Sylvester&#34;, &#34;Sanchez&#34;], &#34;occupation&#34;: &#34;Marine Electrician&#34;, &#34;telephone&#34;: &#34;1-580-118-5788&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;502 Illinois Walk&#34;, &#34;city&#34;: &#34;Valparaiso&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;2523 2299 7032 1385&#34;, &#34;expiration-date&#34;: &#34;10/17&#34;}}
+{&#34;age&#34;: 63, &#34;name&#34;: [&#34;Becki&#34;, &#34;Cain&#34;], &#34;occupation&#34;: &#34;Travel Courier&#34;, &#34;telephone&#34;: &#34;386.638.0209&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;509 Dublin Extension&#34;, &#34;city&#34;: &#34;Oxnard&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;2674 0284 7539 8857&#34;, &#34;expiration-date&#34;: &#34;03/16&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -573,7 +585,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>dask.bag&lt;loads-1..., npartitions=10&gt;
+<span></span>dask.bag&lt;loads-f..., npartitions=10&gt;
 </pre></div>
 </div>
 </div>
@@ -591,19 +603,20 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 57,
-  &#39;name&#39;: [&#39;Zenia&#39;, &#39;Richards&#39;],
-  &#39;occupation&#39;: &#39;Wood Carver&#39;,
-  &#39;telephone&#39;: &#39;1-327-488-9074&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1342 Egbert Pike&#39;, &#39;city&#39;: &#39;Cypress&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3489 852523 65500&#39;, &#39;expiration-date&#39;: &#39;04/23&#39;}},
- {&#39;age&#39;: 33,
-  &#39;name&#39;: [&#39;Marleen&#39;, &#39;Odom&#39;],
-  &#39;occupation&#39;: &#39;Spring Maker&#39;,
-  &#39;telephone&#39;: &#39;874-504-5497&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;713 Excelsior Heights&#39;, &#39;city&#39;: &#39;Zanesville&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4278 2577 0569 8408&#39;,
-   &#39;expiration-date&#39;: &#39;05/22&#39;}})
+<span></span>({&#39;age&#39;: 31,
+  &#39;name&#39;: [&#39;Sylvester&#39;, &#39;Sanchez&#39;],
+  &#39;occupation&#39;: &#39;Marine Electrician&#39;,
+  &#39;telephone&#39;: &#39;1-580-118-5788&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;502 Illinois Walk&#39;, &#39;city&#39;: &#39;Valparaiso&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2523 2299 7032 1385&#39;,
+   &#39;expiration-date&#39;: &#39;10/17&#39;}},
+ {&#39;age&#39;: 63,
+  &#39;name&#39;: [&#39;Becki&#39;, &#39;Cain&#39;],
+  &#39;occupation&#39;: &#39;Travel Courier&#39;,
+  &#39;telephone&#39;: &#39;386.638.0209&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;509 Dublin Extension&#39;, &#39;city&#39;: &#39;Oxnard&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2674 0284 7539 8857&#39;,
+   &#39;expiration-date&#39;: &#39;03/16&#39;}})
 </pre></div>
 </div>
 </div>
@@ -625,19 +638,20 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 57,
-  &#39;name&#39;: [&#39;Zenia&#39;, &#39;Richards&#39;],
-  &#39;occupation&#39;: &#39;Wood Carver&#39;,
-  &#39;telephone&#39;: &#39;1-327-488-9074&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1342 Egbert Pike&#39;, &#39;city&#39;: &#39;Cypress&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3489 852523 65500&#39;, &#39;expiration-date&#39;: &#39;04/23&#39;}},
- {&#39;age&#39;: 33,
-  &#39;name&#39;: [&#39;Marleen&#39;, &#39;Odom&#39;],
-  &#39;occupation&#39;: &#39;Spring Maker&#39;,
-  &#39;telephone&#39;: &#39;874-504-5497&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;713 Excelsior Heights&#39;, &#39;city&#39;: &#39;Zanesville&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4278 2577 0569 8408&#39;,
-   &#39;expiration-date&#39;: &#39;05/22&#39;}})
+<span></span>({&#39;age&#39;: 31,
+  &#39;name&#39;: [&#39;Sylvester&#39;, &#39;Sanchez&#39;],
+  &#39;occupation&#39;: &#39;Marine Electrician&#39;,
+  &#39;telephone&#39;: &#39;1-580-118-5788&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;502 Illinois Walk&#39;, &#39;city&#39;: &#39;Valparaiso&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2523 2299 7032 1385&#39;,
+   &#39;expiration-date&#39;: &#39;10/17&#39;}},
+ {&#39;age&#39;: 63,
+  &#39;name&#39;: [&#39;Becki&#39;, &#39;Cain&#39;],
+  &#39;occupation&#39;: &#39;Travel Courier&#39;,
+  &#39;telephone&#39;: &#39;386.638.0209&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;509 Dublin Extension&#39;, &#39;city&#39;: &#39;Oxnard&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2674 0284 7539 8857&#39;,
+   &#39;expiration-date&#39;: &#39;03/16&#39;}})
 </pre></div>
 </div>
 </div>
@@ -655,7 +669,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(&#39;Wood Carver&#39;, &#39;Spring Maker&#39;)
+<span></span>(&#39;Marine Electrician&#39;, &#39;Travel Courier&#39;)
 </pre></div>
 </div>
 </div>
@@ -718,16 +732,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[(&#39;Sculptor&#39;, 16),
- (&#39;Lighting Technician&#39;, 16),
- (&#39;Taxi Driver&#39;, 14),
- (&#39;Building Manager&#39;, 14),
- (&#39;Barmaid&#39;, 14),
- (&#39;Wine Merchant&#39;, 13),
- (&#39;Police Officer&#39;, 13),
- (&#39;Ship Broker&#39;, 13),
- (&#39;Video Artist&#39;, 13),
- (&#39;Plant Operator&#39;, 13)]
+<span></span>[(&#39;Injection Moulder&#39;, 15),
+ (&#39;Yard Manager&#39;, 14),
+ (&#39;Landworker&#39;, 14),
+ (&#39;Marketing Agent&#39;, 14),
+ (&#39;Technical Instructor&#39;, 14),
+ (&#39;Governor&#39;, 14),
+ (&#39;Marketing Manager&#39;, 13),
+ (&#39;Joiner&#39;, 13),
+ (&#39;Au Pair&#39;, 13),
+ (&#39;Sportswoman&#39;, 13)]
 </pre></div>
 </div>
 </div>
@@ -784,12 +798,13 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 57,
-  &#39;name&#39;: [&#39;Zenia&#39;, &#39;Richards&#39;],
-  &#39;occupation&#39;: &#39;Wood Carver&#39;,
-  &#39;telephone&#39;: &#39;1-327-488-9074&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1342 Egbert Pike&#39;, &#39;city&#39;: &#39;Cypress&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3489 852523 65500&#39;, &#39;expiration-date&#39;: &#39;04/23&#39;}},)
+<span></span>({&#39;age&#39;: 31,
+  &#39;name&#39;: [&#39;Sylvester&#39;, &#39;Sanchez&#39;],
+  &#39;occupation&#39;: &#39;Marine Electrician&#39;,
+  &#39;telephone&#39;: &#39;1-580-118-5788&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;502 Illinois Walk&#39;, &#39;city&#39;: &#39;Valparaiso&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2523 2299 7032 1385&#39;,
+   &#39;expiration-date&#39;: &#39;10/17&#39;}},)
 </pre></div>
 </div>
 </div>
@@ -819,14 +834,14 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 57,
-  &#39;occupation&#39;: &#39;Wood Carver&#39;,
-  &#39;telephone&#39;: &#39;1-327-488-9074&#39;,
-  &#39;credit-card-number&#39;: &#39;3489 852523 65500&#39;,
-  &#39;credit-card-expiration&#39;: &#39;04/23&#39;,
-  &#39;name&#39;: &#39;Zenia Richards&#39;,
-  &#39;street-address&#39;: &#39;1342 Egbert Pike&#39;,
-  &#39;city&#39;: &#39;Cypress&#39;},)
+<span></span>({&#39;age&#39;: 31,
+  &#39;occupation&#39;: &#39;Marine Electrician&#39;,
+  &#39;telephone&#39;: &#39;1-580-118-5788&#39;,
+  &#39;credit-card-number&#39;: &#39;2523 2299 7032 1385&#39;,
+  &#39;credit-card-expiration&#39;: &#39;10/17&#39;,
+  &#39;name&#39;: &#39;Sylvester Sanchez&#39;,
+  &#39;street-address&#39;: &#39;502 Illinois Walk&#39;,
+  &#39;city&#39;: &#39;Valparaiso&#39;},)
 </pre></div>
 </div>
 </div>
@@ -876,58 +891,58 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>57</td>
-      <td>Cypress</td>
-      <td>04/23</td>
-      <td>3489 852523 65500</td>
-      <td>Zenia Richards</td>
-      <td>Wood Carver</td>
-      <td>1342 Egbert Pike</td>
-      <td>1-327-488-9074</td>
+      <td>31</td>
+      <td>Valparaiso</td>
+      <td>10/17</td>
+      <td>2523 2299 7032 1385</td>
+      <td>Sylvester Sanchez</td>
+      <td>Marine Electrician</td>
+      <td>502 Illinois Walk</td>
+      <td>1-580-118-5788</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>33</td>
-      <td>Zanesville</td>
-      <td>05/22</td>
-      <td>4278 2577 0569 8408</td>
-      <td>Marleen Odom</td>
-      <td>Spring Maker</td>
-      <td>713 Excelsior Heights</td>
-      <td>874-504-5497</td>
+      <td>63</td>
+      <td>Oxnard</td>
+      <td>03/16</td>
+      <td>2674 0284 7539 8857</td>
+      <td>Becki Cain</td>
+      <td>Travel Courier</td>
+      <td>509 Dublin Extension</td>
+      <td>386.638.0209</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>35</td>
-      <td>Simpsonville</td>
-      <td>11/21</td>
-      <td>4599 7447 2354 4583</td>
-      <td>Edgardo Cooper</td>
-      <td>Polisher</td>
-      <td>823 Mistral Plantation</td>
-      <td>368-225-0481</td>
+      <td>52</td>
+      <td>Romulus</td>
+      <td>12/21</td>
+      <td>2367 6997 8012 1143</td>
+      <td>Van Benson</td>
+      <td>Bus Mechanic</td>
+      <td>1215 Rosenkranz Bend</td>
+      <td>(923) 334-5610</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>40</td>
-      <td>Loma Linda</td>
-      <td>04/22</td>
-      <td>4278 4328 1624 3663</td>
-      <td>Garret Morton</td>
-      <td>Publicity Manager</td>
-      <td>76 Gaviota Terrace</td>
-      <td>518-467-4545</td>
+      <td>28</td>
+      <td>West St. Paul</td>
+      <td>12/25</td>
+      <td>5313 8769 3925 0738</td>
+      <td>Gertha Crosby</td>
+      <td>Taxi Driver</td>
+      <td>399 Diamond Heights Drive</td>
+      <td>+1-(684)-887-9216</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>27</td>
-      <td>Safety Harbor</td>
-      <td>04/18</td>
-      <td>2239 2472 6486 6084</td>
-      <td>Jeffrey Carlson</td>
-      <td>Proof Reader</td>
-      <td>557 Euclid Pike</td>
-      <td>437.137.4037</td>
+      <td>43</td>
+      <td>Wenatchee</td>
+      <td>11/22</td>
+      <td>5205 4896 7375 3734</td>
+      <td>Jon Duncan</td>
+      <td>Packaging</td>
+      <td>438 Vicksburg Bypass</td>
+      <td>859.442.3364</td>
     </tr>
   </tbody>
 </table>
@@ -948,16 +963,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Lighting Technician    16
-Sculptor               16
-Building Manager       14
-Taxi Driver            14
-Barmaid                14
-Plant Operator         13
-Booking Agent          13
-Stocktaker             13
-Video Artist           13
-Wine Merchant          13
+<span></span>Injection Moulder       15
+Yard Manager            14
+Marketing Agent         14
+Landworker              14
+Technical Instructor    14
+Governor                14
+Safety Officer          13
+Au Pair                 13
+Valve Technician        13
+Sportswoman             13
 Name: occupation, dtype: int64
 </pre></div>
 </div>

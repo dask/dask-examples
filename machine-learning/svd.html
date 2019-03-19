@@ -180,6 +180,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/dask-image-quickstart.html">Quickstart to dask-image</a></li>
 </ul>
 
             
@@ -464,6 +465,17 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/dask/config.py:168: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  data = yaml.load(f.read()) or {}
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/config.py:20: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  defaults = yaml.load(f)
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -474,7 +486,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>inproc://10.20.0.191/7909/1
+  <li><b>Scheduler: </b>inproc://10.20.0.160/9964/1
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -538,19 +550,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([[ 0.09998995,  0.10017661,  0.09997732, ...,  0.10020421,
-         0.10012584,  0.09999939],
-       [-0.04347259,  0.03488833, -0.13262716, ..., -0.01164524,
-         0.037117  ,  0.02915464],
-       [ 0.17710934, -0.01955758, -0.11289582, ...,  0.0837633 ,
-         0.0257729 , -0.09140071],
+<span></span>array([[ 0.10003729,  0.09999221,  0.10007995, ...,  0.09999972,
+         0.09982642,  0.0998294 ],
+       [ 0.05990533, -0.01927354,  0.06811456, ...,  0.15978756,
+        -0.18921072, -0.08171132],
+       [-0.07617444, -0.0873598 , -0.12848636, ...,  0.02753698,
+         0.12052707,  0.01584746],
        ...,
-       [ 0.14357131,  0.06054475, -0.16197325, ...,  0.02876628,
-         0.03479588, -0.00227747],
-       [-0.199144  , -0.16096787, -0.09625568, ...,  0.03634626,
-        -0.10109045,  0.18266312],
-       [ 0.05119661, -0.06403266,  0.18447694, ...,  0.08064405,
-        -0.00897351,  0.19727043]])
+       [-0.15972778, -0.11632567, -0.11473825, ...,  0.04061942,
+         0.00132685, -0.01185708],
+       [ 0.13174675, -0.02179479, -0.06188271, ...,  0.05402551,
+        -0.10850395,  0.11564611],
+       [ 0.18552167, -0.0183894 , -0.08930967, ..., -0.04136406,
+         0.12163986, -0.1167186 ]])
 </pre></div>
 </div>
 </div>
@@ -603,16 +615,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([[ 0.00993651,  0.0099384 ,  0.00994547, ...,  0.01007659,
-         0.0100185 ,  0.00995133],
-       [-0.00590742, -0.00794746, -0.00520059, ...,  0.01813953,
-         0.00893924, -0.01475201],
-       [-0.00314056,  0.0037527 , -0.01537743, ..., -0.00409115,
-         0.00777119,  0.0058383 ],
-       [-0.00208999,  0.00714561,  0.00338505, ..., -0.00583324,
-         0.02114594, -0.01033983],
-       [ 0.00651759, -0.02841475, -0.01280359, ...,  0.00831373,
-         0.01301642,  0.00942626]])
+<span></span>array([[ 0.01007241,  0.0100699 ,  0.01008468, ...,  0.01003391,
+         0.01000583,  0.01005781],
+       [ 0.01354338, -0.01168362,  0.01553763, ...,  0.02203377,
+         0.00012389, -0.00123657],
+       [ 0.00849267,  0.00468526, -0.00739498, ...,  0.00106389,
+         0.01018819, -0.0111201 ],
+       [ 0.0119603 , -0.01501981,  0.00956821, ...,  0.02233189,
+        -0.01731529,  0.00389717],
+       [-0.00099241,  0.00187019,  0.00784119, ...,  0.00424692,
+        -0.0201718 ,  0.00054403]])
 </pre></div>
 </div>
 </div>

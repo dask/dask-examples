@@ -182,6 +182,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/dask-image-quickstart.html">Quickstart to dask-image</a></li>
 </ul>
 
             
@@ -465,6 +466,17 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/dask/config.py:168: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  data = yaml.load(f.read()) or {}
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/config.py:20: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  defaults = yaml.load(f)
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -475,7 +487,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>inproc://10.20.0.191/7116/1
+  <li><b>Scheduler: </b>inproc://10.20.0.160/8427/1
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -614,32 +626,32 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>name
-Alice       0.002616
-Bob         0.000200
-Charlie     0.000394
-Dan        -0.001859
-Edith       0.002298
-Frank       0.001635
-George      0.000458
-Hannah     -0.003018
-Ingrid     -0.003191
-Jerry       0.001726
-Kevin       0.001305
-Laura      -0.001312
-Michael     0.001612
-Norbert     0.000184
-Oliver      0.001599
-Patricia    0.000794
-Quinn      -0.000992
-Ray         0.002634
-Sarah       0.002368
-Tim        -0.001337
-Ursula     -0.002867
-Victor      0.004445
-Wendy      -0.000930
-Xavier     -0.000456
-Yvonne      0.000200
-Zelda      -0.000084
+Alice       0.001348
+Bob         0.001712
+Charlie    -0.000497
+Dan         0.002249
+Edith       0.001347
+Frank      -0.001249
+George      0.001636
+Hannah     -0.000566
+Ingrid     -0.003114
+Jerry       0.000985
+Kevin      -0.000559
+Laura       0.000283
+Michael     0.000519
+Norbert    -0.002099
+Oliver     -0.001482
+Patricia    0.000465
+Quinn      -0.000795
+Ray         0.004049
+Sarah      -0.001495
+Tim        -0.001016
+Ursula      0.002718
+Victor     -0.001052
+Wendy      -0.000413
+Xavier      0.000883
+Yvonne     -0.001388
+Zelda      -0.000549
 Name: x, dtype: float64
 </pre></div>
 </div>
@@ -659,8 +671,8 @@ Name: x, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 380 ms, sys: 12 ms, total: 392 ms
-Wall time: 300 ms
+CPU times: user 428 ms, sys: 20 ms, total: 448 ms
+Wall time: 344 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -677,8 +689,8 @@ Wall time: 300 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 748 ms, sys: 12 ms, total: 760 ms
-Wall time: 547 ms
+CPU times: user 832 ms, sys: 8 ms, total: 840 ms
+Wall time: 607 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -704,8 +716,8 @@ Wall time: 547 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.26 s, sys: 80 ms, total: 1.34 s
-Wall time: 1.06 s
+CPU times: user 1.37 s, sys: 92 ms, total: 1.46 s
+Wall time: 1.15 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -756,38 +768,38 @@ Wall time: 1.06 s
   <tbody>
     <tr>
       <th>Alice</th>
-      <td>0.002616</td>
-      <td>0.577397</td>
-      <td>0.000216</td>
-      <td>100069</td>
+      <td>0.001348</td>
+      <td>0.576442</td>
+      <td>0.001548</td>
+      <td>99856</td>
     </tr>
     <tr>
       <th>Bob</th>
-      <td>0.000200</td>
-      <td>0.577954</td>
-      <td>-0.000811</td>
-      <td>100272</td>
+      <td>0.001712</td>
+      <td>0.578986</td>
+      <td>0.001348</td>
+      <td>100083</td>
     </tr>
     <tr>
       <th>Charlie</th>
-      <td>0.000394</td>
-      <td>0.576112</td>
-      <td>-0.002329</td>
-      <td>99428</td>
+      <td>-0.000497</td>
+      <td>0.578696</td>
+      <td>0.001088</td>
+      <td>99529</td>
     </tr>
     <tr>
       <th>Dan</th>
-      <td>-0.001859</td>
-      <td>0.577485</td>
-      <td>-0.003065</td>
-      <td>99515</td>
+      <td>0.002249</td>
+      <td>0.577065</td>
+      <td>0.000842</td>
+      <td>99333</td>
     </tr>
     <tr>
       <th>Edith</th>
-      <td>0.002298</td>
-      <td>0.576692</td>
-      <td>0.000789</td>
-      <td>99989</td>
+      <td>0.001347</td>
+      <td>0.578357</td>
+      <td>0.002621</td>
+      <td>99453</td>
     </tr>
   </tbody>
 </table>
@@ -870,8 +882,8 @@ Wall time: 1.06 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 6.94 s, sys: 664 ms, total: 7.6 s
-Wall time: 5.98 s
+CPU times: user 7.67 s, sys: 752 ms, total: 8.42 s
+Wall time: 6.56 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">

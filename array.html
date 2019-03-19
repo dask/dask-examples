@@ -180,6 +180,7 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/dask-image-quickstart.html">Quickstart to dask-image</a></li>
 </ul>
 
             
@@ -464,6 +465,17 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/dask/config.py:168: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  data = yaml.load(f.read()) or {}
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/config.py:20: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  defaults = yaml.load(f)
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -474,7 +486,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>inproc://10.20.0.191/6777/1
+  <li><b>Scheduler: </b>inproc://10.20.0.160/7713/1
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -550,8 +562,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([1.00782831, 1.00867624, 0.99270061, ..., 0.99482022, 0.99819611,
-       0.99363035])
+<span></span>array([0.99602933, 0.99090243, 0.99796751, ..., 1.00076633, 0.99424852,
+       0.99693692])
 </pre></div>
 </div>
 </div>
@@ -583,8 +595,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2.44 s, sys: 256 ms, total: 2.7 s
-Wall time: 1.36 s
+CPU times: user 2.62 s, sys: 388 ms, total: 3.01 s
+Wall time: 1.54 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -592,7 +604,7 @@ Wall time: 1.36 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>0.17738855603699233
+<span></span>1.5781709375354518
 </pre></div>
 </div>
 </div>
@@ -610,8 +622,8 @@ Wall time: 1.36 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 476 ms, sys: 20 ms, total: 496 ms
-Wall time: 321 ms
+CPU times: user 360 ms, sys: 8 ms, total: 368 ms
+Wall time: 253 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -619,7 +631,7 @@ Wall time: 321 ms
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>99996829.93490972
+<span></span>100001039.77780986
 </pre></div>
 </div>
 </div>

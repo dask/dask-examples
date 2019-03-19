@@ -184,6 +184,7 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/dask-image-quickstart.html">Quickstart to dask-image</a></li>
 </ul>
 
             
@@ -467,6 +468,17 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/dask/config.py:168: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  data = yaml.load(f.read()) or {}
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/config.py:20: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  defaults = yaml.load(f)
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -477,7 +489,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:44844
+  <li><b>Scheduler: </b>tcp://127.0.0.1:35064
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -684,24 +696,24 @@ dtype: object
   <tbody>
     <tr>
       <th>2000-01-01 00:00:00</th>
-      <td>1048</td>
-      <td>Edith</td>
-      <td>0.92</td>
-      <td>-0.75</td>
+      <td>1000</td>
+      <td>Sarah</td>
+      <td>0.26</td>
+      <td>0.94</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:01</th>
-      <td>985</td>
-      <td>Jerry</td>
-      <td>-0.25</td>
-      <td>0.56</td>
+      <td>1006</td>
+      <td>Wendy</td>
+      <td>-0.10</td>
+      <td>-0.15</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:02</th>
-      <td>982</td>
-      <td>Ursula</td>
-      <td>-0.50</td>
-      <td>-0.60</td>
+      <td>962</td>
+      <td>Victor</td>
+      <td>-0.58</td>
+      <td>-0.73</td>
     </tr>
   </tbody>
 </table>
@@ -784,7 +796,7 @@ Dask Name: sqrt, 157 tasks
 Alice      0.58
 Bob        0.58
 Charlie    0.58
-Dan        0.57
+Dan        0.58
 Edith      0.58
            ...
 Victor     0.58
@@ -876,28 +888,28 @@ Name: x, Length: 26, dtype: float64
   <tbody>
     <tr>
       <th>2000-01-01 00:00:00</th>
-      <td>-7.80e-03</td>
-      <td>-1.77e-02</td>
+      <td>-1.23e-03</td>
+      <td>6.35e-03</td>
     </tr>
     <tr>
       <th>2000-01-01 01:00:00</th>
-      <td>-7.90e-03</td>
-      <td>6.27e-03</td>
+      <td>-1.17e-02</td>
+      <td>3.95e-03</td>
     </tr>
     <tr>
       <th>2000-01-01 02:00:00</th>
-      <td>8.44e-03</td>
-      <td>-1.42e-04</td>
+      <td>5.94e-03</td>
+      <td>-1.16e-03</td>
     </tr>
     <tr>
       <th>2000-01-01 03:00:00</th>
-      <td>6.07e-03</td>
-      <td>7.79e-03</td>
+      <td>-1.11e-02</td>
+      <td>-8.56e-03</td>
     </tr>
     <tr>
       <th>2000-01-01 04:00:00</th>
-      <td>-5.52e-03</td>
-      <td>-1.28e-02</td>
+      <td>-9.79e-03</td>
+      <td>-5.69e-03</td>
     </tr>
   </tbody>
 </table>
@@ -917,7 +929,7 @@ Name: x, Length: 26, dtype: float64
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f9dcc9742e8&gt;
+<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fa19573dd30&gt;
 </pre></div>
 </div>
 </div>
@@ -981,28 +993,28 @@ Name: x, Length: 26, dtype: float64
   <tbody>
     <tr>
       <th>2000-01-01 00:00:00</th>
-      <td>9.22e-01</td>
-      <td>-0.75</td>
+      <td>0.26</td>
+      <td>0.94</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:01</th>
-      <td>3.38e-01</td>
-      <td>-0.09</td>
+      <td>0.08</td>
+      <td>0.39</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:02</th>
-      <td>5.81e-02</td>
-      <td>-0.26</td>
+      <td>-0.14</td>
+      <td>0.02</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:03</th>
-      <td>3.25e-02</td>
+      <td>-0.32</td>
       <td>-0.11</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:04</th>
-      <td>6.09e-03</td>
-      <td>-0.16</td>
+      <td>-0.29</td>
+      <td>-0.04</td>
     </tr>
   </tbody>
 </table>
@@ -1089,8 +1101,8 @@ Name: x, Length: 26, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 32 ms, sys: 8 ms, total: 40 ms
-Wall time: 59.4 ms
+CPU times: user 36 ms, sys: 8 ms, total: 44 ms
+Wall time: 66.2 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1132,38 +1144,38 @@ Wall time: 59.4 ms
   <tbody>
     <tr>
       <th>2000-01-05 00:00:00</th>
-      <td>1032</td>
-      <td>Jerry</td>
-      <td>3.08e-02</td>
-      <td>0.29</td>
+      <td>986</td>
+      <td>Charlie</td>
+      <td>-0.74</td>
+      <td>0.35</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:01</th>
-      <td>909</td>
-      <td>Oliver</td>
-      <td>7.14e-03</td>
-      <td>0.38</td>
+      <td>1017</td>
+      <td>George</td>
+      <td>-0.13</td>
+      <td>-0.91</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:02</th>
-      <td>946</td>
-      <td>Dan</td>
-      <td>-8.75e-01</td>
-      <td>0.80</td>
+      <td>1046</td>
+      <td>Quinn</td>
+      <td>-0.39</td>
+      <td>-0.61</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:03</th>
-      <td>1018</td>
-      <td>Quinn</td>
-      <td>-9.33e-01</td>
-      <td>-0.64</td>
+      <td>1017</td>
+      <td>Norbert</td>
+      <td>0.01</td>
+      <td>0.24</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:04</th>
-      <td>1000</td>
-      <td>Xavier</td>
-      <td>-4.55e-01</td>
-      <td>0.67</td>
+      <td>1007</td>
+      <td>Zelda</td>
+      <td>-0.56</td>
+      <td>-0.75</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1174,38 +1186,38 @@ Wall time: 59.4 ms
     </tr>
     <tr>
       <th>2000-01-05 23:59:55</th>
-      <td>971</td>
-      <td>Bob</td>
-      <td>7.10e-01</td>
-      <td>-0.15</td>
+      <td>1060</td>
+      <td>Oliver</td>
+      <td>0.04</td>
+      <td>-0.06</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:56</th>
-      <td>1022</td>
-      <td>Michael</td>
-      <td>-3.46e-01</td>
-      <td>0.42</td>
+      <td>935</td>
+      <td>Dan</td>
+      <td>0.75</td>
+      <td>-0.54</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:57</th>
-      <td>966</td>
-      <td>Quinn</td>
-      <td>7.79e-01</td>
-      <td>-0.51</td>
+      <td>1048</td>
+      <td>Michael</td>
+      <td>-0.06</td>
+      <td>-0.82</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:58</th>
-      <td>993</td>
-      <td>Victor</td>
-      <td>-4.23e-01</td>
-      <td>0.10</td>
+      <td>1058</td>
+      <td>Jerry</td>
+      <td>0.99</td>
+      <td>0.17</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:59</th>
-      <td>1008</td>
-      <td>Bob</td>
-      <td>7.17e-01</td>
-      <td>-0.45</td>
+      <td>1015</td>
+      <td>Zelda</td>
+      <td>0.98</td>
+      <td>-0.18</td>
     </tr>
   </tbody>
 </table>
@@ -1322,8 +1334,8 @@ Wall time: 59.4 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 592 ms, sys: 32 ms, total: 624 ms
-Wall time: 3.35 s
+CPU times: user 764 ms, sys: 108 ms, total: 872 ms
+Wall time: 4.18 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1363,33 +1375,33 @@ Wall time: 3.35 s
   <tbody>
     <tr>
       <th>Alice</th>
-      <td>983</td>
-      <td>0.54</td>
-      <td>0.74</td>
+      <td>990</td>
+      <td>-7.00e-01</td>
+      <td>-0.18</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1087</td>
-      <td>0.67</td>
-      <td>-0.33</td>
+      <td>964</td>
+      <td>-3.00e-01</td>
+      <td>0.64</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1001</td>
-      <td>-0.17</td>
-      <td>0.08</td>
+      <td>948</td>
+      <td>-4.69e-01</td>
+      <td>0.71</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1025</td>
-      <td>0.34</td>
-      <td>-0.45</td>
+      <td>1006</td>
+      <td>1.29e-01</td>
+      <td>-0.52</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>995</td>
-      <td>-0.72</td>
-      <td>0.93</td>
+      <td>996</td>
+      <td>1.63e-01</td>
+      <td>-0.69</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1399,37 +1411,37 @@ Wall time: 3.35 s
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1005</td>
-      <td>-0.93</td>
-      <td>-0.24</td>
+      <td>990</td>
+      <td>6.20e-01</td>
+      <td>0.34</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>980</td>
-      <td>0.86</td>
-      <td>0.60</td>
+      <td>1084</td>
+      <td>-5.04e-01</td>
+      <td>0.75</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1044</td>
-      <td>0.98</td>
-      <td>0.73</td>
+      <td>957</td>
+      <td>-8.96e-02</td>
+      <td>0.03</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1033</td>
-      <td>0.41</td>
-      <td>0.19</td>
+      <td>938</td>
+      <td>-1.29e-01</td>
+      <td>0.83</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1016</td>
-      <td>-0.41</td>
-      <td>0.17</td>
+      <td>988</td>
+      <td>-3.55e-04</td>
+      <td>-0.76</td>
     </tr>
   </tbody>
 </table>
-<p>99488 rows × 3 columns</p>
+<p>99565 rows × 3 columns</p>
 </div></div>
 </div>
 </div>

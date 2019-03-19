@@ -1,0 +1,1314 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quickstart to dask-image &mdash; Dask Examples  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Reading and manipulating tiled GeoTIFF datasets" href="satellite-imagery-geotiff.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  
+
+<nav id="explore-links">
+  <a href="https://docs.dask.org/">
+    <img class="caption" src="../_static/images/dask-horizontal-white.svg"/>
+  </a>
+
+  <ul>
+    <li>
+      <a>Get Started</a>
+      <ul>
+        <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
+        <li><a href="https://examples.dask.org"> Examples </a></li>
+        <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
+        <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
+        <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
+        <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
+        <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a href="">Algorithms</a>
+      <ul>
+        <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
+        <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
+        <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
+        <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
+        <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
+        <li><a href="http://ml.dask.org">Machine Learning</a></li>
+        <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a href="https://docs.dask.org/en/latest/setup.html">Deploy</a>
+      <ul>
+        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
+        <li><a href="https://docs.dask.org/en/latest/setup/kubernetes-helm.html"> Helm </a></li>
+        <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
+        <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
+        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a>Community</a>
+      <ul>
+        <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
+        <li><a href="https://github.com/dask">Github</a></li>
+        <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
+        <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
+        <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
+      </ul>
+    </li>
+  </ul>
+
+</nav>
+
+
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Dask Examples
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Basic Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../array.html">Dask Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bag.html">Dask Bags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataframe.html">Dask DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../delayed.html">Custom Workloads with Dask Delayed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../futures.html">Custom Workloads with Futures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning.html">Dask for Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../xarray.html">Xarray with Dask Arrays</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Dataframes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dataframes/01-data-access.html">DataFrames: Read and Write Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataframes/02-groupby.html">DataFrames: Groupby</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Machine Learning:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/parallel-prediction.html">Score and Predict Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/training-on-large-datasets.html">Train Models on Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/incremental.html">Incrementally Train Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/xgboost.html">Scale XGBoost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/voting-classifier.html">Use Voting Classifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/tpot.html">Automate Machine Learning with TPOT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/glm.html">Generalized Linear Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/svd.html">Singular Value Decomposition</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Applications:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quickstart to dask-image</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Install-Extra-Dependencies">Install Extra Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Documentation">Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Scaling-up-with-dask-distributed">Scaling up with dask distributed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Saving-image-data-with-zarr">Saving image data with zarr</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Dask Examples</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Quickstart to dask-image</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/applications/dask-image-quickstart.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 7ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/applications/dask-image-quickstart.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/applications/dask-image-quickstart.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/applications/dask-image-quickstart.ipynb">on Github</a>.</p>
+<div class="section" id="Quickstart-to-dask-image">
+<h1>Quickstart to dask-image<a class="headerlink" href="#Quickstart-to-dask-image" title="Permalink to this headline">¶</a></h1>
+<p>Welcome to the quickstart guide for dask-image.</p>
+<ol class="arabic simple">
+<li><a class="reference external" href="'#environment_setup'">Setting up your environment</a></li>
+<li><a class="reference external" href="'#imports'">Importing dask-image</a></li>
+<li><a class="reference external" href="'#example_data'">Getting the example data</a></li>
+<li><a class="reference external" href="'#reading_image_data'">Reading in image data</a><ol class="arabic">
+<li><a class="reference external" href="'#reading_a_single_image'">Reading a single image</a></li>
+<li><a class="reference external" href="'#reading_multiple_images'">Reading multiple iamges</a></li>
+</ol>
+</li>
+<li><a class="reference external" href="'#applying_custom_function'">Applying your own custom function to images</a><ol class="arabic">
+<li><a class="reference external" href="'#embarrassingly_parallel'">Embarrassingly parallel problems</a></li>
+</ol>
+</li>
+<li><a class="reference external" href="'#joining_images'">Joining partial images together</a></li>
+<li><a class="reference external" href="'#segmentation_pipeline'">A segmentation analysis pipeline</a><ol class="arabic">
+<li><a class="reference external" href="'#filtering">Filtering</a></li>
+<li><a class="reference external" href="'#segmenting'">Segmenting</a></li>
+<li><a class="reference external" href="'#analyzing'">Analyzing</a></li>
+</ol>
+</li>
+<li><a class="reference external" href="'#next_steps'">Next steps</a></li>
+<li><a class="reference external" href="'#cleanup'">Cleaning up temporary directories and files</a></li>
+</ol>
+<p>## Setting up your environment</p>
+<div class="section" id="Install-Extra-Dependencies">
+<h2>Install Extra Dependencies<a class="headerlink" href="#Install-Extra-Dependencies" title="Permalink to this headline">¶</a></h2>
+<p>We first install the library scikit-image for easier access to the example image data there.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span>pip install scikit-image --upgrade-strategy only-if-needed
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Collecting scikit-image
+  Downloading https://files.pythonhosted.org/packages/24/06/d560630eb9e36d90d69fe57d9ff762d8f501664ce478b8a0ae132b3c3008/scikit_image-0.14.2-cp36-cp36m-manylinux1_x86_64.whl (25.3MB)
+
+Requirement already satisfied: pillow&gt;=4.3.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from scikit-image) (5.4.1)
+Requirement already satisfied: matplotlib&gt;=2.0.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from scikit-image) (3.0.3)
+Collecting networkx&gt;=1.8 (from scikit-image)
+  Downloading https://files.pythonhosted.org/packages/f3/f4/7e20ef40b118478191cec0b58c3192f822cace858c19505c7670961b76b2/networkx-2.2.zip (1.7MB)
+
+Requirement already satisfied: scipy&gt;=0.17.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from scikit-image) (1.2.1)
+Requirement already satisfied: cloudpickle&gt;=0.2.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from scikit-image) (0.8.0)
+Requirement already satisfied: dask[array]&gt;=1.0.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from scikit-image) (1.1.4)
+Collecting PyWavelets&gt;=0.4.0 (from scikit-image)
+  Downloading https://files.pythonhosted.org/packages/92/9a/2816f258df2e4e5885ebcb7695619c254f0d8f94f700c204c3eb77e8c0fd/PyWavelets-1.0.2-cp36-cp36m-manylinux1_x86_64.whl (4.4MB)
+
+Requirement already satisfied: six&gt;=1.10.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from scikit-image) (1.12.0)
+Requirement already satisfied: numpy&gt;=1.10.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from matplotlib&gt;=2.0.0-&gt;scikit-image) (1.16.2)
+Requirement already satisfied: cycler&gt;=0.10 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from matplotlib&gt;=2.0.0-&gt;scikit-image) (0.10.0)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from matplotlib&gt;=2.0.0-&gt;scikit-image) (1.0.1)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from matplotlib&gt;=2.0.0-&gt;scikit-image) (2.3.1)
+Requirement already satisfied: python-dateutil&gt;=2.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from matplotlib&gt;=2.0.0-&gt;scikit-image) (2.8.0)
+Requirement already satisfied: decorator&gt;=4.3.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from networkx&gt;=1.8-&gt;scikit-image) (4.4.0)
+Requirement already satisfied: toolz&gt;=0.7.3; extra == &#34;array&#34; in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from dask[array]&gt;=1.0.0-&gt;scikit-image) (0.9.0)
+Requirement already satisfied: setuptools in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from kiwisolver&gt;=1.0.1-&gt;matplotlib&gt;=2.0.0-&gt;scikit-image) (40.8.0)
+Building wheels for collected packages: networkx
+  Building wheel for networkx (setup.py) ... - \ | / - done
+  Stored in directory: /home/travis/.cache/pip/wheels/68/f8/29/b53346a112a07d30a5a84d53f19aeadaa1a474897c0423af91
+Successfully built networkx
+Installing collected packages: networkx, PyWavelets, scikit-image
+Successfully installed PyWavelets-1.0.2 networkx-2.2 scikit-image-0.14.2
+</pre></div></div>
+</div>
+<p>If you are running this notebook on your own computer and not in the mybinder environment, you’ll additionally need to ensure your Python environment contains: * dask * dask-image * python-graphviz * scikit-image * matplotlib * numpy</p>
+<p>You can refer to the full list of dependencies used for the <code class="docutils literal notranslate"><span class="pre">dask-examples</span></code> repository, available in the <code class="docutils literal notranslate"><span class="pre">`binder/environment.yml</span></code> file here &lt;<a class="reference external" href="https://github.com/dask/dask-examples/blob/master/binder/environment.yml">https://github.com/dask/dask-examples/blob/master/binder/environment.yml</a>&gt;`__ (note that the <code class="docutils literal notranslate"><span class="pre">nomkl</span></code> package is not available for Windows users): <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/binder/environment.yml">https://github.com/dask/dask-examples/blob/master/binder/environment.yml</a></p>
+<p>## Importing dask-image</p>
+<p>When you import dask-image, be sure to use an underscore instead of a dash between the two words.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">dask_image.imread</span>
+<span class="kn">import</span> <span class="nn">dask_image.ndfilters</span>
+<span class="kn">import</span> <span class="nn">dask_image.ndmeasure</span>
+<span class="kn">import</span> <span class="nn">dask.array</span> <span class="k">as</span> <span class="nn">da</span>
+</pre></div>
+</div>
+</div>
+<p>We’ll also use matplotlib to display image results in this notebook.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<p>## Getting the example data</p>
+<p>We’ll use some example image data from the scikit-image library in this tutorial. These images are very small, but will allow us to demonstrate the functionality of dask-image.</p>
+<p>Let’s download and save a public domain image of the astronaut Eileen Collins to a temporary directory. This image was originally downloaded from the NASA Great Images database <a class="reference external" href="https://flic.kr/p/r9qvLn">https://flic.kr/p/r9qvLn</a>, but we’ll access it with scikit-image’s <code class="docutils literal notranslate"><span class="pre">data.astronaut()</span></code> method.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span>mkdir temp
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">io</span>
+
+<span class="n">output_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">,</span> <span class="s1">&#39;astronaut.png&#39;</span><span class="p">)</span>
+<span class="n">io</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="n">output_filename</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<p>Really large datasets often can’t fit all of the data into a single file, so we’ll chop this image into four parts and save the image tiles to a second temporary directory. This will give you a better idea of how you can use dask-image on a real dataset.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span>mkdir temp-tiles
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">io</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;temp-tiles&#39;</span><span class="p">,</span> <span class="s1">&#39;image-00.png&#39;</span><span class="p">),</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()[:</span><span class="mi">256</span><span class="p">,</span> <span class="p">:</span><span class="mi">256</span><span class="p">,</span> <span class="p">:])</span>  <span class="c1"># top left</span>
+<span class="n">io</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;temp-tiles&#39;</span><span class="p">,</span> <span class="s1">&#39;image-01.png&#39;</span><span class="p">),</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()[:</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">:,</span> <span class="p">:])</span>  <span class="c1"># top right</span>
+<span class="n">io</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;temp-tiles&#39;</span><span class="p">,</span> <span class="s1">&#39;image-10.png&#39;</span><span class="p">),</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()[</span><span class="mi">256</span><span class="p">:,</span> <span class="p">:</span><span class="mi">256</span><span class="p">,</span> <span class="p">:])</span>  <span class="c1"># bottom left</span>
+<span class="n">io</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;temp-tiles&#39;</span><span class="p">,</span> <span class="s1">&#39;image-11.png&#39;</span><span class="p">),</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()[</span><span class="mi">256</span><span class="p">:,</span> <span class="mi">256</span><span class="p">:,</span> <span class="p">:])</span>  <span class="c1"># bottom right</span>
+</pre></div>
+</div>
+</div>
+<p>Now we have some data saved, let’s practise reading in files with dask-image and processing our images.</p>
+<p>## Reading in image data</p>
+<p>### Reading a single image</p>
+<p>Let’s load a public domain image of the astronaut Eileen Collins with dask-image <a class="reference external" href="http://image.dask.org/en/latest/dask_image.imread.html">imread()</a>. This image was originally downloaded from the NASA Great Images database <a class="reference external" href="https://flic.kr/p/r9qvLn">https://flic.kr/p/r9qvLn</a>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">,</span> <span class="s1">&#39;astronaut.png&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+temp/astronaut.png
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">astronaut</span> <span class="o">=</span> <span class="n">dask_image</span><span class="o">.</span><span class="n">imread</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">astronaut</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">astronaut</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span>  <span class="c1"># display the first (and only) frame of the image</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+dask.array&lt;from-value, shape=(1, 512, 512, 3), dtype=uint8, chunksize=(1, 512, 512, 3)&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.image.AxesImage at 0x7f06cac010f0&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/applications_dask-image-quickstart_24_2.png" src="../_images/applications_dask-image-quickstart_24_2.png" />
+</div>
+</div>
+<p>This has created a dask array with <code class="docutils literal notranslate"><span class="pre">shape=(1,</span> <span class="pre">512,</span> <span class="pre">512,</span> <span class="pre">3)</span></code>. This means it contains one image frame with 512 rows, 512 columns, and 3 color channels.</p>
+<p>Since the image is relatively small, it fits entirely within one dask-image chunk, with <code class="docutils literal notranslate"><span class="pre">chunksize=(1,</span> <span class="pre">512,</span> <span class="pre">512,</span> <span class="pre">3)</span></code>.</p>
+<p>### Reading multiple images</p>
+<p>In many cases, you may have multiple images stored on disk, for example: <code class="docutils literal notranslate"><span class="pre">image_00.png</span></code>, <code class="docutils literal notranslate"><span class="pre">image_01.png</span></code>, … <code class="docutils literal notranslate"><span class="pre">image_NN.png</span></code>. These can be read into a dask array as multiple image frames.</p>
+<p>Here we have the astronaut image split into four non-overlapping tiles: * <code class="docutils literal notranslate"><span class="pre">image_00.png</span></code> = top left image (index 0,0) * <code class="docutils literal notranslate"><span class="pre">image_01.png</span></code> = top right image (index 0,1) * <code class="docutils literal notranslate"><span class="pre">image_10.png</span></code> = bottom left image (index 1,0) * <code class="docutils literal notranslate"><span class="pre">image_11.png</span></code> = bottom right image (index 1,1)</p>
+<p>This filename pattern can be matched with regex: <code class="docutils literal notranslate"><span class="pre">image-*.png</span></code></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span>ls temp-tiles
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+image-00.png  image-01.png  image-10.png  image-11.png
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">filename_pattern</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;temp-tiles&#39;</span><span class="p">,</span> <span class="s1">&#39;image-*.png&#39;</span><span class="p">)</span>
+<span class="n">tiled_astronaut_images</span> <span class="o">=</span> <span class="n">dask_image</span><span class="o">.</span><span class="n">imread</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">filename_pattern</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tiled_astronaut_images</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+dask.array&lt;concatenate, shape=(4, 256, 256, 3), dtype=uint8, chunksize=(1, 256, 256, 3)&gt;
+</pre></div></div>
+</div>
+<p>This has created a dask array with <code class="docutils literal notranslate"><span class="pre">shape=(4,</span> <span class="pre">256,</span> <span class="pre">256,</span> <span class="pre">3)</span></code>. This means it contains four image frames; each with 256 rows, 256 columns, and 3 color channels.</p>
+<p>There are four chunks in this particular case. Each image frame here is a separate chunk with <code class="docutils literal notranslate"><span class="pre">chunksize=(1,</span> <span class="pre">256,</span> <span class="pre">256,</span> <span class="pre">3)</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">tiled_astronaut_images</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">tiled_astronaut_images</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">tiled_astronaut_images</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">tiled_astronaut_images</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/applications_dask-image-quickstart_32_0.png" src="../_images/applications_dask-image-quickstart_32_0.png" />
+</div>
+</div>
+<p>## Applying your own custom function to images</p>
+<p>Next you’ll want to do some image processing, and apply a function to your images.</p>
+<p>We’ll use a very simple example: converting an RGB image to grayscale. But you can also use this method to apply arbittrary functions to dask iamges. To convert our image to grayscale, we’ll use the equation to calcuate luminance (<a class="reference external" href="http://www.poynton.com/PDFs/ColorFAQ.pdf">reference pdf</a>)”:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Y</span> <span class="pre">=</span> <span class="pre">0.2125</span> <span class="pre">R</span> <span class="pre">+</span> <span class="pre">0.7154</span> <span class="pre">G</span> <span class="pre">+</span> <span class="pre">0.0721</span> <span class="pre">B</span></code></p>
+<p>We’ll write the function for this equation as follows:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">grayscale</span><span class="p">(</span><span class="n">rgb</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">((</span><span class="n">rgb</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.2125</span><span class="p">)</span> <span class="o">+</span>
+              <span class="p">(</span><span class="n">rgb</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.7154</span><span class="p">)</span> <span class="o">+</span>
+              <span class="p">(</span><span class="n">rgb</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.0721</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s apply this function to the astronaut image we read in as a single file and visualize the computation graph.</p>
+<p>(Visualizing the computation graph isn’t necessary most of the time but it’s helpful to know what dask is doing under the hood, and it can also be very useful for debugging problems.)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">single_image_result</span> <span class="o">=</span> <span class="n">grayscale</span><span class="p">(</span><span class="n">astronaut</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">single_image_result</span><span class="p">)</span>
+<span class="n">single_image_result</span><span class="o">.</span><span class="n">visualize</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+dask.array&lt;add, shape=(1, 512, 512), dtype=float64, chunksize=(1, 512, 512)&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/applications_dask-image-quickstart_37_1.png" src="../_images/applications_dask-image-quickstart_37_1.png" />
+</div>
+</div>
+<p>We also see that there are no longer three color channels in the shape of the result, and that the output image is as expected.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Original image dimensions: &quot;</span><span class="p">,</span> <span class="n">astronaut</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Processed image dimensions:&quot;</span><span class="p">,</span> <span class="n">single_image_result</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">astronaut</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span>            <span class="c1"># display the first (and only) frame of the image</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">single_image_result</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>  <span class="c1"># display the first (and only) frame of the image</span>
+
+<span class="c1"># Subplot headings</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Original iamge&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Processed iamge&#39;</span><span class="p">)</span>
+
+<span class="c1"># Don&#39;t display axes</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="c1"># Display images</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Original image dimensions:  (1, 512, 512, 3)
+Processed image dimensions: (1, 512, 512)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/applications_dask-image-quickstart_39_1.png" src="../_images/applications_dask-image-quickstart_39_1.png" />
+</div>
+</div>
+<p>### Embarrassingly parallel problems</p>
+<p>The syntax is identical to apply a function to multiple images or dask chunks. This is an example of an embarrassingly parallel problem, and we see that dask automatically creates a computation graph for each chunk.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">result</span> <span class="o">=</span> <span class="n">grayscale</span><span class="p">(</span><span class="n">tiled_astronaut_images</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="n">result</span><span class="o">.</span><span class="n">visualize</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+dask.array&lt;add, shape=(4, 256, 256), dtype=float64, chunksize=(1, 256, 256)&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/applications_dask-image-quickstart_42_1.png" src="../_images/applications_dask-image-quickstart_42_1.png" />
+</div>
+</div>
+<p>Let’s take a look at the results.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fig</span><span class="p">,</span> <span class="p">((</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">),</span> <span class="p">(</span><span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">))</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+
+<span class="c1"># Subplot headings</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;First chunk&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Second chunk&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Thurd chunk&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Fourth chunk&#39;</span><span class="p">)</span>
+
+<span class="c1"># Don&#39;t display axes</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="c1"># Display images</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/applications_dask-image-quickstart_44_0.png" src="../_images/applications_dask-image-quickstart_44_0.png" />
+</div>
+</div>
+<p>## Joining partial images together</p>
+<p>Ok, Things are looking pretty good! But how can we join these image chunks together?</p>
+<p>So far, we haven’t needed any information from neighboring pixels to do our calculations. But there are lots of functions (like those in <a class="reference external" href="https://dask-image.readthedocs.io/en/latest/dask_image.ndfilters.html">dask-image ndfilters</a>) that <em>do</em> need this for accurate results. You could end up with unwanted edge effects if you don’t tell dask how your images should be joined.</p>
+<p>Dask has several ways to join chunks together: <a class="reference external" href="http://docs.dask.org/en/latest/array-stack.html">Stack, Concatenate, and Block</a>.</p>
+<p>Block is very versatile, so we’ll use that in this next example. You simply pass in a list (or list of lists) to tell dask the spatial relationship between image chunks.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">]],</span>
+        <span class="p">[</span><span class="n">result</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">result</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="o">...</span><span class="p">]]]</span>
+<span class="n">combined_image</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">block</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">combined_image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">combined_image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(512, 512)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.image.AxesImage at 0x7f06c809e6d8&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/applications_dask-image-quickstart_48_2.png" src="../_images/applications_dask-image-quickstart_48_2.png" />
+</div>
+</div>
+<p>## A segmentation analysis pipeline</p>
+<p>We’ll walk through a simple image segmentation and analysis pipeline with three steps: 1. <a class="reference external" href="'#filtering">Filtering</a> 1. <a class="reference external" href="'#segmenting'">Segmenting</a> 1. <a class="reference external" href="'#analyzing'">Analyzing</a></p>
+<p>### Filtering</p>
+<p>Most analysis pipelines require some degree of image preprocessing. dask-image has a number of inbuilt filters available via <a class="reference external" href="https://dask-image.readthedocs.io/en/latest/dask_image.ndfilters.html">dask-image ndfilters</a></p>
+<p>Commonly a guassian filter may used to smooth the image before segmentation. This causes some loss of sharpness in the image, but can improve segmentation quality for methods that rely on image thresholding.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">smoothed_image</span> <span class="o">=</span> <span class="n">dask_image</span><span class="o">.</span><span class="n">ndfilters</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">combined_image</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<p>We see a small amount of blur in the smoothed image.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">smoothed_image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">smoothed_image</span> <span class="o">-</span> <span class="n">combined_image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+
+<span class="c1"># Subplot headings</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Smoothed iamge&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Difference from original&#39;</span><span class="p">)</span>
+
+<span class="c1"># Don&#39;t display axes</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="c1"># Display images</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/applications_dask-image-quickstart_55_0.png" src="../_images/applications_dask-image-quickstart_55_0.png" />
+</div>
+</div>
+<p>Since the gaussian filter uses information from neighbouring pixels, the computational graph looks more complicated than the ones we looked at earlier. This is no longer embarrassingly parallel. Where possible dask keeps the computations for each of the four image chunks separate, but must combine information from different chunks near the edges.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">smoothed_image</span><span class="o">.</span><span class="n">visualize</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/applications_dask-image-quickstart_57_0.png" src="../_images/applications_dask-image-quickstart_57_0.png" />
+</div>
+</div>
+<p>### Segmenting</p>
+<p>After the image preprocessing, we segment regions of interest from the data. We’ll use a simple arbitrary threshold as the cutoff, at 75% of the maximum intensity of the smoothed image.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">threshold_value</span> <span class="o">=</span> <span class="mf">0.75</span> <span class="o">*</span> <span class="n">da</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">smoothed_image</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">threshold_value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+190.5550614819934
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">threshold_image</span> <span class="o">=</span> <span class="n">smoothed_image</span> <span class="o">&gt;</span> <span class="n">threshold_value</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">threshold_image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.image.AxesImage at 0x7f06b8fdbc88&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/applications_dask-image-quickstart_61_1.png" src="../_images/applications_dask-image-quickstart_61_1.png" />
+</div>
+</div>
+<p>Next, we label each region of connected pixels above the threshold value. For this we use the <code class="docutils literal notranslate"><span class="pre">label</span></code> function from <a class="reference external" href="https://dask-image.readthedocs.io/en/latest/dask_image.ndmeasure.html">dask-image ndmeasure</a>. This will return both the label image, and the number of labels.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">label_image</span><span class="p">,</span> <span class="n">num_labels</span> <span class="o">=</span> <span class="n">dask_image</span><span class="o">.</span><span class="n">ndmeasure</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">threshold_image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/dask_image/ndmeasure/__init__.py:214: RuntimeWarning: ``input`` does not have 1 chunk in all dimensions; it will be consolidated first
+  warn(&#34;``input`` does not have 1 chunk in all dimensions; it will be consolidated first&#34;, RuntimeWarning)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of labels:&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_labels</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">label_image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Number of labels: 78
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.image.AxesImage at 0x7f06b8f4a128&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/applications_dask-image-quickstart_64_2.png" src="../_images/applications_dask-image-quickstart_64_2.png" />
+</div>
+</div>
+<p>### Analyzing</p>
+<p>There are a number of inbuilt functions in <a class="reference external" href="https://dask-image.readthedocs.io/en/latest/dask_image.ndmeasure.html">dask-image ndmeasure</a> useful for quantitative analysis.</p>
+<p>We’ll use the <code class="docutils literal notranslate"><span class="pre">dask_image.ndmeasure.mean()</span></code> and <code class="docutils literal notranslate"><span class="pre">dask_image.ndmeasure.standard_deviation()</span></code> functions, and apply them to each label region with <code class="docutils literal notranslate"><span class="pre">dask_image.ndmeasure.labeled_comprehension()</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">index</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">num_labels</span><span class="p">)))</span>  <span class="c1"># Note that we&#39;re including the background label=0 here, too.</span>
+<span class="n">out_dtype</span> <span class="o">=</span> <span class="nb">float</span>  <span class="c1"># The data type we want to use for our results.</span>
+<span class="n">default</span> <span class="o">=</span> <span class="kc">None</span>     <span class="c1"># The value to return if an element of index does not exist in the label image.</span>
+<span class="n">mean_values</span> <span class="o">=</span> <span class="n">dask_image</span><span class="o">.</span><span class="n">ndmeasure</span><span class="o">.</span><span class="n">labeled_comprehension</span><span class="p">(</span><span class="n">combined_image</span><span class="p">,</span> <span class="n">label_image</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">dask_image</span><span class="o">.</span><span class="n">ndmeasure</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">out_dtype</span><span class="p">,</span> <span class="n">default</span><span class="p">,</span> <span class="n">pass_positions</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mean_values</span><span class="o">.</span><span class="n">compute</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[ 90.87492186 194.69185981 207.76964212 215.16959146 196.92609412
+ 206.50032105 224.71301613 249.08085    217.0948     215.87763779
+ 211.0477766  205.68146    208.61031956 198.27655577 212.43803803
+ 201.39967857 210.291275   198.3529809  201.21037636 214.13041176
+ 200.9344975  201.85547778 194.46485714 202.60302231 205.20927983
+ 203.72510602 205.94798756 205.88514047 213.67658483 207.33728
+ 216.13305227 206.7058     211.6957     205.65810758 211.75921279
+ 197.46586082 202.35786579 199.16034783 216.27194848 200.69137594
+ 220.99142573 220.1454     239.55       246.5        241.53348
+ 236.28736    244.84466624 242.09528    203.37236667 209.34061875
+ 213.76621346 247.53468249 207.66165    234.37771667 224.00188182
+ 229.2705     232.9163     187.1873     236.16183793 223.7469
+ 187.813475   227.4778     244.17155    225.49225806 239.4951
+ 218.7795     252.488826   208.5659     242.99015132 232.4975218
+ 197.72356    201.98308947 230.57158889 212.82135217 203.13211
+ 242.21528571 241.32428889 197.91741528]
+</pre></div></div>
+</div>
+<p>Since we’re including label 0 in our index, it’s not surprising that the first mean value is so much lower than the others - it’s the background region below our cutoff threshold for segmentation.</p>
+<p>Let’s also calculate the standard deviation of the pixel values in our greyscale iamge.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">stdev_values</span> <span class="o">=</span> <span class="n">dask_image</span><span class="o">.</span><span class="n">ndmeasure</span><span class="o">.</span><span class="n">labeled_comprehension</span><span class="p">(</span><span class="n">combined_image</span><span class="p">,</span> <span class="n">label_image</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">dask_image</span><span class="o">.</span><span class="n">ndmeasure</span><span class="o">.</span><span class="n">standard_deviation</span><span class="p">,</span> <span class="n">out_dtype</span><span class="p">,</span> <span class="n">default</span><span class="p">,</span> <span class="n">pass_positions</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Finally, let’s load our analysis results into a pandas table and then save it as a csv file.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">index</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean_values</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;standard_deviation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stdev_values</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>label</th>
+      <th>mean</th>
+      <th>standard_deviation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>90.874922</td>
+      <td>65.452828</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>194.691860</td>
+      <td>2.921235</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>207.769642</td>
+      <td>11.411058</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>215.169591</td>
+      <td>9.193374</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>196.926094</td>
+      <td>5.215053</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;example_analysis_results.csv&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Saved example_analysis_results.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saved example_analysis_results.csv
+</pre></div></div>
+</div>
+<p>## Next steps</p>
+<p>I hope this guide has helped you to get started with dask-image.</p>
+<div class="section" id="Documentation">
+<h3>Documentation<a class="headerlink" href="#Documentation" title="Permalink to this headline">¶</a></h3>
+<p>You can read more about dask-image in the <a class="reference external" href="https://dask-image.readthedocs.io/en/latest/api.html">dask-image documentation</a> and <a class="reference external" href="https://dask-image.readthedocs.io/en/latest/api.html">API reference</a>. Documentation for <a class="reference external" href="http://docs.dask.org/en/latest/">dask is here</a>.</p>
+<p>The dask-examples repository has a number of other example notebooks: <a class="reference external" href="https://github.com/dask/dask-examples">https://github.com/dask/dask-examples</a></p>
+</div>
+<div class="section" id="Scaling-up-with-dask-distributed">
+<h3>Scaling up with dask distributed<a class="headerlink" href="#Scaling-up-with-dask-distributed" title="Permalink to this headline">¶</a></h3>
+<p>If you want to send dask jobs to a computing cluster for distributed processing, you should take a look at <a class="reference external" href="https://distributed.dask.org/en/latest/">dask distributed</a>. There is also a <a class="reference external" href="https://distributed.dask.org/en/latest/quickstart.html">quickstart guide available</a>.</p>
+</div>
+<div class="section" id="Saving-image-data-with-zarr">
+<h3>Saving image data with zarr<a class="headerlink" href="#Saving-image-data-with-zarr" title="Permalink to this headline">¶</a></h3>
+<p>In some cases it may be necessary to save large data after image processing, <a class="reference external" href="https://zarr.readthedocs.io/en/stable/">zarr</a> is a python library that you may find useful.</p>
+<p>## Cleaning up temporary directories and files</p>
+<p>You recall we saved some example data to the directories <code class="docutils literal notranslate"><span class="pre">temp/</span></code> and <code class="docutils literal notranslate"><span class="pre">temp-tiles/</span></code>. To delete the contents, run the following command:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span>rm -r temp
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span>rm -r temp-tiles
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="satellite-imagery-geotiff.html" class="btn btn-neutral float-left" title="Reading and manipulating tiled GeoTIFF datasets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Dask Developers
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

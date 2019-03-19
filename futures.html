@@ -183,6 +183,7 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/dask-image-quickstart.html">Quickstart to dask-image</a></li>
 </ul>
 
             
@@ -466,6 +467,17 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/dask/config.py:168: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  data = yaml.load(f.read()) or {}
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/config.py:20: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  defaults = yaml.load(f)
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -476,7 +488,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:38507
+  <li><b>Scheduler: </b>tcp://127.0.0.1:39084
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -552,7 +564,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<b>Future: inc</b> <font color="gray">status: </font><font color="black">pending</font>, <font color="gray">key: </font>inc-526b2f215949f7a1dc42fefc11cd213f</div>
+<b>Future: inc</b> <font color="gray">status: </font><font color="black">pending</font>, <font color="gray">key: </font>inc-cf45f643cf5116a6bc3e07d5bb5909b7</div>
 </div>
 <p>If you wait a second, and then check on the future again, you’ll see that it has finished.</p>
 <div class="nbinput docutils container">
@@ -569,7 +581,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<b>Future: inc</b> <font color="gray">status: </font><font color="black">pending</font>, <font color="gray">key: </font>inc-526b2f215949f7a1dc42fefc11cd213f</div>
+<b>Future: inc</b> <font color="gray">status: </font><font color="black">pending</font>, <font color="gray">key: </font>inc-cf45f643cf5116a6bc3e07d5bb5909b7</div>
 </div>
 <p>You can block on the computation and gather the result with the <code class="docutils literal notranslate"><span class="pre">.result()</span></code> method.</p>
 <div class="nbinput docutils container">
@@ -611,7 +623,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<b>Future: add</b> <font color="gray">status: </font><font color="black">pending</font>, <font color="gray">key: </font>add-78cc83d29bd508a880f1d450864d1ba0</div>
+<b>Future: add</b> <font color="gray">status: </font><font color="black">pending</font>, <font color="gray">key: </font>add-a1281bff0c3630bb9d8b32b70d8d97ac</div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
@@ -663,8 +675,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 164 ms, sys: 24 ms, total: 188 ms
-Wall time: 171 ms
+CPU times: user 140 ms, sys: 16 ms, total: 156 ms
+Wall time: 142 ms
 </pre></div></div>
 </div>
 <p>To make this go faster, add an additional workers with more cores</p>

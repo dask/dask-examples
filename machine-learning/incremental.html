@@ -170,7 +170,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#Persist-data-in-memory">Persist data in memory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Precompute-classes">Precompute classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Create-Scikit-Learn-model">Create Scikit-Learn model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Wrap-with-Dask-ML's-Incremental-meta-estimator">Wrap with Dask-ML’s Incremental meta-estimator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Wrap-with-Dask-ML’s-Incremental-meta-estimator">Wrap with Dask-ML’s Incremental meta-estimator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Model-training">Model training</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Pass-over-the-training-data-many-times">Pass over the training data many times</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Predict-and-Score">Predict and Score</a></li>
@@ -188,6 +188,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/dask-image-quickstart.html">Quickstart to dask-image</a></li>
 </ul>
 
             
@@ -485,6 +486,17 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/dask/config.py:168: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  data = yaml.load(f.read()) or {}
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/config.py:20: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  defaults = yaml.load(f)
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -495,7 +507,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:43249
+  <li><b>Scheduler: </b>tcp://127.0.0.1:43234
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -622,8 +634,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>Here we use <code class="docutils literal notranslate"><span class="pre">SGDClassifier</span></code>, but any estimator that implements the <code class="docutils literal notranslate"><span class="pre">partial_fit</span></code> method will work. A list of Scikit-Learn models that implement this API is available <a class="reference external" href="http://scikit-learn.org/stable/modules/scaling_strategies.html#incremental-learning">here</a>.</p>
 </div>
-<div class="section" id="Wrap-with-Dask-ML's-Incremental-meta-estimator">
-<h2>Wrap with Dask-ML’s Incremental meta-estimator<a class="headerlink" href="#Wrap-with-Dask-ML's-Incremental-meta-estimator" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Wrap-with-Dask-ML’s-Incremental-meta-estimator">
+<h2>Wrap with Dask-ML’s Incremental meta-estimator<a class="headerlink" href="#Wrap-with-Dask-ML’s-Incremental-meta-estimator" title="Permalink to this headline">¶</a></h2>
 <p>We now wrap our <code class="docutils literal notranslate"><span class="pre">SGDClassifer</span></code> with the <code class="docutils literal notranslate"><span class="pre">`dask_ml.wrappers.Incremental</span></code> &lt;<a class="reference external" href="http://ml.dask.org/modules/generated/dask_ml.wrappers.Incremental.html#dask_ml.wrappers.Incremental">http://ml.dask.org/modules/generated/dask_ml.wrappers.Incremental.html#dask_ml.wrappers.Incremental</a>&gt;`__ meta-estimator.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -681,7 +693,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>0.5654
+<span></span>0.5206
 </pre></div>
 </div>
 </div>
@@ -715,16 +727,16 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Score: 0.5373
+Score: 0.537
 Score: 0.5467
-Score: 0.5665
-Score: 0.5594
-Score: 0.5813
-Score: 0.5786
-Score: 0.5701
-Score: 0.585
-Score: 0.5827
-Score: 0.578
+Score: 0.5422
+Score: 0.5364
+Score: 0.5464
+Score: 0.5469
+Score: 0.5572
+Score: 0.5569
+Score: 0.544
+Score: 0.5564
 </pre></div></div>
 </div>
 </div>
@@ -763,11 +775,11 @@ Score: 0.578
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0,
-       1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1,
-       1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0,
-       1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1,
-       0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1])
+<span></span>array([1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0,
+       1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0,
+       1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1,
+       0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0,
+       1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1])
 </pre></div>
 </div>
 </div>
@@ -785,7 +797,7 @@ Score: 0.578
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>0.578
+<span></span>0.5564
 </pre></div>
 </div>
 </div>
