@@ -185,7 +185,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dask-image-quickstart.html">Quickstart to dask-image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image-processing.html">Image Processing</a></li>
 </ul>
 
             
@@ -455,15 +455,15 @@ div.rendered_html tbody tr:hover {
 <h1>Embarrassingly parallel Workloads<a class="headerlink" href="#Embarrassingly-parallel-Workloads" title="Permalink to this headline">¶</a></h1>
 <p>This notebook shows how to use Dask to parallelize embarrassingly parallel workloads where you want to apply one function to many pieces of data independently. It will show three different ways of doing this with Dask:</p>
 <ol class="arabic simple">
-<li><a class="reference external" href="http://dask.pydata.org/en/latest/delayed.html">dask.delayed</a></li>
-<li><a class="reference external" href="https://dask.pydata.org/en/latest/futures.html">concurrent.Futures</a></li>
-<li><a class="reference external" href="https://dask.pydata.org/en/latest/bag.html">dask.bag</a></li>
+<li><p><a class="reference external" href="http://dask.pydata.org/en/latest/delayed.html">dask.delayed</a></p></li>
+<li><p><a class="reference external" href="https://dask.pydata.org/en/latest/futures.html">concurrent.Futures</a></p></li>
+<li><p><a class="reference external" href="https://dask.pydata.org/en/latest/bag.html">dask.bag</a></p></li>
 </ol>
 <p>This example focuses on using Dask for building large embarrassingly parallel computation as often seen in scientific communities and on High Performance Computing facilities, for example with Monte Carlo methods. This kind of simulation assume the following:</p>
 <ul class="simple">
-<li>We have a function that runs a heavy computation given some parameters.</li>
-<li>We need to compute this function on many different input parameters, each function call being independent.</li>
-<li>We want to gather all the results in one place for further analysis.</li>
+<li><p>We have a function that runs a heavy computation given some parameters.</p></li>
+<li><p>We need to compute this function on many different input parameters, each function call being independent.</p></li>
+<li><p>We want to gather all the results in one place for further analysis.</p></li>
 </ul>
 <div class="section" id="Start-Dask-Client-for-Dashboard">
 <h2>Start Dask Client for Dashboard<a class="headerlink" href="#Start-Dask-Client-for-Dashboard" title="Permalink to this headline">¶</a></h2>
@@ -500,7 +500,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:46699
+  <li><b>Scheduler: </b>tcp://127.0.0.1:34155
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -548,8 +548,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 4 ms, sys: 0 ns, total: 4 ms
-Wall time: 81.5 ms
+CPU times: user 12 ms, sys: 0 ns, total: 12 ms
+Wall time: 460 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -611,38 +611,38 @@ Wall time: 81.5 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.036689</td>
-      <td>0.120637</td>
-      <td>0.396835</td>
-      <td>0.644256</td>
+      <td>0.377490</td>
+      <td>0.778852</td>
+      <td>0.970111</td>
+      <td>0.358844</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.707207</td>
-      <td>0.803975</td>
-      <td>0.177513</td>
-      <td>0.317659</td>
+      <td>0.097831</td>
+      <td>0.218502</td>
+      <td>0.600169</td>
+      <td>0.945174</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.468095</td>
-      <td>0.820119</td>
-      <td>0.265155</td>
-      <td>0.906365</td>
+      <td>0.919566</td>
+      <td>0.573728</td>
+      <td>0.965945</td>
+      <td>0.840420</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.246203</td>
-      <td>0.555713</td>
-      <td>0.759466</td>
-      <td>0.669058</td>
+      <td>0.058529</td>
+      <td>0.218894</td>
+      <td>0.461159</td>
+      <td>0.319454</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.275588</td>
-      <td>0.256550</td>
-      <td>0.295989</td>
-      <td>0.579323</td>
+      <td>0.369895</td>
+      <td>0.673596</td>
+      <td>0.196260</td>
+      <td>0.969083</td>
     </tr>
   </tbody>
 </table>
@@ -650,13 +650,21 @@ Wall time: 81.5 ms
 </div>
 <p>Without using Dask, we could call our simulation on all of these parameters using normal Python for loops.</p>
 <p>Let’s only do this on a sample of our parameters as it would be quite long otherwise.</p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="o">%%time</span>
-<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">parameters</span> <span class="ow">in</span> <span class="n">input_params</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">costly_simulation</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
     <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
@@ -668,12 +676,12 @@ Wall time: 81.5 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 148 ms, sys: 16 ms, total: 164 ms
-Wall time: 4.83 s
+CPU times: user 112 ms, sys: 4 ms, total: 116 ms
+Wall time: 4.9 s
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -682,20 +690,20 @@ Wall time: 4.83 s
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[1.1984174991294785,
- 2.0063534575169086,
- 2.459734678462425,
- 2.230440137128232,
- 1.407449692994574,
- 1.8919941888805878,
- 1.342784464735121,
- 1.284757512267643,
- 2.672706983067381,
- 1.3929743017740472]
+<span></span>[2.485296482879007,
+ 1.8616766818689912,
+ 3.29965850266954,
+ 1.0580354644371197,
+ 2.208833878751146,
+ 1.9267903596603966,
+ 1.9201643090843574,
+ 1.9548308816449151,
+ 1.7272932679922706,
+ 1.4092882914373204]
 </pre></div>
 </div>
 </div>
@@ -706,14 +714,22 @@ Wall time: 4.83 s
 <h2>Use <a class="reference external" href="http://dask.pydata.org/en/latest/delayed.html">Dask Delayed</a> to make our function lazy<a class="headerlink" href="#Use-Dask-Delayed-to-make-our-function-lazy" title="Permalink to this headline">¶</a></h2>
 <p>We can call <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code> on our funtion to make it lazy. Rather than compute its result immediately, it records what we want to compute as a task into a graph that we’ll run later on parallel hardware. Using <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code> is a relatively straightforward way to parallelize an existing code base, even if the computation isn’t embarrassingly parallel like this one.</p>
 <p>Calling these lazy functions is now almost free. In the cell below we only construct a simple graph.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">dask</span>
+<span class="n">lazy_results</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+</div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="o">%%time</span>
-<span class="kn">import</span> <span class="nn">dask</span>
-<span class="n">lazy_results</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">parameters</span> <span class="ow">in</span> <span class="n">input_params</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
     <span class="n">lazy_result</span> <span class="o">=</span> <span class="n">dask</span><span class="o">.</span><span class="n">delayed</span><span class="p">(</span><span class="n">costly_simulation</span><span class="p">)(</span><span class="n">parameters</span><span class="p">)</span>
@@ -726,12 +742,12 @@ Wall time: 4.83 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 4 ms, sys: 0 ns, total: 4 ms
-Wall time: 3.64 ms
+CPU times: user 0 ns, sys: 0 ns, total: 0 ns
+Wall time: 1.85 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -740,11 +756,11 @@ Wall time: 3.64 ms
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Delayed(&#39;costly_simulation-121b0897-4ce9-4db1-af25-5568a83203b0&#39;)
+<span></span>Delayed(&#39;costly_simulation-3f36ff2c-cc78-45c6-bd94-81b20cfa0c8c&#39;)
 </pre></div>
 </div>
 </div>
@@ -754,7 +770,7 @@ Wall time: 3.64 ms
 <p>The <code class="docutils literal notranslate"><span class="pre">lazy_results</span></code> list contains information about ten calls to <code class="docutils literal notranslate"><span class="pre">costly_simulation</span></code> that have not yet been run. Call <code class="docutils literal notranslate"><span class="pre">.compute()</span></code> when you want your result as normal Python objects.</p>
 <p>If you started <code class="docutils literal notranslate"><span class="pre">Client()</span></code> above then you may want to watch the status page during computation.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -767,32 +783,32 @@ Wall time: 3.64 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 72 ms, sys: 8 ms, total: 80 ms
-Wall time: 1.4 s
+CPU times: user 84 ms, sys: 4 ms, total: 88 ms
+Wall time: 1.84 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(1.1984174991294785,
- 2.0063534575169086,
- 2.459734678462425,
- 2.230440137128232,
- 1.407449692994574,
- 1.8919941888805878,
- 1.342784464735121,
- 1.284757512267643,
- 2.672706983067381,
- 1.3929743017740472)
+<span></span>(2.485296482879007,
+ 1.8616766818689912,
+ 3.29965850266954,
+ 1.0580354644371197,
+ 2.208833878751146,
+ 1.9267903596603966,
+ 1.9201643090843574,
+ 1.9548308816449151,
+ 1.7272932679922706,
+ 1.4092882914373204)
 </pre></div>
 </div>
 </div>
 <p>Notice that this was faster than running these same computations sequentially with a for loop.</p>
 <p>We can now run this on all of our input parameters:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -810,7 +826,7 @@ Wall time: 1.4 s
 <p>To make this go faster, we can add additional workers.</p>
 <p>(although we’re still only working on our local machine, this is more practical when using an actual cluster)</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -822,7 +838,7 @@ Wall time: 1.4 s
 <p>By looking at the Dask dashboard we can see that Dask spreads this work around our cluster, managing load balancing, dependencies, etc..</p>
 <p>Then get the result:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -832,15 +848,15 @@ Wall time: 1.4 s
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(1.1984174991294785,
- 2.0063534575169086,
- 2.459734678462425,
- 2.230440137128232,
- 1.407449692994574)
+<span></span>(2.485296482879007,
+ 1.8616766818689912,
+ 3.29965850266954,
+ 1.0580354644371197,
+ 2.208833878751146)
 </pre></div>
 </div>
 </div>
@@ -850,7 +866,7 @@ Wall time: 1.4 s
 <p>The same example can be implemented using Dask’s Futures API by using the <code class="docutils literal notranslate"><span class="pre">client</span></code> object itself. For our use case of applying a function across many inputs both Dask delayed and Dask Futures are equally useful. The Futures API is a little bit different because it starts work immediately rather than being completely lazy.</p>
 <p>For example, notice that work starts immediately in the cell below as we submit work to the cluster:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -863,7 +879,7 @@ Wall time: 1.4 s
 </div>
 <p>We can explicitly wait until this work is done and gather the results to our local process by calling <code class="docutils literal notranslate"><span class="pre">client.gather</span></code>:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -873,15 +889,15 @@ Wall time: 1.4 s
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[1.1984174991294785,
- 2.0063534575169086,
- 2.459734678462425,
- 2.230440137128232,
- 1.407449692994574]
+<span></span>[2.485296482879007,
+ 1.8616766818689912,
+ 3.29965850266954,
+ 1.0580354644371197,
+ 2.208833878751146]
 </pre></div>
 </div>
 </div>
@@ -889,7 +905,7 @@ Wall time: 1.4 s
 <p>As for delayed, we can only start the computation and not wait for results by not calling <code class="docutils literal notranslate"><span class="pre">client.gather()</span></code> right now.</p>
 <p>It shall be noted that as Dask cluster has already performed tasks launching <code class="docutils literal notranslate"><span class="pre">costly_simulation</span></code> with Futures API on the given input parameters, the call to <code class="docutils literal notranslate"><span class="pre">client.map()</span></code> won’t actually trigger any computation, and just retrieve already computed results.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -899,7 +915,7 @@ Wall time: 1.4 s
 </div>
 <p>Then just get the results later:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -909,7 +925,7 @@ Wall time: 1.4 s
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -918,7 +934,7 @@ Wall time: 1.4 s
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -931,7 +947,7 @@ Wall time: 1.4 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-1.1984174991294785
+2.485296482879007
 </pre></div></div>
 </div>
 <p>We encourage you to watch the <a class="reference external" href="../proxy/8787/status">dashboard’s status page</a> to watch on going computation.</p>
@@ -942,7 +958,7 @@ Wall time: 1.4 s
 <p>Just get your result, and do some computation.</p>
 <p>Here, we will just get the results and expand our initial dataframe to have a nice view of parameters vs results for our computation</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -953,7 +969,7 @@ Wall time: 1.4 s
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -984,44 +1000,44 @@ Wall time: 1.4 s
   </thead>
   <tbody>
     <tr>
-      <th>311</th>
-      <td>0.101713</td>
-      <td>0.566348</td>
-      <td>0.004724</td>
-      <td>0.090461</td>
-      <td>0.763247</td>
+      <th>257</th>
+      <td>0.240865</td>
+      <td>0.523410</td>
+      <td>0.331853</td>
+      <td>0.841374</td>
+      <td>1.937501</td>
     </tr>
     <tr>
-      <th>439</th>
-      <td>0.325640</td>
-      <td>0.374982</td>
-      <td>0.487745</td>
-      <td>0.194601</td>
-      <td>1.382968</td>
+      <th>163</th>
+      <td>0.161625</td>
+      <td>0.134005</td>
+      <td>0.201290</td>
+      <td>0.586730</td>
+      <td>1.083649</td>
     </tr>
     <tr>
-      <th>23</th>
-      <td>0.370287</td>
-      <td>0.727832</td>
-      <td>0.502349</td>
-      <td>0.805564</td>
-      <td>2.406032</td>
+      <th>228</th>
+      <td>0.020471</td>
+      <td>0.279159</td>
+      <td>0.284020</td>
+      <td>0.883367</td>
+      <td>1.467017</td>
     </tr>
     <tr>
-      <th>170</th>
-      <td>0.676546</td>
-      <td>0.816257</td>
-      <td>0.435980</td>
-      <td>0.757691</td>
-      <td>2.686475</td>
+      <th>283</th>
+      <td>0.875221</td>
+      <td>0.893943</td>
+      <td>0.831499</td>
+      <td>0.151481</td>
+      <td>2.752145</td>
     </tr>
     <tr>
-      <th>338</th>
-      <td>0.120213</td>
-      <td>0.629603</td>
-      <td>0.256956</td>
-      <td>0.147953</td>
-      <td>1.154725</td>
+      <th>432</th>
+      <td>0.686096</td>
+      <td>0.223740</td>
+      <td>0.635157</td>
+      <td>0.462750</td>
+      <td>2.007744</td>
     </tr>
   </tbody>
 </table>
@@ -1029,7 +1045,7 @@ Wall time: 1.4 s
 </div>
 <p>Then we can do some nice statistical plots or save result locally with pandas interface here</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1039,11 +1055,11 @@ Wall time: 1.4 s
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc2bc94bbe0&gt;
+<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f2c5b497978&gt;
 </pre></div>
 </div>
 </div>
@@ -1051,11 +1067,11 @@ Wall time: 1.4 s
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/applications_embarrassingly-parallel_39_1.png" src="../_images/applications_embarrassingly-parallel_39_1.png" />
+<img alt="../_images/applications_embarrassingly-parallel_41_1.png" src="../_images/applications_embarrassingly-parallel_41_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1064,16 +1080,16 @@ Wall time: 1.4 s
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>1.9922372363295446
+<span></span>1.988108013329971
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1088,7 +1104,7 @@ Wall time: 1.4 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-246
+254
 </pre></div></div>
 </div>
 </div>
@@ -1098,7 +1114,7 @@ Wall time: 1.4 s
 many tasks</a>.</p>
 <p>Dask Bags hold onto large sequences in a few partitions. We can convert our <code class="docutils literal notranslate"><span class="pre">input_params</span></code> sequence into a <code class="docutils literal notranslate"><span class="pre">dask.bag</span></code> collection, asking for fewer partitions (so at most 100,000, which is already huge), and apply our function on every item of the bag.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1109,7 +1125,7 @@ many tasks</a>.</p>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1122,13 +1138,13 @@ many tasks</a>.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.12 s, sys: 176 ms, total: 1.3 s
-Wall time: 8.16 s
+CPU times: user 1.1 s, sys: 120 ms, total: 1.22 s
+Wall time: 8.47 s
 </pre></div></div>
 </div>
 <p>Looking on Dashboard here, you should see only 100 tasks to run instead of 500, each taking 5x more time in average, because each one is actually calling our function 5 times.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1137,7 +1153,7 @@ Wall time: 8.16 s
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>

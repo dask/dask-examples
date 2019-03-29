@@ -185,7 +185,7 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="applications/dask-image-quickstart.html">Quickstart to dask-image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/image-processing.html">Image Processing</a></li>
 </ul>
 
             
@@ -492,7 +492,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:38142
+  <li><b>Scheduler: </b>tcp://127.0.0.1:35394
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -563,8 +563,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 31, &#34;name&#34;: [&#34;Sylvester&#34;, &#34;Sanchez&#34;], &#34;occupation&#34;: &#34;Marine Electrician&#34;, &#34;telephone&#34;: &#34;1-580-118-5788&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;502 Illinois Walk&#34;, &#34;city&#34;: &#34;Valparaiso&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;2523 2299 7032 1385&#34;, &#34;expiration-date&#34;: &#34;10/17&#34;}}
-{&#34;age&#34;: 63, &#34;name&#34;: [&#34;Becki&#34;, &#34;Cain&#34;], &#34;occupation&#34;: &#34;Travel Courier&#34;, &#34;telephone&#34;: &#34;386.638.0209&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;509 Dublin Extension&#34;, &#34;city&#34;: &#34;Oxnard&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;2674 0284 7539 8857&#34;, &#34;expiration-date&#34;: &#34;03/16&#34;}}
+{&#34;age&#34;: 65, &#34;name&#34;: [&#34;Burma&#34;, &#34;Hancock&#34;], &#34;occupation&#34;: &#34;Secretary&#34;, &#34;telephone&#34;: &#34;636.880.9853&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;457 Borica Plaza&#34;, &#34;city&#34;: &#34;Los Altos&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5290 0736 6159 5947&#34;, &#34;expiration-date&#34;: &#34;12/17&#34;}}
+{&#34;age&#34;: 34, &#34;name&#34;: [&#34;Beata&#34;, &#34;Peterson&#34;], &#34;occupation&#34;: &#34;Aircraft Maintenance Engineer&#34;, &#34;telephone&#34;: &#34;(070) 391-9615&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;30 Saroyan Glen&#34;, &#34;city&#34;: &#34;Kokomo&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;2582 4510 5726 5180&#34;, &#34;expiration-date&#34;: &#34;09/17&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -585,7 +585,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>dask.bag&lt;loads-f..., npartitions=10&gt;
+<span></span>dask.bag&lt;loads-0..., npartitions=10&gt;
 </pre></div>
 </div>
 </div>
@@ -603,20 +603,20 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 31,
-  &#39;name&#39;: [&#39;Sylvester&#39;, &#39;Sanchez&#39;],
-  &#39;occupation&#39;: &#39;Marine Electrician&#39;,
-  &#39;telephone&#39;: &#39;1-580-118-5788&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;502 Illinois Walk&#39;, &#39;city&#39;: &#39;Valparaiso&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2523 2299 7032 1385&#39;,
-   &#39;expiration-date&#39;: &#39;10/17&#39;}},
- {&#39;age&#39;: 63,
-  &#39;name&#39;: [&#39;Becki&#39;, &#39;Cain&#39;],
-  &#39;occupation&#39;: &#39;Travel Courier&#39;,
-  &#39;telephone&#39;: &#39;386.638.0209&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;509 Dublin Extension&#39;, &#39;city&#39;: &#39;Oxnard&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2674 0284 7539 8857&#39;,
-   &#39;expiration-date&#39;: &#39;03/16&#39;}})
+<span></span>({&#39;age&#39;: 65,
+  &#39;name&#39;: [&#39;Burma&#39;, &#39;Hancock&#39;],
+  &#39;occupation&#39;: &#39;Secretary&#39;,
+  &#39;telephone&#39;: &#39;636.880.9853&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;457 Borica Plaza&#39;, &#39;city&#39;: &#39;Los Altos&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5290 0736 6159 5947&#39;,
+   &#39;expiration-date&#39;: &#39;12/17&#39;}},
+ {&#39;age&#39;: 34,
+  &#39;name&#39;: [&#39;Beata&#39;, &#39;Peterson&#39;],
+  &#39;occupation&#39;: &#39;Aircraft Maintenance Engineer&#39;,
+  &#39;telephone&#39;: &#39;(070) 391-9615&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;30 Saroyan Glen&#39;, &#39;city&#39;: &#39;Kokomo&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2582 4510 5726 5180&#39;,
+   &#39;expiration-date&#39;: &#39;09/17&#39;}})
 </pre></div>
 </div>
 </div>
@@ -638,20 +638,20 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 31,
-  &#39;name&#39;: [&#39;Sylvester&#39;, &#39;Sanchez&#39;],
-  &#39;occupation&#39;: &#39;Marine Electrician&#39;,
-  &#39;telephone&#39;: &#39;1-580-118-5788&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;502 Illinois Walk&#39;, &#39;city&#39;: &#39;Valparaiso&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2523 2299 7032 1385&#39;,
-   &#39;expiration-date&#39;: &#39;10/17&#39;}},
- {&#39;age&#39;: 63,
-  &#39;name&#39;: [&#39;Becki&#39;, &#39;Cain&#39;],
-  &#39;occupation&#39;: &#39;Travel Courier&#39;,
-  &#39;telephone&#39;: &#39;386.638.0209&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;509 Dublin Extension&#39;, &#39;city&#39;: &#39;Oxnard&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2674 0284 7539 8857&#39;,
-   &#39;expiration-date&#39;: &#39;03/16&#39;}})
+<span></span>({&#39;age&#39;: 65,
+  &#39;name&#39;: [&#39;Burma&#39;, &#39;Hancock&#39;],
+  &#39;occupation&#39;: &#39;Secretary&#39;,
+  &#39;telephone&#39;: &#39;636.880.9853&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;457 Borica Plaza&#39;, &#39;city&#39;: &#39;Los Altos&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5290 0736 6159 5947&#39;,
+   &#39;expiration-date&#39;: &#39;12/17&#39;}},
+ {&#39;age&#39;: 34,
+  &#39;name&#39;: [&#39;Beata&#39;, &#39;Peterson&#39;],
+  &#39;occupation&#39;: &#39;Aircraft Maintenance Engineer&#39;,
+  &#39;telephone&#39;: &#39;(070) 391-9615&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;30 Saroyan Glen&#39;, &#39;city&#39;: &#39;Kokomo&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2582 4510 5726 5180&#39;,
+   &#39;expiration-date&#39;: &#39;09/17&#39;}})
 </pre></div>
 </div>
 </div>
@@ -669,7 +669,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(&#39;Marine Electrician&#39;, &#39;Travel Courier&#39;)
+<span></span>(&#39;Secretary&#39;, &#39;Aircraft Maintenance Engineer&#39;)
 </pre></div>
 </div>
 </div>
@@ -732,16 +732,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[(&#39;Injection Moulder&#39;, 15),
- (&#39;Yard Manager&#39;, 14),
- (&#39;Landworker&#39;, 14),
- (&#39;Marketing Agent&#39;, 14),
- (&#39;Technical Instructor&#39;, 14),
- (&#39;Governor&#39;, 14),
- (&#39;Marketing Manager&#39;, 13),
- (&#39;Joiner&#39;, 13),
- (&#39;Au Pair&#39;, 13),
- (&#39;Sportswoman&#39;, 13)]
+<span></span>[(&#39;Technical Advisor&#39;, 18),
+ (&#39;Research Consultant&#39;, 15),
+ (&#39;Lighthouse Keeper&#39;, 15),
+ (&#39;Physicist&#39;, 15),
+ (&#39;Optical Advisor&#39;, 14),
+ (&#39;Motor Dealer&#39;, 14),
+ (&#39;Machine Operator&#39;, 14),
+ (&#39;Moneylender&#39;, 14),
+ (&#39;Secretary&#39;, 13),
+ (&#39;Instrument Engineer&#39;, 13)]
 </pre></div>
 </div>
 </div>
@@ -798,13 +798,13 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 31,
-  &#39;name&#39;: [&#39;Sylvester&#39;, &#39;Sanchez&#39;],
-  &#39;occupation&#39;: &#39;Marine Electrician&#39;,
-  &#39;telephone&#39;: &#39;1-580-118-5788&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;502 Illinois Walk&#39;, &#39;city&#39;: &#39;Valparaiso&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2523 2299 7032 1385&#39;,
-   &#39;expiration-date&#39;: &#39;10/17&#39;}},)
+<span></span>({&#39;age&#39;: 65,
+  &#39;name&#39;: [&#39;Burma&#39;, &#39;Hancock&#39;],
+  &#39;occupation&#39;: &#39;Secretary&#39;,
+  &#39;telephone&#39;: &#39;636.880.9853&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;457 Borica Plaza&#39;, &#39;city&#39;: &#39;Los Altos&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5290 0736 6159 5947&#39;,
+   &#39;expiration-date&#39;: &#39;12/17&#39;}},)
 </pre></div>
 </div>
 </div>
@@ -834,14 +834,14 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 31,
-  &#39;occupation&#39;: &#39;Marine Electrician&#39;,
-  &#39;telephone&#39;: &#39;1-580-118-5788&#39;,
-  &#39;credit-card-number&#39;: &#39;2523 2299 7032 1385&#39;,
-  &#39;credit-card-expiration&#39;: &#39;10/17&#39;,
-  &#39;name&#39;: &#39;Sylvester Sanchez&#39;,
-  &#39;street-address&#39;: &#39;502 Illinois Walk&#39;,
-  &#39;city&#39;: &#39;Valparaiso&#39;},)
+<span></span>({&#39;age&#39;: 65,
+  &#39;occupation&#39;: &#39;Secretary&#39;,
+  &#39;telephone&#39;: &#39;636.880.9853&#39;,
+  &#39;credit-card-number&#39;: &#39;5290 0736 6159 5947&#39;,
+  &#39;credit-card-expiration&#39;: &#39;12/17&#39;,
+  &#39;name&#39;: &#39;Burma Hancock&#39;,
+  &#39;street-address&#39;: &#39;457 Borica Plaza&#39;,
+  &#39;city&#39;: &#39;Los Altos&#39;},)
 </pre></div>
 </div>
 </div>
@@ -891,58 +891,58 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>31</td>
-      <td>Valparaiso</td>
-      <td>10/17</td>
-      <td>2523 2299 7032 1385</td>
-      <td>Sylvester Sanchez</td>
-      <td>Marine Electrician</td>
-      <td>502 Illinois Walk</td>
-      <td>1-580-118-5788</td>
+      <td>65</td>
+      <td>Los Altos</td>
+      <td>12/17</td>
+      <td>5290 0736 6159 5947</td>
+      <td>Burma Hancock</td>
+      <td>Secretary</td>
+      <td>457 Borica Plaza</td>
+      <td>636.880.9853</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>63</td>
-      <td>Oxnard</td>
-      <td>03/16</td>
-      <td>2674 0284 7539 8857</td>
-      <td>Becki Cain</td>
-      <td>Travel Courier</td>
-      <td>509 Dublin Extension</td>
-      <td>386.638.0209</td>
+      <td>34</td>
+      <td>Kokomo</td>
+      <td>09/17</td>
+      <td>2582 4510 5726 5180</td>
+      <td>Beata Peterson</td>
+      <td>Aircraft Maintenance Engineer</td>
+      <td>30 Saroyan Glen</td>
+      <td>(070) 391-9615</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>52</td>
-      <td>Romulus</td>
-      <td>12/21</td>
-      <td>2367 6997 8012 1143</td>
-      <td>Van Benson</td>
-      <td>Bus Mechanic</td>
-      <td>1215 Rosenkranz Bend</td>
-      <td>(923) 334-5610</td>
+      <td>57</td>
+      <td>Valley Stream</td>
+      <td>02/22</td>
+      <td>4604 8289 4664 5443</td>
+      <td>Neta Mclaughlin</td>
+      <td>Vehicle Technician</td>
+      <td>1283 Potrero Bypass</td>
+      <td>+1-(636)-733-2940</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>28</td>
-      <td>West St. Paul</td>
-      <td>12/25</td>
-      <td>5313 8769 3925 0738</td>
-      <td>Gertha Crosby</td>
-      <td>Taxi Driver</td>
-      <td>399 Diamond Heights Drive</td>
-      <td>+1-(684)-887-9216</td>
+      <td>63</td>
+      <td>St. Matthews</td>
+      <td>12/16</td>
+      <td>5478 0898 5374 5631</td>
+      <td>Alfonzo York</td>
+      <td>Town Clerk</td>
+      <td>703 Macarthur Manor</td>
+      <td>667.469.6454</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>43</td>
-      <td>Wenatchee</td>
-      <td>11/22</td>
-      <td>5205 4896 7375 3734</td>
-      <td>Jon Duncan</td>
-      <td>Packaging</td>
-      <td>438 Vicksburg Bypass</td>
-      <td>859.442.3364</td>
+      <td>37</td>
+      <td>Germantown</td>
+      <td>11/25</td>
+      <td>3468 275245 70263</td>
+      <td>Krissy Stanton</td>
+      <td>Property Valuer</td>
+      <td>232 Beaumont Annex</td>
+      <td>714-953-3926</td>
     </tr>
   </tbody>
 </table>
@@ -963,16 +963,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Injection Moulder       15
-Yard Manager            14
-Marketing Agent         14
-Landworker              14
-Technical Instructor    14
-Governor                14
-Safety Officer          13
-Au Pair                 13
-Valve Technician        13
-Sportswoman             13
+<span></span>Technical Advisor      18
+Research Consultant    15
+Lighthouse Keeper      15
+Physicist              15
+Moneylender            14
+Machine Operator       14
+Optical Advisor        14
+Motor Dealer           14
+Shoe Maker             13
+Instrument Engineer    13
 Name: occupation, dtype: int64
 </pre></div>
 </div>
@@ -982,8 +982,8 @@ Name: occupation, dtype: int64
 <h2>Learn More<a class="headerlink" href="#Learn-More" title="Permalink to this headline">¶</a></h2>
 <p>You may be interested in the following links:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://docs.dask.org/en/latest/bag-overview.html">Dask Bag Documentation</a></li>
-<li><a class="reference external" href="http://docs.dask.org/en/latest/bag-api.html">API Documentation</a></li>
+<li><p><a class="reference external" href="http://docs.dask.org/en/latest/bag-overview.html">Dask Bag Documentation</a></p></li>
+<li><p><a class="reference external" href="http://docs.dask.org/en/latest/bag-api.html">API Documentation</a></p></li>
 </ul>
 </div>
 </div>

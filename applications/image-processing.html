@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quickstart to dask-image &mdash; Dask Examples  documentation</title>
+  <title>Image Processing &mdash; Dask Examples  documentation</title>
   
 
   
@@ -174,7 +174,7 @@
 <li class="toctree-l1"><a class="reference internal" href="embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Quickstart to dask-image</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Image Processing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Install-Extra-Dependencies">Install Extra Dependencies</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Documentation">Documentation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Scaling-up-with-dask-distributed">Scaling up with dask distributed</a></li>
@@ -228,13 +228,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Quickstart to dask-image</li>
+      <li>Image Processing</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/applications/dask-image-quickstart.ipynb.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/applications/image-processing.ipynb.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -447,32 +447,35 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
-<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/applications/dask-image-quickstart.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/applications/dask-image-quickstart.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/applications/dask-image-quickstart.ipynb">on Github</a>.</p>
-<div class="section" id="Quickstart-to-dask-image">
-<h1>Quickstart to dask-image<a class="headerlink" href="#Quickstart-to-dask-image" title="Permalink to this headline">¶</a></h1>
+<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/applications/image-processing.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/applications/image-processing.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/applications/image-processing.ipynb">on Github</a>.</p>
+<div class="section" id="Image-Processing">
+<h1>Image Processing<a class="headerlink" href="#Image-Processing" title="Permalink to this headline">¶</a></h1>
 <p>Welcome to the quickstart guide for dask-image.</p>
 <ol class="arabic simple">
-<li><a class="reference external" href="'#environment_setup'">Setting up your environment</a></li>
-<li><a class="reference external" href="'#imports'">Importing dask-image</a></li>
-<li><a class="reference external" href="'#example_data'">Getting the example data</a></li>
-<li><a class="reference external" href="'#reading_image_data'">Reading in image data</a><ol class="arabic">
-<li><a class="reference external" href="'#reading_a_single_image'">Reading a single image</a></li>
-<li><a class="reference external" href="'#reading_multiple_images'">Reading multiple iamges</a></li>
+<li><p><a class="reference external" href="#environment_setup">Setting up your environment</a></p></li>
+<li><p><a class="reference external" href="#imports">Importing dask-image</a></p></li>
+<li><p><a class="reference external" href="#example_data">Getting the example data</a></p></li>
+<li><p><a class="reference external" href="#reading_image_data">Reading in image data</a></p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="#reading_a_single_image">Reading a single image</a></p></li>
+<li><p><a class="reference external" href="#reading_multiple_images">Reading multiple iamges</a></p></li>
 </ol>
 </li>
-<li><a class="reference external" href="'#applying_custom_function'">Applying your own custom function to images</a><ol class="arabic">
-<li><a class="reference external" href="'#embarrassingly_parallel'">Embarrassingly parallel problems</a></li>
+<li><p><a class="reference external" href="#applying_custom_function">Applying your own custom function to images</a></p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="#embarrassingly_parallel">Embarrassingly parallel problems</a></p></li>
 </ol>
 </li>
-<li><a class="reference external" href="'#joining_images'">Joining partial images together</a></li>
-<li><a class="reference external" href="'#segmentation_pipeline'">A segmentation analysis pipeline</a><ol class="arabic">
-<li><a class="reference external" href="'#filtering">Filtering</a></li>
-<li><a class="reference external" href="'#segmenting'">Segmenting</a></li>
-<li><a class="reference external" href="'#analyzing'">Analyzing</a></li>
+<li><p><a class="reference external" href="#joining_images">Joining partial images together</a></p></li>
+<li><p><a class="reference external" href="#segmentation_pipeline">A segmentation analysis pipeline</a></p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="#filtering">Filtering</a></p></li>
+<li><p><a class="reference external" href="#segmenting">Segmenting</a></p></li>
+<li><p><a class="reference external" href="#analyzing">Analyzing</a></p></li>
 </ol>
 </li>
-<li><a class="reference external" href="'#next_steps'">Next steps</a></li>
-<li><a class="reference external" href="'#cleanup'">Cleaning up temporary directories and files</a></li>
+<li><p><a class="reference external" href="#next_steps">Next steps</a></p></li>
+<li><p><a class="reference external" href="'#cleanup">Cleaning up temporary directories and files</a></p></li>
 </ol>
 <p>## Setting up your environment</p>
 <div class="section" id="Install-Extra-Dependencies">
@@ -495,25 +498,25 @@ div.rendered_html tbody tr:hover {
 Collecting scikit-image
   Downloading https://files.pythonhosted.org/packages/24/06/d560630eb9e36d90d69fe57d9ff762d8f501664ce478b8a0ae132b3c3008/scikit_image-0.14.2-cp36-cp36m-manylinux1_x86_64.whl (25.3MB)
 
-Requirement already satisfied: pillow&gt;=4.3.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from scikit-image) (5.4.1)
 Requirement already satisfied: matplotlib&gt;=2.0.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from scikit-image) (3.0.3)
+Requirement already satisfied: pillow&gt;=4.3.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from scikit-image) (5.4.1)
+Requirement already satisfied: dask[array]&gt;=1.0.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from scikit-image) (1.1.4)
+Requirement already satisfied: six&gt;=1.10.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from scikit-image) (1.12.0)
 Collecting networkx&gt;=1.8 (from scikit-image)
   Downloading https://files.pythonhosted.org/packages/f3/f4/7e20ef40b118478191cec0b58c3192f822cace858c19505c7670961b76b2/networkx-2.2.zip (1.7MB)
 
 Requirement already satisfied: scipy&gt;=0.17.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from scikit-image) (1.2.1)
-Requirement already satisfied: cloudpickle&gt;=0.2.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from scikit-image) (0.8.0)
-Requirement already satisfied: dask[array]&gt;=1.0.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from scikit-image) (1.1.4)
+Requirement already satisfied: cloudpickle&gt;=0.2.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from scikit-image) (0.8.1)
 Collecting PyWavelets&gt;=0.4.0 (from scikit-image)
   Downloading https://files.pythonhosted.org/packages/92/9a/2816f258df2e4e5885ebcb7695619c254f0d8f94f700c204c3eb77e8c0fd/PyWavelets-1.0.2-cp36-cp36m-manylinux1_x86_64.whl (4.4MB)
 
-Requirement already satisfied: six&gt;=1.10.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from scikit-image) (1.12.0)
 Requirement already satisfied: numpy&gt;=1.10.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from matplotlib&gt;=2.0.0-&gt;scikit-image) (1.16.2)
 Requirement already satisfied: cycler&gt;=0.10 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from matplotlib&gt;=2.0.0-&gt;scikit-image) (0.10.0)
 Requirement already satisfied: kiwisolver&gt;=1.0.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from matplotlib&gt;=2.0.0-&gt;scikit-image) (1.0.1)
 Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from matplotlib&gt;=2.0.0-&gt;scikit-image) (2.3.1)
 Requirement already satisfied: python-dateutil&gt;=2.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from matplotlib&gt;=2.0.0-&gt;scikit-image) (2.8.0)
-Requirement already satisfied: decorator&gt;=4.3.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from networkx&gt;=1.8-&gt;scikit-image) (4.4.0)
 Requirement already satisfied: toolz&gt;=0.7.3; extra == &#34;array&#34; in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from dask[array]&gt;=1.0.0-&gt;scikit-image) (0.9.0)
+Requirement already satisfied: decorator&gt;=4.3.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from networkx&gt;=1.8-&gt;scikit-image) (4.4.0)
 Requirement already satisfied: setuptools in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from kiwisolver&gt;=1.0.1-&gt;matplotlib&gt;=2.0.0-&gt;scikit-image) (40.8.0)
 Building wheels for collected packages: networkx
   Building wheel for networkx (setup.py) ... - \ | / - done
@@ -527,7 +530,7 @@ Successfully installed PyWavelets-1.0.2 networkx-2.2 scikit-image-0.14.2
 <p>You can refer to the full list of dependencies used for the <code class="docutils literal notranslate"><span class="pre">dask-examples</span></code> repository, available in the <code class="docutils literal notranslate"><span class="pre">`binder/environment.yml</span></code> file here &lt;<a class="reference external" href="https://github.com/dask/dask-examples/blob/master/binder/environment.yml">https://github.com/dask/dask-examples/blob/master/binder/environment.yml</a>&gt;`__ (note that the <code class="docutils literal notranslate"><span class="pre">nomkl</span></code> package is not available for Windows users): <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/binder/environment.yml">https://github.com/dask/dask-examples/blob/master/binder/environment.yml</a></p>
 <p>## Importing dask-image</p>
 <p>When you import dask-image, be sure to use an underscore instead of a dash between the two words.</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
@@ -538,6 +541,15 @@ Successfully installed PyWavelets-1.0.2 networkx-2.2 scikit-image-0.14.2
 <span class="kn">import</span> <span class="nn">dask.array</span> <span class="k">as</span> <span class="nn">da</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/dask/config.py:168: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  data = yaml.load(f.read()) or {}
+</pre></div></div>
 </div>
 <p>We’ll also use matplotlib to display image results in this notebook.</p>
 <div class="nbinput nblast docutils container">
@@ -644,7 +656,7 @@ dask.array&lt;from-value, shape=(1, 512, 512, 3), dtype=uint8, chunksize=(1, 512
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.image.AxesImage at 0x7f06cac010f0&gt;
+<span></span>&lt;matplotlib.image.AxesImage at 0x7f2e53fac710&gt;
 </pre></div>
 </div>
 </div>
@@ -652,7 +664,7 @@ dask.array&lt;from-value, shape=(1, 512, 512, 3), dtype=uint8, chunksize=(1, 512
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/applications_dask-image-quickstart_24_2.png" src="../_images/applications_dask-image-quickstart_24_2.png" />
+<img alt="../_images/applications_image-processing_24_2.png" src="../_images/applications_image-processing_24_2.png" />
 </div>
 </div>
 <p>This has created a dask array with <code class="docutils literal notranslate"><span class="pre">shape=(1,</span> <span class="pre">512,</span> <span class="pre">512,</span> <span class="pre">3)</span></code>. This means it contains one image frame with 512 rows, 512 columns, and 3 color channels.</p>
@@ -718,7 +730,7 @@ dask.array&lt;concatenate, shape=(4, 256, 256, 3), dtype=uint8, chunksize=(1, 25
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/applications_dask-image-quickstart_32_0.png" src="../_images/applications_dask-image-quickstart_32_0.png" />
+<img alt="../_images/applications_image-processing_32_0.png" src="../_images/applications_image-processing_32_0.png" />
 </div>
 </div>
 <p>## Applying your own custom function to images</p>
@@ -765,7 +777,7 @@ dask.array&lt;add, shape=(1, 512, 512), dtype=float64, chunksize=(1, 512, 512)&g
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/applications_dask-image-quickstart_37_1.png" src="../_images/applications_dask-image-quickstart_37_1.png" />
+<img alt="../_images/applications_image-processing_37_1.png" src="../_images/applications_image-processing_37_1.png" />
 </div>
 </div>
 <p>We also see that there are no longer three color channels in the shape of the result, and that the output image is as expected.</p>
@@ -807,7 +819,7 @@ Processed image dimensions: (1, 512, 512)
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/applications_dask-image-quickstart_39_1.png" src="../_images/applications_dask-image-quickstart_39_1.png" />
+<img alt="../_images/applications_image-processing_39_1.png" src="../_images/applications_image-processing_39_1.png" />
 </div>
 </div>
 <p>### Embarrassingly parallel problems</p>
@@ -836,7 +848,7 @@ dask.array&lt;add, shape=(4, 256, 256), dtype=float64, chunksize=(1, 256, 256)&g
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/applications_dask-image-quickstart_42_1.png" src="../_images/applications_dask-image-quickstart_42_1.png" />
+<img alt="../_images/applications_image-processing_42_1.png" src="../_images/applications_image-processing_42_1.png" />
 </div>
 </div>
 <p>Let’s take a look at the results.</p>
@@ -872,7 +884,7 @@ dask.array&lt;add, shape=(4, 256, 256), dtype=float64, chunksize=(1, 256, 256)&g
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/applications_dask-image-quickstart_44_0.png" src="../_images/applications_dask-image-quickstart_44_0.png" />
+<img alt="../_images/applications_image-processing_44_0.png" src="../_images/applications_image-processing_44_0.png" />
 </div>
 </div>
 <p>## Joining partial images together</p>
@@ -906,7 +918,7 @@ dask.array&lt;add, shape=(4, 256, 256), dtype=float64, chunksize=(1, 256, 256)&g
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.image.AxesImage at 0x7f06c809e6d8&gt;
+<span></span>&lt;matplotlib.image.AxesImage at 0x7f2e50448b00&gt;
 </pre></div>
 </div>
 </div>
@@ -914,7 +926,7 @@ dask.array&lt;add, shape=(4, 256, 256), dtype=float64, chunksize=(1, 256, 256)&g
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/applications_dask-image-quickstart_48_2.png" src="../_images/applications_dask-image-quickstart_48_2.png" />
+<img alt="../_images/applications_image-processing_48_2.png" src="../_images/applications_image-processing_48_2.png" />
 </div>
 </div>
 <p>## A segmentation analysis pipeline</p>
@@ -958,7 +970,7 @@ dask.array&lt;add, shape=(4, 256, 256), dtype=float64, chunksize=(1, 256, 256)&g
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/applications_dask-image-quickstart_55_0.png" src="../_images/applications_dask-image-quickstart_55_0.png" />
+<img alt="../_images/applications_image-processing_55_0.png" src="../_images/applications_image-processing_55_0.png" />
 </div>
 </div>
 <p>Since the gaussian filter uses information from neighbouring pixels, the computational graph looks more complicated than the ones we looked at earlier. This is no longer embarrassingly parallel. Where possible dask keeps the computations for each of the four image chunks separate, but must combine information from different chunks near the edges.</p>
@@ -976,7 +988,7 @@ dask.array&lt;add, shape=(4, 256, 256), dtype=float64, chunksize=(1, 256, 256)&g
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/applications_dask-image-quickstart_57_0.png" src="../_images/applications_dask-image-quickstart_57_0.png" />
+<img alt="../_images/applications_image-processing_57_0.png" src="../_images/applications_image-processing_57_0.png" />
 </div>
 </div>
 <p>### Segmenting</p>
@@ -1014,7 +1026,7 @@ dask.array&lt;add, shape=(4, 256, 256), dtype=float64, chunksize=(1, 256, 256)&g
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.image.AxesImage at 0x7f06b8fdbc88&gt;
+<span></span>&lt;matplotlib.image.AxesImage at 0x7f2e503409b0&gt;
 </pre></div>
 </div>
 </div>
@@ -1022,7 +1034,7 @@ dask.array&lt;add, shape=(4, 256, 256), dtype=float64, chunksize=(1, 256, 256)&g
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/applications_dask-image-quickstart_61_1.png" src="../_images/applications_dask-image-quickstart_61_1.png" />
+<img alt="../_images/applications_image-processing_61_1.png" src="../_images/applications_image-processing_61_1.png" />
 </div>
 </div>
 <p>Next, we label each region of connected pixels above the threshold value. For this we use the <code class="docutils literal notranslate"><span class="pre">label</span></code> function from <a class="reference external" href="https://dask-image.readthedocs.io/en/latest/dask_image.ndmeasure.html">dask-image ndmeasure</a>. This will return both the label image, and the number of labels.</p>
@@ -1067,7 +1079,7 @@ Number of labels: 78
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.image.AxesImage at 0x7f06b8f4a128&gt;
+<span></span>&lt;matplotlib.image.AxesImage at 0x7f2e502abeb8&gt;
 </pre></div>
 </div>
 </div>
@@ -1075,7 +1087,7 @@ Number of labels: 78
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/applications_dask-image-quickstart_64_2.png" src="../_images/applications_dask-image-quickstart_64_2.png" />
+<img alt="../_images/applications_image-processing_64_2.png" src="../_images/applications_image-processing_64_2.png" />
 </div>
 </div>
 <p>### Analyzing</p>

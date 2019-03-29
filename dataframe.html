@@ -184,7 +184,7 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="applications/dask-image-quickstart.html">Quickstart to dask-image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/image-processing.html">Image Processing</a></li>
 </ul>
 
             
@@ -489,7 +489,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:35064
+  <li><b>Scheduler: </b>tcp://127.0.0.1:35188
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -509,9 +509,9 @@ div.rendered_html tbody tr:hover {
 <h2>Create Random Dataframe<a class="headerlink" href="#Create-Random-Dataframe" title="Permalink to this headline">¶</a></h2>
 <p>We create a random timeseries of data with the following attributes:</p>
 <ol class="arabic simple">
-<li>It stores a record for every 10 seconds of the year 2000</li>
-<li>It splits that year by month, keeping every month as a separate Pandas dataframe</li>
-<li>Along with a datetime index it has columns for names, ids, and numeric values</li>
+<li><p>It stores a record for every 10 seconds of the year 2000</p></li>
+<li><p>It splits that year by month, keeping every month as a separate Pandas dataframe</p></li>
+<li><p>Along with a datetime index it has columns for names, ids, and numeric values</p></li>
 </ol>
 <p>This is a small dataset of about 240 MB. Increase the number of days or reduce the frequency to practice with a larger dataset.</p>
 <div class="nbinput nblast docutils container">
@@ -696,24 +696,24 @@ dtype: object
   <tbody>
     <tr>
       <th>2000-01-01 00:00:00</th>
-      <td>1000</td>
-      <td>Sarah</td>
-      <td>0.26</td>
-      <td>0.94</td>
+      <td>1012</td>
+      <td>Michael</td>
+      <td>-0.37</td>
+      <td>0.17</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:01</th>
-      <td>1006</td>
-      <td>Wendy</td>
-      <td>-0.10</td>
-      <td>-0.15</td>
+      <td>1014</td>
+      <td>Oliver</td>
+      <td>0.27</td>
+      <td>-0.86</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:02</th>
-      <td>962</td>
-      <td>Victor</td>
-      <td>-0.58</td>
-      <td>-0.73</td>
+      <td>1044</td>
+      <td>Xavier</td>
+      <td>-0.33</td>
+      <td>-0.34</td>
     </tr>
   </tbody>
 </table>
@@ -888,28 +888,28 @@ Name: x, Length: 26, dtype: float64
   <tbody>
     <tr>
       <th>2000-01-01 00:00:00</th>
-      <td>-1.23e-03</td>
-      <td>6.35e-03</td>
+      <td>6.28e-03</td>
+      <td>-7.51e-05</td>
     </tr>
     <tr>
       <th>2000-01-01 01:00:00</th>
-      <td>-1.17e-02</td>
-      <td>3.95e-03</td>
+      <td>1.97e-03</td>
+      <td>5.99e-03</td>
     </tr>
     <tr>
       <th>2000-01-01 02:00:00</th>
-      <td>5.94e-03</td>
-      <td>-1.16e-03</td>
+      <td>2.21e-02</td>
+      <td>-1.50e-03</td>
     </tr>
     <tr>
       <th>2000-01-01 03:00:00</th>
-      <td>-1.11e-02</td>
-      <td>-8.56e-03</td>
+      <td>-4.29e-03</td>
+      <td>1.10e-02</td>
     </tr>
     <tr>
       <th>2000-01-01 04:00:00</th>
-      <td>-9.79e-03</td>
-      <td>-5.69e-03</td>
+      <td>-1.48e-03</td>
+      <td>2.27e-03</td>
     </tr>
   </tbody>
 </table>
@@ -929,7 +929,7 @@ Name: x, Length: 26, dtype: float64
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fa19573dd30&gt;
+<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f755a2995c0&gt;
 </pre></div>
 </div>
 </div>
@@ -993,28 +993,28 @@ Name: x, Length: 26, dtype: float64
   <tbody>
     <tr>
       <th>2000-01-01 00:00:00</th>
-      <td>0.26</td>
-      <td>0.94</td>
+      <td>-0.37</td>
+      <td>0.17</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:01</th>
-      <td>0.08</td>
-      <td>0.39</td>
+      <td>-0.05</td>
+      <td>-0.35</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:02</th>
       <td>-0.14</td>
-      <td>0.02</td>
+      <td>-0.34</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:03</th>
-      <td>-0.32</td>
-      <td>-0.11</td>
+      <td>-0.19</td>
+      <td>-0.37</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:04</th>
-      <td>-0.29</td>
-      <td>-0.04</td>
+      <td>-0.07</td>
+      <td>-0.11</td>
     </tr>
   </tbody>
 </table>
@@ -1101,8 +1101,8 @@ Name: x, Length: 26, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 36 ms, sys: 8 ms, total: 44 ms
-Wall time: 66.2 ms
+CPU times: user 28 ms, sys: 12 ms, total: 40 ms
+Wall time: 60.8 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1144,38 +1144,38 @@ Wall time: 66.2 ms
   <tbody>
     <tr>
       <th>2000-01-05 00:00:00</th>
-      <td>986</td>
-      <td>Charlie</td>
-      <td>-0.74</td>
-      <td>0.35</td>
+      <td>977</td>
+      <td>Yvonne</td>
+      <td>0.26</td>
+      <td>-0.15</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:01</th>
-      <td>1017</td>
-      <td>George</td>
-      <td>-0.13</td>
-      <td>-0.91</td>
+      <td>975</td>
+      <td>Oliver</td>
+      <td>-0.77</td>
+      <td>0.36</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:02</th>
-      <td>1046</td>
-      <td>Quinn</td>
-      <td>-0.39</td>
-      <td>-0.61</td>
+      <td>1006</td>
+      <td>Jerry</td>
+      <td>-0.70</td>
+      <td>0.53</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:03</th>
-      <td>1017</td>
-      <td>Norbert</td>
-      <td>0.01</td>
-      <td>0.24</td>
+      <td>1010</td>
+      <td>Patricia</td>
+      <td>-0.67</td>
+      <td>-0.70</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:04</th>
-      <td>1007</td>
-      <td>Zelda</td>
-      <td>-0.56</td>
-      <td>-0.75</td>
+      <td>1011</td>
+      <td>Alice</td>
+      <td>0.23</td>
+      <td>-0.03</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1186,38 +1186,38 @@ Wall time: 66.2 ms
     </tr>
     <tr>
       <th>2000-01-05 23:59:55</th>
-      <td>1060</td>
-      <td>Oliver</td>
-      <td>0.04</td>
-      <td>-0.06</td>
+      <td>968</td>
+      <td>Ray</td>
+      <td>-0.77</td>
+      <td>0.43</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:56</th>
-      <td>935</td>
-      <td>Dan</td>
-      <td>0.75</td>
-      <td>-0.54</td>
+      <td>955</td>
+      <td>Alice</td>
+      <td>0.98</td>
+      <td>-0.63</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:57</th>
-      <td>1048</td>
-      <td>Michael</td>
-      <td>-0.06</td>
-      <td>-0.82</td>
+      <td>968</td>
+      <td>Quinn</td>
+      <td>0.67</td>
+      <td>-0.12</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:58</th>
-      <td>1058</td>
-      <td>Jerry</td>
-      <td>0.99</td>
-      <td>0.17</td>
+      <td>968</td>
+      <td>George</td>
+      <td>0.39</td>
+      <td>-0.51</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:59</th>
-      <td>1015</td>
-      <td>Zelda</td>
-      <td>0.98</td>
-      <td>-0.18</td>
+      <td>961</td>
+      <td>Ingrid</td>
+      <td>-0.11</td>
+      <td>0.91</td>
     </tr>
   </tbody>
 </table>
@@ -1334,8 +1334,8 @@ Wall time: 66.2 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 764 ms, sys: 108 ms, total: 872 ms
-Wall time: 4.18 s
+CPU times: user 672 ms, sys: 52 ms, total: 724 ms
+Wall time: 4.83 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1375,33 +1375,33 @@ Wall time: 4.18 s
   <tbody>
     <tr>
       <th>Alice</th>
-      <td>990</td>
-      <td>-7.00e-01</td>
-      <td>-0.18</td>
+      <td>1000</td>
+      <td>0.55</td>
+      <td>0.24</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>964</td>
-      <td>-3.00e-01</td>
-      <td>0.64</td>
+      <td>947</td>
+      <td>-0.70</td>
+      <td>-0.99</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>948</td>
-      <td>-4.69e-01</td>
-      <td>0.71</td>
+      <td>1042</td>
+      <td>-0.64</td>
+      <td>-0.62</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1006</td>
-      <td>1.29e-01</td>
-      <td>-0.52</td>
+      <td>986</td>
+      <td>0.80</td>
+      <td>0.98</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>996</td>
-      <td>1.63e-01</td>
-      <td>-0.69</td>
+      <td>983</td>
+      <td>-0.81</td>
+      <td>-0.59</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1411,37 +1411,37 @@ Wall time: 4.18 s
     </tr>
     <tr>
       <th>Alice</th>
-      <td>990</td>
-      <td>6.20e-01</td>
-      <td>0.34</td>
+      <td>994</td>
+      <td>-0.89</td>
+      <td>0.05</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1084</td>
-      <td>-5.04e-01</td>
-      <td>0.75</td>
+      <td>1072</td>
+      <td>0.72</td>
+      <td>0.22</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>957</td>
-      <td>-8.96e-02</td>
-      <td>0.03</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>938</td>
-      <td>-1.29e-01</td>
-      <td>0.83</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>988</td>
-      <td>-3.55e-04</td>
+      <td>1029</td>
+      <td>0.50</td>
       <td>-0.76</td>
+    </tr>
+    <tr>
+      <th>Alice</th>
+      <td>971</td>
+      <td>0.60</td>
+      <td>0.87</td>
+    </tr>
+    <tr>
+      <th>Alice</th>
+      <td>1024</td>
+      <td>0.62</td>
+      <td>-0.63</td>
     </tr>
   </tbody>
 </table>
-<p>99565 rows × 3 columns</p>
+<p>99208 rows × 3 columns</p>
 </div></div>
 </div>
 </div>
