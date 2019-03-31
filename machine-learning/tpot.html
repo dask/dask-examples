@@ -504,15 +504,15 @@ Requirement already satisfied: pandas&gt;=0.20.2 in /home/travis/miniconda/envs/
 Requirement already satisfied: requests&gt;=2.3.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from update_checker&gt;=0.16-&gt;tpot) (2.21.0)
 Requirement already satisfied: python-dateutil&gt;=2.5.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from pandas&gt;=0.20.2-&gt;tpot) (2.8.0)
 Requirement already satisfied: pytz&gt;=2011k in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from pandas&gt;=0.20.2-&gt;tpot) (2018.9)
-Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (3.0.4)
 Requirement already satisfied: idna&lt;2.9,&gt;=2.5 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (2.8)
-Requirement already satisfied: urllib3&lt;1.25,&gt;=1.21.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (1.24.1)
+Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (3.0.4)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (2019.3.9)
+Requirement already satisfied: urllib3&lt;1.25,&gt;=1.21.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (1.24.1)
 Requirement already satisfied: six&gt;=1.5 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from python-dateutil&gt;=2.5.0-&gt;pandas&gt;=0.20.2-&gt;tpot) (1.12.0)
 Building wheels for collected packages: tpot, deap, stopit
   Building wheel for tpot (setup.py) ... - done
   Stored in directory: /home/travis/.cache/pip/wheels/86/5c/dd/c7673fbaccb901ec1a4eb79017fa5b65766805d2a98f954b9a
-  Building wheel for deap (setup.py) ... - \ | / - \ done
+  Building wheel for deap (setup.py) ... - \ | / - \ | done
   Stored in directory: /home/travis/.cache/pip/wheels/22/ea/bf/dc7c8a2262025a0ab5da9ef02282c198be88902791ca0c6658
   Building wheel for stopit (setup.py) ... - done
   Stored in directory: /home/travis/.cache/pip/wheels/3c/85/2b/2580190404636bfc63e8de3dff629c03bb795021e1983a6cc7
@@ -547,17 +547,6 @@ Successfully installed deap-1.2.2 stopit-1.1.2 tpot-0.9.6 tqdm-4.31.1 update-che
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/home/travis/miniconda/envs/test/lib/python3.6/site-packages/dask/config.py:168: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
-  data = yaml.load(f.read()) or {}
-/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/config.py:20: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
-  defaults = yaml.load(f)
-</pre></div></div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -568,7 +557,7 @@ Successfully installed deap-1.2.2 stopit-1.1.2 tpot-0.9.6 tqdm-4.31.1 update-che
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:41313
+  <li><b>Scheduler: </b>tcp://127.0.0.1:35206
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -577,7 +566,7 @@ Successfully installed deap-1.2.2 stopit-1.1.2 tpot-0.9.6 tqdm-4.31.1 update-che
 <ul>
   <li><b>Workers: </b>4</li>
   <li><b>Cores: </b>4</li>
-  <li><b>Memory: </b>15.69 GB</li>
+  <li><b>Memory: </b>7.84 GB</li>
 </ul>
 </td>
 </tr>
@@ -640,24 +629,24 @@ Successfully installed deap-1.2.2 stopit-1.1.2 tpot-0.9.6 tqdm-4.31.1 update-che
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-distributed.utils - ERROR - Worker already exists tcp://127.0.0.1:42888
+distributed.utils - ERROR - Worker already exists tcp://127.0.0.1:39537
 Traceback (most recent call last):
-  File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/utils.py&#34;, line 649, in log_errors
+  File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/utils.py&#34;, line 654, in log_errors
     yield
   File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/scheduler.py&#34;, line 1281, in add_worker
     raise ValueError(&#34;Worker already exists %s&#34; % address)
-ValueError: Worker already exists tcp://127.0.0.1:42888
-distributed.core - ERROR - Worker already exists tcp://127.0.0.1:42888
+ValueError: Worker already exists tcp://127.0.0.1:39537
+distributed.core - ERROR - Worker already exists tcp://127.0.0.1:39537
 Traceback (most recent call last):
-  File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/core.py&#34;, line 346, in handle_comm
+  File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/core.py&#34;, line 361, in handle_comm
     result = yield result
-  File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/tornado/gen.py&#34;, line 729, in run
+  File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/tornado/gen.py&#34;, line 1133, in run
     value = future.result()
-  File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/tornado/gen.py&#34;, line 209, in wrapper
+  File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/tornado/gen.py&#34;, line 326, in wrapper
     yielded = next(result)
   File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/scheduler.py&#34;, line 1281, in add_worker
     raise ValueError(&#34;Worker already exists %s&#34; % address)
-ValueError: Worker already exists tcp://127.0.0.1:42888
+ValueError: Worker already exists tcp://127.0.0.1:39537
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
