@@ -5,13 +5,18 @@ try:
 	print(os.getcwd())
 except:
 	pass
+
 #%% [markdown]
 # # Intro to Dask
-# This presentation highlights some of some gotcha's with Dask
+# This presentation highlights some of some gotcha's with Dask when converting  from Pandas
+# * Please note that Dask is under development and thus there improvments all the time.  
+# In some cases the documentation may be missleading since some of the documentation comes directly from Pandas but has not yet implemented in Dask
+# please see dask documentation for updated API.
+
 #%% [markdown]
 # # What is Dask?
 # * Flexible library for parallel computing in python 
-# * holistic framework (however still in development)
+# * `Spark` in the world of `Pandas` (however still in development)
 
 #%%
 from dask.distributed import Client
@@ -19,15 +24,58 @@ from dask.distributed import Client
 client =Client()
 client
 
-
 #%%
+# create 2 dataFrames: 1. for Dask 2. for Pandas
 import dask
-df = dask.datasets.timeseries()
-df
+import pandas as pd
+ddf = dask.datasets.timeseries()
+pdf = ddf.compute()
+ddf.head()
+
+#%%
+# Dask does not update - thus no "inplace=True":
+# e.g. rename, reset_index, dropna, 
+print(pdf.columns)
+pdf.rename(columns={'id':'ID','name':'Name','x':'coor_x', 'y':'coor_y'},inplace=True)
+pdf.columns
+#%%
+# in Dask
+print(ddf.columns)
+ddf.columns = ['ID','Name','coor_x','coor_y']
+ddf.columns
+
+#%%
+# RESET INDEX
+pdf.reset_index(drop=True, inplace=True)
+pdf.head()
+#%%
+ddf = ddf.reset_index()
+ddf = ddf.drop(labels='timestamp', axis=1)
+ddf.head()
 
 
 #%%
-df.head()
+# save files - preferable Parquet
+# if to flat file - Dask saves mulitple partitions to a directory 
+pdf.to_csv('~/tmp/df_sample.csv')
+!ls ~/tmp/
+#%%
+!mkdir ~/tmp/csv_dir2}
+ddf.to_csv('../../tmp/csv_dir2/ddf*.csv')
+!ls ~/tmp/csv_dir2
+# to fild number of partitions use dask.dataframe.npartitions
+
+
+
+#%%
+# pd.apply should have `meta` clause
+# pdf.assign(Date=pdf.index(lambda x: pd.to_datetime.Date(x)))
+pdf.assign(Date=pd.to_datetime(pdf.index).date)
+
+ddf.assign(Date=pd.to_datetime(ddf.index).date)
+ddf = 
+
+
 
 
 #%%
