@@ -54,3 +54,4 @@ You can run these examples in a live session here: |Binder|
    applications/json-data-on-the-web
    applications/satellite-imagery-geotiff
    applications/image-processing
+   applications/async-await
