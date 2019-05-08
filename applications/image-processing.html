@@ -39,6 +39,7 @@
   <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Async/Await and Non-Blocking Execution" href="async-await.html" />
     <link rel="prev" title="Reading and manipulating tiled GeoTIFF datasets" href="satellite-imagery-geotiff.html" /> 
 </head>
 
@@ -183,6 +184,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="async-await.html">Async/Await and Non-Blocking Execution</a></li>
 </ul>
 
             
@@ -458,7 +460,7 @@ div.rendered_html tbody tr:hover {
 <li><p><a class="reference external" href="#reading_image_data">Reading in image data</a></p>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="#reading_a_single_image">Reading a single image</a></p></li>
-<li><p><a class="reference external" href="#reading_multiple_images">Reading multiple iamges</a></p></li>
+<li><p><a class="reference external" href="#reading_multiple_images">Reading multiple images</a></p></li>
 </ol>
 </li>
 <li><p><a class="reference external" href="#applying_custom_function">Applying your own custom function to images</a></p>
@@ -498,31 +500,31 @@ div.rendered_html tbody tr:hover {
 Collecting scikit-image
   Downloading https://files.pythonhosted.org/packages/d4/ab/674e168bf7d0bc597218b3bec858d02c23fbac9ec1fec9cad878c6cee95f/scikit_image-0.15.0-cp36-cp36m-manylinux1_x86_64.whl (26.3MB)
 
+Requirement already satisfied: pillow&gt;=4.3.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from scikit-image) (6.0.0)
+Collecting networkx&gt;=2.0 (from scikit-image)
+  Downloading https://files.pythonhosted.org/packages/85/08/f20aef11d4c343b557e5de6b9548761811eb16e438cee3d32b1c66c8566b/networkx-2.3.zip (1.7MB)
+
+Requirement already satisfied: scipy&gt;=0.17.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from scikit-image) (1.2.1)
 Collecting imageio&gt;=2.0.1 (from scikit-image)
   Downloading https://files.pythonhosted.org/packages/af/0a/943c965d372dae0b1f1482677d29030ab834351a61a9a632fd62f27f1523/imageio-2.5.0-py3-none-any.whl (3.3MB)
 
 Requirement already satisfied: matplotlib!=3.0.0,&gt;=2.0.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from scikit-image) (3.0.3)
-Requirement already satisfied: pillow&gt;=4.3.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from scikit-image) (6.0.0)
 Collecting PyWavelets&gt;=0.4.0 (from scikit-image)
   Downloading https://files.pythonhosted.org/packages/4e/cd/528dba0b474b08f6f9a3a5e1b4bb23d8e33ed5d9f0e321cc967c2607df05/PyWavelets-1.0.3-cp36-cp36m-manylinux1_x86_64.whl (4.4MB)
 
-Requirement already satisfied: scipy&gt;=0.17.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from scikit-image) (1.2.1)
-Collecting networkx&gt;=2.0 (from scikit-image)
-  Downloading https://files.pythonhosted.org/packages/85/08/f20aef11d4c343b557e5de6b9548761811eb16e438cee3d32b1c66c8566b/networkx-2.3.zip (1.7MB)
-
-Requirement already satisfied: numpy in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from imageio&gt;=2.0.1-&gt;scikit-image) (1.16.2)
+Requirement already satisfied: decorator&gt;=4.3.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from networkx&gt;=2.0-&gt;scikit-image) (4.4.0)
+Requirement already satisfied: numpy in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from imageio&gt;=2.0.1-&gt;scikit-image) (1.16.3)
 Requirement already satisfied: cycler&gt;=0.10 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (0.10.0)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (1.0.1)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (1.1.0)
 Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (2.4.0)
 Requirement already satisfied: python-dateutil&gt;=2.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (2.8.0)
-Requirement already satisfied: decorator&gt;=4.3.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from networkx&gt;=2.0-&gt;scikit-image) (4.4.0)
 Requirement already satisfied: six in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from cycler&gt;=0.10-&gt;matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (1.12.0)
-Requirement already satisfied: setuptools in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from kiwisolver&gt;=1.0.1-&gt;matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (41.0.0)
+Requirement already satisfied: setuptools in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from kiwisolver&gt;=1.0.1-&gt;matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (41.0.1)
 Building wheels for collected packages: networkx
   Building wheel for networkx (setup.py) ... - \ | / - done
   Stored in directory: /home/travis/.cache/pip/wheels/de/63/64/3699be2a9d0ccdb37c7f16329acf3863fd76eda58c39c737af
 Successfully built networkx
-Installing collected packages: imageio, PyWavelets, networkx, scikit-image
+Installing collected packages: networkx, imageio, PyWavelets, scikit-image
 Successfully installed PyWavelets-1.0.3 imageio-2.5.0 networkx-2.3 scikit-image-0.15.0
 </pre></div></div>
 </div>
@@ -647,7 +649,7 @@ dask.array&lt;from-value, shape=(1, 512, 512, 3), dtype=uint8, chunksize=(1, 512
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.image.AxesImage at 0x7f8a934594e0&gt;
+<span></span>&lt;matplotlib.image.AxesImage at 0x7fb507b3c550&gt;
 </pre></div>
 </div>
 </div>
@@ -726,7 +728,7 @@ dask.array&lt;concatenate, shape=(4, 256, 256, 3), dtype=uint8, chunksize=(1, 25
 </div>
 <p>## Applying your own custom function to images</p>
 <p>Next you’ll want to do some image processing, and apply a function to your images.</p>
-<p>We’ll use a very simple example: converting an RGB image to grayscale. But you can also use this method to apply arbittrary functions to dask iamges. To convert our image to grayscale, we’ll use the equation to calcuate luminance (<a class="reference external" href="http://www.poynton.com/PDFs/ColorFAQ.pdf">reference pdf</a>)”:</p>
+<p>We’ll use a very simple example: converting an RGB image to grayscale. But you can also use this method to apply arbittrary functions to dask images. To convert our image to grayscale, we’ll use the equation to calcuate luminance (<a class="reference external" href="http://www.poynton.com/PDFs/ColorFAQ.pdf">reference pdf</a>)”:</p>
 <p><code class="docutils literal notranslate"><span class="pre">Y</span> <span class="pre">=</span> <span class="pre">0.2125</span> <span class="pre">R</span> <span class="pre">+</span> <span class="pre">0.7154</span> <span class="pre">G</span> <span class="pre">+</span> <span class="pre">0.0721</span> <span class="pre">B</span></code></p>
 <p>We’ll write the function for this equation as follows:</p>
 <div class="nbinput nblast docutils container">
@@ -909,7 +911,7 @@ dask.array&lt;add, shape=(4, 256, 256), dtype=float64, chunksize=(1, 256, 256)&g
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.image.AxesImage at 0x7f8a900f8908&gt;
+<span></span>&lt;matplotlib.image.AxesImage at 0x7fb4ef7ad908&gt;
 </pre></div>
 </div>
 </div>
@@ -1017,7 +1019,7 @@ dask.array&lt;add, shape=(4, 256, 256), dtype=float64, chunksize=(1, 256, 256)&g
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.image.AxesImage at 0x7f8a7afe0780&gt;
+<span></span>&lt;matplotlib.image.AxesImage at 0x7fb4ef6a7828&gt;
 </pre></div>
 </div>
 </div>
@@ -1070,7 +1072,7 @@ Number of labels: 78
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.image.AxesImage at 0x7f8a7af49cc0&gt;
+<span></span>&lt;matplotlib.image.AxesImage at 0x7fb4ef60ecf8&gt;
 </pre></div>
 </div>
 </div>
@@ -1274,6 +1276,8 @@ Saved example_analysis_results.csv
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="async-await.html" class="btn btn-neutral float-right" title="Async/Await and Non-Blocking Execution" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="satellite-imagery-geotiff.html" class="btn btn-neutral float-left" title="Reading and manipulating tiled GeoTIFF datasets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

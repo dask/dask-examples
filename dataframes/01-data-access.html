@@ -187,6 +187,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/image-processing.html">Image Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
 </ul>
 
             
@@ -507,7 +508,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>inproc://10.20.3.152/8957/1
+  <li><b>Scheduler: </b>inproc://10.20.0.34/9121/1
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -688,15 +689,15 @@ data/2000-01-10.csv
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 timestamp,id,name,x,y
-2000-01-01 00:00:00,952,Frank,-0.44224662137183923,0.1265341125044399
-2000-01-01 00:00:01,1031,Oliver,0.5831934756729826,-0.5444731023721892
-2000-01-01 00:00:02,964,Alice,0.6172186151350065,-0.6781916460105943
-2000-01-01 00:00:03,1045,Xavier,0.8316161815637875,-0.14306235487038887
-2000-01-01 00:00:04,1025,Jerry,0.17459385470064337,0.28563352870159564
-2000-01-01 00:00:05,1011,Zelda,0.30319517175783606,0.31515163554848336
-2000-01-01 00:00:06,1019,Frank,-0.275115389967568,0.28472956110294056
-2000-01-01 00:00:07,1048,Victor,0.9103823060260117,0.2536112012015619
-2000-01-01 00:00:08,1016,Oliver,-0.9806169090211048,-0.8657131124639472
+2000-01-01 00:00:00,1020,Oliver,0.275271544396529,-0.8239307674973815
+2000-01-01 00:00:01,1061,Michael,0.9135678523638548,-0.2238726892849856
+2000-01-01 00:00:02,965,Charlie,-0.08274579716652974,-0.7518992935739757
+2000-01-01 00:00:03,1010,Zelda,0.6041830234099423,0.00513370305937122
+2000-01-01 00:00:04,977,Jerry,-0.5579997820220293,0.4511497122936803
+2000-01-01 00:00:05,935,Edith,0.4677882567051548,0.753264494812875
+2000-01-01 00:00:06,996,Jerry,0.47760623136504554,0.5907725482298045
+2000-01-01 00:00:07,992,Xavier,-0.7215448664037678,-0.5147151896984312
+2000-01-01 00:00:08,983,Wendy,-0.17854581154067395,-0.5789229456674541
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -714,15 +715,15 @@ timestamp,id,name,x,y
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 timestamp,id,name,x,y
-2000-01-30 00:00:00,979,Ray,0.54492228000167,0.9544755958047952
-2000-01-30 00:00:01,1003,Patricia,0.5559803926535198,0.04257698409797528
-2000-01-30 00:00:02,974,Ursula,-0.6686644038693852,-0.8008141574744356
-2000-01-30 00:00:03,1002,George,-0.10483977451125481,-0.604858374188769
-2000-01-30 00:00:04,1017,George,-0.8345199003400166,0.8334257071817961
-2000-01-30 00:00:05,988,Dan,-0.41633171379490985,-0.9314850986419356
-2000-01-30 00:00:06,972,Yvonne,-0.4480945423989644,-0.11499924738008516
-2000-01-30 00:00:07,993,Zelda,0.8534777663901258,0.9529146971087892
-2000-01-30 00:00:08,1015,Ray,-0.5546773931548821,-0.5052067141172891
+2000-01-30 00:00:00,980,Ray,-0.649150461244528,-0.725055781213275
+2000-01-30 00:00:01,995,Hannah,0.868409090793431,-0.5783399177713799
+2000-01-30 00:00:02,1025,Jerry,0.07239180829144831,0.44625030810122657
+2000-01-30 00:00:03,998,Tim,-0.4748688311786906,-0.8834689625039274
+2000-01-30 00:00:04,947,Dan,0.6168668250673188,-0.7538057776040694
+2000-01-30 00:00:05,1037,Michael,0.7172345799419637,0.9666667135993461
+2000-01-30 00:00:06,1047,Ursula,-0.8271852193287159,0.6375308592468434
+2000-01-30 00:00:07,981,Ursula,-0.44297085229062727,-0.8968560689006773
+2000-01-30 00:00:08,982,Michael,0.23786176296990513,0.9376874364600101
 </pre></div></div>
 </div>
 <p>We can read one file with <code class="docutils literal notranslate"><span class="pre">pandas.read_csv</span></code> or many files with <code class="docutils literal notranslate"><span class="pre">dask.dataframe.read_csv</span></code></p>
@@ -772,42 +773,42 @@ timestamp,id,name,x,y
     <tr>
       <th>0</th>
       <td>2000-01-01 00:00:00</td>
-      <td>952</td>
-      <td>Frank</td>
-      <td>-0.442247</td>
-      <td>0.126534</td>
+      <td>1020</td>
+      <td>Oliver</td>
+      <td>0.275272</td>
+      <td>-0.823931</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2000-01-01 00:00:01</td>
-      <td>1031</td>
-      <td>Oliver</td>
-      <td>0.583193</td>
-      <td>-0.544473</td>
+      <td>1061</td>
+      <td>Michael</td>
+      <td>0.913568</td>
+      <td>-0.223873</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2000-01-01 00:00:02</td>
-      <td>964</td>
-      <td>Alice</td>
-      <td>0.617219</td>
-      <td>-0.678192</td>
+      <td>965</td>
+      <td>Charlie</td>
+      <td>-0.082746</td>
+      <td>-0.751899</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2000-01-01 00:00:03</td>
-      <td>1045</td>
-      <td>Xavier</td>
-      <td>0.831616</td>
-      <td>-0.143062</td>
+      <td>1010</td>
+      <td>Zelda</td>
+      <td>0.604183</td>
+      <td>0.005134</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2000-01-01 00:00:04</td>
-      <td>1025</td>
+      <td>977</td>
       <td>Jerry</td>
-      <td>0.174594</td>
-      <td>0.285634</td>
+      <td>-0.558000</td>
+      <td>0.451150</td>
     </tr>
   </tbody>
 </table>
@@ -953,42 +954,42 @@ timestamp,id,name,x,y
     <tr>
       <th>0</th>
       <td>2000-01-01 00:00:00</td>
-      <td>952</td>
-      <td>Frank</td>
-      <td>-0.442247</td>
-      <td>0.126534</td>
+      <td>1020</td>
+      <td>Oliver</td>
+      <td>0.275272</td>
+      <td>-0.823931</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2000-01-01 00:00:01</td>
-      <td>1031</td>
-      <td>Oliver</td>
-      <td>0.583193</td>
-      <td>-0.544473</td>
+      <td>1061</td>
+      <td>Michael</td>
+      <td>0.913568</td>
+      <td>-0.223873</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2000-01-01 00:00:02</td>
-      <td>964</td>
-      <td>Alice</td>
-      <td>0.617219</td>
-      <td>-0.678192</td>
+      <td>965</td>
+      <td>Charlie</td>
+      <td>-0.082746</td>
+      <td>-0.751899</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2000-01-01 00:00:03</td>
-      <td>1045</td>
-      <td>Xavier</td>
-      <td>0.831616</td>
-      <td>-0.143062</td>
+      <td>1010</td>
+      <td>Zelda</td>
+      <td>0.604183</td>
+      <td>0.005134</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2000-01-01 00:00:04</td>
-      <td>1025</td>
+      <td>977</td>
       <td>Jerry</td>
-      <td>0.174594</td>
-      <td>0.285634</td>
+      <td>-0.558000</td>
+      <td>0.451150</td>
     </tr>
   </tbody>
 </table>
@@ -1130,8 +1131,8 @@ timestamp,id,name,x,y
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 7.08 s, sys: 448 ms, total: 7.52 s
-Wall time: 5.12 s
+CPU times: user 6.93 s, sys: 520 ms, total: 7.45 s
+Wall time: 5.11 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1140,32 +1141,32 @@ Wall time: 5.12 s
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>name
-Alice       0.000947
-Bob         0.000342
-Charlie     0.000012
-Dan         0.003754
-Edith      -0.002709
-Frank      -0.001991
-George      0.001272
-Hannah     -0.000637
-Ingrid      0.000443
-Jerry      -0.000371
-Kevin       0.000635
-Laura       0.000137
-Michael    -0.001481
-Norbert     0.001331
-Oliver      0.002043
-Patricia    0.003078
-Quinn      -0.001270
-Ray         0.001101
-Sarah      -0.000470
-Tim        -0.002478
-Ursula     -0.001894
-Victor      0.001413
-Wendy       0.000305
-Xavier      0.000349
-Yvonne      0.000617
-Zelda       0.001609
+Alice      -0.002510
+Bob         0.000188
+Charlie     0.001965
+Dan        -0.000157
+Edith      -0.002713
+Frank       0.002673
+George     -0.001338
+Hannah     -0.000113
+Ingrid     -0.001840
+Jerry      -0.001632
+Kevin       0.001661
+Laura       0.001241
+Michael     0.000163
+Norbert    -0.000043
+Oliver      0.001258
+Patricia   -0.002165
+Quinn       0.000033
+Ray         0.001148
+Sarah       0.001597
+Tim        -0.001034
+Ursula      0.001147
+Victor     -0.002211
+Wendy      -0.003655
+Xavier      0.001619
+Yvonne      0.001568
+Zelda      -0.001358
 Name: x, dtype: float64
 </pre></div>
 </div>
@@ -1353,8 +1354,8 @@ part.15.parquet   part.22.parquet  part.2.parquet
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.77 s, sys: 208 ms, total: 1.98 s
-Wall time: 1.44 s
+CPU times: user 1.76 s, sys: 272 ms, total: 2.04 s
+Wall time: 1.48 s
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -1362,6 +1363,12 @@ Wall time: 1.44 s
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:707: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
+  labels = getattr(columns, &#39;labels&#39;, None) or [
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:734: FutureWarning: the &#39;labels&#39; keyword is deprecated, use &#39;codes&#39; instead
+  return pd.MultiIndex(levels=new_levels, labels=labels, names=columns.names)
+/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:751: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
+  labels, = index.labels
 /home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:707: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
   labels = getattr(columns, &#39;labels&#39;, None) or [
 /home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:734: FutureWarning: the &#39;labels&#39; keyword is deprecated, use &#39;codes&#39; instead
@@ -1376,32 +1383,32 @@ Wall time: 1.44 s
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>name
-Alice       0.000947
-Bob         0.000342
-Charlie     0.000012
-Dan         0.003754
-Edith      -0.002709
-Frank      -0.001991
-George      0.001272
-Hannah     -0.000637
-Ingrid      0.000443
-Jerry      -0.000371
-Kevin       0.000635
-Laura       0.000137
-Michael    -0.001481
-Norbert     0.001331
-Oliver      0.002043
-Patricia    0.003078
-Quinn      -0.001270
-Ray         0.001101
-Sarah      -0.000470
-Tim        -0.002478
-Ursula     -0.001894
-Victor      0.001413
-Wendy       0.000305
-Xavier      0.000349
-Yvonne      0.000617
-Zelda       0.001609
+Alice      -0.002510
+Bob         0.000188
+Charlie     0.001965
+Dan        -0.000157
+Edith      -0.002713
+Frank       0.002673
+George     -0.001338
+Hannah     -0.000113
+Ingrid     -0.001840
+Jerry      -0.001632
+Kevin       0.001661
+Laura       0.001241
+Michael     0.000163
+Norbert    -0.000043
+Oliver      0.001258
+Patricia   -0.002165
+Quinn       0.000033
+Ray         0.001148
+Sarah       0.001597
+Tim        -0.001034
+Ursula      0.001147
+Victor     -0.002211
+Wendy      -0.003655
+Xavier      0.001619
+Yvonne      0.001568
+Zelda      -0.001358
 Name: x, dtype: float64
 </pre></div>
 </div>
@@ -1452,26 +1459,13 @@ Name: x, dtype: float64
   labels, = index.labels
 </pre></div></div>
 </div>
-<div class="nboutput docutils container">
+<div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.47 s, sys: 168 ms, total: 1.64 s
+CPU times: user 1.44 s, sys: 192 ms, total: 1.63 s
 Wall time: 1.2 s
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:707: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
-  labels = getattr(columns, &#39;labels&#39;, None) or [
-/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:734: FutureWarning: the &#39;labels&#39; keyword is deprecated, use &#39;codes&#39; instead
-  return pd.MultiIndex(levels=new_levels, labels=labels, names=columns.names)
-/home/travis/miniconda/envs/test/lib/python3.6/site-packages/pyarrow/pandas_compat.py:751: FutureWarning: .labels was deprecated in version 0.24.0. Use .codes instead.
-  labels, = index.labels
 </pre></div></div>
 </div>
 <p>Here the difference is not that large, but with larger datasets this can save a great deal of time.</p>

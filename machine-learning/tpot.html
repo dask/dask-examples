@@ -182,6 +182,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/image-processing.html">Image Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
 </ul>
 
             
@@ -485,9 +486,9 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Collecting tpot
-  Downloading https://files.pythonhosted.org/packages/36/6f/9a400b0a7d32d13b1b9a565de481d10163c8b39d1bdf63ae0219922a24fb/TPOT-0.10.0-py3-none-any.whl (73kB)
+  Downloading https://files.pythonhosted.org/packages/15/c8/46f5c7231f8e3088052cda78ed36198f9ded9f5a5edfc99290f31aa6b57e/TPOT-0.10.1-py3-none-any.whl (74kB)
 
-Requirement already satisfied: scipy&gt;=0.19.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from tpot) (1.2.1)
+Requirement already satisfied: numpy&gt;=1.12.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from tpot) (1.16.3)
 Collecting tqdm&gt;=4.26.0 (from tpot)
   Downloading https://files.pythonhosted.org/packages/6c/4b/c38b5144cf167c4f52288517436ccafefe9dc01b8d1c190e18a6b154cd4a/tqdm-4.31.1-py2.py3-none-any.whl (48kB)
 
@@ -495,19 +496,19 @@ Collecting stopit&gt;=1.1.1 (from tpot)
   Downloading https://files.pythonhosted.org/packages/35/58/e8bb0b0fb05baf07bbac1450c447d753da65f9701f551dca79823ce15d50/stopit-1.1.2.tar.gz
 Collecting update-checker&gt;=0.16 (from tpot)
   Downloading https://files.pythonhosted.org/packages/17/c9/ab11855af164d03be0ff4fddd4c46a5bd44799a9ecc1770e01a669c21168/update_checker-0.16-py2.py3-none-any.whl
+Requirement already satisfied: scipy&gt;=0.19.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from tpot) (1.2.1)
+Requirement already satisfied: scikit-learn&gt;=0.18.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from tpot) (0.20.3)
+Requirement already satisfied: pandas&gt;=0.20.2 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from tpot) (0.24.2)
 Collecting deap&gt;=1.0 (from tpot)
   Downloading https://files.pythonhosted.org/packages/af/29/e7f2ecbe02997b16a768baed076f5fc4781d7057cd5d9adf7c94027845ba/deap-1.2.2.tar.gz (936kB)
 
-Requirement already satisfied: scikit-learn&gt;=0.18.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from tpot) (0.20.3)
-Requirement already satisfied: numpy&gt;=1.12.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from tpot) (1.16.2)
-Requirement already satisfied: pandas&gt;=0.20.2 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from tpot) (0.24.2)
 Requirement already satisfied: requests&gt;=2.3.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from update-checker&gt;=0.16-&gt;tpot) (2.21.0)
 Requirement already satisfied: python-dateutil&gt;=2.5.0 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from pandas&gt;=0.20.2-&gt;tpot) (2.8.0)
 Requirement already satisfied: pytz&gt;=2011k in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from pandas&gt;=0.20.2-&gt;tpot) (2019.1)
-Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from requests&gt;=2.3.0-&gt;update-checker&gt;=0.16-&gt;tpot) (3.0.4)
-Requirement already satisfied: urllib3&lt;1.25,&gt;=1.21.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from requests&gt;=2.3.0-&gt;update-checker&gt;=0.16-&gt;tpot) (1.24.1)
 Requirement already satisfied: idna&lt;2.9,&gt;=2.5 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from requests&gt;=2.3.0-&gt;update-checker&gt;=0.16-&gt;tpot) (2.8)
+Requirement already satisfied: urllib3&lt;1.25,&gt;=1.21.1 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from requests&gt;=2.3.0-&gt;update-checker&gt;=0.16-&gt;tpot) (1.24.3)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from requests&gt;=2.3.0-&gt;update-checker&gt;=0.16-&gt;tpot) (2019.3.9)
+Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from requests&gt;=2.3.0-&gt;update-checker&gt;=0.16-&gt;tpot) (3.0.4)
 Requirement already satisfied: six&gt;=1.5 in /home/travis/miniconda/envs/test/lib/python3.6/site-packages (from python-dateutil&gt;=2.5.0-&gt;pandas&gt;=0.20.2-&gt;tpot) (1.12.0)
 Building wheels for collected packages: stopit, deap
   Building wheel for stopit (setup.py) ... - done
@@ -516,7 +517,7 @@ Building wheels for collected packages: stopit, deap
   Stored in directory: /home/travis/.cache/pip/wheels/22/ea/bf/dc7c8a2262025a0ab5da9ef02282c198be88902791ca0c6658
 Successfully built stopit deap
 Installing collected packages: tqdm, stopit, update-checker, deap, tpot
-Successfully installed deap-1.2.2 stopit-1.1.2 tpot-0.10.0 tqdm-4.31.1 update-checker-0.16
+Successfully installed deap-1.2.2 stopit-1.1.2 tpot-0.10.1 tqdm-4.31.1 update-checker-0.16
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -555,7 +556,7 @@ Successfully installed deap-1.2.2 stopit-1.1.2 tpot-0.10.0 tqdm-4.31.1 update-ch
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:46197
+  <li><b>Scheduler: </b>tcp://127.0.0.1:33660
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -627,24 +628,24 @@ Successfully installed deap-1.2.2 stopit-1.1.2 tpot-0.10.0 tqdm-4.31.1 update-ch
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-distributed.utils - ERROR - Worker already exists tcp://127.0.0.1:45271
+distributed.utils - ERROR - Worker already exists tcp://127.0.0.1:37783
 Traceback (most recent call last):
-  File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/utils.py&#34;, line 693, in log_errors
+  File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/utils.py&#34;, line 713, in log_errors
     yield
-  File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/scheduler.py&#34;, line 1285, in add_worker
+  File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/scheduler.py&#34;, line 1410, in add_worker
     raise ValueError(&#34;Worker already exists %s&#34; % address)
-ValueError: Worker already exists tcp://127.0.0.1:45271
-distributed.core - ERROR - Worker already exists tcp://127.0.0.1:45271
+ValueError: Worker already exists tcp://127.0.0.1:37783
+distributed.core - ERROR - Worker already exists tcp://127.0.0.1:37783
 Traceback (most recent call last):
-  File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/core.py&#34;, line 361, in handle_comm
+  File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/core.py&#34;, line 412, in handle_comm
     result = yield result
   File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/tornado/gen.py&#34;, line 1133, in run
     value = future.result()
   File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/tornado/gen.py&#34;, line 326, in wrapper
     yielded = next(result)
-  File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/scheduler.py&#34;, line 1285, in add_worker
+  File &#34;/home/travis/miniconda/envs/test/lib/python3.6/site-packages/distributed/scheduler.py&#34;, line 1410, in add_worker
     raise ValueError(&#34;Worker already exists %s&#34; % address)
-ValueError: Worker already exists tcp://127.0.0.1:45271
+ValueError: Worker already exists tcp://127.0.0.1:37783
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">

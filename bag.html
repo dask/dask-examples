@@ -186,6 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/image-processing.html">Image Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
 </ul>
 
             
@@ -481,7 +482,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:40935
+  <li><b>Scheduler: </b>tcp://127.0.0.1:38544
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -552,8 +553,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 31, &#34;name&#34;: [&#34;Arianna&#34;, &#34;Perry&#34;], &#34;occupation&#34;: &#34;Tour Agent&#34;, &#34;telephone&#34;: &#34;868.239.4777&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;492 Bennington Avenue&#34;, &#34;city&#34;: &#34;Seaside&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5115 3723 4545 6580&#34;, &#34;expiration-date&#34;: &#34;03/19&#34;}}
-{&#34;age&#34;: 58, &#34;name&#34;: [&#34;Cheree&#34;, &#34;Sheppard&#34;], &#34;occupation&#34;: &#34;Optical Assistant&#34;, &#34;telephone&#34;: &#34;(668) 440-4007&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1047 Mark Twain Heights&#34;, &#34;city&#34;: &#34;Warren&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5255 1996 7376 1178&#34;, &#34;expiration-date&#34;: &#34;01/22&#34;}}
+{&#34;age&#34;: 27, &#34;name&#34;: [&#34;Vernon&#34;, &#34;Heath&#34;], &#34;occupation&#34;: &#34;Shipping Officer&#34;, &#34;telephone&#34;: &#34;(715) 792-5344&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;370 Teddy Road&#34;, &#34;city&#34;: &#34;Oregon&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5360 8668 1121 8400&#34;, &#34;expiration-date&#34;: &#34;09/19&#34;}}
+{&#34;age&#34;: 45, &#34;name&#34;: [&#34;Bethel&#34;, &#34;Mcdonald&#34;], &#34;occupation&#34;: &#34;Pallet Maker&#34;, &#34;telephone&#34;: &#34;1-387-067-2609&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;809 Richards Trail&#34;, &#34;city&#34;: &#34;Stamford&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;4355 7263 7209 5060&#34;, &#34;expiration-date&#34;: &#34;06/25&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -574,7 +575,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>dask.bag&lt;loads-0..., npartitions=10&gt;
+<span></span>dask.bag&lt;loads-3..., npartitions=10&gt;
 </pre></div>
 </div>
 </div>
@@ -592,20 +593,20 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 31,
-  &#39;name&#39;: [&#39;Arianna&#39;, &#39;Perry&#39;],
-  &#39;occupation&#39;: &#39;Tour Agent&#39;,
-  &#39;telephone&#39;: &#39;868.239.4777&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;492 Bennington Avenue&#39;, &#39;city&#39;: &#39;Seaside&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5115 3723 4545 6580&#39;,
-   &#39;expiration-date&#39;: &#39;03/19&#39;}},
- {&#39;age&#39;: 58,
-  &#39;name&#39;: [&#39;Cheree&#39;, &#39;Sheppard&#39;],
-  &#39;occupation&#39;: &#39;Optical Assistant&#39;,
-  &#39;telephone&#39;: &#39;(668) 440-4007&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1047 Mark Twain Heights&#39;, &#39;city&#39;: &#39;Warren&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5255 1996 7376 1178&#39;,
-   &#39;expiration-date&#39;: &#39;01/22&#39;}})
+<span></span>({&#39;age&#39;: 27,
+  &#39;name&#39;: [&#39;Vernon&#39;, &#39;Heath&#39;],
+  &#39;occupation&#39;: &#39;Shipping Officer&#39;,
+  &#39;telephone&#39;: &#39;(715) 792-5344&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;370 Teddy Road&#39;, &#39;city&#39;: &#39;Oregon&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5360 8668 1121 8400&#39;,
+   &#39;expiration-date&#39;: &#39;09/19&#39;}},
+ {&#39;age&#39;: 45,
+  &#39;name&#39;: [&#39;Bethel&#39;, &#39;Mcdonald&#39;],
+  &#39;occupation&#39;: &#39;Pallet Maker&#39;,
+  &#39;telephone&#39;: &#39;1-387-067-2609&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;809 Richards Trail&#39;, &#39;city&#39;: &#39;Stamford&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4355 7263 7209 5060&#39;,
+   &#39;expiration-date&#39;: &#39;06/25&#39;}})
 </pre></div>
 </div>
 </div>
@@ -627,20 +628,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 31,
-  &#39;name&#39;: [&#39;Arianna&#39;, &#39;Perry&#39;],
-  &#39;occupation&#39;: &#39;Tour Agent&#39;,
-  &#39;telephone&#39;: &#39;868.239.4777&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;492 Bennington Avenue&#39;, &#39;city&#39;: &#39;Seaside&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5115 3723 4545 6580&#39;,
-   &#39;expiration-date&#39;: &#39;03/19&#39;}},
- {&#39;age&#39;: 58,
-  &#39;name&#39;: [&#39;Cheree&#39;, &#39;Sheppard&#39;],
-  &#39;occupation&#39;: &#39;Optical Assistant&#39;,
-  &#39;telephone&#39;: &#39;(668) 440-4007&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1047 Mark Twain Heights&#39;, &#39;city&#39;: &#39;Warren&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5255 1996 7376 1178&#39;,
-   &#39;expiration-date&#39;: &#39;01/22&#39;}})
+<span></span>({&#39;age&#39;: 45,
+  &#39;name&#39;: [&#39;Bethel&#39;, &#39;Mcdonald&#39;],
+  &#39;occupation&#39;: &#39;Pallet Maker&#39;,
+  &#39;telephone&#39;: &#39;1-387-067-2609&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;809 Richards Trail&#39;, &#39;city&#39;: &#39;Stamford&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4355 7263 7209 5060&#39;,
+   &#39;expiration-date&#39;: &#39;06/25&#39;}},
+ {&#39;age&#39;: 32,
+  &#39;name&#39;: [&#39;Katia&#39;, &#39;Norris&#39;],
+  &#39;occupation&#39;: &#39;Astronomer&#39;,
+  &#39;telephone&#39;: &#39;1-647-026-2392&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;211 Brunswick Expressway&#39;, &#39;city&#39;: &#39;Cedar City&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3441 948509 34346&#39;, &#39;expiration-date&#39;: &#39;11/25&#39;}})
 </pre></div>
 </div>
 </div>
@@ -658,7 +658,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(&#39;Tour Agent&#39;, &#39;Optical Assistant&#39;)
+<span></span>(&#39;Shipping Officer&#39;, &#39;Pallet Maker&#39;)
 </pre></div>
 </div>
 </div>
@@ -721,16 +721,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[(&#39;Tax Manager&#39;, 16),
- (&#39;Gaming Board Inspector&#39;, 15),
- (&#39;Tyre Technician&#39;, 15),
- (&#39;Ornamental&#39;, 15),
- (&#39;Optical&#39;, 14),
- (&#39;Rug Maker&#39;, 13),
- (&#39;Auctioneer&#39;, 13),
- (&#39;Safety Officer&#39;, 13),
- (&#39;Museum Attendant&#39;, 13),
- (&#39;Induction Moulder&#39;, 13)]
+<span></span>[(&#39;Horticultural Consultant&#39;, 15),
+ (&#39;Payroll Clerk&#39;, 15),
+ (&#39;Receptionist&#39;, 15),
+ (&#39;Cashier&#39;, 14),
+ (&#39;Typewriter Engineer&#39;, 14),
+ (&#39;Audit Manager&#39;, 14),
+ (&#39;Property Dealer&#39;, 13),
+ (&#39;Transport Engineer&#39;, 13),
+ (&#39;Employee&#39;, 13),
+ (&#39;Chartered&#39;, 13)]
 </pre></div>
 </div>
 </div>
@@ -787,13 +787,13 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 31,
-  &#39;name&#39;: [&#39;Arianna&#39;, &#39;Perry&#39;],
-  &#39;occupation&#39;: &#39;Tour Agent&#39;,
-  &#39;telephone&#39;: &#39;868.239.4777&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;492 Bennington Avenue&#39;, &#39;city&#39;: &#39;Seaside&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5115 3723 4545 6580&#39;,
-   &#39;expiration-date&#39;: &#39;03/19&#39;}},)
+<span></span>({&#39;age&#39;: 27,
+  &#39;name&#39;: [&#39;Vernon&#39;, &#39;Heath&#39;],
+  &#39;occupation&#39;: &#39;Shipping Officer&#39;,
+  &#39;telephone&#39;: &#39;(715) 792-5344&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;370 Teddy Road&#39;, &#39;city&#39;: &#39;Oregon&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5360 8668 1121 8400&#39;,
+   &#39;expiration-date&#39;: &#39;09/19&#39;}},)
 </pre></div>
 </div>
 </div>
@@ -823,14 +823,14 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 31,
-  &#39;occupation&#39;: &#39;Tour Agent&#39;,
-  &#39;telephone&#39;: &#39;868.239.4777&#39;,
-  &#39;credit-card-number&#39;: &#39;5115 3723 4545 6580&#39;,
-  &#39;credit-card-expiration&#39;: &#39;03/19&#39;,
-  &#39;name&#39;: &#39;Arianna Perry&#39;,
-  &#39;street-address&#39;: &#39;492 Bennington Avenue&#39;,
-  &#39;city&#39;: &#39;Seaside&#39;},)
+<span></span>({&#39;age&#39;: 27,
+  &#39;occupation&#39;: &#39;Shipping Officer&#39;,
+  &#39;telephone&#39;: &#39;(715) 792-5344&#39;,
+  &#39;credit-card-number&#39;: &#39;5360 8668 1121 8400&#39;,
+  &#39;credit-card-expiration&#39;: &#39;09/19&#39;,
+  &#39;name&#39;: &#39;Vernon Heath&#39;,
+  &#39;street-address&#39;: &#39;370 Teddy Road&#39;,
+  &#39;city&#39;: &#39;Oregon&#39;},)
 </pre></div>
 </div>
 </div>
@@ -880,58 +880,58 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>31</td>
-      <td>Seaside</td>
-      <td>03/19</td>
-      <td>5115 3723 4545 6580</td>
-      <td>Arianna Perry</td>
-      <td>Tour Agent</td>
-      <td>492 Bennington Avenue</td>
-      <td>868.239.4777</td>
+      <td>27</td>
+      <td>Oregon</td>
+      <td>09/19</td>
+      <td>5360 8668 1121 8400</td>
+      <td>Vernon Heath</td>
+      <td>Shipping Officer</td>
+      <td>370 Teddy Road</td>
+      <td>(715) 792-5344</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>58</td>
-      <td>Warren</td>
-      <td>01/22</td>
-      <td>5255 1996 7376 1178</td>
-      <td>Cheree Sheppard</td>
-      <td>Optical Assistant</td>
-      <td>1047 Mark Twain Heights</td>
-      <td>(668) 440-4007</td>
+      <td>45</td>
+      <td>Stamford</td>
+      <td>06/25</td>
+      <td>4355 7263 7209 5060</td>
+      <td>Bethel Mcdonald</td>
+      <td>Pallet Maker</td>
+      <td>809 Richards Trail</td>
+      <td>1-387-067-2609</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>42</td>
-      <td>Glen Cove</td>
-      <td>12/21</td>
-      <td>5480 1974 4516 2938</td>
-      <td>Serafina Snider</td>
-      <td>Musician</td>
-      <td>917 Exposition High Street</td>
-      <td>(969) 861-2381</td>
+      <td>32</td>
+      <td>Cedar City</td>
+      <td>11/25</td>
+      <td>3441 948509 34346</td>
+      <td>Katia Norris</td>
+      <td>Astronomer</td>
+      <td>211 Brunswick Expressway</td>
+      <td>1-647-026-2392</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>30</td>
-      <td>Lebanon</td>
-      <td>02/17</td>
-      <td>2666 3976 3692 2230</td>
-      <td>Nicky Sanchez</td>
-      <td>Lithographer</td>
-      <td>728 Le Conte Parkway</td>
-      <td>1-810-221-5666</td>
+      <td>39</td>
+      <td>O'Fallon</td>
+      <td>10/21</td>
+      <td>5298 9040 9934 6440</td>
+      <td>Crista Brennan</td>
+      <td>Mooring Contractor</td>
+      <td>1150 Juri Bay</td>
+      <td>(448) 120-4084</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>53</td>
-      <td>Sacramento</td>
-      <td>11/22</td>
-      <td>4059 3818 6949 2922</td>
-      <td>Rosy William</td>
-      <td>Archivist</td>
-      <td>673 Winfield Drung</td>
-      <td>(589) 568-4228</td>
+      <td>33</td>
+      <td>Mayfield Heights</td>
+      <td>01/20</td>
+      <td>3411 491567 20347</td>
+      <td>Cassaundra Hughes</td>
+      <td>Taxi Controller</td>
+      <td>498 Louisburg Pike</td>
+      <td>1-112-126-7106</td>
     </tr>
   </tbody>
 </table>
@@ -952,16 +952,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Tax Manager               16
-Tyre Technician           15
-Gaming Board Inspector    15
-Ornamental                15
-Optical                   14
-Induction Moulder         13
-Marine Geologist          13
-Auctioneer                13
-Ship Builder              13
-Museum Attendant          13
+<span></span>Payroll Clerk               15
+Horticultural Consultant    15
+Receptionist                15
+Typewriter Engineer         14
+Audit Manager               14
+Cashier                     14
+Technical Illustrator       13
+Park Keeper                 13
+Golf Caddy                  13
+Transport Engineer          13
 Name: occupation, dtype: int64
 </pre></div>
 </div>

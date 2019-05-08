@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Use Voting Classifiers &mdash; Dask Examples  documentation</title>
+  <title>Async/Await and Non-Blocking Execution &mdash; Dask Examples  documentation</title>
   
 
   
@@ -39,8 +39,7 @@
   <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Automate Machine Learning with TPOT" href="tpot.html" />
-    <link rel="prev" title="Scale XGBoost" href="xgboost.html" /> 
+    <link rel="prev" title="Image Processing" href="image-processing.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -159,24 +158,29 @@
 <li class="toctree-l1"><a class="reference internal" href="../dataframes/02-groupby.html">DataFrames: Groupby</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Machine Learning:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="parallel-prediction.html">Score and Predict Large Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="training-on-large-datasets.html">Train Models on Large Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="incremental.html">Incrementally Train Large Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="xgboost.html">Scale XGBoost</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Use Voting Classifiers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tpot.html">Automate Machine Learning with TPOT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="glm.html">Generalized Linear Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="svd.html">Singular Value Decomposition</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/parallel-prediction.html">Score and Predict Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/training-on-large-datasets.html">Train Models on Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/incremental.html">Incrementally Train Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/xgboost.html">Scale XGBoost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/voting-classifier.html">Use Voting Classifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/tpot.html">Automate Machine Learning with TPOT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/glm.html">Generalized Linear Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/svd.html">Singular Value Decomposition</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Applications:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/image-processing.html">Image Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image-processing.html">Image Processing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Async/Await and Non-Blocking Execution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#The-asynchronous=True-parameter">The <code class="docutils literal notranslate"><span class="pre">asynchronous=True</span></code> parameter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Collections">Collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Within-a-script">Within a script</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -222,13 +226,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Use Voting Classifiers</li>
+      <li>Async/Await and Non-Blocking Execution</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/machine-learning/voting-classifier.ipynb.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/applications/async-await.ipynb.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -441,158 +445,228 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
-<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/machine-learning/voting-classifier.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/machine-learning/voting-classifier.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/machine-learning/voting-classifier.ipynb">on Github</a>.</p>
-<div class="section" id="Use-Voting-Classifiers">
-<h1>Use Voting Classifiers<a class="headerlink" href="#Use-Voting-Classifiers" title="Permalink to this headline">¶</a></h1>
-<p>A <a class="reference external" href="http://scikit-learn.org/stable/modules/ensemble.html#voting-classifier">Voting classifier</a> model combines multiple different models (i.e., sub-estimators) into a single model, which is (ideally) stronger than any of the individual models alone.</p>
-<p><a class="reference external" href="http://ml.dask.org/joblib.html">Dask</a> provides the software to train individual sub-estimators on different machines in a cluster. This enables users to train more models in parallel than would have been possible on a single machine. Note that users will only observe this benefit if they have a distributed cluster with more resources than their single machine (because sklearn already enables users to parallelize training across cores on a single machine).</p>
-<p>What follows is an example of how one would deploy a voting classifier model in dask (using a local cluster).</p>
+<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/applications/async-await.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/applications/async-await.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/applications/async-await.ipynb">on Github</a>.</p>
+<div class="section" id="Async/Await-and-Non-Blocking-Execution">
+<h1>Async/Await and Non-Blocking Execution<a class="headerlink" href="#Async/Await-and-Non-Blocking-Execution" title="Permalink to this headline">¶</a></h1>
+<p>Dask integrates natively with concurrent applications using the <a class="reference external" href="https://www.tornadoweb.org/en/stable/">Tornado</a> or <a class="reference external" href="https://docs.python.org/3/library/asyncio.html">Asyncio</a> frameworks, and can make use of Python’s <code class="docutils literal notranslate"><span class="pre">async</span></code> and <code class="docutils literal notranslate"><span class="pre">await</span></code> keywords.</p>
+<p>This example shows a small example how how to start up a Dask Client in asynchronous mode.</p>
+<div class="section" id="The-asynchronous=True-parameter">
+<h2>The <code class="docutils literal notranslate"><span class="pre">asynchronous=True</span></code> parameter<a class="headerlink" href="#The-asynchronous=True-parameter" title="Permalink to this headline">¶</a></h2>
+<p>Dask LocalCluster and Client objects can operate in async-await mode if you pass the <code class="docutils literal notranslate"><span class="pre">asynchronous=True</span></code> parameter.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">VotingClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">SGDClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="k">import</span> <span class="n">SVC</span>
-
-<span class="kn">import</span> <span class="nn">sklearn.datasets</span>
+<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="k">import</span> <span class="n">Client</span>
+<span class="n">client</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Client</span><span class="p">(</span><span class="n">asynchronous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<p>We create a synthetic dataset (with 1000 rows and 20 columns) that we can give to the voting classifier model.</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">make_classification</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">1_000</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span></span><span class="k">def</span> <span class="nf">inc</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">future</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">inc</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">future</span>
 </pre></div>
 </div>
 </div>
-<p>We specify the VotingClassifier as a list of (name, sub-estimator) tuples. Fitting the VotingClassifier on the data fits each of the sub-estimators in turn. We set the <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> argument to be -1, which instructs sklearn to use all available cores (notice that we haven’t used dask).</p>
-<div class="nbinput nblast docutils container">
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<b>Future: inc</b> <font color="gray">status: </font><font color="black">pending</font>, <font color="gray">key: </font>inc-53b6052a066b599798e7b6dfef34b372</div>
+</div>
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">classifiers</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s1">&#39;sgd&#39;</span><span class="p">,</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)),</span>
-    <span class="p">(</span><span class="s1">&#39;logisticregression&#39;</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">()),</span>
-    <span class="p">(</span><span class="s1">&#39;svc&#39;</span><span class="p">,</span> <span class="n">SVC</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)),</span>
-<span class="p">]</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">VotingClassifier</span><span class="p">(</span><span class="n">classifiers</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span></span><span class="k">await</span> <span class="n">future</span>
 </pre></div>
 </div>
-</div>
-<p>We call the classifier’s fit method in order to train the classifier.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%</span><span class="k">time</span> clf.fit(X, y)
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-CPU times: user 20 ms, sys: 28 ms, total: 48 ms
-Wall time: 1.27 s
-</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>VotingClassifier(estimators=[(&#39;sgd&#39;, SGDClassifier(alpha=0.0001, average=False, class_weight=None,
-       early_stopping=False, epsilon=0.1, eta0=0.0, fit_intercept=True,
-       l1_ratio=0.15, learning_rate=&#39;optimal&#39;, loss=&#39;hinge&#39;, max_iter=1000,
-       n_iter=None, n_iter_no_change=5, n_jobs=None, penalty=&#39;l2&#39;,
-   ...,
-  max_iter=-1, probability=False, random_state=None, shrinking=True,
-  tol=0.001, verbose=False))],
-         flatten_transform=None, n_jobs=-1, voting=&#39;hard&#39;, weights=None)
+<span></span>11
 </pre></div>
 </div>
 </div>
-<p>Creating a Dask <a class="reference external" href="https://distributed.readthedocs.io/en/latest/client.html">client</a> provides performance and progress metrics via the dashboard. Because <code class="docutils literal notranslate"><span class="pre">Client</span></code> is given no arugments, its output refers to a <a class="reference external" href="http://distributed.readthedocs.io/en/latest/local-cluster.html">local cluster</a> (not a distributed cluster).</p>
-<p>We can view the dashboard by clicking the link after running the cell.</p>
+</div>
+<div class="section" id="Collections">
+<h2>Collections<a class="headerlink" href="#Collections" title="Permalink to this headline">¶</a></h2>
+<p>Note that blocking operations like the <code class="docutils literal notranslate"><span class="pre">.compute()</span></code> method aren’t ok to use in asynchronous mode. Instead you’ll have to use the <code class="docutils literal notranslate"><span class="pre">Client.compute</span></code> method.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">sklearn.externals</span> <span class="k">import</span> <span class="n">joblib</span>
-<span class="kn">from</span> <span class="nn">distributed</span> <span class="k">import</span> <span class="n">Client</span>
-
-<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">()</span>
-<span class="n">client</span>
+<span></span><span class="kn">import</span> <span class="nn">dask</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">dask</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">timeseries</span><span class="p">()</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<table style="border: 2px solid white;">
-<tr>
-<td style="vertical-align: top; border: 0px solid white">
-<h3>Client</h3>
-<ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:45431
-  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
-</ul>
-</td>
-<td style="vertical-align: top; border: 0px solid white">
-<h3>Cluster</h3>
-<ul>
-  <li><b>Workers: </b>2</li>
-  <li><b>Cores: </b>2</li>
-  <li><b>Memory: </b>7.84 GB</li>
-</ul>
-</td>
-</tr>
-</table></div>
+<div><strong>Dask DataFrame Structure:</strong></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+    <tr>
+      <th>npartitions=30</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2000-01-01</th>
+      <td>int64</td>
+      <td>object</td>
+      <td>float64</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>2000-01-02</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2000-01-30</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2000-01-31</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
 </div>
-<p>To train the voting classifier, we call the classifier’s fit method, but enclosed in joblib’s <code class="docutils literal notranslate"><span class="pre">parallel_backend</span></code> context manager. This distributes training of sub-estimators acoss the cluster.</p>
-<div class="nbinput docutils container">
+<div>Dask Name: make-timeseries, 30 tasks</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">persist</span><span class="p">()</span>             <span class="c1"># persist is non-blocking, so it&#39;s ok</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
-<span class="k">with</span> <span class="n">joblib</span><span class="o">.</span><span class="n">parallel_backend</span><span class="p">(</span><span class="s2">&quot;dask&quot;</span><span class="p">):</span>
-    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">clf</span><span class="p">)</span>
+<span></span><span class="n">total</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>  <span class="c1"># lazy computations are also ok</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># total.compute()             # but compute is bad, because compute blocks until done</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">future</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+<span class="n">future</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
 </div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-VotingClassifier(estimators=[(&#39;sgd&#39;, SGDClassifier(alpha=0.0001, average=False, class_weight=None,
-       early_stopping=False, epsilon=0.1, eta0=0.0, fit_intercept=True,
-       l1_ratio=0.15, learning_rate=&#39;optimal&#39;, loss=&#39;hinge&#39;, max_iter=1000,
-       n_iter=None, n_iter_no_change=5, n_jobs=None, penalty=&#39;l2&#39;,
-   ...,
-  max_iter=-1, probability=False, random_state=None, shrinking=True,
-  tol=0.001, verbose=False))],
-         flatten_transform=None, n_jobs=-1, voting=&#39;hard&#39;, weights=None)
-CPU times: user 108 ms, sys: 8 ms, total: 116 ms
-Wall time: 791 ms
-</pre></div></div>
+<div class="output_area rendered_html docutils container">
+<b>Future: finalize</b> <font color="gray">status: </font><font color="black">pending</font>, <font color="gray">key: </font>finalize-df0a9471cb4080d012e88cde543f7417</div>
 </div>
-<p>Note, that we see no advantage of using dask because we are using a local cluster rather than a distributed cluster and sklearn is already using all my computer’s cores. If we were using a distributed cluster, dask would enable us to take advantage of the multiple machines and train sub-estimators across them.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">await</span> <span class="n">future</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>x   -637.301101
+y   -640.029125
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Within-a-script">
+<h2>Within a script<a class="headerlink" href="#Within-a-script" title="Permalink to this headline">¶</a></h2>
+<p>Running async/await code in Jupyter is a bit atypical. Jupyter already has an event loop running, so it’s easy to use async/await syntax directly within it. In a normal Python script this won’t be the case. Here is an example script that should run within a normal Python interpreter or as a script.</p>
+<p>```python import asyncio from dask.distributed import Client</p>
+<p>def inc(x: int) -&gt; int: return x + 1</p>
+<p>async def f(): async with Client(asynchronous=True) as client: future = client.submit(inc, 10) result = await future print(result)</p>
+<p>if <strong>name</strong> == ‘<strong>main</strong>’: asyncio.get_event_loop().run_until_complete(f())```</p>
+</div>
 </div>
 
 
@@ -603,10 +677,8 @@ Wall time: 791 ms
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="tpot.html" class="btn btn-neutral float-right" title="Automate Machine Learning with TPOT" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="xgboost.html" class="btn btn-neutral float-left" title="Scale XGBoost" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="image-processing.html" class="btn btn-neutral float-left" title="Image Processing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
