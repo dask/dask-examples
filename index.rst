@@ -55,3 +55,4 @@ You can run these examples in a live session here: |Binder|
    applications/satellite-imagery-geotiff
    applications/image-processing
    applications/async-await
+   applications/stencils-with-numba
