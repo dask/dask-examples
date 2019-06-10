@@ -187,6 +187,7 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/image-processing.html">Image Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
 </ul>
 
             
@@ -482,7 +483,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:32959
+  <li><b>Scheduler: </b>tcp://127.0.0.1:40609
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -553,8 +554,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 52, &#34;name&#34;: [&#34;Pa&#34;, &#34;Clark&#34;], &#34;occupation&#34;: &#34;Script Writer&#34;, &#34;telephone&#34;: &#34;1-515-650-3853&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1174 Havenside Road&#34;, &#34;city&#34;: &#34;Crest Hill&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3462 609286 29917&#34;, &#34;expiration-date&#34;: &#34;09/16&#34;}}
-{&#34;age&#34;: 60, &#34;name&#34;: [&#34;Keva&#34;, &#34;Osborn&#34;], &#34;occupation&#34;: &#34;Aeronautical Engineer&#34;, &#34;telephone&#34;: &#34;(188) 659-0021&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;869 Birmingham Garden&#34;, &#34;city&#34;: &#34;Murray&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3789 534011 26853&#34;, &#34;expiration-date&#34;: &#34;10/16&#34;}}
+{&#34;age&#34;: 42, &#34;name&#34;: [&#34;Larisa&#34;, &#34;Martinez&#34;], &#34;occupation&#34;: &#34;Employment&#34;, &#34;telephone&#34;: &#34;1-073-219-6060&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;853 Arguello Mall&#34;, &#34;city&#34;: &#34;Oakland Park&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;4021 9481 5204 2583&#34;, &#34;expiration-date&#34;: &#34;04/18&#34;}}
+{&#34;age&#34;: 29, &#34;name&#34;: [&#34;Nickolas&#34;, &#34;Gonzalez&#34;], &#34;occupation&#34;: &#34;Keep Fit Instructor&#34;, &#34;telephone&#34;: &#34;1-772-293-1605&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;240 Mount Vernon Esplanade&#34;, &#34;city&#34;: &#34;Acworth&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3400 394653 66232&#34;, &#34;expiration-date&#34;: &#34;06/19&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -575,7 +576,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>dask.bag&lt;loads-0..., npartitions=10&gt;
+<span></span>dask.bag&lt;loads-e..., npartitions=10&gt;
 </pre></div>
 </div>
 </div>
@@ -593,18 +594,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 52,
-  &#39;name&#39;: [&#39;Pa&#39;, &#39;Clark&#39;],
-  &#39;occupation&#39;: &#39;Script Writer&#39;,
-  &#39;telephone&#39;: &#39;1-515-650-3853&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1174 Havenside Road&#39;, &#39;city&#39;: &#39;Crest Hill&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3462 609286 29917&#39;, &#39;expiration-date&#39;: &#39;09/16&#39;}},
- {&#39;age&#39;: 60,
-  &#39;name&#39;: [&#39;Keva&#39;, &#39;Osborn&#39;],
-  &#39;occupation&#39;: &#39;Aeronautical Engineer&#39;,
-  &#39;telephone&#39;: &#39;(188) 659-0021&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;869 Birmingham Garden&#39;, &#39;city&#39;: &#39;Murray&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3789 534011 26853&#39;, &#39;expiration-date&#39;: &#39;10/16&#39;}})
+<span></span>({&#39;age&#39;: 42,
+  &#39;name&#39;: [&#39;Larisa&#39;, &#39;Martinez&#39;],
+  &#39;occupation&#39;: &#39;Employment&#39;,
+  &#39;telephone&#39;: &#39;1-073-219-6060&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;853 Arguello Mall&#39;, &#39;city&#39;: &#39;Oakland Park&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4021 9481 5204 2583&#39;,
+   &#39;expiration-date&#39;: &#39;04/18&#39;}},
+ {&#39;age&#39;: 29,
+  &#39;name&#39;: [&#39;Nickolas&#39;, &#39;Gonzalez&#39;],
+  &#39;occupation&#39;: &#39;Keep Fit Instructor&#39;,
+  &#39;telephone&#39;: &#39;1-772-293-1605&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;240 Mount Vernon Esplanade&#39;, &#39;city&#39;: &#39;Acworth&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3400 394653 66232&#39;, &#39;expiration-date&#39;: &#39;06/19&#39;}})
 </pre></div>
 </div>
 </div>
@@ -626,18 +628,20 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 52,
-  &#39;name&#39;: [&#39;Pa&#39;, &#39;Clark&#39;],
-  &#39;occupation&#39;: &#39;Script Writer&#39;,
-  &#39;telephone&#39;: &#39;1-515-650-3853&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1174 Havenside Road&#39;, &#39;city&#39;: &#39;Crest Hill&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3462 609286 29917&#39;, &#39;expiration-date&#39;: &#39;09/16&#39;}},
- {&#39;age&#39;: 60,
-  &#39;name&#39;: [&#39;Keva&#39;, &#39;Osborn&#39;],
-  &#39;occupation&#39;: &#39;Aeronautical Engineer&#39;,
-  &#39;telephone&#39;: &#39;(188) 659-0021&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;869 Birmingham Garden&#39;, &#39;city&#39;: &#39;Murray&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3789 534011 26853&#39;, &#39;expiration-date&#39;: &#39;10/16&#39;}})
+<span></span>({&#39;age&#39;: 42,
+  &#39;name&#39;: [&#39;Larisa&#39;, &#39;Martinez&#39;],
+  &#39;occupation&#39;: &#39;Employment&#39;,
+  &#39;telephone&#39;: &#39;1-073-219-6060&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;853 Arguello Mall&#39;, &#39;city&#39;: &#39;Oakland Park&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4021 9481 5204 2583&#39;,
+   &#39;expiration-date&#39;: &#39;04/18&#39;}},
+ {&#39;age&#39;: 59,
+  &#39;name&#39;: [&#39;Cristopher&#39;, &#39;Crosby&#39;],
+  &#39;occupation&#39;: &#39;Mattress Maker&#39;,
+  &#39;telephone&#39;: &#39;592.242.0692&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1349 Keith Route&#39;, &#39;city&#39;: &#39;Hudson&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2238 2690 0203 8900&#39;,
+   &#39;expiration-date&#39;: &#39;12/22&#39;}})
 </pre></div>
 </div>
 </div>
@@ -655,7 +659,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(&#39;Script Writer&#39;, &#39;Aeronautical Engineer&#39;)
+<span></span>(&#39;Employment&#39;, &#39;Keep Fit Instructor&#39;)
 </pre></div>
 </div>
 </div>
@@ -718,16 +722,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[(&#39;Goldsmith&#39;, 16),
- (&#39;Insurance Inspector&#39;, 15),
- (&#39;Steward&#39;, 15),
- (&#39;Administration Staff&#39;, 15),
- (&#39;Medical Supplier&#39;, 14),
- (&#39;Geophysicist&#39;, 14),
- (&#39;Slaughterman&#39;, 14),
- (&#39;Archaeologist&#39;, 14),
- (&#39;Nursing Manager&#39;, 13),
- (&#39;Rent Offcer&#39;, 13)]
+<span></span>[(&#39;Claims Assessor&#39;, 17),
+ (&#39;Masseuse&#39;, 14),
+ (&#39;Aircraft Designer&#39;, 14),
+ (&#39;Tiler&#39;, 14),
+ (&#39;Golfer&#39;, 14),
+ (&#39;Rig Worker&#39;, 13),
+ (&#39;Piano Tuner&#39;, 13),
+ (&#39;Furniture Dealer&#39;, 13),
+ (&#39;Classroom Aide&#39;, 13),
+ (&#39;School Inspector&#39;, 13)]
 </pre></div>
 </div>
 </div>
@@ -784,12 +788,13 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 52,
-  &#39;name&#39;: [&#39;Pa&#39;, &#39;Clark&#39;],
-  &#39;occupation&#39;: &#39;Script Writer&#39;,
-  &#39;telephone&#39;: &#39;1-515-650-3853&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1174 Havenside Road&#39;, &#39;city&#39;: &#39;Crest Hill&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3462 609286 29917&#39;, &#39;expiration-date&#39;: &#39;09/16&#39;}},)
+<span></span>({&#39;age&#39;: 42,
+  &#39;name&#39;: [&#39;Larisa&#39;, &#39;Martinez&#39;],
+  &#39;occupation&#39;: &#39;Employment&#39;,
+  &#39;telephone&#39;: &#39;1-073-219-6060&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;853 Arguello Mall&#39;, &#39;city&#39;: &#39;Oakland Park&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4021 9481 5204 2583&#39;,
+   &#39;expiration-date&#39;: &#39;04/18&#39;}},)
 </pre></div>
 </div>
 </div>
@@ -819,14 +824,14 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 52,
-  &#39;occupation&#39;: &#39;Script Writer&#39;,
-  &#39;telephone&#39;: &#39;1-515-650-3853&#39;,
-  &#39;credit-card-number&#39;: &#39;3462 609286 29917&#39;,
-  &#39;credit-card-expiration&#39;: &#39;09/16&#39;,
-  &#39;name&#39;: &#39;Pa Clark&#39;,
-  &#39;street-address&#39;: &#39;1174 Havenside Road&#39;,
-  &#39;city&#39;: &#39;Crest Hill&#39;},)
+<span></span>({&#39;age&#39;: 42,
+  &#39;occupation&#39;: &#39;Employment&#39;,
+  &#39;telephone&#39;: &#39;1-073-219-6060&#39;,
+  &#39;credit-card-number&#39;: &#39;4021 9481 5204 2583&#39;,
+  &#39;credit-card-expiration&#39;: &#39;04/18&#39;,
+  &#39;name&#39;: &#39;Larisa Martinez&#39;,
+  &#39;street-address&#39;: &#39;853 Arguello Mall&#39;,
+  &#39;city&#39;: &#39;Oakland Park&#39;},)
 </pre></div>
 </div>
 </div>
@@ -876,58 +881,58 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>52</td>
-      <td>Crest Hill</td>
-      <td>09/16</td>
-      <td>3462 609286 29917</td>
-      <td>Pa Clark</td>
-      <td>Script Writer</td>
-      <td>1174 Havenside Road</td>
-      <td>1-515-650-3853</td>
+      <td>42</td>
+      <td>Oakland Park</td>
+      <td>04/18</td>
+      <td>4021 9481 5204 2583</td>
+      <td>Larisa Martinez</td>
+      <td>Employment</td>
+      <td>853 Arguello Mall</td>
+      <td>1-073-219-6060</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>60</td>
-      <td>Murray</td>
-      <td>10/16</td>
-      <td>3789 534011 26853</td>
-      <td>Keva Osborn</td>
-      <td>Aeronautical Engineer</td>
-      <td>869 Birmingham Garden</td>
-      <td>(188) 659-0021</td>
+      <td>29</td>
+      <td>Acworth</td>
+      <td>06/19</td>
+      <td>3400 394653 66232</td>
+      <td>Nickolas Gonzalez</td>
+      <td>Keep Fit Instructor</td>
+      <td>240 Mount Vernon Esplanade</td>
+      <td>1-772-293-1605</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>18</td>
-      <td>Northbrook</td>
-      <td>07/23</td>
-      <td>3460 042096 92388</td>
-      <td>Virgil Clayton</td>
-      <td>Immigration Officer</td>
-      <td>787 Dublin Crescent</td>
-      <td>1-778-440-2998</td>
+      <td>22</td>
+      <td>New York</td>
+      <td>12/20</td>
+      <td>5286 9204 0821 5955</td>
+      <td>Walter Guerra</td>
+      <td>Metal Polisher</td>
+      <td>514 Dartmouth Plaza</td>
+      <td>(539) 516-0067</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>27</td>
-      <td>Ridgecrest</td>
-      <td>04/19</td>
-      <td>5214 0338 5121 5196</td>
-      <td>Marilou Blankenship</td>
-      <td>Investment Advisor</td>
-      <td>54 Sussex Plantation</td>
-      <td>537-836-1446</td>
+      <td>21</td>
+      <td>Sachse</td>
+      <td>06/19</td>
+      <td>2587 5709 2031 9117</td>
+      <td>Hassan Rivers</td>
+      <td>Jockey</td>
+      <td>475 Dewitt Annex</td>
+      <td>683-985-2124</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>29</td>
-      <td>Frederick</td>
-      <td>03/25</td>
-      <td>3485 261277 77931</td>
-      <td>Elina Curtis</td>
-      <td>Cartographer</td>
-      <td>1064 Megan Glen</td>
-      <td>966-030-1081</td>
+      <td>28</td>
+      <td>Villa Park</td>
+      <td>08/19</td>
+      <td>5517 0752 8849 1365</td>
+      <td>Arnita Deleon</td>
+      <td>Hod Carrier</td>
+      <td>66 Andrew Green</td>
+      <td>1-670-115-7450</td>
     </tr>
   </tbody>
 </table>
@@ -948,16 +953,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Goldsmith               16
-Insurance Inspector     15
-Administration Staff    15
-Steward                 15
-Medical Supplier        14
-Archaeologist           14
-Geophysicist            14
-Slaughterman            14
-Shipyard Worker         13
-Nursing Manager         13
+<span></span>Claims Assessor      17
+Golfer               14
+Tiler                14
+Aircraft Designer    14
+Masseuse             14
+School Inspector     13
+Rig Worker           13
+Piano Tuner          13
+Town Clerk           13
+Furniture Dealer     13
 Name: occupation, dtype: int64
 </pre></div>
 </div>

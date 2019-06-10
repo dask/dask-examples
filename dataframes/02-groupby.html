@@ -184,6 +184,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/image-processing.html">Image Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
 </ul>
 
             
@@ -477,7 +478,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>inproc://10.20.0.134/9479/1
+  <li><b>Scheduler: </b>inproc://10.20.3.176/9613/1
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -616,32 +617,32 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>name
-Alice       0.002271
-Bob        -0.000440
-Charlie    -0.000582
-Dan        -0.002065
-Edith       0.000610
-Frank      -0.000245
-George     -0.001001
-Hannah      0.001022
-Ingrid      0.001967
-Jerry       0.001161
-Kevin       0.002352
-Laura       0.002252
-Michael     0.003209
-Norbert    -0.000473
-Oliver      0.003340
-Patricia   -0.000089
-Quinn      -0.000784
-Ray        -0.001225
-Sarah      -0.000433
-Tim        -0.001817
-Ursula      0.001699
-Victor     -0.001637
-Wendy      -0.002565
-Xavier      0.002374
-Yvonne      0.001242
-Zelda       0.000616
+Alice      -0.003049
+Bob        -0.001541
+Charlie    -0.005584
+Dan         0.002549
+Edith       0.002222
+Frank       0.000102
+George     -0.001935
+Hannah      0.001181
+Ingrid     -0.000890
+Jerry      -0.002217
+Kevin       0.001280
+Laura       0.001857
+Michael    -0.000683
+Norbert     0.001902
+Oliver     -0.000863
+Patricia   -0.001959
+Quinn      -0.001590
+Ray         0.001465
+Sarah       0.002392
+Tim         0.000798
+Ursula     -0.000916
+Victor      0.000508
+Wendy       0.001256
+Xavier      0.001918
+Yvonne     -0.000850
+Zelda      -0.001230
 Name: x, dtype: float64
 </pre></div>
 </div>
@@ -661,8 +662,8 @@ Name: x, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 328 ms, sys: 16 ms, total: 344 ms
-Wall time: 258 ms
+CPU times: user 356 ms, sys: 16 ms, total: 372 ms
+Wall time: 280 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -679,8 +680,8 @@ Wall time: 258 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 712 ms, sys: 12 ms, total: 724 ms
-Wall time: 521 ms
+CPU times: user 748 ms, sys: 8 ms, total: 756 ms
+Wall time: 540 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -697,8 +698,8 @@ Wall time: 521 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.22 s, sys: 84 ms, total: 1.31 s
-Wall time: 1.02 s
+CPU times: user 1.29 s, sys: 72 ms, total: 1.36 s
+Wall time: 1.06 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -749,38 +750,38 @@ Wall time: 1.02 s
   <tbody>
     <tr>
       <th>Alice</th>
-      <td>0.002271</td>
-      <td>0.577230</td>
-      <td>-0.002259</td>
-      <td>100040</td>
+      <td>-0.003049</td>
+      <td>0.575623</td>
+      <td>-0.001566</td>
+      <td>99868</td>
     </tr>
     <tr>
       <th>Bob</th>
-      <td>-0.000440</td>
-      <td>0.577000</td>
-      <td>-0.002706</td>
-      <td>99511</td>
+      <td>-0.001541</td>
+      <td>0.576665</td>
+      <td>0.001785</td>
+      <td>99494</td>
     </tr>
     <tr>
       <th>Charlie</th>
-      <td>-0.000582</td>
-      <td>0.578031</td>
-      <td>-0.000348</td>
-      <td>99237</td>
+      <td>-0.005584</td>
+      <td>0.576196</td>
+      <td>-0.000690</td>
+      <td>100060</td>
     </tr>
     <tr>
       <th>Dan</th>
-      <td>-0.002065</td>
-      <td>0.578451</td>
-      <td>-0.001139</td>
-      <td>99504</td>
+      <td>0.002549</td>
+      <td>0.578240</td>
+      <td>0.002902</td>
+      <td>99163</td>
     </tr>
     <tr>
       <th>Edith</th>
-      <td>0.000610</td>
-      <td>0.577428</td>
-      <td>-0.002828</td>
-      <td>99738</td>
+      <td>0.002222</td>
+      <td>0.578213</td>
+      <td>0.001187</td>
+      <td>99969</td>
     </tr>
   </tbody>
 </table>
@@ -863,8 +864,8 @@ Wall time: 1.02 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 5.8 s, sys: 636 ms, total: 6.44 s
-Wall time: 5.22 s
+CPU times: user 6.06 s, sys: 728 ms, total: 6.79 s
+Wall time: 5.49 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
