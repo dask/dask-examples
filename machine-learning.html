@@ -475,7 +475,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>inproc://10.20.3.176/10394/1
+  <li><b>Scheduler: </b>inproc://10.20.5.30/10484/1
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -572,7 +572,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <p>To fit it using the cluster, we just need to use a context manager provided by joblib.</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
@@ -583,6 +583,18 @@ div.rendered_html tbody tr:hover {
     <span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Exception ignored in: &lt;function _WeakKeyDictionary.__setitem__.&lt;locals&gt;.on_destroy at 0x7f18e1d0c840&gt;
+Traceback (most recent call last):
+  File &#34;/home/travis/miniconda/envs/test/lib/python3.7/site-packages/sklearn/externals/joblib/_dask.py&#34;, line 66, in on_destroy
+    del self._data[key]
+KeyError: (139744740608880,)
+</pre></div></div>
 </div>
 <p>We fit 48 different models, one for each hyper-parameter combination in <code class="docutils literal notranslate"><span class="pre">param_grid</span></code>, distributed across the cluster. At this point, we have a regular scikit-learn model, which can be used for prediction, scoring, etc.</p>
 <div class="nbinput docutils container">
@@ -636,10 +648,10 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.399958</td>
-      <td>0.050520</td>
-      <td>0.039666</td>
-      <td>0.003413</td>
+      <td>0.416839</td>
+      <td>0.016198</td>
+      <td>0.043164</td>
+      <td>0.004382</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>True</td>
@@ -653,10 +665,10 @@ div.rendered_html tbody tr:hover {
     </tr>
     <tr>
       <th>1</th>
-      <td>0.409198</td>
-      <td>0.054175</td>
-      <td>0.041320</td>
-      <td>0.002428</td>
+      <td>0.419016</td>
+      <td>0.043820</td>
+      <td>0.028665</td>
+      <td>0.009611</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>False</td>
@@ -670,10 +682,10 @@ div.rendered_html tbody tr:hover {
     </tr>
     <tr>
       <th>2</th>
-      <td>0.297202</td>
-      <td>0.009414</td>
-      <td>0.017744</td>
-      <td>0.002751</td>
+      <td>0.237564</td>
+      <td>0.031185</td>
+      <td>0.019663</td>
+      <td>0.004448</td>
       <td>0.001</td>
       <td>poly</td>
       <td>True</td>
@@ -687,10 +699,10 @@ div.rendered_html tbody tr:hover {
     </tr>
     <tr>
       <th>3</th>
-      <td>0.226698</td>
-      <td>0.007340</td>
-      <td>0.016093</td>
-      <td>0.009484</td>
+      <td>0.246340</td>
+      <td>0.016819</td>
+      <td>0.017286</td>
+      <td>0.005568</td>
       <td>0.001</td>
       <td>poly</td>
       <td>False</td>
@@ -704,10 +716,10 @@ div.rendered_html tbody tr:hover {
     </tr>
     <tr>
       <th>4</th>
-      <td>0.421652</td>
-      <td>0.031348</td>
-      <td>0.028207</td>
-      <td>0.012443</td>
+      <td>0.465071</td>
+      <td>0.023873</td>
+      <td>0.040187</td>
+      <td>0.003741</td>
       <td>0.001</td>
       <td>sigmoid</td>
       <td>True</td>
