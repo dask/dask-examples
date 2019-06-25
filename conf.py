@@ -52,7 +52,7 @@ nbsphinx_prolog = """
 You can run this notebook in a `live session <https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/{{ docname }}>`_ |Binder| or view it `on Github <https://github.com/dask/dask-examples/blob/master/{{ docname }}>`_.
 
 .. |Binder| image:: https://mybinder.org/badge.svg
-   :target: https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/{{ docname }}>
+   :target: https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/{{ docname }}
 """
 
 
