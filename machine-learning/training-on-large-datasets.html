@@ -27,6 +27,7 @@
         <script type="text/javascript" src="../_static/language_data.js"></script>
         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+        <script type="text/javascript" src="../_static/js/custom.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -481,7 +482,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>inproc://10.20.5.30/11527/1
+  <li><b>Scheduler: </b>inproc://10.20.3.95/15308/1
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -527,10 +528,49 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>dask.array&lt;concatenate, shape=(1000000, 2), dtype=float64, chunksize=(100000, 2)&gt;
-</pre></div>
-</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<tr>
+<td>
+<table>  <thead>    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 16.00 MB </td> <td> 1.60 MB </td></tr>
+    <tr><th> Shape </th><td> (1000000, 2) </td> <td> (100000, 2) </td></tr>
+    <tr><th> Count </th><td> 10 Tasks </td><td> 10 Chunks </td></tr>
+    <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>
+  </tbody></table>
+</td>
+<td>
+<svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="12" x2="25" y2="12" />
+  <line x1="0" y1="24" x2="25" y2="24" />
+  <line x1="0" y1="36" x2="25" y2="36" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="60" x2="25" y2="60" />
+  <line x1="0" y1="72" x2="25" y2="72" />
+  <line x1="0" y1="84" x2="25" y2="84" />
+  <line x1="0" y1="96" x2="25" y2="96" />
+  <line x1="0" y1="108" x2="25" y2="108" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.000000,0.000000 25.412617,0.000000 25.412617,120.000000 0.000000,120.000000" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >2</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">1000000</text>
+</svg>
+</td>
+</tr>
+</table></div>
 </div>
 <p>We’ll use the k-means implemented in Dask-ML to cluster the points. It uses the <code class="docutils literal notranslate"><span class="pre">k-means||</span></code> (read: “k-means parallel”) initialization algorithm, which scales better than <code class="docutils literal notranslate"><span class="pre">k-means++</span></code>. All of the computation, both during and after initialization, can be done in parallel.</p>
 <div class="nbinput docutils container">

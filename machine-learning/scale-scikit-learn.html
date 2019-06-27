@@ -27,6 +27,7 @@
         <script type="text/javascript" src="../_static/language_data.js"></script>
         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+        <script type="text/javascript" src="../_static/js/custom.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -504,7 +505,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>inproc://10.20.5.30/11069/1
+  <li><b>Scheduler: </b>inproc://10.20.3.95/14872/1
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -685,7 +686,11 @@ Fitting 3 folds for each of 6 candidates, totalling 18 fits
   FutureWarning)
 /home/travis/miniconda/envs/test/lib/python3.7/site-packages/sklearn/linear_model/stochastic_gradient.py:183: FutureWarning: max_iter and tol parameters have been added in SGDClassifier in 0.19. If max_iter is set but tol is left unset, the default value for tol in 0.19 and 0.20 will be None (which is equivalent to -infinity, so it has no effect) but will change in 0.21 to 1e-3. Specify tol to silence this warning.
   FutureWarning)
-[Parallel(n_jobs=-1)]: Done  18 out of  18 | elapsed:   23.5s finished
+/home/travis/miniconda/envs/test/lib/python3.7/site-packages/sklearn/linear_model/stochastic_gradient.py:183: FutureWarning: max_iter and tol parameters have been added in SGDClassifier in 0.19. If max_iter is set but tol is left unset, the default value for tol in 0.19 and 0.20 will be None (which is equivalent to -infinity, so it has no effect) but will change in 0.21 to 1e-3. Specify tol to silence this warning.
+  FutureWarning)
+/home/travis/miniconda/envs/test/lib/python3.7/site-packages/sklearn/linear_model/stochastic_gradient.py:183: FutureWarning: max_iter and tol parameters have been added in SGDClassifier in 0.19. If max_iter is set but tol is left unset, the default value for tol in 0.19 and 0.20 will be None (which is equivalent to -infinity, so it has no effect) but will change in 0.21 to 1e-3. Specify tol to silence this warning.
+  FutureWarning)
+[Parallel(n_jobs=-1)]: Done  18 out of  18 | elapsed:   28.0s finished
 </pre></div></div>
 </div>
 <p>If you had your distributed dashboard open during that fit, you’ll notice that each worker performs some of the fit tasks.</p>
@@ -798,10 +803,49 @@ Fitting 3 folds for each of 6 candidates, totalling 18 fits
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>dask.array&lt;concatenate, shape=(17970, 64), dtype=float64, chunksize=(1797, 64)&gt;
-</pre></div>
-</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<tr>
+<td>
+<table>  <thead>    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 9.20 MB </td> <td> 920.06 kB </td></tr>
+    <tr><th> Shape </th><td> (17970, 64) </td> <td> (1797, 64) </td></tr>
+    <tr><th> Count </th><td> 11 Tasks </td><td> 10 Chunks </td></tr>
+    <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>
+  </tbody></table>
+</td>
+<td>
+<svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="12" x2="25" y2="12" />
+  <line x1="0" y1="24" x2="25" y2="24" />
+  <line x1="0" y1="36" x2="25" y2="36" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="60" x2="25" y2="60" />
+  <line x1="0" y1="72" x2="25" y2="72" />
+  <line x1="0" y1="84" x2="25" y2="84" />
+  <line x1="0" y1="96" x2="25" y2="96" />
+  <line x1="0" y1="108" x2="25" y2="108" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.000000,0.000000 25.412617,0.000000 25.412617,120.000000 0.000000,120.000000" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >64</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">17970</text>
+</svg>
+</td>
+</tr>
+</table></div>
 </div>
 <p>Operations like <code class="docutils literal notranslate"><span class="pre">predict</span></code>, or <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> return dask, rather than NumPy arrays. When you compute, the work will be done in parallel, out of core or distributed on the cluster.</p>
 <div class="nbinput docutils container">
@@ -818,10 +862,49 @@ Fitting 3 folds for each of 6 candidates, totalling 18 fits
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>dask.array&lt;_predict, shape=(17970,), dtype=int64, chunksize=(1797,)&gt;
-</pre></div>
-</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<tr>
+<td>
+<table>  <thead>    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 143.76 kB </td> <td> 14.38 kB </td></tr>
+    <tr><th> Shape </th><td> (17970,) </td> <td> (1797,) </td></tr>
+    <tr><th> Count </th><td> 21 Tasks </td><td> 10 Chunks </td></tr>
+    <tr><th> Type </th><td> int64 </td><td> numpy.ndarray </td></tr>
+  </tbody></table>
+</td>
+<td>
+<svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="12" y1="0" x2="12" y2="25" />
+  <line x1="24" y1="0" x2="24" y2="25" />
+  <line x1="36" y1="0" x2="36" y2="25" />
+  <line x1="48" y1="0" x2="48" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="72" y1="0" x2="72" y2="25" />
+  <line x1="84" y1="0" x2="84" y2="25" />
+  <line x1="96" y1="0" x2="96" y2="25" />
+  <line x1="108" y1="0" x2="108" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.000000,0.000000 120.000000,0.000000 120.000000,25.412617 0.000000,25.412617" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >17970</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+</td>
+</tr>
+</table></div>
 </div>
 <p>At this point predicted could be written to disk, or aggregated before returning to the client.</p>
 </div>

@@ -27,6 +27,7 @@
         <script type="text/javascript" src="../_static/language_data.js"></script>
         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+        <script type="text/javascript" src="../_static/js/custom.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -638,7 +639,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<b>Future: finalize</b> <font color="gray">status: </font><font color="black">pending</font>, <font color="gray">key: </font>finalize-36808dd89f74f3ae7c37b3fa9c529de4</div>
+<b>Future: finalize</b> <font color="gray">status: </font><font color="black">pending</font>, <font color="gray">key: </font>finalize-c584466f606970f9b0e52a06553d4ff2</div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -654,8 +655,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>x   -149.414130
-y   -163.557017
+<span></span>x   -1174.034281
+y   -1108.315235
 dtype: float64
 </pre></div>
 </div>
@@ -664,10 +665,34 @@ dtype: float64
 <div class="section" id="Within-a-script">
 <h2>Within a script<a class="headerlink" href="#Within-a-script" title="Permalink to this headline">¶</a></h2>
 <p>Running async/await code in Jupyter is a bit atypical. Jupyter already has an event loop running, so it’s easy to use async/await syntax directly within it. In a normal Python script this won’t be the case. Here is an example script that should run within a normal Python interpreter or as a script.</p>
-<p>```python import asyncio from dask.distributed import Client</p>
-<p>def inc(x: int) -&gt; int: return x + 1</p>
-<p>async def f(): async with Client(asynchronous=True) as client: future = client.submit(inc, 10) result = await future print(result)</p>
-<p>if <strong>name</strong> == ‘<strong>main</strong>’: asyncio.get_event_loop().run_until_complete(f())```</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
+
+
+<span class="k">def</span> <span class="nf">inc</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
+
+<span class="n">async</span> <span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
+    <span class="n">async</span> <span class="k">with</span> <span class="n">Client</span><span class="p">(</span><span class="n">asynchronous</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+        <span class="n">future</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">inc</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">await</span> <span class="n">future</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">f</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
