@@ -50,9 +50,10 @@ You can run these examples in a live session here: |Binder|
    :maxdepth: 1
    :caption: Applications:
 
-   applications/embarrassingly-parallel
    applications/json-data-on-the-web
-   applications/satellite-imagery-geotiff
-   applications/image-processing
    applications/async-await
+   applications/embarrassingly-parallel
+   applications/image-processing
+   applications/prefect-etl
+   applications/satellite-imagery-geotiff
    applications/stencils-with-numba
