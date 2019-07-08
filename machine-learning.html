@@ -180,11 +180,17 @@
 </ul>
 <p class="caption"><span class="caption-text">Applications:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="applications/image-processing.html">Image Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/image-processing.html">Image Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html">Prefect on Dask - Roll Your Own GIF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html#Goal">Goal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html#Setting-up-our-environment">Setting up our environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html#Build-the-Flow">Build the Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html#Next-Steps">Next Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html#Play">Play</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
 </ul>
 
@@ -476,7 +482,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>inproc://10.20.3.95/14284/1
+  <li><b>Scheduler: </b>inproc://10.20.0.202/14373/1
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -637,10 +643,10 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.413133</td>
-      <td>0.012878</td>
-      <td>0.030933</td>
-      <td>0.004875</td>
+      <td>0.413318</td>
+      <td>0.019788</td>
+      <td>0.031553</td>
+      <td>0.004730</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>True</td>
@@ -654,10 +660,10 @@ div.rendered_html tbody tr:hover {
     </tr>
     <tr>
       <th>1</th>
-      <td>0.442663</td>
-      <td>0.029387</td>
-      <td>0.038150</td>
-      <td>0.006494</td>
+      <td>0.426158</td>
+      <td>0.000972</td>
+      <td>0.033351</td>
+      <td>0.002862</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>False</td>
@@ -671,10 +677,10 @@ div.rendered_html tbody tr:hover {
     </tr>
     <tr>
       <th>2</th>
-      <td>0.261137</td>
-      <td>0.029157</td>
-      <td>0.020561</td>
-      <td>0.001778</td>
+      <td>0.261171</td>
+      <td>0.026385</td>
+      <td>0.013219</td>
+      <td>0.003669</td>
       <td>0.001</td>
       <td>poly</td>
       <td>True</td>
@@ -688,10 +694,10 @@ div.rendered_html tbody tr:hover {
     </tr>
     <tr>
       <th>3</th>
-      <td>0.283383</td>
-      <td>0.039058</td>
-      <td>0.027156</td>
-      <td>0.008589</td>
+      <td>0.278679</td>
+      <td>0.046010</td>
+      <td>0.019752</td>
+      <td>0.005127</td>
       <td>0.001</td>
       <td>poly</td>
       <td>False</td>
@@ -705,10 +711,10 @@ div.rendered_html tbody tr:hover {
     </tr>
     <tr>
       <th>4</th>
-      <td>0.451217</td>
-      <td>0.032872</td>
-      <td>0.041699</td>
-      <td>0.006734</td>
+      <td>0.451198</td>
+      <td>0.078855</td>
+      <td>0.037028</td>
+      <td>0.008968</td>
       <td>0.001</td>
       <td>sigmoid</td>
       <td>True</td>
@@ -806,49 +812,10 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="output_area rendered_html docutils container">
-<table>
-<tr>
-<td>
-<table>  <thead>    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 160.00 MB </td> <td> 16.00 MB </td></tr>
-    <tr><th> Shape </th><td> (10000000, 2) </td> <td> (1000000, 2) </td></tr>
-    <tr><th> Count </th><td> 10 Tasks </td><td> 10 Chunks </td></tr>
-    <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>
-  </tbody></table>
-</td>
-<td>
-<svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="12" x2="25" y2="12" />
-  <line x1="0" y1="24" x2="25" y2="24" />
-  <line x1="0" y1="36" x2="25" y2="36" />
-  <line x1="0" y1="48" x2="25" y2="48" />
-  <line x1="0" y1="60" x2="25" y2="60" />
-  <line x1="0" y1="72" x2="25" y2="72" />
-  <line x1="0" y1="84" x2="25" y2="84" />
-  <line x1="0" y1="96" x2="25" y2="96" />
-  <line x1="0" y1="108" x2="25" y2="108" />
-  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.000000,0.000000 25.412617,0.000000 25.412617,120.000000 0.000000,120.000000" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >2</text>
-  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">10000000</text>
-</svg>
-</td>
-</tr>
-</table></div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>dask.array&lt;concatenate, shape=(10000000, 2), dtype=float64, chunksize=(1000000, 2)&gt;
+</pre></div>
+</div>
 </div>
 <p>We’ll use the k-means implemented in Dask-ML to cluster the points. It uses the <code class="docutils literal notranslate"><span class="pre">k-means||</span></code> (read: “k-means parallel”) initialization algorithm, which scales better than <code class="docutils literal notranslate"><span class="pre">k-means++</span></code>. All of the computation, both during and after initialization, can be done in parallel.</p>
 <div class="nbinput docutils container">

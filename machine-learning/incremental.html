@@ -186,11 +186,17 @@
 </ul>
 <p class="caption"><span class="caption-text">Applications:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/image-processing.html">Image Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/image-processing.html">Image Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html">Prefect on Dask - Roll Your Own GIF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Goal">Goal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Setting-up-our-environment">Setting up our environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Build-the-Flow">Build the Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Next-Steps">Next Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Play">Play</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
 </ul>
 
@@ -499,7 +505,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:40723
+  <li><b>Scheduler: </b>tcp://127.0.0.1:45179
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -541,49 +547,10 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="output_area rendered_html docutils container">
-<table>
-<tr>
-<td>
-<table>  <thead>    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 80.00 MB </td> <td> 8.00 MB </td></tr>
-    <tr><th> Shape </th><td> (100000, 100) </td> <td> (10000, 100) </td></tr>
-    <tr><th> Count </th><td> 10 Tasks </td><td> 10 Chunks </td></tr>
-    <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>
-  </tbody></table>
-</td>
-<td>
-<svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="12" x2="25" y2="12" />
-  <line x1="0" y1="24" x2="25" y2="24" />
-  <line x1="0" y1="36" x2="25" y2="36" />
-  <line x1="0" y1="48" x2="25" y2="48" />
-  <line x1="0" y1="60" x2="25" y2="60" />
-  <line x1="0" y1="72" x2="25" y2="72" />
-  <line x1="0" y1="84" x2="25" y2="84" />
-  <line x1="0" y1="96" x2="25" y2="96" />
-  <line x1="0" y1="108" x2="25" y2="108" />
-  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.000000,0.000000 25.412617,0.000000 25.412617,120.000000 0.000000,120.000000" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >100</text>
-  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">100000</text>
-</svg>
-</td>
-</tr>
-</table></div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>dask.array&lt;normal, shape=(100000, 100), dtype=float64, chunksize=(10000, 100)&gt;
+</pre></div>
+</div>
 </div>
 <p>For more information on creating dask arrays and dataframes from real data, see documentation on <a class="reference external" href="https://dask.pydata.org/en/latest/array-creation.html">Dask arrays</a> and <a class="reference external" href="https://dask.pydata.org/en/latest/dataframe-create.html">Dask dataframes</a>.</p>
 </div>
@@ -605,49 +572,10 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="output_area rendered_html docutils container">
-<table>
-<tr>
-<td>
-<table>  <thead>    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 72.00 MB </td> <td> 7.20 MB </td></tr>
-    <tr><th> Shape </th><td> (90000, 100) </td> <td> (9000, 100) </td></tr>
-    <tr><th> Count </th><td> 70 Tasks </td><td> 10 Chunks </td></tr>
-    <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>
-  </tbody></table>
-</td>
-<td>
-<svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="12" x2="25" y2="12" />
-  <line x1="0" y1="24" x2="25" y2="24" />
-  <line x1="0" y1="36" x2="25" y2="36" />
-  <line x1="0" y1="48" x2="25" y2="48" />
-  <line x1="0" y1="60" x2="25" y2="60" />
-  <line x1="0" y1="72" x2="25" y2="72" />
-  <line x1="0" y1="84" x2="25" y2="84" />
-  <line x1="0" y1="96" x2="25" y2="96" />
-  <line x1="0" y1="108" x2="25" y2="108" />
-  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.000000,0.000000 25.412617,0.000000 25.412617,120.000000 0.000000,120.000000" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >100</text>
-  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">90000</text>
-</svg>
-</td>
-</tr>
-</table></div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>dask.array&lt;concatenate, shape=(90000, 100), dtype=float64, chunksize=(9000, 100)&gt;
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="Persist-data-in-memory">
@@ -763,7 +691,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>0.5186
+<span></span>0.4924
 </pre></div>
 </div>
 </div>
@@ -797,16 +725,16 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Score: 0.5256
-Score: 0.5352
-Score: 0.5502
-Score: 0.5288
-Score: 0.5214
-Score: 0.5456
-Score: 0.5557
-Score: 0.54
-Score: 0.5555
-Score: 0.5558
+Score: 0.4991
+Score: 0.5085
+Score: 0.5011
+Score: 0.5143
+Score: 0.5062
+Score: 0.501
+Score: 0.5017
+Score: 0.5079
+Score: 0.5132
+Score: 0.5037
 </pre></div></div>
 </div>
 </div>
@@ -826,49 +754,10 @@ Score: 0.5558
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="output_area rendered_html docutils container">
-<table>
-<tr>
-<td>
-<table>  <thead>    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 80.00 kB </td> <td> 8.00 kB </td></tr>
-    <tr><th> Shape </th><td> (10000,) </td> <td> (1000,) </td></tr>
-    <tr><th> Count </th><td> 20 Tasks </td><td> 10 Chunks </td></tr>
-    <tr><th> Type </th><td> int64 </td><td> numpy.ndarray </td></tr>
-  </tbody></table>
-</td>
-<td>
-<svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
-  <line x1="12" y1="0" x2="12" y2="25" />
-  <line x1="24" y1="0" x2="24" y2="25" />
-  <line x1="36" y1="0" x2="36" y2="25" />
-  <line x1="48" y1="0" x2="48" y2="25" />
-  <line x1="60" y1="0" x2="60" y2="25" />
-  <line x1="72" y1="0" x2="72" y2="25" />
-  <line x1="84" y1="0" x2="84" y2="25" />
-  <line x1="96" y1="0" x2="96" y2="25" />
-  <line x1="108" y1="0" x2="108" y2="25" />
-  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.000000,0.000000 120.000000,0.000000 120.000000,25.412617 0.000000,25.412617" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >10000</text>
-  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
-</svg>
-</td>
-</tr>
-</table></div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>dask.array&lt;_predict, shape=(10000,), dtype=int64, chunksize=(1000,)&gt;
+</pre></div>
+</div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
@@ -884,11 +773,11 @@ Score: 0.5558
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0,
-       0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0,
-       0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1,
-       0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0,
-       0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1])
+<span></span>array([1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0,
+       0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1,
+       1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0,
+       1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0,
+       0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0])
 </pre></div>
 </div>
 </div>
@@ -906,7 +795,7 @@ Score: 0.5558
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>0.5558
+<span></span>0.5037
 </pre></div>
 </div>
 </div>

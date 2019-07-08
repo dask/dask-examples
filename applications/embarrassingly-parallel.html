@@ -40,8 +40,8 @@
   <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Analyze web-hosted JSON data" href="json-data-on-the-web.html" />
-    <link rel="prev" title="Singular Value Decomposition" href="../machine-learning/svd.html" /> 
+    <link rel="next" title="Image Processing" href="image-processing.html" />
+    <link rel="prev" title="Async/Await and Non-Blocking Execution" href="async-await.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -173,6 +173,8 @@
 </ul>
 <p class="caption"><span class="caption-text">Applications:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="async-await.html">Async/Await and Non-Blocking Execution</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Embarrassingly parallel Workloads</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Start-Dask-Client-for-Dashboard">Start Dask Client for Dashboard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Define-your-computation-calling-function">Define your computation calling function</a></li>
@@ -184,10 +186,14 @@
 <li class="toctree-l2"><a class="reference internal" href="#Handling-very-large-simulation-with-Bags">Handling very large simulation with Bags</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image-processing.html">Image Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="async-await.html">Async/Await and Non-Blocking Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prefect-etl.html">Prefect on Dask - Roll Your Own GIF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prefect-etl.html#Goal">Goal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prefect-etl.html#Setting-up-our-environment">Setting up our environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prefect-etl.html#Build-the-Flow">Build the Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prefect-etl.html#Next-Steps">Next Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prefect-etl.html#Play">Play</a></li>
+<li class="toctree-l1"><a class="reference internal" href="satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stencils-with-numba.html">Stencil Computations with Numba</a></li>
 </ul>
 
@@ -494,7 +500,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:33463
+  <li><b>Scheduler: </b>tcp://127.0.0.1:40049
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -542,8 +548,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 0 ns, sys: 8 ms, total: 8 ms
-Wall time: 159 ms
+CPU times: user 20 ms, sys: 0 ns, total: 20 ms
+Wall time: 573 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -605,38 +611,38 @@ Wall time: 159 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.069786</td>
-      <td>0.194680</td>
-      <td>0.978249</td>
-      <td>0.283661</td>
+      <td>0.590323</td>
+      <td>0.291666</td>
+      <td>0.722228</td>
+      <td>0.530859</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.931135</td>
-      <td>0.502661</td>
-      <td>0.191435</td>
-      <td>0.268200</td>
+      <td>0.948500</td>
+      <td>0.519128</td>
+      <td>0.575694</td>
+      <td>0.983216</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.429037</td>
-      <td>0.514122</td>
-      <td>0.876921</td>
-      <td>0.327963</td>
+      <td>0.256199</td>
+      <td>0.221422</td>
+      <td>0.832959</td>
+      <td>0.750525</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.731903</td>
-      <td>0.622863</td>
-      <td>0.687758</td>
-      <td>0.011984</td>
+      <td>0.991834</td>
+      <td>0.296686</td>
+      <td>0.750907</td>
+      <td>0.299365</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.694450</td>
-      <td>0.228756</td>
-      <td>0.389061</td>
-      <td>0.380969</td>
+      <td>0.195800</td>
+      <td>0.164598</td>
+      <td>0.731148</td>
+      <td>0.704193</td>
     </tr>
   </tbody>
 </table>
@@ -670,8 +676,8 @@ Wall time: 159 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 192 ms, sys: 24 ms, total: 216 ms
-Wall time: 5.45 s
+CPU times: user 124 ms, sys: 20 ms, total: 144 ms
+Wall time: 3.99 s
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -688,16 +694,16 @@ Wall time: 5.45 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[1.5263756462748812,
- 1.8934319402914064,
- 2.148044218019199,
- 2.0545076661999238,
- 1.6932367295369795,
- 1.4515505156802475,
- 2.9137632074268125,
- 2.7823755328348416,
- 1.1754237428759948,
- 2.0061836512168045]
+<span></span>[2.135076828466705,
+ 3.0265387798892283,
+ 2.061105213636952,
+ 2.338792042809658,
+ 1.7957394903060235,
+ 1.968968242845702,
+ 2.261094189462655,
+ 1.5318431173175868,
+ 1.6007906424535094,
+ 2.784172832799825]
 </pre></div>
 </div>
 </div>
@@ -737,7 +743,7 @@ Wall time: 5.45 s
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 CPU times: user 0 ns, sys: 0 ns, total: 0 ns
-Wall time: 1.5 ms
+Wall time: 1.48 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -754,7 +760,7 @@ Wall time: 1.5 ms
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Delayed(&#39;costly_simulation-6c892bf2-2b2a-492f-94eb-83ff3831ddbe&#39;)
+<span></span>Delayed(&#39;costly_simulation-54c10662-d0ed-46e5-9d20-47992cbf62f4&#39;)
 </pre></div>
 </div>
 </div>
@@ -777,8 +783,8 @@ Wall time: 1.5 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 76 ms, sys: 28 ms, total: 104 ms
-Wall time: 1.51 s
+CPU times: user 108 ms, sys: 12 ms, total: 120 ms
+Wall time: 2.29 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -786,16 +792,16 @@ Wall time: 1.51 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(1.5263756462748812,
- 1.8934319402914064,
- 2.148044218019199,
- 2.0545076661999238,
- 1.6932367295369795,
- 1.4515505156802475,
- 2.9137632074268125,
- 2.7823755328348416,
- 1.1754237428759948,
- 2.0061836512168045)
+<span></span>(2.135076828466705,
+ 3.0265387798892283,
+ 2.061105213636952,
+ 2.338792042809658,
+ 1.7957394903060235,
+ 1.968968242845702,
+ 2.261094189462655,
+ 1.5318431173175868,
+ 1.6007906424535094,
+ 2.784172832799825)
 </pre></div>
 </div>
 </div>
@@ -845,11 +851,11 @@ Wall time: 1.51 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(1.5263756462748812,
- 1.8934319402914064,
- 2.148044218019199,
- 2.0545076661999238,
- 1.6932367295369795)
+<span></span>(2.135076828466705,
+ 3.0265387798892283,
+ 2.061105213636952,
+ 2.338792042809658,
+ 1.7957394903060235)
 </pre></div>
 </div>
 </div>
@@ -886,11 +892,11 @@ Wall time: 1.51 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[1.5263756462748812,
- 1.8934319402914064,
- 2.148044218019199,
- 2.0545076661999238,
- 1.6932367295369795]
+<span></span>[2.135076828466705,
+ 3.0265387798892283,
+ 2.061105213636952,
+ 2.338792042809658,
+ 1.7957394903060235]
 </pre></div>
 </div>
 </div>
@@ -940,7 +946,7 @@ Wall time: 1.51 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-1.5263756462748812
+2.135076828466705
 </pre></div></div>
 </div>
 <p>We encourage you to watch the <a class="reference external" href="../proxy/8787/status">dashboard’s status page</a> to watch on going computation.</p>
@@ -993,44 +999,44 @@ Wall time: 1.51 s
   </thead>
   <tbody>
     <tr>
-      <th>93</th>
-      <td>0.708839</td>
-      <td>0.666492</td>
-      <td>0.268652</td>
-      <td>0.470351</td>
-      <td>2.114334</td>
+      <th>339</th>
+      <td>0.272850</td>
+      <td>0.039382</td>
+      <td>0.709951</td>
+      <td>0.988600</td>
+      <td>2.010784</td>
     </tr>
     <tr>
-      <th>372</th>
-      <td>0.823213</td>
-      <td>0.791374</td>
-      <td>0.575226</td>
-      <td>0.114757</td>
-      <td>2.304570</td>
+      <th>410</th>
+      <td>0.532837</td>
+      <td>0.987517</td>
+      <td>0.057012</td>
+      <td>0.326702</td>
+      <td>1.904068</td>
     </tr>
     <tr>
-      <th>248</th>
-      <td>0.239064</td>
-      <td>0.103092</td>
-      <td>0.621990</td>
-      <td>0.028338</td>
-      <td>0.992485</td>
+      <th>326</th>
+      <td>0.556626</td>
+      <td>0.964904</td>
+      <td>0.766022</td>
+      <td>0.243930</td>
+      <td>2.531482</td>
     </tr>
     <tr>
-      <th>59</th>
-      <td>0.377875</td>
-      <td>0.868275</td>
-      <td>0.143006</td>
-      <td>0.022435</td>
-      <td>1.411591</td>
+      <th>463</th>
+      <td>0.816359</td>
+      <td>0.685581</td>
+      <td>0.847609</td>
+      <td>0.861227</td>
+      <td>3.210776</td>
     </tr>
     <tr>
-      <th>38</th>
-      <td>0.738305</td>
-      <td>0.346721</td>
-      <td>0.522168</td>
-      <td>0.337692</td>
-      <td>1.944887</td>
+      <th>17</th>
+      <td>0.441271</td>
+      <td>0.996188</td>
+      <td>0.277184</td>
+      <td>0.047155</td>
+      <td>1.761799</td>
     </tr>
   </tbody>
 </table>
@@ -1052,7 +1058,7 @@ Wall time: 1.51 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f69ff696940&gt;
+<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f8b2c036cf8&gt;
 </pre></div>
 </div>
 </div>
@@ -1077,7 +1083,7 @@ Wall time: 1.51 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>2.017051753180241
+<span></span>2.016571585029525
 </pre></div>
 </div>
 </div>
@@ -1097,7 +1103,7 @@ Wall time: 1.51 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-249
+253
 </pre></div></div>
 </div>
 </div>
@@ -1131,8 +1137,8 @@ many tasks</a>.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.68 s, sys: 184 ms, total: 1.86 s
-Wall time: 9 s
+CPU times: user 1.42 s, sys: 132 ms, total: 1.55 s
+Wall time: 8.89 s
 </pre></div></div>
 </div>
 <p>Looking on Dashboard here, you should see only 100 tasks to run instead of 500, each taking 5x more time in average, because each one is actually calling our function 5 times.</p>
@@ -1165,10 +1171,10 @@ Wall time: 9 s
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="json-data-on-the-web.html" class="btn btn-neutral float-right" title="Analyze web-hosted JSON data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="image-processing.html" class="btn btn-neutral float-right" title="Image Processing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../machine-learning/svd.html" class="btn btn-neutral float-left" title="Singular Value Decomposition" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="async-await.html" class="btn btn-neutral float-left" title="Async/Await and Non-Blocking Execution" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

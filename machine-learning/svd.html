@@ -40,7 +40,7 @@
   <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Embarrassingly parallel Workloads" href="../applications/embarrassingly-parallel.html" />
+    <link rel="next" title="Analyze web-hosted JSON data" href="../applications/json-data-on-the-web.html" />
     <link rel="prev" title="Generalized Linear Models" href="glm.html" /> 
 </head>
 
@@ -178,11 +178,17 @@
 </ul>
 <p class="caption"><span class="caption-text">Applications:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/image-processing.html">Image Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/image-processing.html">Image Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html">Prefect on Dask - Roll Your Own GIF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Goal">Goal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Setting-up-our-environment">Setting up our environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Build-the-Flow">Build the Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Next-Steps">Next Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Play">Play</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
 </ul>
 
@@ -478,7 +484,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>inproc://10.20.3.95/15042/1
+  <li><b>Scheduler: </b>inproc://10.20.0.202/15127/1
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -542,19 +548,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([[ 0.10024559,  0.09999001,  0.09982409, ...,  0.09969846,
-         0.09986518,  0.10008932],
-       [-0.09227227, -0.01851499,  0.0576793 , ..., -0.03874389,
-        -0.13809112, -0.03292901],
-       [ 0.0793513 ,  0.13120926, -0.03208778, ..., -0.09353465,
-        -0.04964118,  0.05052062],
+<span></span>array([[ 0.09995456,  0.09997559,  0.099946  , ...,  0.09999591,
+         0.09994306,  0.10006625],
+       [-0.03579452,  0.03370781,  0.19458262, ...,  0.13323843,
+         0.03214205,  0.00267756],
+       [ 0.16417613,  0.05543631, -0.0467641 , ..., -0.05974255,
+         0.00660979, -0.17528109],
        ...,
-       [ 0.02066282, -0.05958764,  0.11264619, ..., -0.16253972,
-        -0.08750175,  0.0470915 ],
-       [-0.12001477,  0.09678246,  0.21437865, ..., -0.1301719 ,
-         0.04059869,  0.00572959],
-       [ 0.03913287,  0.13739907,  0.05832577, ..., -0.06417393,
-         0.09833027,  0.15412799]])
+       [ 0.05354527,  0.14476579, -0.03550855, ...,  0.03567633,
+         0.17119231, -0.02697451],
+       [-0.00661441,  0.28100883,  0.01987716, ...,  0.06862541,
+         0.01943833,  0.09951895],
+       [ 0.12179667,  0.01590033, -0.10341345, ...,  0.07695339,
+         0.08813236, -0.02622598]])
 </pre></div>
 </div>
 </div>
@@ -607,16 +613,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([[ 9.96803560e-03,  9.96529911e-03,  9.99103728e-03, ...,
-         9.95491340e-03,  9.95125867e-03,  1.00214853e-02],
-       [ 4.88432358e-03, -1.16084008e-02, -1.35596592e-02, ...,
-        -8.17185898e-03,  3.06037560e-03,  1.30181212e-04],
-       [ 1.30736292e-03, -5.21650838e-03, -1.93046078e-03, ...,
-        -5.20952871e-03, -1.21801491e-02, -6.58040218e-03],
-       [-1.75696934e-02,  1.29587648e-02, -1.77925096e-02, ...,
-         7.90872914e-03,  1.18366073e-03,  1.39023369e-02],
-       [ 1.20822201e-02, -7.18650546e-05,  8.88013546e-03, ...,
-        -2.49908715e-03, -2.34744383e-02, -2.51296305e-03]])
+<span></span>array([[ 0.0100296 ,  0.01003525,  0.00997795, ...,  0.00993891,
+         0.0100562 ,  0.0099814 ],
+       [-0.0070035 ,  0.00421608,  0.00785957, ...,  0.0118521 ,
+        -0.00632409,  0.00909189],
+       [ 0.02283762,  0.01265274,  0.0125894 , ...,  0.00916702,
+         0.01609316,  0.00862934],
+       [ 0.00029962, -0.0022625 ,  0.00348681, ...,  0.00174264,
+        -0.005195  ,  0.00387083],
+       [ 0.00215196, -0.00261142,  0.01896449, ...,  0.00348566,
+        -0.01422569, -0.00840902]])
 </pre></div>
 </div>
 </div>
@@ -631,7 +637,7 @@ div.rendered_html tbody tr:hover {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../applications/embarrassingly-parallel.html" class="btn btn-neutral float-right" title="Embarrassingly parallel Workloads" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../applications/json-data-on-the-web.html" class="btn btn-neutral float-right" title="Analyze web-hosted JSON data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="glm.html" class="btn btn-neutral float-left" title="Generalized Linear Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

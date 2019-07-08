@@ -180,11 +180,17 @@
 </ul>
 <p class="caption"><span class="caption-text">Applications:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/image-processing.html">Image Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/image-processing.html">Image Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html">Prefect on Dask - Roll Your Own GIF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Goal">Goal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Setting-up-our-environment">Setting up our environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Build-the-Flow">Build the Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Next-Steps">Next Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Play">Play</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
 </ul>
 
@@ -479,7 +485,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>inproc://10.20.3.95/13021/1
+  <li><b>Scheduler: </b>inproc://10.20.0.202/13087/1
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -618,32 +624,32 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>name
-Alice      -0.003574
-Bob         0.002529
-Charlie     0.000974
-Dan         0.001633
-Edith      -0.005700
-Frank      -0.001859
-George      0.002734
-Hannah      0.001846
-Ingrid     -0.000005
-Jerry       0.000604
-Kevin      -0.000976
-Laura      -0.000813
-Michael    -0.003348
-Norbert     0.000527
-Oliver      0.003208
-Patricia   -0.000553
-Quinn       0.000285
-Ray        -0.001665
-Sarah      -0.001055
-Tim         0.001090
-Ursula     -0.001712
-Victor     -0.001102
-Wendy       0.000416
-Xavier      0.002629
-Yvonne      0.002482
-Zelda      -0.000204
+Alice      -0.000512
+Bob        -0.003179
+Charlie     0.000530
+Dan        -0.002510
+Edith      -0.001515
+Frank       0.001974
+George      0.000719
+Hannah      0.000381
+Ingrid      0.002460
+Jerry      -0.000252
+Kevin       0.000824
+Laura      -0.000174
+Michael     0.001277
+Norbert    -0.001760
+Oliver     -0.001495
+Patricia   -0.001107
+Quinn      -0.002313
+Ray        -0.002713
+Sarah       0.000604
+Tim        -0.001224
+Ursula     -0.003124
+Victor     -0.001223
+Wendy       0.000490
+Xavier     -0.001579
+Yvonne     -0.001905
+Zelda      -0.000941
 Name: x, dtype: float64
 </pre></div>
 </div>
@@ -663,8 +669,8 @@ Name: x, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 412 ms, sys: 16 ms, total: 428 ms
-Wall time: 318 ms
+CPU times: user 364 ms, sys: 8 ms, total: 372 ms
+Wall time: 278 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -681,8 +687,8 @@ Wall time: 318 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 800 ms, sys: 28 ms, total: 828 ms
-Wall time: 589 ms
+CPU times: user 740 ms, sys: 24 ms, total: 764 ms
+Wall time: 543 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -699,8 +705,8 @@ Wall time: 589 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.47 s, sys: 92 ms, total: 1.56 s
-Wall time: 1.22 s
+CPU times: user 1.27 s, sys: 72 ms, total: 1.34 s
+Wall time: 1.04 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -751,38 +757,38 @@ Wall time: 1.22 s
   <tbody>
     <tr>
       <th>Alice</th>
-      <td>-0.003574</td>
-      <td>0.576090</td>
-      <td>-0.001796</td>
-      <td>99947</td>
+      <td>-0.000512</td>
+      <td>0.578330</td>
+      <td>-0.002141</td>
+      <td>99497</td>
     </tr>
     <tr>
       <th>Bob</th>
-      <td>0.002529</td>
-      <td>0.577388</td>
-      <td>-0.000141</td>
-      <td>99953</td>
+      <td>-0.003179</td>
+      <td>0.576095</td>
+      <td>0.001832</td>
+      <td>99770</td>
     </tr>
     <tr>
       <th>Charlie</th>
-      <td>0.000974</td>
+      <td>0.000530</td>
       <td>0.577450</td>
-      <td>-0.003498</td>
-      <td>99603</td>
+      <td>0.001942</td>
+      <td>99827</td>
     </tr>
     <tr>
       <th>Dan</th>
-      <td>0.001633</td>
-      <td>0.577744</td>
-      <td>0.001728</td>
-      <td>99758</td>
+      <td>-0.002510</td>
+      <td>0.576105</td>
+      <td>0.002809</td>
+      <td>99707</td>
     </tr>
     <tr>
       <th>Edith</th>
-      <td>-0.005700</td>
-      <td>0.577654</td>
-      <td>0.000729</td>
-      <td>99819</td>
+      <td>-0.001515</td>
+      <td>0.577686</td>
+      <td>-0.001725</td>
+      <td>100703</td>
     </tr>
   </tbody>
 </table>
@@ -865,8 +871,8 @@ Wall time: 1.22 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 6.63 s, sys: 804 ms, total: 7.43 s
-Wall time: 6.05 s
+CPU times: user 6.13 s, sys: 736 ms, total: 6.87 s
+Wall time: 5.58 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">

@@ -183,11 +183,17 @@
 </ul>
 <p class="caption"><span class="caption-text">Applications:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="applications/image-processing.html">Image Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/image-processing.html">Image Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html">Prefect on Dask - Roll Your Own GIF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html#Goal">Goal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html#Setting-up-our-environment">Setting up our environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html#Build-the-Flow">Build the Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html#Next-Steps">Next Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html#Play">Play</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
 </ul>
 
@@ -485,7 +491,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:36625
+  <li><b>Scheduler: </b>tcp://127.0.0.1:44219
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -540,14 +546,23 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
+<div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 84 ms, sys: 16 ms, total: 100 ms
-Wall time: 2.1 s
+CPU times: user 52 ms, sys: 0 ns, total: 52 ms
+Wall time: 1.53 s
 </pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>3
+</pre></div>
+</div>
 </div>
 <p>These ran one after the other, in sequence. Note though that the first two lines <code class="docutils literal notranslate"><span class="pre">inc(1)</span></code> and <code class="docutils literal notranslate"><span class="pre">dec(2)</span></code> don’t depend on each other, we <em>could</em> have called them in parallel had we been clever.</p>
 </div>
@@ -584,7 +599,7 @@ Wall time: 2.1 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Delayed(&#39;add-7c43e56b-3e8d-44c3-9d11-46ff666447b8&#39;)
+<span></span>Delayed(&#39;add-ea16eda2-6740-47d7-883f-2e250c4f96f3&#39;)
 </pre></div>
 </div>
 </div>
@@ -664,8 +679,8 @@ Wall time: 2.1 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 44 ms, sys: 24 ms, total: 68 ms
-Wall time: 60.9 ms
+CPU times: user 24 ms, sys: 12 ms, total: 36 ms
+Wall time: 35.6 ms
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">

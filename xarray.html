@@ -181,11 +181,17 @@
 </ul>
 <p class="caption"><span class="caption-text">Applications:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="applications/image-processing.html">Image Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/image-processing.html">Image Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html">Prefect on Dask - Roll Your Own GIF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html#Goal">Goal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html#Setting-up-our-environment">Setting up our environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html#Build-the-Flow">Build the Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html#Next-Steps">Next Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html#Play">Play</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
 </ul>
 
@@ -491,7 +497,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3>Client</h3>
 <ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:33459
+  <li><b>Scheduler: </b>tcp://127.0.0.1:33884
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -594,67 +600,10 @@ Attributes:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="output_area rendered_html docutils container">
-<table>
-<tr>
-<td>
-<table>  <thead>    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 15.48 MB </td> <td> 7.30 MB </td></tr>
-    <tr><th> Shape </th><td> (2920, 25, 53) </td> <td> (2920, 25, 25) </td></tr>
-    <tr><th> Count </th><td> 4 Tasks </td><td> 3 Chunks </td></tr>
-    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
-  </tbody></table>
-</td>
-<td>
-<svg width="159" height="146" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="10" y1="0" x2="80" y2="70" style="stroke-width:2" />
-  <line x1="10" y1="25" x2="80" y2="96" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="10" y1="0" x2="10" y2="25" style="stroke-width:2" />
-  <line x1="80" y1="70" x2="80" y2="96" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="10.000000,0.000000 80.588235,70.588235 80.588235,96.000852 10.000000,25.412617" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Horizontal lines -->
-  <line x1="10" y1="0" x2="38" y2="0" style="stroke-width:2" />
-  <line x1="80" y1="70" x2="109" y2="70" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="10" y1="0" x2="80" y2="70" style="stroke-width:2" />
-  <line x1="23" y1="0" x2="94" y2="70" />
-  <line x1="36" y1="0" x2="107" y2="70" />
-  <line x1="38" y1="0" x2="109" y2="70" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="10.000000,0.000000 38.489733,0.000000 109.077968,70.588235 80.588235,70.588235" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Horizontal lines -->
-  <line x1="80" y1="70" x2="109" y2="70" style="stroke-width:2" />
-  <line x1="80" y1="96" x2="109" y2="96" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="80" y1="70" x2="80" y2="96" style="stroke-width:2" />
-  <line x1="94" y1="70" x2="94" y2="96" />
-  <line x1="107" y1="70" x2="107" y2="96" />
-  <line x1="109" y1="70" x2="109" y2="96" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="80.588235,70.588235 109.077968,70.588235 109.077968,96.000852 80.588235,96.000852" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="94.833102" y="116.000852" font-size="1.0rem" font-weight="100" text-anchor="middle" >53</text>
-  <text x="129.077968" y="83.294544" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,129.077968,83.294544)">25</text>
-  <text x="35.294118" y="80.706734" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,35.294118,80.706734)">2920</text>
-</svg>
-</td>
-</tr>
-</table></div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>dask.array&lt;open_dataset-38b993ef415fae7048ee35bd42d06cceair, shape=(2920, 25, 53), dtype=float32, chunksize=(2920, 25, 25)&gt;
+</pre></div>
+</div>
 </div>
 <p>Accessing the underlying array of data is done via the <code class="docutils literal notranslate"><span class="pre">data</span></code> property. Here we can see that we have a Dask array. If this array were to be backed by a NumPy array, this property would point to the actual values in the array.</p>
 </div>
@@ -789,8 +738,8 @@ Coordinates:
 <span></span>&lt;xarray.DataArray &#39;air&#39; (lat: 25, lon: 53)&gt;
 dask.array&lt;shape=(25, 53), dtype=float32, chunksize=(25, 25)&gt;
 Coordinates:
-  * lat      (lat) float32 75.0 72.5 70.0 67.5 65.0 ... 25.0 22.5 20.0 17.5 15.0
-  * lon      (lon) float32 200.0 202.5 205.0 207.5 ... 322.5 325.0 327.5 330.0
+  * lat      (lat) float64 75.0 72.5 70.0 67.5 65.0 ... 25.0 22.5 20.0 17.5 15.0
+  * lon      (lon) float64 200.0 202.5 205.0 207.5 ... 322.5 325.0 327.5 330.0
 </pre></div>
 </div>
 </div>
@@ -808,7 +757,7 @@ Coordinates:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.collections.QuadMesh at 0x7fb5f14ca860&gt;
+<span></span>&lt;matplotlib.collections.QuadMesh at 0x7f69652b5470&gt;
 </pre></div>
 </div>
 </div>
@@ -830,13 +779,31 @@ Coordinates:
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.7/site-packages/distributed/worker.py:3101: UserWarning: Large object of size 15.48 MB detected in task graph:
+  (array([[[241.2    , 242.5    , 243.5    , ..., 23 ... 50, 53, None)))
+Consider scattering large objects ahead of time
+with client.scatter to reduce scheduler burden and
+keep data on workers
+
+    future = client.submit(func, big_data)    # bad
+
+    big_future = client.scatter(big_data)     # good
+    future = client.submit(func, big_future)  # good
+  % (format_bytes(len(b)), s)
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;xarray.DataArray &#39;_trim-e378ddc96378cf1f03e5f5985cf6f02b&#39; (time: 2920, lat: 25, lon: 53)&gt;
-dask.array&lt;shape=(2920, 25, 53), dtype=float32, chunksize=(2920, 25, 25)&gt;
+<span></span>&lt;xarray.DataArray (time: 2920, lat: 25, lon: 53)&gt;
+dask.array&lt;shape=(2920, 25, 53), dtype=float32, chunksize=(15, 25, 25)&gt;
 Coordinates:
   * lat      (lat) float32 75.0 72.5 70.0 67.5 65.0 ... 25.0 22.5 20.0 17.5 15.0
   * lon      (lon) float32 200.0 202.5 205.0 207.5 ... 322.5 325.0 327.5 330.0
@@ -859,8 +826,8 @@ Coordinates:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 8 ms, sys: 0 ns, total: 8 ms
-Wall time: 11.7 ms
+CPU times: user 4 ms, sys: 0 ns, total: 4 ms
+Wall time: 3.49 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -903,8 +870,8 @@ Attributes:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 36 ms, sys: 0 ns, total: 36 ms
-Wall time: 68 ms
+CPU times: user 88 ms, sys: 68 ms, total: 156 ms
+Wall time: 266 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -994,14 +961,8 @@ Attributes:
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/travis/miniconda/envs/test/lib/python3.7/site-packages/dask/array/blockwise.py:241: UserWarning: The da.atop function has moved to da.blockwise
+/home/travis/miniconda/envs/test/lib/python3.7/site-packages/dask/array/blockwise.py:210: UserWarning: The da.atop function has moved to da.blockwise
   warnings.warn(&#34;The da.atop function has moved to da.blockwise&#34;)
-/home/travis/miniconda/envs/test/lib/python3.7/site-packages/ipykernel_launcher.py:6: RuntimeWarning: Mean of empty slice.
-
-/home/travis/miniconda/envs/test/lib/python3.7/site-packages/ipykernel_launcher.py:7: RuntimeWarning: Mean of empty slice.
-  import sys
-/home/travis/miniconda/envs/test/lib/python3.7/site-packages/numpy/core/_methods.py:140: RuntimeWarning: Degrees of freedom &lt;= 0 for slice
-  keepdims=keepdims)
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1031,7 +992,7 @@ Coordinates:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.collections.QuadMesh at 0x7fb5f13e1828&gt;
+<span></span>&lt;matplotlib.collections.QuadMesh at 0x7f6965092c50&gt;
 </pre></div>
 </div>
 </div>
