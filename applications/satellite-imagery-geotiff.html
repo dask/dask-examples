@@ -476,19 +476,19 @@ div.rendered_html tbody tr:hover {
 Collecting rasterio
   Downloading https://files.pythonhosted.org/packages/aa/1f/718e24442598cc112753c0dc188d90730af3a1564f8e22c3b67ae76bd9cd/rasterio-1.0.24-cp37-cp37m-manylinux1_x86_64.whl (19.7MB)
 
-Collecting snuggs&gt;=1.4.1 (from rasterio)
-  Downloading https://files.pythonhosted.org/packages/58/14/8e90b7586ab6929861161e73e9fd55637a060e4d14dd1be14a4b8a08751f/snuggs-1.4.6-py3-none-any.whl
+Collecting affine (from rasterio)
+  Downloading https://files.pythonhosted.org/packages/56/5d/6877929932d17850fa4903d0db8233ec8ed35aab7ceae96fa44ea6d479bd/affine-2.2.2-py2.py3-none-any.whl
+Collecting cligj&gt;=0.5 (from rasterio)
+  Downloading https://files.pythonhosted.org/packages/e4/be/30a58b4b0733850280d01f8bd132591b4668ed5c7046761098d665ac2174/cligj-0.5.0-py3-none-any.whl
 Requirement already satisfied: attrs in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from rasterio) (19.1.0)
 Collecting click-plugins (from rasterio)
   Downloading https://files.pythonhosted.org/packages/e9/da/824b92d9942f4e472702488857914bdd50f73021efea15b4cad9aca8ecef/click_plugins-1.1.1-py2.py3-none-any.whl
-Collecting affine (from rasterio)
-  Downloading https://files.pythonhosted.org/packages/56/5d/6877929932d17850fa4903d0db8233ec8ed35aab7ceae96fa44ea6d479bd/affine-2.2.2-py2.py3-none-any.whl
+Collecting snuggs&gt;=1.4.1 (from rasterio)
+  Downloading https://files.pythonhosted.org/packages/58/14/8e90b7586ab6929861161e73e9fd55637a060e4d14dd1be14a4b8a08751f/snuggs-1.4.6-py3-none-any.whl
 Requirement already satisfied: click&lt;8,&gt;=4.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from rasterio) (7.0)
 Requirement already satisfied: numpy in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from rasterio) (1.16.4)
-Collecting cligj&gt;=0.5 (from rasterio)
-  Downloading https://files.pythonhosted.org/packages/e4/be/30a58b4b0733850280d01f8bd132591b4668ed5c7046761098d665ac2174/cligj-0.5.0-py3-none-any.whl
-Requirement already satisfied: pyparsing&gt;=2.1.6 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from snuggs&gt;=1.4.1-&gt;rasterio) (2.4.0)
-Installing collected packages: snuggs, click-plugins, affine, cligj, rasterio
+Requirement already satisfied: pyparsing&gt;=2.1.6 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from snuggs&gt;=1.4.1-&gt;rasterio) (2.4.2)
+Installing collected packages: affine, cligj, click-plugins, snuggs, rasterio
 Successfully installed affine-2.2.2 click-plugins-1.1.1 cligj-0.5.0 rasterio-1.0.24 snuggs-1.4.6
 </pre></div></div>
 </div>
@@ -634,6 +634,8 @@ Attributes:
     res:         (30.0, 30.0)
     is_tiled:    1
     nodatavals:  (nan,)
+    scales:      (1.0,)
+    offsets:     (0.0,)
 </pre></div>
 </div>
 </div>
@@ -651,10 +653,91 @@ Attributes:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>dask.array&lt;open_rasterio-fe8c9e0cc6bf1a3689a122a6a1cee34c&lt;this-array&gt;, shape=(1, 7841, 7721), dtype=uint16, chunksize=(1, 1024, 1024)&gt;
-</pre></div>
-</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<tr>
+<td>
+<table>  <thead>    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 121.08 MB </td> <td> 2.10 MB </td></tr>
+    <tr><th> Shape </th><td> (1, 7841, 7721) </td> <td> (1, 1024, 1024) </td></tr>
+    <tr><th> Count </th><td> 65 Tasks </td><td> 64 Chunks </td></tr>
+    <tr><th> Type </th><td> uint16 </td><td> numpy.ndarray </td></tr>
+  </tbody></table>
+</td>
+<td>
+<svg width="193" height="184" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="24" y2="14" style="stroke-width:2" />
+  <line x1="10" y1="15" x2="24" y2="30" />
+  <line x1="10" y1="31" x2="24" y2="46" />
+  <line x1="10" y1="47" x2="24" y2="61" />
+  <line x1="10" y1="62" x2="24" y2="77" />
+  <line x1="10" y1="78" x2="24" y2="93" />
+  <line x1="10" y1="94" x2="24" y2="108" />
+  <line x1="10" y1="109" x2="24" y2="124" />
+  <line x1="10" y1="120" x2="24" y2="134" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="10" y2="120" style="stroke-width:2" />
+  <line x1="24" y1="14" x2="24" y2="134" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.000000,0.000000 24.948598,14.948598 24.948598,134.948598 10.000000,120.000000" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="128" y2="0" style="stroke-width:2" />
+  <line x1="24" y1="14" x2="143" y2="14" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="24" y2="14" style="stroke-width:2" />
+  <line x1="25" y1="0" x2="40" y2="14" />
+  <line x1="41" y1="0" x2="56" y2="14" />
+  <line x1="57" y1="0" x2="71" y2="14" />
+  <line x1="72" y1="0" x2="87" y2="14" />
+  <line x1="88" y1="0" x2="103" y2="14" />
+  <line x1="104" y1="0" x2="118" y2="14" />
+  <line x1="119" y1="0" x2="134" y2="14" />
+  <line x1="128" y1="0" x2="143" y2="14" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.000000,0.000000 128.163500,0.000000 143.112098,14.948598 24.948598,14.948598" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="24" y1="14" x2="143" y2="14" style="stroke-width:2" />
+  <line x1="24" y1="30" x2="143" y2="30" />
+  <line x1="24" y1="46" x2="143" y2="46" />
+  <line x1="24" y1="61" x2="143" y2="61" />
+  <line x1="24" y1="77" x2="143" y2="77" />
+  <line x1="24" y1="93" x2="143" y2="93" />
+  <line x1="24" y1="108" x2="143" y2="108" />
+  <line x1="24" y1="124" x2="143" y2="124" />
+  <line x1="24" y1="134" x2="143" y2="134" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="24" y1="14" x2="24" y2="134" style="stroke-width:2" />
+  <line x1="40" y1="14" x2="40" y2="134" />
+  <line x1="56" y1="14" x2="56" y2="134" />
+  <line x1="71" y1="14" x2="71" y2="134" />
+  <line x1="87" y1="14" x2="87" y2="134" />
+  <line x1="103" y1="14" x2="103" y2="134" />
+  <line x1="118" y1="14" x2="118" y2="134" />
+  <line x1="134" y1="14" x2="134" y2="134" />
+  <line x1="143" y1="14" x2="143" y2="134" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="24.948598,14.948598 143.112098,14.948598 143.112098,134.948598 24.948598,134.948598" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="84.030348" y="154.948598" font-size="1.0rem" font-weight="100" text-anchor="middle" >7721</text>
+  <text x="163.112098" y="74.948598" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,163.112098,74.948598)">7841</text>
+  <text x="7.474299" y="147.474299" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,7.474299,147.474299)">1</text>
+</svg>
+</td>
+</tr>
+</table></div>
 </div>
 </div>
 <div class="section" id="Optional:-create-a-Dask-client">
@@ -680,15 +763,15 @@ Attributes:
 <table style="border: 2px solid white;">
 <tr>
 <td style="vertical-align: top; border: 0px solid white">
-<h3>Client</h3>
-<ul>
-  <li><b>Scheduler: </b>inproc://10.20.1.41/12127/1
+<h3 style="text-align: left;">Client</h3>
+<ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
+  <li><b>Scheduler: </b>inproc://10.20.4.237/10489/1</li>
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
-<h3>Cluster</h3>
-<ul>
+<h3 style="text-align: left;">Cluster</h3>
+<ul style="text-align: left; list-style:none; margin: 0; padding: 0;">
   <li><b>Workers: </b>1</li>
   <li><b>Cores: </b>2</li>
   <li><b>Memory: </b>7.84 GB</li>

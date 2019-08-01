@@ -495,15 +495,15 @@ div.rendered_html tbody tr:hover {
 <table style="border: 2px solid white;">
 <tr>
 <td style="vertical-align: top; border: 0px solid white">
-<h3>Client</h3>
-<ul>
-  <li><b>Scheduler: </b>tcp://127.0.0.1:36945
+<h3 style="text-align: left;">Client</h3>
+<ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
+  <li><b>Scheduler: </b>tcp://127.0.0.1:45715</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
-<h3>Cluster</h3>
-<ul>
+<h3 style="text-align: left;">Cluster</h3>
+<ul style="text-align: left; list-style:none; margin: 0; padding: 0;">
   <li><b>Workers: </b>2</li>
   <li><b>Cores: </b>4</li>
   <li><b>Memory: </b>2.00 GB</li>
@@ -600,10 +600,67 @@ Attributes:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>dask.array&lt;open_dataset-93f86905f1ac8543e76efddd16338185air, shape=(2920, 25, 53), dtype=float32, chunksize=(2920, 25, 25)&gt;
-</pre></div>
-</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<tr>
+<td>
+<table>  <thead>    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 15.48 MB </td> <td> 7.30 MB </td></tr>
+    <tr><th> Shape </th><td> (2920, 25, 53) </td> <td> (2920, 25, 25) </td></tr>
+    <tr><th> Count </th><td> 4 Tasks </td><td> 3 Chunks </td></tr>
+    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
+  </tbody></table>
+</td>
+<td>
+<svg width="159" height="146" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="80" y2="70" style="stroke-width:2" />
+  <line x1="10" y1="25" x2="80" y2="96" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="10" y2="25" style="stroke-width:2" />
+  <line x1="80" y1="70" x2="80" y2="96" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.000000,0.000000 80.588235,70.588235 80.588235,96.000852 10.000000,25.412617" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="38" y2="0" style="stroke-width:2" />
+  <line x1="80" y1="70" x2="109" y2="70" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="80" y2="70" style="stroke-width:2" />
+  <line x1="23" y1="0" x2="94" y2="70" />
+  <line x1="36" y1="0" x2="107" y2="70" />
+  <line x1="38" y1="0" x2="109" y2="70" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.000000,0.000000 38.489733,0.000000 109.077968,70.588235 80.588235,70.588235" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="80" y1="70" x2="109" y2="70" style="stroke-width:2" />
+  <line x1="80" y1="96" x2="109" y2="96" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="80" y1="70" x2="80" y2="96" style="stroke-width:2" />
+  <line x1="94" y1="70" x2="94" y2="96" />
+  <line x1="107" y1="70" x2="107" y2="96" />
+  <line x1="109" y1="70" x2="109" y2="96" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="80.588235,70.588235 109.077968,70.588235 109.077968,96.000852 80.588235,96.000852" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="94.833102" y="116.000852" font-size="1.0rem" font-weight="100" text-anchor="middle" >53</text>
+  <text x="129.077968" y="83.294544" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,129.077968,83.294544)">25</text>
+  <text x="35.294118" y="80.706734" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,35.294118,80.706734)">2920</text>
+</svg>
+</td>
+</tr>
+</table></div>
 </div>
 <p>Accessing the underlying array of data is done via the <code class="docutils literal notranslate"><span class="pre">data</span></code> property. Here we can see that we have a Dask array. If this array were to be backed by a NumPy array, this property would point to the actual values in the array.</p>
 </div>
@@ -757,7 +814,7 @@ Coordinates:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.collections.QuadMesh at 0x7fe952797c50&gt;
+<span></span>&lt;matplotlib.collections.QuadMesh at 0x7f9679faf160&gt;
 </pre></div>
 </div>
 </div>
@@ -784,8 +841,8 @@ Coordinates:
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/travis/miniconda/envs/test/lib/python3.7/site-packages/distributed/worker.py:3101: UserWarning: Large object of size 15.48 MB detected in task graph:
-  (array([[[241.2    , 242.5    , 243.5    , ..., 23 ... (0, 25, None)))
+/home/travis/miniconda/envs/test/lib/python3.7/site-packages/distributed/worker.py:3177: UserWarning: Large object of size 15.48 MB detected in task graph:
+  (array([[[241.2    , 242.5    , 243.5    , ..., 23 ... 25, 50, None)))
 Consider scattering large objects ahead of time
 with client.scatter to reduce scheduler burden and
 keep data on workers
@@ -826,8 +883,8 @@ Coordinates:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 4 ms, sys: 0 ns, total: 4 ms
-Wall time: 4.41 ms
+CPU times: user 5.63 ms, sys: 852 µs, total: 6.49 ms
+Wall time: 5.19 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -870,8 +927,8 @@ Attributes:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 100 ms, sys: 144 ms, total: 244 ms
-Wall time: 324 ms
+CPU times: user 108 ms, sys: 117 ms, total: 224 ms
+Wall time: 391 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -961,8 +1018,12 @@ Attributes:
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/travis/miniconda/envs/test/lib/python3.7/site-packages/dask/array/blockwise.py:210: UserWarning: The da.atop function has moved to da.blockwise
-  warnings.warn(&#34;The da.atop function has moved to da.blockwise&#34;)
+/home/travis/miniconda/envs/test/lib/python3.7/site-packages/ipykernel_launcher.py:6: RuntimeWarning: Mean of empty slice.
+
+/home/travis/miniconda/envs/test/lib/python3.7/site-packages/ipykernel_launcher.py:7: RuntimeWarning: Mean of empty slice.
+  import sys
+/home/travis/miniconda/envs/test/lib/python3.7/site-packages/numpy/core/_methods.py:140: RuntimeWarning: Degrees of freedom &lt;= 0 for slice
+  keepdims=keepdims)
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -992,7 +1053,7 @@ Coordinates:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.collections.QuadMesh at 0x7fe95254d710&gt;
+<span></span>&lt;matplotlib.collections.QuadMesh at 0x7f9679d2ffd0&gt;
 </pre></div>
 </div>
 </div>

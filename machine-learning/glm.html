@@ -484,15 +484,15 @@ div.rendered_html tbody tr:hover {
 <table style="border: 2px solid white;">
 <tr>
 <td style="vertical-align: top; border: 0px solid white">
-<h3>Client</h3>
-<ul>
-  <li><b>Scheduler: </b>inproc://10.20.1.41/14645/1
+<h3 style="text-align: left;">Client</h3>
+<ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
+  <li><b>Scheduler: </b>inproc://10.20.4.237/13038/1</li>
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
-<h3>Cluster</h3>
-<ul>
+<h3 style="text-align: left;">Cluster</h3>
+<ul style="text-align: left; list-style:none; margin: 0; padding: 0;">
   <li><b>Workers: </b>1</li>
   <li><b>Cores: </b>4</li>
   <li><b>Memory: </b>2.00 GB</li>
@@ -519,10 +519,59 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>dask.array&lt;normal, shape=(200000, 100), dtype=float64, chunksize=(10000, 100)&gt;
-</pre></div>
-</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<tr>
+<td>
+<table>  <thead>    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 160.00 MB </td> <td> 8.00 MB </td></tr>
+    <tr><th> Shape </th><td> (200000, 100) </td> <td> (10000, 100) </td></tr>
+    <tr><th> Count </th><td> 20 Tasks </td><td> 20 Chunks </td></tr>
+    <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>
+  </tbody></table>
+</td>
+<td>
+<svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="6" x2="25" y2="6" />
+  <line x1="0" y1="12" x2="25" y2="12" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="24" x2="25" y2="24" />
+  <line x1="0" y1="30" x2="25" y2="30" />
+  <line x1="0" y1="36" x2="25" y2="36" />
+  <line x1="0" y1="42" x2="25" y2="42" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="54" x2="25" y2="54" />
+  <line x1="0" y1="60" x2="25" y2="60" />
+  <line x1="0" y1="66" x2="25" y2="66" />
+  <line x1="0" y1="72" x2="25" y2="72" />
+  <line x1="0" y1="78" x2="25" y2="78" />
+  <line x1="0" y1="84" x2="25" y2="84" />
+  <line x1="0" y1="90" x2="25" y2="90" />
+  <line x1="0" y1="96" x2="25" y2="96" />
+  <line x1="0" y1="102" x2="25" y2="102" />
+  <line x1="0" y1="108" x2="25" y2="108" />
+  <line x1="0" y1="114" x2="25" y2="114" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.000000,0.000000 25.412617,0.000000 25.412617,120.000000 0.000000,120.000000" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >100</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">200000</text>
+</svg>
+</td>
+</tr>
+</table></div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -574,7 +623,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Customizable-with-different-families-and-regularizers">
 <h2>Customizable with different families and regularizers<a class="headerlink" href="#Customizable-with-different-families-and-regularizers" title="Permalink to this headline">¶</a></h2>
 <p>The Dask-GLM project is nicely modular, allowing for different GLM families and regularizers, including a relatively straightforward interface for implementing custom ones.</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
@@ -593,6 +642,19 @@ div.rendered_html tbody tr:hover {
 <span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.7/site-packages/dask/core.py:119: RuntimeWarning: overflow encountered in exp
+  return func(*args2)
+/home/travis/miniconda/envs/test/lib/python3.7/site-packages/dask/core.py:119: RuntimeWarning: overflow encountered in exp
+  return func(*args2)
+/home/travis/miniconda/envs/test/lib/python3.7/site-packages/dask/core.py:119: RuntimeWarning: overflow encountered in exp
+  return func(*args2)
+</pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
