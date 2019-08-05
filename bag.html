@@ -196,6 +196,10 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
 </ul>
+<p class="caption"><span class="caption-text">User Surveys:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="surveys/2019.html">2019 Dask User Survey Results</a></li>
+</ul>
 
             
           
@@ -490,7 +494,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:34615</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:39653</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -530,16 +534,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[&#39;data/0.json&#39;,
- &#39;data/1.json&#39;,
- &#39;data/2.json&#39;,
- &#39;data/3.json&#39;,
- &#39;data/4.json&#39;,
- &#39;data/5.json&#39;,
- &#39;data/6.json&#39;,
- &#39;data/7.json&#39;,
- &#39;data/8.json&#39;,
- &#39;data/9.json&#39;]
+<span></span>[&#39;/home/travis/build/dask/dask-examples/data/0.json&#39;,
+ &#39;/home/travis/build/dask/dask-examples/data/1.json&#39;,
+ &#39;/home/travis/build/dask/dask-examples/data/2.json&#39;,
+ &#39;/home/travis/build/dask/dask-examples/data/3.json&#39;,
+ &#39;/home/travis/build/dask/dask-examples/data/4.json&#39;,
+ &#39;/home/travis/build/dask/dask-examples/data/5.json&#39;,
+ &#39;/home/travis/build/dask/dask-examples/data/6.json&#39;,
+ &#39;/home/travis/build/dask/dask-examples/data/7.json&#39;,
+ &#39;/home/travis/build/dask/dask-examples/data/8.json&#39;,
+ &#39;/home/travis/build/dask/dask-examples/data/9.json&#39;]
 </pre></div>
 </div>
 </div>
@@ -561,8 +565,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 29, &#34;name&#34;: [&#34;Lelah&#34;, &#34;Mercer&#34;], &#34;occupation&#34;: &#34;Textile Technician&#34;, &#34;telephone&#34;: &#34;(702) 709-5684&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;426 Cutler Mews&#34;, &#34;city&#34;: &#34;Pittsfield&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;2631 4984 1030 2920&#34;, &#34;expiration-date&#34;: &#34;11/18&#34;}}
-{&#34;age&#34;: 24, &#34;name&#34;: [&#34;Clarita&#34;, &#34;Carrillo&#34;], &#34;occupation&#34;: &#34;Butler&#34;, &#34;telephone&#34;: &#34;946-268-4731&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1030 Letterman Hospital Access Circle&#34;, &#34;city&#34;: &#34;Somerville&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3712 921211 47312&#34;, &#34;expiration-date&#34;: &#34;11/23&#34;}}
+{&#34;age&#34;: 26, &#34;name&#34;: [&#34;Madie&#34;, &#34;Hancock&#34;], &#34;occupation&#34;: &#34;Legal Advisor&#34;, &#34;telephone&#34;: &#34;(214) 377-0698&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;338 Cochrane Park&#34;, &#34;city&#34;: &#34;Key West&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5598 5335 3135 7363&#34;, &#34;expiration-date&#34;: &#34;09/23&#34;}}
+{&#34;age&#34;: 20, &#34;name&#34;: [&#34;Dwight&#34;, &#34;Bullock&#34;], &#34;occupation&#34;: &#34;Legal Assistant&#34;, &#34;telephone&#34;: &#34;779.358.3234&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;452 Galewood Plaza&#34;, &#34;city&#34;: &#34;Fairfax&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3409 814921 33780&#34;, &#34;expiration-date&#34;: &#34;04/22&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -583,7 +587,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>dask.bag&lt;loads-4..., npartitions=10&gt;
+<span></span>dask.bag&lt;loads-2..., npartitions=10&gt;
 </pre></div>
 </div>
 </div>
@@ -601,20 +605,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 29,
-  &#39;name&#39;: [&#39;Lelah&#39;, &#39;Mercer&#39;],
-  &#39;occupation&#39;: &#39;Textile Technician&#39;,
-  &#39;telephone&#39;: &#39;(702) 709-5684&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;426 Cutler Mews&#39;, &#39;city&#39;: &#39;Pittsfield&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2631 4984 1030 2920&#39;,
-   &#39;expiration-date&#39;: &#39;11/18&#39;}},
- {&#39;age&#39;: 24,
-  &#39;name&#39;: [&#39;Clarita&#39;, &#39;Carrillo&#39;],
-  &#39;occupation&#39;: &#39;Butler&#39;,
-  &#39;telephone&#39;: &#39;946-268-4731&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1030 Letterman Hospital Access Circle&#39;,
-   &#39;city&#39;: &#39;Somerville&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3712 921211 47312&#39;, &#39;expiration-date&#39;: &#39;11/23&#39;}})
+<span></span>({&#39;age&#39;: 26,
+  &#39;name&#39;: [&#39;Madie&#39;, &#39;Hancock&#39;],
+  &#39;occupation&#39;: &#39;Legal Advisor&#39;,
+  &#39;telephone&#39;: &#39;(214) 377-0698&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;338 Cochrane Park&#39;, &#39;city&#39;: &#39;Key West&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5598 5335 3135 7363&#39;,
+   &#39;expiration-date&#39;: &#39;09/23&#39;}},
+ {&#39;age&#39;: 20,
+  &#39;name&#39;: [&#39;Dwight&#39;, &#39;Bullock&#39;],
+  &#39;occupation&#39;: &#39;Legal Assistant&#39;,
+  &#39;telephone&#39;: &#39;779.358.3234&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;452 Galewood Plaza&#39;, &#39;city&#39;: &#39;Fairfax&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3409 814921 33780&#39;, &#39;expiration-date&#39;: &#39;04/22&#39;}})
 </pre></div>
 </div>
 </div>
@@ -636,19 +639,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 31,
-  &#39;name&#39;: [&#39;Brooks&#39;, &#39;Finch&#39;],
-  &#39;occupation&#39;: &#39;Secretary&#39;,
-  &#39;telephone&#39;: &#39;739-139-1280&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;47 General Kennedy Alley&#39;, &#39;city&#39;: &#39;Wilkes-Barre&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5420 2223 7149 6408&#39;,
-   &#39;expiration-date&#39;: &#39;12/20&#39;}},
- {&#39;age&#39;: 57,
-  &#39;name&#39;: [&#39;Todd&#39;, &#39;Hurst&#39;],
-  &#39;occupation&#39;: &#39;Training Manager&#39;,
-  &#39;telephone&#39;: &#39;(556) 743-8702&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1138 Post Cove&#39;, &#39;city&#39;: &#39;Chelsea&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3768 041551 89179&#39;, &#39;expiration-date&#39;: &#39;11/22&#39;}})
+<span></span>({&#39;age&#39;: 42,
+  &#39;name&#39;: [&#39;Barrie&#39;, &#39;Holmes&#39;],
+  &#39;occupation&#39;: &#39;Book Binder&#39;,
+  &#39;telephone&#39;: &#39;882-861-9542&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;196 Finley Plaza&#39;, &#39;city&#39;: &#39;Martinez&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3764 586681 06053&#39;, &#39;expiration-date&#39;: &#39;01/22&#39;}},
+ {&#39;age&#39;: 32,
+  &#39;name&#39;: [&#39;Jesusa&#39;, &#39;Garrett&#39;],
+  &#39;occupation&#39;: &#39;Chiropractor&#39;,
+  &#39;telephone&#39;: &#39;1-721-101-9063&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1136 Cayuga Bay&#39;, &#39;city&#39;: &#39;Port Hueneme&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4890 0884 8319 0385&#39;,
+   &#39;expiration-date&#39;: &#39;04/20&#39;}})
 </pre></div>
 </div>
 </div>
@@ -666,7 +669,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(&#39;Textile Technician&#39;, &#39;Butler&#39;)
+<span></span>(&#39;Legal Advisor&#39;, &#39;Legal Assistant&#39;)
 </pre></div>
 </div>
 </div>
@@ -729,16 +732,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[(&#39;Trichologist&#39;, 17),
- (&#39;Special Needs&#39;, 15),
- (&#39;Chimney Sweep&#39;, 14),
- (&#39;Carphone Fitter&#39;, 14),
- (&#39;Interior Decorator&#39;, 14),
- (&#39;Advertising Executive&#39;, 14),
- (&#39;Employee&#39;, 14),
- (&#39;Lighting Designer&#39;, 13),
- (&#39;Product Manager&#39;, 13),
- (&#39;Procurator Fiscal&#39;, 13)]
+<span></span>[(&#39;Patent Attorney&#39;, 15),
+ (&#39;Retired&#39;, 15),
+ (&#39;Funeral Furnisher&#39;, 14),
+ (&#39;Cafe Worker&#39;, 13),
+ (&#39;Shop Keeper&#39;, 13),
+ (&#39;Payroll Manager&#39;, 13),
+ (&#39;Wood Worker&#39;, 13),
+ (&#39;China Restorer&#39;, 13),
+ (&#39;Chartered&#39;, 13),
+ (&#39;HGV Driver&#39;, 13)]
 </pre></div>
 </div>
 </div>
@@ -762,16 +765,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[&#39;data/processed.0.json&#39;,
- &#39;data/processed.1.json&#39;,
- &#39;data/processed.2.json&#39;,
- &#39;data/processed.3.json&#39;,
- &#39;data/processed.4.json&#39;,
- &#39;data/processed.5.json&#39;,
- &#39;data/processed.6.json&#39;,
- &#39;data/processed.7.json&#39;,
- &#39;data/processed.8.json&#39;,
- &#39;data/processed.9.json&#39;]
+<span></span>[&#39;/home/travis/build/dask/dask-examples/data/processed.0.json&#39;,
+ &#39;/home/travis/build/dask/dask-examples/data/processed.1.json&#39;,
+ &#39;/home/travis/build/dask/dask-examples/data/processed.2.json&#39;,
+ &#39;/home/travis/build/dask/dask-examples/data/processed.3.json&#39;,
+ &#39;/home/travis/build/dask/dask-examples/data/processed.4.json&#39;,
+ &#39;/home/travis/build/dask/dask-examples/data/processed.5.json&#39;,
+ &#39;/home/travis/build/dask/dask-examples/data/processed.6.json&#39;,
+ &#39;/home/travis/build/dask/dask-examples/data/processed.7.json&#39;,
+ &#39;/home/travis/build/dask/dask-examples/data/processed.8.json&#39;,
+ &#39;/home/travis/build/dask/dask-examples/data/processed.9.json&#39;]
 </pre></div>
 </div>
 </div>
@@ -795,13 +798,13 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 29,
-  &#39;name&#39;: [&#39;Lelah&#39;, &#39;Mercer&#39;],
-  &#39;occupation&#39;: &#39;Textile Technician&#39;,
-  &#39;telephone&#39;: &#39;(702) 709-5684&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;426 Cutler Mews&#39;, &#39;city&#39;: &#39;Pittsfield&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2631 4984 1030 2920&#39;,
-   &#39;expiration-date&#39;: &#39;11/18&#39;}},)
+<span></span>({&#39;age&#39;: 26,
+  &#39;name&#39;: [&#39;Madie&#39;, &#39;Hancock&#39;],
+  &#39;occupation&#39;: &#39;Legal Advisor&#39;,
+  &#39;telephone&#39;: &#39;(214) 377-0698&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;338 Cochrane Park&#39;, &#39;city&#39;: &#39;Key West&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5598 5335 3135 7363&#39;,
+   &#39;expiration-date&#39;: &#39;09/23&#39;}},)
 </pre></div>
 </div>
 </div>
@@ -831,14 +834,14 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 29,
-  &#39;occupation&#39;: &#39;Textile Technician&#39;,
-  &#39;telephone&#39;: &#39;(702) 709-5684&#39;,
-  &#39;credit-card-number&#39;: &#39;2631 4984 1030 2920&#39;,
-  &#39;credit-card-expiration&#39;: &#39;11/18&#39;,
-  &#39;name&#39;: &#39;Lelah Mercer&#39;,
-  &#39;street-address&#39;: &#39;426 Cutler Mews&#39;,
-  &#39;city&#39;: &#39;Pittsfield&#39;},)
+<span></span>({&#39;age&#39;: 26,
+  &#39;occupation&#39;: &#39;Legal Advisor&#39;,
+  &#39;telephone&#39;: &#39;(214) 377-0698&#39;,
+  &#39;credit-card-number&#39;: &#39;5598 5335 3135 7363&#39;,
+  &#39;credit-card-expiration&#39;: &#39;09/23&#39;,
+  &#39;name&#39;: &#39;Madie Hancock&#39;,
+  &#39;street-address&#39;: &#39;338 Cochrane Park&#39;,
+  &#39;city&#39;: &#39;Key West&#39;},)
 </pre></div>
 </div>
 </div>
@@ -888,58 +891,58 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>29</td>
-      <td>Textile Technician</td>
-      <td>(702) 709-5684</td>
-      <td>2631 4984 1030 2920</td>
-      <td>11/18</td>
-      <td>Lelah Mercer</td>
-      <td>426 Cutler Mews</td>
-      <td>Pittsfield</td>
+      <td>26</td>
+      <td>Legal Advisor</td>
+      <td>(214) 377-0698</td>
+      <td>5598 5335 3135 7363</td>
+      <td>09/23</td>
+      <td>Madie Hancock</td>
+      <td>338 Cochrane Park</td>
+      <td>Key West</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>24</td>
-      <td>Butler</td>
-      <td>946-268-4731</td>
-      <td>3712 921211 47312</td>
-      <td>11/23</td>
-      <td>Clarita Carrillo</td>
-      <td>1030 Letterman Hospital Access Circle</td>
-      <td>Somerville</td>
+      <td>20</td>
+      <td>Legal Assistant</td>
+      <td>779.358.3234</td>
+      <td>3409 814921 33780</td>
+      <td>04/22</td>
+      <td>Dwight Bullock</td>
+      <td>452 Galewood Plaza</td>
+      <td>Fairfax</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>31</td>
-      <td>Secretary</td>
-      <td>739-139-1280</td>
-      <td>5420 2223 7149 6408</td>
-      <td>12/20</td>
-      <td>Brooks Finch</td>
-      <td>47 General Kennedy Alley</td>
-      <td>Wilkes-Barre</td>
+      <td>42</td>
+      <td>Book Binder</td>
+      <td>882-861-9542</td>
+      <td>3764 586681 06053</td>
+      <td>01/22</td>
+      <td>Barrie Holmes</td>
+      <td>196 Finley Plaza</td>
+      <td>Martinez</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>25</td>
-      <td>Grave Digger</td>
-      <td>640-203-0906</td>
-      <td>3452 341226 76207</td>
-      <td>12/20</td>
-      <td>Reggie Hooper</td>
-      <td>301 Faith Field</td>
-      <td>Wasco</td>
+      <td>22</td>
+      <td>Project Co-ordinator</td>
+      <td>+1-(582)-278-0525</td>
+      <td>3723 962484 74134</td>
+      <td>12/16</td>
+      <td>Andree Wiggins</td>
+      <td>506 Northern Terrace</td>
+      <td>Twin Falls</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>57</td>
-      <td>Training Manager</td>
-      <td>(556) 743-8702</td>
-      <td>3768 041551 89179</td>
-      <td>11/22</td>
-      <td>Todd Hurst</td>
-      <td>1138 Post Cove</td>
-      <td>Chelsea</td>
+      <td>32</td>
+      <td>Chiropractor</td>
+      <td>1-721-101-9063</td>
+      <td>4890 0884 8319 0385</td>
+      <td>04/20</td>
+      <td>Jesusa Garrett</td>
+      <td>1136 Cayuga Bay</td>
+      <td>Port Hueneme</td>
     </tr>
   </tbody>
 </table>
@@ -960,16 +963,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Trichologist             17
-Special Needs            15
-Interior Decorator       14
-Employee                 14
-Chimney Sweep            14
-Advertising Executive    14
-Carphone Fitter          14
-Magistrate               13
-Product Manager          13
-Lighting Designer        13
+<span></span>Retired              15
+Patent Attorney      15
+Funeral Furnisher    14
+Booking Clerk        13
+Wood Worker          13
+Payroll Manager      13
+Chartered            13
+Audiologist          13
+HGV Driver           13
+Shop Keeper          13
 Name: occupation, dtype: int64
 </pre></div>
 </div>
