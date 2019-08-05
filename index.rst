@@ -57,3 +57,9 @@ You can run these examples in a live session here: |Binder|
    applications/prefect-etl
    applications/satellite-imagery-geotiff
    applications/stencils-with-numba
+
+.. toctree::
+   :maxdepth: 1
+   :caption: User Surveys:
+
+   surveys/2019.ipynb
