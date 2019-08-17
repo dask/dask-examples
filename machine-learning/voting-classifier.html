@@ -177,12 +177,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/image-processing.html">Image Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html">Prefect on Dask - Roll Your Own GIF</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Goal">Goal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Setting-up-our-environment">Setting up our environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Build-the-Flow">Build the Flow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Next-Steps">Next Steps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Play">Play</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html">ETL Pipelines with Prefect</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
 </ul>
@@ -513,8 +508,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 64.4 ms, sys: 51 ms, total: 115 ms
-Wall time: 1.13 s
+CPU times: user 23.9 ms, sys: 25.3 ms, total: 49.2 ms
+Wall time: 1.11 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -558,7 +553,7 @@ Wall time: 1.13 s
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:42273</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:36083</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -600,8 +595,8 @@ VotingClassifier(estimators=[(&#39;sgd&#39;, SGDClassifier(alpha=0.0001, average
   max_iter=-1, probability=False, random_state=None, shrinking=True,
   tol=0.001, verbose=False))],
          flatten_transform=None, n_jobs=-1, voting=&#39;hard&#39;, weights=None)
-CPU times: user 99.4 ms, sys: 11.9 ms, total: 111 ms
-Wall time: 963 ms
+CPU times: user 99.6 ms, sys: 9.95 ms, total: 110 ms
+Wall time: 976 ms
 </pre></div></div>
 </div>
 <p>Note, that we see no advantage of using dask because we are using a local cluster rather than a distributed cluster and sklearn is already using all my computer’s cores. If we were using a distributed cluster, dask would enable us to take advantage of the multiple machines and train sub-estimators across them.</p>

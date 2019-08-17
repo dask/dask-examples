@@ -187,12 +187,7 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/image-processing.html">Image Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html">Prefect on Dask - Roll Your Own GIF</a></li>
-<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html#Goal">Goal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html#Setting-up-our-environment">Setting up our environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html#Build-the-Flow">Build the Flow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html#Next-Steps">Next Steps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html#Play">Play</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html">ETL Pipelines with Prefect</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
 </ul>
@@ -494,7 +489,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:39653</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:45057</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -565,8 +560,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 26, &#34;name&#34;: [&#34;Madie&#34;, &#34;Hancock&#34;], &#34;occupation&#34;: &#34;Legal Advisor&#34;, &#34;telephone&#34;: &#34;(214) 377-0698&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;338 Cochrane Park&#34;, &#34;city&#34;: &#34;Key West&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5598 5335 3135 7363&#34;, &#34;expiration-date&#34;: &#34;09/23&#34;}}
-{&#34;age&#34;: 20, &#34;name&#34;: [&#34;Dwight&#34;, &#34;Bullock&#34;], &#34;occupation&#34;: &#34;Legal Assistant&#34;, &#34;telephone&#34;: &#34;779.358.3234&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;452 Galewood Plaza&#34;, &#34;city&#34;: &#34;Fairfax&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3409 814921 33780&#34;, &#34;expiration-date&#34;: &#34;04/22&#34;}}
+{&#34;age&#34;: 28, &#34;name&#34;: [&#34;Karleen&#34;, &#34;Medina&#34;], &#34;occupation&#34;: &#34;Bus Valeter&#34;, &#34;telephone&#34;: &#34;(379) 007-5536&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;398 Danton Highway&#34;, &#34;city&#34;: &#34;Petersburg&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;2536 9121 5935 1068&#34;, &#34;expiration-date&#34;: &#34;10/22&#34;}}
+{&#34;age&#34;: 37, &#34;name&#34;: [&#34;Bebe&#34;, &#34;Stephenson&#34;], &#34;occupation&#34;: &#34;Sales Administrator&#34;, &#34;telephone&#34;: &#34;748-209-3589&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;146 Dashiell Hammett Bypass&#34;, &#34;city&#34;: &#34;Kennesaw&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3449 951065 47736&#34;, &#34;expiration-date&#34;: &#34;05/17&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -587,7 +582,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>dask.bag&lt;loads-2..., npartitions=10&gt;
+<span></span>dask.bag&lt;loads-d..., npartitions=10&gt;
 </pre></div>
 </div>
 </div>
@@ -605,19 +600,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 26,
-  &#39;name&#39;: [&#39;Madie&#39;, &#39;Hancock&#39;],
-  &#39;occupation&#39;: &#39;Legal Advisor&#39;,
-  &#39;telephone&#39;: &#39;(214) 377-0698&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;338 Cochrane Park&#39;, &#39;city&#39;: &#39;Key West&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5598 5335 3135 7363&#39;,
-   &#39;expiration-date&#39;: &#39;09/23&#39;}},
- {&#39;age&#39;: 20,
-  &#39;name&#39;: [&#39;Dwight&#39;, &#39;Bullock&#39;],
-  &#39;occupation&#39;: &#39;Legal Assistant&#39;,
-  &#39;telephone&#39;: &#39;779.358.3234&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;452 Galewood Plaza&#39;, &#39;city&#39;: &#39;Fairfax&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3409 814921 33780&#39;, &#39;expiration-date&#39;: &#39;04/22&#39;}})
+<span></span>({&#39;age&#39;: 28,
+  &#39;name&#39;: [&#39;Karleen&#39;, &#39;Medina&#39;],
+  &#39;occupation&#39;: &#39;Bus Valeter&#39;,
+  &#39;telephone&#39;: &#39;(379) 007-5536&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;398 Danton Highway&#39;, &#39;city&#39;: &#39;Petersburg&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2536 9121 5935 1068&#39;,
+   &#39;expiration-date&#39;: &#39;10/22&#39;}},
+ {&#39;age&#39;: 37,
+  &#39;name&#39;: [&#39;Bebe&#39;, &#39;Stephenson&#39;],
+  &#39;occupation&#39;: &#39;Sales Administrator&#39;,
+  &#39;telephone&#39;: &#39;748-209-3589&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;146 Dashiell Hammett Bypass&#39;, &#39;city&#39;: &#39;Kennesaw&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3449 951065 47736&#39;, &#39;expiration-date&#39;: &#39;05/17&#39;}})
 </pre></div>
 </div>
 </div>
@@ -639,19 +634,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 42,
-  &#39;name&#39;: [&#39;Barrie&#39;, &#39;Holmes&#39;],
-  &#39;occupation&#39;: &#39;Book Binder&#39;,
-  &#39;telephone&#39;: &#39;882-861-9542&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;196 Finley Plaza&#39;, &#39;city&#39;: &#39;Martinez&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3764 586681 06053&#39;, &#39;expiration-date&#39;: &#39;01/22&#39;}},
- {&#39;age&#39;: 32,
-  &#39;name&#39;: [&#39;Jesusa&#39;, &#39;Garrett&#39;],
-  &#39;occupation&#39;: &#39;Chiropractor&#39;,
-  &#39;telephone&#39;: &#39;1-721-101-9063&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1136 Cayuga Bay&#39;, &#39;city&#39;: &#39;Port Hueneme&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4890 0884 8319 0385&#39;,
-   &#39;expiration-date&#39;: &#39;04/20&#39;}})
+<span></span>({&#39;age&#39;: 37,
+  &#39;name&#39;: [&#39;Bebe&#39;, &#39;Stephenson&#39;],
+  &#39;occupation&#39;: &#39;Sales Administrator&#39;,
+  &#39;telephone&#39;: &#39;748-209-3589&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;146 Dashiell Hammett Bypass&#39;, &#39;city&#39;: &#39;Kennesaw&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3449 951065 47736&#39;, &#39;expiration-date&#39;: &#39;05/17&#39;}},
+ {&#39;age&#39;: 61,
+  &#39;name&#39;: [&#39;Estell&#39;, &#39;Mckee&#39;],
+  &#39;occupation&#39;: &#39;Parts Manager&#39;,
+  &#39;telephone&#39;: &#39;636-224-6535&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;69 Liberty Path&#39;, &#39;city&#39;: &#39;Buckeye&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4865 7710 2170 7940&#39;,
+   &#39;expiration-date&#39;: &#39;01/17&#39;}})
 </pre></div>
 </div>
 </div>
@@ -669,7 +664,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(&#39;Legal Advisor&#39;, &#39;Legal Assistant&#39;)
+<span></span>(&#39;Bus Valeter&#39;, &#39;Sales Administrator&#39;)
 </pre></div>
 </div>
 </div>
@@ -732,16 +727,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[(&#39;Patent Attorney&#39;, 15),
- (&#39;Retired&#39;, 15),
- (&#39;Funeral Furnisher&#39;, 14),
- (&#39;Cafe Worker&#39;, 13),
- (&#39;Shop Keeper&#39;, 13),
- (&#39;Payroll Manager&#39;, 13),
- (&#39;Wood Worker&#39;, 13),
- (&#39;China Restorer&#39;, 13),
- (&#39;Chartered&#39;, 13),
- (&#39;HGV Driver&#39;, 13)]
+<span></span>[(&#39;Horse Trainer&#39;, 15),
+ (&#39;Receptionist&#39;, 14),
+ (&#39;Payroll Clerk&#39;, 13),
+ (&#39;Probation Worker&#39;, 13),
+ (&#39;Fork Lift Truck Driver&#39;, 13),
+ (&#39;Recorder&#39;, 13),
+ (&#39;Arts&#39;, 13),
+ (&#39;Panel Beater&#39;, 13),
+ (&#39;Training Advisor&#39;, 13),
+ (&#39;Hop Merchant&#39;, 13)]
 </pre></div>
 </div>
 </div>
@@ -798,13 +793,13 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 26,
-  &#39;name&#39;: [&#39;Madie&#39;, &#39;Hancock&#39;],
-  &#39;occupation&#39;: &#39;Legal Advisor&#39;,
-  &#39;telephone&#39;: &#39;(214) 377-0698&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;338 Cochrane Park&#39;, &#39;city&#39;: &#39;Key West&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5598 5335 3135 7363&#39;,
-   &#39;expiration-date&#39;: &#39;09/23&#39;}},)
+<span></span>({&#39;age&#39;: 28,
+  &#39;name&#39;: [&#39;Karleen&#39;, &#39;Medina&#39;],
+  &#39;occupation&#39;: &#39;Bus Valeter&#39;,
+  &#39;telephone&#39;: &#39;(379) 007-5536&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;398 Danton Highway&#39;, &#39;city&#39;: &#39;Petersburg&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2536 9121 5935 1068&#39;,
+   &#39;expiration-date&#39;: &#39;10/22&#39;}},)
 </pre></div>
 </div>
 </div>
@@ -834,14 +829,14 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 26,
-  &#39;occupation&#39;: &#39;Legal Advisor&#39;,
-  &#39;telephone&#39;: &#39;(214) 377-0698&#39;,
-  &#39;credit-card-number&#39;: &#39;5598 5335 3135 7363&#39;,
-  &#39;credit-card-expiration&#39;: &#39;09/23&#39;,
-  &#39;name&#39;: &#39;Madie Hancock&#39;,
-  &#39;street-address&#39;: &#39;338 Cochrane Park&#39;,
-  &#39;city&#39;: &#39;Key West&#39;},)
+<span></span>({&#39;age&#39;: 28,
+  &#39;occupation&#39;: &#39;Bus Valeter&#39;,
+  &#39;telephone&#39;: &#39;(379) 007-5536&#39;,
+  &#39;credit-card-number&#39;: &#39;2536 9121 5935 1068&#39;,
+  &#39;credit-card-expiration&#39;: &#39;10/22&#39;,
+  &#39;name&#39;: &#39;Karleen Medina&#39;,
+  &#39;street-address&#39;: &#39;398 Danton Highway&#39;,
+  &#39;city&#39;: &#39;Petersburg&#39;},)
 </pre></div>
 </div>
 </div>
@@ -891,58 +886,58 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>26</td>
-      <td>Legal Advisor</td>
-      <td>(214) 377-0698</td>
-      <td>5598 5335 3135 7363</td>
-      <td>09/23</td>
-      <td>Madie Hancock</td>
-      <td>338 Cochrane Park</td>
-      <td>Key West</td>
+      <td>28</td>
+      <td>Bus Valeter</td>
+      <td>(379) 007-5536</td>
+      <td>2536 9121 5935 1068</td>
+      <td>10/22</td>
+      <td>Karleen Medina</td>
+      <td>398 Danton Highway</td>
+      <td>Petersburg</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>20</td>
-      <td>Legal Assistant</td>
-      <td>779.358.3234</td>
-      <td>3409 814921 33780</td>
-      <td>04/22</td>
-      <td>Dwight Bullock</td>
-      <td>452 Galewood Plaza</td>
-      <td>Fairfax</td>
+      <td>37</td>
+      <td>Sales Administrator</td>
+      <td>748-209-3589</td>
+      <td>3449 951065 47736</td>
+      <td>05/17</td>
+      <td>Bebe Stephenson</td>
+      <td>146 Dashiell Hammett Bypass</td>
+      <td>Kennesaw</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>42</td>
-      <td>Book Binder</td>
-      <td>882-861-9542</td>
-      <td>3764 586681 06053</td>
-      <td>01/22</td>
-      <td>Barrie Holmes</td>
-      <td>196 Finley Plaza</td>
-      <td>Martinez</td>
+      <td>28</td>
+      <td>Gamekeeper</td>
+      <td>855-942-3923</td>
+      <td>5288 1230 0324 4185</td>
+      <td>09/22</td>
+      <td>Betsey Duke</td>
+      <td>1229 Gorham Plantation</td>
+      <td>Buena Park</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>22</td>
-      <td>Project Co-ordinator</td>
-      <td>+1-(582)-278-0525</td>
-      <td>3723 962484 74134</td>
-      <td>12/16</td>
-      <td>Andree Wiggins</td>
-      <td>506 Northern Terrace</td>
-      <td>Twin Falls</td>
+      <td>27</td>
+      <td>Mining Engineer</td>
+      <td>1-241-708-4421</td>
+      <td>3763 066352 23487</td>
+      <td>12/22</td>
+      <td>Justa Shannon</td>
+      <td>69 Quincy Sideline</td>
+      <td>O'Fallon</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>32</td>
-      <td>Chiropractor</td>
-      <td>1-721-101-9063</td>
-      <td>4890 0884 8319 0385</td>
-      <td>04/20</td>
-      <td>Jesusa Garrett</td>
-      <td>1136 Cayuga Bay</td>
-      <td>Port Hueneme</td>
+      <td>61</td>
+      <td>Parts Manager</td>
+      <td>636-224-6535</td>
+      <td>4865 7710 2170 7940</td>
+      <td>01/17</td>
+      <td>Estell Mckee</td>
+      <td>69 Liberty Path</td>
+      <td>Buckeye</td>
     </tr>
   </tbody>
 </table>
@@ -963,16 +958,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Retired              15
-Patent Attorney      15
-Funeral Furnisher    14
-Booking Clerk        13
-Wood Worker          13
-Payroll Manager      13
-Chartered            13
-Audiologist          13
-HGV Driver           13
-Shop Keeper          13
+<span></span>Horse Trainer             15
+Receptionist              14
+Recorder                  13
+Arts                      13
+Panel Beater              13
+Probation Worker          13
+Fork Lift Truck Driver    13
+Payroll Clerk             13
+Training Advisor          13
+Hop Merchant              13
 Name: occupation, dtype: int64
 </pre></div>
 </div>

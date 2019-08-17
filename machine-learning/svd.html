@@ -182,12 +182,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/image-processing.html">Image Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html">Prefect on Dask - Roll Your Own GIF</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Goal">Goal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Setting-up-our-environment">Setting up our environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Build-the-Flow">Build the Flow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Next-Steps">Next Steps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html#Play">Play</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html">ETL Pipelines with Prefect</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
 </ul>
@@ -488,7 +483,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.4.41/13543/1</li>
+  <li><b>Scheduler: </b>inproc://10.20.255.13/13781/1</li>
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -552,19 +547,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([[ 0.09985776,  0.09991125,  0.09984919, ...,  0.10004959,
-         0.09978831,  0.09975957],
-       [ 0.13928042, -0.01063258,  0.10550284, ..., -0.12529092,
-         0.04698699,  0.17890652],
-       [ 0.01099231,  0.03695251,  0.06821864, ...,  0.04031387,
-        -0.05013028,  0.06082394],
+<span></span>array([[ 0.10023573,  0.09968945,  0.09998485, ...,  0.10008738,
+         0.10003074,  0.1001798 ],
+       [-0.04255527,  0.01795078, -0.01007327, ...,  0.04242618,
+         0.12308832,  0.01355241],
+       [ 0.01193221,  0.08741903,  0.0023592 , ..., -0.03601277,
+         0.06703742, -0.05912242],
        ...,
-       [ 0.07483758,  0.02773691,  0.11377814, ..., -0.00633209,
-         0.0258749 ,  0.05193224],
-       [-0.02476437, -0.07928913,  0.02704799, ...,  0.02874012,
-         0.01380034, -0.13030649],
-       [ 0.11580615, -0.09630326, -0.04951941, ..., -0.14828657,
-        -0.05869426, -0.14555219]])
+       [ 0.13034845, -0.03655225,  0.02923836, ..., -0.0377731 ,
+         0.03439927, -0.03639828],
+       [-0.0590186 , -0.13251408, -0.01456963, ...,  0.05889214,
+         0.01652284, -0.1510925 ],
+       [ 0.07247475, -0.02310999,  0.09553362, ...,  0.03738874,
+        -0.12353818,  0.14707037]])
 </pre></div>
 </div>
 </div>
@@ -617,16 +612,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([[ 0.01001028,  0.01007125,  0.00995785, ...,  0.00997535,
-         0.01009337,  0.0100948 ],
-       [-0.01691978,  0.010368  ,  0.00320973, ..., -0.01772052,
-         0.00170808,  0.00840117],
-       [ 0.00057256,  0.01439508, -0.00735643, ..., -0.00694058,
-         0.00130681, -0.00564483],
-       [-0.00012894,  0.0161174 , -0.0060589 , ...,  0.00667472,
-         0.00608348, -0.01276204],
-       [-0.00279486,  0.00943059,  0.00175588, ...,  0.00224182,
-        -0.01173198, -0.001261  ]])
+<span></span>array([[ 9.99205980e-03,  1.00386404e-02,  9.88813309e-03, ...,
+         1.00428805e-02,  1.00219882e-02,  9.96925205e-03],
+       [ 1.54166928e-02,  1.49709450e-02, -5.51749029e-03, ...,
+         9.59217951e-03, -1.53212200e-02,  1.21969161e-02],
+       [ 1.27010015e-02,  2.86560765e-03,  2.71240131e-02, ...,
+        -8.20976405e-03, -7.32766711e-03, -1.52864167e-02],
+       [ 4.36776783e-03, -1.94537448e-03, -3.24348360e-03, ...,
+        -3.12641278e-03,  1.07723420e-02, -5.46686018e-03],
+       [ 1.11239100e-02, -1.45488689e-02, -2.78416441e-03, ...,
+        -8.08245649e-05, -1.10809223e-02, -3.96320030e-03]])
 </pre></div>
 </div>
 </div>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Prefect on Dask - Roll Your Own GIF &mdash; Dask Examples  documentation</title>
+  <title>ETL Pipelines with Prefect &mdash; Dask Examples  documentation</title>
   
 
   
@@ -177,20 +177,22 @@
 <li class="toctree-l1"><a class="reference internal" href="async-await.html">Async/Await and Non-Blocking Execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image-processing.html">Image Processing</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Prefect on Dask - Roll Your Own GIF</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Goal">Goal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Setting-up-our-environment">Setting up our environment</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Extract">Extract</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Transform">Transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Load">Load</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ETL Pipelines with Prefect</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Goal">Goal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Setting-up-our-environment">Setting up our environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Extract">Extract</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Transform">Transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Load">Load</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#Build-the-Flow">Build the Flow</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Running-the-Flow-on-Dask">Running the Flow on Dask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Build-the-Flow">Build the Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Running-the-Flow-on-Dask">Running the Flow on Dask</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#Next-Steps">Next Steps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Play">Play</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Next-Steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Play">Play</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stencils-with-numba.html">Stencil Computations with Numba</a></li>
 </ul>
@@ -242,7 +244,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Prefect on Dask - Roll Your Own GIF</li>
+      <li>ETL Pipelines with Prefect</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -462,8 +464,8 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/applications/prefect-etl.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/applications/prefect-etl.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/applications/prefect-etl.ipynb">on Github</a>.</p>
-<div class="section" id="Prefect-on-Dask---Roll-Your-Own-GIF">
-<h1>Prefect on Dask - Roll Your Own GIF<a class="headerlink" href="#Prefect-on-Dask---Roll-Your-Own-GIF" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ETL-Pipelines-with-Prefect">
+<h1>ETL Pipelines with Prefect<a class="headerlink" href="#ETL-Pipelines-with-Prefect" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://github.com/PrefectHQ/prefect">Prefect</a> is a platform for automating data workflows. Data engineers and data scientists can build, test and deploy production pipelines without worrying about all of the <a class="reference external" href="https://medium.com/the-prefect-blog/positive-and-negative-data-engineering-a02cb497583d">“negative engineering” aspects</a> of production. For example, Prefect makes it easy to deploy a workflow that runs on a complicated schedule, requires task retries in the event of failures, and
 sends notifications when certain tasks are complete. Prefect was built on top of Dask, and <a class="reference external" href="http://stories.dask.org/en/latest/prefect-workflows.html#how-dask-helps">relies on Dask</a> to schedule and manage the execution of a Prefect workflow in a distributed environment.</p>
 <p>This example demonstrates running a Prefect ETL Flow on Dask which ultimately creates a GIF. While this is a somewhat unconventional use case of Prefect, we’re no strangers to <a class="reference external" href="https://medium.com/the-prefect-blog/prefect-runs-on-prefect-3e6df553c3a4">unconventional use cases</a>.</p>
@@ -489,9 +491,8 @@ sends notifications when certain tasks are complete. Prefect was built on top of
 <li><p><a class="reference external" href="#dask">Running our Flow on Dask</a></p></li>
 <li><p><a class="reference external" href="#play">Watching our GIF</a></p></li>
 </ol>
-</div>
 <div class="section" id="Goal">
-<h1>Goal<a class="headerlink" href="#Goal" title="Permalink to this headline">¶</a></h1>
+<h2>Goal<a class="headerlink" href="#Goal" title="Permalink to this headline">¶</a></h2>
 <p>To demonstrate how Prefect and Dask work together, we are going to build and execute a standard “Extract / Transform / Load” (ETL) workflow for processing some basic image data. Most ETL workflows involve a scheduled migration of data from one database to another. In our case, we will be moving data from a file located at a known URL to our local hard disk, converting the individual file into a series of frames, and compiling those frames into a GIF. The URL references a file containing raw
 bytes such as:</p>
 <pre class="literal-block">b&quot;&quot;&quot;aÙw˜≠•∆≠≠ﬁ#!≠≠÷≠•Ω≠úΩ••µú•µîúµ•úΩ••Ω3&amp;µ•Ω! µ≠∆≠•¥4(%µú∑≠≠Œ≠î≠≠≠∆≠îµúî≠úîµE5.≠ú≠≠•Œµµﬁ••∆•≠ŒµµŒúúΩ62&amp;)1&amp;623µ•∆Ωµ÷úî•ßjxΩΩÁú•Ωµ≠Œ••≠ú•≠Ω≠∆≠µÁâUV≠µ‹ΩµŒîî•NC5µ≠Ÿôãô•î•µ•µîú≠#VHCuhl≠≠ΩôchâRIoc]™≠Á≠î•™ú»öis•ú•f7,íYfL9?îî≠≠•÷∑ò™gWVxGEΩ≠–))1qB5µ≠Ω81R,´tÜñWV</pre>
@@ -505,7 +506,7 @@ HCDBB5;5?</p>
 <p><strong>NOTE:</strong> If we planned on executing this Flow in a truly distributed environment, writing the images to the local filesystem would <em>not</em> be appropriate. We would instead use an external datastore such as Google Cloud Storage, or a proper database.</p>
 </div>
 <div class="section" id="Setting-up-our-environment">
-<h1>Setting up our environment<a class="headerlink" href="#Setting-up-our-environment" title="Permalink to this headline">¶</a></h1>
+<h2>Setting up our environment<a class="headerlink" href="#Setting-up-our-environment" title="Permalink to this headline">¶</a></h2>
 <p>Before proceeding, we need to install both the <code class="docutils literal notranslate"><span class="pre">`prefect</span></code> &lt;<a class="reference external" href="https://pypi.org/project/prefect/">https://pypi.org/project/prefect/</a>&gt;`__ and <code class="docutils literal notranslate"><span class="pre">`imageio</span></code> &lt;<a class="reference external" href="https://pypi.org/project/imageio/">https://pypi.org/project/imageio/</a>&gt;`__ packages.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -523,81 +524,84 @@ HCDBB5;5?</p>
 <div class="highlight"><pre>
 Requirement already satisfied: imageio in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (2.5.0)
 Collecting prefect[viz]
-  Downloading https://files.pythonhosted.org/packages/93/dc/69e7acbeb8e3ed3f8d5b7dcfa5242de4fc726e8d059ce9a4baa66ac1477d/prefect-0.6.0-py3-none-any.whl (319kB)
+  Downloading https://files.pythonhosted.org/packages/60/ea/2e6d43eca83eb1560349a0d8390dc7ca42f2e5e531cc22be279fdf1df37c/prefect-0.6.1-py3-none-any.whl (317kB)
 
-Requirement already satisfied: numpy in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from imageio) (1.16.4)
 Requirement already satisfied: pillow in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from imageio) (6.1.0)
-Requirement already satisfied: pyyaml&lt;5.2,&gt;=3.13 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (5.1.2)
-Collecting python-slugify&lt;4.0,&gt;=1.2.6 (from prefect[viz])
-  Downloading https://files.pythonhosted.org/packages/a2/5d/bd30413c00bbed3945558aca07c55944073e1e30abeee1f06515281f9811/python-slugify-3.0.3.tar.gz
-Collecting tabulate&lt;0.9.0,&gt;=0.8.0 (from prefect[viz])
-  Downloading https://files.pythonhosted.org/packages/c2/fd/202954b3f0eb896c53b7b6f07390851b1fd2ca84aa95880d7ae4f434c4ac/tabulate-0.8.3.tar.gz (46kB)
-
-Requirement already satisfied: dask&lt;3.0,&gt;=0.18 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.2.0)
+Requirement already satisfied: numpy in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from imageio) (1.16.4)
+Collecting toml&lt;1.0,&gt;=0.9.4 (from prefect[viz])
+  Downloading https://files.pythonhosted.org/packages/a2/12/ced7105d2de62fa7c8fb5fce92cc4ce66b57c95fb875e9318dba7f8c5db0/toml-0.10.0-py2.py3-none-any.whl
 Collecting docker&lt;5.0,&gt;=3.4.1 (from prefect[viz])
   Downloading https://files.pythonhosted.org/packages/95/47/5560c9cf0c92b50da24216f0e7733250fbed5a497f69e3c70e1be62143fe/docker-4.0.2-py2.py3-none-any.whl (138kB)
 
-Collecting pendulum&lt;3.0,&gt;=2.0.2 (from prefect[viz])
-  Downloading https://files.pythonhosted.org/packages/0b/db/eadff08d7a50a5a28d13efba6a029868f72b662f7cb30079f4af56a8de02/pendulum-2.0.5-cp37-cp37m-manylinux1_x86_64.whl (141kB)
-
-Requirement already satisfied: python-dateutil&lt;3.0,&gt;2.7.3 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.8.0)
+Requirement already satisfied: cloudpickle&lt;1.3,&gt;=0.6.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (1.2.1)
 Collecting marshmallow&lt;4.0.0,&gt;=3.0.0b19 (from prefect[viz])
   Downloading https://files.pythonhosted.org/packages/32/d8/62ae7ef9e7aee32242310b149f87f787fa0b21e12c3a82e47fea36987a16/marshmallow-3.0.0rc9-py2.py3-none-any.whl (42kB)
 
-Collecting typing&lt;4.0,&gt;=3.6.4 (from prefect[viz])
-  Downloading https://files.pythonhosted.org/packages/28/b8/a1d6b7cf322f91305bcb5e7d8f6c3028954d1e3e716cddc1cdce2ac63247/typing-3.7.4-py3-none-any.whl
-Collecting mypy-extensions&lt;0.5,&gt;=0.4.0 (from prefect[viz])
+Requirement already satisfied: python-dateutil~=2.7 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.8.0)
+Collecting mypy-extensions&lt;1.0,&gt;=0.4.0 (from prefect[viz])
   Downloading https://files.pythonhosted.org/packages/4d/72/8d54e2b296631b9b14961d583e56e90d9d7fba8a240d5ce7f1113cc5e887/mypy_extensions-0.4.1-py2.py3-none-any.whl
-Requirement already satisfied: click&lt;8.0,&gt;=7.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (7.0)
+Collecting croniter&lt;1.0,&gt;=0.3.24 (from prefect[viz])
+  Downloading https://files.pythonhosted.org/packages/c8/4c/04dea44f87b963d5c3f2bbc391e6c69d0a14aa896e35590be56213a04e4f/croniter-0.3.30-py2.py3-none-any.whl
+Collecting python-slugify&lt;4.0,&gt;=1.2.6 (from prefect[viz])
+  Downloading https://files.pythonhosted.org/packages/a2/5d/bd30413c00bbed3945558aca07c55944073e1e30abeee1f06515281f9811/python-slugify-3.0.3.tar.gz
 Collecting marshmallow-oneofschema&lt;3.0,&gt;=2.0.0b2 (from prefect[viz])
   Downloading https://files.pythonhosted.org/packages/7a/f3/da71ec4c539b6b5e16f1988fc46d8ea3374e258ef79fb5a7d88478fb922f/marshmallow_oneofschema-2.0.1-py2.py3-none-any.whl
-Requirement already satisfied: requests&lt;3.0,&gt;=2.20 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.22.0)
-Collecting croniter&lt;0.4,&gt;=0.3 (from prefect[viz])
-  Downloading https://files.pythonhosted.org/packages/c8/4c/04dea44f87b963d5c3f2bbc391e6c69d0a14aa896e35590be56213a04e4f/croniter-0.3.30-py2.py3-none-any.whl
-Collecting toml&lt;1.0,&gt;=0.9.4 (from prefect[viz])
-  Downloading https://files.pythonhosted.org/packages/a2/12/ced7105d2de62fa7c8fb5fce92cc4ce66b57c95fb875e9318dba7f8c5db0/toml-0.10.0-py2.py3-none-any.whl
-Requirement already satisfied: distributed&lt;3.0,&gt;=1.26.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.2.0)
+Requirement already satisfied: pyyaml&lt;5.2,&gt;=3.13 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (5.1.2)
+Requirement already satisfied: distributed&lt;3.0,&gt;=1.26.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.3.0)
+Collecting typing&lt;4.0,&gt;=3.6.1 (from prefect[viz])
+  Downloading https://files.pythonhosted.org/packages/28/b8/a1d6b7cf322f91305bcb5e7d8f6c3028954d1e3e716cddc1cdce2ac63247/typing-3.7.4-py3-none-any.whl
 Requirement already satisfied: pytz&gt;=2018.7 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2019.2)
-Requirement already satisfied: cloudpickle&lt;1.3,&gt;=0.6.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (1.2.1)
-Collecting typing-extensions&lt;4.0,&gt;=3.6.4 (from prefect[viz])
+Requirement already satisfied: dask[bag]&lt;3.0,&gt;=0.19.3 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.2.0)
+Requirement already satisfied: click&lt;8.0,&gt;=7.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (7.0)
+Collecting typing-extensions&lt;4.0,&gt;=3.6.2 (from prefect[viz])
   Downloading https://files.pythonhosted.org/packages/27/aa/bd1442cfb0224da1b671ab334d3b0a4302e4161ea916e28904ff9618d471/typing_extensions-3.7.4-py3-none-any.whl
-Requirement already satisfied: graphviz&gt;=0.8.3; extra == &#34;viz&#34; in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (0.11.1)
-Collecting text-unidecode==1.2 (from python-slugify&lt;4.0,&gt;=1.2.6-&gt;prefect[viz])
-  Downloading https://files.pythonhosted.org/packages/79/42/d717cc2b4520fb09e45b344b1b0b4e81aa672001dd128c180fabc655c341/text_unidecode-1.2-py2.py3-none-any.whl (77kB)
+Collecting tabulate&lt;1.0,&gt;=0.8.0 (from prefect[viz])
+  Downloading https://files.pythonhosted.org/packages/c2/fd/202954b3f0eb896c53b7b6f07390851b1fd2ca84aa95880d7ae4f434c4ac/tabulate-0.8.3.tar.gz (46kB)
 
+Requirement already satisfied: requests&lt;3.0,&gt;=2.20 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.22.0)
+Collecting pendulum&lt;3.0,&gt;=2.0.4 (from prefect[viz])
+  Downloading https://files.pythonhosted.org/packages/0b/db/eadff08d7a50a5a28d13efba6a029868f72b662f7cb30079f4af56a8de02/pendulum-2.0.5-cp37-cp37m-manylinux1_x86_64.whl (141kB)
+
+Requirement already satisfied: graphviz&gt;=0.8.3; extra == &#34;viz&#34; in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (0.11.1)
 Collecting websocket-client&gt;=0.32.0 (from docker&lt;5.0,&gt;=3.4.1-&gt;prefect[viz])
   Downloading https://files.pythonhosted.org/packages/29/19/44753eab1fdb50770ac69605527e8859468f3c0fd7dc5a76dd9c4dbd7906/websocket_client-0.56.0-py2.py3-none-any.whl (200kB)
 
 Requirement already satisfied: six&gt;=1.4.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from docker&lt;5.0,&gt;=3.4.1-&gt;prefect[viz]) (1.12.0)
-Collecting pytzdata&gt;=2018.3 (from pendulum&lt;3.0,&gt;=2.0.2-&gt;prefect[viz])
-  Downloading https://files.pythonhosted.org/packages/bc/42/b865341e34066b9f3c806f7c461189b6a3cf367fec2d10d01900e8ba7afd/pytzdata-2019.2-py2.py3-none-any.whl (489kB)
+Collecting text-unidecode==1.2 (from python-slugify&lt;4.0,&gt;=1.2.6-&gt;prefect[viz])
+  Downloading https://files.pythonhosted.org/packages/79/42/d717cc2b4520fb09e45b344b1b0b4e81aa672001dd128c180fabc655c341/text_unidecode-1.2-py2.py3-none-any.whl (77kB)
 
-Requirement already satisfied: idna&lt;2.9,&gt;=2.5 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&lt;3.0,&gt;=2.20-&gt;prefect[viz]) (2.8)
-Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&lt;3.0,&gt;=2.20-&gt;prefect[viz]) (3.0.4)
-Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&lt;3.0,&gt;=2.20-&gt;prefect[viz]) (1.25.3)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&lt;3.0,&gt;=2.20-&gt;prefect[viz]) (2019.6.16)
-Requirement already satisfied: psutil&gt;=5.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (5.6.3)
-Requirement already satisfied: toolz&gt;=0.7.4 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (0.10.0)
+Requirement already satisfied: tornado&gt;=5 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (5.1.1)
 Requirement already satisfied: msgpack in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (0.6.1)
 Requirement already satisfied: sortedcontainers!=2.0.0,!=2.0.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (2.1.0)
-Requirement already satisfied: zict&gt;=0.1.3 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (1.0.0)
-Requirement already satisfied: tornado&gt;=5 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (5.1.1)
+Requirement already satisfied: toolz&gt;=0.7.4 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (0.10.0)
 Requirement already satisfied: tblib in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (1.4.0)
+Requirement already satisfied: zict&gt;=0.1.3 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (1.0.0)
+Requirement already satisfied: psutil&gt;=5.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (5.6.3)
+Requirement already satisfied: fsspec&gt;=0.3.3; extra == &#34;bag&#34; in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from dask[bag]&lt;3.0,&gt;=0.19.3-&gt;prefect[viz]) (0.4.1)
+Requirement already satisfied: partd&gt;=0.3.10; extra == &#34;bag&#34; in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from dask[bag]&lt;3.0,&gt;=0.19.3-&gt;prefect[viz]) (1.0.0)
+Requirement already satisfied: idna&lt;2.9,&gt;=2.5 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&lt;3.0,&gt;=2.20-&gt;prefect[viz]) (2.8)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&lt;3.0,&gt;=2.20-&gt;prefect[viz]) (2019.6.16)
+Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&lt;3.0,&gt;=2.20-&gt;prefect[viz]) (3.0.4)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&lt;3.0,&gt;=2.20-&gt;prefect[viz]) (1.25.3)
+Collecting pytzdata&gt;=2018.3 (from pendulum&lt;3.0,&gt;=2.0.4-&gt;prefect[viz])
+  Downloading https://files.pythonhosted.org/packages/bc/42/b865341e34066b9f3c806f7c461189b6a3cf367fec2d10d01900e8ba7afd/pytzdata-2019.2-py2.py3-none-any.whl (489kB)
+
 Requirement already satisfied: heapdict in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from zict&gt;=0.1.3-&gt;distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (1.0.0)
+Requirement already satisfied: locket in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from partd&gt;=0.3.10; extra == &#34;bag&#34;-&gt;dask[bag]&lt;3.0,&gt;=0.19.3-&gt;prefect[viz]) (0.2.0)
 Building wheels for collected packages: python-slugify, tabulate
   Building wheel for python-slugify (setup.py) ... - done
-  Created wheel for python-slugify: filename=python_slugify-3.0.3-py2.py3-none-any.whl size=4786 sha256=5e1352db6db692c4b0a8a51929c16e5c5ab06417920403b5e8e4d9e3b45115d7
+  Created wheel for python-slugify: filename=python_slugify-3.0.3-py2.py3-none-any.whl size=4786 sha256=71a54fd268a13340633122d1944335d5d1ce9bb534a390b75961cfeee504ba28
   Stored in directory: /home/travis/.cache/pip/wheels/0f/96/ca/85f5b01165975402d1e37f8dd346df00dc39be1d0761bd17bb
   Building wheel for tabulate (setup.py) ... - done
-  Created wheel for tabulate: filename=tabulate-0.8.3-cp37-none-any.whl size=23378 sha256=c8529aa24553e86cb0b781a86cc94a1ea540d6574c65356938d6d48183074e76
+  Created wheel for tabulate: filename=tabulate-0.8.3-cp37-none-any.whl size=23378 sha256=f1cc983d045b8844a37b858a9f2a1d566c408844fabd5ab87ce506ca812eb14a
   Stored in directory: /home/travis/.cache/pip/wheels/2b/67/89/414471314a2d15de625d184d8be6d38a03ae1e983dbda91e84
 Successfully built python-slugify tabulate
-Installing collected packages: text-unidecode, python-slugify, tabulate, websocket-client, docker, pytzdata, pendulum, marshmallow, typing, mypy-extensions, marshmallow-oneofschema, croniter, toml, typing-extensions, prefect
-Successfully installed croniter-0.3.30 docker-4.0.2 marshmallow-3.0.0rc9 marshmallow-oneofschema-2.0.1 mypy-extensions-0.4.1 pendulum-2.0.5 prefect-0.6.0 python-slugify-3.0.3 pytzdata-2019.2 tabulate-0.8.3 text-unidecode-1.2 toml-0.10.0 typing-3.7.4 typing-extensions-3.7.4 websocket-client-0.56.0
+Installing collected packages: toml, websocket-client, docker, marshmallow, mypy-extensions, croniter, text-unidecode, python-slugify, marshmallow-oneofschema, typing, typing-extensions, tabulate, pytzdata, pendulum, prefect
+Successfully installed croniter-0.3.30 docker-4.0.2 marshmallow-3.0.0rc9 marshmallow-oneofschema-2.0.1 mypy-extensions-0.4.1 pendulum-2.0.5 prefect-0.6.1 python-slugify-3.0.3 pytzdata-2019.2 tabulate-0.8.3 text-unidecode-1.2 toml-0.10.0 typing-3.7.4 typing-extensions-3.7.4 websocket-client-0.56.0
 </pre></div></div>
 </div>
 <div class="section" id="Extract">
-<h2>Extract<a class="headerlink" href="#Extract" title="Permalink to this headline">¶</a></h2>
+<h3>Extract<a class="headerlink" href="#Extract" title="Permalink to this headline">¶</a></h3>
 <p>First, we will define our tasks for <em>extracting</em> the image data file from a given URL and saving it to a given file location. To do so, we will utilize two methods for creating Prefect Tasks: - the <code class="docutils literal notranslate"><span class="pre">task</span></code> decorator for converting any Python function into a task - a pre-written, configurable Task from the <a class="reference external" href="https://docs.prefect.io/guide/task_library/">Prefect “Task Library”</a> which helps us abstract some standard boilerplate</p>
 <p>Additionally, we will utilize the following Prefect concepts: - a <a class="reference external" href="https://docs.prefect.io/guide/core_concepts/execution.html#state-signals">Prefect signal</a> for marking this task and its downstream depedencies as successfully “Skipped” if the file is already present in our local filesystem - retry semantics: if, for whatever reason, our <code class="docutils literal notranslate"><span class="pre">curl</span></code> command fails to connect, we want it to retry up to 2 times with a 10 second delay. This way, if we run this workflow on a schedule we won’t need to
 concern ourselves with temporary intermittent connection issues.</p>
@@ -635,7 +639,7 @@ concern ourselves with temporary intermittent connection issues.</p>
 </div>
 </div>
 <div class="section" id="Transform">
-<h2>Transform<a class="headerlink" href="#Transform" title="Permalink to this headline">¶</a></h2>
+<h3>Transform<a class="headerlink" href="#Transform" title="Permalink to this headline">¶</a></h3>
 <p>Next up, we need to define our task which loads the image data file and splits it into multiple frames. In this case, each frame is delimited by 4 newlines. Note that, in the event the previous two tasks are “Skipped”, the default behavior in Prefect is to skip downstream dependencies as well. However, as with most things in Prefect, this behavior is customizable. In this case, we want this task to run regardless of whether the upstreams skipped or not, so we set the <code class="docutils literal notranslate"><span class="pre">skip_on_upstream_skip</span></code>
 flag to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <div class="nbinput nblast docutils container">
@@ -659,7 +663,7 @@ flag to <code class="docutils literal notranslate"><span class="pre">False</span
 </div>
 </div>
 <div class="section" id="Load">
-<h2>Load<a class="headerlink" href="#Load" title="Permalink to this headline">¶</a></h2>
+<h3>Load<a class="headerlink" href="#Load" title="Permalink to this headline">¶</a></h3>
 <p>Finally, we want to write our frames to disk as well as combine the frames into a single GIF. In order to achieve this goal, we are going to utilize <a class="reference external" href="https://docs.prefect.io/guide/core_concepts/mapping.html">Prefect’s task “mapping” feature</a> which conveniently spawns new tasks in response to upstream outputs. In this case, we will write a single task for writing an image to disk, and “map” this task over all the image frames returned by <code class="docutils literal notranslate"><span class="pre">load_and_split</span></code> above! To infer which frame we are
 on, we look in <code class="docutils literal notranslate"><span class="pre">`prefect.context</span></code> &lt;<a class="reference external" href="https://docs.prefect.io/guide/core_concepts/execution.html#context">https://docs.prefect.io/guide/core_concepts/execution.html#context</a>&gt;`__.</p>
 <p>Additionally, we can “reduce” over a mapped task - in this case, we will take the collection of mapped tasks and pass them into our <code class="docutils literal notranslate"><span class="pre">combine_to_gif</span></code> task for creating and saving our GIF.</p>
@@ -705,7 +709,7 @@ on, we look in <code class="docutils literal notranslate"><span class="pre">`pre
 </div>
 </div>
 <div class="section" id="Build-the-Flow">
-<h1>Build the Flow<a class="headerlink" href="#Build-the-Flow" title="Permalink to this headline">¶</a></h1>
+<h2>Build the Flow<a class="headerlink" href="#Build-the-Flow" title="Permalink to this headline">¶</a></h2>
 <p>Finally, we need to put our tasks together into a Prefect “Flow”. Similar to Dask’s <code class="docutils literal notranslate"><span class="pre">delayed</span></code> interface, all computation is deferred and no Task code will be executed in this step. Because Prefect maintains a stricter contract between tasks and additionally needs the ability to run in non-Dask execution environments, the mechanism for deferring execution is independent of Dask.</p>
 <p>In addition to the tasks we have already defined, we introduce two “Parameters” for specifying the URL and local file location of our data. At runtime, we can optionally override these tasks to return different values.</p>
 <div class="nbinput docutils container">
@@ -749,7 +753,7 @@ on, we look in <code class="docutils literal notranslate"><span class="pre">`pre
 <img alt="../_images/applications_prefect-etl_12_0.svg" src="../_images/applications_prefect-etl_12_0.svg" /></div>
 </div>
 <div class="section" id="Running-the-Flow-on-Dask">
-<h2>Running the Flow on Dask<a class="headerlink" href="#Running-the-Flow-on-Dask" title="Permalink to this headline">¶</a></h2>
+<h3>Running the Flow on Dask<a class="headerlink" href="#Running-the-Flow-on-Dask" title="Permalink to this headline">¶</a></h3>
 <p>Now we have built our Flow, independently of Dask. We could execute this Flow sequentially, Task after Task, but there is inherent parallelism in our mapping of the images to files that we want to exploit. Luckily, Dask makes this easy to achieve.</p>
 <p>First, we will start a local Dask cluster. Then, we will run our Flow against Prefect’s <code class="docutils literal notranslate"><span class="pre">DaskExecutor</span></code>, which will submit each Task to our Dask cluster and use Dask’s distributed scheduler for determining when and where each Task should run. Essentially, we built a Directed Acylic Graph (DAG) and are simply “submitting” that DAG to Dask for handling its execution in a distributed way.</p>
 <div class="nbinput docutils container">
@@ -777,9 +781,9 @@ on, we look in <code class="docutils literal notranslate"><span class="pre">`pre
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-[2019-08-05 21:24:15,379] INFO - prefect.FlowRunner | Beginning Flow run for &#39;Image ETL&#39;
-[2019-08-05 21:24:15,380] INFO - prefect.FlowRunner | Starting flow run.
-[2019-08-05 21:24:20,009] INFO - prefect.FlowRunner | Flow run SUCCESS: all reference tasks succeeded
+[2019-08-17 16:42:26,105] INFO - prefect.FlowRunner | Beginning Flow run for &#39;Image ETL&#39;
+[2019-08-17 16:42:26,107] INFO - prefect.FlowRunner | Starting flow run.
+[2019-08-17 16:42:30,524] INFO - prefect.FlowRunner | Flow run SUCCESS: all reference tasks succeeded
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -794,7 +798,7 @@ on, we look in <code class="docutils literal notranslate"><span class="pre">`pre
 </div>
 </div>
 <div class="section" id="Next-Steps">
-<h1>Next Steps<a class="headerlink" href="#Next-Steps" title="Permalink to this headline">¶</a></h1>
+<h2>Next Steps<a class="headerlink" href="#Next-Steps" title="Permalink to this headline">¶</a></h2>
 <p>Now that we’ve built our workflow, what next? The interested reader should try to:</p>
 <ul class="simple">
 <li><p>run the Flow again to see how the <code class="docutils literal notranslate"><span class="pre">SKIP</span></code> signal behaves</p></li>
@@ -804,7 +808,7 @@ on, we look in <code class="docutils literal notranslate"><span class="pre">`pre
 </ul>
 </div>
 <div class="section" id="Play">
-<h1>Play<a class="headerlink" href="#Play" title="Permalink to this headline">¶</a></h1>
+<h2>Play<a class="headerlink" href="#Play" title="Permalink to this headline">¶</a></h2>
 <p>Finally, let’s watch our creation!</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
@@ -823,6 +827,7 @@ on, we look in <code class="docutils literal notranslate"><span class="pre">`pre
 </div>
 <div class="output_area rendered_html docutils container">
 <img src="./clip.gif" alt="Rick Daskley"></div>
+</div>
 </div>
 </div>
 

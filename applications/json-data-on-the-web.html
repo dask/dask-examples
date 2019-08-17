@@ -187,12 +187,7 @@
 <li class="toctree-l1"><a class="reference internal" href="async-await.html">Async/Await and Non-Blocking Execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image-processing.html">Image Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="prefect-etl.html">Prefect on Dask - Roll Your Own GIF</a></li>
-<li class="toctree-l1"><a class="reference internal" href="prefect-etl.html#Goal">Goal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="prefect-etl.html#Setting-up-our-environment">Setting up our environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="prefect-etl.html#Build-the-Flow">Build the Flow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="prefect-etl.html#Next-Steps">Next Steps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="prefect-etl.html#Play">Play</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prefect-etl.html">ETL Pipelines with Prefect</a></li>
 <li class="toctree-l1"><a class="reference internal" href="satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stencils-with-numba.html">Stencil Computations with Numba</a></li>
 </ul>
@@ -521,7 +516,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:37941</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:36589</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -839,7 +834,19 @@ div.rendered_html tbody tr:hover {
  {&#39;name&#39;: &#39;events-2019-08-02.jsonl&#39;, &#39;date&#39;: &#39;2019-08-02&#39;, &#39;count&#39;: &#39;11907&#39;},
  {&#39;name&#39;: &#39;events-2019-08-03.jsonl&#39;, &#39;date&#39;: &#39;2019-08-03&#39;, &#39;count&#39;: &#39;7599&#39;},
  {&#39;name&#39;: &#39;events-2019-08-04.jsonl&#39;, &#39;date&#39;: &#39;2019-08-04&#39;, &#39;count&#39;: &#39;7344&#39;},
- {&#39;name&#39;: &#39;events-2019-08-05.jsonl&#39;, &#39;date&#39;: &#39;2019-08-05&#39;, &#39;count&#39;: &#39;10604&#39;}]
+ {&#39;name&#39;: &#39;events-2019-08-05.jsonl&#39;, &#39;date&#39;: &#39;2019-08-05&#39;, &#39;count&#39;: &#39;12694&#39;},
+ {&#39;name&#39;: &#39;events-2019-08-06.jsonl&#39;, &#39;date&#39;: &#39;2019-08-06&#39;, &#39;count&#39;: &#39;13990&#39;},
+ {&#39;name&#39;: &#39;events-2019-08-07.jsonl&#39;, &#39;date&#39;: &#39;2019-08-07&#39;, &#39;count&#39;: &#39;14971&#39;},
+ {&#39;name&#39;: &#39;events-2019-08-08.jsonl&#39;, &#39;date&#39;: &#39;2019-08-08&#39;, &#39;count&#39;: &#39;13643&#39;},
+ {&#39;name&#39;: &#39;events-2019-08-09.jsonl&#39;, &#39;date&#39;: &#39;2019-08-09&#39;, &#39;count&#39;: &#39;12367&#39;},
+ {&#39;name&#39;: &#39;events-2019-08-10.jsonl&#39;, &#39;date&#39;: &#39;2019-08-10&#39;, &#39;count&#39;: &#39;7689&#39;},
+ {&#39;name&#39;: &#39;events-2019-08-11.jsonl&#39;, &#39;date&#39;: &#39;2019-08-11&#39;, &#39;count&#39;: &#39;7181&#39;},
+ {&#39;name&#39;: &#39;events-2019-08-12.jsonl&#39;, &#39;date&#39;: &#39;2019-08-12&#39;, &#39;count&#39;: &#39;11641&#39;},
+ {&#39;name&#39;: &#39;events-2019-08-13.jsonl&#39;, &#39;date&#39;: &#39;2019-08-13&#39;, &#39;count&#39;: &#39;14053&#39;},
+ {&#39;name&#39;: &#39;events-2019-08-14.jsonl&#39;, &#39;date&#39;: &#39;2019-08-14&#39;, &#39;count&#39;: &#39;14120&#39;},
+ {&#39;name&#39;: &#39;events-2019-08-15.jsonl&#39;, &#39;date&#39;: &#39;2019-08-15&#39;, &#39;count&#39;: &#39;12333&#39;},
+ {&#39;name&#39;: &#39;events-2019-08-16.jsonl&#39;, &#39;date&#39;: &#39;2019-08-16&#39;, &#39;count&#39;: &#39;12151&#39;},
+ {&#39;name&#39;: &#39;events-2019-08-17.jsonl&#39;, &#39;date&#39;: &#39;2019-08-17&#39;, &#39;count&#39;: &#39;4913&#39;}]
 </pre></div>
 </div>
 </div>
@@ -923,26 +930,26 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>((&#39;ipython/ipython-in-depth/master&#39;, 1571031),
- (&#39;jupyterlab/jupyterlab-demo/master&#39;, 334619),
- (&#39;ines/spacy-io-binder/live&#39;, 145080),
- (&#39;DS-100/textbook/master&#39;, 121284),
- (&#39;bokeh/bokeh-notebooks/master&#39;, 74493),
- (&#39;jupyterlab/jupyterlab-demo/try.jupyter.org&#39;, 56761),
- (&#39;binder-examples/r/master&#39;, 55731),
- (&#39;rationalmatter/juno-demo-notebooks/master&#39;, 46696),
- (&#39;QuantStack/xeus-cling/stable&#39;, 40078),
- (&#39;binder-examples/requirements/master&#39;, 34817),
- (&#39;ines/spacy-course/binder&#39;, 23254),
- (&#39;numba/numba-examples/master&#39;, 23021),
- (&#39;binder-examples/julia-python/master&#39;, 21022),
+<span></span>((&#39;ipython/ipython-in-depth/master&#39;, 1618386),
+ (&#39;jupyterlab/jupyterlab-demo/master&#39;, 335485),
+ (&#39;ines/spacy-io-binder/live&#39;, 151412),
+ (&#39;DS-100/textbook/master&#39;, 124943),
+ (&#39;jupyterlab/jupyterlab-demo/try.jupyter.org&#39;, 83268),
+ (&#39;bokeh/bokeh-notebooks/master&#39;, 77593),
+ (&#39;binder-examples/r/master&#39;, 57825),
+ (&#39;rationalmatter/juno-demo-notebooks/master&#39;, 48439),
+ (&#39;binder-examples/requirements/master&#39;, 44305),
+ (&#39;QuantStack/xeus-cling/stable&#39;, 41522),
+ (&#39;ines/spacy-course/binder&#39;, 25141),
+ (&#39;numba/numba-examples/master&#39;, 23959),
+ (&#39;binder-examples/julia-python/master&#39;, 21023),
  (&#39;QISKit/qiskit-tutorial/master&#39;, 19288),
- (&#39;RasaHQ/rasa_core/master&#39;, 19107),
- (&#39;dask/dask-examples/master&#39;, 13842),
- (&#39;data-8/textbook/gh-pages&#39;, 11798),
- (&#39;wshuyi/demo-spacy-text-processing/master&#39;, 11471),
- (&#39;nteract/examples/master&#39;, 9996),
- (&#39;bethgelab/bwki-notebooks/master&#39;, 8703))
+ (&#39;RasaHQ/rasa_core/master&#39;, 19135),
+ (&#39;dask/dask-examples/master&#39;, 14623),
+ (&#39;data-8/textbook/gh-pages&#39;, 12135),
+ (&#39;wshuyi/demo-spacy-text-processing/master&#39;, 11891),
+ (&#39;rasahq/docs-binder/master&#39;, 10288),
+ (&#39;nteract/examples/master&#39;, 10168))
 </pre></div>
 </div>
 </div>
@@ -1080,55 +1087,55 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>ipython/ipython-in-depth/master</th>
-      <td>1571031</td>
+      <td>1618386</td>
     </tr>
     <tr>
       <th>jupyterlab/jupyterlab-demo/master</th>
-      <td>334619</td>
+      <td>335485</td>
     </tr>
     <tr>
       <th>ines/spacy-io-binder/live</th>
-      <td>145080</td>
+      <td>151412</td>
     </tr>
     <tr>
       <th>DS-100/textbook/master</th>
-      <td>121284</td>
-    </tr>
-    <tr>
-      <th>bokeh/bokeh-notebooks/master</th>
-      <td>74493</td>
+      <td>124943</td>
     </tr>
     <tr>
       <th>jupyterlab/jupyterlab-demo/try.jupyter.org</th>
-      <td>56761</td>
+      <td>83268</td>
+    </tr>
+    <tr>
+      <th>bokeh/bokeh-notebooks/master</th>
+      <td>77593</td>
     </tr>
     <tr>
       <th>binder-examples/r/master</th>
-      <td>55731</td>
+      <td>57825</td>
     </tr>
     <tr>
       <th>rationalmatter/juno-demo-notebooks/master</th>
-      <td>46696</td>
-    </tr>
-    <tr>
-      <th>QuantStack/xeus-cling/stable</th>
-      <td>40078</td>
+      <td>48439</td>
     </tr>
     <tr>
       <th>binder-examples/requirements/master</th>
-      <td>34817</td>
+      <td>44305</td>
+    </tr>
+    <tr>
+      <th>QuantStack/xeus-cling/stable</th>
+      <td>41522</td>
     </tr>
     <tr>
       <th>ines/spacy-course/binder</th>
-      <td>23254</td>
+      <td>25141</td>
     </tr>
     <tr>
       <th>numba/numba-examples/master</th>
-      <td>23021</td>
+      <td>23959</td>
     </tr>
     <tr>
       <th>binder-examples/julia-python/master</th>
-      <td>21022</td>
+      <td>21023</td>
     </tr>
     <tr>
       <th>QISKit/qiskit-tutorial/master</th>
@@ -1136,27 +1143,27 @@ div.rendered_html tbody tr:hover {
     </tr>
     <tr>
       <th>RasaHQ/rasa_core/master</th>
-      <td>19107</td>
+      <td>19135</td>
     </tr>
     <tr>
       <th>dask/dask-examples/master</th>
-      <td>13842</td>
+      <td>14623</td>
     </tr>
     <tr>
       <th>data-8/textbook/gh-pages</th>
-      <td>11798</td>
+      <td>12135</td>
     </tr>
     <tr>
       <th>wshuyi/demo-spacy-text-processing/master</th>
-      <td>11471</td>
+      <td>11891</td>
+    </tr>
+    <tr>
+      <th>rasahq/docs-binder/master</th>
+      <td>10288</td>
     </tr>
     <tr>
       <th>nteract/examples/master</th>
-      <td>9996</td>
-    </tr>
-    <tr>
-      <th>bethgelab/bwki-notebooks/master</th>
-      <td>8703</td>
+      <td>10168</td>
     </tr>
   </tbody>
 </table>
@@ -1203,11 +1210,11 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>GitHub    3376043
-GitLab      12119
-Gist        11521
-Git          4558
-Zenodo        151
+<span></span>GitHub    3513648
+Gist        14585
+GitLab      12379
+Git          4756
+Zenodo        166
 Name: provider, dtype: int64
 </pre></div>
 </div>
@@ -1259,23 +1266,23 @@ Name: provider, dtype: int64
     </tr>
     <tr>
       <th>rruizz/inforfis/master</th>
-      <td>1260</td>
+      <td>1261</td>
     </tr>
     <tr>
       <th>lfortran/web/lfortran-binder/master</th>
-      <td>1028</td>
+      <td>1058</td>
     </tr>
     <tr>
       <th>ul-fri/ovs/python/master</th>
-      <td>799</td>
+      <td>803</td>
     </tr>
     <tr>
       <th>utt-connected-innovation/ia-course-2019/master</th>
-      <td>796</td>
+      <td>799</td>
     </tr>
     <tr>
       <th>DGothrek/ipyaggrid/binder-demo</th>
-      <td>596</td>
+      <td>636</td>
     </tr>
     <tr>
       <th>bhugueney/cxx-init-for-python-dev/master</th>
@@ -1315,7 +1322,7 @@ Name: provider, dtype: int64
     </tr>
     <tr>
       <th>memeplex/dhouse/master</th>
-      <td>120</td>
+      <td>121</td>
     </tr>
     <tr>
       <th>wichit2s/programmingfundamentals/master</th>
@@ -1323,54 +1330,54 @@ Name: provider, dtype: int64
     </tr>
     <tr>
       <th>open-scientist/formation-data-reproductibilite/master</th>
-      <td>110</td>
+      <td>111</td>
     </tr>
     <tr>
       <th>slloyd/python-introduction/master</th>
-      <td>98</td>
+      <td>101</td>
     </tr>
     <tr>
       <th>kitsunix/pyHIBP/pyHIBP-binder/master</th>
-      <td>93</td>
+      <td>97</td>
     </tr>
     <tr>
       <th>biehl/jscatter/master</th>
-      <td>88</td>
+      <td>91</td>
     </tr>
     <tr>
       <th>kkmann/shortcourse-data-science-toolbox/master</th>
       <td>84</td>
     </tr>
     <tr>
-      <th>fkohrt/mri/master</th>
-      <td>78</td>
+      <th>energyincities/besos-public/master</th>
+      <td>81</td>
     </tr>
     <tr>
-      <th>energyincities/besos-public/master</th>
-      <td>76</td>
+      <th>fkohrt/mri/master</th>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>snowhitiger/learn_deep_learning/master</th>
+      <td>80</td>
     </tr>
     <tr>
       <th>andrey.kovalev/imagination/master</th>
       <td>71</td>
     </tr>
     <tr>
-      <th>snowhitiger/learn_deep_learning/master</th>
-      <td>69</td>
-    </tr>
-    <tr>
       <th>rruizz/inforfis/autin</th>
       <td>62</td>
+    </tr>
+    <tr>
+      <th>g2lab/fossgis2019-geopython-vector/master</th>
+      <td>60</td>
     </tr>
     <tr>
       <th>oscar6echo/ipyupload-repo2docker/master</th>
       <td>60</td>
     </tr>
     <tr>
-      <th>brivadeneira/recursos-didacticos-telecomunicaciones/master</th>
-      <td>60</td>
-    </tr>
-    <tr>
-      <th>g2lab/fossgis2019-geopython-vector/master</th>
+      <th>sgmarkets/sgmarkets-api-notebooks/master</th>
       <td>60</td>
     </tr>
     <tr>
@@ -1378,55 +1385,11 @@ Name: provider, dtype: int64
       <td>...</td>
     </tr>
     <tr>
-      <th>sucan/MSAE-E4215/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>daksh7011/metis/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>jibe-b/crowdsource-science-improvement/dev</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>shoeche/tutorials/cteq19</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>ssorcerer/reports/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>rdubwiley/mi_campaign_finance/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>rahulvigneswaran/staticdmd/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>burdickjp/diamondknobpresentation/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
       <th>jdiep/master-thesis/master</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>coobas/dask-pipelines/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>katylava/minimal-binderhub/f7ba3435f01c9ad9609a7c76f4d05c5003d23037</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>valentin.queloz/jupyther/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>hassakura/integracao_low_eans/master</th>
+      <th>passakornC/test/master</th>
       <td>1</td>
     </tr>
     <tr>
@@ -1434,7 +1397,43 @@ Name: provider, dtype: int64
       <td>1</td>
     </tr>
     <tr>
-      <th>gtsaito/binder-test/master</th>
+      <th>ozborniasty1/junotry/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>daksh7011/metis/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>coobas/dask-pipelines/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>nmg/704p2/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>nmg/enee704h1/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>plotnips/numerical_linear_algebra_notebooks/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>anarcat/terms-benchmarks/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>katylava/minimal-binderhub/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>ppleskov/kaggle-days-sf/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>adophobr/lightwavesystens/master</th>
       <td>1</td>
     </tr>
     <tr>
@@ -1446,11 +1445,15 @@ Name: provider, dtype: int64
       <td>1</td>
     </tr>
     <tr>
-      <th>uysalnet/comparex/master</th>
+      <th>knighteq/jupyter/master</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>david-chen/test/master</th>
+      <th>ruivieira/matplotrust/b64</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>rogermarkussen/test/master</th>
       <td>1</td>
     </tr>
     <tr>
@@ -1458,27 +1461,7 @@ Name: provider, dtype: int64
       <td>1</td>
     </tr>
     <tr>
-      <th>knighteq/jupyter/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>alandrex/dhbw-2019-1/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>ppleskov/kaggle-days-sf/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>praj88/deepembeddings/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>hassakura/teste_exportcsv/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>katylava/minimal-binderhub/master</th>
+      <th>elfua/ipython-notebooks/master</th>
       <td>1</td>
     </tr>
     <tr>
@@ -1486,20 +1469,44 @@ Name: provider, dtype: int64
       <td>1</td>
     </tr>
     <tr>
-      <th>airss/airss-demo/dev</th>
+      <th>rdubwiley/mi_campaign_finance/master</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>damonlh/puma/master</th>
+      <th>rahulvigneswaran/staticdmd/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>alandrex/dhbw-2019-1/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>ecuracosta/notebooks-test/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>littleredridingfox/decision-theory-coursework/master</th>
       <td>1</td>
     </tr>
     <tr>
       <th>prokopevav85/geojsontest/master</th>
       <td>1</td>
     </tr>
+    <tr>
+      <th>praj88/deepembeddings/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>lokeller/matrix-bot/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>burdickjp/diamondknobpresentation/master</th>
+      <td>1</td>
+    </tr>
   </tbody>
 </table>
-<p>319 rows × 1 columns</p>
+<p>329 rows × 1 columns</p>
 </div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1564,20 +1571,24 @@ Name: provider, dtype: int64
       <td>74</td>
     </tr>
     <tr>
-      <th>https://collaborating.tuhh.de/cip3725/ib_base.git/0a1f4f66a1a3c29ff347b2abc79bb292b0be17ca</th>
-      <td>68</td>
+      <th>https://gitlab.rc.uab.edu/mcbios19_single_cell/single_cell_rnaseq_hands-on_1.git/a20f707fc0b67f6eb4f9bf85a5daacc52c125df6</th>
+      <td>73</td>
     </tr>
     <tr>
-      <th>https://gitlab.rc.uab.edu/mcbios19_single_cell/single_cell_rnaseq_hands-on_1.git/a20f707fc0b67f6eb4f9bf85a5daacc52c125df6</th>
-      <td>67</td>
+      <th>https://collaborating.tuhh.de/cip3725/ib_base.git/0a1f4f66a1a3c29ff347b2abc79bb292b0be17ca</th>
+      <td>69</td>
     </tr>
     <tr>
       <th>https://collaborating.tuhh.de/xldrkp/jupyter-notebook-beispiel/e895284be3c0a128ed97dc007fcd7497ef19d2bc</th>
-      <td>55</td>
+      <td>59</td>
     </tr>
     <tr>
       <th>https://gitlab.mech.kuleuven.be/rob-expressiongraphs/docker/etasl-binder.git/127d6c9f33a938a98607505ef30237b5223000e4</th>
-      <td>53</td>
+      <td>55</td>
+    </tr>
+    <tr>
+      <th>https://git.axisgroup.com/publicgrp/datascience/training/027147d86306078761f6fc3675b83a500e4a8954</th>
+      <td>49</td>
     </tr>
     <tr>
       <th>https://git.unilim.fr/grossp01/notebooks.git/6d65058071a0d5a62ab032800932c2a3740a4196</th>
@@ -1588,12 +1599,12 @@ Name: provider, dtype: int64
       <td>42</td>
     </tr>
     <tr>
-      <th>https://risk-engineering.org/git/notebooks.git/928cb3f525f41beb132a1eeb046e1c35f07d770e</th>
-      <td>41</td>
+      <th>https://api.jovian.ai/git/e556978bda9343f3b30b3a9fd2a25012_4.git/53d6f783b1521cb8b7c94000fcf2f8b4f3b1518c</th>
+      <td>42</td>
     </tr>
     <tr>
-      <th>https://api.jovian.ai/git/e556978bda9343f3b30b3a9fd2a25012_4.git/53d6f783b1521cb8b7c94000fcf2f8b4f3b1518c</th>
-      <td>39</td>
+      <th>https://risk-engineering.org/git/notebooks.git/928cb3f525f41beb132a1eeb046e1c35f07d770e</th>
+      <td>41</td>
     </tr>
     <tr>
       <th>https://collaborating.tuhh.de/xldrkp/jupyter-test/9b9e2fb383107ff9c4bfdb22c3f97f5c62ed1f6d</th>
@@ -1608,11 +1619,15 @@ Name: provider, dtype: int64
       <td>37</td>
     </tr>
     <tr>
+      <th>https://api.jovian.ai/git/e5cfe043873f4f3c9287507016747ae5_7.git/6bdf62a8772359a94a41081a2b7ac011e7911c84</th>
+      <td>36</td>
+    </tr>
+    <tr>
       <th>https://gitlab.oceantrack.org/otndc/fact-workshop/a174f5bc60cf9f0c5b86851204c7c85fcfb98131</th>
       <td>35</td>
     </tr>
     <tr>
-      <th>https://risk-engineering.org/git/notebooks.git/527b4fdaa5fe43294ed5de196b96262b1c60522b</th>
+      <th>https://risk-engineering.org/git/notebooks.git/a18f7f0e6a707ccfa4478d3fc73d53ada11605fb</th>
       <td>34</td>
     </tr>
     <tr>
@@ -1620,11 +1635,11 @@ Name: provider, dtype: int64
       <td>34</td>
     </tr>
     <tr>
-      <th>https://risk-engineering.org/git/notebooks.git/a18f7f0e6a707ccfa4478d3fc73d53ada11605fb</th>
+      <th>https://risk-engineering.org/git/notebooks.git/527b4fdaa5fe43294ed5de196b96262b1c60522b</th>
       <td>34</td>
     </tr>
     <tr>
-      <th>https://api.jovian.ai/git/e5cfe043873f4f3c9287507016747ae5_7.git/6bdf62a8772359a94a41081a2b7ac011e7911c84</th>
+      <th>https://y2kbugger@bitbucket.org/y2kbugger/sapy.git/de5086ea943c94fec40e14478257ab2716e28c96</th>
       <td>32</td>
     </tr>
     <tr>
@@ -1636,11 +1651,15 @@ Name: provider, dtype: int64
       <td>30</td>
     </tr>
     <tr>
-      <th>https://risk-engineering.org/git/notebooks.git/f55ff6d75610fa3d07a85623381645153ca141f0</th>
-      <td>28</td>
+      <th>https://framagit.org/mfauvel/omp_machine_learning/77d246991186d758147fc280eeef0eed563d525f</th>
+      <td>29</td>
     </tr>
     <tr>
       <th>https://git.rwth-aachen.de/iks-public/mlsap/79c5e4a6b2aa749308c1db4780dfc275a27560ee</th>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>https://risk-engineering.org/git/notebooks.git/f55ff6d75610fa3d07a85623381645153ca141f0</th>
       <td>28</td>
     </tr>
     <tr>
@@ -1648,139 +1667,127 @@ Name: provider, dtype: int64
       <td>27</td>
     </tr>
     <tr>
-      <th>https://y2kbugger@bitbucket.org/y2kbugger/sapy.git/de5086ea943c94fec40e14478257ab2716e28c96</th>
-      <td>27</td>
-    </tr>
-    <tr>
-      <th>https://framagit.org/mfauvel/omp_machine_learning/77d246991186d758147fc280eeef0eed563d525f</th>
-      <td>27</td>
-    </tr>
-    <tr>
-      <th>https://risk-engineering.org/git/notebooks.git/2d83cc0c7a2b63676185e0b36978a765a42deeac</th>
-      <td>25</td>
-    </tr>
-    <tr>
       <th>https://bitbucket.org/saibotk/tp2_python/f1c06775263afbd814e9b08139eddf792873b050</th>
-      <td>25</td>
+      <td>26</td>
     </tr>
     <tr>
       <th>...</th>
       <td>...</td>
     </tr>
     <tr>
-      <th>https://gist.github.com/a38d389a18af62de2943c10e2c367f8d.git/73f4e1b132d4ff83c89eed286adc3c6661ee8d7f</th>
+      <th>https://github.com/groznyjgrad/jptr-notes/df06a44ebab118e7812efc2de08294ea8ab3bccc</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://gist.github.com/a38d389a18af62de2943c10e2c367f8d.git/a1918e89aaee1b4f3fd21fc4a8170bc95c5a1c30</th>
+      <th>https://github.com/lizapol1/TMDB_movie_dataset.git/master</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://gist.github.com/a38d389a18af62de2943c10e2c367f8d.git/b9d8579a3728119d6bafa6fb84c206e1a775856e</th>
+      <th>https://github.com/msc0953/robotkernel/b9aed42102276cd993dd237ab5f820b001afc773</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://gitlab.in2p3.fr/gregoire.henning/tiipp-invprob-2018/d874f3b9dcfa20c04266ad852246cd43178d0f42</th>
+      <th>https://github.com/norvig/pytudes/171486979aa4facf7692d29a8576ae8fbf26b884</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://gitlab.lrde.epita.fr/adl/binder-test/a556d364f1940c25aa24748f624c46bad5f4d803</th>
+      <th>https://github.com/olivierzach/GTx_6040.git/75a70770fe1ffb924c62f4a2544aeb55f3dcc789</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://gitlab.mech.kuleuven.be/rob-expressiongraphs/docker/etasl-binder.git/63596595694d466c4fb4a2c544042291f0a05a94</th>
+      <th>https://github.com/ostapkharysh/Data_visualisation/42c00131e615ae8444d3ccf680fa24e81050f275</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://darkade@bitbucket.org/tesel/patentdata.git/01f29ef840a4ab3aa6350b91c502d81b680f0e51</th>
+      <th>https://github.com/rmitsch/mybinder-test/51e1202b83cf0270bd5dfa7350d0193b648dc931</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://framagit.org/arnall/preciso/b619ef4bf1ebc83f6307870caff54edb33fef0fb</th>
+      <th>https://github.com/rwightman/pytorch-image-models/master</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://darkade@bitbucket.org/tesel/patentdata.git/28496a3edfa0f5098a0c336169c88bec82ffed4a</th>
+      <th>https://github.com/san-soucie/probability_and_statistics/2717a4ea2807905e46eaa02909a8c42082877cc2</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://darkade@bitbucket.org/tesel/patentdata.git/44730650b065e989532bf8d82d5ab5ac0fcccec0</th>
+      <th>https://github.com/san-soucie/probability_and_statistics/3b7d868cbc55cf0386682ff5935c5387d4423fca</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://darkade@bitbucket.org/tesel/patentdata.git/4a7811131798048fbde734cd0b04ae2eb72a41ed</th>
+      <th>https://github.com/sazack/Coursera-Capstone/07affc5dc4b888c6c00ccc8ded742b756dc5359a</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://darkade@bitbucket.org/tesel/patentdata.git/4e277523684a37584d5a1df5efdb23b6b7548af0</th>
+      <th>https://github.com/schoend/Hello/f91ae65cf1f47c206855d04c0956677eb74e5d47</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://gitlab.obspm.fr/kaouij/calcephpy-on-my-binder-project.git/0074a3f7fbec2f7cb682494892f1d98cb01d2c2b</th>
+      <th>https://github.com/sidujjain/notebooks.git/ddf57e8d9a0eb6756a23f7e6f1e279374ac25a74</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://darkade@bitbucket.org/tesel/patentdata.git/8182f341f7431f3e6d7928a938f0181882f0762f</th>
+      <th>https://github.com/tsusetzky/GK_Prog_kmeans.git/6e0f6d55081b59954516f4a4f69a2d7d9a875782</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://darkade@bitbucket.org/tesel/patentdata.git/ac6735523736c6fbddba9790f054aa5dc60a9f38</th>
+      <th>https://gitlab.climent-pommeret.red/Chopopope/inf3712019-compilation/59d66082573d5672237e57bd9d20b4f7a8965cb7</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://gitlab.obspm.fr/kaouij/binder-environment.git/e310194ddccbfafe6dbcd06981e91fedf900b786</th>
+      <th>https://github.com/wbogers/notebooks.git/2887c6399c52809ba4eb98328ecb4c79e3bb4b83</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://darkade@bitbucket.org/tesel/patentdata.git/c6a51672b1f5c84b3995241771212d693bb84ddf</th>
+      <th>https://github.com/x1matrix/midas_x1.git/master</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://delthery@bitbucket.org/delthery/jupyter.book.git/532416f5a1707ee71f995df09800063fbe3bace7</th>
+      <th>https://github.com/y-pakorn/py101assignment.git/b65290978116de348414496e5b9ef7e5e768483b</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://dev.azure.com/drandrewstraw/2019-sose-wm01/_git/2019-sose-wm01-intro/62c83f16313ccd5d9962ce354c1c8ce29d708d01</th>
+      <th>https://github.com/yc-tsui/electoral-systems/3a7727641ab6f187b95ee3d95a01f6ebbfc02a22</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://gitlab.obspm.fr/kaouij/binder-environment.git/ad2d15d90b66c84d2661424b6803d9b54fb4f78a</th>
+      <th>https://github.molgen.mpg.de/ledwards/FLASHcalculator/9da41d5d86cd75d9f96ac779b2b64e3e79932d9f</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://dev.renku.ch/gitlab/rokroskar/vom_natt.git/e4c52edd269eb740a1783d5d0cb82fbc3d334323</th>
+      <th>https://gitlab+deploy-token-2:ypG2whtp1riuGWwZ_suz@git.fs.uni-saarland.de/jotez/useclecture2019.git/c848bb606409dcc305d82f18f0aa3b208e13e666</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://gitlab.mpcdf.mpg.de/jbuett/predict_contentillustration/4f4b2a3be6cedfce078482b45806b6738d3c1413</th>
+      <th>https://gitlab.cern.ch/fast-hep/public/fast_cms_public_tutorial.git/b9b54948839739b6ed7e087fe8e1b1eec724145a</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://dominikschroeck.de/gitea/dominik/stockquote_analyses/907bac1991430ccfb325b0c70a816a20b6bf1f35</th>
+      <th>https://gitlab.cern.ch/fsauerbu/nn-playground.git/d49192071bf899625236759647d8f47e74d47a88</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://dominikschroeck.de/gitea/dominik/stockquote_analyses/92445b46d65253c165d57809f3a5298e0551e9bf</th>
+      <th>https://gitlab.cern.ch/fsauerbu/vartrain.git/1f5a6e0ca304582de5ed8d3cf83403eeac4f95cf</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://dominikschroeck.de/gitea/dominik/stockquote_analyses/961d014669a4fd6e3cbce7bd8c4b716c19fd724b</th>
+      <th>https://gitlab.cern.ch/fsauerbu/vartrain.git/e80ab6680cc7f9706bd939fc9173f365acb9aee6</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://gitlab.mpcdf.mpg.de/jbuett/detect_illustrations/3906e2206752a1a42375713b82aaa9144bd711d5</th>
+      <th>https://gitlab.cern.ch/fsauerbu/vartrain.git/master</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://gitlab.mech.kuleuven.be/u0002405/binder-tst.git/a3cb7e3dc1ad41abca6a608bf9c22d26a6aaaec5</th>
+      <th>https://gitlab.cern.ch/mproffit/TestStandIPCalculation/df0c91788e5cc4c05a2defdfe082a97ffed16401</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://framagit.org/arnall/preciso/4a4bcd8df7e6ffe00a67ff7f081edb72334f8347</th>
+      <th>https://gitlab.climent-pommeret.red/Chopopope/inf3212019-jupyter/7a62f0124dda06a83efe2c3f1d5bb24eeba24c6a</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://framagit.org/arnall/preciso/b353b39a3b43add1052179385a09be9a4b7df3fa</th>
+      <th>https://gitlab.climent-pommeret.red/Chopopope/inf3212019-jupyter/e62b5bc9fdd81f21f887d3ffc7def168577ffe2a</th>
       <td>1</td>
     </tr>
     <tr>
@@ -1789,7 +1796,7 @@ Name: provider, dtype: int64
     </tr>
   </tbody>
 </table>
-<p>824 rows × 1 columns</p>
+<p>857 rows × 1 columns</p>
 </div></div>
 </div>
 <div class="nbinput nblast docutils container">
