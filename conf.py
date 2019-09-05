@@ -49,7 +49,7 @@ nbsphinx_execute = "always"
 nbsphinx_prolog = """
 {% set docname = env.doc2path(env.docname, base=None) %}
 
-.. note::
+.. admonition:: Live Notebook
 
     You can run this notebook in a `live session <https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/{{ docname }}>`_ |Binder| or view it `on Github <https://github.com/dask/dask-examples/blob/master/{{ docname }}>`_.
 
