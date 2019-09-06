@@ -448,7 +448,10 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
+<div class="admonition-live-notebook admonition">
+<p class="admonition-title">Live Notebook</p>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/machine-learning/voting-classifier.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/machine-learning/voting-classifier.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/machine-learning/voting-classifier.ipynb">on Github</a>.</p>
+</div>
 <div class="section" id="Use-Voting-Classifiers">
 <h1>Use Voting Classifiers<a class="headerlink" href="#Use-Voting-Classifiers" title="Permalink to this headline">¶</a></h1>
 <p>A <a class="reference external" href="http://scikit-learn.org/stable/modules/ensemble.html#voting-classifier">Voting classifier</a> model combines multiple different models (i.e., sub-estimators) into a single model, which is (ideally) stronger than any of the individual models alone.</p>
@@ -508,8 +511,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 23.9 ms, sys: 25.3 ms, total: 49.2 ms
-Wall time: 1.11 s
+CPU times: user 17.8 ms, sys: 28.3 ms, total: 46.2 ms
+Wall time: 1.07 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -553,7 +556,7 @@ Wall time: 1.11 s
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:36083</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:43127</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -595,8 +598,8 @@ VotingClassifier(estimators=[(&#39;sgd&#39;, SGDClassifier(alpha=0.0001, average
   max_iter=-1, probability=False, random_state=None, shrinking=True,
   tol=0.001, verbose=False))],
          flatten_transform=None, n_jobs=-1, voting=&#39;hard&#39;, weights=None)
-CPU times: user 99.6 ms, sys: 9.95 ms, total: 110 ms
-Wall time: 976 ms
+CPU times: user 93.2 ms, sys: 13.3 ms, total: 107 ms
+Wall time: 937 ms
 </pre></div></div>
 </div>
 <p>Note, that we see no advantage of using dask because we are using a local cluster rather than a distributed cluster and sklearn is already using all my computer’s cores. If we were using a distributed cluster, dask would enable us to take advantage of the multiple machines and train sub-estimators across them.</p>

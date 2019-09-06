@@ -454,7 +454,10 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
+<div class="admonition-live-notebook admonition">
+<p class="admonition-title">Live Notebook</p>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/machine-learning/tpot.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/machine-learning/tpot.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/machine-learning/tpot.ipynb">on Github</a>.</p>
+</div>
 <div class="section" id="Automate-Machine-Learning-with-TPOT">
 <h1>Automate Machine Learning with TPOT<a class="headerlink" href="#Automate-Machine-Learning-with-TPOT" title="Permalink to this headline">¶</a></h1>
 <p>This example shows how <a class="reference external" href="https://epistasislab.github.io/tpot/">TPOT</a> can be used with Dask.</p>
@@ -495,38 +498,38 @@ div.rendered_html tbody tr:hover {
 Collecting tpot
   Downloading https://files.pythonhosted.org/packages/b5/4e/9ce813120662d9bd357aac6cb922f4b08b85049ed86eb47fe34a02d27f14/TPOT-0.10.2-py3-none-any.whl (75kB)
 
-Collecting joblib&gt;=0.10.3 (from tpot)
-  Downloading https://files.pythonhosted.org/packages/cd/c1/50a758e8247561e58cb87305b1e90b171b8c767b15b12a1734001f41d356/joblib-0.13.2-py2.py3-none-any.whl (278kB)
-
-Collecting stopit&gt;=1.1.1 (from tpot)
-  Downloading https://files.pythonhosted.org/packages/35/58/e8bb0b0fb05baf07bbac1450c447d753da65f9701f551dca79823ce15d50/stopit-1.1.2.tar.gz
-Requirement already satisfied: scipy&gt;=0.19.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from tpot) (1.2.1)
-Requirement already satisfied: scikit-learn&gt;=0.18.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from tpot) (0.20.4)
-Requirement already satisfied: numpy&gt;=1.12.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from tpot) (1.16.4)
 Collecting update-checker&gt;=0.16 (from tpot)
   Downloading https://files.pythonhosted.org/packages/17/c9/ab11855af164d03be0ff4fddd4c46a5bd44799a9ecc1770e01a669c21168/update_checker-0.16-py2.py3-none-any.whl
+Requirement already satisfied: numpy&gt;=1.12.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from tpot) (1.16.4)
 Collecting deap&gt;=1.0 (from tpot)
   Downloading https://files.pythonhosted.org/packages/01/71/7b68e4a79812afbf074be0286d21f54444e01c8612c747241bc0cfaeb6c5/deap-1.3.0-cp37-cp37m-manylinux2010_x86_64.whl (152kB)
 
+Requirement already satisfied: scipy&gt;=0.19.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from tpot) (1.2.1)
+Collecting stopit&gt;=1.1.1 (from tpot)
+  Downloading https://files.pythonhosted.org/packages/35/58/e8bb0b0fb05baf07bbac1450c447d753da65f9701f551dca79823ce15d50/stopit-1.1.2.tar.gz
 Collecting tqdm&gt;=4.26.0 (from tpot)
-  Downloading https://files.pythonhosted.org/packages/02/56/60a5b1c2e634d8e4ff89c7bab47645604e19658f448050a21facffd43796/tqdm-4.33.0-py2.py3-none-any.whl (50kB)
+  Downloading https://files.pythonhosted.org/packages/dc/88/d3213e2f3492daf09d8b41631ad6899f56db17ce83ea9c8a579902bafe5e/tqdm-4.35.0-py2.py3-none-any.whl (50kB)
 
-Requirement already satisfied: pandas&gt;=0.20.2 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from tpot) (0.25.0)
+Requirement already satisfied: pandas&gt;=0.20.2 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from tpot) (0.25.1)
+Collecting joblib&gt;=0.10.3 (from tpot)
+  Downloading https://files.pythonhosted.org/packages/cd/c1/50a758e8247561e58cb87305b1e90b171b8c767b15b12a1734001f41d356/joblib-0.13.2-py2.py3-none-any.whl (278kB)
+
+Requirement already satisfied: scikit-learn&gt;=0.18.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from tpot) (0.20.4)
 Requirement already satisfied: requests&gt;=2.3.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from update-checker&gt;=0.16-&gt;tpot) (2.22.0)
 Requirement already satisfied: python-dateutil&gt;=2.6.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from pandas&gt;=0.20.2-&gt;tpot) (2.8.0)
 Requirement already satisfied: pytz&gt;=2017.2 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from pandas&gt;=0.20.2-&gt;tpot) (2019.2)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&gt;=2.3.0-&gt;update-checker&gt;=0.16-&gt;tpot) (1.25.3)
+Requirement already satisfied: idna&lt;2.9,&gt;=2.5 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&gt;=2.3.0-&gt;update-checker&gt;=0.16-&gt;tpot) (2.8)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&gt;=2.3.0-&gt;update-checker&gt;=0.16-&gt;tpot) (2019.6.16)
 Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&gt;=2.3.0-&gt;update-checker&gt;=0.16-&gt;tpot) (3.0.4)
-Requirement already satisfied: idna&lt;2.9,&gt;=2.5 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&gt;=2.3.0-&gt;update-checker&gt;=0.16-&gt;tpot) (2.8)
-Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&gt;=2.3.0-&gt;update-checker&gt;=0.16-&gt;tpot) (1.25.3)
 Requirement already satisfied: six&gt;=1.5 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from python-dateutil&gt;=2.6.1-&gt;pandas&gt;=0.20.2-&gt;tpot) (1.12.0)
 Building wheels for collected packages: stopit
   Building wheel for stopit (setup.py) ... - done
-  Created wheel for stopit: filename=stopit-1.1.2-cp37-none-any.whl size=11956 sha256=1400049849062e928a784f1e447fe8321c818a334f709357f46e3a25547728db
+  Created wheel for stopit: filename=stopit-1.1.2-cp37-none-any.whl size=11958 sha256=f9a30540da7eb25ce4af938487818314338eb1d1ddd155759e24d003a5958de4
   Stored in directory: /home/travis/.cache/pip/wheels/3c/85/2b/2580190404636bfc63e8de3dff629c03bb795021e1983a6cc7
 Successfully built stopit
-Installing collected packages: joblib, stopit, update-checker, deap, tqdm, tpot
-Successfully installed deap-1.3.0 joblib-0.13.2 stopit-1.1.2 tpot-0.10.2 tqdm-4.33.0 update-checker-0.16
+Installing collected packages: update-checker, deap, stopit, tqdm, joblib, tpot
+Successfully installed deap-1.3.0 joblib-0.13.2 stopit-1.1.2 tpot-0.10.2 tqdm-4.35.0 update-checker-0.16
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -566,7 +569,7 @@ Successfully installed deap-1.3.0 joblib-0.13.2 stopit-1.1.2 tpot-0.10.2 tqdm-4.
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:42313</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:40767</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>

@@ -458,7 +458,10 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
+<div class="admonition-live-notebook admonition">
+<p class="admonition-title">Live Notebook</p>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/bag.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/bag.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/bag.ipynb">on Github</a>.</p>
+</div>
 <div class="section" id="Dask-Bags">
 <h1>Dask Bags<a class="headerlink" href="#Dask-Bags" title="Permalink to this headline">¶</a></h1>
 <p>Dask Bag implements operations like <code class="docutils literal notranslate"><span class="pre">map</span></code>, <code class="docutils literal notranslate"><span class="pre">filter</span></code>, <code class="docutils literal notranslate"><span class="pre">groupby</span></code> and aggregations on collections of Python objects. It does this in parallel and in small memory using Python iterators. It is similar to a parallel version of itertools or a Pythonic version of the PySpark RDD.</p>
@@ -489,7 +492,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:45057</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:38669</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -560,8 +563,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 28, &#34;name&#34;: [&#34;Karleen&#34;, &#34;Medina&#34;], &#34;occupation&#34;: &#34;Bus Valeter&#34;, &#34;telephone&#34;: &#34;(379) 007-5536&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;398 Danton Highway&#34;, &#34;city&#34;: &#34;Petersburg&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;2536 9121 5935 1068&#34;, &#34;expiration-date&#34;: &#34;10/22&#34;}}
-{&#34;age&#34;: 37, &#34;name&#34;: [&#34;Bebe&#34;, &#34;Stephenson&#34;], &#34;occupation&#34;: &#34;Sales Administrator&#34;, &#34;telephone&#34;: &#34;748-209-3589&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;146 Dashiell Hammett Bypass&#34;, &#34;city&#34;: &#34;Kennesaw&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3449 951065 47736&#34;, &#34;expiration-date&#34;: &#34;05/17&#34;}}
+{&#34;age&#34;: 27, &#34;name&#34;: [&#34;Jamie&#34;, &#34;Love&#34;], &#34;occupation&#34;: &#34;Welfare Rights Officer&#34;, &#34;telephone&#34;: &#34;010.399.4239&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;360 Post Mall&#34;, &#34;city&#34;: &#34;Norco&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;2434 3036 1556 2766&#34;, &#34;expiration-date&#34;: &#34;05/18&#34;}}
+{&#34;age&#34;: 27, &#34;name&#34;: [&#34;Joye&#34;, &#34;Ware&#34;], &#34;occupation&#34;: &#34;Television Director&#34;, &#34;telephone&#34;: &#34;390-089-1549&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1137 Crane Gate&#34;, &#34;city&#34;: &#34;Annapolis&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;4278 7223 7105 5506&#34;, &#34;expiration-date&#34;: &#34;09/17&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -582,7 +585,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>dask.bag&lt;loads-d..., npartitions=10&gt;
+<span></span>dask.bag&lt;loads-4..., npartitions=10&gt;
 </pre></div>
 </div>
 </div>
@@ -600,19 +603,20 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 28,
-  &#39;name&#39;: [&#39;Karleen&#39;, &#39;Medina&#39;],
-  &#39;occupation&#39;: &#39;Bus Valeter&#39;,
-  &#39;telephone&#39;: &#39;(379) 007-5536&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;398 Danton Highway&#39;, &#39;city&#39;: &#39;Petersburg&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2536 9121 5935 1068&#39;,
-   &#39;expiration-date&#39;: &#39;10/22&#39;}},
- {&#39;age&#39;: 37,
-  &#39;name&#39;: [&#39;Bebe&#39;, &#39;Stephenson&#39;],
-  &#39;occupation&#39;: &#39;Sales Administrator&#39;,
-  &#39;telephone&#39;: &#39;748-209-3589&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;146 Dashiell Hammett Bypass&#39;, &#39;city&#39;: &#39;Kennesaw&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3449 951065 47736&#39;, &#39;expiration-date&#39;: &#39;05/17&#39;}})
+<span></span>({&#39;age&#39;: 27,
+  &#39;name&#39;: [&#39;Jamie&#39;, &#39;Love&#39;],
+  &#39;occupation&#39;: &#39;Welfare Rights Officer&#39;,
+  &#39;telephone&#39;: &#39;010.399.4239&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;360 Post Mall&#39;, &#39;city&#39;: &#39;Norco&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2434 3036 1556 2766&#39;,
+   &#39;expiration-date&#39;: &#39;05/18&#39;}},
+ {&#39;age&#39;: 27,
+  &#39;name&#39;: [&#39;Joye&#39;, &#39;Ware&#39;],
+  &#39;occupation&#39;: &#39;Television Director&#39;,
+  &#39;telephone&#39;: &#39;390-089-1549&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1137 Crane Gate&#39;, &#39;city&#39;: &#39;Annapolis&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4278 7223 7105 5506&#39;,
+   &#39;expiration-date&#39;: &#39;09/17&#39;}})
 </pre></div>
 </div>
 </div>
@@ -634,19 +638,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 37,
-  &#39;name&#39;: [&#39;Bebe&#39;, &#39;Stephenson&#39;],
-  &#39;occupation&#39;: &#39;Sales Administrator&#39;,
-  &#39;telephone&#39;: &#39;748-209-3589&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;146 Dashiell Hammett Bypass&#39;, &#39;city&#39;: &#39;Kennesaw&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3449 951065 47736&#39;, &#39;expiration-date&#39;: &#39;05/17&#39;}},
- {&#39;age&#39;: 61,
-  &#39;name&#39;: [&#39;Estell&#39;, &#39;Mckee&#39;],
-  &#39;occupation&#39;: &#39;Parts Manager&#39;,
-  &#39;telephone&#39;: &#39;636-224-6535&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;69 Liberty Path&#39;, &#39;city&#39;: &#39;Buckeye&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4865 7710 2170 7940&#39;,
-   &#39;expiration-date&#39;: &#39;01/17&#39;}})
+<span></span>({&#39;age&#39;: 48,
+  &#39;name&#39;: [&#39;Diedre&#39;, &#39;Harmon&#39;],
+  &#39;occupation&#39;: &#39;Operations&#39;,
+  &#39;telephone&#39;: &#39;1-375-425-8571&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;392 Park Circle&#39;, &#39;city&#39;: &#39;Huber Heights&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3419 971282 26433&#39;, &#39;expiration-date&#39;: &#39;03/22&#39;}},
+ {&#39;age&#39;: 41,
+  &#39;name&#39;: [&#39;Ramon&#39;, &#39;Charles&#39;],
+  &#39;occupation&#39;: &#39;Piano Teacher&#39;,
+  &#39;telephone&#39;: &#39;+1-(221)-461-0934&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;676 Peters Garden&#39;, &#39;city&#39;: &#39;Miami Gardens&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4733 6977 4094 9846&#39;,
+   &#39;expiration-date&#39;: &#39;04/21&#39;}})
 </pre></div>
 </div>
 </div>
@@ -664,7 +668,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(&#39;Bus Valeter&#39;, &#39;Sales Administrator&#39;)
+<span></span>(&#39;Welfare Rights Officer&#39;, &#39;Television Director&#39;)
 </pre></div>
 </div>
 </div>
@@ -727,16 +731,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[(&#39;Horse Trainer&#39;, 15),
- (&#39;Receptionist&#39;, 14),
- (&#39;Payroll Clerk&#39;, 13),
- (&#39;Probation Worker&#39;, 13),
- (&#39;Fork Lift Truck Driver&#39;, 13),
- (&#39;Recorder&#39;, 13),
- (&#39;Arts&#39;, 13),
- (&#39;Panel Beater&#39;, 13),
- (&#39;Training Advisor&#39;, 13),
- (&#39;Hop Merchant&#39;, 13)]
+<span></span>[(&#39;Quality Engineer&#39;, 16),
+ (&#39;Wood Carver&#39;, 15),
+ (&#39;Technical Advisor&#39;, 15),
+ (&#39;Classroom Aide&#39;, 15),
+ (&#39;Voluntary Worker&#39;, 14),
+ (&#39;Premises Security&#39;, 14),
+ (&#39;Presser&#39;, 14),
+ (&#39;Furniture Remover&#39;, 14),
+ (&#39;Amusement Arcade Worker&#39;, 14),
+ (&#39;Typist&#39;, 13)]
 </pre></div>
 </div>
 </div>
@@ -793,13 +797,13 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 28,
-  &#39;name&#39;: [&#39;Karleen&#39;, &#39;Medina&#39;],
-  &#39;occupation&#39;: &#39;Bus Valeter&#39;,
-  &#39;telephone&#39;: &#39;(379) 007-5536&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;398 Danton Highway&#39;, &#39;city&#39;: &#39;Petersburg&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2536 9121 5935 1068&#39;,
-   &#39;expiration-date&#39;: &#39;10/22&#39;}},)
+<span></span>({&#39;age&#39;: 27,
+  &#39;name&#39;: [&#39;Jamie&#39;, &#39;Love&#39;],
+  &#39;occupation&#39;: &#39;Welfare Rights Officer&#39;,
+  &#39;telephone&#39;: &#39;010.399.4239&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;360 Post Mall&#39;, &#39;city&#39;: &#39;Norco&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2434 3036 1556 2766&#39;,
+   &#39;expiration-date&#39;: &#39;05/18&#39;}},)
 </pre></div>
 </div>
 </div>
@@ -829,14 +833,14 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 28,
-  &#39;occupation&#39;: &#39;Bus Valeter&#39;,
-  &#39;telephone&#39;: &#39;(379) 007-5536&#39;,
-  &#39;credit-card-number&#39;: &#39;2536 9121 5935 1068&#39;,
-  &#39;credit-card-expiration&#39;: &#39;10/22&#39;,
-  &#39;name&#39;: &#39;Karleen Medina&#39;,
-  &#39;street-address&#39;: &#39;398 Danton Highway&#39;,
-  &#39;city&#39;: &#39;Petersburg&#39;},)
+<span></span>({&#39;age&#39;: 27,
+  &#39;occupation&#39;: &#39;Welfare Rights Officer&#39;,
+  &#39;telephone&#39;: &#39;010.399.4239&#39;,
+  &#39;credit-card-number&#39;: &#39;2434 3036 1556 2766&#39;,
+  &#39;credit-card-expiration&#39;: &#39;05/18&#39;,
+  &#39;name&#39;: &#39;Jamie Love&#39;,
+  &#39;street-address&#39;: &#39;360 Post Mall&#39;,
+  &#39;city&#39;: &#39;Norco&#39;},)
 </pre></div>
 </div>
 </div>
@@ -885,59 +889,59 @@ div.rendered_html tbody tr:hover {
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>28</td>
-      <td>Bus Valeter</td>
-      <td>(379) 007-5536</td>
-      <td>2536 9121 5935 1068</td>
-      <td>10/22</td>
-      <td>Karleen Medina</td>
-      <td>398 Danton Highway</td>
-      <td>Petersburg</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>37</td>
-      <td>Sales Administrator</td>
-      <td>748-209-3589</td>
-      <td>3449 951065 47736</td>
-      <td>05/17</td>
-      <td>Bebe Stephenson</td>
-      <td>146 Dashiell Hammett Bypass</td>
-      <td>Kennesaw</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>28</td>
-      <td>Gamekeeper</td>
-      <td>855-942-3923</td>
-      <td>5288 1230 0324 4185</td>
-      <td>09/22</td>
-      <td>Betsey Duke</td>
-      <td>1229 Gorham Plantation</td>
-      <td>Buena Park</td>
-    </tr>
-    <tr>
-      <th>3</th>
+      <td>0</td>
       <td>27</td>
-      <td>Mining Engineer</td>
-      <td>1-241-708-4421</td>
-      <td>3763 066352 23487</td>
-      <td>12/22</td>
-      <td>Justa Shannon</td>
-      <td>69 Quincy Sideline</td>
-      <td>O'Fallon</td>
+      <td>Welfare Rights Officer</td>
+      <td>010.399.4239</td>
+      <td>2434 3036 1556 2766</td>
+      <td>05/18</td>
+      <td>Jamie Love</td>
+      <td>360 Post Mall</td>
+      <td>Norco</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>61</td>
-      <td>Parts Manager</td>
-      <td>636-224-6535</td>
-      <td>4865 7710 2170 7940</td>
-      <td>01/17</td>
-      <td>Estell Mckee</td>
-      <td>69 Liberty Path</td>
-      <td>Buckeye</td>
+      <td>1</td>
+      <td>27</td>
+      <td>Television Director</td>
+      <td>390-089-1549</td>
+      <td>4278 7223 7105 5506</td>
+      <td>09/17</td>
+      <td>Joye Ware</td>
+      <td>1137 Crane Gate</td>
+      <td>Annapolis</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>48</td>
+      <td>Operations</td>
+      <td>1-375-425-8571</td>
+      <td>3419 971282 26433</td>
+      <td>03/22</td>
+      <td>Diedre Harmon</td>
+      <td>392 Park Circle</td>
+      <td>Huber Heights</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>41</td>
+      <td>Piano Teacher</td>
+      <td>+1-(221)-461-0934</td>
+      <td>4733 6977 4094 9846</td>
+      <td>04/21</td>
+      <td>Ramon Charles</td>
+      <td>676 Peters Garden</td>
+      <td>Miami Gardens</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>43</td>
+      <td>Patent Attorney</td>
+      <td>(752) 376-4240</td>
+      <td>4262 7252 8339 2964</td>
+      <td>05/19</td>
+      <td>Maryln Lewis</td>
+      <td>877 Jewett Extension</td>
+      <td>Haines City</td>
     </tr>
   </tbody>
 </table>
@@ -958,16 +962,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Horse Trainer             15
-Receptionist              14
-Recorder                  13
-Arts                      13
-Panel Beater              13
-Probation Worker          13
-Fork Lift Truck Driver    13
-Payroll Clerk             13
-Training Advisor          13
-Hop Merchant              13
+<span></span>Quality Engineer           16
+Wood Carver                15
+Technical Advisor          15
+Classroom Aide             15
+Amusement Arcade Worker    14
+Voluntary Worker           14
+Furniture Remover          14
+Presser                    14
+Premises Security          14
+Audiologist                13
 Name: occupation, dtype: int64
 </pre></div>
 </div>

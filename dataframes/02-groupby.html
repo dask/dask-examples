@@ -455,7 +455,10 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
+<div class="admonition-live-notebook admonition">
+<p class="admonition-title">Live Notebook</p>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/dataframes/02-groupby.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/dataframes/02-groupby.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/dataframes/02-groupby.ipynb">on Github</a>.</p>
+</div>
 <div class="section" id="DataFrames:-Groupby">
 <h1>DataFrames: Groupby<a class="headerlink" href="#DataFrames:-Groupby" title="Permalink to this headline">¶</a></h1>
 <p>This notebook uses the Pandas groupby-aggregate and groupby-apply on scalable Dask dataframes. It will discuss both common use and best practices.</p>
@@ -484,7 +487,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.255.13/11624/1</li>
+  <li><b>Scheduler: </b>inproc://10.20.0.85/11940/1</li>
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -623,32 +626,32 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>name
-Alice      -0.002188
-Bob         0.001278
-Charlie    -0.001959
-Dan         0.001525
-Edith       0.001222
-Frank      -0.000880
-George      0.000345
-Hannah     -0.001197
-Ingrid     -0.004614
-Jerry       0.000726
-Kevin       0.001386
-Laura       0.000536
-Michael    -0.006278
-Norbert     0.001555
-Oliver      0.000892
-Patricia   -0.003093
-Quinn      -0.001393
-Ray         0.000811
-Sarah       0.003450
-Tim         0.001742
-Ursula     -0.000490
-Victor      0.000230
-Wendy      -0.001067
-Xavier      0.001554
-Yvonne     -0.000148
-Zelda      -0.001218
+Alice       0.002605
+Bob         0.000740
+Charlie     0.000628
+Dan        -0.000185
+Edith       0.000521
+Frank       0.001091
+George      0.001083
+Hannah      0.001055
+Ingrid     -0.000082
+Jerry      -0.000246
+Kevin       0.000493
+Laura      -0.002086
+Michael     0.003048
+Norbert     0.001849
+Oliver      0.001443
+Patricia    0.001125
+Quinn      -0.000669
+Ray        -0.000367
+Sarah       0.000285
+Tim        -0.001050
+Ursula     -0.000499
+Victor      0.002795
+Wendy      -0.001018
+Xavier     -0.001975
+Yvonne     -0.002122
+Zelda       0.002719
 Name: x, dtype: float64
 </pre></div>
 </div>
@@ -668,8 +671,8 @@ Name: x, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 371 ms, sys: 35 ms, total: 406 ms
-Wall time: 308 ms
+CPU times: user 332 ms, sys: 24.7 ms, total: 357 ms
+Wall time: 269 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -686,8 +689,8 @@ Wall time: 308 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 734 ms, sys: 33.8 ms, total: 768 ms
-Wall time: 545 ms
+CPU times: user 711 ms, sys: 30.5 ms, total: 742 ms
+Wall time: 516 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -704,8 +707,8 @@ Wall time: 545 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.37 s, sys: 93.3 ms, total: 1.46 s
-Wall time: 1.15 s
+CPU times: user 1.35 s, sys: 109 ms, total: 1.46 s
+Wall time: 1.14 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -755,39 +758,39 @@ Wall time: 1.15 s
   </thead>
   <tbody>
     <tr>
-      <th>Alice</th>
-      <td>-0.002188</td>
-      <td>0.576594</td>
-      <td>0.004093</td>
-      <td>99913</td>
+      <td>Alice</td>
+      <td>0.002605</td>
+      <td>0.575857</td>
+      <td>-0.001948</td>
+      <td>99887</td>
     </tr>
     <tr>
-      <th>Bob</th>
-      <td>0.001278</td>
-      <td>0.577099</td>
-      <td>-0.001147</td>
-      <td>99745</td>
+      <td>Bob</td>
+      <td>0.000740</td>
+      <td>0.577621</td>
+      <td>-0.001502</td>
+      <td>99923</td>
     </tr>
     <tr>
-      <th>Charlie</th>
-      <td>-0.001959</td>
-      <td>0.577654</td>
-      <td>0.001334</td>
-      <td>99617</td>
+      <td>Charlie</td>
+      <td>0.000628</td>
+      <td>0.578131</td>
+      <td>-0.001011</td>
+      <td>99800</td>
     </tr>
     <tr>
-      <th>Dan</th>
-      <td>0.001525</td>
-      <td>0.577309</td>
-      <td>-0.003029</td>
-      <td>99732</td>
+      <td>Dan</td>
+      <td>-0.000185</td>
+      <td>0.576829</td>
+      <td>0.001899</td>
+      <td>99748</td>
     </tr>
     <tr>
-      <th>Edith</th>
-      <td>0.001222</td>
-      <td>0.575809</td>
-      <td>-0.001738</td>
-      <td>99265</td>
+      <td>Edith</td>
+      <td>0.000521</td>
+      <td>0.579165</td>
+      <td>-0.001640</td>
+      <td>99783</td>
     </tr>
   </tbody>
 </table>
@@ -870,8 +873,8 @@ Wall time: 1.15 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 5.99 s, sys: 691 ms, total: 6.69 s
-Wall time: 5.49 s
+CPU times: user 5.82 s, sys: 746 ms, total: 6.56 s
+Wall time: 5.37 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
