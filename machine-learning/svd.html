@@ -165,6 +165,10 @@
 <li class="toctree-l1"><a class="reference internal" href="parallel-prediction.html">Score and Predict Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="training-on-large-datasets.html">Train Models on Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="incremental.html">Incrementally Train Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hyperparam-opt.html">Setup Dask</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hyperparam-opt.html#Hyperparameter-optimization">Hyperparameter optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hyperparam-opt.html#Integration">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hyperparam-opt.html#Learn-more">Learn more</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xgboost.html">Scale XGBoost</a></li>
 <li class="toctree-l1"><a class="reference internal" href="voting-classifier.html">Use Voting Classifiers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tpot.html">Automate Machine Learning with TPOT</a></li>
@@ -486,7 +490,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.0.40/14817/1</li>
+  <li><b>Scheduler: </b>inproc://10.20.3.232/14427/1</li>
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -550,19 +554,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([[ 0.10004355,  0.09971126,  0.10006283, ...,  0.09999917,
-         0.09991117,  0.10006749],
-       [ 0.1129779 , -0.02711897, -0.17619787, ..., -0.10460223,
-         0.01912365, -0.08764891],
-       [-0.02168176, -0.02986056, -0.14067616, ...,  0.09138284,
-         0.0813007 , -0.05173202],
+<span></span>array([[ 0.09993909,  0.09979675,  0.10015159, ...,  0.09984422,
+         0.09999708,  0.10005699],
+       [ 0.11695204, -0.09557972,  0.05931091, ...,  0.14129818,
+        -0.00038843,  0.06164901],
+       [-0.13483212,  0.12305423,  0.15650094, ...,  0.04544079,
+         0.07787362,  0.07941279],
        ...,
-       [-0.04286833, -0.22779731, -0.0424832 , ...,  0.00185207,
-         0.09827529,  0.12751771],
-       [ 0.07184443, -0.13643347,  0.19779402, ...,  0.09179471,
-        -0.01486215,  0.01853659],
-       [-0.01438789, -0.17042102,  0.07817584, ...,  0.0555493 ,
-        -0.22053824, -0.0146335 ]])
+       [-0.01422489, -0.00047654,  0.08532712, ..., -0.04886519,
+         0.13953613, -0.04920932],
+       [ 0.02983558,  0.16839462,  0.00726084, ..., -0.05713635,
+         0.18523645,  0.08134994],
+       [-0.01081033, -0.06747024,  0.07578267, ...,  0.00410116,
+         0.01214033, -0.08064462]])
 </pre></div>
 </div>
 </div>
@@ -615,16 +619,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([[ 0.01012334,  0.00994299,  0.00993101, ...,  0.00986987,
-         0.01005978,  0.00992911],
-       [ 0.01086522,  0.00409765,  0.0243678 , ..., -0.00162217,
-         0.00059611,  0.01364643],
-       [ 0.00545404,  0.01365874,  0.02280334, ..., -0.00015282,
-         0.03008868,  0.00263971],
-       [ 0.00040462, -0.02425139,  0.00763171, ..., -0.00488165,
-        -0.00066667,  0.00018936],
-       [ 0.00556396,  0.00251478, -0.01122896, ..., -0.00523059,
-        -0.00710841,  0.01859236]])
+<span></span>array([[ 0.00997903,  0.01008095,  0.01005863, ...,  0.00987232,
+         0.00992254,  0.00987259],
+       [-0.00958501,  0.00954352, -0.00458543, ..., -0.00460725,
+         0.01116333,  0.00389991],
+       [-0.00442192,  0.01151932,  0.00088364, ...,  0.00149001,
+         0.00261899,  0.00588033],
+       [-0.01632071,  0.00435234, -0.00708313, ...,  0.01291515,
+        -0.03322993, -0.00377309],
+       [-0.0006625 , -0.00501153, -0.00537139, ..., -0.00602122,
+         0.0109783 , -0.00511788]])
 </pre></div>
 </div>
 </div>

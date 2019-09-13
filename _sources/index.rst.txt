@@ -40,6 +40,7 @@ You can run these examples in a live session here: |Binder|
    machine-learning/parallel-prediction
    machine-learning/training-on-large-datasets
    machine-learning/incremental
+   machine-learning/hyperparam-opt.ipynb
    machine-learning/xgboost
    machine-learning/voting-classifier
    machine-learning/tpot
