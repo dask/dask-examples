@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Setup Dask &mdash; Dask Examples  documentation</title>
+  <title>Hyperparameter optimization with Dask &mdash; Dask Examples  documentation</title>
   
 
   
@@ -165,7 +165,8 @@
 <li class="toctree-l1"><a class="reference internal" href="parallel-prediction.html">Score and Predict Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="training-on-large-datasets.html">Train Models on Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="incremental.html">Incrementally Train Large Datasets</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Setup Dask</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Hyperparameter optimization with Dask</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Setup-Dask">Setup Dask</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Create-Data">Create Data</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Add-random-dimensions">Add random dimensions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Split-and-scale-data">Split and scale data</a></li>
@@ -247,7 +248,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Setup Dask</li>
+      <li>Hyperparameter optimization with Dask</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -470,7 +471,9 @@ div.rendered_html tbody tr:hover {
 <p class="admonition-title">Live Notebook</p>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/machine-learning/hyperparam-opt.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/machine-learning/hyperparam-opt.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/machine-learning/hyperparam-opt.ipynb">on Github</a>.</p>
 </div>
-# Hyperparameter optimization with Dask<p>Every machine learning model has some values that are specified before training begins. These values help adapt the model to the data but must be given before any training data is seen. For example, this might be <code class="docutils literal notranslate"><span class="pre">penalty</span></code> or <code class="docutils literal notranslate"><span class="pre">C</span></code> in Scikit-learn’s <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html">LogisiticRegression</a>. These values that come before any training data and are called “hyperparameters”. Typical usage looks something like:</p>
+<div class="section" id="Hyperparameter-optimization-with-Dask">
+<h1>Hyperparameter optimization with Dask<a class="headerlink" href="#Hyperparameter-optimization-with-Dask" title="Permalink to this headline">¶</a></h1>
+<p>Every machine learning model has some values that are specified before training begins. These values help adapt the model to the data but must be given before any training data is seen. For example, this might be <code class="docutils literal notranslate"><span class="pre">penalty</span></code> or <code class="docutils literal notranslate"><span class="pre">C</span></code> in Scikit-learn’s <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html">LogisiticRegression</a>. These values that come before any training data and are called “hyperparameters”. Typical usage looks something like:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisiticRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
 
@@ -488,7 +491,8 @@ div.rendered_html tbody tr:hover {
 <li><p>setting up a realistic example</p></li>
 <li><p>how to use <code class="docutils literal notranslate"><span class="pre">HyperbandSearchCV</span></code>, including</p>
 <ul>
-<li><p>how to understand the input parameters to <code class="docutils literal notranslate"><span class="pre">HyperbandSearchCV</span></code></p></li>
+<li><p>understanding the input parameters to <code class="docutils literal notranslate"><span class="pre">HyperbandSearchCV</span></code></p></li>
+<li><p>running the hyperparameter optimization</p></li>
 <li><p>how to access informantion from <code class="docutils literal notranslate"><span class="pre">HyperbandSearchCV</span></code></p></li>
 </ul>
 </li>
@@ -501,6 +505,7 @@ div.rendered_html tbody tr:hover {
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="Setup-Dask">
@@ -527,7 +532,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.3.232/13501/1</li>
+  <li><b>Scheduler: </b>inproc://10.20.1.65/13652/1</li>
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -864,7 +869,7 @@ bytes = 240.00 kB
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="o">%%time</span>
-<span class="n">search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train2</span><span class="p">,</span> <span class="n">y_train2</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -873,8 +878,8 @@ bytes = 240.00 kB
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 7.55 s, sys: 1.61 s, total: 9.16 s
-Wall time: 6.92 s
+CPU times: user 2.87 s, sys: 686 ms, total: 3.56 s
+Wall time: 2.71 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -897,7 +902,7 @@ Wall time: 6.92 s
 </pre></div>
 </div>
 </div>
-<p>The dashboard will be active while this is running. It will show which workers are running <code class="docutils literal notranslate"><span class="pre">partial_fit</span></code> and <code class="docutils literal notranslate"><span class="pre">score</span></code> calls. This takes about 6 seconds.</p>
+<p>The dashboard will be active while this is running. It will show which workers are running <code class="docutils literal notranslate"><span class="pre">partial_fit</span></code> and <code class="docutils literal notranslate"><span class="pre">score</span></code> calls. This takes about 10 seconds.</p>
 </div>
 </div>
 <div class="section" id="Integration">
@@ -917,7 +922,7 @@ Wall time: 6.92 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>0.7932
+<span></span>0.5472
 </pre></div>
 </div>
 </div>
@@ -935,9 +940,9 @@ Wall time: 6.92 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>MLPClassifier(activation=&#39;tanh&#39;, alpha=0.0006162966255132943, batch_size=16,
+<span></span>MLPClassifier(activation=&#39;relu&#39;, alpha=0.00039865810735804387, batch_size=64,
        beta_1=0.9, beta_2=0.999, early_stopping=False, epsilon=1e-08,
-       hidden_layer_sizes=(24,), learning_rate=&#39;constant&#39;,
+       hidden_layer_sizes=(6, 6, 6, 6), learning_rate=&#39;constant&#39;,
        learning_rate_init=0.001, max_iter=200, momentum=0.9,
        n_iter_no_change=10, nesterovs_momentum=True, power_t=0.5,
        random_state=None, shuffle=True, solver=&#39;adam&#39;, tol=0.0001,
@@ -978,107 +983,107 @@ Wall time: 6.92 s
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>partial_fit_calls</th>
-      <th>param_alpha</th>
-      <th>bracket</th>
-      <th>std_score_time</th>
-      <th>params</th>
-      <th>param_hidden_layer_sizes</th>
-      <th>mean_partial_fit_time</th>
-      <th>mean_score_time</th>
-      <th>std_partial_fit_time</th>
-      <th>test_score</th>
-      <th>param_activation</th>
       <th>param_batch_size</th>
+      <th>param_alpha</th>
+      <th>std_score_time</th>
+      <th>mean_partial_fit_time</th>
       <th>rank_test_score</th>
+      <th>std_partial_fit_time</th>
+      <th>params</th>
+      <th>test_score</th>
+      <th>param_hidden_layer_sizes</th>
       <th>model_id</th>
+      <th>param_activation</th>
+      <th>partial_fit_calls</th>
+      <th>bracket</th>
+      <th>mean_score_time</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>0</td>
-      <td>4</td>
-      <td>0.000006</td>
-      <td>1</td>
-      <td>0.003901</td>
-      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
-      <td>(12, 12)</td>
-      <td>1.871852</td>
-      <td>0.031219</td>
-      <td>1.358893</td>
-      <td>0.5702</td>
-      <td>tanh</td>
-      <td>256</td>
-      <td>1</td>
+      <td>32</td>
+      <td>0.000515</td>
+      <td>0.051656</td>
+      <td>0.791114</td>
+      <td>2</td>
+      <td>0.015910</td>
+      <td>{'hidden_layer_sizes': (4, 4, 4, 4, 4, 4), 'ba...</td>
+      <td>0.4892</td>
+      <td>(4, 4, 4, 4, 4, 4)</td>
       <td>bracket=1-0</td>
+      <td>logistic</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0.088071</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>2</td>
-      <td>0.000342</td>
+      <td>64</td>
+      <td>0.000127</td>
+      <td>0.004743</td>
+      <td>0.365560</td>
       <td>1</td>
-      <td>0.012120</td>
-      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
-      <td>(12, 6, 3, 3)</td>
-      <td>2.170742</td>
-      <td>0.027004</td>
-      <td>0.421521</td>
-      <td>0.5060</td>
-      <td>logistic</td>
-      <td>32</td>
-      <td>2</td>
+      <td>0.042084</td>
+      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
+      <td>0.4954</td>
+      <td>(6, 6, 6, 6)</td>
       <td>bracket=1-1</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>2</td>
-      <td>0.000006</td>
-      <td>1</td>
-      <td>0.001276</td>
-      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
-      <td>(12, 6, 3, 3)</td>
-      <td>2.620128</td>
-      <td>0.016517</td>
-      <td>1.686287</td>
-      <td>0.4940</td>
-      <td>logistic</td>
-      <td>128</td>
-      <td>3</td>
-      <td>bracket=1-2</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>3</td>
-      <td>0.000616</td>
-      <td>0</td>
-      <td>0.002989</td>
-      <td>{'hidden_layer_sizes': (24,), 'batch_size': 16...</td>
-      <td>(24,)</td>
-      <td>1.105507</td>
-      <td>0.024245</td>
-      <td>0.018508</td>
-      <td>0.7932</td>
       <td>tanh</td>
-      <td>16</td>
+      <td>2</td>
       <td>1</td>
+      <td>0.037706</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>512</td>
+      <td>0.000718</td>
+      <td>0.002890</td>
+      <td>0.721826</td>
+      <td>2</td>
+      <td>0.088798</td>
+      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
+      <td>0.4892</td>
+      <td>(12, 6, 3, 3)</td>
+      <td>bracket=1-2</td>
+      <td>logistic</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0.026135</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>64</td>
+      <td>0.000399</td>
+      <td>0.006424</td>
+      <td>0.273045</td>
+      <td>1</td>
+      <td>0.036852</td>
+      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
+      <td>0.5472</td>
+      <td>[6, 6, 6, 6]</td>
       <td>bracket=0-0</td>
+      <td>relu</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0.011662</td>
     </tr>
     <tr>
       <td>4</td>
-      <td>3</td>
-      <td>0.000237</td>
-      <td>0</td>
-      <td>0.011153</td>
-      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
-      <td>(12, 12)</td>
-      <td>1.057292</td>
-      <td>0.033782</td>
-      <td>0.084826</td>
-      <td>0.4988</td>
-      <td>logistic</td>
-      <td>32</td>
+      <td>128</td>
+      <td>0.000078</td>
+      <td>0.003628</td>
+      <td>0.811170</td>
       <td>2</td>
+      <td>0.758244</td>
+      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
+      <td>0.4966</td>
+      <td>[6, 6, 6, 6]</td>
       <td>bracket=0-1</td>
+      <td>logistic</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0.017107</td>
     </tr>
   </tbody>
 </table>
@@ -1098,7 +1103,7 @@ Wall time: 6.92 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>0.7834
+<span></span>0.5366
 </pre></div>
 </div>
 </div>
@@ -1164,7 +1169,7 @@ Wall time: 6.92 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([1, 0, 1, ..., 1, 0, 0])
+<span></span>array([1, 1, 1, ..., 0, 0, 1])
 </pre></div>
 </div>
 </div>
@@ -1215,58 +1220,58 @@ Wall time: 6.92 s
   <tbody>
     <tr>
       <td>0</td>
-      <td>bracket=0-0</td>
-      <td>{'hidden_layer_sizes': (24,), 'batch_size': 16...</td>
+      <td>bracket=1-0</td>
+      <td>{'hidden_layer_sizes': (4, 4, 4, 4, 4, 4), 'ba...</td>
       <td>1</td>
-      <td>1.087000</td>
-      <td>0.5308</td>
-      <td>0.021256</td>
-      <td>2.114806</td>
-      <td>0</td>
+      <td>0.775205</td>
+      <td>0.5108</td>
+      <td>0.139726</td>
+      <td>1.065676</td>
+      <td>1</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>bracket=0-1</td>
-      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
+      <td>bracket=1-1</td>
+      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
       <td>1</td>
-      <td>1.142118</td>
-      <td>0.5136</td>
-      <td>0.022629</td>
-      <td>2.114810</td>
-      <td>0</td>
+      <td>0.323476</td>
+      <td>0.4970</td>
+      <td>0.042449</td>
+      <td>1.065679</td>
+      <td>1</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>bracket=0-0</td>
-      <td>{'hidden_layer_sizes': (24,), 'batch_size': 16...</td>
-      <td>3</td>
-      <td>1.124015</td>
-      <td>0.7932</td>
-      <td>0.027234</td>
-      <td>3.895780</td>
-      <td>0</td>
+      <td>bracket=1-2</td>
+      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
+      <td>1</td>
+      <td>0.810624</td>
+      <td>0.4892</td>
+      <td>0.023246</td>
+      <td>1.065680</td>
+      <td>1</td>
     </tr>
     <tr>
       <td>3</td>
-      <td>bracket=0-1</td>
-      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
-      <td>3</td>
-      <td>0.972466</td>
-      <td>0.4988</td>
-      <td>0.044935</td>
-      <td>3.895786</td>
+      <td>bracket=0-0</td>
+      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
+      <td>1</td>
+      <td>0.309897</td>
+      <td>0.5292</td>
+      <td>0.018086</td>
+      <td>1.753221</td>
       <td>0</td>
     </tr>
     <tr>
       <td>4</td>
-      <td>bracket=1-0</td>
-      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
+      <td>bracket=0-1</td>
+      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
       <td>1</td>
-      <td>3.541571</td>
-      <td>0.4994</td>
-      <td>0.031507</td>
-      <td>5.573706</td>
-      <td>1</td>
+      <td>1.569414</td>
+      <td>0.4966</td>
+      <td>0.020734</td>
+      <td>1.753223</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>

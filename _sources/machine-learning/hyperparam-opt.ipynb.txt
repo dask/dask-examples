@@ -1,7 +1,7 @@
 {
  "cells": [
   {
-   "cell_type": "raw",
+   "cell_type": "markdown",
    "metadata": {},
    "source": [
     "# Hyperparameter optimization with Dask\n"
@@ -46,7 +46,8 @@
     "\n",
     "* setting up a realistic example\n",
     "* how to use `HyperbandSearchCV`, including\n",
-    "    * how to understand the input parameters to `HyperbandSearchCV`\n",
+    "    * understanding the input parameters to `HyperbandSearchCV`\n",
+    "    * running the hyperparameter optimization\n",
     "    * how to access informantion from `HyperbandSearchCV`\n",
     "    \n",
     "This notebook will specifically *not* show a performance comparison motivating `HyperbandSearchCV` use. `HyperbandSearchCV` finds high scores with minimal training; however, this is a tutorial on how to *use* it. All performance comparisons are relegated to section [*Learn more*](#Learn-more)."
@@ -456,7 +457,7 @@
    "outputs": [],
    "source": [
     "%%time\n",
-    "search.fit(X_train, y_train, classes=[0, 1, 2, 3])"
+    "search.fit(X_train2, y_train2, classes=[0, 1, 2, 3])"
    ]
   },
   {
@@ -464,7 +465,7 @@
    "metadata": {},
    "source": [
     "The dashboard will be active while this is running. It will show which workers are running `partial_fit` and `score` calls.\n",
-    "This takes about 6 seconds."
+    "This takes about 10 seconds."
    ]
   },
   {
