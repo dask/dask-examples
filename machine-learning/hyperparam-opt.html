@@ -165,25 +165,23 @@
 <li class="toctree-l1"><a class="reference internal" href="parallel-prediction.html">Score and Predict Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="training-on-large-datasets.html">Train Models on Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="incremental.html">Incrementally Train Large Datasets</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Hyperparameter optimization with Dask</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Setup-Dask">Setup Dask</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Hyperparameter optimization with Dask</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Setup-Dask">Setup Dask</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Create-Data">Create Data</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Add-random-dimensions">Add random dimensions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Split-and-scale-data">Split and scale data</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#Create-model-and-search-space">Create model and search space</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#Hyperparameter-optimization">Hyperparameter optimization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Hyperparameter-optimization">Hyperparameter optimization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Determining-input-parameters">Determining input parameters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Applying-input-parameters">Applying input parameters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#How-much-computation-will-be-performed?">How much computation will be performed?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Performing-the-computation">Performing the computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Integration">Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Learn-more">Learn more</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#Integration">Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Learn-more">Learn more</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xgboost.html">Scale XGBoost</a></li>
 <li class="toctree-l1"><a class="reference internal" href="voting-classifier.html">Use Voting Classifiers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tpot.html">Automate Machine Learning with TPOT</a></li>
@@ -507,9 +505,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="Setup-Dask">
-<h1>Setup Dask<a class="headerlink" href="#Setup-Dask" title="Permalink to this headline">¶</a></h1>
+<h2>Setup Dask<a class="headerlink" href="#Setup-Dask" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -532,7 +529,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.1.65/13652/1</li>
+  <li><b>Scheduler: </b>inproc://10.20.1.56/13637/1</li>
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -546,6 +543,7 @@ div.rendered_html tbody tr:hover {
 </td>
 </tr>
 </table></div>
+</div>
 </div>
 <div class="section" id="Create-Data">
 <h2>Create Data<a class="headerlink" href="#Create-Data" title="Permalink to this headline">¶</a></h2>
@@ -695,9 +693,8 @@ bytes = 240.00 kB
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="Hyperparameter-optimization">
-<h1>Hyperparameter optimization<a class="headerlink" href="#Hyperparameter-optimization" title="Permalink to this headline">¶</a></h1>
+<h2>Hyperparameter optimization<a class="headerlink" href="#Hyperparameter-optimization" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">HyperbandSearchCV</span></code> is Dask-ML’s meta-estimator to find the best hyperparameters. It can be used as an alternative to <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code> to find similar hyper-parameters in less time by not wasting time on hyper-parameters that are not promising. Specifically, it is almost guaranteed that it will find high performing models with minimal training.</p>
 <p>This section will focus on</p>
 <ol class="arabic simple">
@@ -712,6 +709,7 @@ bytes = 240.00 kB
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">dask_ml.model_selection</span> <span class="k">import</span> <span class="n">HyperbandSearchCV</span>
 </pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="Determining-input-parameters">
@@ -878,8 +876,8 @@ bytes = 240.00 kB
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2.87 s, sys: 686 ms, total: 3.56 s
-Wall time: 2.71 s
+CPU times: user 2.83 s, sys: 863 ms, total: 3.69 s
+Wall time: 2.68 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -904,9 +902,8 @@ Wall time: 2.71 s
 </div>
 <p>The dashboard will be active while this is running. It will show which workers are running <code class="docutils literal notranslate"><span class="pre">partial_fit</span></code> and <code class="docutils literal notranslate"><span class="pre">score</span></code> calls. This takes about 10 seconds.</p>
 </div>
-</div>
 <div class="section" id="Integration">
-<h1>Integration<a class="headerlink" href="#Integration" title="Permalink to this headline">¶</a></h1>
+<h2>Integration<a class="headerlink" href="#Integration" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">HyperbandSearchCV</span></code> follows the Scikit-learn API and mirrors Scikit-learn’s <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code>. This means that it “just works”. All the Scikit-learn attributes and methods are available:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
@@ -922,7 +919,7 @@ Wall time: 2.71 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>0.5472
+<span></span>0.5028
 </pre></div>
 </div>
 </div>
@@ -940,13 +937,14 @@ Wall time: 2.71 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>MLPClassifier(activation=&#39;relu&#39;, alpha=0.00039865810735804387, batch_size=64,
-       beta_1=0.9, beta_2=0.999, early_stopping=False, epsilon=1e-08,
-       hidden_layer_sizes=(6, 6, 6, 6), learning_rate=&#39;constant&#39;,
-       learning_rate_init=0.001, max_iter=200, momentum=0.9,
-       n_iter_no_change=10, nesterovs_momentum=True, power_t=0.5,
-       random_state=None, shuffle=True, solver=&#39;adam&#39;, tol=0.0001,
-       validation_fraction=0.1, verbose=False, warm_start=False)
+<span></span>MLPClassifier(activation=&#39;logistic&#39;, alpha=4.706224849841282e-05,
+       batch_size=16, beta_1=0.9, beta_2=0.999, early_stopping=False,
+       epsilon=1e-08, hidden_layer_sizes=(12, 12),
+       learning_rate=&#39;constant&#39;, learning_rate_init=0.001, max_iter=200,
+       momentum=0.9, n_iter_no_change=10, nesterovs_momentum=True,
+       power_t=0.5, random_state=None, shuffle=True, solver=&#39;adam&#39;,
+       tol=0.0001, validation_fraction=0.1, verbose=False,
+       warm_start=False)
 </pre></div>
 </div>
 </div>
@@ -983,107 +981,107 @@ Wall time: 2.71 s
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>param_batch_size</th>
+      <th>rank_test_score</th>
+      <th>test_score</th>
+      <th>model_id</th>
+      <th>param_hidden_layer_sizes</th>
       <th>param_alpha</th>
+      <th>params</th>
+      <th>param_batch_size</th>
+      <th>mean_score_time</th>
       <th>std_score_time</th>
       <th>mean_partial_fit_time</th>
-      <th>rank_test_score</th>
       <th>std_partial_fit_time</th>
-      <th>params</th>
-      <th>test_score</th>
-      <th>param_hidden_layer_sizes</th>
-      <th>model_id</th>
+      <th>bracket</th>
       <th>param_activation</th>
       <th>partial_fit_calls</th>
-      <th>bracket</th>
-      <th>mean_score_time</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>0</td>
-      <td>32</td>
-      <td>0.000515</td>
-      <td>0.051656</td>
-      <td>0.791114</td>
-      <td>2</td>
-      <td>0.015910</td>
-      <td>{'hidden_layer_sizes': (4, 4, 4, 4, 4, 4), 'ba...</td>
-      <td>0.4892</td>
-      <td>(4, 4, 4, 4, 4, 4)</td>
+      <td>1</td>
+      <td>0.5028</td>
       <td>bracket=1-0</td>
+      <td>(12, 12)</td>
+      <td>0.000047</td>
+      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
+      <td>16</td>
+      <td>0.023259</td>
+      <td>0.006518</td>
+      <td>0.669733</td>
+      <td>0.003981</td>
+      <td>1</td>
       <td>logistic</td>
       <td>2</td>
-      <td>1</td>
-      <td>0.088071</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>64</td>
-      <td>0.000127</td>
-      <td>0.004743</td>
-      <td>0.365560</td>
-      <td>1</td>
-      <td>0.042084</td>
-      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
-      <td>0.4954</td>
-      <td>(6, 6, 6, 6)</td>
+      <td>3</td>
+      <td>0.4972</td>
       <td>bracket=1-1</td>
-      <td>tanh</td>
-      <td>2</td>
+      <td>(12, 12)</td>
+      <td>0.000173</td>
+      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
+      <td>512</td>
+      <td>0.014845</td>
+      <td>0.002303</td>
+      <td>0.449172</td>
+      <td>0.293608</td>
       <td>1</td>
-      <td>0.037706</td>
+      <td>relu</td>
+      <td>2</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>512</td>
-      <td>0.000718</td>
-      <td>0.002890</td>
-      <td>0.721826</td>
-      <td>2</td>
-      <td>0.088798</td>
-      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
-      <td>0.4892</td>
-      <td>(12, 6, 3, 3)</td>
+      <td>1</td>
+      <td>0.5028</td>
       <td>bracket=1-2</td>
+      <td>(12, 6, 3, 3)</td>
+      <td>0.000824</td>
+      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
+      <td>32</td>
+      <td>0.034334</td>
+      <td>0.015231</td>
+      <td>0.853957</td>
+      <td>0.006175</td>
+      <td>1</td>
       <td>logistic</td>
       <td>2</td>
-      <td>1</td>
-      <td>0.026135</td>
     </tr>
     <tr>
       <td>3</td>
-      <td>64</td>
-      <td>0.000399</td>
-      <td>0.006424</td>
-      <td>0.273045</td>
-      <td>1</td>
-      <td>0.036852</td>
-      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
-      <td>0.5472</td>
-      <td>[6, 6, 6, 6]</td>
+      <td>2</td>
+      <td>0.4996</td>
       <td>bracket=0-0</td>
+      <td>[12, 6, 3, 3]</td>
+      <td>0.000062</td>
+      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
+      <td>512</td>
+      <td>0.015469</td>
+      <td>0.005957</td>
+      <td>0.248266</td>
+      <td>0.003112</td>
+      <td>0</td>
       <td>relu</td>
       <td>3</td>
-      <td>0</td>
-      <td>0.011662</td>
     </tr>
     <tr>
       <td>4</td>
-      <td>128</td>
-      <td>0.000078</td>
-      <td>0.003628</td>
-      <td>0.811170</td>
-      <td>2</td>
-      <td>0.758244</td>
-      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
-      <td>0.4966</td>
-      <td>[6, 6, 6, 6]</td>
+      <td>1</td>
+      <td>0.5004</td>
       <td>bracket=0-1</td>
-      <td>logistic</td>
-      <td>3</td>
+      <td>[12, 6, 3, 3]</td>
+      <td>0.000120</td>
+      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
+      <td>256</td>
+      <td>0.012625</td>
+      <td>0.005090</td>
+      <td>0.771686</td>
+      <td>0.145320</td>
       <td>0</td>
-      <td>0.017107</td>
+      <td>relu</td>
+      <td>3</td>
     </tr>
   </tbody>
 </table>
@@ -1103,7 +1101,7 @@ Wall time: 2.71 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>0.5366
+<span></span>0.4976
 </pre></div>
 </div>
 </div>
@@ -1169,7 +1167,7 @@ Wall time: 2.71 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([1, 1, 1, ..., 0, 0, 1])
+<span></span>array([0, 0, 0, ..., 0, 0, 0])
 </pre></div>
 </div>
 </div>
@@ -1221,23 +1219,23 @@ Wall time: 2.71 s
     <tr>
       <td>0</td>
       <td>bracket=1-0</td>
-      <td>{'hidden_layer_sizes': (4, 4, 4, 4, 4, 4), 'ba...</td>
+      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
       <td>1</td>
-      <td>0.775205</td>
-      <td>0.5108</td>
-      <td>0.139726</td>
-      <td>1.065676</td>
+      <td>0.673713</td>
+      <td>0.5028</td>
+      <td>0.016740</td>
+      <td>1.012487</td>
       <td>1</td>
     </tr>
     <tr>
       <td>1</td>
       <td>bracket=1-1</td>
-      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
+      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
       <td>1</td>
-      <td>0.323476</td>
-      <td>0.4970</td>
-      <td>0.042449</td>
-      <td>1.065679</td>
+      <td>0.742779</td>
+      <td>0.4964</td>
+      <td>0.012542</td>
+      <td>1.012490</td>
       <td>1</td>
     </tr>
     <tr>
@@ -1245,32 +1243,32 @@ Wall time: 2.71 s
       <td>bracket=1-2</td>
       <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
       <td>1</td>
-      <td>0.810624</td>
-      <td>0.4892</td>
-      <td>0.023246</td>
-      <td>1.065680</td>
+      <td>0.860132</td>
+      <td>0.5028</td>
+      <td>0.019103</td>
+      <td>1.012491</td>
       <td>1</td>
     </tr>
     <tr>
       <td>3</td>
       <td>bracket=0-0</td>
-      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
+      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
       <td>1</td>
-      <td>0.309897</td>
-      <td>0.5292</td>
-      <td>0.018086</td>
-      <td>1.753221</td>
+      <td>0.251378</td>
+      <td>0.4954</td>
+      <td>0.009512</td>
+      <td>1.130492</td>
       <td>0</td>
     </tr>
     <tr>
       <td>4</td>
       <td>bracket=0-1</td>
-      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
+      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
       <td>1</td>
-      <td>1.569414</td>
-      <td>0.4966</td>
-      <td>0.020734</td>
-      <td>1.753223</td>
+      <td>0.917006</td>
+      <td>0.5004</td>
+      <td>0.017715</td>
+      <td>1.130495</td>
       <td>0</td>
     </tr>
   </tbody>
@@ -1280,21 +1278,13 @@ Wall time: 2.71 s
 <p>This illustrates the history after every <code class="docutils literal notranslate"><span class="pre">partial_fit</span></code> call. There’s also an attributed <code class="docutils literal notranslate"><span class="pre">model_history_</span></code> that records the history for each model (it’s a reorganization of <code class="docutils literal notranslate"><span class="pre">history_</span></code>).</p>
 </div>
 <div class="section" id="Learn-more">
-<h1>Learn more<a class="headerlink" href="#Learn-more" title="Permalink to this headline">¶</a></h1>
+<h2>Learn more<a class="headerlink" href="#Learn-more" title="Permalink to this headline">¶</a></h2>
 <p>This notebook covered basic usage <code class="docutils literal notranslate"><span class="pre">HyperbandSearchCV</span></code>. The following documentation and resources might be useful to learn more about <code class="docutils literal notranslate"><span class="pre">HyperbandSearchCV</span></code>, including some of the finer use cases:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.youtube.com/watch?v=x67K9FiPFBQ">A talk</a> introducing <code class="docutils literal notranslate"><span class="pre">HyperbandSearchCV</span></code> to the SciPy 2019 audience and the <a class="reference external" href="https://conference.scipy.org/proceedings/scipy2019/pdfs/scott_sievert.pdf">corresponding paper</a></p></li>
 <li><p><a class="reference external" href="https://ml.dask.org/modules/generated/dask_ml.model_selection.HyperbandSearchCV.html">HyperbandSearchCV’s documentation</a></p></li>
 </ul>
 <p>Performance comparisons can be found in the SciPy 2019 talk/paper.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
-</pre></div>
-</div>
 </div>
 </div>
 

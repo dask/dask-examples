@@ -164,10 +164,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/training-on-large-datasets.html">Train Models on Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/incremental.html">Incrementally Train Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/hyperparam-opt.html">Hyperparameter optimization with Dask</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/hyperparam-opt.html#Setup-Dask">Setup Dask</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/hyperparam-opt.html#Hyperparameter-optimization">Hyperparameter optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/hyperparam-opt.html#Integration">Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/hyperparam-opt.html#Learn-more">Learn more</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/xgboost.html">Scale XGBoost</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/voting-classifier.html">Use Voting Classifiers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/tpot.html">Automate Machine Learning with TPOT</a></li>
@@ -516,7 +512,7 @@ Pandas versoin: 0.25.1
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:42063</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:41275</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -680,17 +676,17 @@ Dask comes with builtin dataset samples, we will use this sample for our example
   <tbody>
     <tr>
       <td>2000-01-01 00:00:00</td>
-      <td>992</td>
-      <td>Sarah</td>
-      <td>-0.183778</td>
-      <td>0.437963</td>
+      <td>973</td>
+      <td>Ray</td>
+      <td>0.596621</td>
+      <td>0.382585</td>
     </tr>
     <tr>
       <td>2000-01-01 00:00:01</td>
-      <td>994</td>
-      <td>Bob</td>
-      <td>0.253015</td>
-      <td>-0.120317</td>
+      <td>967</td>
+      <td>Patricia</td>
+      <td>0.573025</td>
+      <td>0.135287</td>
     </tr>
   </tbody>
 </table>
@@ -755,17 +751,17 @@ Dask comes with builtin dataset samples, we will use this sample for our example
   <tbody>
     <tr>
       <td>2000-01-01 00:00:00</td>
-      <td>992</td>
-      <td>Sarah</td>
-      <td>-0.183778</td>
-      <td>0.437963</td>
+      <td>973</td>
+      <td>Ray</td>
+      <td>0.596621</td>
+      <td>0.382585</td>
     </tr>
     <tr>
       <td>2000-01-01 00:00:01</td>
-      <td>994</td>
-      <td>Bob</td>
-      <td>0.253015</td>
-      <td>-0.120317</td>
+      <td>967</td>
+      <td>Patricia</td>
+      <td>0.573025</td>
+      <td>0.135287</td>
     </tr>
   </tbody>
 </table>
@@ -790,7 +786,7 @@ Dask comes with builtin dataset samples, we will use this sample for our example
 <div class="highlight"><pre>
 Pandas shape: (2592000, 4)
 ---------------------------
-Dask lazy shape: (Delayed(&#39;int-9c982282-7f5d-4cc0-9648-af6bdd36823d&#39;), 4)
+Dask lazy shape: (Delayed(&#39;int-9f14784a-ee1d-4553-b305-85ebd1503f82&#39;), 4)
 </pre></div></div>
 </div>
 <p>We cannot get the full shape before accessing all the partitions - running <code class="docutils literal notranslate"><span class="pre">len</span></code> will do so</p>
@@ -928,10 +924,10 @@ Dask computed shape: 2,592,000
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>timestamp    2000-01-01 00:00:00
-id                           992
-name                       Sarah
-x                      -0.183778
-y                       0.437963
+id                           973
+name                         Ray
+x                       0.596621
+y                       0.382585
 Name: 0, dtype: object
 </pre></div>
 </div>
@@ -953,7 +949,7 @@ Name: 0, dtype: object
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 /home/travis/miniconda/envs/test/lib/python3.7/site-packages/distributed/worker.py:3217: UserWarning: Large object of size 10.46 MB detected in task graph:
-  (slice(0, 0, None), None, &#39;reset_index-e32ad234676 ... 9d7af0f9f0782&#39;)
+  (slice(0, 0, None), None, &#39;reset_index-507fff7b236 ... f0efb7d299e04&#39;)
 Consider scattering large objects ahead of time
 with client.scatter to reduce scheduler burden and
 keep data on workers
@@ -999,82 +995,82 @@ keep data on workers
     <tr>
       <td>0</td>
       <td>2000-01-01</td>
-      <td>992</td>
-      <td>Sarah</td>
-      <td>-0.183778</td>
-      <td>0.437963</td>
+      <td>973</td>
+      <td>Ray</td>
+      <td>0.596621</td>
+      <td>0.382585</td>
     </tr>
     <tr>
       <td>0</td>
       <td>2000-01-04</td>
-      <td>1015</td>
-      <td>Bob</td>
-      <td>0.174735</td>
-      <td>0.201081</td>
+      <td>961</td>
+      <td>Wendy</td>
+      <td>-0.240824</td>
+      <td>0.053508</td>
     </tr>
     <tr>
       <td>0</td>
       <td>2000-01-07</td>
-      <td>998</td>
-      <td>Zelda</td>
-      <td>-0.016727</td>
-      <td>-0.136320</td>
+      <td>975</td>
+      <td>Frank</td>
+      <td>0.154832</td>
+      <td>-0.080384</td>
     </tr>
     <tr>
       <td>0</td>
       <td>2000-01-10</td>
-      <td>949</td>
-      <td>Bob</td>
-      <td>-0.709520</td>
-      <td>0.171940</td>
+      <td>1020</td>
+      <td>Sarah</td>
+      <td>-0.830820</td>
+      <td>0.322195</td>
     </tr>
     <tr>
       <td>0</td>
       <td>2000-01-13</td>
-      <td>1021</td>
-      <td>Dan</td>
-      <td>0.409680</td>
-      <td>0.251180</td>
+      <td>1000</td>
+      <td>George</td>
+      <td>0.354563</td>
+      <td>-0.848063</td>
     </tr>
     <tr>
       <td>0</td>
       <td>2000-01-16</td>
-      <td>973</td>
-      <td>Dan</td>
-      <td>-0.673112</td>
-      <td>-0.244816</td>
+      <td>968</td>
+      <td>Quinn</td>
+      <td>0.772708</td>
+      <td>-0.835804</td>
     </tr>
     <tr>
       <td>0</td>
       <td>2000-01-19</td>
-      <td>1027</td>
-      <td>Yvonne</td>
-      <td>-0.669722</td>
-      <td>0.331058</td>
+      <td>979</td>
+      <td>Jerry</td>
+      <td>0.083600</td>
+      <td>0.138316</td>
     </tr>
     <tr>
       <td>0</td>
       <td>2000-01-22</td>
-      <td>1089</td>
-      <td>Hannah</td>
-      <td>-0.595216</td>
-      <td>-0.648090</td>
+      <td>998</td>
+      <td>Tim</td>
+      <td>0.034715</td>
+      <td>0.285331</td>
     </tr>
     <tr>
       <td>0</td>
       <td>2000-01-25</td>
-      <td>1055</td>
-      <td>Hannah</td>
-      <td>-0.325006</td>
-      <td>0.907078</td>
+      <td>1069</td>
+      <td>Jerry</td>
+      <td>0.322616</td>
+      <td>-0.092421</td>
     </tr>
     <tr>
       <td>0</td>
       <td>2000-01-28</td>
-      <td>1017</td>
-      <td>Ray</td>
-      <td>0.082380</td>
-      <td>-0.365078</td>
+      <td>1019</td>
+      <td>Jerry</td>
+      <td>0.938725</td>
+      <td>0.682130</td>
     </tr>
   </tbody>
 </table>
@@ -1223,18 +1219,18 @@ Index([&#39;id&#39;, &#39;name&#39;, &#39;x&#39;, &#39;y&#39;], dtype=&#39;objec
   </thead>
   <tbody>
     <tr>
-      <td>2000-01-01 00:00:17</td>
-      <td>962</td>
-      <td>Alice</td>
-      <td>0.653342</td>
-      <td>29.323256</td>
+      <td>2000-01-01 00:00:00</td>
+      <td>973</td>
+      <td>Ray</td>
+      <td>0.596621</td>
+      <td>38.258457</td>
     </tr>
     <tr>
-      <td>2000-01-01 00:00:27</td>
-      <td>1023</td>
-      <td>Jerry</td>
-      <td>0.542415</td>
-      <td>88.770783</td>
+      <td>2000-01-01 00:00:01</td>
+      <td>967</td>
+      <td>Patricia</td>
+      <td>0.573025</td>
+      <td>13.528709</td>
     </tr>
   </tbody>
 </table>
@@ -1306,17 +1302,17 @@ Index([&#39;id&#39;, &#39;name&#39;, &#39;x&#39;, &#39;y&#39;], dtype=&#39;objec
   <tbody>
     <tr>
       <td>2000-01-01 00:00:00</td>
-      <td>992</td>
-      <td>Sarah</td>
-      <td>-0.183778</td>
-      <td>0.437963</td>
+      <td>973</td>
+      <td>Ray</td>
+      <td>0.596621</td>
+      <td>3825.845661</td>
     </tr>
     <tr>
       <td>2000-01-01 00:00:01</td>
-      <td>994</td>
-      <td>Bob</td>
-      <td>0.253015</td>
-      <td>-0.120317</td>
+      <td>967</td>
+      <td>Patricia</td>
+      <td>0.573025</td>
+      <td>1352.870913</td>
     </tr>
   </tbody>
 </table>
@@ -1373,17 +1369,17 @@ Index([&#39;id&#39;, &#39;name&#39;, &#39;x&#39;, &#39;y&#39;], dtype=&#39;objec
   <tbody>
     <tr>
       <td>2000-01-01 00:00:00</td>
-      <td>992</td>
-      <td>Sarah</td>
-      <td>-0.183778</td>
-      <td>0.437963</td>
+      <td>973</td>
+      <td>Ray</td>
+      <td>0.596621</td>
+      <td>38.258457</td>
     </tr>
     <tr>
       <td>2000-01-01 00:00:01</td>
-      <td>994</td>
-      <td>Bob</td>
-      <td>0.253015</td>
-      <td>-0.120317</td>
+      <td>967</td>
+      <td>Patricia</td>
+      <td>0.573025</td>
+      <td>13.528709</td>
     </tr>
   </tbody>
 </table>
@@ -1454,19 +1450,19 @@ Index([&#39;id&#39;, &#39;name&#39;, &#39;x&#39;, &#39;y&#39;], dtype=&#39;objec
   <tbody>
     <tr>
       <td>2000-01-01 00:00:00</td>
-      <td>992</td>
-      <td>Sarah</td>
-      <td>-0.183778</td>
-      <td>0.437963</td>
-      <td>Sa</td>
+      <td>973</td>
+      <td>Ray</td>
+      <td>0.596621</td>
+      <td>3825.845661</td>
+      <td>Ra</td>
     </tr>
     <tr>
       <td>2000-01-01 00:00:01</td>
-      <td>994</td>
-      <td>Bob</td>
-      <td>0.253015</td>
-      <td>-0.120317</td>
-      <td>Bo</td>
+      <td>967</td>
+      <td>Patricia</td>
+      <td>0.573025</td>
+      <td>1352.870913</td>
+      <td>Pa</td>
     </tr>
   </tbody>
 </table>
@@ -1538,19 +1534,19 @@ To provide an explicit output types or to silence this message, please provide t
   <tbody>
     <tr>
       <td>2000-01-01 00:00:00</td>
-      <td>992</td>
-      <td>Sarah</td>
-      <td>-0.183778</td>
-      <td>0.437963</td>
-      <td>Sa</td>
+      <td>973</td>
+      <td>Ray</td>
+      <td>0.596621</td>
+      <td>38.258457</td>
+      <td>Ra</td>
     </tr>
     <tr>
       <td>2000-01-01 00:00:01</td>
-      <td>994</td>
-      <td>Bob</td>
-      <td>0.253015</td>
-      <td>-0.120317</td>
-      <td>Bo</td>
+      <td>967</td>
+      <td>Patricia</td>
+      <td>0.573025</td>
+      <td>13.528709</td>
+      <td>Pa</td>
     </tr>
   </tbody>
 </table>
@@ -1617,19 +1613,19 @@ To provide an explicit output types or to silence this message, please provide t
   <tbody>
     <tr>
       <td>2000-01-01 00:00:00</td>
-      <td>992</td>
-      <td>Sarah</td>
-      <td>-0.183778</td>
-      <td>0.437963</td>
-      <td>Sa</td>
+      <td>973</td>
+      <td>Ray</td>
+      <td>0.596621</td>
+      <td>38.258457</td>
+      <td>Ra</td>
     </tr>
     <tr>
       <td>2000-01-01 00:00:01</td>
-      <td>994</td>
-      <td>Bob</td>
-      <td>0.253015</td>
-      <td>-0.120317</td>
-      <td>Bo</td>
+      <td>967</td>
+      <td>Patricia</td>
+      <td>0.573025</td>
+      <td>13.528709</td>
+      <td>Pa</td>
     </tr>
   </tbody>
 </table>
@@ -1702,21 +1698,21 @@ To provide an explicit output types or to silence this message, please provide t
   <tbody>
     <tr>
       <td>2000-01-01 00:00:00</td>
-      <td>992</td>
-      <td>Sarah</td>
-      <td>-0.183778</td>
-      <td>0.437963</td>
-      <td>Sa</td>
-      <td>-0.437963</td>
+      <td>973</td>
+      <td>Ray</td>
+      <td>0.596621</td>
+      <td>38.258457</td>
+      <td>Ra</td>
+      <td>596.620904</td>
     </tr>
     <tr>
       <td>2000-01-01 00:00:01</td>
-      <td>994</td>
-      <td>Bob</td>
-      <td>0.253015</td>
-      <td>-0.120317</td>
-      <td>Bo</td>
-      <td>253.014660</td>
+      <td>967</td>
+      <td>Patricia</td>
+      <td>0.573025</td>
+      <td>13.528709</td>
+      <td>Pa</td>
+      <td>573.025066</td>
     </tr>
   </tbody>
 </table>
@@ -1795,43 +1791,43 @@ The function could also include arguments.</p></li>
   <tbody>
     <tr>
       <td>2000-01-01 00:00:00</td>
-      <td>992</td>
-      <td>Sarah</td>
-      <td>-0.183778</td>
-      <td>0.437963</td>
+      <td>973</td>
+      <td>Ray</td>
+      <td>0.596621</td>
+      <td>38.258457</td>
       <td>NaN</td>
     </tr>
     <tr>
       <td>2000-01-01 00:00:01</td>
-      <td>994</td>
-      <td>Bob</td>
-      <td>0.253015</td>
-      <td>-0.120317</td>
-      <td>0.708848</td>
+      <td>967</td>
+      <td>Patricia</td>
+      <td>0.573025</td>
+      <td>13.528709</td>
+      <td>24.729759</td>
     </tr>
     <tr>
       <td>2000-01-01 00:00:02</td>
-      <td>994</td>
-      <td>Kevin</td>
-      <td>0.158977</td>
-      <td>0.776692</td>
-      <td>0.901925</td>
+      <td>1050</td>
+      <td>Tim</td>
+      <td>0.304224</td>
+      <td>0.916139</td>
+      <td>12.615435</td>
     </tr>
     <tr>
       <td>2000-01-01 00:00:03</td>
-      <td>1012</td>
-      <td>Laura</td>
-      <td>-0.308936</td>
-      <td>0.411007</td>
-      <td>0.593859</td>
+      <td>994</td>
+      <td>Oliver</td>
+      <td>0.180676</td>
+      <td>-0.002815</td>
+      <td>0.927221</td>
     </tr>
     <tr>
       <td>2000-01-01 00:00:04</td>
-      <td>962</td>
-      <td>Michael</td>
-      <td>-0.407477</td>
-      <td>0.964826</td>
-      <td>0.562517</td>
+      <td>970</td>
+      <td>Xavier</td>
+      <td>-0.427254</td>
+      <td>0.776037</td>
+      <td>0.988023</td>
     </tr>
   </tbody>
 </table>
@@ -1894,20 +1890,20 @@ The function could also include arguments.</p></li>
   <tbody>
     <tr>
       <td>2000-01-01 00:00:00</td>
-      <td>992</td>
-      <td>Sarah</td>
-      <td>-0.183778</td>
-      <td>0.437963</td>
-      <td>Sa</td>
+      <td>973</td>
+      <td>Ray</td>
+      <td>0.596621</td>
+      <td>3825.845661</td>
+      <td>Ra</td>
       <td>00:00:00</td>
     </tr>
     <tr>
       <td>2000-01-01 00:00:01</td>
-      <td>994</td>
-      <td>Bob</td>
-      <td>0.253015</td>
-      <td>-0.120317</td>
-      <td>Bo</td>
+      <td>967</td>
+      <td>Patricia</td>
+      <td>0.573025</td>
+      <td>1352.870913</td>
+      <td>Pa</td>
       <td>00:00:01</td>
     </tr>
   </tbody>
@@ -1973,22 +1969,22 @@ The function could also include arguments.</p></li>
   <tbody>
     <tr>
       <td>2000-01-01 00:00:00</td>
-      <td>992</td>
-      <td>Sarah</td>
-      <td>-0.183778</td>
-      <td>0.437963</td>
-      <td>Sa</td>
-      <td>-0.437963</td>
+      <td>973</td>
+      <td>Ray</td>
+      <td>0.596621</td>
+      <td>38.258457</td>
+      <td>Ra</td>
+      <td>596.620904</td>
       <td>00:00:00</td>
     </tr>
     <tr>
       <td>2000-01-01 00:00:01</td>
-      <td>994</td>
-      <td>Bob</td>
-      <td>0.253015</td>
-      <td>-0.120317</td>
-      <td>Bo</td>
-      <td>253.014660</td>
+      <td>967</td>
+      <td>Patricia</td>
+      <td>0.573025</td>
+      <td>13.528709</td>
+      <td>Pa</td>
+      <td>573.025066</td>
       <td>00:00:01</td>
     </tr>
   </tbody>
@@ -2073,18 +2069,18 @@ The function could also include arguments.</p></li>
   <tbody>
     <tr>
       <td>2000-01-01 00:00:00</td>
-      <td>992</td>
-      <td>Sarah</td>
-      <td>-0.183778</td>
-      <td>0.437963</td>
+      <td>973</td>
+      <td>Ray</td>
+      <td>0.596621</td>
+      <td>3825.845661</td>
       <td>00:00:00</td>
     </tr>
     <tr>
       <td>2000-01-01 00:00:01</td>
-      <td>994</td>
-      <td>Bob</td>
-      <td>0.253015</td>
-      <td>-0.120317</td>
+      <td>967</td>
+      <td>Patricia</td>
+      <td>0.573025</td>
+      <td>1352.870913</td>
       <td>00:00:01</td>
     </tr>
   </tbody>
@@ -2144,18 +2140,18 @@ The function could also include arguments.</p></li>
   <tbody>
     <tr>
       <td>2000-01-01 00:00:00</td>
-      <td>992</td>
-      <td>Sarah</td>
-      <td>-0.183778</td>
-      <td>0.437963</td>
+      <td>973</td>
+      <td>Ray</td>
+      <td>0.596621</td>
+      <td>38.258457</td>
       <td>00:00:00</td>
     </tr>
     <tr>
       <td>2000-01-01 00:00:01</td>
-      <td>994</td>
-      <td>Bob</td>
-      <td>0.253015</td>
-      <td>-0.120317</td>
+      <td>967</td>
+      <td>Patricia</td>
+      <td>0.573025</td>
+      <td>13.528709</td>
       <td>00:00:01</td>
     </tr>
   </tbody>
@@ -2209,18 +2205,18 @@ The function could also include arguments.</p></li>
   <tbody>
     <tr>
       <td>0</td>
-      <td>992</td>
-      <td>Sarah</td>
-      <td>-0.183778</td>
-      <td>0.437963</td>
+      <td>973</td>
+      <td>Ray</td>
+      <td>0.596621</td>
+      <td>3825.845661</td>
       <td>00:00:00</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>994</td>
-      <td>Bob</td>
-      <td>0.253015</td>
-      <td>-0.120317</td>
+      <td>967</td>
+      <td>Patricia</td>
+      <td>0.573025</td>
+      <td>1352.870913</td>
       <td>00:00:01</td>
     </tr>
   </tbody>
@@ -2272,18 +2268,18 @@ The function could also include arguments.</p></li>
   <tbody>
     <tr>
       <td>0</td>
-      <td>992</td>
-      <td>Sarah</td>
-      <td>-0.183778</td>
-      <td>0.437963</td>
+      <td>973</td>
+      <td>Ray</td>
+      <td>0.596621</td>
+      <td>38.258457</td>
       <td>00:00:00</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>994</td>
-      <td>Bob</td>
-      <td>0.253015</td>
-      <td>-0.120317</td>
+      <td>967</td>
+      <td>Patricia</td>
+      <td>0.573025</td>
+      <td>13.528709</td>
       <td>00:00:01</td>
     </tr>
   </tbody>
@@ -2331,8 +2327,8 @@ e.g.  ddf = dd.read_csv(’data/pd2dd/ddf*.csv’, compression=‘gzip’, head
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 18.1 s, sys: 513 ms, total: 18.7 s
-Wall time: 18.2 s
+CPU times: user 18.3 s, sys: 397 ms, total: 18.6 s
+Wall time: 18.3 s
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -2410,8 +2406,8 @@ Wall time: 18.2 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.33 s, sys: 118 ms, total: 1.45 s
-Wall time: 20.3 s
+CPU times: user 1.1 s, sys: 142 ms, total: 1.24 s
+Wall time: 21 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2494,8 +2490,8 @@ Wall time: 20.3 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2.77 s, sys: 297 ms, total: 3.07 s
-Wall time: 2.95 s
+CPU times: user 2.63 s, sys: 293 ms, total: 2.92 s
+Wall time: 2.84 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2524,8 +2520,8 @@ Wall time: 2.95 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 36.3 ms, sys: 342 µs, total: 36.6 ms
-Wall time: 34.4 ms
+CPU times: user 30.9 ms, sys: 4.36 ms, total: 35.2 ms
+Wall time: 33.3 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2630,8 +2626,8 @@ Wall time: 34.4 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 397 ms, sys: 45.3 ms, total: 442 ms
-Wall time: 2.76 s
+CPU times: user 350 ms, sys: 28.9 ms, total: 379 ms
+Wall time: 2.57 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2695,18 +2691,18 @@ Wall time: 2.76 s
   <tbody>
     <tr>
       <td>0</td>
-      <td>992</td>
-      <td>Sarah</td>
-      <td>-0.183778</td>
-      <td>0.437963</td>
+      <td>973</td>
+      <td>Ray</td>
+      <td>0.596621</td>
+      <td>38.258457</td>
       <td>00:00:00</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>994</td>
-      <td>Bob</td>
-      <td>0.253015</td>
-      <td>-0.120317</td>
+      <td>967</td>
+      <td>Patricia</td>
+      <td>0.573025</td>
+      <td>13.528709</td>
       <td>00:00:01</td>
     </tr>
   </tbody>
@@ -2766,32 +2762,32 @@ Wall time: 2.76 s
   <tbody>
     <tr>
       <td>0</td>
-      <td>Sarah</td>
-      <td>992</td>
+      <td>Ray</td>
+      <td>973</td>
       <td>00</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>Bob</td>
-      <td>994</td>
+      <td>Patricia</td>
+      <td>967</td>
       <td>00</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>Kevin</td>
-      <td>994</td>
+      <td>Tim</td>
+      <td>1050</td>
       <td>00</td>
     </tr>
     <tr>
       <td>3</td>
-      <td>Laura</td>
-      <td>1012</td>
+      <td>Oliver</td>
+      <td>994</td>
       <td>00</td>
     </tr>
     <tr>
       <td>4</td>
-      <td>Michael</td>
-      <td>962</td>
+      <td>Xavier</td>
+      <td>970</td>
       <td>00</td>
     </tr>
   </tbody>
@@ -2831,15 +2827,15 @@ Wall time: 2.76 s
 <div class="highlight"><pre>
        Weight                                                 ID  \
 name
-Alice   99952  [1024, 1025, 1026, 1027, 1028, 1029, 1030, 103...
-Bob     99849  [1024, 1025, 1026, 1027, 1028, 1029, 1030, 103...
+Alice  100024  [1024, 1025, 1026, 1027, 1028, 1029, 1030, 103...
+Bob     99772  [1024, 1025, 1026, 1027, 1028, 1029, 1030, 103...
 
                                                  seconds
 name
-Alice  [11, 80, 05, 73, 51, 31, 62, 64, 68, 50, 93, 8...
-Bob    [11, 80, 05, 73, 51, 31, 62, 64, 68, 50, 93, 8...
-CPU times: user 36.7 ms, sys: 0 ns, total: 36.7 ms
-Wall time: 27.9 ms
+Alice  [73, 43, 88, 37, 48, 78, 01, 64, 06, 66, 00, 8...
+Bob    [73, 43, 88, 37, 48, 78, 01, 64, 06, 66, 00, 8...
+CPU times: user 28 ms, sys: 0 ns, total: 28 ms
+Wall time: 25.4 ms
 </pre></div></div>
 </div>
 <ul class="simple">
@@ -2889,14 +2885,14 @@ Wall time: 27.9 ms
   <tbody>
     <tr>
       <td>0</td>
-      <td>Sarah</td>
-      <td>992</td>
+      <td>Ray</td>
+      <td>973</td>
       <td>00</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>Bob</td>
-      <td>994</td>
+      <td>Patricia</td>
+      <td>967</td>
       <td>01</td>
     </tr>
   </tbody>
@@ -2952,8 +2948,8 @@ Wall time: 27.9 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3.54 s, sys: 205 ms, total: 3.74 s
-Wall time: 19.4 s
+CPU times: user 3.15 s, sys: 192 ms, total: 3.34 s
+Wall time: 18.4 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2993,9 +2989,9 @@ Wall time: 19.4 s
   <tbody>
     <tr>
       <td>Victor</td>
-      <td>100067</td>
+      <td>99845</td>
       <td>[1024, 1025, 1026, 1027, 1028, 1029, 1030, 103...</td>
-      <td>[11, 31, 23, 58, 48, 09, 28, 13, 16, 04, 51, 0...</td>
+      <td>[39, 16, 14, 56, 00, 50, 05, 51, 23, 59, 46, 3...</td>
     </tr>
   </tbody>
 </table>
@@ -3039,8 +3035,8 @@ Wall time: 19.4 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 420 ms, sys: 26.6 ms, total: 446 ms
-Wall time: 3.31 s
+CPU times: user 388 ms, sys: 21.9 ms, total: 410 ms
+Wall time: 3.18 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -3080,15 +3076,15 @@ Wall time: 3.31 s
   <tbody>
     <tr>
       <td>Alice</td>
-      <td>99952</td>
+      <td>100024</td>
       <td>[1024, 1025, 1026, 1027, 1028, 1029, 1030, 103...</td>
-      <td>[11, 31, 23, 09, 48, 58, 13, 28, 16, 04, 51, 0...</td>
+      <td>[39, 16, 14, 56, 05, 50, 00, 51, 23, 59, 46, 3...</td>
     </tr>
     <tr>
       <td>Bob</td>
-      <td>99849</td>
+      <td>99772</td>
       <td>[1024, 1025, 1026, 1027, 1028, 1029, 1030, 103...</td>
-      <td>[31, 11, 23, 09, 48, 58, 28, 13, 16, 04, 51, 0...</td>
+      <td>[39, 16, 14, 56, 00, 50, 05, 51, 46, 23, 59, 3...</td>
     </tr>
   </tbody>
 </table>
@@ -3150,10 +3146,10 @@ Wall time: 3.31 s
   <tbody>
     <tr>
       <td>2000-01-01</td>
-      <td>1013</td>
-      <td>Michael</td>
-      <td>0.375306</td>
-      <td>-0.805287</td>
+      <td>1015</td>
+      <td>Yvonne</td>
+      <td>-0.773158</td>
+      <td>0.841354</td>
     </tr>
   </tbody>
 </table>
@@ -3304,19 +3300,19 @@ TypeError: unsupported operand type(s) for ^: 'float' and 'bool'<p>We need to re
   <tbody>
     <tr>
       <td>2000-01-01 00:00:00</td>
-      <td>993</td>
-      <td>Xavier</td>
-      <td>0.905761</td>
-      <td>0.437044</td>
+      <td>1021</td>
+      <td>Kevin</td>
+      <td>0.357935</td>
+      <td>0.820599</td>
       <td>NaN</td>
     </tr>
     <tr>
       <td>2000-01-01 00:00:01</td>
-      <td>1015</td>
-      <td>Laura</td>
-      <td>-0.270003</td>
-      <td>0.998920</td>
-      <td>1.303121</td>
+      <td>970</td>
+      <td>Charlie</td>
+      <td>-0.479316</td>
+      <td>0.005100</td>
+      <td>1.168772</td>
     </tr>
   </tbody>
 </table>

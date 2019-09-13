@@ -176,10 +176,6 @@
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/training-on-large-datasets.html">Train Models on Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/incremental.html">Incrementally Train Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/hyperparam-opt.html">Hyperparameter optimization with Dask</a></li>
-<li class="toctree-l1"><a class="reference internal" href="machine-learning/hyperparam-opt.html#Setup-Dask">Setup Dask</a></li>
-<li class="toctree-l1"><a class="reference internal" href="machine-learning/hyperparam-opt.html#Hyperparameter-optimization">Hyperparameter optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="machine-learning/hyperparam-opt.html#Integration">Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="machine-learning/hyperparam-opt.html#Learn-more">Learn more</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/xgboost.html">Scale XGBoost</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/voting-classifier.html">Use Voting Classifiers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/tpot.html">Automate Machine Learning with TPOT</a></li>
@@ -497,7 +493,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:42989</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:35095</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -568,8 +564,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 64, &#34;name&#34;: [&#34;Faviola&#34;, &#34;Harding&#34;], &#34;occupation&#34;: &#34;Actress&#34;, &#34;telephone&#34;: &#34;1-629-722-3687&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;508 Eldridge Point&#34;, &#34;city&#34;: &#34;Paris&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;2305 7293 2604 3454&#34;, &#34;expiration-date&#34;: &#34;05/20&#34;}}
-{&#34;age&#34;: 59, &#34;name&#34;: [&#34;Izetta&#34;, &#34;Campbell&#34;], &#34;occupation&#34;: &#34;Research Consultant&#34;, &#34;telephone&#34;: &#34;1-418-995-6443&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;8 Seal Rock Freeway&#34;, &#34;city&#34;: &#34;Pleasant Grove&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3490 326627 91170&#34;, &#34;expiration-date&#34;: &#34;03/24&#34;}}
+{&#34;age&#34;: 45, &#34;name&#34;: [&#34;Fred&#34;, &#34;Reeves&#34;], &#34;occupation&#34;: &#34;Sheriff&#34;, &#34;telephone&#34;: &#34;(997) 541-4303&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;950 Revere Green&#34;, &#34;city&#34;: &#34;St. Matthews&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;4975 6361 5108 7115&#34;, &#34;expiration-date&#34;: &#34;09/22&#34;}}
+{&#34;age&#34;: 16, &#34;name&#34;: [&#34;Ray&#34;, &#34;Atkinson&#34;], &#34;occupation&#34;: &#34;Dealer&#34;, &#34;telephone&#34;: &#34;+1-(564)-725-7176&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;886 Cottage Park&#34;, &#34;city&#34;: &#34;Blue Island&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;4444 0510 6701 5890&#34;, &#34;expiration-date&#34;: &#34;06/16&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -590,7 +586,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>dask.bag&lt;loads-c..., npartitions=10&gt;
+<span></span>dask.bag&lt;loads-5..., npartitions=10&gt;
 </pre></div>
 </div>
 </div>
@@ -608,19 +604,20 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 64,
-  &#39;name&#39;: [&#39;Faviola&#39;, &#39;Harding&#39;],
-  &#39;occupation&#39;: &#39;Actress&#39;,
-  &#39;telephone&#39;: &#39;1-629-722-3687&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;508 Eldridge Point&#39;, &#39;city&#39;: &#39;Paris&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2305 7293 2604 3454&#39;,
-   &#39;expiration-date&#39;: &#39;05/20&#39;}},
- {&#39;age&#39;: 59,
-  &#39;name&#39;: [&#39;Izetta&#39;, &#39;Campbell&#39;],
-  &#39;occupation&#39;: &#39;Research Consultant&#39;,
-  &#39;telephone&#39;: &#39;1-418-995-6443&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;8 Seal Rock Freeway&#39;, &#39;city&#39;: &#39;Pleasant Grove&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3490 326627 91170&#39;, &#39;expiration-date&#39;: &#39;03/24&#39;}})
+<span></span>({&#39;age&#39;: 45,
+  &#39;name&#39;: [&#39;Fred&#39;, &#39;Reeves&#39;],
+  &#39;occupation&#39;: &#39;Sheriff&#39;,
+  &#39;telephone&#39;: &#39;(997) 541-4303&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;950 Revere Green&#39;, &#39;city&#39;: &#39;St. Matthews&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4975 6361 5108 7115&#39;,
+   &#39;expiration-date&#39;: &#39;09/22&#39;}},
+ {&#39;age&#39;: 16,
+  &#39;name&#39;: [&#39;Ray&#39;, &#39;Atkinson&#39;],
+  &#39;occupation&#39;: &#39;Dealer&#39;,
+  &#39;telephone&#39;: &#39;+1-(564)-725-7176&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;886 Cottage Park&#39;, &#39;city&#39;: &#39;Blue Island&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4444 0510 6701 5890&#39;,
+   &#39;expiration-date&#39;: &#39;06/16&#39;}})
 </pre></div>
 </div>
 </div>
@@ -642,19 +639,20 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 64,
-  &#39;name&#39;: [&#39;Faviola&#39;, &#39;Harding&#39;],
-  &#39;occupation&#39;: &#39;Actress&#39;,
-  &#39;telephone&#39;: &#39;1-629-722-3687&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;508 Eldridge Point&#39;, &#39;city&#39;: &#39;Paris&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2305 7293 2604 3454&#39;,
-   &#39;expiration-date&#39;: &#39;05/20&#39;}},
- {&#39;age&#39;: 59,
-  &#39;name&#39;: [&#39;Izetta&#39;, &#39;Campbell&#39;],
-  &#39;occupation&#39;: &#39;Research Consultant&#39;,
-  &#39;telephone&#39;: &#39;1-418-995-6443&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;8 Seal Rock Freeway&#39;, &#39;city&#39;: &#39;Pleasant Grove&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3490 326627 91170&#39;, &#39;expiration-date&#39;: &#39;03/24&#39;}})
+<span></span>({&#39;age&#39;: 45,
+  &#39;name&#39;: [&#39;Fred&#39;, &#39;Reeves&#39;],
+  &#39;occupation&#39;: &#39;Sheriff&#39;,
+  &#39;telephone&#39;: &#39;(997) 541-4303&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;950 Revere Green&#39;, &#39;city&#39;: &#39;St. Matthews&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4975 6361 5108 7115&#39;,
+   &#39;expiration-date&#39;: &#39;09/22&#39;}},
+ {&#39;age&#39;: 48,
+  &#39;name&#39;: [&#39;Lashawnda&#39;, &#39;Hayes&#39;],
+  &#39;occupation&#39;: &#39;Carpenter&#39;,
+  &#39;telephone&#39;: &#39;(001) 517-0772&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;105 Warren Square&#39;, &#39;city&#39;: &#39;Benton&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4282 6481 1638 0467&#39;,
+   &#39;expiration-date&#39;: &#39;02/24&#39;}})
 </pre></div>
 </div>
 </div>
@@ -672,7 +670,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(&#39;Actress&#39;, &#39;Research Consultant&#39;)
+<span></span>(&#39;Sheriff&#39;, &#39;Dealer&#39;)
 </pre></div>
 </div>
 </div>
@@ -735,16 +733,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[(&#39;Hotel Worker&#39;, 14),
- (&#39;Pet Minder&#39;, 14),
- (&#39;Professional Racing&#39;, 13),
- (&#39;Builder&#39;, 13),
- (&#39;Maid&#39;, 13),
- (&#39;Lift Engineer&#39;, 13),
- (&#39;Housing Officer&#39;, 13),
- (&#39;Child Minder&#39;, 13),
- (&#39;Car Dealer&#39;, 13),
- (&#39;Moneylender&#39;, 13)]
+<span></span>[(&#39;Stage Mover&#39;, 15),
+ (&#39;Opera Singer&#39;, 15),
+ (&#39;Jockey&#39;, 14),
+ (&#39;Barman&#39;, 14),
+ (&#39;Booking Clerk&#39;, 14),
+ (&#39;Tour Guide&#39;, 14),
+ (&#39;Upholsterer&#39;, 14),
+ (&#39;Metal Engineer&#39;, 13),
+ (&#39;Ornithologist&#39;, 13),
+ (&#39;Choreographer&#39;, 13)]
 </pre></div>
 </div>
 </div>
@@ -801,13 +799,13 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 64,
-  &#39;name&#39;: [&#39;Faviola&#39;, &#39;Harding&#39;],
-  &#39;occupation&#39;: &#39;Actress&#39;,
-  &#39;telephone&#39;: &#39;1-629-722-3687&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;508 Eldridge Point&#39;, &#39;city&#39;: &#39;Paris&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2305 7293 2604 3454&#39;,
-   &#39;expiration-date&#39;: &#39;05/20&#39;}},)
+<span></span>({&#39;age&#39;: 45,
+  &#39;name&#39;: [&#39;Fred&#39;, &#39;Reeves&#39;],
+  &#39;occupation&#39;: &#39;Sheriff&#39;,
+  &#39;telephone&#39;: &#39;(997) 541-4303&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;950 Revere Green&#39;, &#39;city&#39;: &#39;St. Matthews&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4975 6361 5108 7115&#39;,
+   &#39;expiration-date&#39;: &#39;09/22&#39;}},)
 </pre></div>
 </div>
 </div>
@@ -837,14 +835,14 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 64,
-  &#39;occupation&#39;: &#39;Actress&#39;,
-  &#39;telephone&#39;: &#39;1-629-722-3687&#39;,
-  &#39;credit-card-number&#39;: &#39;2305 7293 2604 3454&#39;,
-  &#39;credit-card-expiration&#39;: &#39;05/20&#39;,
-  &#39;name&#39;: &#39;Faviola Harding&#39;,
-  &#39;street-address&#39;: &#39;508 Eldridge Point&#39;,
-  &#39;city&#39;: &#39;Paris&#39;},)
+<span></span>({&#39;age&#39;: 45,
+  &#39;occupation&#39;: &#39;Sheriff&#39;,
+  &#39;telephone&#39;: &#39;(997) 541-4303&#39;,
+  &#39;credit-card-number&#39;: &#39;4975 6361 5108 7115&#39;,
+  &#39;credit-card-expiration&#39;: &#39;09/22&#39;,
+  &#39;name&#39;: &#39;Fred Reeves&#39;,
+  &#39;street-address&#39;: &#39;950 Revere Green&#39;,
+  &#39;city&#39;: &#39;St. Matthews&#39;},)
 </pre></div>
 </div>
 </div>
@@ -894,58 +892,58 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <td>0</td>
-      <td>64</td>
-      <td>Actress</td>
-      <td>1-629-722-3687</td>
-      <td>2305 7293 2604 3454</td>
-      <td>05/20</td>
-      <td>Faviola Harding</td>
-      <td>508 Eldridge Point</td>
-      <td>Paris</td>
+      <td>45</td>
+      <td>Sheriff</td>
+      <td>(997) 541-4303</td>
+      <td>4975 6361 5108 7115</td>
+      <td>09/22</td>
+      <td>Fred Reeves</td>
+      <td>950 Revere Green</td>
+      <td>St. Matthews</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>59</td>
-      <td>Research Consultant</td>
-      <td>1-418-995-6443</td>
-      <td>3490 326627 91170</td>
-      <td>03/24</td>
-      <td>Izetta Campbell</td>
-      <td>8 Seal Rock Freeway</td>
-      <td>Pleasant Grove</td>
+      <td>16</td>
+      <td>Dealer</td>
+      <td>+1-(564)-725-7176</td>
+      <td>4444 0510 6701 5890</td>
+      <td>06/16</td>
+      <td>Ray Atkinson</td>
+      <td>886 Cottage Park</td>
+      <td>Blue Island</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>29</td>
-      <td>Slater</td>
-      <td>1-144-366-6814</td>
-      <td>5478 7645 0349 5742</td>
-      <td>07/18</td>
-      <td>Zack Gilliam</td>
-      <td>1311 Gladstone Freeway</td>
-      <td>Laredo</td>
+      <td>48</td>
+      <td>Carpenter</td>
+      <td>(001) 517-0772</td>
+      <td>4282 6481 1638 0467</td>
+      <td>02/24</td>
+      <td>Lashawnda Hayes</td>
+      <td>105 Warren Square</td>
+      <td>Benton</td>
     </tr>
     <tr>
       <td>3</td>
-      <td>37</td>
-      <td>Professional Racing</td>
-      <td>555.244.6129</td>
-      <td>4313 6699 9627 4599</td>
-      <td>10/17</td>
-      <td>Deja Jordan</td>
-      <td>37 Java Gardens</td>
-      <td>Glen Cove</td>
+      <td>40</td>
+      <td>Sports Coach</td>
+      <td>717.551.5297</td>
+      <td>2248 8288 3280 9034</td>
+      <td>01/22</td>
+      <td>Tracy Burgess</td>
+      <td>212 West Clay Row</td>
+      <td>Visalia</td>
     </tr>
     <tr>
       <td>4</td>
-      <td>28</td>
-      <td>Polisher</td>
-      <td>744-180-9238</td>
-      <td>5497 7939 4909 5334</td>
-      <td>08/23</td>
-      <td>Rosario Reyes</td>
-      <td>765 Letterman Hill</td>
-      <td>Plano</td>
+      <td>29</td>
+      <td>Picture Editor</td>
+      <td>+1-(418)-183-5201</td>
+      <td>3781 747208 93210</td>
+      <td>09/20</td>
+      <td>Fredericka Barnes</td>
+      <td>701 Reuel Bay</td>
+      <td>San Jacinto</td>
     </tr>
   </tbody>
 </table>
@@ -966,16 +964,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Pet Minder             14
-Hotel Worker           14
-Moneylender            13
-Builder                13
-Professional Racing    13
-Maid                   13
-Induction Moulder      13
-Housing Officer        13
-Child Minder           13
-Car Dealer             13
+<span></span>Opera Singer      15
+Stage Mover       15
+Tour Guide        14
+Booking Clerk     14
+Barman            14
+Jockey            14
+Upholsterer       14
+Literary Agent    13
+Metal Engineer    13
+Surgeon           13
 Name: occupation, dtype: int64
 </pre></div>
 </div>
