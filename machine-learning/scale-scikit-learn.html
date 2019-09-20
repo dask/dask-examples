@@ -514,7 +514,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.1.56/14404/1</li>
+  <li><b>Scheduler: </b>inproc://10.20.2.219/14201/1</li>
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -652,7 +652,7 @@ Loading 20 newsgroups dataset for categories:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">sklearn.externals</span> <span class="k">import</span> <span class="n">joblib</span>
+<span></span><span class="kn">import</span> <span class="nn">joblib</span>
 
 <span class="k">with</span> <span class="n">joblib</span><span class="o">.</span><span class="n">parallel_backend</span><span class="p">(</span><span class="s1">&#39;dask&#39;</span><span class="p">):</span>
     <span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
@@ -673,9 +673,7 @@ Fitting 3 folds for each of 6 candidates, totalling 18 fits
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 [Parallel(n_jobs=-1)]: Using backend DaskDistributedBackend with 4 concurrent workers.
-/home/travis/miniconda/envs/test/lib/python3.7/site-packages/sklearn/linear_model/stochastic_gradient.py:183: FutureWarning: max_iter and tol parameters have been added in SGDClassifier in 0.19. If max_iter is set but tol is left unset, the default value for tol in 0.19 and 0.20 will be None (which is equivalent to -infinity, so it has no effect) but will change in 0.21 to 1e-3. Specify tol to silence this warning.
-  FutureWarning)
-[Parallel(n_jobs=-1)]: Done  18 out of  18 | elapsed:   23.4s finished
+[Parallel(n_jobs=-1)]: Done  18 out of  18 | elapsed:   12.3s finished
 </pre></div></div>
 </div>
 <p>If you had your distributed dashboard open during that fit, you’ll notice that each worker performs some of the fit tasks.</p>
@@ -749,15 +747,21 @@ Fitting 3 folds for each of 6 candidates, totalling 18 fits
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>GridSearchCV(cv=3, error_score=&#39;raise-deprecating&#39;,
-       estimator=ParallelPostFit(estimator=SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0,
-  decision_function_shape=&#39;ovr&#39;, degree=3, gamma=&#39;scale&#39;, kernel=&#39;rbf&#39;,
-  max_iter=-1, probability=False, random_state=0, shrinking=True,
-  tol=0.001, verbose=False),
-        scoring=None),
-       fit_params=None, iid=False, n_jobs=None,
-       param_grid={&#39;estimator__C&#39;: [0.01, 1.0, 10]},
-       pre_dispatch=&#39;2*n_jobs&#39;, refit=True, return_train_score=&#39;warn&#39;,
-       scoring=None, verbose=0)
+             estimator=ParallelPostFit(estimator=SVC(C=1.0, cache_size=200,
+                                                     class_weight=None,
+                                                     coef0=0.0,
+                                                     decision_function_shape=&#39;ovr&#39;,
+                                                     degree=3, gamma=&#39;scale&#39;,
+                                                     kernel=&#39;rbf&#39;, max_iter=-1,
+                                                     probability=False,
+                                                     random_state=0,
+                                                     shrinking=True, tol=0.001,
+                                                     verbose=False),
+                                       scoring=None),
+             iid=False, n_jobs=None,
+             param_grid={&#39;estimator__C&#39;: [0.01, 1.0, 10]},
+             pre_dispatch=&#39;2*n_jobs&#39;, refit=True, return_train_score=False,
+             scoring=None, verbose=0)
 </pre></div>
 </div>
 </div>
@@ -792,14 +796,17 @@ Fitting 3 folds for each of 6 candidates, totalling 18 fits
 <table>
 <tr>
 <td>
-<table>  <thead>    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
   </thead>
   <tbody>
     <tr><th> Bytes </th><td> 9.20 MB </td> <td> 920.06 kB </td></tr>
     <tr><th> Shape </th><td> (17970, 64) </td> <td> (1797, 64) </td></tr>
     <tr><th> Count </th><td> 11 Tasks </td><td> 10 Chunks </td></tr>
     <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>
-  </tbody></table>
+  </tbody>
+</table>
 </td>
 <td>
 <svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
@@ -851,14 +858,17 @@ Fitting 3 folds for each of 6 candidates, totalling 18 fits
 <table>
 <tr>
 <td>
-<table>  <thead>    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
   </thead>
   <tbody>
     <tr><th> Bytes </th><td> 143.76 kB </td> <td> 14.38 kB </td></tr>
     <tr><th> Shape </th><td> (17970,) </td> <td> (1797,) </td></tr>
     <tr><th> Count </th><td> 21 Tasks </td><td> 10 Chunks </td></tr>
     <tr><th> Type </th><td> int64 </td><td> numpy.ndarray </td></tr>
-  </tbody></table>
+  </tbody>
+</table>
 </td>
 <td>
 <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >

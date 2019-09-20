@@ -529,7 +529,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.1.56/13637/1</li>
+  <li><b>Scheduler: </b>inproc://10.20.2.219/13394/1</li>
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -784,14 +784,17 @@ bytes = 240.00 kB
 <table>
 <tr>
 <td>
-<table>  <thead>    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
   </thead>
   <tbody>
     <tr><th> Bytes </th><td> 1.20 MB </td> <td> 600.00 kB </td></tr>
     <tr><th> Shape </th><td> (25000, 6) </td> <td> (12500, 6) </td></tr>
     <tr><th> Count </th><td> 3 Tasks </td><td> 2 Chunks </td></tr>
     <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>
-  </tbody></table>
+  </tbody>
+</table>
 </td>
 <td>
 <svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
@@ -876,8 +879,8 @@ bytes = 240.00 kB
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2.83 s, sys: 863 ms, total: 3.69 s
-Wall time: 2.68 s
+CPU times: user 1.53 s, sys: 414 ms, total: 1.95 s
+Wall time: 1.23 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -886,17 +889,27 @@ Wall time: 2.68 s
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>HyperbandSearchCV(aggressiveness=3,
-         estimator=MLPClassifier(activation=&#39;relu&#39;, alpha=0.0001, batch_size=&#39;auto&#39;, beta_1=0.9,
-       beta_2=0.999, early_stopping=False, epsilon=1e-08,
-       hidden_layer_sizes=(100,), learning_rate=&#39;constant&#39;,
-       learning_rate_init=0.001, max_iter=200, momentum=0.9,
-       n_iter_no_change=10, nesterovs_momentum=True, power_t=0.5,
-       random_state=None, shuffle=True, solver=&#39;adam&#39;, tol=0.0001,
-       validation_fraction=0.1, verbose=False, warm_start=False),
-         max_iter=8,
-         parameters={&#39;hidden_layer_sizes&#39;: [(24,), (12, 12), (6, 6, 6, 6), (4, 4, 4, 4, 4, 4), (12, 6, 3, 3)], &#39;activation&#39;: [&#39;relu&#39;, &#39;logistic&#39;, &#39;tanh&#39;], &#39;alpha&#39;: array([1.00000e-06, 1.00694e-06, ..., 9.93109e-04, 1.00000e-03]), &#39;batch_size&#39;: [16, 32, 64, 128, 256, 512]},
-         patience=True, random_state=None, scoring=None, test_size=None,
-         tol=0.001)
+                  estimator=MLPClassifier(activation=&#39;relu&#39;, alpha=0.0001,
+                                          batch_size=&#39;auto&#39;, beta_1=0.9,
+                                          beta_2=0.999, early_stopping=False,
+                                          epsilon=1e-08,
+                                          hidden_layer_sizes=(100,),
+                                          learning_rate=&#39;constant&#39;,
+                                          learning_rate_init=0.001,
+                                          max_iter=200, momentum=0.9,
+                                          n_iter_no_change=10,
+                                          nesterovs_momentum=True, power_t=0.5,
+                                          random_state=None, shuffle...
+       9.26759330e-04, 9.33189772e-04, 9.39664831e-04, 9.46184819e-04,
+       9.52750047e-04, 9.59360829e-04, 9.66017480e-04, 9.72720319e-04,
+       9.79469667e-04, 9.86265846e-04, 9.93109181e-04, 1.00000000e-03]),
+                              &#39;batch_size&#39;: [16, 32, 64, 128, 256, 512],
+                              &#39;hidden_layer_sizes&#39;: [(24,), (12, 12),
+                                                     (6, 6, 6, 6),
+                                                     (4, 4, 4, 4, 4, 4),
+                                                     (12, 6, 3, 3)]},
+                  patience=True, random_state=None, scoring=None,
+                  test_size=None, tol=0.001)
 </pre></div>
 </div>
 </div>
@@ -919,7 +932,7 @@ Wall time: 2.68 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>0.5028
+<span></span>0.51
 </pre></div>
 </div>
 </div>
@@ -937,14 +950,13 @@ Wall time: 2.68 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>MLPClassifier(activation=&#39;logistic&#39;, alpha=4.706224849841282e-05,
-       batch_size=16, beta_1=0.9, beta_2=0.999, early_stopping=False,
-       epsilon=1e-08, hidden_layer_sizes=(12, 12),
-       learning_rate=&#39;constant&#39;, learning_rate_init=0.001, max_iter=200,
-       momentum=0.9, n_iter_no_change=10, nesterovs_momentum=True,
-       power_t=0.5, random_state=None, shuffle=True, solver=&#39;adam&#39;,
-       tol=0.0001, validation_fraction=0.1, verbose=False,
-       warm_start=False)
+<span></span>MLPClassifier(activation=&#39;tanh&#39;, alpha=0.00020244465099768038, batch_size=512,
+              beta_1=0.9, beta_2=0.999, early_stopping=False, epsilon=1e-08,
+              hidden_layer_sizes=(24,), learning_rate=&#39;constant&#39;,
+              learning_rate_init=0.001, max_iter=200, momentum=0.9,
+              n_iter_no_change=10, nesterovs_momentum=True, power_t=0.5,
+              random_state=None, shuffle=True, solver=&#39;adam&#39;, tol=0.0001,
+              validation_fraction=0.1, verbose=False, warm_start=False)
 </pre></div>
 </div>
 </div>
@@ -981,107 +993,107 @@ Wall time: 2.68 s
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>rank_test_score</th>
-      <th>test_score</th>
-      <th>model_id</th>
       <th>param_hidden_layer_sizes</th>
-      <th>param_alpha</th>
-      <th>params</th>
-      <th>param_batch_size</th>
-      <th>mean_score_time</th>
-      <th>std_score_time</th>
-      <th>mean_partial_fit_time</th>
-      <th>std_partial_fit_time</th>
-      <th>bracket</th>
-      <th>param_activation</th>
       <th>partial_fit_calls</th>
+      <th>param_batch_size</th>
+      <th>bracket</th>
+      <th>mean_partial_fit_time</th>
+      <th>param_alpha</th>
+      <th>test_score</th>
+      <th>param_activation</th>
+      <th>std_score_time</th>
+      <th>model_id</th>
+      <th>params</th>
+      <th>std_partial_fit_time</th>
+      <th>rank_test_score</th>
+      <th>mean_score_time</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>0</td>
+      <td>(24,)</td>
+      <td>4</td>
+      <td>512</td>
       <td>1</td>
-      <td>0.5028</td>
+      <td>0.108130</td>
+      <td>0.000202</td>
+      <td>0.5100</td>
+      <td>tanh</td>
+      <td>0.001857</td>
       <td>bracket=1-0</td>
-      <td>(12, 12)</td>
-      <td>0.000047</td>
-      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
-      <td>16</td>
-      <td>0.023259</td>
-      <td>0.006518</td>
-      <td>0.669733</td>
-      <td>0.003981</td>
+      <td>{'hidden_layer_sizes': (24,), 'batch_size': 51...</td>
+      <td>0.007268</td>
       <td>1</td>
-      <td>logistic</td>
-      <td>2</td>
+      <td>0.019855</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>3</td>
-      <td>0.4972</td>
+      <td>(4, 4, 4, 4, 4, 4)</td>
+      <td>2</td>
+      <td>128</td>
+      <td>1</td>
+      <td>0.447023</td>
+      <td>0.000103</td>
+      <td>0.0000</td>
+      <td>relu</td>
+      <td>0.001238</td>
       <td>bracket=1-1</td>
-      <td>(12, 12)</td>
-      <td>0.000173</td>
-      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
-      <td>512</td>
-      <td>0.014845</td>
-      <td>0.002303</td>
-      <td>0.449172</td>
-      <td>0.293608</td>
-      <td>1</td>
-      <td>relu</td>
-      <td>2</td>
+      <td>{'hidden_layer_sizes': (4, 4, 4, 4, 4, 4), 'ba...</td>
+      <td>0.020454</td>
+      <td>3</td>
+      <td>0.009662</td>
     </tr>
     <tr>
       <td>2</td>
+      <td>(6, 6, 6, 6)</td>
+      <td>2</td>
+      <td>512</td>
       <td>1</td>
-      <td>0.5028</td>
+      <td>0.203455</td>
+      <td>0.000032</td>
+      <td>0.5012</td>
+      <td>tanh</td>
+      <td>0.016816</td>
       <td>bracket=1-2</td>
-      <td>(12, 6, 3, 3)</td>
-      <td>0.000824</td>
-      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
-      <td>32</td>
-      <td>0.034334</td>
-      <td>0.015231</td>
-      <td>0.853957</td>
-      <td>0.006175</td>
-      <td>1</td>
-      <td>logistic</td>
+      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
+      <td>0.006055</td>
       <td>2</td>
+      <td>0.038818</td>
     </tr>
     <tr>
       <td>3</td>
-      <td>2</td>
-      <td>0.4996</td>
-      <td>bracket=0-0</td>
-      <td>[12, 6, 3, 3]</td>
-      <td>0.000062</td>
-      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
-      <td>512</td>
-      <td>0.015469</td>
-      <td>0.005957</td>
-      <td>0.248266</td>
-      <td>0.003112</td>
-      <td>0</td>
-      <td>relu</td>
+      <td>(12, 6, 3, 3)</td>
       <td>3</td>
+      <td>256</td>
+      <td>0</td>
+      <td>0.263138</td>
+      <td>0.000013</td>
+      <td>0.4934</td>
+      <td>relu</td>
+      <td>0.000396</td>
+      <td>bracket=0-0</td>
+      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
+      <td>0.012176</td>
+      <td>1</td>
+      <td>0.014446</td>
     </tr>
     <tr>
       <td>4</td>
-      <td>1</td>
-      <td>0.5004</td>
-      <td>bracket=0-1</td>
-      <td>[12, 6, 3, 3]</td>
-      <td>0.000120</td>
-      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
-      <td>256</td>
-      <td>0.012625</td>
-      <td>0.005090</td>
-      <td>0.771686</td>
-      <td>0.145320</td>
-      <td>0</td>
-      <td>relu</td>
+      <td>(4, 4, 4, 4, 4, 4)</td>
       <td>3</td>
+      <td>512</td>
+      <td>0</td>
+      <td>0.239698</td>
+      <td>0.000369</td>
+      <td>0.0000</td>
+      <td>relu</td>
+      <td>0.005694</td>
+      <td>bracket=0-1</td>
+      <td>{'hidden_layer_sizes': (4, 4, 4, 4, 4, 4), 'ba...</td>
+      <td>0.026439</td>
+      <td>2</td>
+      <td>0.019591</td>
     </tr>
   </tbody>
 </table>
@@ -1101,7 +1113,7 @@ Wall time: 2.68 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>0.4976
+<span></span>0.5074
 </pre></div>
 </div>
 </div>
@@ -1122,14 +1134,17 @@ Wall time: 2.68 s
 <table>
 <tr>
 <td>
-<table>  <thead>    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
   </thead>
   <tbody>
     <tr><th> Bytes </th><td> 40.00 kB </td> <td> 40.00 kB </td></tr>
     <tr><th> Shape </th><td> (5000,) </td> <td> (5000,) </td></tr>
     <tr><th> Count </th><td> 2 Tasks </td><td> 1 Chunks </td></tr>
     <tr><th> Type </th><td> int64 </td><td> numpy.ndarray </td></tr>
-  </tbody></table>
+  </tbody>
+</table>
 </td>
 <td>
 <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
@@ -1167,7 +1182,7 @@ Wall time: 2.68 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([0, 0, 0, ..., 0, 0, 0])
+<span></span>array([1, 1, 1, ..., 1, 1, 1])
 </pre></div>
 </div>
 </div>
@@ -1218,58 +1233,58 @@ Wall time: 2.68 s
   <tbody>
     <tr>
       <td>0</td>
-      <td>bracket=1-0</td>
-      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
+      <td>bracket=0-0</td>
+      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
       <td>1</td>
-      <td>0.673713</td>
-      <td>0.5028</td>
-      <td>0.016740</td>
-      <td>1.012487</td>
-      <td>1</td>
+      <td>0.250962</td>
+      <td>0.4934</td>
+      <td>0.014841</td>
+      <td>0.374208</td>
+      <td>0</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>bracket=1-1</td>
-      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
+      <td>bracket=0-1</td>
+      <td>{'hidden_layer_sizes': (4, 4, 4, 4, 4, 4), 'ba...</td>
       <td>1</td>
-      <td>0.742779</td>
-      <td>0.4964</td>
-      <td>0.012542</td>
-      <td>1.012490</td>
-      <td>1</td>
+      <td>0.266137</td>
+      <td>0.0000</td>
+      <td>0.025285</td>
+      <td>0.374211</td>
+      <td>0</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>bracket=1-2</td>
-      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
+      <td>bracket=1-0</td>
+      <td>{'hidden_layer_sizes': (24,), 'batch_size': 51...</td>
       <td>1</td>
-      <td>0.860132</td>
-      <td>0.5028</td>
-      <td>0.019103</td>
-      <td>1.012491</td>
+      <td>0.115450</td>
+      <td>0.4628</td>
+      <td>0.019202</td>
+      <td>0.572515</td>
       <td>1</td>
     </tr>
     <tr>
       <td>3</td>
-      <td>bracket=0-0</td>
-      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
+      <td>bracket=1-1</td>
+      <td>{'hidden_layer_sizes': (4, 4, 4, 4, 4, 4), 'ba...</td>
       <td>1</td>
-      <td>0.251378</td>
-      <td>0.4954</td>
-      <td>0.009512</td>
-      <td>1.130492</td>
-      <td>0</td>
+      <td>0.467478</td>
+      <td>0.0000</td>
+      <td>0.008425</td>
+      <td>0.572518</td>
+      <td>1</td>
     </tr>
     <tr>
       <td>4</td>
-      <td>bracket=0-1</td>
-      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
+      <td>bracket=1-2</td>
+      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
       <td>1</td>
-      <td>0.917006</td>
-      <td>0.5004</td>
-      <td>0.017715</td>
-      <td>1.130495</td>
-      <td>0</td>
+      <td>0.209509</td>
+      <td>0.4398</td>
+      <td>0.055633</td>
+      <td>0.572519</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>

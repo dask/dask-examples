@@ -482,7 +482,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.1.56/14297/1</li>
+  <li><b>Scheduler: </b>inproc://10.20.2.219/14083/1</li>
   <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
 </ul>
 </td>
@@ -558,14 +558,17 @@ div.rendered_html tbody tr:hover {
 <table>
 <tr>
 <td>
-<table>  <thead>    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
   </thead>
   <tbody>
     <tr><th> Bytes </th><td> 1.60 MB </td> <td> 16.00 kB </td></tr>
     <tr><th> Shape </th><td> (100000, 2) </td> <td> (1000, 2) </td></tr>
     <tr><th> Count </th><td> 101 Tasks </td><td> 100 Chunks </td></tr>
     <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>
-  </tbody></table>
+  </tbody>
+</table>
 </td>
 <td>
 <svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
@@ -704,10 +707,11 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">ParallelPostFit</span><span class="p">(</span><span class="n">LogisticRegressionCV</span><span class="p">(</span><span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+<span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">ParallelPostFit</span><span class="p">(</span><span class="n">LogisticRegressionCV</span><span class="p">(</span><span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;r2&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<p>See the note in the <code class="docutils literal notranslate"><span class="pre">dask-ml</span></code>’s documentation about when and why a <code class="docutils literal notranslate"><span class="pre">scoring</span></code> parameter is needed: <a class="reference external" href="https://ml.dask.org/modules/generated/dask_ml.wrappers.ParallelPostFit.html#dask_ml.wrappers.ParallelPostFit">https://ml.dask.org/modules/generated/dask_ml.wrappers.ParallelPostFit.html#dask_ml.wrappers.ParallelPostFit</a>.</p>
 <p>Now we’ll call <code class="docutils literal notranslate"><span class="pre">clf.fit</span></code>. Dask-ML does nothing here, so this step can only use datasets that fit in memory.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -723,12 +727,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>ParallelPostFit(estimator=LogisticRegressionCV(Cs=10, class_weight=None, cv=3, dual=False,
-           fit_intercept=True, intercept_scaling=1.0, max_iter=100,
-           multi_class=&#39;warn&#39;, n_jobs=None, penalty=&#39;l2&#39;,
-           random_state=None, refit=True, scoring=None, solver=&#39;lbfgs&#39;,
-           tol=0.0001, verbose=0),
-        scoring=None)
+<span></span>ParallelPostFit(estimator=LogisticRegressionCV(Cs=10, class_weight=None, cv=3,
+                                               dual=False, fit_intercept=True,
+                                               intercept_scaling=1.0,
+                                               l1_ratios=None, max_iter=100,
+                                               multi_class=&#39;warn&#39;, n_jobs=None,
+                                               penalty=&#39;l2&#39;, random_state=None,
+                                               refit=True, scoring=None,
+                                               solver=&#39;lbfgs&#39;, tol=0.0001,
+                                               verbose=0),
+                scoring=&#39;r2&#39;)
 </pre></div>
 </div>
 </div>
@@ -751,14 +759,17 @@ div.rendered_html tbody tr:hover {
 <table>
 <tr>
 <td>
-<table>  <thead>    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
   </thead>
   <tbody>
     <tr><th> Bytes </th><td> 800.00 kB </td> <td> 8.00 kB </td></tr>
     <tr><th> Shape </th><td> (100000,) </td> <td> (1000,) </td></tr>
     <tr><th> Count </th><td> 201 Tasks </td><td> 100 Chunks </td></tr>
     <tr><th> Type </th><td> int64 </td><td> numpy.ndarray </td></tr>
-  </tbody></table>
+  </tbody>
+</table>
 </td>
 <td>
 <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
@@ -897,7 +908,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>0.899
+<span></span>0.596
 </pre></div>
 </div>
 </div>

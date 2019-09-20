@@ -512,7 +512,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 22.6 ms, sys: 24.5 ms, total: 47 ms
+CPU times: user 20.8 ms, sys: 23.3 ms, total: 44.1 ms
 Wall time: 1.05 s
 </pre></div></div>
 </div>
@@ -521,14 +521,32 @@ Wall time: 1.05 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>VotingClassifier(estimators=[(&#39;sgd&#39;, SGDClassifier(alpha=0.0001, average=False, class_weight=None,
-       early_stopping=False, epsilon=0.1, eta0=0.0, fit_intercept=True,
-       l1_ratio=0.15, learning_rate=&#39;optimal&#39;, loss=&#39;hinge&#39;, max_iter=1000,
-       n_iter=None, n_iter_no_change=5, n_jobs=None, penalty=&#39;l2&#39;,
-   ...,
-  max_iter=-1, probability=False, random_state=None, shrinking=True,
-  tol=0.001, verbose=False))],
-         flatten_transform=None, n_jobs=-1, voting=&#39;hard&#39;, weights=None)
+<span></span>VotingClassifier(estimators=[(&#39;sgd&#39;,
+                              SGDClassifier(alpha=0.0001, average=False,
+                                            class_weight=None,
+                                            early_stopping=False, epsilon=0.1,
+                                            eta0=0.0, fit_intercept=True,
+                                            l1_ratio=0.15,
+                                            learning_rate=&#39;optimal&#39;,
+                                            loss=&#39;hinge&#39;, max_iter=1000,
+                                            n_iter_no_change=5, n_jobs=None,
+                                            penalty=&#39;l2&#39;, power_t=0.5,
+                                            random_state=None, shuffle=True,
+                                            tol=0.001, validation_fraction=0.1,
+                                            verbose=...
+                                                 n_jobs=None, penalty=&#39;l2&#39;,
+                                                 random_state=None,
+                                                 solver=&#39;warn&#39;, tol=0.0001,
+                                                 verbose=0, warm_start=False)),
+                             (&#39;svc&#39;,
+                              SVC(C=1.0, cache_size=200, class_weight=None,
+                                  coef0=0.0, decision_function_shape=&#39;ovr&#39;,
+                                  degree=3, gamma=&#39;auto&#39;, kernel=&#39;rbf&#39;,
+                                  max_iter=-1, probability=False,
+                                  random_state=None, shrinking=True, tol=0.001,
+                                  verbose=False))],
+                 flatten_transform=True, n_jobs=-1, voting=&#39;hard&#39;,
+                 weights=None)
 </pre></div>
 </div>
 </div>
@@ -539,7 +557,7 @@ Wall time: 1.05 s
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">sklearn.externals</span> <span class="k">import</span> <span class="n">joblib</span>
+<span></span><span class="kn">import</span> <span class="nn">joblib</span>
 <span class="kn">from</span> <span class="nn">distributed</span> <span class="k">import</span> <span class="n">Client</span>
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">()</span>
@@ -557,7 +575,7 @@ Wall time: 1.05 s
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:46431</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:35865</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -591,16 +609,34 @@ Wall time: 1.05 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-VotingClassifier(estimators=[(&#39;sgd&#39;, SGDClassifier(alpha=0.0001, average=False, class_weight=None,
-       early_stopping=False, epsilon=0.1, eta0=0.0, fit_intercept=True,
-       l1_ratio=0.15, learning_rate=&#39;optimal&#39;, loss=&#39;hinge&#39;, max_iter=1000,
-       n_iter=None, n_iter_no_change=5, n_jobs=None, penalty=&#39;l2&#39;,
-   ...,
-  max_iter=-1, probability=False, random_state=None, shrinking=True,
-  tol=0.001, verbose=False))],
-         flatten_transform=None, n_jobs=-1, voting=&#39;hard&#39;, weights=None)
-CPU times: user 89.5 ms, sys: 11.7 ms, total: 101 ms
-Wall time: 943 ms
+VotingClassifier(estimators=[(&#39;sgd&#39;,
+                              SGDClassifier(alpha=0.0001, average=False,
+                                            class_weight=None,
+                                            early_stopping=False, epsilon=0.1,
+                                            eta0=0.0, fit_intercept=True,
+                                            l1_ratio=0.15,
+                                            learning_rate=&#39;optimal&#39;,
+                                            loss=&#39;hinge&#39;, max_iter=1000,
+                                            n_iter_no_change=5, n_jobs=None,
+                                            penalty=&#39;l2&#39;, power_t=0.5,
+                                            random_state=None, shuffle=True,
+                                            tol=0.001, validation_fraction=0.1,
+                                            verbose=...
+                                                 n_jobs=None, penalty=&#39;l2&#39;,
+                                                 random_state=None,
+                                                 solver=&#39;warn&#39;, tol=0.0001,
+                                                 verbose=0, warm_start=False)),
+                             (&#39;svc&#39;,
+                              SVC(C=1.0, cache_size=200, class_weight=None,
+                                  coef0=0.0, decision_function_shape=&#39;ovr&#39;,
+                                  degree=3, gamma=&#39;auto&#39;, kernel=&#39;rbf&#39;,
+                                  max_iter=-1, probability=False,
+                                  random_state=None, shrinking=True, tol=0.001,
+                                  verbose=False))],
+                 flatten_transform=True, n_jobs=-1, voting=&#39;hard&#39;,
+                 weights=None)
+CPU times: user 97.4 ms, sys: 3.53 ms, total: 101 ms
+Wall time: 922 ms
 </pre></div></div>
 </div>
 <p>Note, that we see no advantage of using dask because we are using a local cluster rather than a distributed cluster and sklearn is already using all my computer’s cores. If we were using a distributed cluster, dask would enable us to take advantage of the multiple machines and train sub-estimators across them.</p>
