@@ -57,6 +57,22 @@ nbsphinx_prolog = """
    :target: https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/{{ docname }}
 """
 
+nbsphinx_epilog = """
+
+.. raw:: html
+
+   <!-- Google Analytics -->
+   <script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+   ga('create', 'UA-18218874-5', 'auto');
+   ga('send', 'pageview');
+   </script>
+   <!-- End Google Analytics -->
+"""
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
