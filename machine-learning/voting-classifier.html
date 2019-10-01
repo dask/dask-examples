@@ -516,8 +516,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 11.6 ms, sys: 50 ms, total: 61.6 ms
-Wall time: 1.37 s
+CPU times: user 17.5 ms, sys: 25.4 ms, total: 43 ms
+Wall time: 1.18 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -579,7 +579,7 @@ Wall time: 1.37 s
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:38971</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:46381</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -639,13 +639,23 @@ VotingClassifier(estimators=[(&#39;sgd&#39;,
                                   verbose=False))],
                  flatten_transform=True, n_jobs=-1, voting=&#39;hard&#39;,
                  weights=None)
-CPU times: user 130 ms, sys: 21.3 ms, total: 152 ms
-Wall time: 1.18 s
+CPU times: user 117 ms, sys: 11.7 ms, total: 129 ms
+Wall time: 1.03 s
 </pre></div></div>
 </div>
 <p>Note, that we see no advantage of using dask because we are using a local cluster rather than a distributed cluster and sklearn is already using all my computer’s cores. If we were using a distributed cluster, dask would enable us to take advantage of the multiple machines and train sub-estimators across them.</p>
 </div>
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+ga('create', 'UA-18218874-5', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
 
            </div>
            
