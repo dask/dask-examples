@@ -40,6 +40,7 @@ release = ''
 # ones.
 extensions = [
     "sphinx.ext.mathjax",
+    "sphinx.ext.intersphinx",
     'nbsphinx',
 ]
 
@@ -56,6 +57,12 @@ nbsphinx_prolog = """
 .. |Binder| image:: https://mybinder.org/badge.svg
    :target: https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/{{ docname }}
 """
+
+
+intersphinx_mapping = {
+    "dask": ("https://docs.dask.org/en/latest/", None),
+    "distributed": ("https://distributed.dask.org/en/latest/", None),
+}
 
 
 # Add any paths that contain templates here, relative to this directory.

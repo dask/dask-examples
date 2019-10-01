@@ -55,6 +55,7 @@ You can run these examples in a live session here: |Binder|
    applications/async-await
    applications/async-web-server
    applications/embarrassingly-parallel
+   applications/array-optimization
    applications/image-processing
    applications/prefect-etl
    applications/satellite-imagery-geotiff
