@@ -25,6 +25,7 @@
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
         <script type="text/javascript" src="../_static/js/custom.js"></script>
@@ -41,7 +42,9 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Scale Scikit-Learn for Small Data Problems" href="../machine-learning/scale-scikit-learn.html" />
-    <link rel="prev" title="DataFrames: Read and Write Data" href="01-data-access.html" /> 
+    <link rel="prev" title="DataFrames: Read and Write Data" href="01-data-access.html" />
+  <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
+
 </head>
 
 <body class="wy-body-for-nav">
@@ -81,7 +84,7 @@
     </li>
 
     <li>
-      <a href="https://docs.dask.org/en/latest/setup.html">Deploy</a>
+      <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
       <ul>
         <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
         <li><a href="https://docs.dask.org/en/latest/setup/kubernetes-helm.html"> Helm </a></li>
@@ -183,6 +186,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/async-web-server.html">Asynchronous Computation: Web Servers + Dask</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/image-processing.html">Image Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html">ETL Pipelines with Prefect</a></li>
@@ -488,8 +492,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.1.167/11959/1</li>
-  <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
+  <li><b>Scheduler: </b>inproc://10.20.0.59/12008/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.0.59/12008/1:8787/status' target='_blank'>http://10.20.0.59/12008/1:8787/status</a>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -627,32 +631,32 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>name
-Alice       0.001337
-Bob        -0.000130
-Charlie     0.000519
-Dan         0.001574
-Edith       0.001418
-Frank       0.001312
-George      0.000960
-Hannah     -0.001453
-Ingrid     -0.000936
-Jerry       0.002029
-Kevin       0.003202
-Laura      -0.002851
-Michael    -0.003585
-Norbert    -0.001503
-Oliver     -0.000184
-Patricia   -0.002713
-Quinn      -0.000769
-Ray         0.000381
-Sarah      -0.000491
-Tim        -0.001370
-Ursula     -0.000518
-Victor     -0.000604
-Wendy      -0.004039
-Xavier     -0.000631
-Yvonne     -0.002827
-Zelda       0.003785
+Alice       0.001009
+Bob        -0.001268
+Charlie     0.003513
+Dan        -0.000395
+Edith       0.001877
+Frank      -0.003041
+George     -0.001038
+Hannah     -0.002849
+Ingrid     -0.001217
+Jerry      -0.000485
+Kevin      -0.001769
+Laura      -0.000040
+Michael     0.000085
+Norbert    -0.002459
+Oliver      0.000121
+Patricia   -0.003185
+Quinn      -0.000737
+Ray        -0.001216
+Sarah       0.005463
+Tim         0.001321
+Ursula      0.003291
+Victor     -0.000613
+Wendy      -0.004975
+Xavier     -0.000569
+Yvonne     -0.001360
+Zelda      -0.001004
 Name: x, dtype: float64
 </pre></div>
 </div>
@@ -672,8 +676,8 @@ Name: x, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 329 ms, sys: 24.2 ms, total: 353 ms
-Wall time: 257 ms
+CPU times: user 404 ms, sys: 9.04 ms, total: 413 ms
+Wall time: 306 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -690,8 +694,8 @@ Wall time: 257 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 775 ms, sys: 22.7 ms, total: 798 ms
-Wall time: 584 ms
+CPU times: user 1.04 s, sys: 43.4 ms, total: 1.08 s
+Wall time: 819 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -708,8 +712,8 @@ Wall time: 584 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.22 s, sys: 93.5 ms, total: 1.32 s
-Wall time: 1.02 s
+CPU times: user 1.66 s, sys: 84.7 ms, total: 1.74 s
+Wall time: 1.37 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -760,38 +764,38 @@ Wall time: 1.02 s
   <tbody>
     <tr>
       <td>Alice</td>
-      <td>0.001337</td>
-      <td>0.577638</td>
-      <td>-0.000839</td>
-      <td>99861</td>
+      <td>0.001009</td>
+      <td>0.577713</td>
+      <td>-0.000109</td>
+      <td>99842</td>
     </tr>
     <tr>
       <td>Bob</td>
-      <td>-0.000130</td>
-      <td>0.576383</td>
-      <td>0.000820</td>
-      <td>99393</td>
+      <td>-0.001268</td>
+      <td>0.578091</td>
+      <td>0.001323</td>
+      <td>99115</td>
     </tr>
     <tr>
       <td>Charlie</td>
-      <td>0.000519</td>
-      <td>0.577754</td>
-      <td>-0.002033</td>
-      <td>99356</td>
+      <td>0.003513</td>
+      <td>0.576334</td>
+      <td>0.000631</td>
+      <td>99743</td>
     </tr>
     <tr>
       <td>Dan</td>
-      <td>0.001574</td>
-      <td>0.578026</td>
-      <td>0.000874</td>
-      <td>99897</td>
+      <td>-0.000395</td>
+      <td>0.576689</td>
+      <td>-0.003278</td>
+      <td>99804</td>
     </tr>
     <tr>
       <td>Edith</td>
-      <td>0.001418</td>
-      <td>0.578577</td>
-      <td>-0.001238</td>
-      <td>99529</td>
+      <td>0.001877</td>
+      <td>0.578551</td>
+      <td>0.000772</td>
+      <td>99341</td>
     </tr>
   </tbody>
 </table>
@@ -874,8 +878,8 @@ Wall time: 1.02 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 5.77 s, sys: 670 ms, total: 6.44 s
-Wall time: 5.28 s
+CPU times: user 7.95 s, sys: 906 ms, total: 8.85 s
+Wall time: 7.25 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">

@@ -25,6 +25,7 @@
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
         <script type="text/javascript" src="../_static/js/custom.js"></script>
@@ -41,7 +42,9 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Analyze web-hosted JSON data" href="../applications/json-data-on-the-web.html" />
-    <link rel="prev" title="Generalized Linear Models" href="glm.html" /> 
+    <link rel="prev" title="Generalized Linear Models" href="glm.html" />
+  <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
+
 </head>
 
 <body class="wy-body-for-nav">
@@ -81,7 +84,7 @@
     </li>
 
     <li>
-      <a href="https://docs.dask.org/en/latest/setup.html">Deploy</a>
+      <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
       <ul>
         <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
         <li><a href="https://docs.dask.org/en/latest/setup/kubernetes-helm.html"> Helm </a></li>
@@ -181,6 +184,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/async-web-server.html">Asynchronous Computation: Web Servers + Dask</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/image-processing.html">Image Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html">ETL Pipelines with Prefect</a></li>
@@ -487,8 +491,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.1.167/14517/1</li>
-  <li><b>Dashboard: </b><a href='http://localhost:8787/status' target='_blank'>http://localhost:8787/status</a>
+  <li><b>Scheduler: </b>inproc://10.20.0.59/14539/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.0.59/14539/1:8787/status' target='_blank'>http://10.20.0.59/14539/1:8787/status</a>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -551,19 +555,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([[ 0.10003142,  0.10009797,  0.10013244, ...,  0.10011531,
-         0.10018039,  0.09997869],
-       [ 0.12500661,  0.22662614,  0.07628292, ...,  0.00612147,
-         0.02090199,  0.00651402],
-       [-0.04234645, -0.11462098, -0.15947975, ..., -0.0231783 ,
-        -0.10060997,  0.10148845],
+<span></span>array([[ 0.1000231 ,  0.10024312,  0.10004296, ...,  0.10000004,
+         0.09980997,  0.10018991],
+       [ 0.12772992, -0.08346538,  0.14399022, ...,  0.01217854,
+        -0.09420515,  0.04959664],
+       [-0.12673923,  0.02393515, -0.10521476, ...,  0.16087405,
+        -0.05359672,  0.23438736],
        ...,
-       [-0.02242035, -0.00832975, -0.05344278, ..., -0.0518482 ,
-        -0.09766842, -0.1514769 ],
-       [ 0.11428435, -0.15911896,  0.05405974, ..., -0.0737419 ,
-        -0.02493963, -0.06042447],
-       [-0.1602958 ,  0.08135701, -0.12573311, ...,  0.04442798,
-        -0.00785137,  0.09186994]])
+       [-0.14188642, -0.1196154 ,  0.07053601, ..., -0.05579543,
+         0.04881185,  0.17727037],
+       [ 0.11597498,  0.00627258, -0.08660543, ...,  0.01103808,
+        -0.2269668 , -0.05915511],
+       [-0.1241548 , -0.05612203,  0.26924738, ...,  0.13473923,
+        -0.03751653,  0.08764448]])
 </pre></div>
 </div>
 </div>
@@ -616,16 +620,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([[ 0.01002245,  0.01004504,  0.01001339, ...,  0.01008814,
-         0.01007098,  0.01003644],
-       [ 0.00181632,  0.00038583, -0.00308628, ..., -0.01599543,
-         0.00224533, -0.00240177],
-       [ 0.00861312,  0.01106928, -0.014876  , ...,  0.00224672,
-        -0.00031281, -0.00102612],
-       [-0.00669538,  0.01297041,  0.01425774, ...,  0.00686194,
-         0.02218545,  0.00667874],
-       [-0.00668861, -0.00196565, -0.0016093 , ..., -0.00181346,
-         0.0070693 ,  0.0301593 ]])
+<span></span>array([[ 0.00996636,  0.00999642,  0.00997823, ...,  0.00995234,
+         0.01003372,  0.01003022],
+       [-0.00492412,  0.00522688,  0.00022788, ...,  0.01204937,
+         0.00465832,  0.0172854 ],
+       [ 0.01086376,  0.00262985, -0.0183948 , ...,  0.01011644,
+         0.01671294,  0.02019624],
+       [-0.00149819,  0.01369478, -0.0098461 , ..., -0.00131874,
+        -0.01199584, -0.00952289],
+       [ 0.00397394,  0.00936107, -0.01446506, ..., -0.02140697,
+        -0.00436603,  0.0084314 ]])
 </pre></div>
 </div>
 </div>

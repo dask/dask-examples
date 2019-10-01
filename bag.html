@@ -25,6 +25,7 @@
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
         <script type="text/javascript" src="_static/js/custom.js"></script>
@@ -41,7 +42,9 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Dask DataFrames" href="dataframe.html" />
-    <link rel="prev" title="Dask Arrays" href="array.html" /> 
+    <link rel="prev" title="Dask Arrays" href="array.html" />
+  <link rel="shortcut icon" href="_static/images/favicon.ico"/>
+
 </head>
 
 <body class="wy-body-for-nav">
@@ -81,7 +84,7 @@
     </li>
 
     <li>
-      <a href="https://docs.dask.org/en/latest/setup.html">Deploy</a>
+      <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
       <ul>
         <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
         <li><a href="https://docs.dask.org/en/latest/setup/kubernetes-helm.html"> Helm </a></li>
@@ -186,6 +189,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/async-web-server.html">Asynchronous Computation: Web Servers + Dask</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/image-processing.html">Image Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html">ETL Pipelines with Prefect</a></li>
@@ -493,7 +497,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:33447</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:36619</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -564,8 +568,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 48, &#34;name&#34;: [&#34;Kandra&#34;, &#34;Greene&#34;], &#34;occupation&#34;: &#34;Minicab Driver&#34;, &#34;telephone&#34;: &#34;(882) 234-8270&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1050 Anson Highway&#34;, &#34;city&#34;: &#34;Issaquah&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3493 546504 38469&#34;, &#34;expiration-date&#34;: &#34;07/22&#34;}}
-{&#34;age&#34;: 19, &#34;name&#34;: [&#34;Isiah&#34;, &#34;Mcbride&#34;], &#34;occupation&#34;: &#34;Marine Surveyor&#34;, &#34;telephone&#34;: &#34;1-572-627-2088&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;574 Recycle Plantation&#34;, &#34;city&#34;: &#34;Whitehall&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;4891 3400 8944 9940&#34;, &#34;expiration-date&#34;: &#34;03/22&#34;}}
+{&#34;age&#34;: 42, &#34;name&#34;: [&#34;Amiee&#34;, &#34;Francis&#34;], &#34;occupation&#34;: &#34;Accounts Staff&#34;, &#34;telephone&#34;: &#34;(245) 901-8275&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;836 Havelock Arcade&#34;, &#34;city&#34;: &#34;Green&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;4241 0400 1387 8027&#34;, &#34;expiration-date&#34;: &#34;12/20&#34;}}
+{&#34;age&#34;: 40, &#34;name&#34;: [&#34;Dewayne&#34;, &#34;Adams&#34;], &#34;occupation&#34;: &#34;Editor&#34;, &#34;telephone&#34;: &#34;1-959-208-3961&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;5 Bernice Crescent&#34;, &#34;city&#34;: &#34;Fairhope&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3796 720166 38446&#34;, &#34;expiration-date&#34;: &#34;01/17&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -586,7 +590,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>dask.bag&lt;loads-e..., npartitions=10&gt;
+<span></span>dask.bag&lt;loads-f..., npartitions=10&gt;
 </pre></div>
 </div>
 </div>
@@ -604,19 +608,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 48,
-  &#39;name&#39;: [&#39;Kandra&#39;, &#39;Greene&#39;],
-  &#39;occupation&#39;: &#39;Minicab Driver&#39;,
-  &#39;telephone&#39;: &#39;(882) 234-8270&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1050 Anson Highway&#39;, &#39;city&#39;: &#39;Issaquah&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3493 546504 38469&#39;, &#39;expiration-date&#39;: &#39;07/22&#39;}},
- {&#39;age&#39;: 19,
-  &#39;name&#39;: [&#39;Isiah&#39;, &#39;Mcbride&#39;],
-  &#39;occupation&#39;: &#39;Marine Surveyor&#39;,
-  &#39;telephone&#39;: &#39;1-572-627-2088&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;574 Recycle Plantation&#39;, &#39;city&#39;: &#39;Whitehall&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4891 3400 8944 9940&#39;,
-   &#39;expiration-date&#39;: &#39;03/22&#39;}})
+<span></span>({&#39;age&#39;: 42,
+  &#39;name&#39;: [&#39;Amiee&#39;, &#39;Francis&#39;],
+  &#39;occupation&#39;: &#39;Accounts Staff&#39;,
+  &#39;telephone&#39;: &#39;(245) 901-8275&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;836 Havelock Arcade&#39;, &#39;city&#39;: &#39;Green&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4241 0400 1387 8027&#39;,
+   &#39;expiration-date&#39;: &#39;12/20&#39;}},
+ {&#39;age&#39;: 40,
+  &#39;name&#39;: [&#39;Dewayne&#39;, &#39;Adams&#39;],
+  &#39;occupation&#39;: &#39;Editor&#39;,
+  &#39;telephone&#39;: &#39;1-959-208-3961&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;5 Bernice Crescent&#39;, &#39;city&#39;: &#39;Fairhope&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3796 720166 38446&#39;, &#39;expiration-date&#39;: &#39;01/17&#39;}})
 </pre></div>
 </div>
 </div>
@@ -638,18 +642,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 48,
-  &#39;name&#39;: [&#39;Kandra&#39;, &#39;Greene&#39;],
-  &#39;occupation&#39;: &#39;Minicab Driver&#39;,
-  &#39;telephone&#39;: &#39;(882) 234-8270&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1050 Anson Highway&#39;, &#39;city&#39;: &#39;Issaquah&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3493 546504 38469&#39;, &#39;expiration-date&#39;: &#39;07/22&#39;}},
+<span></span>({&#39;age&#39;: 42,
+  &#39;name&#39;: [&#39;Amiee&#39;, &#39;Francis&#39;],
+  &#39;occupation&#39;: &#39;Accounts Staff&#39;,
+  &#39;telephone&#39;: &#39;(245) 901-8275&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;836 Havelock Arcade&#39;, &#39;city&#39;: &#39;Green&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4241 0400 1387 8027&#39;,
+   &#39;expiration-date&#39;: &#39;12/20&#39;}},
  {&#39;age&#39;: 40,
-  &#39;name&#39;: [&#39;Ruben&#39;, &#39;Downs&#39;],
-  &#39;occupation&#39;: &#39;Gravel Merchant&#39;,
-  &#39;telephone&#39;: &#39;306.391.7735&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;26 Leese High Street&#39;, &#39;city&#39;: &#39;Northbrook&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3434 923608 64735&#39;, &#39;expiration-date&#39;: &#39;10/18&#39;}})
+  &#39;name&#39;: [&#39;Dewayne&#39;, &#39;Adams&#39;],
+  &#39;occupation&#39;: &#39;Editor&#39;,
+  &#39;telephone&#39;: &#39;1-959-208-3961&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;5 Bernice Crescent&#39;, &#39;city&#39;: &#39;Fairhope&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3796 720166 38446&#39;, &#39;expiration-date&#39;: &#39;01/17&#39;}})
 </pre></div>
 </div>
 </div>
@@ -667,7 +672,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(&#39;Minicab Driver&#39;, &#39;Marine Surveyor&#39;)
+<span></span>(&#39;Accounts Staff&#39;, &#39;Editor&#39;)
 </pre></div>
 </div>
 </div>
@@ -730,16 +735,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[(&#39;Chef&#39;, 16),
- (&#39;Nursing Auxiliary&#39;, 14),
- (&#39;Tool Maker&#39;, 13),
- (&#39;Golf Caddy&#39;, 13),
- (&#39;Pallet Maker&#39;, 13),
- (&#39;Service Engineer&#39;, 13),
- (&#39;Geophysicist&#39;, 13),
- (&#39;Horticulturalist&#39;, 13),
- (&#39;Shelter Warden&#39;, 13),
- (&#39;Stocktaker&#39;, 13)]
+<span></span>[(&#39;Cab Driver&#39;, 15),
+ (&#39;Assessor&#39;, 14),
+ (&#39;Advertising Agent&#39;, 13),
+ (&#39;Fraud Investigator&#39;, 13),
+ (&#39;Reflexologist&#39;, 13),
+ (&#39;Administration Staff&#39;, 13),
+ (&#39;Motor Mechanic&#39;, 13),
+ (&#39;Agent&#39;, 13),
+ (&#39;Premises Security&#39;, 13),
+ (&#39;Production Engineer&#39;, 12)]
 </pre></div>
 </div>
 </div>
@@ -796,12 +801,13 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 48,
-  &#39;name&#39;: [&#39;Kandra&#39;, &#39;Greene&#39;],
-  &#39;occupation&#39;: &#39;Minicab Driver&#39;,
-  &#39;telephone&#39;: &#39;(882) 234-8270&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1050 Anson Highway&#39;, &#39;city&#39;: &#39;Issaquah&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3493 546504 38469&#39;, &#39;expiration-date&#39;: &#39;07/22&#39;}},)
+<span></span>({&#39;age&#39;: 42,
+  &#39;name&#39;: [&#39;Amiee&#39;, &#39;Francis&#39;],
+  &#39;occupation&#39;: &#39;Accounts Staff&#39;,
+  &#39;telephone&#39;: &#39;(245) 901-8275&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;836 Havelock Arcade&#39;, &#39;city&#39;: &#39;Green&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4241 0400 1387 8027&#39;,
+   &#39;expiration-date&#39;: &#39;12/20&#39;}},)
 </pre></div>
 </div>
 </div>
@@ -831,14 +837,14 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 48,
-  &#39;occupation&#39;: &#39;Minicab Driver&#39;,
-  &#39;telephone&#39;: &#39;(882) 234-8270&#39;,
-  &#39;credit-card-number&#39;: &#39;3493 546504 38469&#39;,
-  &#39;credit-card-expiration&#39;: &#39;07/22&#39;,
-  &#39;name&#39;: &#39;Kandra Greene&#39;,
-  &#39;street-address&#39;: &#39;1050 Anson Highway&#39;,
-  &#39;city&#39;: &#39;Issaquah&#39;},)
+<span></span>({&#39;age&#39;: 42,
+  &#39;occupation&#39;: &#39;Accounts Staff&#39;,
+  &#39;telephone&#39;: &#39;(245) 901-8275&#39;,
+  &#39;credit-card-number&#39;: &#39;4241 0400 1387 8027&#39;,
+  &#39;credit-card-expiration&#39;: &#39;12/20&#39;,
+  &#39;name&#39;: &#39;Amiee Francis&#39;,
+  &#39;street-address&#39;: &#39;836 Havelock Arcade&#39;,
+  &#39;city&#39;: &#39;Green&#39;},)
 </pre></div>
 </div>
 </div>
@@ -888,58 +894,58 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <td>0</td>
-      <td>48</td>
-      <td>Minicab Driver</td>
-      <td>(882) 234-8270</td>
-      <td>3493 546504 38469</td>
-      <td>07/22</td>
-      <td>Kandra Greene</td>
-      <td>1050 Anson Highway</td>
-      <td>Issaquah</td>
+      <td>42</td>
+      <td>Accounts Staff</td>
+      <td>(245) 901-8275</td>
+      <td>4241 0400 1387 8027</td>
+      <td>12/20</td>
+      <td>Amiee Francis</td>
+      <td>836 Havelock Arcade</td>
+      <td>Green</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>19</td>
-      <td>Marine Surveyor</td>
-      <td>1-572-627-2088</td>
-      <td>4891 3400 8944 9940</td>
-      <td>03/22</td>
-      <td>Isiah Mcbride</td>
-      <td>574 Recycle Plantation</td>
-      <td>Whitehall</td>
+      <td>40</td>
+      <td>Editor</td>
+      <td>1-959-208-3961</td>
+      <td>3796 720166 38446</td>
+      <td>01/17</td>
+      <td>Dewayne Adams</td>
+      <td>5 Bernice Crescent</td>
+      <td>Fairhope</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>40</td>
-      <td>Gravel Merchant</td>
-      <td>306.391.7735</td>
-      <td>3434 923608 64735</td>
-      <td>10/18</td>
-      <td>Ruben Downs</td>
-      <td>26 Leese High Street</td>
-      <td>Northbrook</td>
+      <td>49</td>
+      <td>Slater</td>
+      <td>511.728.1214</td>
+      <td>4889 6552 8698 7770</td>
+      <td>09/20</td>
+      <td>Wilton May</td>
+      <td>1056 Robert Kirk Alley</td>
+      <td>West Chicago</td>
     </tr>
     <tr>
       <td>3</td>
-      <td>33</td>
-      <td>Technical Engineer</td>
-      <td>+1-(718)-463-1953</td>
-      <td>4504 6019 6581 5853</td>
-      <td>01/24</td>
-      <td>Gil Clay</td>
-      <td>533 Otis Row</td>
-      <td>Madison Heights</td>
+      <td>58</td>
+      <td>Miller</td>
+      <td>286.649.6753</td>
+      <td>5194 3972 4247 6583</td>
+      <td>01/20</td>
+      <td>Stefan Acevedo</td>
+      <td>272 Knott Plantation</td>
+      <td>Ottawa</td>
     </tr>
     <tr>
       <td>4</td>
-      <td>63</td>
-      <td>Wood Worker</td>
-      <td>1-556-911-3806</td>
-      <td>5474 3275 8729 9770</td>
-      <td>10/24</td>
-      <td>Virgil Sawyer</td>
-      <td>818 Gardenside Line</td>
-      <td>Sulphur</td>
+      <td>36</td>
+      <td>Homecare Manager</td>
+      <td>510-680-7727</td>
+      <td>2533 3244 1679 6981</td>
+      <td>07/23</td>
+      <td>Genesis Jimenez</td>
+      <td>792 Rome Expressway</td>
+      <td>Agawam</td>
     </tr>
   </tbody>
 </table>
@@ -960,16 +966,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Chef                  16
-Nursing Auxiliary     14
-Golf Caddy            13
-Geophysicist          13
-Car Park Attendant    13
-Tool Maker            13
-Horticulturalist      13
-Shelter Warden        13
-Stocktaker            13
-Pallet Maker          13
+<span></span>Cab Driver              15
+Assessor                14
+Fraud Investigator      13
+Advertising Agent       13
+Premises Security       13
+Reflexologist           13
+Motor Mechanic          13
+Agent                   13
+Administration Staff    13
+Technical Advisor       12
 Name: occupation, dtype: int64
 </pre></div>
 </div>

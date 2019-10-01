@@ -53,6 +53,7 @@ You can run these examples in a live session here: |Binder|
 
    applications/json-data-on-the-web
    applications/async-await
+   applications/async-web-server
    applications/embarrassingly-parallel
    applications/image-processing
    applications/prefect-etl

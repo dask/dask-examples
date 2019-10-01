@@ -1,0 +1,417 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<img src=\"http://dask.pydata.org/en/latest/_images/dask_horizontal.svg\"\n",
+    "     align=\"right\"\n",
+    "     width=\"30%\">\n",
+    "\n",
+    "Asynchronous Computation: Web Servers + Dask\n",
+    "===========================\n",
+    "\n",
+    "Lets imagine a simple web server that serves both fast-loading pages and also performs some computation on slower loading pages.  In our case this will be a simple Fibonnaci serving application, but you can imagine replacing the `fib` function for running a machine learning model on some input data, fetching results from a database, etc.."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "import tornado.ioloop\n",
+    "import tornado.web\n",
+    "\n",
+    "def fib(n):\n",
+    "    if n < 2:\n",
+    "        return n\n",
+    "    else:\n",
+    "        return fib(n - 1) + fib(n - 2)\n",
+    "    \n",
+    "\n",
+    "class FibHandler(tornado.web.RequestHandler):\n",
+    "    def get(self, n):\n",
+    "        result = fib(int(n))\n",
+    "        self.write(str(result))\n",
+    "\n",
+    "        \n",
+    "class FastHandler(tornado.web.RequestHandler):\n",
+    "    def get(self):\n",
+    "        self.write(\"Hello!\")\n",
+    "        \n",
+    "        \n",
+    "def make_app():\n",
+    "    return tornado.web.Application([\n",
+    "        (r\"/fast\", FastHandler),\n",
+    "        (r\"/fib/(\\d+)\", FibHandler),\n",
+    "    ])\n",
+    "\n",
+    "\n",
+    "app = make_app()\n",
+    "app.listen(8000)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Speed\n",
+    "\n",
+    "We know that users associate fast response time to authoritative content and trust, so we want to measure how fast our pages load.  We're particularly interested in doing this during many simultaneous loads, simulating how our web server will respond when serving many users"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "import asyncio\n",
+    "import tornado.httpclient\n",
+    "\n",
+    "client = tornado.httpclient.AsyncHTTPClient()\n",
+    "\n",
+    "from time import time\n",
+    "\n",
+    "async def measure(url, n=100):\n",
+    "    \"\"\" Get url n times concurrently.  Print duration. \"\"\"\n",
+    "    start = time()\n",
+    "    futures = [client.fetch(url) for i in range(n)]\n",
+    "    results = await asyncio.gather(*futures)\n",
+    "    end = time()\n",
+    "    print(url, ', %d simultaneous requests, ' %  n, 'total time: ', (end - start))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Timings\n",
+    "\n",
+    "We see that \n",
+    "\n",
+    "1.  Tornado has about a 3-5ms roundtrip time\n",
+    "2.  It can run 100 such queries in around 100ms, so there is some nice concurrency happening\n",
+    "3.  Calling fib takes a while\n",
+    "4.  Calling fib 100 times takes around 100 times as long, there is not as much parallelism"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "await measure('http://localhost:8000/fast', n=1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "await measure('http://localhost:8000/fast', n=100)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "await measure('http://localhost:8000/fib/28', n=1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "await measure('http://localhost:8000/fib/28', n=100)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Blocking async\n",
+    "\n",
+    "In the example below we see that one call to the slow `fib/` route will unfortunately block other much faster requests:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "a = asyncio.ensure_future(measure('http://localhost:8000/fib/35', n=1))\n",
+    "b = asyncio.ensure_future(measure('http://localhost:8000/fast', n=1))\n",
+    "await b"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Discussion\n",
+    "\n",
+    "There are two problems/opportunities here:\n",
+    "\n",
+    "1.  All of our `fib` calls are independent, we would like to run these computations in parallel with multiple cores or a nearby cluster.\n",
+    "2.  Our slow computationally intense `fib` requests can get in the way of our fast requests.  One slow user can affect everyone else."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Asynchronous off-process computation with Dask\n",
+    "\n",
+    "To resolve both of these problems we will offload computation to other processes or computers using Dask.  Because Dask is an async framework it can integrate nicely with Tornado or Asyncio."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from dask.distributed import Client\n",
+    "\n",
+    "dask_client = await Client(asynchronous=True)  # use local processes for now\n",
+    "dask_client"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "\n",
+    "def fib(n):\n",
+    "    if n < 2:\n",
+    "        return n\n",
+    "    else:\n",
+    "        return fib(n - 1) + fib(n - 2)\n",
+    "\n",
+    "    \n",
+    "class FibHandler(tornado.web.RequestHandler):\n",
+    "    async def get(self, n):\n",
+    "        future = dask_client.submit(fib, int(n))  # submit work to happen elsewhere\n",
+    "        result = await future\n",
+    "        self.write(str(result))\n",
+    "\n",
+    "        \n",
+    "class MainHandler(tornado.web.RequestHandler):\n",
+    "    async def get(self):\n",
+    "        self.write(\"Hello, world\")\n",
+    "\n",
+    "        \n",
+    "def make_app():\n",
+    "    return tornado.web.Application([\n",
+    "        (r\"/fast\", MainHandler),\n",
+    "        (r\"/fib/(\\d+)\", FibHandler),\n",
+    "                \n",
+    "    ])\n",
+    "\n",
+    "app = make_app()\n",
+    "app.listen(9000)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Performance changes\n",
+    "\n",
+    "By offloading the fib computation to Dask we acheive two things:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Parallel computing\n",
+    "\n",
+    "We can now support more requests in less time.  The following experiment asks for `fib(28)` simultaneously from 20 requests.  In the old version we computed these sequentially over a few seconds (the last person to request waited for a few seconds while their browser finished).  In the  new one many of these may be computed in parallel and so everyone gets an answer in a few hundred milliseconds."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# Before parallelism\n",
+    "await measure('http://localhost:8000/fib/28', n=20)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# After parallelism\n",
+    "await measure('http://localhost:9000/fib/28', n=20)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Asynchronous computing\n",
+    "\n",
+    "Previously while one request was busy evaluating `fib(...)` Tornado was blocked.  It was unable to handle any other request.  This is particularly problematic when our server provides both expensive computations and cheap ones.  The cheap requests get hung up needlessly.\n",
+    "\n",
+    "Because Dask is able to integrate with asynchronous systems like Tornado or Asyncio, our web server can freely jump between many requests, even while computation is going on in the background.  In the example below we see that even though the slow computation started first, the fast computation returned in just a few milliseconds."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# Before async\n",
+    "a = asyncio.ensure_future(measure('http://localhost:8000/fib/35', n=1))\n",
+    "b = asyncio.ensure_future(measure('http://localhost:8000/fast', n=1))\n",
+    "await b\n",
+    "await a"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# After async\n",
+    "a = asyncio.ensure_future(measure('http://localhost:9000/fib/35', n=1))\n",
+    "b = asyncio.ensure_future(measure('http://localhost:9000/fast', n=1))\n",
+    "await b\n",
+    "await a"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Other options\n",
+    "\n",
+    "In these situations people today tend to use [concurrent.futures](https://docs.python.org/3/library/concurrent.futures.html) or [Celery](http://www.celeryproject.org/).\n",
+    "\n",
+    "-  concurrent.futures allows easy parallelism on a single machine and integrates well into async frameworks.  The API is exactly what we showed above (Dask implements the concurrent.futures API).  However concurrent.futures doesn't easily scale out to a cluster.\n",
+    "-  Celery scales out more easily to multiple machines, but has higher latencies, doesn't scale down as nicely, and needs a bit of effort to integrate into async frameworks (or at least this is my understanding, my experience here is shallow)\n",
+    "\n",
+    "In this context Dask provides some of the benefits of both.  It is easy to set up and use in the common single-machine case, but can also [scale out to a cluster](http://distributed.readthedocs.io/en/latest/setup.html).  It integrates nicely with async frameworks and adds only very small latencies."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "async def f():\n",
+    "    start = time()\n",
+    "    result = await dask_client.submit(lambda x: x + 1, 10)\n",
+    "    end = time()\n",
+    "    print('Roundtrip latency: %.2f ms' % ((end - start) * 1000))\n",
+    "    \n",
+    "await f()"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
