@@ -67,6 +67,7 @@
         <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
         <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
         <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
+        <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vSTH2kAR0DCR0nw8pFBe5kuYbOk3inZ9cQfZbzOIRjyzQoVaOoMfI2JONGBz-qsvG_P6g050ddHxSXT/pub?start=false&loop=false&delayms=60000"> Slides </a></li>
       </ul>
     </li>
 
@@ -86,11 +87,11 @@
     <li>
       <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
       <ul>
-        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/kubernetes-helm.html"> Helm </a></li>
+        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+        <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
         <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
         <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
       </ul>
     </li>
 
@@ -186,6 +187,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/async-web-server.html">Asynchronous Computation: Web Servers + Dask</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/evolving-workflows.html">Handle Evolving Workflows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/image-processing.html">Image Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html">ETL Pipelines with Prefect</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
@@ -491,8 +493,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.2.77/14649/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.2.77/14649/1:8787/status' target='_blank'>http://10.20.2.77/14649/1:8787/status</a>
+  <li><b>Scheduler: </b>inproc://10.20.3.18/14670/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.3.18/14670/1:8787/status' target='_blank'>http://10.20.3.18/14670/1:8787/status</a>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -555,19 +557,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([[ 0.09997583,  0.10013841,  0.09980284, ...,  0.1000699 ,
-         0.10010245,  0.10004235],
-       [ 0.04761328, -0.02072199,  0.03602433, ...,  0.15953888,
-         0.18366874,  0.15995695],
-       [-0.00302872,  0.15972923,  0.03257057, ..., -0.15985733,
-        -0.02945185,  0.09287091],
+<span></span>array([[ 0.09997323,  0.10002447,  0.09993284, ...,  0.09992054,
+         0.10002051,  0.10008305],
+       [-0.01098508, -0.15523146, -0.02079935, ...,  0.08458428,
+        -0.03956887, -0.06677037],
+       [ 0.00940979, -0.00230388, -0.06505811, ...,  0.06270596,
+        -0.15462967,  0.00622003],
        ...,
-       [-0.31399274, -0.07517242, -0.05551122, ..., -0.02135801,
-         0.01858863, -0.07256548],
-       [ 0.06279966, -0.04709007,  0.03190065, ...,  0.01218503,
-        -0.08718532,  0.06348012],
-       [-0.07257842,  0.0910096 , -0.10179675, ...,  0.04523946,
-        -0.0692455 , -0.11962203]])
+       [ 0.05194269,  0.06743827,  0.1435731 , ..., -0.11174959,
+        -0.05331917,  0.09255407],
+       [-0.17898644,  0.02504247,  0.15536411, ...,  0.02873504,
+         0.14108798, -0.10294662],
+       [ 0.04638361,  0.11680589, -0.05627187, ..., -0.06252381,
+        -0.013403  , -0.05980477]])
 </pre></div>
 </div>
 </div>
@@ -620,16 +622,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([[ 0.00996017,  0.0099807 ,  0.01001472, ...,  0.01002193,
-         0.00998223,  0.00996632],
-       [ 0.00566817, -0.00807768, -0.00427631, ...,  0.00355494,
-         0.00537216, -0.00572421],
-       [-0.00648   , -0.00792811, -0.01330327, ..., -0.01717779,
-         0.00239476, -0.01031526],
-       [ 0.00789402,  0.00886068,  0.01072674, ...,  0.00715929,
-         0.00090216, -0.01010003],
-       [-0.00322748, -0.00896821,  0.01177638, ..., -0.00539458,
-        -0.00020392,  0.01235182]])
+<span></span>array([[ 0.00997056,  0.01000575,  0.00997847, ...,  0.01007497,
+         0.00996376,  0.00994995],
+       [ 0.00354369,  0.0033556 , -0.00175829, ..., -0.00449194,
+         0.0037921 ,  0.00671908],
+       [ 0.01144294, -0.01027953,  0.00531717, ...,  0.00432819,
+        -0.00101822,  0.00989876],
+       [-0.00530951,  0.00332537,  0.00370802, ...,  0.01258766,
+         0.01893639,  0.00898221],
+       [ 0.00496974,  0.00634564,  0.01298591, ...,  0.01156989,
+        -0.00846612, -0.00319656]])
 </pre></div>
 </div>
 </div>

@@ -67,6 +67,7 @@
         <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
         <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
         <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
+        <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vSTH2kAR0DCR0nw8pFBe5kuYbOk3inZ9cQfZbzOIRjyzQoVaOoMfI2JONGBz-qsvG_P6g050ddHxSXT/pub?start=false&loop=false&delayms=60000"> Slides </a></li>
       </ul>
     </li>
 
@@ -86,11 +87,11 @@
     <li>
       <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
       <ul>
-        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/kubernetes-helm.html"> Helm </a></li>
+        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+        <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
         <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
         <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
       </ul>
     </li>
 
@@ -189,6 +190,7 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/async-web-server.html">Asynchronous Computation: Web Servers + Dask</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/evolving-workflows.html">Handle Evolving Workflows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/image-processing.html">Image Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html">ETL Pipelines with Prefect</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
@@ -504,7 +506,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:42251</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:35765</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -573,7 +575,7 @@ Attributes:
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>&lt;xarray.DataArray &#39;air&#39; (time: 2920, lat: 25, lon: 53)&gt;
-dask.array&lt;open_dataset-8bad59352e3087565a8438ad34d158f9air, shape=(2920, 25, 53), dtype=float32, chunksize=(2920, 25, 25), chunktype=numpy.ndarray&gt;
+dask.array&lt;open_dataset-bc64ff92d999f3bf7eb65e37b01db1c3air, shape=(2920, 25, 53), dtype=float32, chunksize=(2920, 25, 25), chunktype=numpy.ndarray&gt;
 Coordinates:
   * lat      (lat) float32 75.0 72.5 70.0 67.5 65.0 ... 25.0 22.5 20.0 17.5 15.0
   * lon      (lon) float32 200.0 202.5 205.0 207.5 ... 322.5 325.0 327.5 330.0
@@ -1325,7 +1327,7 @@ Coordinates:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.collections.QuadMesh at 0x7f4fdc6ad438&gt;
+<span></span>&lt;matplotlib.collections.QuadMesh at 0x7fb486fe1be0&gt;
 </pre></div>
 </div>
 </div>
@@ -1352,17 +1354,8 @@ Coordinates:
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-distributed.nanny - WARNING - Worker exceeded 95% memory budget. Restarting
-distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:40605&#39;], (&#39;getitem-73e52906281e8a4db7a21abe8abfe482&#39;, 1, 0, 1, 0)
-NoneType: None
-distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:40605&#39;], (&#39;getitem-73e52906281e8a4db7a21abe8abfe482&#39;, 1, 0, 0, 0)
-NoneType: None
-distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:40605&#39;], (&#39;getitem-73e52906281e8a4db7a21abe8abfe482&#39;, 1, 0, 2, 0)
-NoneType: None
-distributed.client - WARNING - Couldn&#39;t gather 3 keys, rescheduling {&#34;(&#39;getitem-73e52906281e8a4db7a21abe8abfe482&#39;, 1, 0, 1, 0)&#34;: (&#39;tcp://127.0.0.1:40605&#39;,), &#34;(&#39;getitem-73e52906281e8a4db7a21abe8abfe482&#39;, 1, 0, 0, 0)&#34;: (&#39;tcp://127.0.0.1:40605&#39;,), &#34;(&#39;getitem-73e52906281e8a4db7a21abe8abfe482&#39;, 1, 0, 2, 0)&#34;: (&#39;tcp://127.0.0.1:40605&#39;,)}
-distributed.nanny - WARNING - Restarting worker
 /home/travis/miniconda/envs/test/lib/python3.7/site-packages/distributed/worker.py:3221: UserWarning: Large object of size 15.48 MB detected in task graph:
-  (array([[[241.2    , 242.5    , 243.5    , ..., 23 ... (0, 25, None)))
+  (array([[[241.2    , 242.5    , 243.5    , ..., 23 ... 50, 53, None)))
 Consider scattering large objects ahead of time
 with client.scatter to reduce scheduler burden and
 keep data on workers
@@ -1403,8 +1396,8 @@ Coordinates:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3.82 ms, sys: 0 ns, total: 3.82 ms
-Wall time: 3.64 ms
+CPU times: user 4 ms, sys: 0 ns, total: 4 ms
+Wall time: 3.76 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1447,8 +1440,8 @@ Attributes:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 87.2 ms, sys: 85.2 ms, total: 172 ms
-Wall time: 243 ms
+CPU times: user 102 ms, sys: 139 ms, total: 241 ms
+Wall time: 399 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1565,7 +1558,7 @@ Coordinates:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.collections.QuadMesh at 0x7f4fdc378ba8&gt;
+<span></span>&lt;matplotlib.collections.QuadMesh at 0x7fb486cd4160&gt;
 </pre></div>
 </div>
 </div>

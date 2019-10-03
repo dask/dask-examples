@@ -67,6 +67,7 @@
         <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
         <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
         <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
+        <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vSTH2kAR0DCR0nw8pFBe5kuYbOk3inZ9cQfZbzOIRjyzQoVaOoMfI2JONGBz-qsvG_P6g050ddHxSXT/pub?start=false&loop=false&delayms=60000"> Slides </a></li>
       </ul>
     </li>
 
@@ -86,11 +87,11 @@
     <li>
       <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
       <ul>
-        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/kubernetes-helm.html"> Helm </a></li>
+        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+        <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
         <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
         <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
       </ul>
     </li>
 
@@ -191,6 +192,7 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/async-web-server.html">Asynchronous Computation: Web Servers + Dask</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/evolving-workflows.html">Handle Evolving Workflows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/image-processing.html">Image Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html">ETL Pipelines with Prefect</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
@@ -497,7 +499,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:43233</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:39175</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -568,8 +570,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 30, &#34;name&#34;: [&#34;Collin&#34;, &#34;Fleming&#34;], &#34;occupation&#34;: &#34;Building Manager&#34;, &#34;telephone&#34;: &#34;(638) 201-8547&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;453 Southard Cove&#34;, &#34;city&#34;: &#34;Glendale&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;2647 4105 3636 0916&#34;, &#34;expiration-date&#34;: &#34;02/24&#34;}}
-{&#34;age&#34;: 34, &#34;name&#34;: [&#34;Terrilyn&#34;, &#34;Brooks&#34;], &#34;occupation&#34;: &#34;Hospital Consultant&#34;, &#34;telephone&#34;: &#34;(398) 429-5637&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;139 Bache Path&#34;, &#34;city&#34;: &#34;Richland&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5187 4181 2215 7264&#34;, &#34;expiration-date&#34;: &#34;04/19&#34;}}
+{&#34;age&#34;: 31, &#34;name&#34;: [&#34;Vaughn&#34;, &#34;Moreno&#34;], &#34;occupation&#34;: &#34;Medical Practitioner&#34;, &#34;telephone&#34;: &#34;995.134.0416&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;502 Manchester Lane&#34;, &#34;city&#34;: &#34;Green&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5458 4345 9316 6702&#34;, &#34;expiration-date&#34;: &#34;11/22&#34;}}
+{&#34;age&#34;: 59, &#34;name&#34;: [&#34;Ross&#34;, &#34;David&#34;], &#34;occupation&#34;: &#34;Telemarketeer&#34;, &#34;telephone&#34;: &#34;1-072-429-7061&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;450 Kalmanovitz Parkway&#34;, &#34;city&#34;: &#34;Phenix City&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;2307 5739 9736 1243&#34;, &#34;expiration-date&#34;: &#34;12/23&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -590,7 +592,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>dask.bag&lt;loads-f..., npartitions=10&gt;
+<span></span>dask.bag&lt;loads-6..., npartitions=10&gt;
 </pre></div>
 </div>
 </div>
@@ -608,20 +610,20 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 30,
-  &#39;name&#39;: [&#39;Collin&#39;, &#39;Fleming&#39;],
-  &#39;occupation&#39;: &#39;Building Manager&#39;,
-  &#39;telephone&#39;: &#39;(638) 201-8547&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;453 Southard Cove&#39;, &#39;city&#39;: &#39;Glendale&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2647 4105 3636 0916&#39;,
-   &#39;expiration-date&#39;: &#39;02/24&#39;}},
- {&#39;age&#39;: 34,
-  &#39;name&#39;: [&#39;Terrilyn&#39;, &#39;Brooks&#39;],
-  &#39;occupation&#39;: &#39;Hospital Consultant&#39;,
-  &#39;telephone&#39;: &#39;(398) 429-5637&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;139 Bache Path&#39;, &#39;city&#39;: &#39;Richland&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5187 4181 2215 7264&#39;,
-   &#39;expiration-date&#39;: &#39;04/19&#39;}})
+<span></span>({&#39;age&#39;: 31,
+  &#39;name&#39;: [&#39;Vaughn&#39;, &#39;Moreno&#39;],
+  &#39;occupation&#39;: &#39;Medical Practitioner&#39;,
+  &#39;telephone&#39;: &#39;995.134.0416&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;502 Manchester Lane&#39;, &#39;city&#39;: &#39;Green&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5458 4345 9316 6702&#39;,
+   &#39;expiration-date&#39;: &#39;11/22&#39;}},
+ {&#39;age&#39;: 59,
+  &#39;name&#39;: [&#39;Ross&#39;, &#39;David&#39;],
+  &#39;occupation&#39;: &#39;Telemarketeer&#39;,
+  &#39;telephone&#39;: &#39;1-072-429-7061&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;450 Kalmanovitz Parkway&#39;, &#39;city&#39;: &#39;Phenix City&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2307 5739 9736 1243&#39;,
+   &#39;expiration-date&#39;: &#39;12/23&#39;}})
 </pre></div>
 </div>
 </div>
@@ -643,20 +645,20 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 34,
-  &#39;name&#39;: [&#39;Terrilyn&#39;, &#39;Brooks&#39;],
-  &#39;occupation&#39;: &#39;Hospital Consultant&#39;,
-  &#39;telephone&#39;: &#39;(398) 429-5637&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;139 Bache Path&#39;, &#39;city&#39;: &#39;Richland&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5187 4181 2215 7264&#39;,
-   &#39;expiration-date&#39;: &#39;04/19&#39;}},
- {&#39;age&#39;: 33,
-  &#39;name&#39;: [&#39;Rashad&#39;, &#39;Wilson&#39;],
-  &#39;occupation&#39;: &#39;Ship Broker&#39;,
-  &#39;telephone&#39;: &#39;1-748-551-0610&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;476 Ohlone Green&#39;, &#39;city&#39;: &#39;Logansport&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4554 3667 3489 7769&#39;,
-   &#39;expiration-date&#39;: &#39;09/18&#39;}})
+<span></span>({&#39;age&#39;: 31,
+  &#39;name&#39;: [&#39;Vaughn&#39;, &#39;Moreno&#39;],
+  &#39;occupation&#39;: &#39;Medical Practitioner&#39;,
+  &#39;telephone&#39;: &#39;995.134.0416&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;502 Manchester Lane&#39;, &#39;city&#39;: &#39;Green&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5458 4345 9316 6702&#39;,
+   &#39;expiration-date&#39;: &#39;11/22&#39;}},
+ {&#39;age&#39;: 59,
+  &#39;name&#39;: [&#39;Ross&#39;, &#39;David&#39;],
+  &#39;occupation&#39;: &#39;Telemarketeer&#39;,
+  &#39;telephone&#39;: &#39;1-072-429-7061&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;450 Kalmanovitz Parkway&#39;, &#39;city&#39;: &#39;Phenix City&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2307 5739 9736 1243&#39;,
+   &#39;expiration-date&#39;: &#39;12/23&#39;}})
 </pre></div>
 </div>
 </div>
@@ -674,7 +676,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(&#39;Building Manager&#39;, &#39;Hospital Consultant&#39;)
+<span></span>(&#39;Medical Practitioner&#39;, &#39;Telemarketeer&#39;)
 </pre></div>
 </div>
 </div>
@@ -737,16 +739,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[(&#39;Turkey Farmer&#39;, 15),
- (&#39;Tobacconist&#39;, 14),
- (&#39;Post Sorter&#39;, 14),
- (&#39;Roof Tiler&#39;, 13),
- (&#39;Gas Mechanic&#39;, 13),
- (&#39;Floor Manager&#39;, 13),
- (&#39;Sports Coach&#39;, 13),
- (&#39;Sail Maker&#39;, 13),
- (&#39;Lighthouse Keeper&#39;, 13),
- (&#39;Pool Attendant&#39;, 13)]
+<span></span>[(&#39;Professional Boxer&#39;, 16),
+ (&#39;Aromatherapist&#39;, 14),
+ (&#39;Master Mariner&#39;, 14),
+ (&#39;Health Consultant&#39;, 13),
+ (&#39;Veterinary Surgeon&#39;, 13),
+ (&#39;Midwife&#39;, 13),
+ (&#39;Grocer&#39;, 13),
+ (&#39;Editor&#39;, 13),
+ (&#39;Lighterman&#39;, 13),
+ (&#39;Loans Manager&#39;, 13)]
 </pre></div>
 </div>
 </div>
@@ -803,13 +805,13 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 30,
-  &#39;name&#39;: [&#39;Collin&#39;, &#39;Fleming&#39;],
-  &#39;occupation&#39;: &#39;Building Manager&#39;,
-  &#39;telephone&#39;: &#39;(638) 201-8547&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;453 Southard Cove&#39;, &#39;city&#39;: &#39;Glendale&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2647 4105 3636 0916&#39;,
-   &#39;expiration-date&#39;: &#39;02/24&#39;}},)
+<span></span>({&#39;age&#39;: 31,
+  &#39;name&#39;: [&#39;Vaughn&#39;, &#39;Moreno&#39;],
+  &#39;occupation&#39;: &#39;Medical Practitioner&#39;,
+  &#39;telephone&#39;: &#39;995.134.0416&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;502 Manchester Lane&#39;, &#39;city&#39;: &#39;Green&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5458 4345 9316 6702&#39;,
+   &#39;expiration-date&#39;: &#39;11/22&#39;}},)
 </pre></div>
 </div>
 </div>
@@ -839,14 +841,14 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 30,
-  &#39;occupation&#39;: &#39;Building Manager&#39;,
-  &#39;telephone&#39;: &#39;(638) 201-8547&#39;,
-  &#39;credit-card-number&#39;: &#39;2647 4105 3636 0916&#39;,
-  &#39;credit-card-expiration&#39;: &#39;02/24&#39;,
-  &#39;name&#39;: &#39;Collin Fleming&#39;,
-  &#39;street-address&#39;: &#39;453 Southard Cove&#39;,
-  &#39;city&#39;: &#39;Glendale&#39;},)
+<span></span>({&#39;age&#39;: 31,
+  &#39;occupation&#39;: &#39;Medical Practitioner&#39;,
+  &#39;telephone&#39;: &#39;995.134.0416&#39;,
+  &#39;credit-card-number&#39;: &#39;5458 4345 9316 6702&#39;,
+  &#39;credit-card-expiration&#39;: &#39;11/22&#39;,
+  &#39;name&#39;: &#39;Vaughn Moreno&#39;,
+  &#39;street-address&#39;: &#39;502 Manchester Lane&#39;,
+  &#39;city&#39;: &#39;Green&#39;},)
 </pre></div>
 </div>
 </div>
@@ -896,58 +898,58 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <td>0</td>
-      <td>30</td>
-      <td>Building Manager</td>
-      <td>(638) 201-8547</td>
-      <td>2647 4105 3636 0916</td>
-      <td>02/24</td>
-      <td>Collin Fleming</td>
-      <td>453 Southard Cove</td>
-      <td>Glendale</td>
+      <td>31</td>
+      <td>Medical Practitioner</td>
+      <td>995.134.0416</td>
+      <td>5458 4345 9316 6702</td>
+      <td>11/22</td>
+      <td>Vaughn Moreno</td>
+      <td>502 Manchester Lane</td>
+      <td>Green</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>34</td>
-      <td>Hospital Consultant</td>
-      <td>(398) 429-5637</td>
-      <td>5187 4181 2215 7264</td>
-      <td>04/19</td>
-      <td>Terrilyn Brooks</td>
-      <td>139 Bache Path</td>
-      <td>Richland</td>
+      <td>59</td>
+      <td>Telemarketeer</td>
+      <td>1-072-429-7061</td>
+      <td>2307 5739 9736 1243</td>
+      <td>12/23</td>
+      <td>Ross David</td>
+      <td>450 Kalmanovitz Parkway</td>
+      <td>Phenix City</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>33</td>
-      <td>Ship Broker</td>
-      <td>1-748-551-0610</td>
-      <td>4554 3667 3489 7769</td>
-      <td>09/18</td>
-      <td>Rashad Wilson</td>
-      <td>476 Ohlone Green</td>
-      <td>Logansport</td>
+      <td>56</td>
+      <td>Delivery Driver</td>
+      <td>(023) 617-1508</td>
+      <td>4251 1111 5091 3104</td>
+      <td>05/21</td>
+      <td>Alphonso Mckenzie</td>
+      <td>449 Coralino Point</td>
+      <td>Kirkland</td>
     </tr>
     <tr>
       <td>3</td>
-      <td>40</td>
-      <td>Advertising Contractor</td>
-      <td>278.764.8723</td>
-      <td>3770 888105 35195</td>
-      <td>07/18</td>
-      <td>Annelle Turner</td>
-      <td>53 Coldspring Court</td>
-      <td>Norman</td>
+      <td>16</td>
+      <td>Optician</td>
+      <td>940-754-6391</td>
+      <td>3423 810750 68644</td>
+      <td>02/16</td>
+      <td>Stephen Hodges</td>
+      <td>1015 Beeman Side road</td>
+      <td>Bellevue</td>
     </tr>
     <tr>
       <td>4</td>
-      <td>21</td>
-      <td>Signwriter</td>
-      <td>397-952-8533</td>
-      <td>3402 348770 53854</td>
-      <td>01/17</td>
-      <td>Buck Hall</td>
-      <td>232 Spears Field</td>
-      <td>St. Matthews</td>
+      <td>30</td>
+      <td>Maths Teacher</td>
+      <td>(163) 367-0625</td>
+      <td>2468 9887 9743 9210</td>
+      <td>04/23</td>
+      <td>Randolph Banks</td>
+      <td>348 Weston Alley</td>
+      <td>San Luis</td>
     </tr>
   </tbody>
 </table>
@@ -968,16 +970,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Turkey Farmer        15
-Post Sorter          14
-Tobacconist          14
-Pool Attendant       13
-Sail Maker           13
-Floor Manager        13
-Envoy                13
-Gas Mechanic         13
-Roof Tiler           13
-Lighthouse Keeper    13
+<span></span>Professional Boxer    16
+Master Mariner        14
+Aromatherapist        14
+Midwife               13
+Loans Manager         13
+Landowner             13
+Health Consultant     13
+Grocer                13
+Radiologist           13
+Lighterman            13
 Name: occupation, dtype: int64
 </pre></div>
 </div>

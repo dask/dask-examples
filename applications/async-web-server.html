@@ -67,6 +67,7 @@
         <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
         <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
         <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
+        <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vSTH2kAR0DCR0nw8pFBe5kuYbOk3inZ9cQfZbzOIRjyzQoVaOoMfI2JONGBz-qsvG_P6g050ddHxSXT/pub?start=false&loop=false&delayms=60000"> Slides </a></li>
       </ul>
     </li>
 
@@ -86,11 +87,11 @@
     <li>
       <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
       <ul>
-        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/kubernetes-helm.html"> Helm </a></li>
+        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+        <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
         <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
         <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
       </ul>
     </li>
 
@@ -194,6 +195,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evolving-workflows.html">Handle Evolving Workflows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image-processing.html">Image Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="prefect-etl.html">ETL Pipelines with Prefect</a></li>
 <li class="toctree-l1"><a class="reference internal" href="satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
@@ -516,7 +518,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;tornado.httpserver.HTTPServer at 0x7f49802d81d0&gt;
+<span></span>&lt;tornado.httpserver.HTTPServer at 0x7ff0a9b5c320&gt;
 </pre></div>
 </div>
 </div>
@@ -569,7 +571,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fast , 1 simultaneous requests,  total time:  0.005041360855102539
+http://localhost:8000/fast , 1 simultaneous requests,  total time:  0.00484466552734375
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -586,7 +588,7 @@ http://localhost:8000/fast , 1 simultaneous requests,  total time:  0.0050413608
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fast , 100 simultaneous requests,  total time:  0.21399450302124023
+http://localhost:8000/fast , 100 simultaneous requests,  total time:  0.24128007888793945
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -603,7 +605,7 @@ http://localhost:8000/fast , 100 simultaneous requests,  total time:  0.21399450
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fib/28 , 1 simultaneous requests,  total time:  0.1100473403930664
+http://localhost:8000/fib/28 , 1 simultaneous requests,  total time:  0.10890936851501465
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -620,7 +622,7 @@ http://localhost:8000/fib/28 , 1 simultaneous requests,  total time:  0.11004734
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fib/28 , 100 simultaneous requests,  total time:  10.89184284210205
+http://localhost:8000/fib/28 , 100 simultaneous requests,  total time:  10.819209337234497
 </pre></div></div>
 </div>
 </div>
@@ -643,8 +645,8 @@ http://localhost:8000/fib/28 , 100 simultaneous requests,  total time:  10.89184
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fib/35 , 1 simultaneous requests,  total time:  3.068856954574585
-http://localhost:8000/fast , 1 simultaneous requests,  total time:  3.0690560340881348
+http://localhost:8000/fib/35 , 1 simultaneous requests,  total time:  3.083604574203491
+http://localhost:8000/fast , 1 simultaneous requests,  total time:  3.0839035511016846
 </pre></div></div>
 </div>
 </div>
@@ -680,7 +682,7 @@ http://localhost:8000/fast , 1 simultaneous requests,  total time:  3.0690560340
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:37775</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:42129</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -737,7 +739,7 @@ http://localhost:8000/fast , 1 simultaneous requests,  total time:  3.0690560340
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;tornado.httpserver.HTTPServer at 0x7f4980313780&gt;
+<span></span>&lt;tornado.httpserver.HTTPServer at 0x7ff0a9b936d8&gt;
 </pre></div>
 </div>
 </div>
@@ -765,7 +767,7 @@ http://localhost:8000/fast , 1 simultaneous requests,  total time:  3.0690560340
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fib/28 , 20 simultaneous requests,  total time:  2.290534019470215
+http://localhost:8000/fib/28 , 20 simultaneous requests,  total time:  2.269667387008667
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -783,7 +785,7 @@ http://localhost:8000/fib/28 , 20 simultaneous requests,  total time:  2.2905340
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:9000/fib/28 , 20 simultaneous requests,  total time:  0.32974863052368164
+http://localhost:9000/fib/28 , 20 simultaneous requests,  total time:  0.2980990409851074
 </pre></div></div>
 </div>
 </div>
@@ -809,8 +811,8 @@ http://localhost:9000/fib/28 , 20 simultaneous requests,  total time:  0.3297486
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fib/35 , 1 simultaneous requests,  total time:  3.240856170654297
-http://localhost:8000/fast , 1 simultaneous requests,  total time:  3.241159439086914
+http://localhost:8000/fib/35 , 1 simultaneous requests,  total time:  3.2784085273742676
+http://localhost:8000/fast , 1 simultaneous requests,  total time:  3.2784175872802734
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -831,8 +833,8 @@ http://localhost:8000/fast , 1 simultaneous requests,  total time:  3.2411594390
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:9000/fast , 1 simultaneous requests,  total time:  0.005456686019897461
-http://localhost:9000/fib/35 , 1 simultaneous requests,  total time:  3.3756091594696045
+http://localhost:9000/fast , 1 simultaneous requests,  total time:  0.005566120147705078
+http://localhost:9000/fib/35 , 1 simultaneous requests,  total time:  3.4149930477142334
 </pre></div></div>
 </div>
 </div>
@@ -864,7 +866,7 @@ http://localhost:9000/fib/35 , 1 simultaneous requests,  total time:  3.37560915
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Roundtrip latency: 10.23 ms
+Roundtrip latency: 11.23 ms
 </pre></div></div>
 </div>
 </div>

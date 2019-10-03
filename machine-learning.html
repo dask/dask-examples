@@ -67,6 +67,7 @@
         <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
         <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
         <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
+        <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vSTH2kAR0DCR0nw8pFBe5kuYbOk3inZ9cQfZbzOIRjyzQoVaOoMfI2JONGBz-qsvG_P6g050ddHxSXT/pub?start=false&loop=false&delayms=60000"> Slides </a></li>
       </ul>
     </li>
 
@@ -86,11 +87,11 @@
     <li>
       <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
       <ul>
-        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/kubernetes-helm.html"> Helm </a></li>
+        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+        <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
         <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
         <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
       </ul>
     </li>
 
@@ -188,6 +189,7 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/async-web-server.html">Asynchronous Computation: Web Servers + Dask</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/evolving-workflows.html">Handle Evolving Workflows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/image-processing.html">Image Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html">ETL Pipelines with Prefect</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
@@ -489,8 +491,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.2.77/13465/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.2.77/13465/1:8787/status' target='_blank'>http://10.20.2.77/13465/1:8787/status</a>
+  <li><b>Scheduler: </b>inproc://10.20.3.18/13500/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.3.18/13500/1:8787/status' target='_blank'>http://10.20.3.18/13500/1:8787/status</a>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -650,10 +652,10 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.385478</td>
-      <td>0.032229</td>
-      <td>0.037944</td>
-      <td>0.006940</td>
+      <td>0.390874</td>
+      <td>0.037922</td>
+      <td>0.034770</td>
+      <td>0.007455</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>True</td>
@@ -667,10 +669,10 @@ div.rendered_html tbody tr:hover {
     </tr>
     <tr>
       <td>1</td>
-      <td>0.399800</td>
-      <td>0.005725</td>
-      <td>0.038095</td>
-      <td>0.005847</td>
+      <td>0.422349</td>
+      <td>0.012969</td>
+      <td>0.034066</td>
+      <td>0.001345</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>False</td>
@@ -684,10 +686,10 @@ div.rendered_html tbody tr:hover {
     </tr>
     <tr>
       <td>2</td>
-      <td>0.239556</td>
-      <td>0.008089</td>
-      <td>0.025063</td>
-      <td>0.005977</td>
+      <td>0.250673</td>
+      <td>0.014691</td>
+      <td>0.013985</td>
+      <td>0.000715</td>
       <td>0.001</td>
       <td>poly</td>
       <td>True</td>
@@ -701,10 +703,10 @@ div.rendered_html tbody tr:hover {
     </tr>
     <tr>
       <td>3</td>
-      <td>0.245213</td>
-      <td>0.014633</td>
-      <td>0.020088</td>
-      <td>0.003707</td>
+      <td>0.253171</td>
+      <td>0.016525</td>
+      <td>0.016795</td>
+      <td>0.000906</td>
       <td>0.001</td>
       <td>poly</td>
       <td>False</td>
@@ -718,10 +720,10 @@ div.rendered_html tbody tr:hover {
     </tr>
     <tr>
       <td>4</td>
-      <td>0.433713</td>
-      <td>0.030732</td>
-      <td>0.044486</td>
-      <td>0.005895</td>
+      <td>0.431683</td>
+      <td>0.029071</td>
+      <td>0.040869</td>
+      <td>0.002618</td>
       <td>0.001</td>
       <td>sigmoid</td>
       <td>True</td>

@@ -67,6 +67,7 @@
         <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
         <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
         <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
+        <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vSTH2kAR0DCR0nw8pFBe5kuYbOk3inZ9cQfZbzOIRjyzQoVaOoMfI2JONGBz-qsvG_P6g050ddHxSXT/pub?start=false&loop=false&delayms=60000"> Slides </a></li>
       </ul>
     </li>
 
@@ -86,11 +87,11 @@
     <li>
       <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
       <ul>
-        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/kubernetes-helm.html"> Helm </a></li>
+        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+        <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
         <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
         <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
       </ul>
     </li>
 
@@ -188,6 +189,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/async-web-server.html">Asynchronous Computation: Web Servers + Dask</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/evolving-workflows.html">Handle Evolving Workflows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/image-processing.html">Image Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html">ETL Pipelines with Prefect</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
@@ -492,8 +494,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.2.77/12023/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.2.77/12023/1:8787/status' target='_blank'>http://10.20.2.77/12023/1:8787/status</a>
+  <li><b>Scheduler: </b>inproc://10.20.3.18/12141/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.3.18/12141/1:8787/status' target='_blank'>http://10.20.3.18/12141/1:8787/status</a>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -631,32 +633,32 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>name
-Alice       0.002075
-Bob         0.002083
-Charlie    -0.001232
-Dan        -0.000656
-Edith       0.001215
-Frank      -0.003591
-George     -0.002449
-Hannah     -0.002866
-Ingrid      0.001836
-Jerry      -0.002297
-Kevin       0.000791
-Laura       0.002489
-Michael    -0.002590
-Norbert     0.001584
-Oliver      0.000648
-Patricia   -0.000025
-Quinn       0.000147
-Ray         0.003020
-Sarah      -0.002828
-Tim         0.001130
-Ursula      0.003254
-Victor     -0.000826
-Wendy       0.002213
-Xavier      0.001046
-Yvonne     -0.002050
-Zelda      -0.001245
+Alice      -0.000970
+Bob        -0.000983
+Charlie     0.002202
+Dan         0.001082
+Edith       0.000076
+Frank      -0.000159
+George     -0.001087
+Hannah     -0.001998
+Ingrid     -0.000353
+Jerry       0.000645
+Kevin       0.000961
+Laura      -0.000929
+Michael    -0.000809
+Norbert     0.002709
+Oliver      0.003209
+Patricia   -0.002649
+Quinn       0.000931
+Ray         0.000846
+Sarah       0.000468
+Tim        -0.002450
+Ursula     -0.003891
+Victor      0.001501
+Wendy      -0.000744
+Xavier      0.002737
+Yvonne     -0.002960
+Zelda      -0.000069
 Name: x, dtype: float64
 </pre></div>
 </div>
@@ -676,8 +678,8 @@ Name: x, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 349 ms, sys: 13.2 ms, total: 362 ms
-Wall time: 262 ms
+CPU times: user 360 ms, sys: 37.8 ms, total: 398 ms
+Wall time: 297 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -694,8 +696,8 @@ Wall time: 262 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 794 ms, sys: 17.5 ms, total: 812 ms
-Wall time: 592 ms
+CPU times: user 844 ms, sys: 29.5 ms, total: 874 ms
+Wall time: 637 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -712,8 +714,8 @@ Wall time: 592 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.31 s, sys: 109 ms, total: 1.42 s
-Wall time: 1.1 s
+CPU times: user 1.36 s, sys: 96.5 ms, total: 1.45 s
+Wall time: 1.12 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -764,38 +766,38 @@ Wall time: 1.1 s
   <tbody>
     <tr>
       <td>Alice</td>
-      <td>0.002075</td>
-      <td>0.576090</td>
-      <td>-0.002869</td>
-      <td>99319</td>
+      <td>-0.000970</td>
+      <td>0.578405</td>
+      <td>-0.002365</td>
+      <td>100261</td>
     </tr>
     <tr>
       <td>Bob</td>
-      <td>0.002083</td>
-      <td>0.577475</td>
-      <td>-0.001987</td>
-      <td>99822</td>
+      <td>-0.000983</td>
+      <td>0.578255</td>
+      <td>0.003844</td>
+      <td>99520</td>
     </tr>
     <tr>
       <td>Charlie</td>
-      <td>-0.001232</td>
-      <td>0.576478</td>
-      <td>0.000663</td>
-      <td>99200</td>
+      <td>0.002202</td>
+      <td>0.577676</td>
+      <td>-0.000648</td>
+      <td>99709</td>
     </tr>
     <tr>
       <td>Dan</td>
-      <td>-0.000656</td>
-      <td>0.577155</td>
-      <td>-0.002578</td>
-      <td>99362</td>
+      <td>0.001082</td>
+      <td>0.576369</td>
+      <td>0.000722</td>
+      <td>99887</td>
     </tr>
     <tr>
       <td>Edith</td>
-      <td>0.001215</td>
-      <td>0.578671</td>
-      <td>0.001047</td>
-      <td>99082</td>
+      <td>0.000076</td>
+      <td>0.576776</td>
+      <td>-0.001159</td>
+      <td>99324</td>
     </tr>
   </tbody>
 </table>
@@ -878,8 +880,8 @@ Wall time: 1.1 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 6.08 s, sys: 737 ms, total: 6.82 s
-Wall time: 5.59 s
+CPU times: user 6.42 s, sys: 817 ms, total: 7.24 s
+Wall time: 5.92 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
