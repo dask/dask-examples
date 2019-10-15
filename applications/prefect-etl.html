@@ -67,7 +67,7 @@
         <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
         <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
         <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
-        <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vSTH2kAR0DCR0nw8pFBe5kuYbOk3inZ9cQfZbzOIRjyzQoVaOoMfI2JONGBz-qsvG_P6g050ddHxSXT/pub?start=false&loop=false&delayms=60000"> Slides </a></li>
+        <li><a href="https://dask.org/slides"> Slides </a></li>
       </ul>
     </li>
 
@@ -532,82 +532,87 @@ HCDBB5;5?</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Requirement already satisfied: imageio in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (2.5.0)
+Requirement already satisfied: imageio in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (2.6.1)
 Collecting prefect[viz]
-  Downloading https://files.pythonhosted.org/packages/b4/0b/bf898735b264180267426df9a488fc04009706b101296146909a12bb89c4/prefect-0.6.5-py3-none-any.whl (418kB)
+  Downloading https://files.pythonhosted.org/packages/65/e8/47ebd790b0c398812689faf76af7ad2f70353fe78f4077cfe1a045ccb04b/prefect-0.6.6-py3-none-any.whl (444kB)
 
-Requirement already satisfied: numpy in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from imageio) (1.17.2)
 Requirement already satisfied: pillow in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from imageio) (6.2.0)
-Requirement already satisfied: distributed&lt;3.0,&gt;=1.26.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.5.1)
-Collecting marshmallow&lt;3.1.0,&gt;=3.0.0b19 (from prefect[viz])
+Requirement already satisfied: numpy in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from imageio) (1.17.2)
+Requirement already satisfied: click&lt;8.0,&gt;=7.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (7.0)
+Collecting croniter&lt;1.0,&gt;=0.3.24
+  Downloading https://files.pythonhosted.org/packages/c8/4c/04dea44f87b963d5c3f2bbc391e6c69d0a14aa896e35590be56213a04e4f/croniter-0.3.30-py2.py3-none-any.whl
+Requirement already satisfied: pyyaml&lt;5.2,&gt;=3.13 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (5.1.2)
+Collecting mypy-extensions&lt;1.0,&gt;=0.4.0
+  Downloading https://files.pythonhosted.org/packages/1e/2f/7bba47eb58f62a473387cd7658dedd0bedb4b0fa9d530bbbfa0a6d23034a/mypy_extensions-0.4.2.tar.gz
+Collecting python-slugify&lt;4.0,&gt;=1.2.6
+  Downloading https://files.pythonhosted.org/packages/03/cd/f0b39ad9b5a17f93c0a006dbd49f67fc5dc8b53de58a61542bc034ca70a8/python-slugify-3.0.6.tar.gz
+Collecting marshmallow&lt;3.1.0,&gt;=3.0.0b19
   Downloading https://files.pythonhosted.org/packages/ea/43/6d61ca1a4de901701e20f5cf3a15332df4447391fa2258f4e7d87019b14d/marshmallow-3.0.5-py2.py3-none-any.whl (43kB)
 
-Requirement already satisfied: dask[bag]&lt;3.0,&gt;=0.19.3 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.4.0)
-Requirement already satisfied: pytz&gt;=2018.7 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2019.2)
-Collecting croniter&lt;1.0,&gt;=0.3.24 (from prefect[viz])
-  Downloading https://files.pythonhosted.org/packages/c8/4c/04dea44f87b963d5c3f2bbc391e6c69d0a14aa896e35590be56213a04e4f/croniter-0.3.30-py2.py3-none-any.whl
-Collecting mypy-extensions&lt;1.0,&gt;=0.4.0 (from prefect[viz])
-  Downloading https://files.pythonhosted.org/packages/4d/72/8d54e2b296631b9b14961d583e56e90d9d7fba8a240d5ce7f1113cc5e887/mypy_extensions-0.4.1-py2.py3-none-any.whl
-Collecting tabulate&lt;1.0,&gt;=0.8.0 (from prefect[viz])
-  Downloading https://files.pythonhosted.org/packages/66/d4/977fdd5186b7cdbb7c43a7aac7c5e4e0337a84cb802e154616f3cfc84563/tabulate-0.8.5.tar.gz (45kB)
-
-Collecting python-slugify&lt;4.0,&gt;=1.2.6 (from prefect[viz])
-  Downloading https://files.pythonhosted.org/packages/f5/ef/c868a9ac657405f051a8a501ac5633e769c54228716b8db7f8d717977e57/python-slugify-3.0.4.tar.gz
-Collecting docker&lt;5.0,&gt;=3.4.1 (from prefect[viz])
-  Downloading https://files.pythonhosted.org/packages/cc/ca/699d4754a932787ef353a157ada74efd1ceb6d1fc0bfb7989ae1e7b33111/docker-4.1.0-py2.py3-none-any.whl (139kB)
-
-Requirement already satisfied: click&lt;8.0,&gt;=7.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (7.0)
-Collecting typing-extensions&lt;4.0,&gt;=3.6.2 (from prefect[viz])
-  Downloading https://files.pythonhosted.org/packages/27/aa/bd1442cfb0224da1b671ab334d3b0a4302e4161ea916e28904ff9618d471/typing_extensions-3.7.4-py3-none-any.whl
-Requirement already satisfied: cloudpickle&lt;1.3,&gt;=0.6.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (1.2.2)
-Collecting marshmallow-oneofschema&lt;3.0,&gt;=2.0.0b2 (from prefect[viz])
+Requirement already satisfied: python-dateutil~=2.7 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.8.0)
+Collecting typing&lt;4.0,&gt;=3.6.1
+  Downloading https://files.pythonhosted.org/packages/fe/2e/b480ee1b75e6d17d2993738670e75c1feeb9ff7f64452153cf018051cc92/typing-3.7.4.1-py3-none-any.whl
+Collecting marshmallow-oneofschema&lt;3.0,&gt;=2.0.0b2
   Downloading https://files.pythonhosted.org/packages/7a/f3/da71ec4c539b6b5e16f1988fc46d8ea3374e258ef79fb5a7d88478fb922f/marshmallow_oneofschema-2.0.1-py2.py3-none-any.whl
-Collecting pendulum&lt;3.0,&gt;=2.0.4 (from prefect[viz])
+Collecting pendulum&lt;3.0,&gt;=2.0.4
   Downloading https://files.pythonhosted.org/packages/0b/db/eadff08d7a50a5a28d13efba6a029868f72b662f7cb30079f4af56a8de02/pendulum-2.0.5-cp37-cp37m-manylinux1_x86_64.whl (141kB)
 
-Requirement already satisfied: pyyaml&lt;5.2,&gt;=3.13 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (5.1.2)
-Collecting toml&lt;1.0,&gt;=0.9.4 (from prefect[viz])
-  Downloading https://files.pythonhosted.org/packages/a2/12/ced7105d2de62fa7c8fb5fce92cc4ce66b57c95fb875e9318dba7f8c5db0/toml-0.10.0-py2.py3-none-any.whl
-Requirement already satisfied: python-dateutil~=2.7 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.8.0)
+Collecting tabulate&lt;1.0,&gt;=0.8.0
+  Downloading https://files.pythonhosted.org/packages/66/d4/977fdd5186b7cdbb7c43a7aac7c5e4e0337a84cb802e154616f3cfc84563/tabulate-0.8.5.tar.gz (45kB)
+
+Collecting typing-extensions&lt;4.0,&gt;=3.6.2
+  Downloading https://files.pythonhosted.org/packages/27/aa/bd1442cfb0224da1b671ab334d3b0a4302e4161ea916e28904ff9618d471/typing_extensions-3.7.4-py3-none-any.whl
 Requirement already satisfied: requests&lt;3.0,&gt;=2.20 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.22.0)
-Collecting typing&lt;4.0,&gt;=3.6.1 (from prefect[viz])
-  Downloading https://files.pythonhosted.org/packages/fe/2e/b480ee1b75e6d17d2993738670e75c1feeb9ff7f64452153cf018051cc92/typing-3.7.4.1-py3-none-any.whl
+Collecting docker&lt;5.0,&gt;=3.4.1
+  Downloading https://files.pythonhosted.org/packages/cc/ca/699d4754a932787ef353a157ada74efd1ceb6d1fc0bfb7989ae1e7b33111/docker-4.1.0-py2.py3-none-any.whl (139kB)
+
+Requirement already satisfied: pytz&gt;=2018.7 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2019.3)
+Requirement already satisfied: distributed&lt;3.0,&gt;=1.26.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.5.2)
+Requirement already satisfied: cloudpickle&lt;1.3,&gt;=0.6.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (1.2.2)
+Requirement already satisfied: dask[bag]&lt;3.0,&gt;=0.19.3 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.5.2)
+Collecting python-box&lt;4.0,&gt;=3.4.4
+  Downloading https://files.pythonhosted.org/packages/0a/8f/1797a73eb18d55aafe7a4a97ad9be88eb352b97bca58cfc10226d263d177/python_box-3.4.5-py2.py3-none-any.whl
+Collecting toml&lt;1.0,&gt;=0.9.4
+  Downloading https://files.pythonhosted.org/packages/a2/12/ced7105d2de62fa7c8fb5fce92cc4ce66b57c95fb875e9318dba7f8c5db0/toml-0.10.0-py2.py3-none-any.whl
 Requirement already satisfied: graphviz&gt;=0.8.3; extra == &#34;viz&#34; in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (0.13)
-Requirement already satisfied: psutil&gt;=5.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (5.6.3)
-Requirement already satisfied: toolz&gt;=0.7.4 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (0.10.0)
-Requirement already satisfied: tblib in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (1.4.0)
-Requirement already satisfied: sortedcontainers!=2.0.0,!=2.0.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (2.1.0)
-Requirement already satisfied: tornado&gt;=5 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (5.1.1)
-Requirement already satisfied: msgpack in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (0.6.2)
-Requirement already satisfied: zict&gt;=0.1.3 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (1.0.0)
-Requirement already satisfied: partd&gt;=0.3.10; extra == &#34;bag&#34; in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from dask[bag]&lt;3.0,&gt;=0.19.3-&gt;prefect[viz]) (1.0.0)
-Requirement already satisfied: fsspec&gt;=0.3.3; extra == &#34;bag&#34; in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from dask[bag]&lt;3.0,&gt;=0.19.3-&gt;prefect[viz]) (0.5.1)
-Collecting text-unidecode&gt;=1.3 (from python-slugify&lt;4.0,&gt;=1.2.6-&gt;prefect[viz])
+Collecting text-unidecode&gt;=1.3
   Downloading https://files.pythonhosted.org/packages/a6/a5/c0b6468d3824fe3fde30dbb5e1f687b291608f9473681bbf7dabbf5a87d7/text_unidecode-1.3-py2.py3-none-any.whl (78kB)
 
-Requirement already satisfied: six&gt;=1.4.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from docker&lt;5.0,&gt;=3.4.1-&gt;prefect[viz]) (1.12.0)
-Collecting websocket-client&gt;=0.32.0 (from docker&lt;5.0,&gt;=3.4.1-&gt;prefect[viz])
-  Downloading https://files.pythonhosted.org/packages/29/19/44753eab1fdb50770ac69605527e8859468f3c0fd7dc5a76dd9c4dbd7906/websocket_client-0.56.0-py2.py3-none-any.whl (200kB)
-
-Collecting pytzdata&gt;=2018.3 (from pendulum&lt;3.0,&gt;=2.0.4-&gt;prefect[viz])
+Requirement already satisfied: six&gt;=1.5 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from python-dateutil~=2.7-&gt;prefect[viz]) (1.12.0)
+Collecting pytzdata&gt;=2018.3
   Downloading https://files.pythonhosted.org/packages/7f/f9/cdd39831b0465285c02ed90cfbf0db25bb951cb2a35ded0e69222375bea3/pytzdata-2019.3-py2.py3-none-any.whl (489kB)
 
-Requirement already satisfied: certifi&gt;=2017.4.17 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&lt;3.0,&gt;=2.20-&gt;prefect[viz]) (2019.9.11)
 Requirement already satisfied: idna&lt;2.9,&gt;=2.5 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&lt;3.0,&gt;=2.20-&gt;prefect[viz]) (2.8)
-Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&lt;3.0,&gt;=2.20-&gt;prefect[viz]) (3.0.4)
 Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&lt;3.0,&gt;=2.20-&gt;prefect[viz]) (1.25.6)
+Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&lt;3.0,&gt;=2.20-&gt;prefect[viz]) (3.0.4)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&lt;3.0,&gt;=2.20-&gt;prefect[viz]) (2019.9.11)
+Collecting websocket-client&gt;=0.32.0
+  Downloading https://files.pythonhosted.org/packages/29/19/44753eab1fdb50770ac69605527e8859468f3c0fd7dc5a76dd9c4dbd7906/websocket_client-0.56.0-py2.py3-none-any.whl (200kB)
+
+Requirement already satisfied: zict&gt;=0.1.3 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (1.0.0)
+Requirement already satisfied: psutil&gt;=5.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (5.6.3)
+Requirement already satisfied: tornado&gt;=5 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (5.1.1)
+Requirement already satisfied: tblib in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (1.4.0)
+Requirement already satisfied: toolz&gt;=0.7.4 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (0.10.0)
+Requirement already satisfied: sortedcontainers!=2.0.0,!=2.0.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (2.1.0)
+Requirement already satisfied: msgpack in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (0.6.2)
+Requirement already satisfied: partd&gt;=0.3.10; extra == &#34;bag&#34; in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from dask[bag]&lt;3.0,&gt;=0.19.3-&gt;prefect[viz]) (1.0.0)
+Requirement already satisfied: fsspec&gt;=0.5.1; extra == &#34;bag&#34; in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from dask[bag]&lt;3.0,&gt;=0.19.3-&gt;prefect[viz]) (0.5.2)
 Requirement already satisfied: heapdict in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from zict&gt;=0.1.3-&gt;distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (1.0.1)
 Requirement already satisfied: locket in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from partd&gt;=0.3.10; extra == &#34;bag&#34;-&gt;dask[bag]&lt;3.0,&gt;=0.19.3-&gt;prefect[viz]) (0.2.0)
-Building wheels for collected packages: tabulate, python-slugify
-  Building wheel for tabulate (setup.py) ... - done
-  Created wheel for tabulate: filename=tabulate-0.8.5-cp37-none-any.whl size=23257 sha256=9557996c2eaaf7a9260a3b5f75e9e42627cbba235c6acb6532520db52e0026ec
-  Stored in directory: /home/travis/.cache/pip/wheels/e1/41/5e/e201f95d90fc84f93aa629b6638adacda680fe63aac47174ab
+Building wheels for collected packages: mypy-extensions, python-slugify, tabulate
+  Building wheel for mypy-extensions (setup.py) ... - done
+  Created wheel for mypy-extensions: filename=mypy_extensions-0.4.2-py2.py3-none-any.whl size=4463 sha256=120f6afa0eb802822d445e05d87869441a8e64b0456296ea729c37a1a79c5062
+  Stored in directory: /home/travis/.cache/pip/wheels/d6/7b/51/3dea4153cf7748cf89d5a9f2e89a619abded55e3a2e82c521e
   Building wheel for python-slugify (setup.py) ... - done
-  Created wheel for python-slugify: filename=python_slugify-3.0.4-py2.py3-none-any.whl size=4789 sha256=94ff69e1e520bac0ebf5230519a80b7e81399ffb66da614f280086dcd712655e
-  Stored in directory: /home/travis/.cache/pip/wheels/24/23/f5/c260686f9180cd755a30123e607207e0f39eba249b7b4b432c
-Successfully built tabulate python-slugify
-Installing collected packages: marshmallow, croniter, mypy-extensions, tabulate, text-unidecode, python-slugify, websocket-client, docker, typing-extensions, marshmallow-oneofschema, pytzdata, pendulum, toml, typing, prefect
-Successfully installed croniter-0.3.30 docker-4.1.0 marshmallow-3.0.5 marshmallow-oneofschema-2.0.1 mypy-extensions-0.4.1 pendulum-2.0.5 prefect-0.6.5 python-slugify-3.0.4 pytzdata-2019.3 tabulate-0.8.5 text-unidecode-1.3 toml-0.10.0 typing-3.7.4.1 typing-extensions-3.7.4 websocket-client-0.56.0
+  Created wheel for python-slugify: filename=python_slugify-3.0.6-py2.py3-none-any.whl size=5470 sha256=ffd8ae2507342eab4b24cfebaad6f81723304e70cf8adfb513037270dd2064e7
+  Stored in directory: /home/travis/.cache/pip/wheels/00/09/3b/beb8520abeb5d6eb7cb8a8cd23c412103e5bb60cbb0145b25d
+  Building wheel for tabulate (setup.py) ... - done
+  Created wheel for tabulate: filename=tabulate-0.8.5-cp37-none-any.whl size=23257 sha256=77ebf575e6c8779cc4ff00d148170a2ae41c401a20ae23f56629d628128d48c1
+  Stored in directory: /home/travis/.cache/pip/wheels/e1/41/5e/e201f95d90fc84f93aa629b6638adacda680fe63aac47174ab
+Successfully built mypy-extensions python-slugify tabulate
+Installing collected packages: croniter, mypy-extensions, text-unidecode, python-slugify, marshmallow, typing, marshmallow-oneofschema, pytzdata, pendulum, tabulate, typing-extensions, websocket-client, docker, python-box, toml, prefect
+Successfully installed croniter-0.3.30 docker-4.1.0 marshmallow-3.0.5 marshmallow-oneofschema-2.0.1 mypy-extensions-0.4.2 pendulum-2.0.5 prefect-0.6.6 python-box-3.4.5 python-slugify-3.0.6 pytzdata-2019.3 tabulate-0.8.5 text-unidecode-1.3 toml-0.10.0 typing-3.7.4.1 typing-extensions-3.7.4 websocket-client-0.56.0
 </pre></div></div>
 </div>
 <div class="section" id="Extract">
@@ -791,9 +796,9 @@ on, we look in <code class="docutils literal notranslate"><span class="pre">`pre
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-[2019-10-03 17:57:04,019] INFO - prefect.FlowRunner | Beginning Flow run for &#39;Image ETL&#39;
-[2019-10-03 17:57:04,021] INFO - prefect.FlowRunner | Starting flow run.
-[2019-10-03 17:57:08,544] INFO - prefect.FlowRunner | Flow run SUCCESS: all reference tasks succeeded
+[2019-10-15 22:32:23,602] INFO - prefect.FlowRunner | Beginning Flow run for &#39;Image ETL&#39;
+[2019-10-15 22:32:23,606] INFO - prefect.FlowRunner | Starting flow run.
+[2019-10-15 22:32:28,055] INFO - prefect.FlowRunner | Flow run SUCCESS: all reference tasks succeeded
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
