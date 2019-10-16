@@ -506,7 +506,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:44535</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:45631</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -575,7 +575,7 @@ Attributes:
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>&lt;xarray.DataArray &#39;air&#39; (time: 2920, lat: 25, lon: 53)&gt;
-dask.array&lt;open_dataset-83d83f134860e7345536587bc0d21531air, shape=(2920, 25, 53), dtype=float32, chunksize=(2920, 25, 25), chunktype=numpy.ndarray&gt;
+dask.array&lt;open_dataset-6cada6d3623090ff60be64c96bdd6f84air, shape=(2920, 25, 53), dtype=float32, chunksize=(2920, 25, 25), chunktype=numpy.ndarray&gt;
 Coordinates:
   * lat      (lat) float32 75.0 72.5 70.0 67.5 65.0 ... 25.0 22.5 20.0 17.5 15.0
   * lon      (lon) float32 200.0 202.5 205.0 207.5 ... 322.5 325.0 327.5 330.0
@@ -1327,7 +1327,7 @@ Coordinates:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.collections.QuadMesh at 0x7fd9333107b8&gt;
+<span></span>&lt;matplotlib.collections.QuadMesh at 0x7f73829390f0&gt;
 </pre></div>
 </div>
 </div>
@@ -1354,8 +1354,77 @@ Coordinates:
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/travis/miniconda/envs/test/lib/python3.7/site-packages/distributed/worker.py:3239: UserWarning: Large object of size 15.48 MB detected in task graph:
-  (array([[[241.2    , 242.5    , 243.5    , ..., 23 ... (0, 25, None)))
+distributed.nanny - WARNING - Worker exceeded 95% memory budget. Restarting
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:38019&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 0, 0)
+NoneType: None
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:38019&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 1, 0)
+NoneType: None
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:38019&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 1, 0)
+NoneType: None
+distributed.client - WARNING - Couldn&#39;t gather 3 keys, rescheduling {&#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 0, 0)&#34;: (&#39;tcp://127.0.0.1:38019&#39;,), &#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 1, 0)&#34;: (&#39;tcp://127.0.0.1:38019&#39;,), &#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 1, 0)&#34;: (&#39;tcp://127.0.0.1:38019&#39;,)}
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Worker exceeded 95% memory budget. Restarting
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:45713&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 2, 0)
+NoneType: None
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:45713&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 1, 0)
+NoneType: None
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:45713&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 0, 0)
+NoneType: None
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:45713&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 1, 0)
+NoneType: None
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:45713&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 2, 0)
+NoneType: None
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:45713&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 0, 0)
+NoneType: None
+distributed.client - WARNING - Couldn&#39;t gather 6 keys, rescheduling {&#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 2, 0)&#34;: (&#39;tcp://127.0.0.1:45713&#39;,), &#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 1, 0)&#34;: (&#39;tcp://127.0.0.1:45713&#39;,), &#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 0, 0)&#34;: (&#39;tcp://127.0.0.1:45713&#39;,), &#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 1, 0)&#34;: (&#39;tcp://127.0.0.1:45713&#39;,), &#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 2, 0)&#34;: (&#39;tcp://127.0.0.1:45713&#39;,), &#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 0, 0)&#34;: (&#39;tcp://127.0.0.1:45713&#39;,)}
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Worker exceeded 95% memory budget. Restarting
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:44007&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 2, 0)
+NoneType: None
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:44007&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 1, 0)
+NoneType: None
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:44007&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 0, 0)
+NoneType: None
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:44007&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 1, 0)
+NoneType: None
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:44007&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 2, 0)
+NoneType: None
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:44007&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 0, 0)
+NoneType: None
+distributed.client - WARNING - Couldn&#39;t gather 6 keys, rescheduling {&#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 2, 0)&#34;: (&#39;tcp://127.0.0.1:44007&#39;,), &#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 1, 0)&#34;: (&#39;tcp://127.0.0.1:44007&#39;,), &#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 0, 0)&#34;: (&#39;tcp://127.0.0.1:44007&#39;,), &#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 1, 0)&#34;: (&#39;tcp://127.0.0.1:44007&#39;,), &#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 2, 0)&#34;: (&#39;tcp://127.0.0.1:44007&#39;,), &#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 0, 0)&#34;: (&#39;tcp://127.0.0.1:44007&#39;,)}
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Worker exceeded 95% memory budget. Restarting
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:46029&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 2, 0)
+NoneType: None
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:46029&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 1, 0)
+NoneType: None
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:46029&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 0, 0)
+NoneType: None
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:46029&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 1, 0)
+NoneType: None
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:46029&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 2, 0)
+NoneType: None
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:46029&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 0, 0)
+NoneType: None
+distributed.client - WARNING - Couldn&#39;t gather 6 keys, rescheduling {&#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 2, 0)&#34;: (&#39;tcp://127.0.0.1:46029&#39;,), &#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 1, 0)&#34;: (&#39;tcp://127.0.0.1:46029&#39;,), &#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 0, 0)&#34;: (&#39;tcp://127.0.0.1:46029&#39;,), &#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 1, 0)&#34;: (&#39;tcp://127.0.0.1:46029&#39;,), &#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 2, 0)&#34;: (&#39;tcp://127.0.0.1:46029&#39;,), &#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 0, 0)&#34;: (&#39;tcp://127.0.0.1:46029&#39;,)}
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Worker exceeded 95% memory budget. Restarting
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:34507&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 2, 0)
+NoneType: None
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:34507&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 1, 0)
+NoneType: None
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:34507&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 0, 0)
+NoneType: None
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:34507&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 1, 0)
+NoneType: None
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:34507&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 2, 0)
+NoneType: None
+distributed.scheduler - ERROR - Workers don&#39;t have promised key: [&#39;tcp://127.0.0.1:34507&#39;], (&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 0, 0)
+NoneType: None
+distributed.client - WARNING - Couldn&#39;t gather 6 keys, rescheduling {&#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 2, 0)&#34;: (&#39;tcp://127.0.0.1:34507&#39;,), &#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 1, 0)&#34;: (&#39;tcp://127.0.0.1:34507&#39;,), &#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 0, 0)&#34;: (&#39;tcp://127.0.0.1:34507&#39;,), &#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 1, 0)&#34;: (&#39;tcp://127.0.0.1:34507&#39;,), &#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 0, 0, 2, 0)&#34;: (&#39;tcp://127.0.0.1:34507&#39;,), &#34;(&#39;getitem-131852822a83b17fc0fde2e749217e42&#39;, 1, 0, 0, 0)&#34;: (&#39;tcp://127.0.0.1:34507&#39;,)}
+distributed.nanny - WARNING - Restarting worker
+/home/travis/miniconda/envs/test/lib/python3.7/site-packages/distributed/worker.py:3235: UserWarning: Large object of size 15.48 MB detected in task graph:
+  (array([[[241.2    , 242.5    , 243.5    , ..., 23 ... 50, 53, None)))
 Consider scattering large objects ahead of time
 with client.scatter to reduce scheduler burden and
 keep data on workers
@@ -1396,8 +1465,8 @@ Coordinates:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 0 ns, sys: 4.07 ms, total: 4.07 ms
-Wall time: 3.6 ms
+CPU times: user 1.46 ms, sys: 2.96 ms, total: 4.42 ms
+Wall time: 4.05 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1440,8 +1509,8 @@ Attributes:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 86.7 ms, sys: 121 ms, total: 208 ms
-Wall time: 314 ms
+CPU times: user 88.9 ms, sys: 124 ms, total: 213 ms
+Wall time: 293 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1558,7 +1627,7 @@ Coordinates:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.collections.QuadMesh at 0x7fd932cc4588&gt;
+<span></span>&lt;matplotlib.collections.QuadMesh at 0x7f73826aa160&gt;
 </pre></div>
 </div>
 </div>
