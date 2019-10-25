@@ -167,6 +167,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parallel-prediction.html">Score and Predict Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torch-prediction.html">Batch Prediction with PyTorch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="training-on-large-datasets.html">Train Models on Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="incremental.html">Incrementally Train Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hyperparam-opt.html">Hyperparameter optimization with Dask</a></li>
@@ -518,8 +519,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 20.5 ms, sys: 24.8 ms, total: 45.4 ms
-Wall time: 1.14 s
+CPU times: user 43.3 ms, sys: 16.7 ms, total: 60 ms
+Wall time: 1.28 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -581,7 +582,7 @@ Wall time: 1.14 s
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:40425</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:39243</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -641,8 +642,8 @@ VotingClassifier(estimators=[(&#39;sgd&#39;,
                                   verbose=False))],
                  flatten_transform=True, n_jobs=-1, voting=&#39;hard&#39;,
                  weights=None)
-CPU times: user 111 ms, sys: 10.9 ms, total: 122 ms
-Wall time: 990 ms
+CPU times: user 136 ms, sys: 28.8 ms, total: 165 ms
+Wall time: 1.16 s
 </pre></div></div>
 </div>
 <p>Note, that we see no advantage of using dask because we are using a local cluster rather than a distributed cluster and sklearn is already using all my computer’s cores. If we were using a distributed cluster, dask would enable us to take advantage of the multiple machines and train sub-estimators across them.</p>

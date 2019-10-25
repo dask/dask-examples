@@ -177,6 +177,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/parallel-prediction.html">Score and Predict Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning/torch-prediction.html">Batch Prediction with PyTorch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/training-on-large-datasets.html">Train Models on Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/incremental.html">Incrementally Train Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/hyperparam-opt.html">Hyperparameter optimization with Dask</a></li>
@@ -499,7 +500,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:43231</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:44491</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -570,8 +571,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 16, &#34;name&#34;: [&#34;Jewel&#34;, &#34;Nicholson&#34;], &#34;occupation&#34;: &#34;Civil Servant&#34;, &#34;telephone&#34;: &#34;(757) 318-2063&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;14 South Park Mews&#34;, &#34;city&#34;: &#34;Rockford&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5473 1418 8956 2533&#34;, &#34;expiration-date&#34;: &#34;01/21&#34;}}
-{&#34;age&#34;: 66, &#34;name&#34;: [&#34;Sterling&#34;, &#34;Wilkins&#34;], &#34;occupation&#34;: &#34;Home Help&#34;, &#34;telephone&#34;: &#34;(484) 852-7498&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1359 Cleary Lane&#34;, &#34;city&#34;: &#34;Biloxi&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;4540 2017 6778 3908&#34;, &#34;expiration-date&#34;: &#34;08/22&#34;}}
+{&#34;age&#34;: 29, &#34;name&#34;: [&#34;Otha&#34;, &#34;Thompson&#34;], &#34;occupation&#34;: &#34;Marketing Assistant&#34;, &#34;telephone&#34;: &#34;718-392-9034&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;442 John F Kennedy Run&#34;, &#34;city&#34;: &#34;Rohnert Park&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5238 9440 7155 5447&#34;, &#34;expiration-date&#34;: &#34;06/16&#34;}}
+{&#34;age&#34;: 27, &#34;name&#34;: [&#34;Vincenzo&#34;, &#34;Gates&#34;], &#34;occupation&#34;: &#34;Project Manager&#34;, &#34;telephone&#34;: &#34;707.076.4543&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1186 Hudson Loop&#34;, &#34;city&#34;: &#34;Apple Valley&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3770 259555 70991&#34;, &#34;expiration-date&#34;: &#34;01/16&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -592,7 +593,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>dask.bag&lt;loads-7..., npartitions=10&gt;
+<span></span>dask.bag&lt;loads-5..., npartitions=10&gt;
 </pre></div>
 </div>
 </div>
@@ -610,20 +611,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 16,
-  &#39;name&#39;: [&#39;Jewel&#39;, &#39;Nicholson&#39;],
-  &#39;occupation&#39;: &#39;Civil Servant&#39;,
-  &#39;telephone&#39;: &#39;(757) 318-2063&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;14 South Park Mews&#39;, &#39;city&#39;: &#39;Rockford&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5473 1418 8956 2533&#39;,
-   &#39;expiration-date&#39;: &#39;01/21&#39;}},
- {&#39;age&#39;: 66,
-  &#39;name&#39;: [&#39;Sterling&#39;, &#39;Wilkins&#39;],
-  &#39;occupation&#39;: &#39;Home Help&#39;,
-  &#39;telephone&#39;: &#39;(484) 852-7498&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1359 Cleary Lane&#39;, &#39;city&#39;: &#39;Biloxi&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4540 2017 6778 3908&#39;,
-   &#39;expiration-date&#39;: &#39;08/22&#39;}})
+<span></span>({&#39;age&#39;: 29,
+  &#39;name&#39;: [&#39;Otha&#39;, &#39;Thompson&#39;],
+  &#39;occupation&#39;: &#39;Marketing Assistant&#39;,
+  &#39;telephone&#39;: &#39;718-392-9034&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;442 John F Kennedy Run&#39;, &#39;city&#39;: &#39;Rohnert Park&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5238 9440 7155 5447&#39;,
+   &#39;expiration-date&#39;: &#39;06/16&#39;}},
+ {&#39;age&#39;: 27,
+  &#39;name&#39;: [&#39;Vincenzo&#39;, &#39;Gates&#39;],
+  &#39;occupation&#39;: &#39;Project Manager&#39;,
+  &#39;telephone&#39;: &#39;707.076.4543&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1186 Hudson Loop&#39;, &#39;city&#39;: &#39;Apple Valley&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3770 259555 70991&#39;, &#39;expiration-date&#39;: &#39;01/16&#39;}})
 </pre></div>
 </div>
 </div>
@@ -645,19 +645,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 66,
-  &#39;name&#39;: [&#39;Sterling&#39;, &#39;Wilkins&#39;],
-  &#39;occupation&#39;: &#39;Home Help&#39;,
-  &#39;telephone&#39;: &#39;(484) 852-7498&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1359 Cleary Lane&#39;, &#39;city&#39;: &#39;Biloxi&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4540 2017 6778 3908&#39;,
-   &#39;expiration-date&#39;: &#39;08/22&#39;}},
- {&#39;age&#39;: 49,
-  &#39;name&#39;: [&#39;Edwardo&#39;, &#39;Marquez&#39;],
-  &#39;occupation&#39;: &#39;Circus Worker&#39;,
-  &#39;telephone&#39;: &#39;(073) 933-5668&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1048 Tompkins Parkway&#39;, &#39;city&#39;: &#39;Lemoore&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3728 111044 45853&#39;, &#39;expiration-date&#39;: &#39;10/25&#39;}})
+<span></span>({&#39;age&#39;: 51,
+  &#39;name&#39;: [&#39;Rico&#39;, &#39;Colon&#39;],
+  &#39;occupation&#39;: &#39;Manufacturing&#39;,
+  &#39;telephone&#39;: &#39;(324) 095-3582&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;935 Cortes Path&#39;, &#39;city&#39;: &#39;Houma&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3787 488672 31159&#39;, &#39;expiration-date&#39;: &#39;04/23&#39;}},
+ {&#39;age&#39;: 43,
+  &#39;name&#39;: [&#39;Daron&#39;, &#39;Carrillo&#39;],
+  &#39;occupation&#39;: &#39;Quality Manager&#39;,
+  &#39;telephone&#39;: &#39;452.225.4883&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;25 Felix Place&#39;, &#39;city&#39;: &#39;Zion&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4992 3296 7567 8747&#39;,
+   &#39;expiration-date&#39;: &#39;05/18&#39;}})
 </pre></div>
 </div>
 </div>
@@ -675,7 +675,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(&#39;Civil Servant&#39;, &#39;Home Help&#39;)
+<span></span>(&#39;Marketing Assistant&#39;, &#39;Project Manager&#39;)
 </pre></div>
 </div>
 </div>
@@ -738,16 +738,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[(&#39;Steel Erector&#39;, 16),
- (&#39;Textile Consultant&#39;, 14),
- (&#39;Turkey Farmer&#39;, 14),
- (&#39;Organist&#39;, 14),
- (&#39;Chicken Chaser&#39;, 14),
- (&#39;China Restorer&#39;, 14),
- (&#39;Priest&#39;, 13),
- (&#39;Track Worker&#39;, 13),
- (&#39;Secretary&#39;, 13),
- (&#39;Machine Fitters&#39;, 13)]
+<span></span>[(&#39;Stockbroker&#39;, 16),
+ (&#39;Painter&#39;, 15),
+ (&#39;Architect&#39;, 14),
+ (&#39;Bus Company&#39;, 14),
+ (&#39;Golf Club Professional&#39;, 14),
+ (&#39;Youth Worker&#39;, 14),
+ (&#39;Track Worker&#39;, 14),
+ (&#39;Applications Engineer&#39;, 13),
+ (&#39;Youth Hostel Warden&#39;, 13),
+ (&#39;Restaurateur&#39;, 13)]
 </pre></div>
 </div>
 </div>
@@ -804,13 +804,13 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 16,
-  &#39;name&#39;: [&#39;Jewel&#39;, &#39;Nicholson&#39;],
-  &#39;occupation&#39;: &#39;Civil Servant&#39;,
-  &#39;telephone&#39;: &#39;(757) 318-2063&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;14 South Park Mews&#39;, &#39;city&#39;: &#39;Rockford&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5473 1418 8956 2533&#39;,
-   &#39;expiration-date&#39;: &#39;01/21&#39;}},)
+<span></span>({&#39;age&#39;: 29,
+  &#39;name&#39;: [&#39;Otha&#39;, &#39;Thompson&#39;],
+  &#39;occupation&#39;: &#39;Marketing Assistant&#39;,
+  &#39;telephone&#39;: &#39;718-392-9034&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;442 John F Kennedy Run&#39;, &#39;city&#39;: &#39;Rohnert Park&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5238 9440 7155 5447&#39;,
+   &#39;expiration-date&#39;: &#39;06/16&#39;}},)
 </pre></div>
 </div>
 </div>
@@ -840,14 +840,14 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 16,
-  &#39;occupation&#39;: &#39;Civil Servant&#39;,
-  &#39;telephone&#39;: &#39;(757) 318-2063&#39;,
-  &#39;credit-card-number&#39;: &#39;5473 1418 8956 2533&#39;,
-  &#39;credit-card-expiration&#39;: &#39;01/21&#39;,
-  &#39;name&#39;: &#39;Jewel Nicholson&#39;,
-  &#39;street-address&#39;: &#39;14 South Park Mews&#39;,
-  &#39;city&#39;: &#39;Rockford&#39;},)
+<span></span>({&#39;age&#39;: 29,
+  &#39;occupation&#39;: &#39;Marketing Assistant&#39;,
+  &#39;telephone&#39;: &#39;718-392-9034&#39;,
+  &#39;credit-card-number&#39;: &#39;5238 9440 7155 5447&#39;,
+  &#39;credit-card-expiration&#39;: &#39;06/16&#39;,
+  &#39;name&#39;: &#39;Otha Thompson&#39;,
+  &#39;street-address&#39;: &#39;442 John F Kennedy Run&#39;,
+  &#39;city&#39;: &#39;Rohnert Park&#39;},)
 </pre></div>
 </div>
 </div>
@@ -897,58 +897,58 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>16</td>
-      <td>Civil Servant</td>
-      <td>(757) 318-2063</td>
-      <td>5473 1418 8956 2533</td>
-      <td>01/21</td>
-      <td>Jewel Nicholson</td>
-      <td>14 South Park Mews</td>
-      <td>Rockford</td>
+      <td>29</td>
+      <td>Marketing Assistant</td>
+      <td>718-392-9034</td>
+      <td>5238 9440 7155 5447</td>
+      <td>06/16</td>
+      <td>Otha Thompson</td>
+      <td>442 John F Kennedy Run</td>
+      <td>Rohnert Park</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>66</td>
-      <td>Home Help</td>
-      <td>(484) 852-7498</td>
-      <td>4540 2017 6778 3908</td>
-      <td>08/22</td>
-      <td>Sterling Wilkins</td>
-      <td>1359 Cleary Lane</td>
-      <td>Biloxi</td>
+      <td>27</td>
+      <td>Project Manager</td>
+      <td>707.076.4543</td>
+      <td>3770 259555 70991</td>
+      <td>01/16</td>
+      <td>Vincenzo Gates</td>
+      <td>1186 Hudson Loop</td>
+      <td>Apple Valley</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>49</td>
-      <td>Circus Worker</td>
-      <td>(073) 933-5668</td>
-      <td>3728 111044 45853</td>
-      <td>10/25</td>
-      <td>Edwardo Marquez</td>
-      <td>1048 Tompkins Parkway</td>
-      <td>Lemoore</td>
+      <td>51</td>
+      <td>Manufacturing</td>
+      <td>(324) 095-3582</td>
+      <td>3787 488672 31159</td>
+      <td>04/23</td>
+      <td>Rico Colon</td>
+      <td>935 Cortes Path</td>
+      <td>Houma</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>21</td>
-      <td>Sales Representative</td>
-      <td>1-724-731-4466</td>
-      <td>3448 612046 35221</td>
-      <td>04/23</td>
-      <td>Theo Solis</td>
-      <td>379 Maddux Glen</td>
-      <td>Wichita Falls</td>
+      <td>18</td>
+      <td>Flower Arranger</td>
+      <td>(427) 644-5168</td>
+      <td>3488 151983 50714</td>
+      <td>05/17</td>
+      <td>Chadwick Frank</td>
+      <td>672 Kirkwood Loop</td>
+      <td>Jeffersonville</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>21</td>
-      <td>Fuel Merchant</td>
-      <td>566-939-5053</td>
-      <td>3796 017892 00860</td>
+      <td>28</td>
+      <td>Solicitor</td>
+      <td>1-484-914-6334</td>
+      <td>2407 4137 5718 7174</td>
       <td>11/21</td>
-      <td>Vance Miller</td>
-      <td>59 Lyon Route</td>
-      <td>Newport Beach</td>
+      <td>Robena Roy</td>
+      <td>114 Sunview Nene</td>
+      <td>Miami</td>
     </tr>
   </tbody>
 </table>
@@ -969,16 +969,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Steel Erector         16
-China Restorer        14
-Turkey Farmer         14
-Textile Consultant    14
-Chicken Chaser        14
-Organist              14
-Secretary             13
-Production Planner    13
-Track Worker          13
-Priest                13
+<span></span>Stockbroker               16
+Painter                   15
+Golf Club Professional    14
+Bus Company               14
+Youth Worker              14
+Track Worker              14
+Architect                 14
+Applications Engineer     13
+Cameraman                 13
+Training Consultant       13
 Name: occupation, dtype: int64
 </pre></div>
 </div>
