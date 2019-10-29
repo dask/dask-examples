@@ -38,8 +38,10 @@ You can run these examples in a live session here: |Binder|
 
    machine-learning/scale-scikit-learn
    machine-learning/parallel-prediction
+   machine-learning/torch-prediction
    machine-learning/training-on-large-datasets
    machine-learning/incremental
+   machine-learning/hyperparam-opt.ipynb
    machine-learning/xgboost
    machine-learning/voting-classifier
    machine-learning/tpot
@@ -50,9 +52,32 @@ You can run these examples in a live session here: |Binder|
    :maxdepth: 1
    :caption: Applications:
 
-   applications/embarrassingly-parallel
    applications/json-data-on-the-web
-   applications/satellite-imagery-geotiff
-   applications/image-processing
    applications/async-await
+   applications/async-web-server
+   applications/embarrassingly-parallel
+   applications/evolving-workflows
+   applications/image-processing
+   applications/prefect-etl
+   applications/satellite-imagery-geotiff
    applications/stencils-with-numba
+
+.. toctree::
+   :maxdepth: 1
+   :caption: User Surveys:
+
+   surveys/2019.ipynb
+
+.. raw:: html
+
+   <!-- Google Analytics -->
+   <script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+   ga('create', 'UA-18218874-5', 'auto');
+   ga('send', 'pageview');
+   </script>
+   <!-- End Google Analytics -->
