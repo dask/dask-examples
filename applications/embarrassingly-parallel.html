@@ -170,6 +170,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/torch-prediction.html">Batch Prediction with PyTorch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/training-on-large-datasets.html">Train Models on Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/incremental.html">Incrementally Train Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/text-vectorization.html">Text Vectorization Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/hyperparam-opt.html">Hyperparameter optimization with Dask</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/xgboost.html">Scale XGBoost</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/voting-classifier.html">Use Voting Classifiers</a></li>
@@ -510,7 +511,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:44827</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:41545</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -558,8 +559,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 35.6 ms, sys: 4.63 ms, total: 40.2 ms
-Wall time: 844 ms
+CPU times: user 22.5 ms, sys: 8.84 ms, total: 31.3 ms
+Wall time: 611 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -621,38 +622,38 @@ Wall time: 844 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.515040</td>
-      <td>0.948845</td>
-      <td>0.403045</td>
-      <td>0.132825</td>
+      <td>0.514290</td>
+      <td>0.128818</td>
+      <td>0.774587</td>
+      <td>0.972869</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.076208</td>
-      <td>0.499164</td>
-      <td>0.515788</td>
-      <td>0.619039</td>
+      <td>0.159396</td>
+      <td>0.462597</td>
+      <td>0.748583</td>
+      <td>0.763079</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.750362</td>
-      <td>0.802388</td>
-      <td>0.790228</td>
-      <td>0.897952</td>
+      <td>0.643368</td>
+      <td>0.663588</td>
+      <td>0.209154</td>
+      <td>0.045350</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.389874</td>
-      <td>0.609952</td>
-      <td>0.957313</td>
-      <td>0.607712</td>
+      <td>0.955604</td>
+      <td>0.982754</td>
+      <td>0.166161</td>
+      <td>0.345113</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.682443</td>
-      <td>0.293614</td>
-      <td>0.184106</td>
-      <td>0.958374</td>
+      <td>0.378421</td>
+      <td>0.506001</td>
+      <td>0.808560</td>
+      <td>0.424019</td>
     </tr>
   </tbody>
 </table>
@@ -686,8 +687,8 @@ Wall time: 844 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 186 ms, sys: 35.9 ms, total: 222 ms
-Wall time: 5.78 s
+CPU times: user 247 ms, sys: 35.1 ms, total: 282 ms
+Wall time: 5.53 s
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -704,16 +705,16 @@ Wall time: 5.78 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[1.999754218623767,
- 1.710199265985666,
- 3.2409293226946545,
- 2.5648502364901824,
- 2.1185361491492287,
- 2.071774216176908,
- 2.620222943068655,
- 1.5177654424897171,
- 1.9529339587091377,
- 1.7282134633506891]
+<span></span>[2.3905641260882464,
+ 2.1336545296800917,
+ 1.5614609232849999,
+ 2.449631599507544,
+ 2.1170011544386598,
+ 1.7795968030740854,
+ 1.971818437721968,
+ 2.6568969285842727,
+ 2.990893030328304,
+ 0.9448115629567345]
 </pre></div>
 </div>
 </div>
@@ -752,8 +753,8 @@ Wall time: 5.78 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.73 ms, sys: 0 ns, total: 1.73 ms
-Wall time: 1.41 ms
+CPU times: user 1.27 ms, sys: 61 µs, total: 1.33 ms
+Wall time: 1.07 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -770,7 +771,7 @@ Wall time: 1.41 ms
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Delayed(&#39;costly_simulation-2b9c5bbb-c3a1-46cf-8217-18ecb0f846d7&#39;)
+<span></span>Delayed(&#39;costly_simulation-75f2f5b2-50f5-4512-83b3-229e97481cca&#39;)
 </pre></div>
 </div>
 </div>
@@ -793,8 +794,8 @@ Wall time: 1.41 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 80 ms, sys: 36.2 ms, total: 116 ms
-Wall time: 1.84 s
+CPU times: user 116 ms, sys: 3.93 ms, total: 120 ms
+Wall time: 1.47 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -802,16 +803,16 @@ Wall time: 1.84 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(1.999754218623767,
- 1.710199265985666,
- 3.2409293226946545,
- 2.5648502364901824,
- 2.1185361491492287,
- 2.071774216176908,
- 2.620222943068655,
- 1.5177654424897171,
- 1.9529339587091377,
- 1.7282134633506891)
+<span></span>(2.3905641260882464,
+ 2.1336545296800917,
+ 1.5614609232849999,
+ 2.449631599507544,
+ 2.1170011544386598,
+ 1.7795968030740854,
+ 1.971818437721968,
+ 2.6568969285842727,
+ 2.990893030328304,
+ 0.9448115629567345)
 </pre></div>
 </div>
 </div>
@@ -861,11 +862,11 @@ Wall time: 1.84 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(1.999754218623767,
- 1.710199265985666,
- 3.2409293226946545,
- 2.5648502364901824,
- 2.1185361491492287)
+<span></span>(2.3905641260882464,
+ 2.1336545296800917,
+ 1.5614609232849999,
+ 2.449631599507544,
+ 2.1170011544386598)
 </pre></div>
 </div>
 </div>
@@ -902,11 +903,11 @@ Wall time: 1.84 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[1.999754218623767,
- 1.710199265985666,
- 3.2409293226946545,
- 2.5648502364901824,
- 2.1185361491492287]
+<span></span>[2.3905641260882464,
+ 2.1336545296800917,
+ 1.5614609232849999,
+ 2.449631599507544,
+ 2.1170011544386598]
 </pre></div>
 </div>
 </div>
@@ -956,7 +957,7 @@ Wall time: 1.84 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-1.999754218623767
+2.3905641260882464
 </pre></div></div>
 </div>
 <p>We encourage you to watch the <a class="reference external" href="../proxy/8787/status">dashboard’s status page</a> to watch on going computation.</p>
@@ -1009,44 +1010,44 @@ Wall time: 1.84 s
   </thead>
   <tbody>
     <tr>
-      <th>45</th>
-      <td>0.130199</td>
-      <td>0.820649</td>
-      <td>0.500834</td>
-      <td>0.918405</td>
-      <td>2.370088</td>
+      <th>147</th>
+      <td>0.186752</td>
+      <td>0.286452</td>
+      <td>0.271833</td>
+      <td>0.879851</td>
+      <td>1.624887</td>
     </tr>
     <tr>
-      <th>298</th>
-      <td>0.743713</td>
-      <td>0.052480</td>
-      <td>0.339895</td>
-      <td>0.356735</td>
-      <td>1.492823</td>
+      <th>137</th>
+      <td>0.603927</td>
+      <td>0.283608</td>
+      <td>0.363791</td>
+      <td>0.810777</td>
+      <td>2.062102</td>
     </tr>
     <tr>
-      <th>24</th>
-      <td>0.297377</td>
-      <td>0.645273</td>
-      <td>0.787002</td>
-      <td>0.057554</td>
-      <td>1.787207</td>
+      <th>439</th>
+      <td>0.608267</td>
+      <td>0.384556</td>
+      <td>0.541295</td>
+      <td>0.752742</td>
+      <td>2.286859</td>
     </tr>
     <tr>
-      <th>171</th>
-      <td>0.811395</td>
-      <td>0.869228</td>
-      <td>0.898558</td>
-      <td>0.795541</td>
-      <td>3.374723</td>
+      <th>8</th>
+      <td>0.772070</td>
+      <td>0.720862</td>
+      <td>0.936536</td>
+      <td>0.561425</td>
+      <td>2.990893</td>
     </tr>
     <tr>
-      <th>309</th>
-      <td>0.316256</td>
-      <td>0.893367</td>
-      <td>0.888363</td>
-      <td>0.379313</td>
-      <td>2.477299</td>
+      <th>254</th>
+      <td>0.561470</td>
+      <td>0.777216</td>
+      <td>0.096479</td>
+      <td>0.698794</td>
+      <td>2.133960</td>
     </tr>
   </tbody>
 </table>
@@ -1068,7 +1069,7 @@ Wall time: 1.84 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f5e443b9438&gt;
+<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb62067aef0&gt;
 </pre></div>
 </div>
 </div>
@@ -1093,7 +1094,7 @@ Wall time: 1.84 s
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>2.0620706407724967
+<span></span>1.9908475447974339
 </pre></div>
 </div>
 </div>
@@ -1113,7 +1114,7 @@ Wall time: 1.84 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-274
+248
 </pre></div></div>
 </div>
 </div>
@@ -1147,8 +1148,8 @@ many tasks</a>.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.46 s, sys: 231 ms, total: 1.69 s
-Wall time: 9.15 s
+CPU times: user 1.52 s, sys: 257 ms, total: 1.78 s
+Wall time: 10.2 s
 </pre></div></div>
 </div>
 <p>Looking on Dashboard here, you should see only 100 tasks to run instead of 500, each taking 5x more time in average, because each one is actually calling our function 5 times.</p>

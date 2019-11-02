@@ -180,6 +180,7 @@
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/torch-prediction.html">Batch Prediction with PyTorch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/training-on-large-datasets.html">Train Models on Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/incremental.html">Incrementally Train Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning/text-vectorization.html">Text Vectorization Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/hyperparam-opt.html">Hyperparameter optimization with Dask</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/xgboost.html">Scale XGBoost</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/voting-classifier.html">Use Voting Classifiers</a></li>
@@ -500,7 +501,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:42683</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:44401</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -571,8 +572,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 44, &#34;name&#34;: [&#34;Yajaira&#34;, &#34;Mercer&#34;], &#34;occupation&#34;: &#34;Security Controller&#34;, &#34;telephone&#34;: &#34;1-337-316-2735&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;920 Division Wynd&#34;, &#34;city&#34;: &#34;Pittsburgh&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;4664 9289 6065 4508&#34;, &#34;expiration-date&#34;: &#34;12/25&#34;}}
-{&#34;age&#34;: 65, &#34;name&#34;: [&#34;Sid&#34;, &#34;Vinson&#34;], &#34;occupation&#34;: &#34;Palaeontologist&#34;, &#34;telephone&#34;: &#34;568.471.4058&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;875 Bepler Route&#34;, &#34;city&#34;: &#34;Homer Glen&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;4208 2133 5979 8551&#34;, &#34;expiration-date&#34;: &#34;08/24&#34;}}
+{&#34;age&#34;: 47, &#34;name&#34;: [&#34;Oliva&#34;, &#34;Mueller&#34;], &#34;occupation&#34;: &#34;Soldier&#34;, &#34;telephone&#34;: &#34;(375) 490-6293&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;997 Claude Promenade&#34;, &#34;city&#34;: &#34;Redmond&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;4106 6977 9153 4892&#34;, &#34;expiration-date&#34;: &#34;08/21&#34;}}
+{&#34;age&#34;: 34, &#34;name&#34;: [&#34;Lazaro&#34;, &#34;Sanders&#34;], &#34;occupation&#34;: &#34;Professional Boxer&#34;, &#34;telephone&#34;: &#34;(633) 671-1876&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1163 Ross Street&#34;, &#34;city&#34;: &#34;Ormond Beach&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5438 1584 6557 5758&#34;, &#34;expiration-date&#34;: &#34;12/21&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -593,7 +594,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>dask.bag&lt;loads-2..., npartitions=10&gt;
+<span></span>dask.bag&lt;loads-4..., npartitions=10&gt;
 </pre></div>
 </div>
 </div>
@@ -611,20 +612,20 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 44,
-  &#39;name&#39;: [&#39;Yajaira&#39;, &#39;Mercer&#39;],
-  &#39;occupation&#39;: &#39;Security Controller&#39;,
-  &#39;telephone&#39;: &#39;1-337-316-2735&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;920 Division Wynd&#39;, &#39;city&#39;: &#39;Pittsburgh&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4664 9289 6065 4508&#39;,
-   &#39;expiration-date&#39;: &#39;12/25&#39;}},
- {&#39;age&#39;: 65,
-  &#39;name&#39;: [&#39;Sid&#39;, &#39;Vinson&#39;],
-  &#39;occupation&#39;: &#39;Palaeontologist&#39;,
-  &#39;telephone&#39;: &#39;568.471.4058&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;875 Bepler Route&#39;, &#39;city&#39;: &#39;Homer Glen&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4208 2133 5979 8551&#39;,
-   &#39;expiration-date&#39;: &#39;08/24&#39;}})
+<span></span>({&#39;age&#39;: 47,
+  &#39;name&#39;: [&#39;Oliva&#39;, &#39;Mueller&#39;],
+  &#39;occupation&#39;: &#39;Soldier&#39;,
+  &#39;telephone&#39;: &#39;(375) 490-6293&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;997 Claude Promenade&#39;, &#39;city&#39;: &#39;Redmond&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4106 6977 9153 4892&#39;,
+   &#39;expiration-date&#39;: &#39;08/21&#39;}},
+ {&#39;age&#39;: 34,
+  &#39;name&#39;: [&#39;Lazaro&#39;, &#39;Sanders&#39;],
+  &#39;occupation&#39;: &#39;Professional Boxer&#39;,
+  &#39;telephone&#39;: &#39;(633) 671-1876&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1163 Ross Street&#39;, &#39;city&#39;: &#39;Ormond Beach&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5438 1584 6557 5758&#39;,
+   &#39;expiration-date&#39;: &#39;12/21&#39;}})
 </pre></div>
 </div>
 </div>
@@ -646,20 +647,20 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 44,
-  &#39;name&#39;: [&#39;Yajaira&#39;, &#39;Mercer&#39;],
-  &#39;occupation&#39;: &#39;Security Controller&#39;,
-  &#39;telephone&#39;: &#39;1-337-316-2735&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;920 Division Wynd&#39;, &#39;city&#39;: &#39;Pittsburgh&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4664 9289 6065 4508&#39;,
-   &#39;expiration-date&#39;: &#39;12/25&#39;}},
- {&#39;age&#39;: 65,
-  &#39;name&#39;: [&#39;Sid&#39;, &#39;Vinson&#39;],
-  &#39;occupation&#39;: &#39;Palaeontologist&#39;,
-  &#39;telephone&#39;: &#39;568.471.4058&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;875 Bepler Route&#39;, &#39;city&#39;: &#39;Homer Glen&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4208 2133 5979 8551&#39;,
-   &#39;expiration-date&#39;: &#39;08/24&#39;}})
+<span></span>({&#39;age&#39;: 47,
+  &#39;name&#39;: [&#39;Oliva&#39;, &#39;Mueller&#39;],
+  &#39;occupation&#39;: &#39;Soldier&#39;,
+  &#39;telephone&#39;: &#39;(375) 490-6293&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;997 Claude Promenade&#39;, &#39;city&#39;: &#39;Redmond&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4106 6977 9153 4892&#39;,
+   &#39;expiration-date&#39;: &#39;08/21&#39;}},
+ {&#39;age&#39;: 34,
+  &#39;name&#39;: [&#39;Lazaro&#39;, &#39;Sanders&#39;],
+  &#39;occupation&#39;: &#39;Professional Boxer&#39;,
+  &#39;telephone&#39;: &#39;(633) 671-1876&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1163 Ross Street&#39;, &#39;city&#39;: &#39;Ormond Beach&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5438 1584 6557 5758&#39;,
+   &#39;expiration-date&#39;: &#39;12/21&#39;}})
 </pre></div>
 </div>
 </div>
@@ -677,7 +678,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(&#39;Security Controller&#39;, &#39;Palaeontologist&#39;)
+<span></span>(&#39;Soldier&#39;, &#39;Professional Boxer&#39;)
 </pre></div>
 </div>
 </div>
@@ -740,16 +741,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[(&#39;Butcher&#39;, 16),
- (&#39;Assistant Nurse&#39;, 14),
- (&#39;Ambulance Controller&#39;, 14),
- (&#39;Nursing Assistant&#39;, 14),
- (&#39;Sportswoman&#39;, 14),
- (&#39;Booking Clerk&#39;, 14),
- (&#39;Presser&#39;, 13),
- (&#39;Tyre Fitter&#39;, 13),
- (&#39;Sub-Postmaster&#39;, 13),
- (&#39;Analyst&#39;, 13)]
+<span></span>[(&#39;Nursery Worker&#39;, 16),
+ (&#39;Pest Controller&#39;, 16),
+ (&#39;Purchase Ledger Clerk&#39;, 14),
+ (&#39;Signwriter&#39;, 14),
+ (&#39;Car Dealer&#39;, 14),
+ (&#39;Trading Standards&#39;, 14),
+ (&#39;Meter Reader&#39;, 14),
+ (&#39;Gun Smith&#39;, 13),
+ (&#39;Legal Executive&#39;, 13),
+ (&#39;Television Engineer&#39;, 13)]
 </pre></div>
 </div>
 </div>
@@ -806,13 +807,13 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 44,
-  &#39;name&#39;: [&#39;Yajaira&#39;, &#39;Mercer&#39;],
-  &#39;occupation&#39;: &#39;Security Controller&#39;,
-  &#39;telephone&#39;: &#39;1-337-316-2735&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;920 Division Wynd&#39;, &#39;city&#39;: &#39;Pittsburgh&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4664 9289 6065 4508&#39;,
-   &#39;expiration-date&#39;: &#39;12/25&#39;}},)
+<span></span>({&#39;age&#39;: 47,
+  &#39;name&#39;: [&#39;Oliva&#39;, &#39;Mueller&#39;],
+  &#39;occupation&#39;: &#39;Soldier&#39;,
+  &#39;telephone&#39;: &#39;(375) 490-6293&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;997 Claude Promenade&#39;, &#39;city&#39;: &#39;Redmond&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4106 6977 9153 4892&#39;,
+   &#39;expiration-date&#39;: &#39;08/21&#39;}},)
 </pre></div>
 </div>
 </div>
@@ -842,14 +843,14 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 44,
-  &#39;occupation&#39;: &#39;Security Controller&#39;,
-  &#39;telephone&#39;: &#39;1-337-316-2735&#39;,
-  &#39;credit-card-number&#39;: &#39;4664 9289 6065 4508&#39;,
-  &#39;credit-card-expiration&#39;: &#39;12/25&#39;,
-  &#39;name&#39;: &#39;Yajaira Mercer&#39;,
-  &#39;street-address&#39;: &#39;920 Division Wynd&#39;,
-  &#39;city&#39;: &#39;Pittsburgh&#39;},)
+<span></span>({&#39;age&#39;: 47,
+  &#39;occupation&#39;: &#39;Soldier&#39;,
+  &#39;telephone&#39;: &#39;(375) 490-6293&#39;,
+  &#39;credit-card-number&#39;: &#39;4106 6977 9153 4892&#39;,
+  &#39;credit-card-expiration&#39;: &#39;08/21&#39;,
+  &#39;name&#39;: &#39;Oliva Mueller&#39;,
+  &#39;street-address&#39;: &#39;997 Claude Promenade&#39;,
+  &#39;city&#39;: &#39;Redmond&#39;},)
 </pre></div>
 </div>
 </div>
@@ -899,58 +900,58 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>44</td>
-      <td>Security Controller</td>
-      <td>1-337-316-2735</td>
-      <td>4664 9289 6065 4508</td>
-      <td>12/25</td>
-      <td>Yajaira Mercer</td>
-      <td>920 Division Wynd</td>
-      <td>Pittsburgh</td>
+      <td>47</td>
+      <td>Soldier</td>
+      <td>(375) 490-6293</td>
+      <td>4106 6977 9153 4892</td>
+      <td>08/21</td>
+      <td>Oliva Mueller</td>
+      <td>997 Claude Promenade</td>
+      <td>Redmond</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>65</td>
-      <td>Palaeontologist</td>
-      <td>568.471.4058</td>
-      <td>4208 2133 5979 8551</td>
-      <td>08/24</td>
-      <td>Sid Vinson</td>
-      <td>875 Bepler Route</td>
-      <td>Homer Glen</td>
+      <td>34</td>
+      <td>Professional Boxer</td>
+      <td>(633) 671-1876</td>
+      <td>5438 1584 6557 5758</td>
+      <td>12/21</td>
+      <td>Lazaro Sanders</td>
+      <td>1163 Ross Street</td>
+      <td>Ormond Beach</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>44</td>
-      <td>Press Operator</td>
-      <td>+1-(257)-687-4223</td>
-      <td>3456 041470 86758</td>
-      <td>04/21</td>
-      <td>Florentino Slater</td>
-      <td>543 Mars Arcade</td>
-      <td>Stephenville</td>
+      <td>64</td>
+      <td>Health Advisor</td>
+      <td>763.021.6834</td>
+      <td>3727 242649 20344</td>
+      <td>07/17</td>
+      <td>Henry Ware</td>
+      <td>156 Music Concourse Access High Street</td>
+      <td>Seminole</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>66</td>
-      <td>Floor Layer</td>
-      <td>1-502-248-7225</td>
-      <td>4940 8469 8170 6832</td>
-      <td>04/20</td>
-      <td>Jess Greer</td>
-      <td>1177 Palo Alto Glen</td>
-      <td>Collinsville</td>
+      <td>26</td>
+      <td>Radio Controller</td>
+      <td>1-218-137-8008</td>
+      <td>2373 8968 7223 9567</td>
+      <td>12/20</td>
+      <td>Melda Waters</td>
+      <td>635 Summit Thruway</td>
+      <td>Johns Creek</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>33</td>
-      <td>Tanker Driver</td>
-      <td>072-061-3877</td>
-      <td>4305 5451 8629 1033</td>
-      <td>01/20</td>
-      <td>Darrell Delacruz</td>
-      <td>213 Fort Funston Grove</td>
-      <td>South Portland</td>
+      <td>34</td>
+      <td>Park Ranger</td>
+      <td>+1-(836)-627-8714</td>
+      <td>4232 0272 5700 0310</td>
+      <td>05/22</td>
+      <td>Denver Franks</td>
+      <td>184 Reuel Walk</td>
+      <td>Green</td>
     </tr>
   </tbody>
 </table>
@@ -971,16 +972,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Butcher                 16
-Nursing Assistant       14
-Ambulance Controller    14
-Sportswoman             14
-Booking Clerk           14
-Assistant Nurse         14
-Tyre Fitter             13
-Sub-Postmaster          13
-Presser                 13
-Analyst                 13
+<span></span>Pest Controller          16
+Nursery Worker           16
+Car Dealer               14
+Meter Reader             14
+Purchase Ledger Clerk    14
+Trading Standards        14
+Signwriter               14
+Plasterer                13
+Retired                  13
+Marine Electrician       13
 Name: occupation, dtype: int64
 </pre></div>
 </div>
