@@ -269,16 +269,16 @@
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput,
-div.nbinput div.prompt,
-div.nbinput div.input_area,
-div.nbinput div[class*=highlight],
-div.nbinput div[class*=highlight] pre,
-div.nboutput,
-div.nbinput div.prompt,
-div.nbinput div.output_area,
-div.nboutput div[class*=highlight],
-div.nboutput div[class*=highlight] pre {
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
     background: none;
     border: none;
     padding: 0 0;
@@ -287,13 +287,13 @@ div.nboutput div[class*=highlight] pre {
 }
 
 /* avoid gaps between output lines */
-div.nboutput div[class*=highlight] pre {
+div.nboutput.container div[class*=highlight] pre {
     line-height: normal;
 }
 
 /* input/output containers */
-div.nbinput,
-div.nboutput {
+div.nbinput.container,
+div.nboutput.container {
     display: -webkit-flex;
     display: flex;
     align-items: flex-start;
@@ -301,35 +301,35 @@ div.nboutput {
     width: 100%;
 }
 @media (max-width: 540px) {
-    div.nbinput,
-    div.nboutput {
+    div.nbinput.container,
+    div.nboutput.container {
         flex-direction: column;
     }
 }
 
 /* input container */
-div.nbinput {
+div.nbinput.container {
     padding-top: 5px;
 }
 
 /* last container */
-div.nblast {
+div.nblast.container {
     padding-bottom: 5px;
 }
 
 /* input prompt */
-div.nbinput div.prompt pre {
+div.nbinput.container div.prompt pre {
     color: #307FC1;
 }
 
 /* output prompt */
-div.nboutput div.prompt pre {
+div.nboutput.container div.prompt pre {
     color: #BF5B3D;
 }
 
 /* all prompts */
-div.nbinput div.prompt,
-div.nboutput div.prompt {
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
     min-width: 7ex;
     padding-top: 0.4em;
     padding-right: 0.4em;
@@ -337,56 +337,56 @@ div.nboutput div.prompt {
     flex: 0;
 }
 @media (max-width: 540px) {
-    div.nbinput div.prompt,
-    div.nboutput div.prompt {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
         text-align: left;
         padding: 0.4em;
     }
-    div.nboutput div.prompt.empty {
+    div.nboutput.container div.prompt.empty {
         padding: 0;
     }
 }
 
 /* disable scrollbars on prompts */
-div.nbinput div.prompt pre,
-div.nboutput div.prompt pre {
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
     overflow: hidden;
 }
 
 /* input/output area */
-div.nbinput div.input_area,
-div.nboutput div.output_area {
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
     padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
 }
 @media (max-width: 540px) {
-    div.nbinput div.input_area,
-    div.nboutput div.output_area {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
         width: 100%;
     }
 }
 
 /* input area */
-div.nbinput div.input_area {
+div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
     background: #f5f5f5;
 }
 
 /* override MathJax center alignment in output cells */
-div.nboutput div[class*=MathJax] {
+div.nboutput.container div[class*=MathJax] {
     text-align: left !important;
 }
 
 /* override sphinx.ext.imgmath center alignment in output cells */
-div.nboutput div.math p {
+div.nboutput.container div.math p {
     text-align: left;
 }
 
 /* standard error */
-div.nboutput div.output_area.stderr {
+div.nboutput.container div.output_area.stderr {
     background: #fdd;
 }
 
@@ -480,7 +480,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="k">import</span> <span class="n">Client</span>
+<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">n_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">memory_limit</span><span class="o">=</span><span class="s1">&#39;2GB&#39;</span><span class="p">)</span>
 <span class="n">client</span>
 </pre></div>
@@ -496,8 +496,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.255.3/12325/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.255.3/12325/1:8787/status' target='_blank'>http://10.20.255.3/12325/1:8787/status</a>
+  <li><b>Scheduler: </b>inproc://10.20.0.30/12444/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.0.30/12444/1:8787/status' target='_blank'>http://10.20.0.30/12444/1:8787/status</a>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -633,37 +633,37 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>name
-Alice      -0.002985
-Bob         0.001916
-Charlie     0.002855
-Dan         0.001018
-Edith      -0.000766
-Frank      -0.001241
-George     -0.000706
-Hannah     -0.000916
-Ingrid      0.001543
-Jerry       0.000862
-Kevin      -0.000170
-Laura       0.002562
-Michael    -0.001153
-Norbert     0.001673
-Oliver     -0.002597
-Patricia    0.000016
-Quinn       0.001896
-Ray         0.001267
-Sarah      -0.003233
-Tim         0.005735
-Ursula     -0.002177
-Victor      0.000747
-Wendy       0.002165
-Xavier     -0.000985
-Yvonne     -0.000433
-Zelda       0.003477
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+name
+Alice       0.000905
+Bob         0.002895
+Charlie     0.000346
+Dan         0.003260
+Edith      -0.001906
+Frank       0.000895
+George      0.000246
+Hannah      0.000435
+Ingrid     -0.002003
+Jerry       0.002203
+Kevin      -0.001488
+Laura       0.001119
+Michael    -0.001248
+Norbert    -0.000291
+Oliver      0.000577
+Patricia    0.000583
+Quinn       0.000699
+Ray         0.001552
+Sarah      -0.000187
+Tim         0.003411
+Ursula      0.001157
+Victor     -0.000787
+Wendy       0.000661
+Xavier     -0.004322
+Yvonne      0.000216
+Zelda       0.001779
 Name: x, dtype: float64
-</pre></div>
-</div>
+</pre></div></div>
 </div>
 <p>Performance will depend on the aggregation you do (mean vs std), the key on which you group (name vs id), and the number of total groups</p>
 <div class="nbinput docutils container">
@@ -680,8 +680,8 @@ Name: x, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 388 ms, sys: 13.5 ms, total: 401 ms
-Wall time: 301 ms
+CPU times: user 379 ms, sys: 18.4 ms, total: 397 ms
+Wall time: 302 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -698,8 +698,8 @@ Wall time: 301 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 852 ms, sys: 34.1 ms, total: 887 ms
-Wall time: 662 ms
+CPU times: user 851 ms, sys: 21.2 ms, total: 872 ms
+Wall time: 652 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -716,8 +716,8 @@ Wall time: 662 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.24 s, sys: 115 ms, total: 1.36 s
-Wall time: 1.04 s
+CPU times: user 1.37 s, sys: 85.5 ms, total: 1.46 s
+Wall time: 1.12 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -768,38 +768,38 @@ Wall time: 1.04 s
   <tbody>
     <tr>
       <th>Alice</th>
-      <td>-0.002985</td>
-      <td>0.577847</td>
-      <td>-0.000556</td>
-      <td>99285</td>
+      <td>0.000905</td>
+      <td>0.577114</td>
+      <td>-0.000139</td>
+      <td>99777</td>
     </tr>
     <tr>
       <th>Bob</th>
-      <td>0.001916</td>
-      <td>0.577790</td>
-      <td>-0.000619</td>
-      <td>100315</td>
+      <td>0.002895</td>
+      <td>0.577986</td>
+      <td>0.002170</td>
+      <td>99341</td>
     </tr>
     <tr>
       <th>Charlie</th>
-      <td>0.002855</td>
-      <td>0.577726</td>
-      <td>0.000440</td>
-      <td>100131</td>
+      <td>0.000346</td>
+      <td>0.576643</td>
+      <td>0.000755</td>
+      <td>99753</td>
     </tr>
     <tr>
       <th>Dan</th>
-      <td>0.001018</td>
-      <td>0.578612</td>
-      <td>0.002143</td>
-      <td>99419</td>
+      <td>0.003260</td>
+      <td>0.577008</td>
+      <td>0.003415</td>
+      <td>99594</td>
     </tr>
     <tr>
       <th>Edith</th>
-      <td>-0.000766</td>
-      <td>0.578215</td>
-      <td>-0.003010</td>
-      <td>100282</td>
+      <td>-0.001906</td>
+      <td>0.577630</td>
+      <td>0.001292</td>
+      <td>99951</td>
     </tr>
   </tbody>
 </table>
@@ -859,7 +859,7 @@ Wall time: 1.04 s
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
+<span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 
 <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">partition</span><span class="p">):</span>
     <span class="n">est</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
@@ -882,16 +882,17 @@ Wall time: 1.04 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 6.2 s, sys: 690 ms, total: 6.89 s
-Wall time: 5.64 s
+CPU times: user 6.74 s, sys: 756 ms, total: 7.49 s
+Wall time: 6.11 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>name
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+name
 Alice       LinearRegression(copy_X=True, fit_intercept=Tr...
 Bob         LinearRegression(copy_X=True, fit_intercept=Tr...
 Charlie     LinearRegression(copy_X=True, fit_intercept=Tr...
@@ -919,8 +920,7 @@ Xavier      LinearRegression(copy_X=True, fit_intercept=Tr...
 Yvonne      LinearRegression(copy_X=True, fit_intercept=Tr...
 Zelda       LinearRegression(copy_X=True, fit_intercept=Tr...
 dtype: object
-</pre></div>
-</div>
+</pre></div></div>
 </div>
 </div>
 </div>

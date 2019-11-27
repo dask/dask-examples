@@ -272,16 +272,16 @@
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput,
-div.nbinput div.prompt,
-div.nbinput div.input_area,
-div.nbinput div[class*=highlight],
-div.nbinput div[class*=highlight] pre,
-div.nboutput,
-div.nbinput div.prompt,
-div.nbinput div.output_area,
-div.nboutput div[class*=highlight],
-div.nboutput div[class*=highlight] pre {
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
     background: none;
     border: none;
     padding: 0 0;
@@ -290,13 +290,13 @@ div.nboutput div[class*=highlight] pre {
 }
 
 /* avoid gaps between output lines */
-div.nboutput div[class*=highlight] pre {
+div.nboutput.container div[class*=highlight] pre {
     line-height: normal;
 }
 
 /* input/output containers */
-div.nbinput,
-div.nboutput {
+div.nbinput.container,
+div.nboutput.container {
     display: -webkit-flex;
     display: flex;
     align-items: flex-start;
@@ -304,35 +304,35 @@ div.nboutput {
     width: 100%;
 }
 @media (max-width: 540px) {
-    div.nbinput,
-    div.nboutput {
+    div.nbinput.container,
+    div.nboutput.container {
         flex-direction: column;
     }
 }
 
 /* input container */
-div.nbinput {
+div.nbinput.container {
     padding-top: 5px;
 }
 
 /* last container */
-div.nblast {
+div.nblast.container {
     padding-bottom: 5px;
 }
 
 /* input prompt */
-div.nbinput div.prompt pre {
+div.nbinput.container div.prompt pre {
     color: #307FC1;
 }
 
 /* output prompt */
-div.nboutput div.prompt pre {
+div.nboutput.container div.prompt pre {
     color: #BF5B3D;
 }
 
 /* all prompts */
-div.nbinput div.prompt,
-div.nboutput div.prompt {
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
     min-width: 7ex;
     padding-top: 0.4em;
     padding-right: 0.4em;
@@ -340,56 +340,56 @@ div.nboutput div.prompt {
     flex: 0;
 }
 @media (max-width: 540px) {
-    div.nbinput div.prompt,
-    div.nboutput div.prompt {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
         text-align: left;
         padding: 0.4em;
     }
-    div.nboutput div.prompt.empty {
+    div.nboutput.container div.prompt.empty {
         padding: 0;
     }
 }
 
 /* disable scrollbars on prompts */
-div.nbinput div.prompt pre,
-div.nboutput div.prompt pre {
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
     overflow: hidden;
 }
 
 /* input/output area */
-div.nbinput div.input_area,
-div.nboutput div.output_area {
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
     padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
 }
 @media (max-width: 540px) {
-    div.nbinput div.input_area,
-    div.nboutput div.output_area {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
         width: 100%;
     }
 }
 
 /* input area */
-div.nbinput div.input_area {
+div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
     background: #f5f5f5;
 }
 
 /* override MathJax center alignment in output cells */
-div.nboutput div[class*=MathJax] {
+div.nboutput.container div[class*=MathJax] {
     text-align: left !important;
 }
 
 /* override sphinx.ext.imgmath center alignment in output cells */
-div.nboutput div.math p {
+div.nboutput.container div.math p {
     text-align: left;
 }
 
 /* standard error */
-div.nboutput div.output_area.stderr {
+div.nboutput.container div.output_area.stderr {
     background: #fdd;
 }
 
@@ -483,7 +483,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="k">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">progress</span>
+<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">progress</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">n_workers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">memory_limit</span><span class="o">=</span><span class="s1">&#39;1GB&#39;</span><span class="p">)</span>
 <span class="n">client</span>
 </pre></div>
@@ -499,7 +499,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:41001</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:43151</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -637,14 +637,14 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>id        int64
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+id        int64
 name     object
 x       float64
 y       float64
 dtype: object
-</pre></div>
-</div>
+</pre></div></div>
 </div>
 <p>Some operations will automatically display the data.</p>
 <div class="nbinput nblast docutils container">
@@ -706,24 +706,24 @@ dtype: object
   <tbody>
     <tr>
       <th>2000-01-01 00:00:00</th>
-      <td>982</td>
-      <td>Zelda</td>
-      <td>-0.58</td>
-      <td>0.33</td>
+      <td>997</td>
+      <td>Frank</td>
+      <td>-0.25</td>
+      <td>0.31</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:01</th>
-      <td>1004</td>
-      <td>Ingrid</td>
-      <td>-0.96</td>
-      <td>-0.08</td>
+      <td>972</td>
+      <td>Bob</td>
+      <td>0.52</td>
+      <td>-0.66</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:02</th>
-      <td>988</td>
-      <td>Wendy</td>
-      <td>0.41</td>
-      <td>0.12</td>
+      <td>951</td>
+      <td>Dan</td>
+      <td>0.71</td>
+      <td>-0.60</td>
     </tr>
   </tbody>
 </table>
@@ -748,15 +748,15 @@ dtype: object
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Dask Series Structure:
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Dask Series Structure:
 npartitions=1
     float64
         ...
 Name: x, dtype: float64
 Dask Name: sqrt, 157 tasks
-</pre></div>
-</div>
+</pre></div></div>
 </div>
 <p>Call <code class="docutils literal notranslate"><span class="pre">.compute()</span></code> when you want your result as a Pandas dataframe.</p>
 <p>If you started <code class="docutils literal notranslate"><span class="pre">Client()</span></code> above then you may want to watch the status page during computation.</p>
@@ -774,10 +774,10 @@ Dask Name: sqrt, 157 tasks
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>pandas.core.series.Series
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+pandas.core.series.Series
+</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -792,10 +792,11 @@ Dask Name: sqrt, 157 tasks
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>name
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+name
 Alice      0.58
-Bob        0.58
+Bob        0.57
 Charlie    0.58
 Dan        0.58
 Edith      0.58
@@ -806,8 +807,7 @@ Xavier     0.58
 Yvonne     0.58
 Zelda      0.58
 Name: x, Length: 26, dtype: float64
-</pre></div>
-</div>
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Persist-data-in-memory">
@@ -880,28 +880,28 @@ Name: x, Length: 26, dtype: float64
   <tbody>
     <tr>
       <th>2000-01-01 00:00:00</th>
-      <td>2.38e-05</td>
-      <td>-1.05e-02</td>
+      <td>2.94e-03</td>
+      <td>2.10e-02</td>
     </tr>
     <tr>
       <th>2000-01-01 01:00:00</th>
-      <td>5.37e-03</td>
-      <td>6.58e-03</td>
+      <td>-3.60e-03</td>
+      <td>6.27e-03</td>
     </tr>
     <tr>
       <th>2000-01-01 02:00:00</th>
-      <td>2.18e-03</td>
-      <td>-2.24e-02</td>
+      <td>-6.24e-03</td>
+      <td>-7.79e-04</td>
     </tr>
     <tr>
       <th>2000-01-01 03:00:00</th>
       <td>-2.94e-03</td>
-      <td>-1.72e-03</td>
+      <td>-5.37e-03</td>
     </tr>
     <tr>
       <th>2000-01-01 04:00:00</th>
-      <td>1.37e-03</td>
-      <td>-6.36e-03</td>
+      <td>-1.84e-02</td>
+      <td>-2.35e-04</td>
     </tr>
   </tbody>
 </table>
@@ -920,10 +920,10 @@ Name: x, Length: 26, dtype: float64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f95d1802f28&gt;
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f87487702e8&gt;
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -976,28 +976,28 @@ Name: x, Length: 26, dtype: float64
   <tbody>
     <tr>
       <th>2000-01-01 00:00:00</th>
-      <td>-0.58</td>
-      <td>0.33</td>
+      <td>-0.25</td>
+      <td>0.31</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:01</th>
-      <td>-0.77</td>
-      <td>0.13</td>
+      <td>0.14</td>
+      <td>-0.17</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:02</th>
-      <td>-0.38</td>
-      <td>0.13</td>
+      <td>0.33</td>
+      <td>-0.32</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:03</th>
-      <td>-0.33</td>
-      <td>0.28</td>
+      <td>0.13</td>
+      <td>-0.28</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:04</th>
-      <td>-0.22</td>
-      <td>0.19</td>
+      <td>0.15</td>
+      <td>-0.16</td>
     </tr>
   </tbody>
 </table>
@@ -1084,8 +1084,8 @@ Name: x, Length: 26, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 26.4 ms, sys: 13.2 ms, total: 39.6 ms
-Wall time: 59.4 ms
+CPU times: user 17.7 ms, sys: 24.9 ms, total: 42.6 ms
+Wall time: 63.4 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1127,38 +1127,38 @@ Wall time: 59.4 ms
   <tbody>
     <tr>
       <th>2000-01-05 00:00:00</th>
-      <td>973</td>
-      <td>Norbert</td>
-      <td>8.24e-03</td>
-      <td>-0.28</td>
+      <td>950</td>
+      <td>Yvonne</td>
+      <td>-0.92</td>
+      <td>-0.32</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:01</th>
-      <td>1056</td>
-      <td>Michael</td>
-      <td>-7.25e-01</td>
-      <td>-0.80</td>
+      <td>1031</td>
+      <td>Victor</td>
+      <td>-0.55</td>
+      <td>-0.94</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:02</th>
-      <td>1019</td>
-      <td>Jerry</td>
-      <td>-7.00e-01</td>
-      <td>0.66</td>
+      <td>980</td>
+      <td>Yvonne</td>
+      <td>0.31</td>
+      <td>0.43</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:03</th>
-      <td>1006</td>
-      <td>Tim</td>
-      <td>-7.21e-01</td>
-      <td>0.49</td>
+      <td>985</td>
+      <td>Victor</td>
+      <td>0.52</td>
+      <td>-0.81</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:04</th>
-      <td>983</td>
-      <td>Edith</td>
-      <td>5.58e-02</td>
-      <td>0.68</td>
+      <td>934</td>
+      <td>Sarah</td>
+      <td>0.84</td>
+      <td>-0.41</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1169,38 +1169,38 @@ Wall time: 59.4 ms
     </tr>
     <tr>
       <th>2000-01-05 23:59:55</th>
-      <td>1006</td>
-      <td>Jerry</td>
-      <td>4.76e-01</td>
-      <td>0.71</td>
+      <td>996</td>
+      <td>Ray</td>
+      <td>0.37</td>
+      <td>0.93</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:56</th>
-      <td>994</td>
-      <td>Patricia</td>
-      <td>5.93e-01</td>
-      <td>-0.43</td>
+      <td>942</td>
+      <td>Charlie</td>
+      <td>0.18</td>
+      <td>-0.56</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:57</th>
-      <td>973</td>
-      <td>Ray</td>
-      <td>-8.40e-01</td>
-      <td>-0.71</td>
+      <td>1010</td>
+      <td>Wendy</td>
+      <td>-0.64</td>
+      <td>-0.60</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:58</th>
-      <td>1042</td>
-      <td>Zelda</td>
-      <td>-8.36e-01</td>
-      <td>0.55</td>
+      <td>979</td>
+      <td>Michael</td>
+      <td>-0.37</td>
+      <td>0.98</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:59</th>
-      <td>1024</td>
-      <td>Sarah</td>
-      <td>-5.74e-01</td>
-      <td>0.94</td>
+      <td>1030</td>
+      <td>Michael</td>
+      <td>0.89</td>
+      <td>-0.05</td>
     </tr>
   </tbody>
 </table>
@@ -1317,8 +1317,8 @@ Wall time: 59.4 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 882 ms, sys: 63 ms, total: 945 ms
-Wall time: 4.25 s
+CPU times: user 1.01 s, sys: 66.7 ms, total: 1.08 s
+Wall time: 5.35 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1358,33 +1358,33 @@ Wall time: 4.25 s
   <tbody>
     <tr>
       <th>Alice</th>
-      <td>993</td>
-      <td>0.64</td>
-      <td>0.25</td>
+      <td>996</td>
+      <td>0.30</td>
+      <td>-0.69</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>972</td>
-      <td>-0.07</td>
-      <td>-0.11</td>
+      <td>990</td>
+      <td>-0.59</td>
+      <td>-0.23</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1029</td>
-      <td>-0.87</td>
-      <td>-0.15</td>
+      <td>971</td>
+      <td>0.74</td>
+      <td>0.51</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1041</td>
-      <td>-0.18</td>
-      <td>-0.54</td>
+      <td>989</td>
+      <td>-0.86</td>
+      <td>-0.19</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>995</td>
-      <td>-0.63</td>
-      <td>-0.92</td>
+      <td>1040</td>
+      <td>0.81</td>
+      <td>0.02</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1394,37 +1394,37 @@ Wall time: 4.25 s
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1003</td>
-      <td>-0.65</td>
-      <td>0.41</td>
+      <td>985</td>
+      <td>0.40</td>
+      <td>-0.93</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1058</td>
-      <td>-0.77</td>
-      <td>0.63</td>
+      <td>998</td>
+      <td>0.05</td>
+      <td>0.67</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>983</td>
+      <td>1001</td>
+      <td>0.71</td>
+      <td>0.97</td>
+    </tr>
+    <tr>
+      <th>Alice</th>
+      <td>972</td>
       <td>0.10</td>
-      <td>0.63</td>
+      <td>-0.27</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1023</td>
-      <td>-0.79</td>
-      <td>0.12</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>992</td>
-      <td>-0.88</td>
-      <td>0.03</td>
+      <td>996</td>
+      <td>-0.19</td>
+      <td>0.02</td>
     </tr>
   </tbody>
 </table>
-<p>98922 rows × 3 columns</p>
+<p>99240 rows × 3 columns</p>
 </div></div>
 </div>
 </div>
@@ -1437,7 +1437,7 @@ Wall time: 4.25 s
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span>  <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
+<span></span><span class="kn">from</span>  <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 
 <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">partition</span><span class="p">):</span>
     <span class="n">est</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
@@ -1459,8 +1459,9 @@ Wall time: 4.25 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>name
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+name
 Alice      LinearRegression(copy_X=True, fit_intercept=Tr...
 Bob        LinearRegression(copy_X=True, fit_intercept=Tr...
 Charlie    LinearRegression(copy_X=True, fit_intercept=Tr...
@@ -1473,8 +1474,7 @@ Xavier     LinearRegression(copy_X=True, fit_intercept=Tr...
 Yvonne     LinearRegression(copy_X=True, fit_intercept=Tr...
 Zelda      LinearRegression(copy_X=True, fit_intercept=Tr...
 Length: 26, dtype: object
-</pre></div>
-</div>
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Further-Reading">

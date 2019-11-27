@@ -267,16 +267,16 @@
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput,
-div.nbinput div.prompt,
-div.nbinput div.input_area,
-div.nbinput div[class*=highlight],
-div.nbinput div[class*=highlight] pre,
-div.nboutput,
-div.nbinput div.prompt,
-div.nbinput div.output_area,
-div.nboutput div[class*=highlight],
-div.nboutput div[class*=highlight] pre {
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
     background: none;
     border: none;
     padding: 0 0;
@@ -285,13 +285,13 @@ div.nboutput div[class*=highlight] pre {
 }
 
 /* avoid gaps between output lines */
-div.nboutput div[class*=highlight] pre {
+div.nboutput.container div[class*=highlight] pre {
     line-height: normal;
 }
 
 /* input/output containers */
-div.nbinput,
-div.nboutput {
+div.nbinput.container,
+div.nboutput.container {
     display: -webkit-flex;
     display: flex;
     align-items: flex-start;
@@ -299,35 +299,35 @@ div.nboutput {
     width: 100%;
 }
 @media (max-width: 540px) {
-    div.nbinput,
-    div.nboutput {
+    div.nbinput.container,
+    div.nboutput.container {
         flex-direction: column;
     }
 }
 
 /* input container */
-div.nbinput {
+div.nbinput.container {
     padding-top: 5px;
 }
 
 /* last container */
-div.nblast {
+div.nblast.container {
     padding-bottom: 5px;
 }
 
 /* input prompt */
-div.nbinput div.prompt pre {
+div.nbinput.container div.prompt pre {
     color: #307FC1;
 }
 
 /* output prompt */
-div.nboutput div.prompt pre {
+div.nboutput.container div.prompt pre {
     color: #BF5B3D;
 }
 
 /* all prompts */
-div.nbinput div.prompt,
-div.nboutput div.prompt {
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
     min-width: 7ex;
     padding-top: 0.4em;
     padding-right: 0.4em;
@@ -335,56 +335,56 @@ div.nboutput div.prompt {
     flex: 0;
 }
 @media (max-width: 540px) {
-    div.nbinput div.prompt,
-    div.nboutput div.prompt {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
         text-align: left;
         padding: 0.4em;
     }
-    div.nboutput div.prompt.empty {
+    div.nboutput.container div.prompt.empty {
         padding: 0;
     }
 }
 
 /* disable scrollbars on prompts */
-div.nbinput div.prompt pre,
-div.nboutput div.prompt pre {
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
     overflow: hidden;
 }
 
 /* input/output area */
-div.nbinput div.input_area,
-div.nboutput div.output_area {
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
     padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
 }
 @media (max-width: 540px) {
-    div.nbinput div.input_area,
-    div.nboutput div.output_area {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
         width: 100%;
     }
 }
 
 /* input area */
-div.nbinput div.input_area {
+div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
     background: #f5f5f5;
 }
 
 /* override MathJax center alignment in output cells */
-div.nboutput div[class*=MathJax] {
+div.nboutput.container div[class*=MathJax] {
     text-align: left !important;
 }
 
 /* override sphinx.ext.imgmath center alignment in output cells */
-div.nboutput div.math p {
+div.nboutput.container div.math p {
     text-align: left;
 }
 
 /* standard error */
-div.nboutput div.output_area.stderr {
+div.nboutput.container div.output_area.stderr {
     background: #fdd;
 }
 
@@ -478,7 +478,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="k">import</span> <span class="n">Client</span>
+<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
 <span class="n">client</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Client</span><span class="p">(</span><span class="n">asynchronous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -516,10 +516,10 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>11
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+11
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Collections">
@@ -656,7 +656,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<b>Future: finalize</b> <font color="gray">status: </font><font color="black">pending</font>, <font color="gray">key: </font>finalize-e1df8f77543782c0e094eedf0c7219e6</div>
+<b>Future: finalize</b> <font color="gray">status: </font><font color="black">pending</font>, <font color="gray">key: </font>finalize-8293feb11f58a9ae7b8e0f6af3a5265a</div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -671,12 +671,12 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>x    1429.256135
-y    1252.734845
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+x    1417.811946
+y    -465.480359
 dtype: float64
-</pre></div>
-</div>
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Within-a-script">
@@ -690,11 +690,11 @@ dtype: float64
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
 
 
-<span class="n">async</span> <span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
-    <span class="n">async</span> <span class="k">with</span> <span class="n">Client</span><span class="p">(</span><span class="n">asynchronous</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">Client</span><span class="p">(</span><span class="n">asynchronous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
         <span class="n">future</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">inc</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">await</span> <span class="n">future</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">future</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>

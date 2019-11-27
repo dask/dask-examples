@@ -272,16 +272,16 @@
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput,
-div.nbinput div.prompt,
-div.nbinput div.input_area,
-div.nbinput div[class*=highlight],
-div.nbinput div[class*=highlight] pre,
-div.nboutput,
-div.nbinput div.prompt,
-div.nbinput div.output_area,
-div.nboutput div[class*=highlight],
-div.nboutput div[class*=highlight] pre {
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
     background: none;
     border: none;
     padding: 0 0;
@@ -290,13 +290,13 @@ div.nboutput div[class*=highlight] pre {
 }
 
 /* avoid gaps between output lines */
-div.nboutput div[class*=highlight] pre {
+div.nboutput.container div[class*=highlight] pre {
     line-height: normal;
 }
 
 /* input/output containers */
-div.nbinput,
-div.nboutput {
+div.nbinput.container,
+div.nboutput.container {
     display: -webkit-flex;
     display: flex;
     align-items: flex-start;
@@ -304,35 +304,35 @@ div.nboutput {
     width: 100%;
 }
 @media (max-width: 540px) {
-    div.nbinput,
-    div.nboutput {
+    div.nbinput.container,
+    div.nboutput.container {
         flex-direction: column;
     }
 }
 
 /* input container */
-div.nbinput {
+div.nbinput.container {
     padding-top: 5px;
 }
 
 /* last container */
-div.nblast {
+div.nblast.container {
     padding-bottom: 5px;
 }
 
 /* input prompt */
-div.nbinput div.prompt pre {
+div.nbinput.container div.prompt pre {
     color: #307FC1;
 }
 
 /* output prompt */
-div.nboutput div.prompt pre {
+div.nboutput.container div.prompt pre {
     color: #BF5B3D;
 }
 
 /* all prompts */
-div.nbinput div.prompt,
-div.nboutput div.prompt {
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
     min-width: 7ex;
     padding-top: 0.4em;
     padding-right: 0.4em;
@@ -340,56 +340,56 @@ div.nboutput div.prompt {
     flex: 0;
 }
 @media (max-width: 540px) {
-    div.nbinput div.prompt,
-    div.nboutput div.prompt {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
         text-align: left;
         padding: 0.4em;
     }
-    div.nboutput div.prompt.empty {
+    div.nboutput.container div.prompt.empty {
         padding: 0;
     }
 }
 
 /* disable scrollbars on prompts */
-div.nbinput div.prompt pre,
-div.nboutput div.prompt pre {
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
     overflow: hidden;
 }
 
 /* input/output area */
-div.nbinput div.input_area,
-div.nboutput div.output_area {
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
     padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
 }
 @media (max-width: 540px) {
-    div.nbinput div.input_area,
-    div.nboutput div.output_area {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
         width: 100%;
     }
 }
 
 /* input area */
-div.nbinput div.input_area {
+div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
     background: #f5f5f5;
 }
 
 /* override MathJax center alignment in output cells */
-div.nboutput div[class*=MathJax] {
+div.nboutput.container div[class*=MathJax] {
     text-align: left !important;
 }
 
 /* override sphinx.ext.imgmath center alignment in output cells */
-div.nboutput div.math p {
+div.nboutput.container div.math p {
     text-align: left;
 }
 
 /* standard error */
-div.nboutput div.output_area.stderr {
+div.nboutput.container div.output_area.stderr {
     background: #fdd;
 }
 
@@ -495,7 +495,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="k">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">progress</span>
+<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">progress</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">client</span>
 </pre></div>
@@ -511,7 +511,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:42751</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:36245</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -559,18 +559,18 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 17.3 ms, sys: 107 µs, total: 17.4 ms
-Wall time: 431 ms
+CPU times: user 10.4 ms, sys: 253 µs, total: 10.6 ms
+Wall time: 196 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>10
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+10
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Define-the-set-of-input-parameters-to-call-the-function">
@@ -622,38 +622,38 @@ Wall time: 431 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.158258</td>
-      <td>0.133382</td>
-      <td>0.267999</td>
-      <td>0.031855</td>
+      <td>0.243806</td>
+      <td>0.100479</td>
+      <td>0.587241</td>
+      <td>0.948938</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.123623</td>
-      <td>0.588852</td>
-      <td>0.098340</td>
-      <td>0.220813</td>
+      <td>0.214617</td>
+      <td>0.967103</td>
+      <td>0.491810</td>
+      <td>0.246367</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.114814</td>
-      <td>0.336121</td>
-      <td>0.530994</td>
-      <td>0.942460</td>
+      <td>0.169562</td>
+      <td>0.255326</td>
+      <td>0.119746</td>
+      <td>0.024418</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.786756</td>
-      <td>0.156715</td>
-      <td>0.325136</td>
-      <td>0.650685</td>
+      <td>0.556673</td>
+      <td>0.459764</td>
+      <td>0.458672</td>
+      <td>0.325652</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.047846</td>
-      <td>0.278262</td>
-      <td>0.300031</td>
-      <td>0.101028</td>
+      <td>0.223326</td>
+      <td>0.594395</td>
+      <td>0.978405</td>
+      <td>0.255750</td>
     </tr>
   </tbody>
 </table>
@@ -687,8 +687,8 @@ Wall time: 431 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 115 ms, sys: 41.7 ms, total: 156 ms
-Wall time: 3.89 s
+CPU times: user 86.8 ms, sys: 8.35 ms, total: 95.2 ms
+Wall time: 2.48 s
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -704,19 +704,19 @@ Wall time: 3.89 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[0.5914935242557499,
- 1.0316289810490078,
- 1.9243878030866686,
- 1.91929223930436,
- 0.7271670526863387,
- 1.640734169336128,
- 2.6006859817592565,
- 2.7741658146530175,
- 2.620642963117598,
- 1.8398769001283442]
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1.8804645494747243,
+ 1.9198968951255264,
+ 0.5690521030331438,
+ 1.8007605160150244,
+ 2.0518767440908974,
+ 2.5022182091059726,
+ 2.4987068093370595,
+ 1.4264748372161902,
+ 2.5190723030869284,
+ 2.0306490332297336]
+</pre></div></div>
 </div>
 <p>Note that this is not very clever as we can easily parallelize code.</p>
 <p>There are many ways to parallelize this function in Python with libraries like <code class="docutils literal notranslate"><span class="pre">multiprocessing</span></code>, <code class="docutils literal notranslate"><span class="pre">concurrent.futures</span></code>, <code class="docutils literal notranslate"><span class="pre">joblib</span></code> or others. These are good first steps. Dask is a good second step, especially when you want to scale across many machines.</p>
@@ -753,8 +753,8 @@ Wall time: 3.89 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.04 ms, sys: 164 µs, total: 1.21 ms
-Wall time: 1 ms
+CPU times: user 1.34 ms, sys: 0 ns, total: 1.34 ms
+Wall time: 1.15 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -770,10 +770,10 @@ Wall time: 1 ms
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Delayed(&#39;costly_simulation-eecadcaf-52b1-4564-8094-ea4b3c86f6ac&#39;)
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Delayed(&#39;costly_simulation-4f2c524c-30c0-423c-b138-b905ff294161&#39;)
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Run-in-parallel">
@@ -794,27 +794,27 @@ Wall time: 1 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 80.9 ms, sys: 16.4 ms, total: 97.3 ms
-Wall time: 1.62 s
+CPU times: user 90.5 ms, sys: 5.68 ms, total: 96.2 ms
+Wall time: 1.59 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(0.5914935242557499,
- 1.0316289810490078,
- 1.9243878030866686,
- 1.91929223930436,
- 0.7271670526863387,
- 1.640734169336128,
- 2.6006859817592565,
- 2.7741658146530175,
- 2.620642963117598,
- 1.8398769001283442)
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(1.8804645494747243,
+ 1.9198968951255264,
+ 0.5690521030331438,
+ 1.8007605160150244,
+ 2.0518767440908974,
+ 2.5022182091059726,
+ 2.4987068093370595,
+ 1.4264748372161902,
+ 2.5190723030869284,
+ 2.0306490332297336)
+</pre></div></div>
 </div>
 <p>Notice that this was faster than running these same computations sequentially with a for loop.</p>
 <p>We can now run this on all of our input parameters:</p>
@@ -861,14 +861,14 @@ Wall time: 1.62 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(0.5914935242557499,
- 1.0316289810490078,
- 1.9243878030866686,
- 1.91929223930436,
- 0.7271670526863387)
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(1.8804645494747243,
+ 1.9198968951255264,
+ 0.5690521030331438,
+ 1.8007605160150244,
+ 2.0518767440908974)
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Using-the-Futures-API">
@@ -902,14 +902,14 @@ Wall time: 1.62 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[0.5914935242557499,
- 1.0316289810490078,
- 1.9243878030866686,
- 1.91929223930436,
- 0.7271670526863387]
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1.8804645494747243,
+ 1.9198968951255264,
+ 0.5690521030331438,
+ 1.8007605160150244,
+ 2.0518767440908974]
+</pre></div></div>
 </div>
 <p>But the code above can be run in fewer lines with <code class="docutils literal notranslate"><span class="pre">client.map()</span></code> function, allowing to call a given function on a list of parameters.</p>
 <p>As for delayed, we can only start the computation and not wait for results by not calling <code class="docutils literal notranslate"><span class="pre">client.gather()</span></code> right now.</p>
@@ -938,10 +938,10 @@ Wall time: 1.62 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>500
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+500
+</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
@@ -957,7 +957,7 @@ Wall time: 1.62 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.5914935242557499
+1.8804645494747243
 </pre></div></div>
 </div>
 <p>We encourage you to watch the <a class="reference external" href="../proxy/8787/status">dashboard’s status page</a> to watch on going computation.</p>
@@ -1010,44 +1010,44 @@ Wall time: 1.62 s
   </thead>
   <tbody>
     <tr>
-      <th>434</th>
-      <td>0.410655</td>
-      <td>0.632021</td>
-      <td>0.724955</td>
-      <td>0.381264</td>
-      <td>2.148894</td>
+      <th>288</th>
+      <td>0.055327</td>
+      <td>0.281189</td>
+      <td>0.187721</td>
+      <td>0.317183</td>
+      <td>0.841419</td>
     </tr>
     <tr>
-      <th>201</th>
-      <td>0.505200</td>
-      <td>0.826064</td>
-      <td>0.135556</td>
-      <td>0.368861</td>
-      <td>1.835681</td>
+      <th>487</th>
+      <td>0.471745</td>
+      <td>0.755906</td>
+      <td>0.074526</td>
+      <td>0.117459</td>
+      <td>1.419636</td>
     </tr>
     <tr>
-      <th>35</th>
-      <td>0.506852</td>
-      <td>0.017377</td>
-      <td>0.156237</td>
-      <td>0.244300</td>
-      <td>0.924766</td>
+      <th>56</th>
+      <td>0.639638</td>
+      <td>0.401585</td>
+      <td>0.492835</td>
+      <td>0.364566</td>
+      <td>1.898625</td>
     </tr>
     <tr>
-      <th>415</th>
-      <td>0.938377</td>
-      <td>0.293770</td>
-      <td>0.164224</td>
-      <td>0.237796</td>
-      <td>1.634167</td>
+      <th>258</th>
+      <td>0.815906</td>
+      <td>0.155258</td>
+      <td>0.843451</td>
+      <td>0.735170</td>
+      <td>2.549784</td>
     </tr>
     <tr>
-      <th>94</th>
-      <td>0.211757</td>
-      <td>0.451671</td>
-      <td>0.519105</td>
-      <td>0.430909</td>
-      <td>1.613442</td>
+      <th>98</th>
+      <td>0.680716</td>
+      <td>0.054019</td>
+      <td>0.355188</td>
+      <td>0.158652</td>
+      <td>1.248575</td>
     </tr>
   </tbody>
 </table>
@@ -1068,10 +1068,10 @@ Wall time: 1.62 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fbbd9e2c390&gt;
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f165007eac8&gt;
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -1093,10 +1093,10 @@ Wall time: 1.62 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>1.998733558296787
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2.028957762742653
+</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
@@ -1114,7 +1114,7 @@ Wall time: 1.62 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-249
+257
 </pre></div></div>
 </div>
 </div>
@@ -1148,8 +1148,8 @@ many tasks</a>.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.17 s, sys: 100 ms, total: 1.27 s
-Wall time: 8.52 s
+CPU times: user 1.27 s, sys: 132 ms, total: 1.4 s
+Wall time: 9.55 s
 </pre></div></div>
 </div>
 <p>Looking on Dashboard here, you should see only 100 tasks to run instead of 500, each taking 5x more time in average, because each one is actually calling our function 5 times.</p>
@@ -1166,10 +1166,10 @@ Wall time: 8.52 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>True
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
 </div>
 </div>
 </div>

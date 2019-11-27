@@ -269,16 +269,16 @@
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput,
-div.nbinput div.prompt,
-div.nbinput div.input_area,
-div.nbinput div[class*=highlight],
-div.nbinput div[class*=highlight] pre,
-div.nboutput,
-div.nbinput div.prompt,
-div.nbinput div.output_area,
-div.nboutput div[class*=highlight],
-div.nboutput div[class*=highlight] pre {
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
     background: none;
     border: none;
     padding: 0 0;
@@ -287,13 +287,13 @@ div.nboutput div[class*=highlight] pre {
 }
 
 /* avoid gaps between output lines */
-div.nboutput div[class*=highlight] pre {
+div.nboutput.container div[class*=highlight] pre {
     line-height: normal;
 }
 
 /* input/output containers */
-div.nbinput,
-div.nboutput {
+div.nbinput.container,
+div.nboutput.container {
     display: -webkit-flex;
     display: flex;
     align-items: flex-start;
@@ -301,35 +301,35 @@ div.nboutput {
     width: 100%;
 }
 @media (max-width: 540px) {
-    div.nbinput,
-    div.nboutput {
+    div.nbinput.container,
+    div.nboutput.container {
         flex-direction: column;
     }
 }
 
 /* input container */
-div.nbinput {
+div.nbinput.container {
     padding-top: 5px;
 }
 
 /* last container */
-div.nblast {
+div.nblast.container {
     padding-bottom: 5px;
 }
 
 /* input prompt */
-div.nbinput div.prompt pre {
+div.nbinput.container div.prompt pre {
     color: #307FC1;
 }
 
 /* output prompt */
-div.nboutput div.prompt pre {
+div.nboutput.container div.prompt pre {
     color: #BF5B3D;
 }
 
 /* all prompts */
-div.nbinput div.prompt,
-div.nboutput div.prompt {
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
     min-width: 7ex;
     padding-top: 0.4em;
     padding-right: 0.4em;
@@ -337,56 +337,56 @@ div.nboutput div.prompt {
     flex: 0;
 }
 @media (max-width: 540px) {
-    div.nbinput div.prompt,
-    div.nboutput div.prompt {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
         text-align: left;
         padding: 0.4em;
     }
-    div.nboutput div.prompt.empty {
+    div.nboutput.container div.prompt.empty {
         padding: 0;
     }
 }
 
 /* disable scrollbars on prompts */
-div.nbinput div.prompt pre,
-div.nboutput div.prompt pre {
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
     overflow: hidden;
 }
 
 /* input/output area */
-div.nbinput div.input_area,
-div.nboutput div.output_area {
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
     padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
 }
 @media (max-width: 540px) {
-    div.nbinput div.input_area,
-    div.nboutput div.output_area {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
         width: 100%;
     }
 }
 
 /* input area */
-div.nbinput div.input_area {
+div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
     background: #f5f5f5;
 }
 
 /* override MathJax center alignment in output cells */
-div.nboutput div[class*=MathJax] {
+div.nboutput.container div[class*=MathJax] {
     text-align: left !important;
 }
 
 /* override sphinx.ext.imgmath center alignment in output cells */
-div.nboutput div.math p {
+div.nboutput.container div.math p {
     text-align: left;
 }
 
 /* standard error */
-div.nboutput div.output_area.stderr {
+div.nboutput.container div.output_area.stderr {
     background: #fdd;
 }
 
@@ -496,10 +496,10 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[&#39;file.0.txt&#39;, &#39;file.1.txt&#39;, &#39;file.2.txt&#39;]
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;file.0.txt&#39;, &#39;file.1.txt&#39;, &#39;file.2.txt&#39;]
+</pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -545,8 +545,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2.35 ms, sys: 7.5 ms, total: 9.84 ms
-Wall time: 11.4 s
+CPU times: user 5.83 ms, sys: 1.24 ms, total: 7.08 ms
+Wall time: 12 s
 </pre></div></div>
 </div>
 </div>
@@ -558,7 +558,7 @@ Wall time: 11.4 s
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="k">import</span> <span class="n">Client</span>
+<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 <span class="n">client</span>
@@ -575,8 +575,8 @@ Wall time: 11.4 s
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.255.3/10095/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.255.3/10095/1:8787/status' target='_blank'>http://10.20.255.3/10095/1:8787/status</a>
+  <li><b>Scheduler: </b>inproc://10.20.0.30/10259/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.0.30/10259/1:8787/status' target='_blank'>http://10.20.0.30/10259/1:8787/status</a>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -607,7 +607,7 @@ Wall time: 11.4 s
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="o">%%time</span>
 
-<span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="k">import</span> <span class="n">as_completed</span>
+<span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">as_completed</span>
 <span class="kn">import</span> <span class="nn">operator</span>
 
 <span class="n">lists</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">parse_file</span><span class="p">,</span> <span class="n">filenames</span><span class="p">,</span> <span class="n">pure</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -634,87 +634,61 @@ Wall time: 11.4 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 492 ms, sys: 21.1 ms, total: 513 ms
-Wall time: 2.54 s
+CPU times: user 305 ms, sys: 48.9 ms, total: 354 ms
+Wall time: 1.88 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[1.3167327729491838,
- 1.34286885252526,
- 1.7911111492346925,
- 1.5740219612241684,
- 1.476813808704088,
- 1.8675367454578577,
- 1.9668903231362331,
- 1.831842240986306,
- 1.3573864739153736,
- 1.5515983357145502,
- 1.0829515191326808,
- 1.2271672311423538,
- 1.3814638494347604,
- 1.5691403046115884,
- 1.682858207573604,
- 1.657069533320481,
- 1.503793411621647,
- 1.5301939535465583,
- 1.479878945144669,
- 1.9171118557270435,
- 1.4568408421846888,
- 1.309436494048228,
- 1.7874056502937883,
- 1.237555006502995,
- 1.982885425504406,
- 1.0126513328826208,
- 1.8712171808896916,
- 1.351849369351909,
- 1.6105020897381923,
- 1.8097011894874213,
- 1.9372339039406508,
- 1.2065300990695194,
- 1.4084565114489394,
- 1.7108456034658335,
- 1.7456903617193942,
- 1.800167037092423,
- 1.5103773864750032,
- 1.3634786946983979,
- 1.275824989776633,
- 1.387633439752416,
- 1.5698452845848405,
- 1.4372582753281653,
- 1.3475379267447265,
- 1.1306811433860084,
- 1.0241390535767452,
- 1.1739954472181453,
- 1.6233432363494669,
- 1.831034656351965,
- 1.7299631430195652,
- 1.5253275383600702,
- 1.2732869976504595,
- 1.0449343165391571,
- 1.8332083581607046,
- 1.6962609547611112,
- 1.5959208527831599,
- 1.4633171213133427,
- 1.9683099644102653,
- 1.9839120123598815,
- 1.8205121706867964,
- 1.3574305535826956,
- 1.37893648906465,
- 1.3083688580382407,
- 1.2834184841889966,
- 1.2660190690029287,
- 1.7685169797846612,
- 1.3625665932641327,
- 1.1900932594927909,
- 1.5987839612787011,
- 1.0415434357638396,
- 1.0809885478496204]
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1.4414475155225817,
+ 1.613058181703812,
+ 1.4076826955884747,
+ 1.0607324388622548,
+ 1.587774627038737,
+ 1.1521526790783845,
+ 1.4521096625845198,
+ 1.6594025899024536,
+ 1.3523558940264704,
+ 1.9036147487734338,
+ 1.9693281898139303,
+ 1.9960276941991266,
+ 1.4744984355322135,
+ 1.5339825637397426,
+ 1.9485445707890963,
+ 1.7043858661825988,
+ 1.8591660455062446,
+ 1.5440304073798066,
+ 1.6828816535566533,
+ 1.3803931787224535,
+ 1.7271958009646236,
+ 1.4008948317820185,
+ 1.2374000728570689,
+ 1.346150025483533,
+ 1.0538548301064017,
+ 1.7112853795296143,
+ 1.2824938562022443,
+ 1.1638413188987795,
+ 1.6129365167125838,
+ 1.985665990223826,
+ 1.1020835156324549,
+ 1.6827555943415342,
+ 1.2792556211458908,
+ 1.094315126782794,
+ 1.341110066253352,
+ 1.8070094729647121,
+ 1.591640671449173,
+ 1.3554071516332336,
+ 1.594118159786022,
+ 1.096490404465773,
+ 1.6705165557124122,
+ 1.6335426899499774,
+ 1.6924334460779726,
+ 1.1674896871214764]
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="2:-Use-async/await-to-handle-each-locally">
@@ -747,9 +721,9 @@ Wall time: 2.54 s
 </div>
 </div>
 <p>We now need to run this function in the same event loop as our client is running. If we had started our client asynchronously, then we could have done this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">await</span> <span class="n">Client</span><span class="p">(</span><span class="n">asynchronous</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Client</span><span class="p">(</span><span class="n">asynchronous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">await</span> <span class="n">run_all</span><span class="p">(</span><span class="n">filenames</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">run_all</span><span class="p">(</span><span class="n">filenames</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>However, because we started our client without the <code class="docutils literal notranslate"><span class="pre">asynchronous=True</span></code> flag the event loop is actually running in a separate thread, so we’ll have to ask the client to run this for us.</p>
@@ -766,74 +740,61 @@ Wall time: 2.54 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[1.8561671976603407,
- 1.0494491551767542,
- 1.921098456668648,
- 1.5721761564221444,
- 1.547161986846176,
- 1.3760716644458861,
- 1.3741711478537821,
- 1.7989916054697108,
- 1.545259238411588,
- 1.7270621609979058,
- 1.4979229343121552,
- 1.862605496004403,
- 1.1054618586555487,
- 1.7925011397538075,
- 1.724719274239009,
- 1.4021410139320445,
- 1.572710131539356,
- 1.7486425253439748,
- 1.3076611037287482,
- 1.5489964432023235,
- 1.1745348913206164,
- 1.1407993304056023,
- 1.718217527527551,
- 1.5921630973197458,
- 1.1699959076242246,
- 1.4087733992811504,
- 1.0562296769112343,
- 1.9589054520697564,
- 1.3886138026777552,
- 1.3101314589395132,
- 1.3891095956645056,
- 1.6367359089569002,
- 1.329613983233048,
- 1.0524931489656308,
- 1.275731225102556,
- 1.0120911311647331,
- 1.0857960386833756,
- 1.6115087164490431,
- 1.4933274431957364,
- 1.9934252767811627,
- 1.8014402728813448,
- 1.9946104680251855,
- 1.9928912530404612,
- 1.5579608151612696,
- 1.7931516412319637,
- 1.986612531975441,
- 1.8051224677848268,
- 1.5485261281035327,
- 1.4419485833254633,
- 1.7422774049884906,
- 1.4508718566171017,
- 1.6121853149252494,
- 1.144601223636995,
- 1.8773703859448765,
- 1.6859404949429386,
- 1.3186235893740303,
- 1.7124657123493945,
- 1.2061360043349878,
- 1.8000565618733315,
- 1.5330775835189723,
- 1.2376091659455701,
- 1.4027237762535036,
- 1.5755631562581969,
- 1.293770406891427,
- 1.9515249568216544]
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1.0985338067925727,
+ 1.5133584297398426,
+ 1.0088439528872684,
+ 1.044432864552482,
+ 1.5904589765729304,
+ 1.284134012311437,
+ 1.3099254169999943,
+ 1.5880270792812676,
+ 1.909540705924361,
+ 1.3428637166913555,
+ 1.5379743729825437,
+ 1.8282272391963494,
+ 1.213532687042051,
+ 1.2997962722054712,
+ 1.1840204292068117,
+ 1.4873281269354153,
+ 1.1654819604047364,
+ 1.9581228246658473,
+ 1.7654126720665357,
+ 1.8619211219476992,
+ 1.525659437185232,
+ 1.0763959788313828,
+ 1.384052433545238,
+ 1.6371980954535288,
+ 1.960704120649207,
+ 1.4359499832324325,
+ 1.4481783520664067,
+ 1.484598443108082,
+ 1.9084042016510154,
+ 1.283286146706906,
+ 1.3930411903191948,
+ 1.9970457142295228,
+ 1.3446161855805954,
+ 1.911988091582461,
+ 1.390466173907349,
+ 1.2576399637858615,
+ 1.4078537667521966,
+ 1.2821623638223345,
+ 1.0364035040209516,
+ 1.3131814316775576,
+ 1.445516953997676,
+ 1.382296712610279,
+ 1.9362714664841336,
+ 1.6859868706831143,
+ 1.502775948364456,
+ 1.7444399618236304,
+ 1.8137997307019817,
+ 1.6633510268018763,
+ 1.749302750055727,
+ 1.3050680914017305,
+ 1.6287351243124513,
+ 1.3326227508711306]
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="3:-Submit-tasks-from-tasks">
@@ -846,7 +807,7 @@ Wall time: 2.54 s
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="o">%%time</span>
 
-<span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="k">import</span> <span class="n">get_client</span><span class="p">,</span> <span class="n">secede</span><span class="p">,</span> <span class="n">rejoin</span>
+<span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">get_client</span><span class="p">,</span> <span class="n">secede</span><span class="p">,</span> <span class="n">rejoin</span>
 
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
     <span class="n">L</span> <span class="o">=</span> <span class="n">parse_file</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
@@ -868,8 +829,8 @@ Wall time: 2.54 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 351 ms, sys: 14.8 ms, total: 366 ms
-Wall time: 2.63 s
+CPU times: user 321 ms, sys: 43.6 ms, total: 364 ms
+Wall time: 2.39 s
 </pre></div></div>
 </div>
 </div>

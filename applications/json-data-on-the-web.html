@@ -272,16 +272,16 @@
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput,
-div.nbinput div.prompt,
-div.nbinput div.input_area,
-div.nbinput div[class*=highlight],
-div.nbinput div[class*=highlight] pre,
-div.nboutput,
-div.nbinput div.prompt,
-div.nbinput div.output_area,
-div.nboutput div[class*=highlight],
-div.nboutput div[class*=highlight] pre {
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
     background: none;
     border: none;
     padding: 0 0;
@@ -290,13 +290,13 @@ div.nboutput div[class*=highlight] pre {
 }
 
 /* avoid gaps between output lines */
-div.nboutput div[class*=highlight] pre {
+div.nboutput.container div[class*=highlight] pre {
     line-height: normal;
 }
 
 /* input/output containers */
-div.nbinput,
-div.nboutput {
+div.nbinput.container,
+div.nboutput.container {
     display: -webkit-flex;
     display: flex;
     align-items: flex-start;
@@ -304,35 +304,35 @@ div.nboutput {
     width: 100%;
 }
 @media (max-width: 540px) {
-    div.nbinput,
-    div.nboutput {
+    div.nbinput.container,
+    div.nboutput.container {
         flex-direction: column;
     }
 }
 
 /* input container */
-div.nbinput {
+div.nbinput.container {
     padding-top: 5px;
 }
 
 /* last container */
-div.nblast {
+div.nblast.container {
     padding-bottom: 5px;
 }
 
 /* input prompt */
-div.nbinput div.prompt pre {
+div.nbinput.container div.prompt pre {
     color: #307FC1;
 }
 
 /* output prompt */
-div.nboutput div.prompt pre {
+div.nboutput.container div.prompt pre {
     color: #BF5B3D;
 }
 
 /* all prompts */
-div.nbinput div.prompt,
-div.nboutput div.prompt {
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
     min-width: 7ex;
     padding-top: 0.4em;
     padding-right: 0.4em;
@@ -340,56 +340,56 @@ div.nboutput div.prompt {
     flex: 0;
 }
 @media (max-width: 540px) {
-    div.nbinput div.prompt,
-    div.nboutput div.prompt {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
         text-align: left;
         padding: 0.4em;
     }
-    div.nboutput div.prompt.empty {
+    div.nboutput.container div.prompt.empty {
         padding: 0;
     }
 }
 
 /* disable scrollbars on prompts */
-div.nbinput div.prompt pre,
-div.nboutput div.prompt pre {
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
     overflow: hidden;
 }
 
 /* input/output area */
-div.nbinput div.input_area,
-div.nboutput div.output_area {
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
     padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
 }
 @media (max-width: 540px) {
-    div.nbinput div.input_area,
-    div.nboutput div.output_area {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
         width: 100%;
     }
 }
 
 /* input area */
-div.nbinput div.input_area {
+div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
     background: #f5f5f5;
 }
 
 /* override MathJax center alignment in output cells */
-div.nboutput div[class*=MathJax] {
+div.nboutput.container div[class*=MathJax] {
     text-align: left !important;
 }
 
 /* override sphinx.ext.imgmath center alignment in output cells */
-div.nboutput div.math p {
+div.nboutput.container div.math p {
     text-align: left;
 }
 
 /* standard error */
-div.nboutput div.output_area.stderr {
+div.nboutput.container div.output_area.stderr {
     background: #fdd;
 }
 
@@ -492,12 +492,12 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(&#39;{&quot;timestamp&quot;: &quot;2018-11-03T00:00:00+00:00&quot;, &quot;schema&quot;: &quot;binderhub.jupyter.org/launch&quot;, &quot;version&quot;: 1, &quot;provider&quot;: &quot;GitHub&quot;, &quot;spec&quot;: &quot;Qiskit/qiskit-tutorial/master&quot;, &quot;status&quot;: &quot;success&quot;}\n&#39;,
- &#39;{&quot;timestamp&quot;: &quot;2018-11-03T00:00:00+00:00&quot;, &quot;schema&quot;: &quot;binderhub.jupyter.org/launch&quot;, &quot;version&quot;: 1, &quot;provider&quot;: &quot;GitHub&quot;, &quot;spec&quot;: &quot;ipython/ipython-in-depth/master&quot;, &quot;status&quot;: &quot;success&quot;}\n&#39;,
- &#39;{&quot;timestamp&quot;: &quot;2018-11-03T00:00:00+00:00&quot;, &quot;schema&quot;: &quot;binderhub.jupyter.org/launch&quot;, &quot;version&quot;: 1, &quot;provider&quot;: &quot;GitHub&quot;, &quot;spec&quot;: &quot;QISKit/qiskit-tutorial/master&quot;, &quot;status&quot;: &quot;success&quot;}\n&#39;)
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(&#39;{&#34;timestamp&#34;: &#34;2018-11-03T00:00:00+00:00&#34;, &#34;schema&#34;: &#34;binderhub.jupyter.org/launch&#34;, &#34;version&#34;: 1, &#34;provider&#34;: &#34;GitHub&#34;, &#34;spec&#34;: &#34;Qiskit/qiskit-tutorial/master&#34;, &#34;status&#34;: &#34;success&#34;}\n&#39;,
+ &#39;{&#34;timestamp&#34;: &#34;2018-11-03T00:00:00+00:00&#34;, &#34;schema&#34;: &#34;binderhub.jupyter.org/launch&#34;, &#34;version&#34;: 1, &#34;provider&#34;: &#34;GitHub&#34;, &#34;spec&#34;: &#34;ipython/ipython-in-depth/master&#34;, &#34;status&#34;: &#34;success&#34;}\n&#39;,
+ &#39;{&#34;timestamp&#34;: &#34;2018-11-03T00:00:00+00:00&#34;, &#34;schema&#34;: &#34;binderhub.jupyter.org/launch&#34;, &#34;version&#34;: 1, &#34;provider&#34;: &#34;GitHub&#34;, &#34;spec&#34;: &#34;QISKit/qiskit-tutorial/master&#34;, &#34;status&#34;: &#34;success&#34;}\n&#39;)
+</pre></div></div>
 </div>
 <p>We see that it includes one line for every time someone started a live notebook on the site. It includes the time that the notebook was started, as well as the repository from which it was served.</p>
 <p>In this notebook we’ll look at many such files, parse them from JSON to Python dictionaries, and then from there to Pandas dataframes. We’ll then do some simple analyses on this data.</p>
@@ -510,7 +510,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="k">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">progress</span>
+<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">progress</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                 <span class="n">n_workers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
                 <span class="n">memory_limit</span><span class="o">=</span><span class="s1">&#39;2GB&#39;</span><span class="p">)</span>
@@ -528,7 +528,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:40709</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:33361</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -570,8 +570,9 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[{&#39;name&#39;: &#39;events-2018-11-03.jsonl&#39;, &#39;date&#39;: &#39;2018-11-03&#39;, &#39;count&#39;: &#39;7057&#39;},
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[{&#39;name&#39;: &#39;events-2018-11-03.jsonl&#39;, &#39;date&#39;: &#39;2018-11-03&#39;, &#39;count&#39;: &#39;7057&#39;},
  {&#39;name&#39;: &#39;events-2018-11-04.jsonl&#39;, &#39;date&#39;: &#39;2018-11-04&#39;, &#39;count&#39;: &#39;7489&#39;},
  {&#39;name&#39;: &#39;events-2018-11-05.jsonl&#39;, &#39;date&#39;: &#39;2018-11-05&#39;, &#39;count&#39;: &#39;13590&#39;},
  {&#39;name&#39;: &#39;events-2018-11-06.jsonl&#39;, &#39;date&#39;: &#39;2018-11-06&#39;, &#39;count&#39;: &#39;13920&#39;},
@@ -951,9 +952,17 @@ div.rendered_html tbody tr:hover {
  {&#39;name&#39;: &#39;events-2019-11-15.jsonl&#39;, &#39;date&#39;: &#39;2019-11-15&#39;, &#39;count&#39;: &#39;19649&#39;},
  {&#39;name&#39;: &#39;events-2019-11-16.jsonl&#39;, &#39;date&#39;: &#39;2019-11-16&#39;, &#39;count&#39;: &#39;13001&#39;},
  {&#39;name&#39;: &#39;events-2019-11-17.jsonl&#39;, &#39;date&#39;: &#39;2019-11-17&#39;, &#39;count&#39;: &#39;13590&#39;},
- {&#39;name&#39;: &#39;events-2019-11-18.jsonl&#39;, &#39;date&#39;: &#39;2019-11-18&#39;, &#39;count&#39;: &#39;15673&#39;}]
-</pre></div>
-</div>
+ {&#39;name&#39;: &#39;events-2019-11-18.jsonl&#39;, &#39;date&#39;: &#39;2019-11-18&#39;, &#39;count&#39;: &#39;21264&#39;},
+ {&#39;name&#39;: &#39;events-2019-11-19.jsonl&#39;, &#39;date&#39;: &#39;2019-11-19&#39;, &#39;count&#39;: &#39;23590&#39;},
+ {&#39;name&#39;: &#39;events-2019-11-20.jsonl&#39;, &#39;date&#39;: &#39;2019-11-20&#39;, &#39;count&#39;: &#39;22352&#39;},
+ {&#39;name&#39;: &#39;events-2019-11-21.jsonl&#39;, &#39;date&#39;: &#39;2019-11-21&#39;, &#39;count&#39;: &#39;22646&#39;},
+ {&#39;name&#39;: &#39;events-2019-11-22.jsonl&#39;, &#39;date&#39;: &#39;2019-11-22&#39;, &#39;count&#39;: &#39;18753&#39;},
+ {&#39;name&#39;: &#39;events-2019-11-23.jsonl&#39;, &#39;date&#39;: &#39;2019-11-23&#39;, &#39;count&#39;: &#39;11906&#39;},
+ {&#39;name&#39;: &#39;events-2019-11-24.jsonl&#39;, &#39;date&#39;: &#39;2019-11-24&#39;, &#39;count&#39;: &#39;12335&#39;},
+ {&#39;name&#39;: &#39;events-2019-11-25.jsonl&#39;, &#39;date&#39;: &#39;2019-11-25&#39;, &#39;count&#39;: &#39;21657&#39;},
+ {&#39;name&#39;: &#39;events-2019-11-26.jsonl&#39;, &#39;date&#39;: &#39;2019-11-26&#39;, &#39;count&#39;: &#39;21140&#39;},
+ {&#39;name&#39;: &#39;events-2019-11-27.jsonl&#39;, &#39;date&#39;: &#39;2019-11-27&#39;, &#39;count&#39;: &#39;17272&#39;}]
+</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
@@ -974,14 +983,14 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[&#39;https://archive.analytics.mybinder.org/events-2018-11-03.jsonl&#39;,
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;https://archive.analytics.mybinder.org/events-2018-11-03.jsonl&#39;,
  &#39;https://archive.analytics.mybinder.org/events-2018-11-04.jsonl&#39;,
  &#39;https://archive.analytics.mybinder.org/events-2018-11-05.jsonl&#39;,
  &#39;https://archive.analytics.mybinder.org/events-2018-11-06.jsonl&#39;,
  &#39;https://archive.analytics.mybinder.org/events-2018-11-07.jsonl&#39;]
-</pre></div>
-</div>
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Create-Bag-of-all-events">
@@ -1001,8 +1010,9 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;timestamp&#39;: &#39;2018-11-03T00:00:00+00:00&#39;,
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+({&#39;timestamp&#39;: &#39;2018-11-03T00:00:00+00:00&#39;,
   &#39;schema&#39;: &#39;binderhub.jupyter.org/launch&#39;,
   &#39;version&#39;: 1,
   &#39;provider&#39;: &#39;GitHub&#39;,
@@ -1014,8 +1024,7 @@ div.rendered_html tbody tr:hover {
   &#39;provider&#39;: &#39;GitHub&#39;,
   &#39;spec&#39;: &#39;ipython/ipython-in-depth/master&#39;,
   &#39;status&#39;: &#39;success&#39;})
-</pre></div>
-</div>
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Most-Popular-Binders">
@@ -1034,29 +1043,29 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>((&#39;ipython/ipython-in-depth/master&#39;, 2155042),
- (&#39;jupyterlab/jupyterlab-demo/try.jupyter.org&#39;, 406260),
- (&#39;jupyterlab/jupyterlab-demo/master&#39;, 343268),
- (&#39;ines/spacy-io-binder/live&#39;, 205686),
- (&#39;DS-100/textbook/master&#39;, 180923),
- (&#39;binder-examples/requirements/master&#39;, 108336),
- (&#39;bokeh/bokeh-notebooks/master&#39;, 100306),
- (&#39;binder-examples/r/master&#39;, 78759),
- (&#39;rationalmatter/juno-demo-notebooks/master&#39;, 58873),
- (&#39;QuantStack/xeus-cling/stable&#39;, 55531),
- (&#39;ines/spacy-course/binder&#39;, 38792),
- (&#39;numba/numba-examples/master&#39;, 31740),
- (&#39;rasahq/docs-binder/master&#39;, 27937),
- (&#39;ELC/8fdc0f490b3058872a7014f01416dfb6/master&#39;, 21304),
- (&#39;dask/dask-examples/master&#39;, 21243),
- (&#39;binder-examples/julia-python/master&#39;, 21048),
- (&#39;QISKit/qiskit-tutorial/master&#39;, 19491),
- (&#39;RasaHQ/rasa_core/master&#39;, 19308),
- (&#39;wshuyi/demo-spacy-text-processing/master&#39;, 17807),
- (&#39;data-8/textbook/gh-pages&#39;, 16977))
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+((&#39;ipython/ipython-in-depth/master&#39;, 2212345),
+ (&#39;jupyterlab/jupyterlab-demo/try.jupyter.org&#39;, 445619),
+ (&#39;jupyterlab/jupyterlab-demo/master&#39;, 344117),
+ (&#39;ines/spacy-io-binder/live&#39;, 211785),
+ (&#39;DS-100/textbook/master&#39;, 188358),
+ (&#39;binder-examples/requirements/master&#39;, 116390),
+ (&#39;bokeh/bokeh-notebooks/master&#39;, 102192),
+ (&#39;binder-examples/r/master&#39;, 80754),
+ (&#39;rationalmatter/juno-demo-notebooks/master&#39;, 59211),
+ (&#39;QuantStack/xeus-cling/stable&#39;, 56897),
+ (&#39;ines/spacy-course/binder&#39;, 40207),
+ (&#39;numba/numba-examples/master&#39;, 32660),
+ (&#39;rasahq/docs-binder/master&#39;, 29516),
+ (&#39;ELC/8fdc0f490b3058872a7014f01416dfb6/master&#39;, 22112),
+ (&#39;dask/dask-examples/master&#39;, 21922),
+ (&#39;binder-examples/julia-python/master&#39;, 21055),
+ (&#39;QISKit/qiskit-tutorial/master&#39;, 19500),
+ (&#39;RasaHQ/rasa_core/master&#39;, 19314),
+ (&#39;wshuyi/demo-spacy-text-processing/master&#39;, 18428),
+ (&#39;cs357/demos-cs357/master&#39;, 17555))
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Convert-to-Dask-Dataframe">
@@ -1192,83 +1201,83 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>ipython/ipython-in-depth/master</th>
-      <td>2155042</td>
+      <td>2212345</td>
     </tr>
     <tr>
       <th>jupyterlab/jupyterlab-demo/try.jupyter.org</th>
-      <td>406260</td>
+      <td>445619</td>
     </tr>
     <tr>
       <th>jupyterlab/jupyterlab-demo/master</th>
-      <td>343268</td>
+      <td>344117</td>
     </tr>
     <tr>
       <th>ines/spacy-io-binder/live</th>
-      <td>205686</td>
+      <td>211785</td>
     </tr>
     <tr>
       <th>DS-100/textbook/master</th>
-      <td>180923</td>
+      <td>188358</td>
     </tr>
     <tr>
       <th>binder-examples/requirements/master</th>
-      <td>108336</td>
+      <td>116390</td>
     </tr>
     <tr>
       <th>bokeh/bokeh-notebooks/master</th>
-      <td>100306</td>
+      <td>102192</td>
     </tr>
     <tr>
       <th>binder-examples/r/master</th>
-      <td>78759</td>
+      <td>80754</td>
     </tr>
     <tr>
       <th>rationalmatter/juno-demo-notebooks/master</th>
-      <td>58873</td>
+      <td>59211</td>
     </tr>
     <tr>
       <th>QuantStack/xeus-cling/stable</th>
-      <td>55531</td>
+      <td>56897</td>
     </tr>
     <tr>
       <th>ines/spacy-course/binder</th>
-      <td>38792</td>
+      <td>40207</td>
     </tr>
     <tr>
       <th>numba/numba-examples/master</th>
-      <td>31740</td>
+      <td>32660</td>
     </tr>
     <tr>
       <th>rasahq/docs-binder/master</th>
-      <td>27937</td>
+      <td>29516</td>
     </tr>
     <tr>
       <th>ELC/8fdc0f490b3058872a7014f01416dfb6/master</th>
-      <td>21304</td>
+      <td>22112</td>
     </tr>
     <tr>
       <th>dask/dask-examples/master</th>
-      <td>21243</td>
+      <td>21922</td>
     </tr>
     <tr>
       <th>binder-examples/julia-python/master</th>
-      <td>21048</td>
+      <td>21055</td>
     </tr>
     <tr>
       <th>QISKit/qiskit-tutorial/master</th>
-      <td>19491</td>
+      <td>19500</td>
     </tr>
     <tr>
       <th>RasaHQ/rasa_core/master</th>
-      <td>19308</td>
+      <td>19314</td>
     </tr>
     <tr>
       <th>wshuyi/demo-spacy-text-processing/master</th>
-      <td>17807</td>
+      <td>18428</td>
     </tr>
     <tr>
-      <th>data-8/textbook/gh-pages</th>
-      <td>16977</td>
+      <th>cs357/demos-cs357/master</th>
+      <td>17555</td>
     </tr>
   </tbody>
 </table>
@@ -1314,16 +1323,16 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>GitHub      5085711
-Gist          35069
-GitLab        18928
-Git           15792
-Zenodo          369
-Figshare        135
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+GitHub      5259572
+Gist          36982
+GitLab        19388
+Git           16741
+Zenodo          424
+Figshare        139
 Name: provider, dtype: int64
-</pre></div>
-</div>
+</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
@@ -1372,7 +1381,7 @@ Name: provider, dtype: int64
     </tr>
     <tr>
       <th>lfortran/web/lfortran-binder/master</th>
-      <td>1305</td>
+      <td>1327</td>
     </tr>
     <tr>
       <th>rruizz/inforfis/master</th>
@@ -1380,39 +1389,39 @@ Name: provider, dtype: int64
     </tr>
     <tr>
       <th>JC_Bonnefoy/snt_2019/master</th>
-      <td>1179</td>
+      <td>1186</td>
     </tr>
     <tr>
       <th>DGothrek/ipyaggrid/binder-demo</th>
-      <td>973</td>
+      <td>1017</td>
     </tr>
     <tr>
       <th>...</th>
       <td>...</td>
     </tr>
     <tr>
-      <th>materials-modeling/hiphive-examples/master</th>
+      <th>mmagg/notes/62cb41636ec97f4b97ee0046e1a7241e5a47602c</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>magnunor/elmag/f63d424ece7e161541ca68c95c0b2fcf6046d59e</th>
+      <th>atomap/atomap_demos/master</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>lpds-public/occopus-ml/master</th>
+      <th>msaby/testgg/master</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>lokeller/matrix-bot/master</th>
+      <th>mszep/molecular-emulator/master</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>jondo2010/ridc/master</th>
+      <th>jibe-b/sens-de-la-vie-workflow-brouillon-tests-tuto/dev</th>
       <td>1</td>
     </tr>
   </tbody>
 </table>
-<p>524 rows × 1 columns</p>
+<p>545 rows × 1 columns</p>
 </div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1458,51 +1467,51 @@ Name: provider, dtype: int64
   <tbody>
     <tr>
       <th>https://git.informatik.uni-hamburg.de/mast/se1/se1-notebook/master</th>
-      <td>2269</td>
+      <td>2302</td>
     </tr>
     <tr>
       <th>https://git.unilim.fr/grossp01/notebooks.git/master</th>
-      <td>968</td>
+      <td>973</td>
+    </tr>
+    <tr>
+      <th>https://framagit.org/debimax/cours-debimax/master</th>
+      <td>889</td>
     </tr>
     <tr>
       <th>https://bitbucket.org/nikiubel/nikiubel.bitbucket.io.git/841046b40e936fa187b974aabb310a6ac0ecd094</th>
       <td>794</td>
     </tr>
     <tr>
-      <th>https://framagit.org/debimax/cours-debimax/master</th>
-      <td>709</td>
-    </tr>
-    <tr>
-      <th>https://gitlab.science.ru.nl/roesner_public/programming_2_notebooks.git/master</th>
-      <td>616</td>
+      <th>http://sss2019-gitlab.westus.cloudapp.azure.com/sss/coding-2019.git/master</th>
+      <td>640</td>
     </tr>
     <tr>
       <th>...</th>
       <td>...</td>
     </tr>
     <tr>
-      <th>https://chaffra@bitbucket.org/chaffra/ipydevedit.git/a5e9bb5d659b50068213ab0379ecade80f8e1e29</th>
+      <th>https://gitlab.huma-num.fr/mshs-poitiers/forellis/sudocmeta2csv/231832c895938f637d1a7a60981ac1f2c00cb7f2</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://gitlab.inria.fr/vdrevell/istic-robm/b45ab9de12dbf06c92d3dd5dd7b884e75dad2c35</th>
+      <th>https://darkade@bitbucket.org/tesel/patentdata.git/ac6735523736c6fbddba9790f054aa5dc60a9f38</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://gitlab.inria.fr/vdrevell/istic-robm/e345fd81cb6f70ba1fa4646ee80c0a619dd4feac</th>
+      <th>https://darkade@bitbucket.org/tesel/patentdata.git/8182f341f7431f3e6d7928a938f0181882f0762f</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://github.com/habimis95/hello-world.git/master</th>
+      <th>https://gitlab.huma-num.fr/mshs-poitiers/forellis/sudocmeta2csv/e0ec02c4202ab76feaea8408b8780b30ce48e5ae</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://github.com/boileaum/quartiers_prio_stras/master</th>
+      <th>https://bitbucket.org/saibotk/tp2_python/862011e56c43e4b37128479f8ed5f9866e7859c0</th>
       <td>1</td>
     </tr>
   </tbody>
 </table>
-<p>1284 rows × 1 columns</p>
+<p>1332 rows × 1 columns</p>
 </div></div>
 </div>
 <div class="nbinput nblast docutils container">

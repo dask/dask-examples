@@ -272,16 +272,16 @@
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput,
-div.nbinput div.prompt,
-div.nbinput div.input_area,
-div.nbinput div[class*=highlight],
-div.nbinput div[class*=highlight] pre,
-div.nboutput,
-div.nbinput div.prompt,
-div.nbinput div.output_area,
-div.nboutput div[class*=highlight],
-div.nboutput div[class*=highlight] pre {
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
     background: none;
     border: none;
     padding: 0 0;
@@ -290,13 +290,13 @@ div.nboutput div[class*=highlight] pre {
 }
 
 /* avoid gaps between output lines */
-div.nboutput div[class*=highlight] pre {
+div.nboutput.container div[class*=highlight] pre {
     line-height: normal;
 }
 
 /* input/output containers */
-div.nbinput,
-div.nboutput {
+div.nbinput.container,
+div.nboutput.container {
     display: -webkit-flex;
     display: flex;
     align-items: flex-start;
@@ -304,35 +304,35 @@ div.nboutput {
     width: 100%;
 }
 @media (max-width: 540px) {
-    div.nbinput,
-    div.nboutput {
+    div.nbinput.container,
+    div.nboutput.container {
         flex-direction: column;
     }
 }
 
 /* input container */
-div.nbinput {
+div.nbinput.container {
     padding-top: 5px;
 }
 
 /* last container */
-div.nblast {
+div.nblast.container {
     padding-bottom: 5px;
 }
 
 /* input prompt */
-div.nbinput div.prompt pre {
+div.nbinput.container div.prompt pre {
     color: #307FC1;
 }
 
 /* output prompt */
-div.nboutput div.prompt pre {
+div.nboutput.container div.prompt pre {
     color: #BF5B3D;
 }
 
 /* all prompts */
-div.nbinput div.prompt,
-div.nboutput div.prompt {
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
     min-width: 7ex;
     padding-top: 0.4em;
     padding-right: 0.4em;
@@ -340,56 +340,56 @@ div.nboutput div.prompt {
     flex: 0;
 }
 @media (max-width: 540px) {
-    div.nbinput div.prompt,
-    div.nboutput div.prompt {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
         text-align: left;
         padding: 0.4em;
     }
-    div.nboutput div.prompt.empty {
+    div.nboutput.container div.prompt.empty {
         padding: 0;
     }
 }
 
 /* disable scrollbars on prompts */
-div.nbinput div.prompt pre,
-div.nboutput div.prompt pre {
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
     overflow: hidden;
 }
 
 /* input/output area */
-div.nbinput div.input_area,
-div.nboutput div.output_area {
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
     padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
 }
 @media (max-width: 540px) {
-    div.nbinput div.input_area,
-    div.nboutput div.output_area {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
         width: 100%;
     }
 }
 
 /* input area */
-div.nbinput div.input_area {
+div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
     background: #f5f5f5;
 }
 
 /* override MathJax center alignment in output cells */
-div.nboutput div[class*=MathJax] {
+div.nboutput.container div[class*=MathJax] {
     text-align: left !important;
 }
 
 /* override sphinx.ext.imgmath center alignment in output cells */
-div.nboutput div.math p {
+div.nboutput.container div.math p {
     text-align: left;
 }
 
 /* standard error */
-div.nboutput div.output_area.stderr {
+div.nboutput.container div.output_area.stderr {
     background: #fdd;
 }
 
@@ -485,7 +485,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="k">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">progress</span>
+<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">progress</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">n_workers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">client</span>
 </pre></div>
@@ -501,7 +501,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:43559</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:46735</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -540,8 +540,9 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[&#39;/home/travis/build/dask/dask-examples/data/0.json&#39;,
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;/home/travis/build/dask/dask-examples/data/0.json&#39;,
  &#39;/home/travis/build/dask/dask-examples/data/1.json&#39;,
  &#39;/home/travis/build/dask/dask-examples/data/2.json&#39;,
  &#39;/home/travis/build/dask/dask-examples/data/3.json&#39;,
@@ -551,8 +552,7 @@ div.rendered_html tbody tr:hover {
  &#39;/home/travis/build/dask/dask-examples/data/7.json&#39;,
  &#39;/home/travis/build/dask/dask-examples/data/8.json&#39;,
  &#39;/home/travis/build/dask/dask-examples/data/9.json&#39;]
-</pre></div>
-</div>
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Read-JSON-data">
@@ -572,8 +572,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 20, &#34;name&#34;: [&#34;Blondell&#34;, &#34;Herman&#34;], &#34;occupation&#34;: &#34;Patent Agent&#34;, &#34;telephone&#34;: &#34;268-752-5424&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;131 Brant Brae&#34;, &#34;city&#34;: &#34;Lawrenceville&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;2526 0651 4458 3881&#34;, &#34;expiration-date&#34;: &#34;11/23&#34;}}
-{&#34;age&#34;: 30, &#34;name&#34;: [&#34;Ligia&#34;, &#34;Garrison&#34;], &#34;occupation&#34;: &#34;Wine Merchant&#34;, &#34;telephone&#34;: &#34;649.175.4008&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;656 Campbell Lane&#34;, &#34;city&#34;: &#34;Gaithersburg&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5199 3045 8176 1935&#34;, &#34;expiration-date&#34;: &#34;02/16&#34;}}
+{&#34;age&#34;: 28, &#34;name&#34;: [&#34;Jesus&#34;, &#34;Pittman&#34;], &#34;occupation&#34;: &#34;Pet Minder&#34;, &#34;telephone&#34;: &#34;175-589-0589&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;386 States Mews&#34;, &#34;city&#34;: &#34;Sherwood&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5467 5401 5191 9156&#34;, &#34;expiration-date&#34;: &#34;02/25&#34;}}
+{&#34;age&#34;: 30, &#34;name&#34;: [&#34;Lanora&#34;, &#34;Fernandez&#34;], &#34;occupation&#34;: &#34;Advertising Contractor&#34;, &#34;telephone&#34;: &#34;921.844.7314&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;670 Iowa Alley&#34;, &#34;city&#34;: &#34;Camarillo&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3708 304408 53408&#34;, &#34;expiration-date&#34;: &#34;02/22&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -593,10 +593,10 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>dask.bag&lt;loads, npartitions=10&gt;
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+dask.bag&lt;loads, npartitions=10&gt;
+</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
@@ -611,23 +611,22 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 20,
-  &#39;name&#39;: [&#39;Blondell&#39;, &#39;Herman&#39;],
-  &#39;occupation&#39;: &#39;Patent Agent&#39;,
-  &#39;telephone&#39;: &#39;268-752-5424&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;131 Brant Brae&#39;, &#39;city&#39;: &#39;Lawrenceville&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2526 0651 4458 3881&#39;,
-   &#39;expiration-date&#39;: &#39;11/23&#39;}},
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+({&#39;age&#39;: 28,
+  &#39;name&#39;: [&#39;Jesus&#39;, &#39;Pittman&#39;],
+  &#39;occupation&#39;: &#39;Pet Minder&#39;,
+  &#39;telephone&#39;: &#39;175-589-0589&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;386 States Mews&#39;, &#39;city&#39;: &#39;Sherwood&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5467 5401 5191 9156&#39;,
+   &#39;expiration-date&#39;: &#39;02/25&#39;}},
  {&#39;age&#39;: 30,
-  &#39;name&#39;: [&#39;Ligia&#39;, &#39;Garrison&#39;],
-  &#39;occupation&#39;: &#39;Wine Merchant&#39;,
-  &#39;telephone&#39;: &#39;649.175.4008&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;656 Campbell Lane&#39;, &#39;city&#39;: &#39;Gaithersburg&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5199 3045 8176 1935&#39;,
-   &#39;expiration-date&#39;: &#39;02/16&#39;}})
-</pre></div>
-</div>
+  &#39;name&#39;: [&#39;Lanora&#39;, &#39;Fernandez&#39;],
+  &#39;occupation&#39;: &#39;Advertising Contractor&#39;,
+  &#39;telephone&#39;: &#39;921.844.7314&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;670 Iowa Alley&#39;, &#39;city&#39;: &#39;Camarillo&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3708 304408 53408&#39;, &#39;expiration-date&#39;: &#39;02/22&#39;}})
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Map,-Filter,-Aggregate">
@@ -646,23 +645,22 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 58,
-  &#39;name&#39;: [&#39;Denny&#39;, &#39;Moore&#39;],
-  &#39;occupation&#39;: &#39;Pawnbroker&#39;,
-  &#39;telephone&#39;: &#39;+1-(242)-030-7905&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;630 Malden Concession road&#39;, &#39;city&#39;: &#39;Mamaroneck&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2638 9946 0841 4223&#39;,
-   &#39;expiration-date&#39;: &#39;02/16&#39;}},
- {&#39;age&#39;: 64,
-  &#39;name&#39;: [&#39;Tony&#39;, &#39;Winters&#39;],
-  &#39;occupation&#39;: &#39;Masseur&#39;,
-  &#39;telephone&#39;: &#39;1-638-064-8341&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;830 College Gardens&#39;, &#39;city&#39;: &#39;Buffalo&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5485 5295 4831 7131&#39;,
-   &#39;expiration-date&#39;: &#39;02/19&#39;}})
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+({&#39;age&#39;: 34,
+  &#39;name&#39;: [&#39;Johnson&#39;, &#39;Mcintosh&#39;],
+  &#39;occupation&#39;: &#39;Plant Operator&#39;,
+  &#39;telephone&#39;: &#39;+1-(659)-499-8160&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;668 Catalina Circle&#39;, &#39;city&#39;: &#39;Ozark&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4323 8626 2486 4950&#39;,
+   &#39;expiration-date&#39;: &#39;09/24&#39;}},
+ {&#39;age&#39;: 35,
+  &#39;name&#39;: [&#39;Aleen&#39;, &#39;Franks&#39;],
+  &#39;occupation&#39;: &#39;Health Advisor&#39;,
+  &#39;telephone&#39;: &#39;1-125-989-3945&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;192 Martha Concession road&#39;, &#39;city&#39;: &#39;Pontiac&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3766 259608 43043&#39;, &#39;expiration-date&#39;: &#39;03/19&#39;}})
+</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -677,10 +675,10 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(&#39;Patent Agent&#39;, &#39;Wine Merchant&#39;)
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(&#39;Pet Minder&#39;, &#39;Advertising Contractor&#39;)
+</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
@@ -695,10 +693,10 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>10000
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+10000
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Chain-computations">
@@ -721,10 +719,10 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>dask.bag&lt;topk-aggregate, npartitions=1&gt;
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+dask.bag&lt;topk-aggregate, npartitions=1&gt;
+</pre></div></div>
 </div>
 <p>As with all lazy Dask collections, we need to call <code class="docutils literal notranslate"><span class="pre">compute</span></code> to actually evaluate our result. The <code class="docutils literal notranslate"><span class="pre">take</span></code> method used in earlier examples is also like <code class="docutils literal notranslate"><span class="pre">compute</span></code> and will also trigger computation.</p>
 <div class="nbinput docutils container">
@@ -740,19 +738,19 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[(&#39;Psychoanalyst&#39;, 15),
- (&#39;Scientist&#39;, 14),
- (&#39;Weighbridge Clerk&#39;, 14),
- (&#39;Flying Instructor&#39;, 13),
- (&#39;Saddler&#39;, 13),
- (&#39;Surgeon&#39;, 13),
- (&#39;Assistant&#39;, 13),
- (&#39;Pasteuriser&#39;, 13),
- (&#39;Plant Driver&#39;, 13),
- (&#39;Glazier&#39;, 13)]
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[(&#39;Plant Operator&#39;, 14),
+ (&#39;Optical Advisor&#39;, 14),
+ (&#39;Sales Director&#39;, 14),
+ (&#39;Sports Coach&#39;, 13),
+ (&#39;Pilot&#39;, 13),
+ (&#39;Word Processing Operator&#39;, 13),
+ (&#39;Reprographic Assistant&#39;, 13),
+ (&#39;Toll Collector&#39;, 13),
+ (&#39;Upholsterer&#39;, 13),
+ (&#39;Advertising Staff&#39;, 13)]
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Transform-and-Store">
@@ -773,8 +771,9 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[&#39;/home/travis/build/dask/dask-examples/data/processed.0.json&#39;,
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;/home/travis/build/dask/dask-examples/data/processed.0.json&#39;,
  &#39;/home/travis/build/dask/dask-examples/data/processed.1.json&#39;,
  &#39;/home/travis/build/dask/dask-examples/data/processed.2.json&#39;,
  &#39;/home/travis/build/dask/dask-examples/data/processed.3.json&#39;,
@@ -784,8 +783,7 @@ div.rendered_html tbody tr:hover {
  &#39;/home/travis/build/dask/dask-examples/data/processed.7.json&#39;,
  &#39;/home/travis/build/dask/dask-examples/data/processed.8.json&#39;,
  &#39;/home/travis/build/dask/dask-examples/data/processed.9.json&#39;]
-</pre></div>
-</div>
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Convert-to-Dask-Dataframes">
@@ -806,16 +804,16 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 20,
-  &#39;name&#39;: [&#39;Blondell&#39;, &#39;Herman&#39;],
-  &#39;occupation&#39;: &#39;Patent Agent&#39;,
-  &#39;telephone&#39;: &#39;268-752-5424&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;131 Brant Brae&#39;, &#39;city&#39;: &#39;Lawrenceville&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2526 0651 4458 3881&#39;,
-   &#39;expiration-date&#39;: &#39;11/23&#39;}},)
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+({&#39;age&#39;: 28,
+  &#39;name&#39;: [&#39;Jesus&#39;, &#39;Pittman&#39;],
+  &#39;occupation&#39;: &#39;Pet Minder&#39;,
+  &#39;telephone&#39;: &#39;175-589-0589&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;386 States Mews&#39;, &#39;city&#39;: &#39;Sherwood&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5467 5401 5191 9156&#39;,
+   &#39;expiration-date&#39;: &#39;02/25&#39;}},)
+</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
@@ -842,17 +840,17 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>({&#39;age&#39;: 20,
-  &#39;occupation&#39;: &#39;Patent Agent&#39;,
-  &#39;telephone&#39;: &#39;268-752-5424&#39;,
-  &#39;credit-card-number&#39;: &#39;2526 0651 4458 3881&#39;,
-  &#39;credit-card-expiration&#39;: &#39;11/23&#39;,
-  &#39;name&#39;: &#39;Blondell Herman&#39;,
-  &#39;street-address&#39;: &#39;131 Brant Brae&#39;,
-  &#39;city&#39;: &#39;Lawrenceville&#39;},)
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+({&#39;age&#39;: 28,
+  &#39;occupation&#39;: &#39;Pet Minder&#39;,
+  &#39;telephone&#39;: &#39;175-589-0589&#39;,
+  &#39;credit-card-number&#39;: &#39;5467 5401 5191 9156&#39;,
+  &#39;credit-card-expiration&#39;: &#39;02/25&#39;,
+  &#39;name&#39;: &#39;Jesus Pittman&#39;,
+  &#39;street-address&#39;: &#39;386 States Mews&#39;,
+  &#39;city&#39;: &#39;Sherwood&#39;},)
+</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
@@ -900,58 +898,58 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>20</td>
-      <td>Patent Agent</td>
-      <td>268-752-5424</td>
-      <td>2526 0651 4458 3881</td>
-      <td>11/23</td>
-      <td>Blondell Herman</td>
-      <td>131 Brant Brae</td>
-      <td>Lawrenceville</td>
+      <td>28</td>
+      <td>Pet Minder</td>
+      <td>175-589-0589</td>
+      <td>5467 5401 5191 9156</td>
+      <td>02/25</td>
+      <td>Jesus Pittman</td>
+      <td>386 States Mews</td>
+      <td>Sherwood</td>
     </tr>
     <tr>
       <th>1</th>
       <td>30</td>
-      <td>Wine Merchant</td>
-      <td>649.175.4008</td>
-      <td>5199 3045 8176 1935</td>
-      <td>02/16</td>
-      <td>Ligia Garrison</td>
-      <td>656 Campbell Lane</td>
-      <td>Gaithersburg</td>
+      <td>Advertising Contractor</td>
+      <td>921.844.7314</td>
+      <td>3708 304408 53408</td>
+      <td>02/22</td>
+      <td>Lanora Fernandez</td>
+      <td>670 Iowa Alley</td>
+      <td>Camarillo</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>24</td>
-      <td>Handyman</td>
-      <td>+1-(516)-626-6927</td>
-      <td>3771 605287 32180</td>
-      <td>10/16</td>
-      <td>Harris Russo</td>
-      <td>706 Wall Highway</td>
-      <td>Nampa</td>
+      <td>34</td>
+      <td>Plant Operator</td>
+      <td>+1-(659)-499-8160</td>
+      <td>4323 8626 2486 4950</td>
+      <td>09/24</td>
+      <td>Johnson Mcintosh</td>
+      <td>668 Catalina Circle</td>
+      <td>Ozark</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>25</td>
-      <td>Legal Secretary</td>
-      <td>(478) 748-1176</td>
-      <td>5420 3679 4022 4235</td>
-      <td>02/25</td>
-      <td>Kiersten Combs</td>
-      <td>1105 Seymour Cove</td>
-      <td>Garfield Heights</td>
+      <td>35</td>
+      <td>Health Advisor</td>
+      <td>1-125-989-3945</td>
+      <td>3766 259608 43043</td>
+      <td>03/19</td>
+      <td>Aleen Franks</td>
+      <td>192 Martha Concession road</td>
+      <td>Pontiac</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>18</td>
-      <td>Lithographer</td>
-      <td>350-281-1079</td>
-      <td>4448 7169 2223 9028</td>
-      <td>08/17</td>
-      <td>Sol Byers</td>
-      <td>398 Steuart Grove</td>
-      <td>Arroyo Grande</td>
+      <td>52</td>
+      <td>Publisher</td>
+      <td>524-525-4349</td>
+      <td>5474 9782 5887 4893</td>
+      <td>04/19</td>
+      <td>Jacquetta Nolan</td>
+      <td>1147 Lucy Arcade</td>
+      <td>North Port</td>
     </tr>
   </tbody>
 </table>
@@ -971,20 +969,20 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Psychoanalyst         15
-Scientist             14
-Weighbridge Clerk     14
-Flying Instructor     13
-Assistant             13
-Auto Electrician      13
-Pasteuriser           13
-Surgeon               13
-Haulage Contractor    13
-Glazier               13
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Sales Director              14
+Optical Advisor             14
+Plant Operator              14
+Toll Collector              13
+Pilot                       13
+Upholsterer                 13
+Sports Coach                13
+Word Processing Operator    13
+Advertising Staff           13
+Reprographic Assistant      13
 Name: occupation, dtype: int64
-</pre></div>
-</div>
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Learn-More">

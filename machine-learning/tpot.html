@@ -268,16 +268,16 @@
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput,
-div.nbinput div.prompt,
-div.nbinput div.input_area,
-div.nbinput div[class*=highlight],
-div.nbinput div[class*=highlight] pre,
-div.nboutput,
-div.nbinput div.prompt,
-div.nbinput div.output_area,
-div.nboutput div[class*=highlight],
-div.nboutput div[class*=highlight] pre {
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
     background: none;
     border: none;
     padding: 0 0;
@@ -286,13 +286,13 @@ div.nboutput div[class*=highlight] pre {
 }
 
 /* avoid gaps between output lines */
-div.nboutput div[class*=highlight] pre {
+div.nboutput.container div[class*=highlight] pre {
     line-height: normal;
 }
 
 /* input/output containers */
-div.nbinput,
-div.nboutput {
+div.nbinput.container,
+div.nboutput.container {
     display: -webkit-flex;
     display: flex;
     align-items: flex-start;
@@ -300,35 +300,35 @@ div.nboutput {
     width: 100%;
 }
 @media (max-width: 540px) {
-    div.nbinput,
-    div.nboutput {
+    div.nbinput.container,
+    div.nboutput.container {
         flex-direction: column;
     }
 }
 
 /* input container */
-div.nbinput {
+div.nbinput.container {
     padding-top: 5px;
 }
 
 /* last container */
-div.nblast {
+div.nblast.container {
     padding-bottom: 5px;
 }
 
 /* input prompt */
-div.nbinput div.prompt pre {
+div.nbinput.container div.prompt pre {
     color: #307FC1;
 }
 
 /* output prompt */
-div.nboutput div.prompt pre {
+div.nboutput.container div.prompt pre {
     color: #BF5B3D;
 }
 
 /* all prompts */
-div.nbinput div.prompt,
-div.nboutput div.prompt {
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
     min-width: 7ex;
     padding-top: 0.4em;
     padding-right: 0.4em;
@@ -336,56 +336,56 @@ div.nboutput div.prompt {
     flex: 0;
 }
 @media (max-width: 540px) {
-    div.nbinput div.prompt,
-    div.nboutput div.prompt {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
         text-align: left;
         padding: 0.4em;
     }
-    div.nboutput div.prompt.empty {
+    div.nboutput.container div.prompt.empty {
         padding: 0;
     }
 }
 
 /* disable scrollbars on prompts */
-div.nbinput div.prompt pre,
-div.nboutput div.prompt pre {
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
     overflow: hidden;
 }
 
 /* input/output area */
-div.nbinput div.input_area,
-div.nboutput div.output_area {
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
     padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
 }
 @media (max-width: 540px) {
-    div.nbinput div.input_area,
-    div.nboutput div.output_area {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
         width: 100%;
     }
 }
 
 /* input area */
-div.nbinput div.input_area {
+div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
     background: #f5f5f5;
 }
 
 /* override MathJax center alignment in output cells */
-div.nboutput div[class*=MathJax] {
+div.nboutput.container div[class*=MathJax] {
     text-align: left !important;
 }
 
 /* override sphinx.ext.imgmath center alignment in output cells */
-div.nboutput div.math p {
+div.nboutput.container div.math p {
     text-align: left;
 }
 
 /* standard error */
-div.nboutput div.output_area.stderr {
+div.nboutput.container div.output_area.stderr {
     background: #fdd;
 }
 
@@ -477,7 +477,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">HTML</span>
+<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
 
 <span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;div style=&quot;position:relative;height:0;padding-bottom:56.25%&quot;&gt;&lt;iframe src=&quot;https://www.youtube.com/embed/uyx9nBuOYQQ?ecver=2&quot; width=&quot;640&quot; height=&quot;360&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; style=&quot;position:absolute;width:100%;height:100%;left:0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
 </pre></div>
@@ -516,30 +516,30 @@ Collecting deap&gt;=1.2
 Collecting update_checker&gt;=0.16
   Downloading https://files.pythonhosted.org/packages/17/c9/ab11855af164d03be0ff4fddd4c46a5bd44799a9ecc1770e01a669c21168/update_checker-0.16-py2.py3-none-any.whl
 Collecting tqdm&gt;=4.36.1
-  Downloading https://files.pythonhosted.org/packages/b9/08/8505f192efc72bfafec79655e1d8351d219e2b80b0dec4ae71f50934c17a/tqdm-4.38.0-py2.py3-none-any.whl (53kB)
+  Downloading https://files.pythonhosted.org/packages/bb/62/6f823501b3bf2bac242bd3c320b592ad1516b3081d82c77c1d813f076856/tqdm-4.39.0-py2.py3-none-any.whl (53kB)
 
 Collecting stopit&gt;=1.1.1
   Downloading https://files.pythonhosted.org/packages/35/58/e8bb0b0fb05baf07bbac1450c447d753da65f9701f551dca79823ce15d50/stopit-1.1.2.tar.gz
 Requirement already satisfied: pandas&gt;=0.24.2 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from tpot) (0.25.3)
 Requirement already satisfied: joblib&gt;=0.13.2 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from tpot) (0.14.0)
 Requirement already satisfied: requests&gt;=2.3.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from update_checker&gt;=0.16-&gt;tpot) (2.22.0)
-Requirement already satisfied: python-dateutil&gt;=2.6.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from pandas&gt;=0.24.2-&gt;tpot) (2.8.1)
 Requirement already satisfied: pytz&gt;=2017.2 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from pandas&gt;=0.24.2-&gt;tpot) (2019.3)
-Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (1.25.7)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (2019.9.11)
-Requirement already satisfied: idna&lt;2.9,&gt;=2.5 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (2.8)
+Requirement already satisfied: python-dateutil&gt;=2.6.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from pandas&gt;=0.24.2-&gt;tpot) (2.8.1)
 Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (3.0.4)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (2019.9.11)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (1.25.7)
+Requirement already satisfied: idna&lt;2.9,&gt;=2.5 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&gt;=2.3.0-&gt;update_checker&gt;=0.16-&gt;tpot) (2.8)
 Requirement already satisfied: six&gt;=1.5 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from python-dateutil&gt;=2.6.1-&gt;pandas&gt;=0.24.2-&gt;tpot) (1.13.0)
 Building wheels for collected packages: tpot, stopit
   Building wheel for tpot (setup.py) ... - done
-  Created wheel for tpot: filename=TPOT-0.11.0-cp37-none-any.whl size=75682 sha256=8c68e6404a5b47dfc06d4c7c6fe94f7c1cd2e5909c7321c9dd5cd9d93acb78bb
+  Created wheel for tpot: filename=TPOT-0.11.0-cp37-none-any.whl size=75682 sha256=1e4cf602fa7bf87f8d89e89b152e81c4e92f7000dd55035ecb2fbd51a00f128b
   Stored in directory: /home/travis/.cache/pip/wheels/5e/79/3b/49ccea9a29f28d0cdecbca22d71515c23bf45e1e65bc925cb8
   Building wheel for stopit (setup.py) ... - done
-  Created wheel for stopit: filename=stopit-1.1.2-cp37-none-any.whl size=11958 sha256=caab03ce7a97cb106bcb29d9533a699353e8644bdf9054cde607dcba15151a1c
+  Created wheel for stopit: filename=stopit-1.1.2-cp37-none-any.whl size=11958 sha256=d243ef393f53f729a708ee20e28243e3a9cbce62040caa8d6ac83bc8f5016a9a
   Stored in directory: /home/travis/.cache/pip/wheels/3c/85/2b/2580190404636bfc63e8de3dff629c03bb795021e1983a6cc7
 Successfully built tpot stopit
 Installing collected packages: deap, update-checker, tqdm, stopit, tpot
-Successfully installed deap-1.3.0 stopit-1.1.2 tpot-0.11.0 tqdm-4.38.0 update-checker-0.16
+Successfully installed deap-1.3.0 stopit-1.1.2 tpot-0.11.0 tqdm-4.39.0 update-checker-0.16
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -548,9 +548,9 @@ Successfully installed deap-1.3.0 stopit-1.1.2 tpot-0.11.0 tqdm-4.38.0 update-ch
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">tpot</span>
-<span class="kn">from</span> <span class="nn">tpot</span> <span class="k">import</span> <span class="n">TPOTClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">load_digits</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">tpot</span> <span class="kn">import</span> <span class="n">TPOTClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 </pre></div>
 </div>
 </div>
@@ -563,7 +563,7 @@ Successfully installed deap-1.3.0 stopit-1.1.2 tpot-0.11.0 tqdm-4.38.0 update-ch
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="k">import</span> <span class="n">Client</span>
+<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">n_workers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">client</span>
 </pre></div>
@@ -579,7 +579,7 @@ Successfully installed deap-1.3.0 stopit-1.1.2 tpot-0.11.0 tqdm-4.38.0 update-ch
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:39413</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:33659</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -651,8 +651,9 @@ Successfully installed deap-1.3.0 stopit-1.1.2 tpot-0.11.0 tqdm-4.38.0 update-ch
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>TPOTClassifier(config_dict={&#39;sklearn.cluster.FeatureAgglomeration&#39;: {&#39;affinity&#39;: [&#39;euclidean&#39;,
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+TPOTClassifier(config_dict={&#39;sklearn.cluster.FeatureAgglomeration&#39;: {&#39;affinity&#39;: [&#39;euclidean&#39;,
                                                                                   &#39;l1&#39;,
                                                                                   &#39;l2&#39;,
                                                                                   &#39;manhattan&#39;,
@@ -670,8 +671,7 @@ Successfully installed deap-1.3.0 stopit-1.1.2 tpot-0.11.0 tqdm-4.38.0 update-ch
                offspring_size=None, periodic_checkpoint_folder=None,
                population_size=10, random_state=0, scoring=None, subsample=1.0,
                template=None, use_dask=True, verbosity=0, warm_start=False)
-</pre></div>
-</div>
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Learn-More">

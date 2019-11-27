@@ -267,16 +267,16 @@
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput,
-div.nbinput div.prompt,
-div.nbinput div.input_area,
-div.nbinput div[class*=highlight],
-div.nbinput div[class*=highlight] pre,
-div.nboutput,
-div.nbinput div.prompt,
-div.nbinput div.output_area,
-div.nboutput div[class*=highlight],
-div.nboutput div[class*=highlight] pre {
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
     background: none;
     border: none;
     padding: 0 0;
@@ -285,13 +285,13 @@ div.nboutput div[class*=highlight] pre {
 }
 
 /* avoid gaps between output lines */
-div.nboutput div[class*=highlight] pre {
+div.nboutput.container div[class*=highlight] pre {
     line-height: normal;
 }
 
 /* input/output containers */
-div.nbinput,
-div.nboutput {
+div.nbinput.container,
+div.nboutput.container {
     display: -webkit-flex;
     display: flex;
     align-items: flex-start;
@@ -299,35 +299,35 @@ div.nboutput {
     width: 100%;
 }
 @media (max-width: 540px) {
-    div.nbinput,
-    div.nboutput {
+    div.nbinput.container,
+    div.nboutput.container {
         flex-direction: column;
     }
 }
 
 /* input container */
-div.nbinput {
+div.nbinput.container {
     padding-top: 5px;
 }
 
 /* last container */
-div.nblast {
+div.nblast.container {
     padding-bottom: 5px;
 }
 
 /* input prompt */
-div.nbinput div.prompt pre {
+div.nbinput.container div.prompt pre {
     color: #307FC1;
 }
 
 /* output prompt */
-div.nboutput div.prompt pre {
+div.nboutput.container div.prompt pre {
     color: #BF5B3D;
 }
 
 /* all prompts */
-div.nbinput div.prompt,
-div.nboutput div.prompt {
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
     min-width: 7ex;
     padding-top: 0.4em;
     padding-right: 0.4em;
@@ -335,56 +335,56 @@ div.nboutput div.prompt {
     flex: 0;
 }
 @media (max-width: 540px) {
-    div.nbinput div.prompt,
-    div.nboutput div.prompt {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
         text-align: left;
         padding: 0.4em;
     }
-    div.nboutput div.prompt.empty {
+    div.nboutput.container div.prompt.empty {
         padding: 0;
     }
 }
 
 /* disable scrollbars on prompts */
-div.nbinput div.prompt pre,
-div.nboutput div.prompt pre {
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
     overflow: hidden;
 }
 
 /* input/output area */
-div.nbinput div.input_area,
-div.nboutput div.output_area {
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
     padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
 }
 @media (max-width: 540px) {
-    div.nbinput div.input_area,
-    div.nboutput div.output_area {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
         width: 100%;
     }
 }
 
 /* input area */
-div.nbinput div.input_area {
+div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
     background: #f5f5f5;
 }
 
 /* override MathJax center alignment in output cells */
-div.nboutput div[class*=MathJax] {
+div.nboutput.container div[class*=MathJax] {
     text-align: left !important;
 }
 
 /* override sphinx.ext.imgmath center alignment in output cells */
-div.nboutput div.math p {
+div.nboutput.container div.math p {
     text-align: left;
 }
 
 /* standard error */
-div.nboutput div.output_area.stderr {
+div.nboutput.container div.output_area.stderr {
     background: #fdd;
 }
 
@@ -478,7 +478,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="k">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">progress</span>
+<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">progress</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
                 <span class="n">n_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">memory_limit</span><span class="o">=</span><span class="s1">&#39;2GB&#39;</span><span class="p">)</span>
 <span class="n">client</span>
@@ -495,8 +495,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.255.3/14981/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.255.3/14981/1:8787/status' target='_blank'>http://10.20.255.3/14981/1:8787/status</a>
+  <li><b>Scheduler: </b>inproc://10.20.0.30/15139/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.0.30/15139/1:8787/status' target='_blank'>http://10.20.0.30/15139/1:8787/status</a>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -558,22 +558,22 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([[ 0.09999331,  0.09999962,  0.10005315, ...,  0.09996741,
-         0.10018256,  0.09986496],
-       [ 0.12815943,  0.1114575 , -0.17288601, ..., -0.08026927,
-         0.01454535, -0.0035519 ],
-       [-0.12384276, -0.02041382,  0.10867238, ..., -0.0346678 ,
-         0.19593978,  0.01398269],
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([[ 0.09997513,  0.09990527,  0.09997676, ...,  0.10000068,
+         0.10001386,  0.10013199],
+       [-0.08088683,  0.12582316, -0.04256106, ...,  0.02796705,
+        -0.10604396, -0.11195057],
+       [ 0.0209633 , -0.10769003, -0.00674539, ..., -0.09704366,
+        -0.1107336 , -0.06051288],
        ...,
-       [-0.07946254, -0.08980076, -0.01255034, ...,  0.18042937,
-         0.01564943, -0.11921527],
-       [ 0.02186943,  0.00467531, -0.07589519, ..., -0.07408584,
-        -0.04413903,  0.05014161],
-       [-0.17486695, -0.03389246, -0.00041925, ...,  0.04132657,
-        -0.18149819, -0.00171169]])
-</pre></div>
-</div>
+       [ 0.23773919, -0.03332419,  0.02043546, ...,  0.11534448,
+         0.11752952, -0.06842839],
+       [-0.1145883 ,  0.04742352,  0.10978828, ...,  0.02069981,
+        -0.03926466, -0.07441034],
+       [ 0.1442409 ,  0.27097778, -0.17769132, ..., -0.01317309,
+         0.17700814, -0.07067029]])
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Compute-SVD-of-General-Non-Skinny-Matrix-with-Approximate-algorithm">
@@ -623,19 +623,19 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([[ 0.01005666,  0.01000653,  0.01002194, ...,  0.01004714,
-         0.00992823,  0.00999067],
-       [-0.00429642, -0.00232259,  0.01156114, ..., -0.01214633,
-         0.00744896, -0.01484252],
-       [ 0.00314939, -0.0042241 , -0.002499  , ...,  0.00378773,
-         0.0007914 , -0.00160487],
-       [-0.00404359, -0.02052773,  0.00012063, ...,  0.00624935,
-        -0.00610532,  0.0021875 ],
-       [-0.00648882, -0.00741814, -0.00033888, ...,  0.0077686 ,
-        -0.00578037, -0.00497809]])
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([[ 0.00989966,  0.00993878,  0.00991825, ...,  0.0099841 ,
+         0.00996059,  0.00998015],
+       [-0.01190532, -0.00749165, -0.00599851, ..., -0.00443648,
+         0.00608656,  0.01207081],
+       [ 0.00322169,  0.00809745, -0.0016425 , ..., -0.00303051,
+        -0.01024352, -0.00885137],
+       [ 0.01188648, -0.00628902, -0.00990856, ...,  0.00328428,
+         0.01648012, -0.00429081],
+       [-0.01036467,  0.01150606, -0.00140101, ...,  0.00716621,
+         0.01072245,  0.00559738]])
+</pre></div></div>
 </div>
 </div>
 </div>
