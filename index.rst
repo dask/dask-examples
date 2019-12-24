@@ -62,6 +62,7 @@ You can run these examples in a live session here: |Binder|
    applications/prefect-etl
    applications/satellite-imagery-geotiff
    applications/stencils-with-numba
+   applications/itk
 
 .. toctree::
    :maxdepth: 1
