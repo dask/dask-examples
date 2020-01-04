@@ -493,8 +493,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.0.30/13862/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.0.30/13862/1:8787/status' target='_blank'>http://10.20.0.30/13862/1:8787/status</a>
+  <li><b>Scheduler: </b>inproc://10.20.0.162/13994/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.0.162/13994/1:8787/status' target='_blank'>http://10.20.0.162/13994/1:8787/status</a>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -590,7 +590,7 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
 </pre></div>
 </div>
 <p>To fit it using the cluster, we just need to use a context manager provided by joblib.</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
@@ -601,6 +601,15 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     <span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.7/site-packages/sklearn/model_selection/_search.py:825: FutureWarning: The parameter &#39;iid&#39; is deprecated in 0.22 and will be removed in 0.24.
+  &#34;removed in 0.24.&#34;, FutureWarning
+</pre></div></div>
 </div>
 <p>We fit 48 different models, one for each hyper-parameter combination in <code class="docutils literal notranslate"><span class="pre">param_grid</span></code>, distributed across the cluster. At this point, we have a regular scikit-learn model, which can be used for prediction, scoring, etc.</p>
 <div class="nbinput docutils container">
@@ -654,10 +663,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.385102</td>
-      <td>0.084458</td>
-      <td>0.038158</td>
-      <td>0.004089</td>
+      <td>0.321364</td>
+      <td>0.008679</td>
+      <td>0.025732</td>
+      <td>0.006720</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>True</td>
@@ -671,10 +680,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>1</th>
-      <td>0.401972</td>
-      <td>0.002675</td>
-      <td>0.039973</td>
-      <td>0.005884</td>
+      <td>0.324218</td>
+      <td>0.010001</td>
+      <td>0.023868</td>
+      <td>0.002048</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>False</td>
@@ -688,10 +697,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>2</th>
-      <td>0.281325</td>
-      <td>0.014012</td>
-      <td>0.017132</td>
-      <td>0.005632</td>
+      <td>0.181514</td>
+      <td>0.009679</td>
+      <td>0.015407</td>
+      <td>0.005960</td>
       <td>0.001</td>
       <td>poly</td>
       <td>True</td>
@@ -705,10 +714,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>3</th>
-      <td>0.237396</td>
-      <td>0.020600</td>
-      <td>0.011851</td>
-      <td>0.002480</td>
+      <td>0.185580</td>
+      <td>0.010626</td>
+      <td>0.023312</td>
+      <td>0.005117</td>
       <td>0.001</td>
       <td>poly</td>
       <td>False</td>
@@ -722,10 +731,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>4</th>
-      <td>0.441100</td>
-      <td>0.023941</td>
-      <td>0.037436</td>
-      <td>0.005587</td>
+      <td>0.343874</td>
+      <td>0.017549</td>
+      <td>0.032539</td>
+      <td>0.008657</td>
       <td>0.001</td>
       <td>sigmoid</td>
       <td>True</td>
@@ -774,7 +783,7 @@ array([0, 1, 1, 1, 0])
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.988
+0.972
 </pre></div></div>
 </div>
 <p>For more on training scikit-learn models with distributed joblib, see the <a class="reference external" href="http://dask-ml.readthedocs.io/en/latest/joblib.html">dask-ml documentation</a>.</p>

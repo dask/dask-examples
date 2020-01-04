@@ -518,7 +518,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:43255</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:39959</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -674,7 +674,9 @@ Fitting 3 folds for each of 8 candidates, totalling 24 fits
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 [Parallel(n_jobs=-1)]: Using backend DaskDistributedBackend with 4 concurrent workers.
-[Parallel(n_jobs=-1)]: Done  24 out of  24 | elapsed:   11.6s finished
+[Parallel(n_jobs=-1)]: Done  24 out of  24 | elapsed:    9.7s finished
+/home/travis/miniconda/envs/test/lib/python3.7/site-packages/sklearn/model_selection/_search.py:825: FutureWarning: The parameter &#39;iid&#39; is deprecated in 0.22 and will be removed in 0.24.
+  &#34;removed in 0.24.&#34;, FutureWarning
 </pre></div></div>
 </div>
 <p>If you had your distributed dashboard open during that fit, you’ll notice that each worker performs some of the fit tasks.</p>
@@ -742,14 +744,24 @@ Fitting 3 folds for each of 8 candidates, totalling 24 fits
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.7/site-packages/sklearn/model_selection/_search.py:825: FutureWarning: The parameter &#39;iid&#39; is deprecated in 0.22 and will be removed in 0.24.
+  &#34;removed in 0.24.&#34;, FutureWarning
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-GridSearchCV(cv=3, error_score=&#39;raise-deprecating&#39;,
-             estimator=ParallelPostFit(estimator=SVC(C=1.0, cache_size=200,
+GridSearchCV(cv=3, error_score=nan,
+             estimator=ParallelPostFit(estimator=SVC(C=1.0, break_ties=False,
+                                                     cache_size=200,
                                                      class_weight=None,
                                                      coef0=0.0,
                                                      decision_function_shape=&#39;ovr&#39;,
