@@ -19,18 +19,21 @@ install:
     - bash miniconda.sh -b -p $HOME/miniconda
     - export PATH="$HOME/miniconda/bin:$PATH"
     - conda config --set always_yes yes --set changeps1 no
-    - conda install pip  # create a record for conda, to avoid removing setuptools. See #12 for more.
-    - conda update conda
+    - conda install -q pip  # create a record for conda, to avoid removing setuptools. See #12 for more.
+    - conda update -q conda
 
     # Install dependencies
-    - conda env create -n test -f binder/environment.yml
+    - conda env create -q -n test -f binder/environment.yml
     - source activate test
 
     # Install testing dependencies
-    - conda install pathlib nbconvert nbformat jupyter_client ipykernel
+    - conda install -q pathlib nbconvert nbformat jupyter_client ipykernel
 
     # Install documentation dependencies
-    - pip install nbsphinx dask-sphinx-theme
+    - pip install nbsphinx dask-sphinx-theme sphinx==2.3.1
+
+    # Debug info
+    - conda list
 
 script:
     - set -e
