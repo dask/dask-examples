@@ -1,8 +1,14 @@
 
 
+
+
+
+
+
+
+
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -17,7 +23,15 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -33,83 +47,75 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Scale Scikit-Learn for Small Data Problems" href="../machine-learning/scale-scikit-learn.html" />
     <link rel="prev" title="DataFrames: Read and Write Data" href="01-data-access.html" />
-  <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
-
+    <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
+  
 </head>
 
 <body class="wy-body-for-nav">
 
   
+    <nav id="explore-links">
+        <a href="https://docs.dask.org/">
+        <img class="caption" src="../_static/images/dask-horizontal-white.svg"/>
+        </a>
 
-<nav id="explore-links">
-  <a href="https://docs.dask.org/">
-    <img class="caption" src="../_static/images/dask-horizontal-white.svg"/>
-  </a>
+        <ul>
+        <li>
+            <a>Get Started</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
+            <li><a href="https://examples.dask.org"> Examples </a></li>
+            <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
+            <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
+            <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
+            <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
+            <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
+            <li><a href="https://dask.org/slides"> Slides </a></li>
+            </ul>
+        </li>
 
-  <ul>
-    <li>
-      <a>Get Started</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
-        <li><a href="https://examples.dask.org"> Examples </a></li>
-        <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
-        <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
-        <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
-        <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
-        <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
-        <li><a href="https://dask.org/slides"> Slides </a></li>
-      </ul>
-    </li>
+        <li>
+            <a href="">Algorithms</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
+            <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
+            <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
+            <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
+            <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
+            <li><a href="http://ml.dask.org">Machine Learning</a></li>
+            <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
+            </ul>
+        </li>
 
-    <li>
-      <a href="">Algorithms</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
-        <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
-        <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
-        <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
-        <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
-        <li><a href="http://ml.dask.org">Machine Learning</a></li>
-        <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
-      </ul>
-    </li>
+        <li>
+            <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+            <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
+            <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
+            <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
+            <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
+            </ul>
+        </li>
 
-    <li>
-      <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
-        <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
-        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
-      </ul>
-    </li>
+        <li>
+            <a>Community</a>
+            <ul>
+            <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
+            <li><a href="https://github.com/dask">Github</a></li>
+            <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
+            <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
+            <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
+            </ul>
+        </li>
+        </ul>
 
-    <li>
-      <a>Community</a>
-      <ul>
-        <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
-        <li><a href="https://github.com/dask">Github</a></li>
-        <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
-        <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
-        <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-      </ul>
-    </li>
-  </ul>
-
-</nav>
-
-
+    </nav>
+  
   <div class="wy-grid-for-nav">
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
@@ -118,7 +124,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Dask Examples
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Dask Examples
           
 
           
@@ -141,6 +147,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -205,6 +212,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -331,8 +339,8 @@ div.nboutput.container div.prompt pre {
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
     min-width: 7ex;
-    padding-top: 0.4em;
-    padding-right: 0.4em;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
     text-align: right;
     flex: 0;
 }
@@ -356,7 +364,6 @@ div.nboutput.container div.prompt pre {
 /* input/output area */
 div.nbinput.container div.input_area,
 div.nboutput.container div.output_area {
-    padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
@@ -430,6 +437,27 @@ div.nboutput.container div.output_area.stderr {
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
 
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
 /* Some additional styling taken form the Jupyter notebook CSS */
 div.rendered_html table {
   border: none;
@@ -496,8 +524,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.0.162/12661/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.0.162/12661/1:8787/status' target='_blank'>http://10.20.0.162/12661/1:8787/status</a>
+  <li><b>Scheduler: </b>inproc://10.20.255.71/12405/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.255.71:8787/status' target='_blank'>http://10.20.255.71:8787/status</a>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -636,32 +664,32 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 name
-Alice       0.000052
-Bob         0.002212
-Charlie    -0.002743
-Dan        -0.002184
-Edith       0.000437
-Frank       0.002828
-George      0.000160
-Hannah     -0.000582
-Ingrid     -0.001958
-Jerry       0.001168
-Kevin       0.000534
-Laura      -0.002777
-Michael     0.000515
-Norbert    -0.001189
-Oliver     -0.000570
-Patricia   -0.001556
-Quinn       0.001531
-Ray        -0.000070
-Sarah       0.000137
-Tim        -0.000890
-Ursula      0.000285
-Victor      0.000817
-Wendy       0.003719
-Xavier      0.002176
-Yvonne      0.001609
-Zelda      -0.000574
+Alice      -0.001234
+Bob         0.001703
+Charlie     0.000199
+Dan        -0.001626
+Edith       0.002237
+Frank      -0.000617
+George      0.001655
+Hannah      0.000100
+Ingrid     -0.000538
+Jerry       0.000846
+Kevin      -0.000823
+Laura       0.001583
+Michael    -0.001768
+Norbert    -0.003006
+Oliver     -0.000535
+Patricia   -0.001827
+Quinn      -0.000879
+Ray         0.002655
+Sarah       0.003081
+Tim         0.000581
+Ursula      0.000186
+Victor      0.000672
+Wendy      -0.000268
+Xavier     -0.002889
+Yvonne      0.001648
+Zelda      -0.000107
 Name: x, dtype: float64
 </pre></div></div>
 </div>
@@ -680,8 +708,8 @@ Name: x, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 299 ms, sys: 13.5 ms, total: 313 ms
-Wall time: 228 ms
+CPU times: user 323 ms, sys: 24.8 ms, total: 348 ms
+Wall time: 256 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -698,8 +726,8 @@ Wall time: 228 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 656 ms, sys: 9.03 ms, total: 665 ms
-Wall time: 463 ms
+CPU times: user 683 ms, sys: 20.1 ms, total: 703 ms
+Wall time: 492 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -716,8 +744,8 @@ Wall time: 463 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.01 s, sys: 79.8 ms, total: 1.09 s
-Wall time: 831 ms
+CPU times: user 1.08 s, sys: 61 ms, total: 1.14 s
+Wall time: 864 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -768,38 +796,38 @@ Wall time: 831 ms
   <tbody>
     <tr>
       <th>Alice</th>
-      <td>0.000052</td>
-      <td>0.575424</td>
-      <td>0.001844</td>
-      <td>99886</td>
+      <td>-0.001234</td>
+      <td>0.577478</td>
+      <td>-0.002623</td>
+      <td>99304</td>
     </tr>
     <tr>
       <th>Bob</th>
-      <td>0.002212</td>
-      <td>0.576898</td>
-      <td>-0.000870</td>
-      <td>99150</td>
+      <td>0.001703</td>
+      <td>0.577964</td>
+      <td>0.001488</td>
+      <td>99796</td>
     </tr>
     <tr>
       <th>Charlie</th>
-      <td>-0.002743</td>
-      <td>0.575452</td>
-      <td>0.001418</td>
-      <td>99985</td>
+      <td>0.000199</td>
+      <td>0.577371</td>
+      <td>-0.000380</td>
+      <td>99506</td>
     </tr>
     <tr>
       <th>Dan</th>
-      <td>-0.002184</td>
-      <td>0.578024</td>
-      <td>-0.001277</td>
-      <td>99577</td>
+      <td>-0.001626</td>
+      <td>0.578358</td>
+      <td>0.001450</td>
+      <td>99929</td>
     </tr>
     <tr>
       <th>Edith</th>
-      <td>0.000437</td>
-      <td>0.577590</td>
-      <td>-0.002563</td>
-      <td>99831</td>
+      <td>0.002237</td>
+      <td>0.577983</td>
+      <td>0.001104</td>
+      <td>100319</td>
     </tr>
   </tbody>
 </table>
@@ -882,8 +910,8 @@ Wall time: 831 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 5.13 s, sys: 602 ms, total: 5.73 s
-Wall time: 4.66 s
+CPU times: user 6.19 s, sys: 2.08 s, total: 8.28 s
+Wall time: 5.58 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">

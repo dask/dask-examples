@@ -1,8 +1,14 @@
 
 
+
+
+
+
+
+
+
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -17,7 +23,15 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -33,83 +47,75 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Async/Await and Non-Blocking Execution" href="async-await.html" />
     <link rel="prev" title="Singular Value Decomposition" href="../machine-learning/svd.html" />
-  <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
-
+    <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
+  
 </head>
 
 <body class="wy-body-for-nav">
 
   
+    <nav id="explore-links">
+        <a href="https://docs.dask.org/">
+        <img class="caption" src="../_static/images/dask-horizontal-white.svg"/>
+        </a>
 
-<nav id="explore-links">
-  <a href="https://docs.dask.org/">
-    <img class="caption" src="../_static/images/dask-horizontal-white.svg"/>
-  </a>
+        <ul>
+        <li>
+            <a>Get Started</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
+            <li><a href="https://examples.dask.org"> Examples </a></li>
+            <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
+            <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
+            <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
+            <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
+            <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
+            <li><a href="https://dask.org/slides"> Slides </a></li>
+            </ul>
+        </li>
 
-  <ul>
-    <li>
-      <a>Get Started</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
-        <li><a href="https://examples.dask.org"> Examples </a></li>
-        <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
-        <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
-        <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
-        <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
-        <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
-        <li><a href="https://dask.org/slides"> Slides </a></li>
-      </ul>
-    </li>
+        <li>
+            <a href="">Algorithms</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
+            <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
+            <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
+            <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
+            <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
+            <li><a href="http://ml.dask.org">Machine Learning</a></li>
+            <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
+            </ul>
+        </li>
 
-    <li>
-      <a href="">Algorithms</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
-        <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
-        <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
-        <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
-        <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
-        <li><a href="http://ml.dask.org">Machine Learning</a></li>
-        <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
-      </ul>
-    </li>
+        <li>
+            <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+            <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
+            <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
+            <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
+            <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
+            </ul>
+        </li>
 
-    <li>
-      <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
-        <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
-        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
-      </ul>
-    </li>
+        <li>
+            <a>Community</a>
+            <ul>
+            <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
+            <li><a href="https://github.com/dask">Github</a></li>
+            <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
+            <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
+            <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
+            </ul>
+        </li>
+        </ul>
 
-    <li>
-      <a>Community</a>
-      <ul>
-        <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
-        <li><a href="https://github.com/dask">Github</a></li>
-        <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
-        <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
-        <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-      </ul>
-    </li>
-  </ul>
-
-</nav>
-
-
+    </nav>
+  
   <div class="wy-grid-for-nav">
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
@@ -118,7 +124,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Dask Examples
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Dask Examples
           
 
           
@@ -141,6 +147,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -208,6 +215,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -334,8 +342,8 @@ div.nboutput.container div.prompt pre {
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
     min-width: 7ex;
-    padding-top: 0.4em;
-    padding-right: 0.4em;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
     text-align: right;
     flex: 0;
 }
@@ -359,7 +367,6 @@ div.nboutput.container div.prompt pre {
 /* input/output area */
 div.nbinput.container div.input_area,
 div.nboutput.container div.output_area {
-    padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
@@ -432,6 +439,27 @@ div.nboutput.container div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
 
 /* Some additional styling taken form the Jupyter notebook CSS */
 div.rendered_html table {
@@ -528,7 +556,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:39327</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:43009</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -999,7 +1027,60 @@ div.rendered_html tbody tr:hover {
  {&#39;name&#39;: &#39;events-2020-01-01.jsonl&#39;, &#39;date&#39;: &#39;2020-01-01&#39;, &#39;count&#39;: &#39;7569&#39;},
  {&#39;name&#39;: &#39;events-2020-01-02.jsonl&#39;, &#39;date&#39;: &#39;2020-01-02&#39;, &#39;count&#39;: &#39;12941&#39;},
  {&#39;name&#39;: &#39;events-2020-01-03.jsonl&#39;, &#39;date&#39;: &#39;2020-01-03&#39;, &#39;count&#39;: &#39;13739&#39;},
- {&#39;name&#39;: &#39;events-2020-01-04.jsonl&#39;, &#39;date&#39;: &#39;2020-01-04&#39;, &#39;count&#39;: &#39;8589&#39;}]
+ {&#39;name&#39;: &#39;events-2020-01-04.jsonl&#39;, &#39;date&#39;: &#39;2020-01-04&#39;, &#39;count&#39;: &#39;11419&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-05.jsonl&#39;, &#39;date&#39;: &#39;2020-01-05&#39;, &#39;count&#39;: &#39;10818&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-06.jsonl&#39;, &#39;date&#39;: &#39;2020-01-06&#39;, &#39;count&#39;: &#39;16731&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-07.jsonl&#39;, &#39;date&#39;: &#39;2020-01-07&#39;, &#39;count&#39;: &#39;18264&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-08.jsonl&#39;, &#39;date&#39;: &#39;2020-01-08&#39;, &#39;count&#39;: &#39;19480&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-09.jsonl&#39;, &#39;date&#39;: &#39;2020-01-09&#39;, &#39;count&#39;: &#39;20348&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-10.jsonl&#39;, &#39;date&#39;: &#39;2020-01-10&#39;, &#39;count&#39;: &#39;17701&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-11.jsonl&#39;, &#39;date&#39;: &#39;2020-01-11&#39;, &#39;count&#39;: &#39;13129&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-12.jsonl&#39;, &#39;date&#39;: &#39;2020-01-12&#39;, &#39;count&#39;: &#39;10491&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-13.jsonl&#39;, &#39;date&#39;: &#39;2020-01-13&#39;, &#39;count&#39;: &#39;20103&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-14.jsonl&#39;, &#39;date&#39;: &#39;2020-01-14&#39;, &#39;count&#39;: &#39;20412&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-15.jsonl&#39;, &#39;date&#39;: &#39;2020-01-15&#39;, &#39;count&#39;: &#39;19454&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-16.jsonl&#39;, &#39;date&#39;: &#39;2020-01-16&#39;, &#39;count&#39;: &#39;18902&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-17.jsonl&#39;, &#39;date&#39;: &#39;2020-01-17&#39;, &#39;count&#39;: &#39;17250&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-18.jsonl&#39;, &#39;date&#39;: &#39;2020-01-18&#39;, &#39;count&#39;: &#39;10804&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-19.jsonl&#39;, &#39;date&#39;: &#39;2020-01-19&#39;, &#39;count&#39;: &#39;10925&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-20.jsonl&#39;, &#39;date&#39;: &#39;2020-01-20&#39;, &#39;count&#39;: &#39;19948&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-21.jsonl&#39;, &#39;date&#39;: &#39;2020-01-21&#39;, &#39;count&#39;: &#39;21930&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-22.jsonl&#39;, &#39;date&#39;: &#39;2020-01-22&#39;, &#39;count&#39;: &#39;21068&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-23.jsonl&#39;, &#39;date&#39;: &#39;2020-01-23&#39;, &#39;count&#39;: &#39;20788&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-24.jsonl&#39;, &#39;date&#39;: &#39;2020-01-24&#39;, &#39;count&#39;: &#39;16844&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-25.jsonl&#39;, &#39;date&#39;: &#39;2020-01-25&#39;, &#39;count&#39;: &#39;11146&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-26.jsonl&#39;, &#39;date&#39;: &#39;2020-01-26&#39;, &#39;count&#39;: &#39;10251&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-27.jsonl&#39;, &#39;date&#39;: &#39;2020-01-27&#39;, &#39;count&#39;: &#39;20331&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-28.jsonl&#39;, &#39;date&#39;: &#39;2020-01-28&#39;, &#39;count&#39;: &#39;21281&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-29.jsonl&#39;, &#39;date&#39;: &#39;2020-01-29&#39;, &#39;count&#39;: &#39;21225&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-30.jsonl&#39;, &#39;date&#39;: &#39;2020-01-30&#39;, &#39;count&#39;: &#39;22051&#39;},
+ {&#39;name&#39;: &#39;events-2020-01-31.jsonl&#39;, &#39;date&#39;: &#39;2020-01-31&#39;, &#39;count&#39;: &#39;18093&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-01.jsonl&#39;, &#39;date&#39;: &#39;2020-02-01&#39;, &#39;count&#39;: &#39;20197&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-02.jsonl&#39;, &#39;date&#39;: &#39;2020-02-02&#39;, &#39;count&#39;: &#39;11742&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-03.jsonl&#39;, &#39;date&#39;: &#39;2020-02-03&#39;, &#39;count&#39;: &#39;20265&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-04.jsonl&#39;, &#39;date&#39;: &#39;2020-02-04&#39;, &#39;count&#39;: &#39;22734&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-05.jsonl&#39;, &#39;date&#39;: &#39;2020-02-05&#39;, &#39;count&#39;: &#39;24161&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-06.jsonl&#39;, &#39;date&#39;: &#39;2020-02-06&#39;, &#39;count&#39;: &#39;23361&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-07.jsonl&#39;, &#39;date&#39;: &#39;2020-02-07&#39;, &#39;count&#39;: &#39;22682&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-08.jsonl&#39;, &#39;date&#39;: &#39;2020-02-08&#39;, &#39;count&#39;: &#39;13200&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-09.jsonl&#39;, &#39;date&#39;: &#39;2020-02-09&#39;, &#39;count&#39;: &#39;12558&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-10.jsonl&#39;, &#39;date&#39;: &#39;2020-02-10&#39;, &#39;count&#39;: &#39;21711&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-11.jsonl&#39;, &#39;date&#39;: &#39;2020-02-11&#39;, &#39;count&#39;: &#39;24638&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-12.jsonl&#39;, &#39;date&#39;: &#39;2020-02-12&#39;, &#39;count&#39;: &#39;23316&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-13.jsonl&#39;, &#39;date&#39;: &#39;2020-02-13&#39;, &#39;count&#39;: &#39;23178&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-14.jsonl&#39;, &#39;date&#39;: &#39;2020-02-14&#39;, &#39;count&#39;: &#39;19044&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-15.jsonl&#39;, &#39;date&#39;: &#39;2020-02-15&#39;, &#39;count&#39;: &#39;12710&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-16.jsonl&#39;, &#39;date&#39;: &#39;2020-02-16&#39;, &#39;count&#39;: &#39;12211&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-17.jsonl&#39;, &#39;date&#39;: &#39;2020-02-17&#39;, &#39;count&#39;: &#39;23476&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-18.jsonl&#39;, &#39;date&#39;: &#39;2020-02-18&#39;, &#39;count&#39;: &#39;24373&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-19.jsonl&#39;, &#39;date&#39;: &#39;2020-02-19&#39;, &#39;count&#39;: &#39;23461&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-20.jsonl&#39;, &#39;date&#39;: &#39;2020-02-20&#39;, &#39;count&#39;: &#39;22204&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-21.jsonl&#39;, &#39;date&#39;: &#39;2020-02-21&#39;, &#39;count&#39;: &#39;17242&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-22.jsonl&#39;, &#39;date&#39;: &#39;2020-02-22&#39;, &#39;count&#39;: &#39;13390&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-23.jsonl&#39;, &#39;date&#39;: &#39;2020-02-23&#39;, &#39;count&#39;: &#39;12478&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-24.jsonl&#39;, &#39;date&#39;: &#39;2020-02-24&#39;, &#39;count&#39;: &#39;21419&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-25.jsonl&#39;, &#39;date&#39;: &#39;2020-02-25&#39;, &#39;count&#39;: &#39;24205&#39;},
+ {&#39;name&#39;: &#39;events-2020-02-26.jsonl&#39;, &#39;date&#39;: &#39;2020-02-26&#39;, &#39;count&#39;: &#39;8916&#39;}]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1083,26 +1164,26 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-((&#39;ipython/ipython-in-depth/master&#39;, 2381430),
- (&#39;jupyterlab/jupyterlab-demo/try.jupyter.org&#39;, 566814),
- (&#39;jupyterlab/jupyterlab-demo/master&#39;, 346572),
- (&#39;ines/spacy-io-binder/live&#39;, 230295),
- (&#39;DS-100/textbook/master&#39;, 203004),
- (&#39;binder-examples/requirements/master&#39;, 160849),
- (&#39;bokeh/bokeh-notebooks/master&#39;, 108363),
- (&#39;binder-examples/r/master&#39;, 87057),
- (&#39;QuantStack/xeus-cling/stable&#39;, 61864),
- (&#39;rationalmatter/juno-demo-notebooks/master&#39;, 60596),
- (&#39;ines/spacy-course/binder&#39;, 44965),
- (&#39;numba/numba-examples/master&#39;, 35632),
- (&#39;rasahq/docs-binder/master&#39;, 34412),
- (&#39;ELC/8fdc0f490b3058872a7014f01416dfb6/master&#39;, 26954),
- (&#39;dask/dask-examples/master&#39;, 24178),
- (&#39;binder-examples/julia-python/master&#39;, 21062),
- (&#39;wshuyi/demo-spacy-text-processing/master&#39;, 20420),
- (&#39;cs357/demos-cs357/master&#39;, 19607),
- (&#39;QISKit/qiskit-tutorial/master&#39;, 19540),
- (&#39;RasaHQ/rasa_core/master&#39;, 19342))
+((&#39;ipython/ipython-in-depth/master&#39;, 2709515),
+ (&#39;jupyterlab/jupyterlab-demo/try.jupyter.org&#39;, 769629),
+ (&#39;jupyterlab/jupyterlab-demo/master&#39;, 350468),
+ (&#39;ines/spacy-io-binder/live&#39;, 259856),
+ (&#39;DS-100/textbook/master&#39;, 211823),
+ (&#39;binder-examples/requirements/master&#39;, 209776),
+ (&#39;bokeh/bokeh-notebooks/master&#39;, 117756),
+ (&#39;binder-examples/r/master&#39;, 99131),
+ (&#39;QuantStack/xeus-cling/stable&#39;, 68588),
+ (&#39;rationalmatter/juno-demo-notebooks/master&#39;, 62409),
+ (&#39;ines/spacy-course/binder&#39;, 53196),
+ (&#39;rasahq/docs-binder/master&#39;, 40526),
+ (&#39;numba/numba-examples/master&#39;, 40368),
+ (&#39;ELC/8fdc0f490b3058872a7014f01416dfb6/master&#39;, 32409),
+ (&#39;dask/dask-examples/master&#39;, 27607),
+ (&#39;Petlja/AnalizaPodatakaGim2/master&#39;, 26672),
+ (&#39;wshuyi/demo-spacy-text-processing/master&#39;, 22740),
+ (&#39;binder-examples/demo-julia/master&#39;, 22644),
+ (&#39;binder-examples/julia-python/master&#39;, 21085),
+ (&#39;data-8/textbook/gh-pages&#39;, 20789))
 </pre></div></div>
 </div>
 </div>
@@ -1239,83 +1320,83 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>ipython/ipython-in-depth/master</th>
-      <td>2381430</td>
+      <td>2709515</td>
     </tr>
     <tr>
       <th>jupyterlab/jupyterlab-demo/try.jupyter.org</th>
-      <td>566814</td>
+      <td>769629</td>
     </tr>
     <tr>
       <th>jupyterlab/jupyterlab-demo/master</th>
-      <td>346572</td>
+      <td>350468</td>
     </tr>
     <tr>
       <th>ines/spacy-io-binder/live</th>
-      <td>230295</td>
+      <td>259856</td>
     </tr>
     <tr>
       <th>DS-100/textbook/master</th>
-      <td>203004</td>
+      <td>211823</td>
     </tr>
     <tr>
       <th>binder-examples/requirements/master</th>
-      <td>160849</td>
+      <td>209776</td>
     </tr>
     <tr>
       <th>bokeh/bokeh-notebooks/master</th>
-      <td>108363</td>
+      <td>117756</td>
     </tr>
     <tr>
       <th>binder-examples/r/master</th>
-      <td>87057</td>
+      <td>99131</td>
     </tr>
     <tr>
       <th>QuantStack/xeus-cling/stable</th>
-      <td>61864</td>
+      <td>68588</td>
     </tr>
     <tr>
       <th>rationalmatter/juno-demo-notebooks/master</th>
-      <td>60596</td>
+      <td>62409</td>
     </tr>
     <tr>
       <th>ines/spacy-course/binder</th>
-      <td>44965</td>
-    </tr>
-    <tr>
-      <th>numba/numba-examples/master</th>
-      <td>35632</td>
+      <td>53196</td>
     </tr>
     <tr>
       <th>rasahq/docs-binder/master</th>
-      <td>34412</td>
+      <td>40526</td>
+    </tr>
+    <tr>
+      <th>numba/numba-examples/master</th>
+      <td>40368</td>
     </tr>
     <tr>
       <th>ELC/8fdc0f490b3058872a7014f01416dfb6/master</th>
-      <td>26954</td>
+      <td>32409</td>
     </tr>
     <tr>
       <th>dask/dask-examples/master</th>
-      <td>24178</td>
+      <td>27607</td>
     </tr>
     <tr>
-      <th>binder-examples/julia-python/master</th>
-      <td>21062</td>
+      <th>Petlja/AnalizaPodatakaGim2/master</th>
+      <td>26672</td>
     </tr>
     <tr>
       <th>wshuyi/demo-spacy-text-processing/master</th>
-      <td>20420</td>
+      <td>22740</td>
     </tr>
     <tr>
-      <th>cs357/demos-cs357/master</th>
-      <td>19607</td>
+      <th>binder-examples/demo-julia/master</th>
+      <td>22644</td>
     </tr>
     <tr>
-      <th>QISKit/qiskit-tutorial/master</th>
-      <td>19540</td>
+      <th>binder-examples/julia-python/master</th>
+      <td>21085</td>
     </tr>
     <tr>
-      <th>RasaHQ/rasa_core/master</th>
-      <td>19342</td>
+      <th>data-8/textbook/gh-pages</th>
+      <td>20789</td>
     </tr>
   </tbody>
 </table>
@@ -1363,13 +1444,14 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-GitHub       5808717
-Gist           46506
-GitLab         20977
-Git            18929
-Zenodo           538
-Figshare         148
-Dataverse         25
+GitHub        6763798
+Gist            55961
+GitLab          24177
+Git             22493
+Zenodo            673
+Figshare          156
+Dataverse          29
+Hydroshare         23
 Name: provider, dtype: int64
 </pre></div></div>
 </div>
@@ -1415,52 +1497,52 @@ Name: provider, dtype: int64
   </thead>
   <tbody>
     <tr>
+      <th>lfortran/web/lfortran-binder/master</th>
+      <td>1526</td>
+    </tr>
+    <tr>
+      <th>JC_Bonnefoy/snt_2019/master</th>
+      <td>1516</td>
+    </tr>
+    <tr>
       <th>rruizz/inforfis/R</th>
       <td>1480</td>
     </tr>
     <tr>
-      <th>lfortran/web/lfortran-binder/master</th>
-      <td>1403</td>
+      <th>DGothrek/ipyaggrid/binder-demo</th>
+      <td>1351</td>
     </tr>
     <tr>
       <th>rruizz/inforfis/master</th>
       <td>1263</td>
     </tr>
     <tr>
-      <th>JC_Bonnefoy/snt_2019/master</th>
-      <td>1240</td>
-    </tr>
-    <tr>
-      <th>DGothrek/ipyaggrid/binder-demo</th>
-      <td>1137</td>
-    </tr>
-    <tr>
       <th>...</th>
       <td>...</td>
     </tr>
     <tr>
-      <th>jibe-b/crowdsource-science-improvement/dev</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>jdiep/master-thesis/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>janakj/geonaming/master</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>imre-piller/me-courses/master</th>
+      <th>jmduarte1/rta-workshop/master</th>
       <td>1</td>
     </tr>
     <tr>
       <th>johanneswaage/course-starter-r/binder</th>
       <td>1</td>
     </tr>
+    <tr>
+      <th>jondo2010/ridc/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>juliankappler/random-walk/master</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1337cheatcode/gitgud/master</th>
+      <td>1</td>
+    </tr>
   </tbody>
 </table>
-<p>609 rows × 1 columns</p>
+<p>711 rows × 1 columns</p>
 </div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1506,11 +1588,11 @@ Name: provider, dtype: int64
   <tbody>
     <tr>
       <th>https://git.informatik.uni-hamburg.de/mast/se1/se1-notebook/master</th>
-      <td>2324</td>
+      <td>2371</td>
     </tr>
     <tr>
       <th>https://framagit.org/debimax/cours-debimax/master</th>
-      <td>1155</td>
+      <td>1569</td>
     </tr>
     <tr>
       <th>https://git.unilim.fr/grossp01/notebooks.git/master</th>
@@ -1522,35 +1604,35 @@ Name: provider, dtype: int64
     </tr>
     <tr>
       <th>http://sss2019-gitlab.westus.cloudapp.azure.com/sss/coding-2019.git/master</th>
-      <td>730</td>
+      <td>754</td>
     </tr>
     <tr>
       <th>...</th>
       <td>...</td>
     </tr>
     <tr>
-      <th>https://gitlab.inria.fr/vdrevell/istic-robm/b45ab9de12dbf06c92d3dd5dd7b884e75dad2c35</th>
+      <th>https://gitlab.in2p3.fr/gregoire.henning/20181213124138/be21361e43c5a9a0cc5e4ccdcbb2d8a0ade74b15</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://gitlab.inria.fr/vdrevell/istic-robm/e345fd81cb6f70ba1fa4646ee80c0a619dd4feac</th>
+      <th>https://gitlab.in2p3.fr/gregoire.henning/faster-example-notebook/88f57a2412cad7c9b8713139ff69ff07131f124b</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://github.com/habimis95/hello-world.git/master</th>
+      <th>https://enzoace@bitbucket.org/enzoace/animus2.git/master</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://github.com/groznyjgrad/jptr-notes/df06a44ebab118e7812efc2de08294ea8ab3bccc</th>
+      <th>https://elmord.org/cgit/mybinder-test.git/master</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>https://gitlab.obspm.fr/kaouij/calcephpy-on-my-binder-project.git/33e039861909747842fa34c0a705bc89269038f3</th>
+      <th>https://bitbucket.org/spekpy/spekpy_release/src/master/48a001e542ad54375a6f085a09280ba7861cbb34</th>
       <td>1</td>
     </tr>
   </tbody>
 </table>
-<p>1470 rows × 1 columns</p>
+<p>1671 rows × 1 columns</p>
 </div></div>
 </div>
 <div class="nbinput nblast docutils container">

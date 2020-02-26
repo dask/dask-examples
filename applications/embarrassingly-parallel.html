@@ -1,8 +1,14 @@
 
 
+
+
+
+
+
+
+
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -17,7 +23,15 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -33,83 +47,75 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Handle Evolving Workflows" href="evolving-workflows.html" />
     <link rel="prev" title="Asynchronous Computation: Web Servers + Dask" href="async-web-server.html" />
-  <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
-
+    <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
+  
 </head>
 
 <body class="wy-body-for-nav">
 
   
+    <nav id="explore-links">
+        <a href="https://docs.dask.org/">
+        <img class="caption" src="../_static/images/dask-horizontal-white.svg"/>
+        </a>
 
-<nav id="explore-links">
-  <a href="https://docs.dask.org/">
-    <img class="caption" src="../_static/images/dask-horizontal-white.svg"/>
-  </a>
+        <ul>
+        <li>
+            <a>Get Started</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
+            <li><a href="https://examples.dask.org"> Examples </a></li>
+            <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
+            <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
+            <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
+            <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
+            <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
+            <li><a href="https://dask.org/slides"> Slides </a></li>
+            </ul>
+        </li>
 
-  <ul>
-    <li>
-      <a>Get Started</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
-        <li><a href="https://examples.dask.org"> Examples </a></li>
-        <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
-        <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
-        <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
-        <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
-        <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
-        <li><a href="https://dask.org/slides"> Slides </a></li>
-      </ul>
-    </li>
+        <li>
+            <a href="">Algorithms</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
+            <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
+            <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
+            <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
+            <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
+            <li><a href="http://ml.dask.org">Machine Learning</a></li>
+            <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
+            </ul>
+        </li>
 
-    <li>
-      <a href="">Algorithms</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
-        <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
-        <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
-        <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
-        <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
-        <li><a href="http://ml.dask.org">Machine Learning</a></li>
-        <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
-      </ul>
-    </li>
+        <li>
+            <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+            <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
+            <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
+            <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
+            <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
+            </ul>
+        </li>
 
-    <li>
-      <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
-        <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
-        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
-      </ul>
-    </li>
+        <li>
+            <a>Community</a>
+            <ul>
+            <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
+            <li><a href="https://github.com/dask">Github</a></li>
+            <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
+            <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
+            <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
+            </ul>
+        </li>
+        </ul>
 
-    <li>
-      <a>Community</a>
-      <ul>
-        <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
-        <li><a href="https://github.com/dask">Github</a></li>
-        <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
-        <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
-        <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-      </ul>
-    </li>
-  </ul>
-
-</nav>
-
-
+    </nav>
+  
   <div class="wy-grid-for-nav">
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
@@ -118,7 +124,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Dask Examples
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Dask Examples
           
 
           
@@ -141,6 +147,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -208,6 +215,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -334,8 +342,8 @@ div.nboutput.container div.prompt pre {
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
     min-width: 7ex;
-    padding-top: 0.4em;
-    padding-right: 0.4em;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
     text-align: right;
     flex: 0;
 }
@@ -359,7 +367,6 @@ div.nboutput.container div.prompt pre {
 /* input/output area */
 div.nbinput.container div.input_area,
 div.nboutput.container div.output_area {
-    padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
@@ -432,6 +439,27 @@ div.nboutput.container div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
 
 /* Some additional styling taken form the Jupyter notebook CSS */
 div.rendered_html table {
@@ -511,7 +539,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:39929</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:36189</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -559,8 +587,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 11.5 ms, sys: 5.13 ms, total: 16.6 ms
-Wall time: 757 ms
+CPU times: user 22 ms, sys: 1.88 ms, total: 23.9 ms
+Wall time: 864 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -622,38 +650,38 @@ Wall time: 757 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.141574</td>
-      <td>0.337738</td>
-      <td>0.744946</td>
-      <td>0.438828</td>
+      <td>0.254561</td>
+      <td>0.888659</td>
+      <td>0.930445</td>
+      <td>0.572494</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.355727</td>
-      <td>0.057209</td>
-      <td>0.710723</td>
-      <td>0.804221</td>
+      <td>0.285970</td>
+      <td>0.652818</td>
+      <td>0.468342</td>
+      <td>0.841014</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.357630</td>
-      <td>0.202953</td>
-      <td>0.757292</td>
-      <td>0.055347</td>
+      <td>0.206768</td>
+      <td>0.169893</td>
+      <td>0.120778</td>
+      <td>0.159618</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.996120</td>
-      <td>0.023775</td>
-      <td>0.804296</td>
-      <td>0.219125</td>
+      <td>0.276217</td>
+      <td>0.909726</td>
+      <td>0.500391</td>
+      <td>0.378567</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.410975</td>
-      <td>0.279762</td>
-      <td>0.935169</td>
-      <td>0.441695</td>
+      <td>0.422747</td>
+      <td>0.706354</td>
+      <td>0.017174</td>
+      <td>0.621794</td>
     </tr>
   </tbody>
 </table>
@@ -687,8 +715,8 @@ Wall time: 757 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 146 ms, sys: 5.17 ms, total: 152 ms
-Wall time: 5.96 s
+CPU times: user 135 ms, sys: 16.1 ms, total: 151 ms
+Wall time: 5.09 s
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -706,16 +734,16 @@ Wall time: 5.96 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[1.6630857798118939,
- 1.9278804266903438,
- 1.3732217463527592,
- 2.0433158682575243,
- 2.067601244769225,
- 1.879681963134857,
- 1.7924130889494534,
- 1.606796807207892,
- 2.888102580849728,
- 2.0333078765522608]
+[2.6461585971282293,
+ 2.2481437667299957,
+ 0.6570569210463371,
+ 2.064901220499952,
+ 1.7680682106363155,
+ 1.5834409939440004,
+ 2.0370191661951282,
+ 2.304286169307271,
+ 2.8446658823160993,
+ 2.0880054349336454]
 </pre></div></div>
 </div>
 <p>Note that this is not very clever as we can easily parallelize code.</p>
@@ -753,8 +781,8 @@ Wall time: 5.96 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.01 ms, sys: 0 ns, total: 1.01 ms
-Wall time: 857 µs
+CPU times: user 1.14 ms, sys: 0 ns, total: 1.14 ms
+Wall time: 921 µs
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -772,7 +800,7 @@ Wall time: 857 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Delayed(&#39;costly_simulation-bba6c369-9a6b-4603-9089-18ea7faf42ce&#39;)
+Delayed(&#39;costly_simulation-b0a649df-9744-4abe-a70a-153391c8e2f7&#39;)
 </pre></div></div>
 </div>
 </div>
@@ -794,8 +822,8 @@ Delayed(&#39;costly_simulation-bba6c369-9a6b-4603-9089-18ea7faf42ce&#39;)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 59.3 ms, sys: 99 µs, total: 59.4 ms
-Wall time: 1.66 s
+CPU times: user 56.4 ms, sys: 2.75 ms, total: 59.2 ms
+Wall time: 1.41 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -804,16 +832,16 @@ Wall time: 1.66 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-(1.6630857798118939,
- 1.9278804266903438,
- 1.3732217463527592,
- 2.0433158682575243,
- 2.067601244769225,
- 1.879681963134857,
- 1.7924130889494534,
- 1.606796807207892,
- 2.888102580849728,
- 2.0333078765522608)
+(2.6461585971282293,
+ 2.2481437667299957,
+ 0.6570569210463371,
+ 2.064901220499952,
+ 1.7680682106363155,
+ 1.5834409939440004,
+ 2.0370191661951282,
+ 2.304286169307271,
+ 2.8446658823160993,
+ 2.0880054349336454)
 </pre></div></div>
 </div>
 <p>Notice that this was faster than running these same computations sequentially with a for loop.</p>
@@ -863,11 +891,11 @@ Wall time: 1.66 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-(1.6630857798118939,
- 1.9278804266903438,
- 1.3732217463527592,
- 2.0433158682575243,
- 2.067601244769225)
+(2.6461585971282293,
+ 2.2481437667299957,
+ 0.6570569210463371,
+ 2.064901220499952,
+ 1.7680682106363155)
 </pre></div></div>
 </div>
 </div>
@@ -904,11 +932,11 @@ Wall time: 1.66 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[1.6630857798118939,
- 1.9278804266903438,
- 1.3732217463527592,
- 2.0433158682575243,
- 2.067601244769225]
+[2.6461585971282293,
+ 2.2481437667299957,
+ 0.6570569210463371,
+ 2.064901220499952,
+ 1.7680682106363155]
 </pre></div></div>
 </div>
 <p>But the code above can be run in fewer lines with <code class="docutils literal notranslate"><span class="pre">client.map()</span></code> function, allowing to call a given function on a list of parameters.</p>
@@ -957,7 +985,7 @@ Wall time: 1.66 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-1.6630857798118939
+2.6461585971282293
 </pre></div></div>
 </div>
 <p>We encourage you to watch the <a class="reference external" href="../proxy/8787/status">dashboard’s status page</a> to watch on going computation.</p>
@@ -1010,44 +1038,44 @@ Wall time: 1.66 s
   </thead>
   <tbody>
     <tr>
-      <th>123</th>
-      <td>0.244190</td>
-      <td>0.977402</td>
-      <td>0.023683</td>
-      <td>0.708348</td>
-      <td>1.953623</td>
+      <th>32</th>
+      <td>0.656598</td>
+      <td>0.950311</td>
+      <td>0.376138</td>
+      <td>0.586105</td>
+      <td>2.569152</td>
     </tr>
     <tr>
-      <th>431</th>
-      <td>0.343291</td>
-      <td>0.942047</td>
-      <td>0.586653</td>
-      <td>0.464502</td>
-      <td>2.336492</td>
+      <th>198</th>
+      <td>0.768834</td>
+      <td>0.473811</td>
+      <td>0.694895</td>
+      <td>0.109280</td>
+      <td>2.046820</td>
     </tr>
     <tr>
-      <th>359</th>
-      <td>0.509708</td>
-      <td>0.500566</td>
-      <td>0.899195</td>
-      <td>0.023474</td>
-      <td>1.932943</td>
+      <th>252</th>
+      <td>0.741723</td>
+      <td>0.598884</td>
+      <td>0.564772</td>
+      <td>0.044447</td>
+      <td>1.949827</td>
     </tr>
     <tr>
-      <th>336</th>
-      <td>0.224454</td>
-      <td>0.237333</td>
-      <td>0.325067</td>
-      <td>0.073789</td>
-      <td>0.860643</td>
+      <th>437</th>
+      <td>0.474068</td>
+      <td>0.773980</td>
+      <td>0.928090</td>
+      <td>0.714567</td>
+      <td>2.890706</td>
     </tr>
     <tr>
-      <th>367</th>
-      <td>0.650300</td>
-      <td>0.670536</td>
-      <td>0.654231</td>
-      <td>0.601543</td>
-      <td>2.576610</td>
+      <th>348</th>
+      <td>0.390036</td>
+      <td>0.120036</td>
+      <td>0.151840</td>
+      <td>0.713124</td>
+      <td>1.375036</td>
     </tr>
   </tbody>
 </table>
@@ -1070,7 +1098,7 @@ Wall time: 1.66 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f5a6c6a8dd0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f7b4da10410&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1095,7 +1123,7 @@ Wall time: 1.66 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2.0384899169806143
+1.9969464900201765
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1114,7 +1142,7 @@ Wall time: 1.66 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-274
+249
 </pre></div></div>
 </div>
 </div>
@@ -1148,8 +1176,8 @@ many tasks</a>.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 795 ms, sys: 92.9 ms, total: 887 ms
-Wall time: 9.31 s
+CPU times: user 908 ms, sys: 111 ms, total: 1.02 s
+Wall time: 8.28 s
 </pre></div></div>
 </div>
 <p>Looking on Dashboard here, you should see only 100 tasks to run instead of 500, each taking 5x more time in average, because each one is actually calling our function 5 times.</p>

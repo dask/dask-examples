@@ -1,8 +1,14 @@
 
 
+
+
+
+
+
+
+
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -17,7 +23,15 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -33,83 +47,75 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Image Processing" href="image-processing.html" />
     <link rel="prev" title="Embarrassingly parallel Workloads" href="embarrassingly-parallel.html" />
-  <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
-
+    <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
+  
 </head>
 
 <body class="wy-body-for-nav">
 
   
+    <nav id="explore-links">
+        <a href="https://docs.dask.org/">
+        <img class="caption" src="../_static/images/dask-horizontal-white.svg"/>
+        </a>
 
-<nav id="explore-links">
-  <a href="https://docs.dask.org/">
-    <img class="caption" src="../_static/images/dask-horizontal-white.svg"/>
-  </a>
+        <ul>
+        <li>
+            <a>Get Started</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
+            <li><a href="https://examples.dask.org"> Examples </a></li>
+            <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
+            <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
+            <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
+            <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
+            <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
+            <li><a href="https://dask.org/slides"> Slides </a></li>
+            </ul>
+        </li>
 
-  <ul>
-    <li>
-      <a>Get Started</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
-        <li><a href="https://examples.dask.org"> Examples </a></li>
-        <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
-        <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
-        <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
-        <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
-        <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
-        <li><a href="https://dask.org/slides"> Slides </a></li>
-      </ul>
-    </li>
+        <li>
+            <a href="">Algorithms</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
+            <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
+            <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
+            <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
+            <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
+            <li><a href="http://ml.dask.org">Machine Learning</a></li>
+            <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
+            </ul>
+        </li>
 
-    <li>
-      <a href="">Algorithms</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
-        <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
-        <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
-        <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
-        <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
-        <li><a href="http://ml.dask.org">Machine Learning</a></li>
-        <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
-      </ul>
-    </li>
+        <li>
+            <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+            <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
+            <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
+            <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
+            <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
+            </ul>
+        </li>
 
-    <li>
-      <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
-        <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
-        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
-      </ul>
-    </li>
+        <li>
+            <a>Community</a>
+            <ul>
+            <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
+            <li><a href="https://github.com/dask">Github</a></li>
+            <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
+            <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
+            <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
+            </ul>
+        </li>
+        </ul>
 
-    <li>
-      <a>Community</a>
-      <ul>
-        <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
-        <li><a href="https://github.com/dask">Github</a></li>
-        <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
-        <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
-        <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-      </ul>
-    </li>
-  </ul>
-
-</nav>
-
-
+    </nav>
+  
   <div class="wy-grid-for-nav">
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
@@ -118,7 +124,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Dask Examples
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Dask Examples
           
 
           
@@ -141,6 +147,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -188,7 +195,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#0:-Sequential-code">0: Sequential code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Start-Dask-Client">Start Dask Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#1:-Use-as_completed">1: Use as_completed</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#2:-Use-async/await-to-handle-each-locally">2: Use async/await to handle each locally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#2:-Use-async/await-to-handle-single-file-processing-locally">2: Use async/await to handle single file processing locally</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#3:-Submit-tasks-from-tasks">3: Submit tasks from tasks</a></li>
 </ul>
 </li>
@@ -205,6 +212,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -331,8 +339,8 @@ div.nboutput.container div.prompt pre {
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
     min-width: 7ex;
-    padding-top: 0.4em;
-    padding-right: 0.4em;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
     text-align: right;
     flex: 0;
 }
@@ -356,7 +364,6 @@ div.nboutput.container div.prompt pre {
 /* input/output area */
 div.nbinput.container div.input_area,
 div.nboutput.container div.output_area {
-    padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
@@ -430,6 +437,27 @@ div.nboutput.container div.output_area.stderr {
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
 
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
 /* Some additional styling taken form the Jupyter notebook CSS */
 div.rendered_html table {
   border: none;
@@ -471,7 +499,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Handle-Evolving-Workflows">
 <h1>Handle Evolving Workflows<a class="headerlink" href="#Handle-Evolving-Workflows" title="Permalink to this headline">¶</a></h1>
 <p>For some workflows we don’t know the extent of the computation at the outset. We need to do some computation in order to figure out the rest of the computation that we need to do. The computation grows and evolves as we do more work.</p>
-<p>As an example, consider a situuation where you need to read many files and then based on the contents of those files, fire off additional work. You would like to read the files in parallel, and then then within each file expose more parallelism.</p>
+<p>As an example, consider a situation where you need to read many files and then based on the contents of those files, fire off additional work. You would like to read the files in parallel, and then within each file expose more parallelism.</p>
 <p>This example goes through three ways to handle this situation using <a class="reference external" href="https://docs.dask.org/en/latest/futures.html">Dask Futures</a></p>
 <ol class="arabic simple">
 <li><p>Using <code class="docutils literal notranslate"><span class="pre">as_completed</span></code></p></li>
@@ -545,8 +573,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 0 ns, sys: 5.61 ms, total: 5.61 ms
-Wall time: 14.2 s
+CPU times: user 736 µs, sys: 4.12 ms, total: 4.86 ms
+Wall time: 10.8 s
 </pre></div></div>
 </div>
 </div>
@@ -575,8 +603,8 @@ Wall time: 14.2 s
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.0.162/10481/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.0.162/10481/1:8787/status' target='_blank'>http://10.20.0.162/10481/1:8787/status</a>
+  <li><b>Scheduler: </b>inproc://10.20.255.71/10216/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.255.71:8787/status' target='_blank'>http://10.20.255.71:8787/status</a>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -634,8 +662,8 @@ Wall time: 14.2 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 300 ms, sys: 23.6 ms, total: 324 ms
-Wall time: 2.5 s
+CPU times: user 304 ms, sys: 44.3 ms, total: 349 ms
+Wall time: 2.71 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -644,76 +672,73 @@ Wall time: 2.5 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[1.4893288437634804,
- 1.861926877156955,
- 1.6502015263003575,
- 1.2075610971384902,
- 1.4438610092882025,
- 1.7574540731917403,
- 1.9475063358440232,
- 1.5664258160874864,
- 1.065979444234948,
- 1.8863874892806431,
- 1.7127808427331943,
- 1.6864763690264666,
- 1.608940976442193,
- 1.8143249775266441,
- 1.9805928917250497,
- 1.272605360668817,
- 1.1495409493082622,
- 1.6650117246072202,
- 1.7640397364613305,
- 1.2325152035069191,
- 1.0344089751102907,
- 1.137820800938824,
- 1.8074735934720323,
- 1.0243212027790087,
- 1.648520511853865,
- 1.5508822305298935,
- 1.6629904267760456,
- 1.4730792346768409,
- 1.6471032404916,
- 1.5531220949679316,
- 1.0432775257190219,
- 1.9191405318741304,
- 1.0355161072350605,
- 1.7822303480762187,
- 1.7698566529153008,
- 1.4684815953957473,
- 1.8309740892059219,
- 1.0724867548062202,
- 1.0537630905134603,
- 1.9035586896848127,
- 1.0468110997603894,
- 1.9417872393106759,
- 1.5522989192564733,
- 1.93798265803769,
- 1.0514805095447564,
- 1.1551953256238319,
- 1.449807447121818,
- 1.7391359215488458,
- 1.8612348060249382,
- 1.6896142669949015,
- 1.1803629660841866,
- 1.7258844914079927,
- 1.2786921812995333,
- 1.6036580533696132,
- 1.079315749193116,
- 1.7972788516784408,
- 1.3884067760346,
- 1.273570057087313,
- 1.2808442162671114,
- 1.6498157784798195,
- 1.9691621730105333,
- 1.341213511361794,
- 1.9933387227061308,
- 1.1640826682859666,
- 1.2340998069724836]
+[1.7219118881892057,
+ 1.0376439415761096,
+ 1.2745297433453466,
+ 1.8835011943171485,
+ 1.6901232276156624,
+ 1.6734372375678963,
+ 1.2899846569627016,
+ 1.6515591043747437,
+ 1.4196442260395687,
+ 1.5895134785909621,
+ 1.119034630310544,
+ 1.0247605679022878,
+ 1.5772781419999897,
+ 1.3036652531129103,
+ 1.0100728759456814,
+ 1.045416114571532,
+ 1.8044512144809413,
+ 1.9916681367599085,
+ 1.1097541690006607,
+ 1.9451161223940594,
+ 1.5456209220896013,
+ 1.703298295990468,
+ 1.499621609881122,
+ 1.0923111767681006,
+ 1.1400308006481485,
+ 1.6355727288664916,
+ 1.4002326526025612,
+ 1.0078153869643007,
+ 1.9701410819761709,
+ 1.0132088131317647,
+ 1.6732307092250316,
+ 1.6569605457055354,
+ 1.0795268044498907,
+ 1.594874261204069,
+ 1.19285690856189,
+ 1.9096543170506945,
+ 1.3750418220872795,
+ 1.6041316772327077,
+ 1.606692036144942,
+ 1.2689280252304378,
+ 1.8701456582622806,
+ 1.925082462230103,
+ 1.9764466227876403,
+ 1.4237628707792382,
+ 1.1896370783892842,
+ 1.0659152651457626,
+ 1.6069051594757544,
+ 1.213923643323088,
+ 1.2292156097562223,
+ 1.2092782901157637,
+ 1.2803619090415839,
+ 1.5657273278623194,
+ 1.2871668764808906,
+ 1.3162979358704239,
+ 1.2161859505989265,
+ 1.0146766284315587,
+ 1.0093623584260363,
+ 1.5026800297860354,
+ 1.962667296278008,
+ 1.9754897241664422,
+ 1.9888772608248417,
+ 1.1135171325460953]
 </pre></div></div>
 </div>
 </div>
-<div class="section" id="2:-Use-async/await-to-handle-each-locally">
-<h2>2: Use async/await to handle each locally<a class="headerlink" href="#2:-Use-async/await-to-handle-each-locally" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="2:-Use-async/await-to-handle-single-file-processing-locally">
+<h2>2: Use async/await to handle single file processing locally<a class="headerlink" href="#2:-Use-async/await-to-handle-single-file-processing-locally" title="Permalink to this headline">¶</a></h2>
 <p>We can also handle the concurrency here within our local process. This requires you to understand async/await syntax, but is generally powerful and arguably simpler than the <code class="docutils literal notranslate"><span class="pre">as_completed</span></code> approach above.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -763,63 +788,57 @@ Wall time: 2.5 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[1.9988372415488924,
- 1.9946408573252457,
- 1.813046381116371,
- 1.142716437355371,
- 1.1595525621215845,
- 1.1340071183641873,
- 1.0836374733809566,
- 1.3229117570146978,
- 1.5404029179029468,
- 1.585138605575428,
- 1.5597750419404899,
- 1.7071946423125168,
- 1.5916065950385105,
- 1.642134663620981,
- 1.6660255348351098,
- 1.2799292408344138,
- 1.1763042643130048,
- 1.7231764822050373,
- 1.7633825223928064,
- 1.685620522329104,
- 1.811975565977363,
- 1.6223662152785607,
- 1.4180858461849186,
- 1.2638429896413046,
- 1.7235397756438111,
- 1.5344174171387244,
- 1.17752828973572,
- 1.0658232493083708,
- 1.6094073929911374,
- 1.9172982340214388,
- 1.424562743746382,
- 1.7728296578549512,
- 1.97490133447578,
- 1.6180461004104925,
- 1.6489452797390975,
- 1.209977727458647,
- 1.2909781986142979,
- 1.283963531105666,
- 1.7901865432790167,
- 1.1995944396292137,
- 1.1706823185117337,
- 1.33638526256059,
- 1.39473596352558,
- 1.5858667542606972,
- 1.4278139435357837,
- 1.9725184725063687,
- 1.4000653240923802,
- 1.753084134170177,
- 1.9200971441640573,
- 1.4788255758060933,
- 1.3040815934896486,
- 1.008968792250807,
- 1.2568019474568417,
- 1.8175452594510095,
- 1.3294256317125108,
- 1.2909873768784574,
- 1.1620845092654537]
+[1.0210090519414365,
+ 1.9326103690258387,
+ 1.1083122471866134,
+ 1.866365801388267,
+ 1.5623946581128239,
+ 1.2304365909365833,
+ 1.2305939990996178,
+ 1.4277816350735657,
+ 1.695717550873457,
+ 1.0423835230339757,
+ 1.363474341179884,
+ 1.6664504618361209,
+ 1.5932890999748706,
+ 1.518261720195059,
+ 1.3417851731316044,
+ 1.6181475021932905,
+ 1.289597576501881,
+ 1.5151984995099117,
+ 1.5440567402131617,
+ 1.940043019464449,
+ 1.032202501813298,
+ 1.510990374346135,
+ 1.3365934165588063,
+ 1.7498341533940565,
+ 1.158657159458893,
+ 1.7045175493097418,
+ 1.1280964449201818,
+ 1.6117085891314238,
+ 1.6104262523654302,
+ 1.2898474735994794,
+ 1.8515422029007764,
+ 1.1009431789921282,
+ 1.5075366069201022,
+ 1.506368131788884,
+ 1.1752857224532711,
+ 1.9818426266040854,
+ 1.8956327686733423,
+ 1.4226742839702802,
+ 1.8272158407891528,
+ 1.2889878704801023,
+ 1.6135029105387422,
+ 1.8298250872434965,
+ 1.0756719708043523,
+ 1.2085202358962879,
+ 1.8508634205119416,
+ 1.4957280723888018,
+ 1.6840855584386185,
+ 1.0086911366229883,
+ 1.4027988628880472,
+ 1.8315026936398129,
+ 1.9263082222266674]
 </pre></div></div>
 </div>
 </div>
@@ -855,8 +874,8 @@ Wall time: 2.5 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 201 ms, sys: 34.1 ms, total: 236 ms
-Wall time: 2.52 s
+CPU times: user 266 ms, sys: 16.2 ms, total: 282 ms
+Wall time: 2.46 s
 </pre></div></div>
 </div>
 </div>

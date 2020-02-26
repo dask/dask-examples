@@ -1,8 +1,14 @@
 
 
+
+
+
+
+
+
+
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -17,7 +23,15 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -33,83 +47,75 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Scale XGBoost" href="xgboost.html" />
     <link rel="prev" title="Text Vectorization Pipeline" href="text-vectorization.html" />
-  <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
-
+    <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
+  
 </head>
 
 <body class="wy-body-for-nav">
 
   
+    <nav id="explore-links">
+        <a href="https://docs.dask.org/">
+        <img class="caption" src="../_static/images/dask-horizontal-white.svg"/>
+        </a>
 
-<nav id="explore-links">
-  <a href="https://docs.dask.org/">
-    <img class="caption" src="../_static/images/dask-horizontal-white.svg"/>
-  </a>
+        <ul>
+        <li>
+            <a>Get Started</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
+            <li><a href="https://examples.dask.org"> Examples </a></li>
+            <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
+            <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
+            <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
+            <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
+            <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
+            <li><a href="https://dask.org/slides"> Slides </a></li>
+            </ul>
+        </li>
 
-  <ul>
-    <li>
-      <a>Get Started</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
-        <li><a href="https://examples.dask.org"> Examples </a></li>
-        <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
-        <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
-        <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
-        <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
-        <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
-        <li><a href="https://dask.org/slides"> Slides </a></li>
-      </ul>
-    </li>
+        <li>
+            <a href="">Algorithms</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
+            <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
+            <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
+            <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
+            <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
+            <li><a href="http://ml.dask.org">Machine Learning</a></li>
+            <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
+            </ul>
+        </li>
 
-    <li>
-      <a href="">Algorithms</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
-        <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
-        <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
-        <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
-        <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
-        <li><a href="http://ml.dask.org">Machine Learning</a></li>
-        <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
-      </ul>
-    </li>
+        <li>
+            <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+            <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
+            <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
+            <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
+            <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
+            </ul>
+        </li>
 
-    <li>
-      <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
-        <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
-        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
-      </ul>
-    </li>
+        <li>
+            <a>Community</a>
+            <ul>
+            <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
+            <li><a href="https://github.com/dask">Github</a></li>
+            <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
+            <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
+            <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
+            </ul>
+        </li>
+        </ul>
 
-    <li>
-      <a>Community</a>
-      <ul>
-        <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
-        <li><a href="https://github.com/dask">Github</a></li>
-        <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
-        <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
-        <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-      </ul>
-    </li>
-  </ul>
-
-</nav>
-
-
+    </nav>
+  
   <div class="wy-grid-for-nav">
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
@@ -118,7 +124,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Dask Examples
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Dask Examples
           
 
           
@@ -141,6 +147,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -214,6 +221,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -340,8 +348,8 @@ div.nboutput.container div.prompt pre {
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
     min-width: 7ex;
-    padding-top: 0.4em;
-    padding-right: 0.4em;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
     text-align: right;
     flex: 0;
 }
@@ -365,7 +373,6 @@ div.nboutput.container div.prompt pre {
 /* input/output area */
 div.nbinput.container div.input_area,
 div.nboutput.container div.output_area {
-    padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
@@ -438,6 +445,27 @@ div.nboutput.container div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
 
 /* Some additional styling taken form the Jupyter notebook CSS */
 div.rendered_html table {
@@ -537,8 +565,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.0.162/14278/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.0.162/14278/1:8787/status' target='_blank'>http://10.20.0.162/14278/1:8787/status</a>
+  <li><b>Scheduler: </b>inproc://10.20.255.71/14071/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.255.71:8787/status' target='_blank'>http://10.20.255.71:8787/status</a>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -887,8 +915,8 @@ bytes = 240.00 kB
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 6.47 s, sys: 1.03 s, total: 7.5 s
-Wall time: 6.11 s
+CPU times: user 6.52 s, sys: 1.71 s, total: 8.23 s
+Wall time: 5.87 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -941,7 +969,7 @@ HyperbandSearchCV(aggressiveness=3,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.811
+0.8556
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -959,9 +987,9 @@ HyperbandSearchCV(aggressiveness=3,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-MLPClassifier(activation=&#39;tanh&#39;, alpha=2.4231727942376005e-06, batch_size=16,
+MLPClassifier(activation=&#39;relu&#39;, alpha=0.00017999285067824765, batch_size=16,
               beta_1=0.9, beta_2=0.999, early_stopping=False, epsilon=1e-08,
-              hidden_layer_sizes=(24,), learning_rate=&#39;constant&#39;,
+              hidden_layer_sizes=(12, 6, 3, 3), learning_rate=&#39;constant&#39;,
               learning_rate_init=0.001, max_fun=15000, max_iter=200,
               momentum=0.9, n_iter_no_change=10, nesterovs_momentum=True,
               power_t=0.5, random_state=None, shuffle=True, solver=&#39;adam&#39;,
@@ -1002,107 +1030,107 @@ MLPClassifier(activation=&#39;tanh&#39;, alpha=2.4231727942376005e-06, batch_siz
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>model_id</th>
-      <th>bracket</th>
-      <th>params</th>
-      <th>param_batch_size</th>
+      <th>mean_partial_fit_time</th>
       <th>std_score_time</th>
+      <th>test_score</th>
+      <th>std_partial_fit_time</th>
+      <th>bracket</th>
+      <th>mean_score_time</th>
       <th>param_activation</th>
-      <th>rank_test_score</th>
-      <th>param_alpha</th>
       <th>param_hidden_layer_sizes</th>
       <th>partial_fit_calls</th>
-      <th>mean_partial_fit_time</th>
-      <th>std_partial_fit_time</th>
-      <th>mean_score_time</th>
-      <th>test_score</th>
+      <th>params</th>
+      <th>rank_test_score</th>
+      <th>model_id</th>
+      <th>param_alpha</th>
+      <th>param_batch_size</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>bracket=1-0</td>
+      <td>0.625181</td>
+      <td>0.015629</td>
+      <td>0.5630</td>
+      <td>0.096108</td>
       <td>1</td>
-      <td>{'hidden_layer_sizes': (24,), 'batch_size': 64...</td>
-      <td>64</td>
-      <td>0.012224</td>
+      <td>0.038935</td>
       <td>tanh</td>
-      <td>3</td>
-      <td>0.000251</td>
       <td>(24,)</td>
-      <td>2</td>
-      <td>0.795110</td>
-      <td>0.040419</td>
-      <td>0.019102</td>
-      <td>0.4862</td>
+      <td>6</td>
+      <td>{'hidden_layer_sizes': (24,), 'batch_size': 64...</td>
+      <td>1</td>
+      <td>bracket=1-0</td>
+      <td>0.000006</td>
+      <td>64</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>bracket=1-1</td>
+      <td>0.347540</td>
+      <td>0.001426</td>
+      <td>0.4984</td>
+      <td>0.080795</td>
       <td>1</td>
-      <td>{'hidden_layer_sizes': (4, 4, 4, 4, 4, 4), 'ba...</td>
-      <td>16</td>
-      <td>0.082634</td>
-      <td>tanh</td>
-      <td>1</td>
-      <td>0.000004</td>
-      <td>(4, 4, 4, 4, 4, 4)</td>
+      <td>0.032717</td>
+      <td>logistic</td>
+      <td>(6, 6, 6, 6)</td>
       <td>2</td>
-      <td>1.765807</td>
-      <td>0.122219</td>
-      <td>0.153814</td>
-      <td>0.4872</td>
+      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
+      <td>2</td>
+      <td>bracket=1-1</td>
+      <td>0.000008</td>
+      <td>256</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>bracket=1-2</td>
+      <td>0.258626</td>
+      <td>0.014286</td>
+      <td>0.4982</td>
+      <td>0.141049</td>
       <td>1</td>
-      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
-      <td>16</td>
-      <td>0.004725</td>
-      <td>tanh</td>
+      <td>0.021388</td>
+      <td>relu</td>
+      <td>(24,)</td>
       <td>2</td>
-      <td>0.000174</td>
-      <td>(6, 6, 6, 6)</td>
-      <td>2</td>
-      <td>1.392145</td>
-      <td>0.180120</td>
-      <td>0.044179</td>
-      <td>0.4866</td>
+      <td>{'hidden_layer_sizes': (24,), 'batch_size': 51...</td>
+      <td>3</td>
+      <td>bracket=1-2</td>
+      <td>0.000927</td>
+      <td>512</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>bracket=0-0</td>
+      <td>0.555719</td>
+      <td>0.007402</td>
+      <td>0.8556</td>
+      <td>0.051829</td>
       <td>0</td>
-      <td>{'hidden_layer_sizes': (24,), 'batch_size': 16...</td>
-      <td>16</td>
-      <td>0.039207</td>
-      <td>tanh</td>
-      <td>1</td>
-      <td>0.000002</td>
-      <td>(24,)</td>
+      <td>0.015887</td>
+      <td>relu</td>
+      <td>(12, 6, 3, 3)</td>
       <td>8</td>
-      <td>0.252856</td>
-      <td>0.020237</td>
-      <td>0.067014</td>
-      <td>0.8110</td>
+      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
+      <td>1</td>
+      <td>bracket=0-0</td>
+      <td>0.000180</td>
+      <td>16</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>bracket=0-1</td>
+      <td>0.560006</td>
+      <td>0.012513</td>
+      <td>0.4962</td>
+      <td>0.192885</td>
       <td>0</td>
-      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
-      <td>16</td>
-      <td>0.005238</td>
-      <td>logistic</td>
-      <td>2</td>
-      <td>0.000003</td>
-      <td>(6, 6, 6, 6)</td>
+      <td>0.044816</td>
+      <td>tanh</td>
+      <td>(4, 4, 4, 4, 4, 4)</td>
       <td>3</td>
-      <td>1.360351</td>
-      <td>0.373217</td>
-      <td>0.039353</td>
-      <td>0.4886</td>
+      <td>{'hidden_layer_sizes': (4, 4, 4, 4, 4, 4), 'ba...</td>
+      <td>2</td>
+      <td>bracket=0-1</td>
+      <td>0.000001</td>
+      <td>256</td>
     </tr>
   </tbody>
 </table>
@@ -1123,7 +1151,7 @@ MLPClassifier(activation=&#39;tanh&#39;, alpha=2.4231727942376005e-06, batch_siz
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.8108
+0.8418
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1243,23 +1271,23 @@ array([1, 0, 1, ..., 1, 0, 0])
     <tr>
       <th>0</th>
       <td>bracket=0-0</td>
-      <td>{'hidden_layer_sizes': (24,), 'batch_size': 16...</td>
+      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
       <td>1</td>
-      <td>0.222000</td>
-      <td>0.5192</td>
-      <td>0.115291</td>
-      <td>1.869584</td>
+      <td>0.606622</td>
+      <td>0.5034</td>
+      <td>0.016154</td>
+      <td>0.881255</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>bracket=0-1</td>
-      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
+      <td>{'hidden_layer_sizes': (4, 4, 4, 4, 4, 4), 'ba...</td>
       <td>1</td>
-      <td>1.733568</td>
-      <td>0.4886</td>
-      <td>0.034115</td>
-      <td>1.869586</td>
+      <td>0.752892</td>
+      <td>0.4966</td>
+      <td>0.032304</td>
+      <td>0.881256</td>
       <td>0</td>
     </tr>
     <tr>
@@ -1267,32 +1295,32 @@ array([1, 0, 1, ..., 1, 0, 0])
       <td>bracket=1-0</td>
       <td>{'hidden_layer_sizes': (24,), 'batch_size': 64...</td>
       <td>1</td>
-      <td>0.754691</td>
-      <td>0.5058</td>
-      <td>0.006877</td>
-      <td>2.207405</td>
+      <td>0.589138</td>
+      <td>0.4902</td>
+      <td>0.026010</td>
+      <td>0.970287</td>
       <td>1</td>
     </tr>
     <tr>
       <th>3</th>
       <td>bracket=1-1</td>
-      <td>{'hidden_layer_sizes': (4, 4, 4, 4, 4, 4), 'ba...</td>
+      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
       <td>1</td>
-      <td>1.888026</td>
-      <td>0.4958</td>
-      <td>0.236448</td>
-      <td>2.207407</td>
+      <td>0.266745</td>
+      <td>0.4984</td>
+      <td>0.031291</td>
+      <td>0.970289</td>
       <td>1</td>
     </tr>
     <tr>
       <th>4</th>
       <td>bracket=1-2</td>
-      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
+      <td>{'hidden_layer_sizes': (24,), 'batch_size': 51...</td>
       <td>1</td>
-      <td>1.212025</td>
-      <td>0.4866</td>
-      <td>0.039454</td>
-      <td>2.207407</td>
+      <td>0.399675</td>
+      <td>0.4966</td>
+      <td>0.007102</td>
+      <td>0.970290</td>
       <td>1</td>
     </tr>
   </tbody>

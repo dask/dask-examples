@@ -1,8 +1,14 @@
 
 
+
+
+
+
+
+
+
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -17,7 +23,15 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -33,83 +47,75 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="DataFrames: Groupby" href="02-groupby.html" />
     <link rel="prev" title="Xarray with Dask Arrays" href="../xarray.html" />
-  <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
-
+    <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
+  
 </head>
 
 <body class="wy-body-for-nav">
 
   
+    <nav id="explore-links">
+        <a href="https://docs.dask.org/">
+        <img class="caption" src="../_static/images/dask-horizontal-white.svg"/>
+        </a>
 
-<nav id="explore-links">
-  <a href="https://docs.dask.org/">
-    <img class="caption" src="../_static/images/dask-horizontal-white.svg"/>
-  </a>
+        <ul>
+        <li>
+            <a>Get Started</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
+            <li><a href="https://examples.dask.org"> Examples </a></li>
+            <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
+            <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
+            <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
+            <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
+            <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
+            <li><a href="https://dask.org/slides"> Slides </a></li>
+            </ul>
+        </li>
 
-  <ul>
-    <li>
-      <a>Get Started</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
-        <li><a href="https://examples.dask.org"> Examples </a></li>
-        <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
-        <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
-        <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
-        <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
-        <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
-        <li><a href="https://dask.org/slides"> Slides </a></li>
-      </ul>
-    </li>
+        <li>
+            <a href="">Algorithms</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
+            <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
+            <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
+            <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
+            <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
+            <li><a href="http://ml.dask.org">Machine Learning</a></li>
+            <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
+            </ul>
+        </li>
 
-    <li>
-      <a href="">Algorithms</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
-        <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
-        <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
-        <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
-        <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
-        <li><a href="http://ml.dask.org">Machine Learning</a></li>
-        <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
-      </ul>
-    </li>
+        <li>
+            <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+            <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
+            <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
+            <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
+            <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
+            </ul>
+        </li>
 
-    <li>
-      <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
-        <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
-        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
-      </ul>
-    </li>
+        <li>
+            <a>Community</a>
+            <ul>
+            <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
+            <li><a href="https://github.com/dask">Github</a></li>
+            <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
+            <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
+            <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
+            </ul>
+        </li>
+        </ul>
 
-    <li>
-      <a>Community</a>
-      <ul>
-        <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
-        <li><a href="https://github.com/dask">Github</a></li>
-        <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
-        <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
-        <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-      </ul>
-    </li>
-  </ul>
-
-</nav>
-
-
+    </nav>
+  
   <div class="wy-grid-for-nav">
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
@@ -118,7 +124,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Dask Examples
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Dask Examples
           
 
           
@@ -141,6 +147,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -209,6 +216,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -335,8 +343,8 @@ div.nboutput.container div.prompt pre {
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
     min-width: 7ex;
-    padding-top: 0.4em;
-    padding-right: 0.4em;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
     text-align: right;
     flex: 0;
 }
@@ -360,7 +368,6 @@ div.nboutput.container div.prompt pre {
 /* input/output area */
 div.nbinput.container div.input_area,
 div.nboutput.container div.output_area {
-    padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
@@ -433,6 +440,27 @@ div.nboutput.container div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
 
 /* Some additional styling taken form the Jupyter notebook CSS */
 div.rendered_html table {
@@ -527,8 +555,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.0.162/12432/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.0.162/12432/1:8787/status' target='_blank'>http://10.20.0.162/12432/1:8787/status</a>
+  <li><b>Scheduler: </b>inproc://10.20.255.71/12172/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.255.71:8787/status' target='_blank'>http://10.20.255.71:8787/status</a>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -708,15 +736,15 @@ data/2000-01-10.csv
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 timestamp,id,name,x,y
-2000-01-01 00:00:00,984,Tim,0.5628552119940264,-0.8954708421012165
-2000-01-01 00:00:01,1028,Frank,0.19590086017663966,-0.37999986794495944
-2000-01-01 00:00:02,991,Hannah,-0.5239914745034737,-0.5744402370352726
-2000-01-01 00:00:03,993,Xavier,0.048311650570585174,0.6229332278241841
-2000-01-01 00:00:04,997,Ingrid,-0.5079169113806308,0.42778152877398923
-2000-01-01 00:00:05,1032,Victor,0.4812307347945848,-0.829643532910755
-2000-01-01 00:00:06,972,George,-0.9062646306927706,0.20071257476953686
-2000-01-01 00:00:07,1031,George,-0.17379265947511202,-0.18761863606595108
-2000-01-01 00:00:08,975,Dan,0.9051469536435892,0.2829555200602185
+2000-01-01 00:00:00,989,Bob,0.2119961077100505,0.26757240622918443
+2000-01-01 00:00:01,970,Ray,0.42415336472810883,0.7904127770173617
+2000-01-01 00:00:02,995,Jerry,-0.8212670156020323,0.6735260291023122
+2000-01-01 00:00:03,966,Bob,-0.621038752127522,0.2491328425640189
+2000-01-01 00:00:04,1003,George,-0.5774353282134288,0.16410508560479364
+2000-01-01 00:00:05,1048,Sarah,0.30454622481851046,-0.880542988380121
+2000-01-01 00:00:06,1064,Edith,-0.4274683459759987,-0.1851934968073079
+2000-01-01 00:00:07,1008,Alice,-0.42527671602983963,0.8609277180786004
+2000-01-01 00:00:08,982,Xavier,0.796335093559374,-0.329009851535478
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -734,15 +762,15 @@ timestamp,id,name,x,y
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 timestamp,id,name,x,y
-2000-01-30 00:00:00,988,Dan,0.6509964014077678,-0.6343116877378341
-2000-01-30 00:00:01,989,Quinn,-0.07663109520026756,-0.8274518293489848
-2000-01-30 00:00:02,979,Bob,-0.7520926462773139,0.7148393704984126
-2000-01-30 00:00:03,984,Dan,0.5290394175116311,-0.7814081974283549
-2000-01-30 00:00:04,966,Kevin,-0.734354150267813,-0.5855340174515484
-2000-01-30 00:00:05,1005,Quinn,0.9573060299892373,0.6920266189038038
-2000-01-30 00:00:06,995,Patricia,0.8875964054785555,-0.85172465886282
-2000-01-30 00:00:07,1020,Ingrid,-0.895411162853192,0.9660794917052853
-2000-01-30 00:00:08,1009,Laura,0.23681405357813823,0.6487256403642159
+2000-01-30 00:00:00,972,Wendy,0.37758568374599033,-0.9250702218333358
+2000-01-30 00:00:01,959,Dan,0.20344883817820736,-0.4661827863750707
+2000-01-30 00:00:02,1015,Kevin,0.7880079123153956,0.396586099131057
+2000-01-30 00:00:03,994,Tim,-0.2674676787385706,0.9365052868266002
+2000-01-30 00:00:04,963,George,-0.7679116716742616,-0.7839607514534053
+2000-01-30 00:00:05,1003,Edith,0.38101478549718903,-0.6448740228665886
+2000-01-30 00:00:06,956,Patricia,-0.7968974322079523,-0.039483223658898225
+2000-01-30 00:00:07,952,Victor,-0.38778788928053354,-0.8431845731665792
+2000-01-30 00:00:08,1053,Ingrid,0.15817674164156892,-0.4811113847328914
 </pre></div></div>
 </div>
 <p>We can read one file with <code class="docutils literal notranslate"><span class="pre">pandas.read_csv</span></code> or many files with <code class="docutils literal notranslate"><span class="pre">dask.dataframe.read_csv</span></code></p>
@@ -792,42 +820,42 @@ timestamp,id,name,x,y
     <tr>
       <th>0</th>
       <td>2000-01-01 00:00:00</td>
-      <td>984</td>
-      <td>Tim</td>
-      <td>0.562855</td>
-      <td>-0.895471</td>
+      <td>989</td>
+      <td>Bob</td>
+      <td>0.211996</td>
+      <td>0.267572</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2000-01-01 00:00:01</td>
-      <td>1028</td>
-      <td>Frank</td>
-      <td>0.195901</td>
-      <td>-0.380000</td>
+      <td>970</td>
+      <td>Ray</td>
+      <td>0.424153</td>
+      <td>0.790413</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2000-01-01 00:00:02</td>
-      <td>991</td>
-      <td>Hannah</td>
-      <td>-0.523991</td>
-      <td>-0.574440</td>
+      <td>995</td>
+      <td>Jerry</td>
+      <td>-0.821267</td>
+      <td>0.673526</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2000-01-01 00:00:03</td>
-      <td>993</td>
-      <td>Xavier</td>
-      <td>0.048312</td>
-      <td>0.622933</td>
+      <td>966</td>
+      <td>Bob</td>
+      <td>-0.621039</td>
+      <td>0.249133</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2000-01-01 00:00:04</td>
-      <td>997</td>
-      <td>Ingrid</td>
-      <td>-0.507917</td>
-      <td>0.427782</td>
+      <td>1003</td>
+      <td>George</td>
+      <td>-0.577435</td>
+      <td>0.164105</td>
     </tr>
   </tbody>
 </table>
@@ -973,42 +1001,42 @@ timestamp,id,name,x,y
     <tr>
       <th>0</th>
       <td>2000-01-01 00:00:00</td>
-      <td>984</td>
-      <td>Tim</td>
-      <td>0.562855</td>
-      <td>-0.895471</td>
+      <td>989</td>
+      <td>Bob</td>
+      <td>0.211996</td>
+      <td>0.267572</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2000-01-01 00:00:01</td>
-      <td>1028</td>
-      <td>Frank</td>
-      <td>0.195901</td>
-      <td>-0.380000</td>
+      <td>970</td>
+      <td>Ray</td>
+      <td>0.424153</td>
+      <td>0.790413</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2000-01-01 00:00:02</td>
-      <td>991</td>
-      <td>Hannah</td>
-      <td>-0.523991</td>
-      <td>-0.574440</td>
+      <td>995</td>
+      <td>Jerry</td>
+      <td>-0.821267</td>
+      <td>0.673526</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2000-01-01 00:00:03</td>
-      <td>993</td>
-      <td>Xavier</td>
-      <td>0.048312</td>
-      <td>0.622933</td>
+      <td>966</td>
+      <td>Bob</td>
+      <td>-0.621039</td>
+      <td>0.249133</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2000-01-01 00:00:04</td>
-      <td>997</td>
-      <td>Ingrid</td>
-      <td>-0.507917</td>
-      <td>0.427782</td>
+      <td>1003</td>
+      <td>George</td>
+      <td>-0.577435</td>
+      <td>0.164105</td>
     </tr>
   </tbody>
 </table>
@@ -1150,8 +1178,8 @@ timestamp,id,name,x,y
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 4.69 s, sys: 536 ms, total: 5.23 s
-Wall time: 3.42 s
+CPU times: user 4.84 s, sys: 582 ms, total: 5.42 s
+Wall time: 3.56 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1161,32 +1189,32 @@ Wall time: 3.42 s
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 name
-Alice      -0.001754
-Bob        -0.002218
-Charlie    -0.000052
-Dan         0.001172
-Edith       0.000410
-Frank      -0.000029
-George     -0.001307
-Hannah      0.003512
-Ingrid     -0.003541
-Jerry       0.002283
-Kevin       0.000771
-Laura      -0.000323
-Michael     0.000082
-Norbert     0.000097
-Oliver      0.001725
-Patricia    0.002653
-Quinn       0.000191
-Ray        -0.001908
-Sarah       0.001738
-Tim         0.002714
-Ursula     -0.000715
-Victor     -0.003372
-Wendy      -0.001569
-Xavier      0.001505
-Yvonne     -0.001881
-Zelda       0.000322
+Alice       0.001320
+Bob        -0.002526
+Charlie    -0.000177
+Dan         0.002305
+Edith       0.001348
+Frank       0.000589
+George      0.000941
+Hannah      0.000643
+Ingrid     -0.001965
+Jerry       0.004660
+Kevin      -0.000837
+Laura       0.003617
+Michael     0.001669
+Norbert    -0.001902
+Oliver      0.002572
+Patricia    0.000060
+Quinn       0.000858
+Ray         0.003332
+Sarah      -0.003459
+Tim         0.000614
+Ursula      0.001423
+Victor     -0.001401
+Wendy       0.000639
+Xavier      0.002753
+Yvonne     -0.000053
+Zelda      -0.000485
 Name: x, dtype: float64
 </pre></div></div>
 </div>
@@ -1348,8 +1376,8 @@ part.14.parquet   part.21.parquet  part.29.parquet  part.9.parquet
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.46 s, sys: 102 ms, total: 1.56 s
-Wall time: 1.04 s
+CPU times: user 1.51 s, sys: 146 ms, total: 1.66 s
+Wall time: 1.13 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1359,32 +1387,32 @@ Wall time: 1.04 s
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 name
-Alice      -0.001754
-Bob        -0.002218
-Charlie    -0.000052
-Dan         0.001172
-Edith       0.000410
-Frank      -0.000029
-George     -0.001307
-Hannah      0.003512
-Ingrid     -0.003541
-Jerry       0.002283
-Kevin       0.000771
-Laura      -0.000323
-Michael     0.000082
-Norbert     0.000097
-Oliver      0.001725
-Patricia    0.002653
-Quinn       0.000191
-Ray        -0.001908
-Sarah       0.001738
-Tim         0.002714
-Ursula     -0.000715
-Victor     -0.003372
-Wendy      -0.001569
-Xavier      0.001505
-Yvonne     -0.001881
-Zelda       0.000322
+Alice       0.001320
+Bob        -0.002526
+Charlie    -0.000177
+Dan         0.002305
+Edith       0.001348
+Frank       0.000589
+George      0.000941
+Hannah      0.000643
+Ingrid     -0.001965
+Jerry       0.004660
+Kevin      -0.000837
+Laura       0.003617
+Michael     0.001669
+Norbert    -0.001902
+Oliver      0.002572
+Patricia    0.000060
+Quinn       0.000858
+Ray         0.003332
+Sarah      -0.003459
+Tim         0.000614
+Ursula      0.001423
+Victor     -0.001401
+Wendy       0.000639
+Xavier      0.002753
+Yvonne     -0.000053
+Zelda      -0.000485
 Name: x, dtype: float64
 </pre></div></div>
 </div>
@@ -1408,8 +1436,8 @@ Name: x, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.28 s, sys: 75.1 ms, total: 1.36 s
-Wall time: 935 ms
+CPU times: user 1.35 s, sys: 86.3 ms, total: 1.43 s
+Wall time: 1.01 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1419,32 +1447,32 @@ Wall time: 935 ms
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 name
-Alice      -0.001754
-Bob        -0.002218
-Charlie    -0.000052
-Dan         0.001172
-Edith       0.000410
-Frank      -0.000029
-George     -0.001307
-Hannah      0.003512
-Ingrid     -0.003541
-Jerry       0.002283
-Kevin       0.000771
-Laura      -0.000323
-Michael     0.000082
-Norbert     0.000097
-Oliver      0.001725
-Patricia    0.002653
-Quinn       0.000191
-Ray        -0.001908
-Sarah       0.001738
-Tim         0.002714
-Ursula     -0.000715
-Victor     -0.003372
-Wendy      -0.001569
-Xavier      0.001505
-Yvonne     -0.001881
-Zelda       0.000322
+Alice       0.001320
+Bob        -0.002526
+Charlie    -0.000177
+Dan         0.002305
+Edith       0.001348
+Frank       0.000589
+George      0.000941
+Hannah      0.000643
+Ingrid     -0.001965
+Jerry       0.004660
+Kevin      -0.000837
+Laura       0.003617
+Michael     0.001669
+Norbert    -0.001902
+Oliver      0.002572
+Patricia    0.000060
+Quinn       0.000858
+Ray         0.003332
+Sarah      -0.003459
+Tim         0.000614
+Ursula      0.001423
+Victor     -0.001401
+Wendy       0.000639
+Xavier      0.002753
+Yvonne     -0.000053
+Zelda      -0.000485
 Name: x, dtype: float64
 </pre></div></div>
 </div>

@@ -1,8 +1,14 @@
 
 
+
+
+
+
+
+
+
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -17,7 +23,15 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -33,83 +47,75 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Reading and manipulating tiled GeoTIFF datasets" href="satellite-imagery-geotiff.html" />
     <link rel="prev" title="Image Processing" href="image-processing.html" />
-  <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
-
+    <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
+  
 </head>
 
 <body class="wy-body-for-nav">
 
   
+    <nav id="explore-links">
+        <a href="https://docs.dask.org/">
+        <img class="caption" src="../_static/images/dask-horizontal-white.svg"/>
+        </a>
 
-<nav id="explore-links">
-  <a href="https://docs.dask.org/">
-    <img class="caption" src="../_static/images/dask-horizontal-white.svg"/>
-  </a>
+        <ul>
+        <li>
+            <a>Get Started</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
+            <li><a href="https://examples.dask.org"> Examples </a></li>
+            <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
+            <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
+            <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
+            <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
+            <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
+            <li><a href="https://dask.org/slides"> Slides </a></li>
+            </ul>
+        </li>
 
-  <ul>
-    <li>
-      <a>Get Started</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
-        <li><a href="https://examples.dask.org"> Examples </a></li>
-        <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
-        <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
-        <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
-        <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
-        <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
-        <li><a href="https://dask.org/slides"> Slides </a></li>
-      </ul>
-    </li>
+        <li>
+            <a href="">Algorithms</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
+            <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
+            <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
+            <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
+            <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
+            <li><a href="http://ml.dask.org">Machine Learning</a></li>
+            <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
+            </ul>
+        </li>
 
-    <li>
-      <a href="">Algorithms</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
-        <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
-        <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
-        <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
-        <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
-        <li><a href="http://ml.dask.org">Machine Learning</a></li>
-        <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
-      </ul>
-    </li>
+        <li>
+            <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+            <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
+            <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
+            <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
+            <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
+            </ul>
+        </li>
 
-    <li>
-      <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
-        <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
-        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
-      </ul>
-    </li>
+        <li>
+            <a>Community</a>
+            <ul>
+            <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
+            <li><a href="https://github.com/dask">Github</a></li>
+            <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
+            <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
+            <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
+            </ul>
+        </li>
+        </ul>
 
-    <li>
-      <a>Community</a>
-      <ul>
-        <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
-        <li><a href="https://github.com/dask">Github</a></li>
-        <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
-        <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
-        <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-      </ul>
-    </li>
-  </ul>
-
-</nav>
-
-
+    </nav>
+  
   <div class="wy-grid-for-nav">
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
@@ -118,7 +124,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Dask Examples
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Dask Examples
           
 
           
@@ -141,6 +147,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -213,6 +220,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -339,8 +347,8 @@ div.nboutput.container div.prompt pre {
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
     min-width: 7ex;
-    padding-top: 0.4em;
-    padding-right: 0.4em;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
     text-align: right;
     flex: 0;
 }
@@ -364,7 +372,6 @@ div.nboutput.container div.prompt pre {
 /* input/output area */
 div.nbinput.container div.input_area,
 div.nboutput.container div.output_area {
-    padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
@@ -437,6 +444,27 @@ div.nboutput.container div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
 
 /* Some additional styling taken form the Jupyter notebook CSS */
 div.rendered_html table {
@@ -534,88 +562,101 @@ HCDBB5;5?</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Requirement already satisfied: imageio in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (2.6.1)
+Requirement already satisfied: imageio in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (2.8.0)
 Collecting prefect[viz]
-  Downloading https://files.pythonhosted.org/packages/cc/b6/806df5113925a342dbff2d124b82cf8103c7f9eb094b45e69abd59d0c0bc/prefect-0.8.1-py3-none-any.whl (524kB)
+  Downloading prefect-0.9.5-py3-none-any.whl (2.3 MB)
 
-Requirement already satisfied: numpy in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from imageio) (1.17.3)
-Requirement already satisfied: pillow in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from imageio) (6.2.1)
-Collecting python-slugify&lt;5.0,&gt;=1.2.6
-  Downloading https://files.pythonhosted.org/packages/92/5f/7b84a0bba8a0fdd50c046f8b57dcf179dc16237ad33446079b7c484de04c/python-slugify-4.0.0.tar.gz
-Requirement already satisfied: urllib3&gt;=1.24.3 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (1.25.7)
-Requirement already satisfied: pyyaml&lt;5.3,&gt;=3.13 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (5.2)
-Requirement already satisfied: distributed&lt;3.0,&gt;=1.26.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.9.1)
-Requirement already satisfied: requests&lt;3.0,&gt;=2.20 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.22.0)
+Requirement already satisfied: numpy in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from imageio) (1.17.5)
+Requirement already satisfied: pillow in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from imageio) (7.0.0)
 Collecting docker&lt;5.0,&gt;=3.4.1
-  Downloading https://files.pythonhosted.org/packages/cc/ca/699d4754a932787ef353a157ada74efd1ceb6d1fc0bfb7989ae1e7b33111/docker-4.1.0-py2.py3-none-any.whl (139kB)
+  Downloading docker-4.2.0-py2.py3-none-any.whl (143 kB)
+
+Requirement already satisfied: pyyaml&lt;5.4,&gt;=3.13 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (5.3)
+Requirement already satisfied: requests&lt;3.0,&gt;=2.20 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.23.0)
+Collecting marshmallow-oneofschema&lt;3.0,&gt;=2.0.0b2
+  Downloading marshmallow_oneofschema-2.0.1-py2.py3-none-any.whl (5.7 kB)
+Requirement already satisfied: dask[bag]&lt;3.0,&gt;=0.19.3 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.9.1)
+Collecting msgpack&lt;1.0,&gt;=0.6.0
+  Downloading msgpack-0.6.2-cp37-cp37m-manylinux1_x86_64.whl (243 kB)
+
+Collecting python-box&lt;5.0,&gt;=3.4.4
+  Downloading python_box-4.2.0-py3-none-any.whl (23 kB)
+Collecting tabulate&lt;1.0,&gt;=0.8.0
+  Downloading tabulate-0.8.6.tar.gz (45 kB)
+
+Collecting supervisor&lt;5.0,&gt;=4.0
+  Downloading supervisor-4.1.0-py2.py3-none-any.whl (318 kB)
 
 Collecting croniter&lt;1.0,&gt;=0.3.24
-  Downloading https://files.pythonhosted.org/packages/56/02/94e5b63bb6c287fbda8a5693f15898a2b6f56cbdfaf5a5c1c0109d18d062/croniter-0.3.31-py2.py3-none-any.whl
-Collecting pendulum&lt;3.0,&gt;=2.0.4
-  Downloading https://files.pythonhosted.org/packages/0b/db/eadff08d7a50a5a28d13efba6a029868f72b662f7cb30079f4af56a8de02/pendulum-2.0.5-cp37-cp37m-manylinux1_x86_64.whl (141kB)
+  Downloading croniter-0.3.31-py2.py3-none-any.whl (16 kB)
+Collecting marshmallow&lt;3.4.1,&gt;=3.0.0b19
+  Downloading marshmallow-3.4.0-py2.py3-none-any.whl (45 kB)
 
-Collecting marshmallow&lt;=3.2.1,&gt;=3.0.0b19
-  Downloading https://files.pythonhosted.org/packages/78/8c/aa99cd72e69ce14c754a4df752a57faffbd698b14a6fda598a3950273e99/marshmallow-3.2.1-py2.py3-none-any.whl (45kB)
-
-Collecting typing-extensions&lt;4.0,&gt;=3.6.2
-  Downloading https://files.pythonhosted.org/packages/03/92/705fe8aca27678e01bbdd7738173b8e7df0088a2202c80352f664630d638/typing_extensions-3.7.4.1-py3-none-any.whl
-Collecting toml&lt;1.0,&gt;=0.9.4
-  Downloading https://files.pythonhosted.org/packages/a2/12/ced7105d2de62fa7c8fb5fce92cc4ce66b57c95fb875e9318dba7f8c5db0/toml-0.10.0-py2.py3-none-any.whl
-Collecting supervisor&lt;5.0,&gt;=4.0
-  Downloading https://files.pythonhosted.org/packages/ca/1f/07713b0e1e34c312450878801d496bce8b9eff5ea9e70d41ff4e299b2df5/supervisor-4.1.0-py2.py3-none-any.whl (318kB)
-
-Collecting marshmallow-oneofschema&lt;3.0,&gt;=2.0.0b2
-  Downloading https://files.pythonhosted.org/packages/7a/f3/da71ec4c539b6b5e16f1988fc46d8ea3374e258ef79fb5a7d88478fb922f/marshmallow_oneofschema-2.0.1-py2.py3-none-any.whl
-Collecting tabulate&lt;1.0,&gt;=0.8.0
-  Downloading https://files.pythonhosted.org/packages/c4/41/523f6a05e6dc3329a5660f6a81254c6cd87e5cfb5b7482bae3391d86ec3a/tabulate-0.8.6.tar.gz (45kB)
-
-Requirement already satisfied: cloudpickle&lt;1.3,&gt;=0.6.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (1.2.2)
-Collecting python-box&lt;4.0,&gt;=3.4.4
-  Downloading https://files.pythonhosted.org/packages/7e/97/a8471260a7132345037804b0f2408b1dba9a7b8a58011b9f3ea3ab5e0f1d/python_box-3.4.6-py2.py3-none-any.whl
+Requirement already satisfied: distributed&lt;3.0,&gt;=1.26.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.11.0)
 Requirement already satisfied: pytz&gt;=2018.7 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2019.3)
-Requirement already satisfied: dask[bag]&lt;3.0,&gt;=0.19.3 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.9.1)
-Collecting mypy-extensions&lt;1.0,&gt;=0.4.0
-  Downloading https://files.pythonhosted.org/packages/5c/eb/975c7c080f3223a5cdaff09612f3a5221e4ba534f7039db34c35d95fa6a5/mypy_extensions-0.4.3-py2.py3-none-any.whl
-Requirement already satisfied: python-dateutil~=2.7 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.8.1)
-Requirement already satisfied: click&lt;8.0,&gt;=7.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (7.0)
+Collecting typing-extensions&lt;4.0,&gt;=3.6.2
+  Downloading typing_extensions-3.7.4.1-py3-none-any.whl (20 kB)
 Collecting typing&lt;4.0,&gt;=3.6.1
-  Downloading https://files.pythonhosted.org/packages/fe/2e/b480ee1b75e6d17d2993738670e75c1feeb9ff7f64452153cf018051cc92/typing-3.7.4.1-py3-none-any.whl
+  Downloading typing-3.7.4.1-py3-none-any.whl (25 kB)
+Requirement already satisfied: python-dateutil~=2.7 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (2.8.1)
+Requirement already satisfied: cloudpickle&lt;1.4,&gt;=0.6.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (1.3.0)
+Requirement already satisfied: click&lt;8.0,&gt;=7.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (7.0)
+Requirement already satisfied: urllib3&gt;=1.24.3 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (1.25.7)
+Collecting mypy-extensions&lt;1.0,&gt;=0.4.0
+  Downloading mypy_extensions-0.4.3-py2.py3-none-any.whl (4.5 kB)
+Collecting toml&lt;1.0,&gt;=0.9.4
+  Downloading toml-0.10.0-py2.py3-none-any.whl (25 kB)
+Collecting python-slugify&lt;5.0,&gt;=1.2.6
+  Downloading python-slugify-4.0.0.tar.gz (8.8 kB)
+Collecting pendulum&lt;3.0,&gt;=2.0.4
+  Downloading pendulum-2.0.5-cp37-cp37m-manylinux1_x86_64.whl (141 kB)
+
 Requirement already satisfied: graphviz&gt;=0.8.3; extra == &#34;viz&#34; in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from prefect[viz]) (0.13.2)
-Collecting text-unidecode&gt;=1.3
-  Downloading https://files.pythonhosted.org/packages/a6/a5/c0b6468d3824fe3fde30dbb5e1f687b291608f9473681bbf7dabbf5a87d7/text_unidecode-1.3-py2.py3-none-any.whl (78kB)
-
-Requirement already satisfied: psutil&gt;=5.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (5.6.7)
-Requirement already satisfied: tblib in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (1.6.0)
-Requirement already satisfied: setuptools in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (44.0.0.post20200102)
-Requirement already satisfied: tornado&gt;=5 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (5.1.1)
-Requirement already satisfied: sortedcontainers!=2.0.0,!=2.0.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (2.1.0)
-Requirement already satisfied: zict&gt;=0.1.3 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (1.0.0)
-Requirement already satisfied: toolz&gt;=0.7.4 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (0.10.0)
-Requirement already satisfied: msgpack in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (0.6.2)
-Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&lt;3.0,&gt;=2.20-&gt;prefect[viz]) (3.0.4)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&lt;3.0,&gt;=2.20-&gt;prefect[viz]) (2019.11.28)
-Requirement already satisfied: idna&lt;2.9,&gt;=2.5 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&lt;3.0,&gt;=2.20-&gt;prefect[viz]) (2.8)
 Collecting websocket-client&gt;=0.32.0
-  Downloading https://files.pythonhosted.org/packages/4c/5f/f61b420143ed1c8dc69f9eaec5ff1ac36109d52c80de49d66e0c36c3dfdf/websocket_client-0.57.0-py2.py3-none-any.whl (200kB)
+  Downloading websocket_client-0.57.0-py2.py3-none-any.whl (200 kB)
 
-Requirement already satisfied: six&gt;=1.4.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from docker&lt;5.0,&gt;=3.4.1-&gt;prefect[viz]) (1.13.0)
-Collecting pytzdata&gt;=2018.3
-  Downloading https://files.pythonhosted.org/packages/7f/f9/cdd39831b0465285c02ed90cfbf0db25bb951cb2a35ded0e69222375bea3/pytzdata-2019.3-py2.py3-none-any.whl (489kB)
-
+Requirement already satisfied: six&gt;=1.4.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from docker&lt;5.0,&gt;=3.4.1-&gt;prefect[viz]) (1.14.0)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&lt;3.0,&gt;=2.20-&gt;prefect[viz]) (2.9)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&lt;3.0,&gt;=2.20-&gt;prefect[viz]) (2019.11.28)
+Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests&lt;3.0,&gt;=2.20-&gt;prefect[viz]) (3.0.4)
+Requirement already satisfied: toolz&gt;=0.7.3; extra == &#34;bag&#34; in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from dask[bag]&lt;3.0,&gt;=0.19.3-&gt;prefect[viz]) (0.10.0)
 Requirement already satisfied: fsspec&gt;=0.6.0; extra == &#34;bag&#34; in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from dask[bag]&lt;3.0,&gt;=0.19.3-&gt;prefect[viz]) (0.6.2)
 Requirement already satisfied: partd&gt;=0.3.10; extra == &#34;bag&#34; in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from dask[bag]&lt;3.0,&gt;=0.19.3-&gt;prefect[viz]) (1.1.0)
-Requirement already satisfied: heapdict in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from zict&gt;=0.1.3-&gt;distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (1.0.1)
+Collecting ruamel.yaml
+  Downloading ruamel.yaml-0.16.10-py2.py3-none-any.whl (111 kB)
+
+Requirement already satisfied: setuptools in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (45.2.0.post20200209)
+Requirement already satisfied: zict&gt;=0.1.3 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (1.0.0)
+Requirement already satisfied: tornado&gt;=5; python_version &lt; &#34;3.8&#34; in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (5.1.1)
+Requirement already satisfied: tblib&gt;=1.6.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (1.6.0)
+Requirement already satisfied: psutil&gt;=5.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (5.7.0)
+Requirement already satisfied: sortedcontainers!=2.0.0,!=2.0.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (2.1.0)
+Collecting text-unidecode&gt;=1.3
+  Downloading text_unidecode-1.3-py2.py3-none-any.whl (78 kB)
+
+Collecting pytzdata&gt;=2018.3
+  Downloading pytzdata-2019.3-py2.py3-none-any.whl (489 kB)
+
 Requirement already satisfied: locket in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from partd&gt;=0.3.10; extra == &#34;bag&#34;-&gt;dask[bag]&lt;3.0,&gt;=0.19.3-&gt;prefect[viz]) (0.2.0)
-Building wheels for collected packages: python-slugify, tabulate
-  Building wheel for python-slugify (setup.py) ... - done
-  Created wheel for python-slugify: filename=python_slugify-4.0.0-py2.py3-none-any.whl size=5487 sha256=b2384b059af51e59129eced27cc1cb73490ff807b062779df333192039e6b761
-  Stored in directory: /home/travis/.cache/pip/wheels/11/94/81/312969455540cb0e6a773e5d68a73c14128bfdfd4a7969bb4f
+Collecting ruamel.yaml.clib&gt;=0.1.2; platform_python_implementation == &#34;CPython&#34; and python_version &lt; &#34;3.9&#34;
+  Downloading ruamel.yaml.clib-0.2.0-cp37-cp37m-manylinux1_x86_64.whl (547 kB)
+
+Requirement already satisfied: heapdict in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from zict&gt;=0.1.3-&gt;distributed&lt;3.0,&gt;=1.26.1-&gt;prefect[viz]) (1.0.1)
+Building wheels for collected packages: tabulate, python-slugify
   Building wheel for tabulate (setup.py) ... - done
-  Created wheel for tabulate: filename=tabulate-0.8.6-cp37-none-any.whl size=23274 sha256=125add1289b62a5af11ffe0c68be1901b6ccb52d6562c1ea64490ddc2712d178
-  Stored in directory: /home/travis/.cache/pip/wheels/9c/9b/f4/eb243fdb89676ec00588e8c54bb54360724c06e7fafe95278e
-Successfully built python-slugify tabulate
-Installing collected packages: text-unidecode, python-slugify, websocket-client, docker, croniter, pytzdata, pendulum, marshmallow, typing-extensions, toml, supervisor, marshmallow-oneofschema, tabulate, python-box, mypy-extensions, typing, prefect
-Successfully installed croniter-0.3.31 docker-4.1.0 marshmallow-3.2.1 marshmallow-oneofschema-2.0.1 mypy-extensions-0.4.3 pendulum-2.0.5 prefect-0.8.1 python-box-3.4.6 python-slugify-4.0.0 pytzdata-2019.3 supervisor-4.1.0 tabulate-0.8.6 text-unidecode-1.3 toml-0.10.0 typing-3.7.4.1 typing-extensions-3.7.4.1 websocket-client-0.57.0
+  Created wheel for tabulate: filename=tabulate-0.8.6-py3-none-any.whl size=23270 sha256=a1e84fcdddb3e203600b1cebc49ecdffbf3cd6a04477bb6103e16d3dad745550
+  Stored in directory: /home/travis/.cache/pip/wheels/09/b6/7e/08b4ee715a1239453e89a59081f0ac369a9036f232e013ecd8
+  Building wheel for python-slugify (setup.py) ... - done
+  Created wheel for python-slugify: filename=python_slugify-4.0.0-py2.py3-none-any.whl size=5486 sha256=99f64d2754a2b2c0eee91e37962a68282e63f5d61293981960cf20b69303165e
+  Stored in directory: /home/travis/.cache/pip/wheels/7c/26/30/5f3d95da00fe94d0c4a5ec5b4ffd2e1ae18545f5fa61752e52
+Successfully built tabulate python-slugify
+<span class="ansi-red-fg">ERROR: dask-xgboost 0.1.10 requires xgboost, which is not installed.</span>
+Installing collected packages: websocket-client, docker, marshmallow, marshmallow-oneofschema, msgpack, toml, ruamel.yaml.clib, ruamel.yaml, python-box, tabulate, supervisor, croniter, typing-extensions, typing, mypy-extensions, text-unidecode, python-slugify, pytzdata, pendulum, prefect
+  Attempting uninstall: msgpack
+    Found existing installation: msgpack 1.0.0
+    Uninstalling msgpack-1.0.0:
+      Successfully uninstalled msgpack-1.0.0
+Successfully installed croniter-0.3.31 docker-4.2.0 marshmallow-3.4.0 marshmallow-oneofschema-2.0.1 msgpack-0.6.2 mypy-extensions-0.4.3 pendulum-2.0.5 prefect-0.9.5 python-box-4.2.0 python-slugify-4.0.0 pytzdata-2019.3 ruamel.yaml-0.16.10 ruamel.yaml.clib-0.2.0 supervisor-4.1.0 tabulate-0.8.6 text-unidecode-1.3 toml-0.10.0 typing-3.7.4.1 typing-extensions-3.7.4.1 websocket-client-0.57.0
 </pre></div></div>
 </div>
 <div class="section" id="Extract">
@@ -799,9 +840,9 @@ on, we look in <code class="docutils literal notranslate"><span class="pre">`pre
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[2020-01-04 18:54:47,620] INFO - prefect.FlowRunner | Beginning Flow run for &#39;Image ETL&#39;
-[2020-01-04 18:54:47,623] INFO - prefect.FlowRunner | Starting flow run.
-[2020-01-04 18:54:51,408] INFO - prefect.FlowRunner | Flow run SUCCESS: all reference tasks succeeded
+[2020-02-26 13:01:44,382] INFO - prefect.FlowRunner | Beginning Flow run for &#39;Image ETL&#39;
+[2020-02-26 13:01:44,385] INFO - prefect.FlowRunner | Starting flow run.
+[2020-02-26 13:01:48,482] INFO - prefect.FlowRunner | Flow run SUCCESS: all reference tasks succeeded
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">

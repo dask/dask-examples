@@ -1,8 +1,14 @@
 
 
+
+
+
+
+
+
+
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -17,7 +23,15 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -33,83 +47,75 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ETL Pipelines with Prefect" href="prefect-etl.html" />
     <link rel="prev" title="Handle Evolving Workflows" href="evolving-workflows.html" />
-  <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
-
+    <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
+  
 </head>
 
 <body class="wy-body-for-nav">
 
   
+    <nav id="explore-links">
+        <a href="https://docs.dask.org/">
+        <img class="caption" src="../_static/images/dask-horizontal-white.svg"/>
+        </a>
 
-<nav id="explore-links">
-  <a href="https://docs.dask.org/">
-    <img class="caption" src="../_static/images/dask-horizontal-white.svg"/>
-  </a>
+        <ul>
+        <li>
+            <a>Get Started</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
+            <li><a href="https://examples.dask.org"> Examples </a></li>
+            <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
+            <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
+            <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
+            <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
+            <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
+            <li><a href="https://dask.org/slides"> Slides </a></li>
+            </ul>
+        </li>
 
-  <ul>
-    <li>
-      <a>Get Started</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
-        <li><a href="https://examples.dask.org"> Examples </a></li>
-        <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
-        <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
-        <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
-        <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
-        <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
-        <li><a href="https://dask.org/slides"> Slides </a></li>
-      </ul>
-    </li>
+        <li>
+            <a href="">Algorithms</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
+            <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
+            <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
+            <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
+            <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
+            <li><a href="http://ml.dask.org">Machine Learning</a></li>
+            <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
+            </ul>
+        </li>
 
-    <li>
-      <a href="">Algorithms</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
-        <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
-        <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
-        <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
-        <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
-        <li><a href="http://ml.dask.org">Machine Learning</a></li>
-        <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
-      </ul>
-    </li>
+        <li>
+            <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+            <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
+            <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
+            <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
+            <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
+            </ul>
+        </li>
 
-    <li>
-      <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
-        <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
-        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
-      </ul>
-    </li>
+        <li>
+            <a>Community</a>
+            <ul>
+            <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
+            <li><a href="https://github.com/dask">Github</a></li>
+            <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
+            <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
+            <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
+            </ul>
+        </li>
+        </ul>
 
-    <li>
-      <a>Community</a>
-      <ul>
-        <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
-        <li><a href="https://github.com/dask">Github</a></li>
-        <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
-        <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
-        <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-      </ul>
-    </li>
-  </ul>
-
-</nav>
-
-
+    </nav>
+  
   <div class="wy-grid-for-nav">
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
@@ -118,7 +124,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Dask Examples
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Dask Examples
           
 
           
@@ -141,6 +147,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -206,6 +213,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -332,8 +340,8 @@ div.nboutput.container div.prompt pre {
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
     min-width: 7ex;
-    padding-top: 0.4em;
-    padding-right: 0.4em;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
     text-align: right;
     flex: 0;
 }
@@ -357,7 +365,6 @@ div.nboutput.container div.prompt pre {
 /* input/output area */
 div.nbinput.container div.input_area,
 div.nboutput.container div.output_area {
-    padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
@@ -430,6 +437,27 @@ div.nboutput.container div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
 
 /* Some additional styling taken form the Jupyter notebook CSS */
 div.rendered_html table {
@@ -517,30 +545,30 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Collecting scikit-image
-  Downloading https://files.pythonhosted.org/packages/dc/48/454bf836d302465475e02bc0468b879302145b07a005174c409a5b5869c7/scikit_image-0.16.2-cp37-cp37m-manylinux1_x86_64.whl (26.5MB)
+  Downloading scikit_image-0.16.2-cp37-cp37m-manylinux1_x86_64.whl (26.5 MB)
 
-Requirement already satisfied: pillow&gt;=4.3.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from scikit-image) (6.2.1)
 Collecting networkx&gt;=2.0
-  Downloading https://files.pythonhosted.org/packages/41/8f/dd6a8e85946def36e4f2c69c84219af0fa5e832b018c970e92f2ad337e45/networkx-2.4-py3-none-any.whl (1.6MB)
+  Downloading networkx-2.4-py3-none-any.whl (1.6 MB)
 
-Requirement already satisfied: matplotlib!=3.0.0,&gt;=2.0.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from scikit-image) (3.1.2)
-Requirement already satisfied: scipy&gt;=0.19.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from scikit-image) (1.4.1)
+Requirement already satisfied: pillow&gt;=4.3.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from scikit-image) (7.0.0)
+Requirement already satisfied: matplotlib!=3.0.0,&gt;=2.0.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from scikit-image) (3.1.3)
 Collecting PyWavelets&gt;=0.4.0
-  Downloading https://files.pythonhosted.org/packages/62/bd/592c7242fdd1218a96431512e77265c50812315ef72570ace85e1cfae298/PyWavelets-1.1.1-cp37-cp37m-manylinux1_x86_64.whl (4.4MB)
+  Downloading PyWavelets-1.1.1-cp37-cp37m-manylinux1_x86_64.whl (4.4 MB)
 
+Requirement already satisfied: scipy&gt;=0.19.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from scikit-image) (1.4.1)
 Collecting imageio&gt;=2.3.0
-  Downloading https://files.pythonhosted.org/packages/1a/de/f7f985018f462ceeffada7f6e609919fbcc934acd9301929cba14bc2c24a/imageio-2.6.1-py3-none-any.whl (3.3MB)
+  Downloading imageio-2.8.0-py3-none-any.whl (3.3 MB)
 
 Requirement already satisfied: decorator&gt;=4.3.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from networkx&gt;=2.0-&gt;scikit-image) (4.4.1)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (2.4.6)
 Requirement already satisfied: python-dateutil&gt;=2.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (2.8.1)
 Requirement already satisfied: cycler&gt;=0.10 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (0.10.0)
+Requirement already satisfied: numpy&gt;=1.11 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (1.17.5)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (2.4.6)
 Requirement already satisfied: kiwisolver&gt;=1.0.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (1.1.0)
-Requirement already satisfied: numpy&gt;=1.11 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (1.17.3)
-Requirement already satisfied: six&gt;=1.5 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from python-dateutil&gt;=2.1-&gt;matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (1.13.0)
-Requirement already satisfied: setuptools in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from kiwisolver&gt;=1.0.1-&gt;matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (44.0.0.post20200102)
+Requirement already satisfied: six&gt;=1.5 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from python-dateutil&gt;=2.1-&gt;matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (1.14.0)
+Requirement already satisfied: setuptools in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from kiwisolver&gt;=1.0.1-&gt;matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (45.2.0.post20200209)
 Installing collected packages: networkx, PyWavelets, imageio, scikit-image
-Successfully installed PyWavelets-1.1.1 imageio-2.6.1 networkx-2.4 scikit-image-0.16.2
+Successfully installed PyWavelets-1.1.1 imageio-2.8.0 networkx-2.4 scikit-image-0.16.2
 </pre></div></div>
 </div>
 <p>If you are running this notebook on your own computer and not in the mybinder environment, you’ll additionally need to ensure your Python environment contains: * dask * dask-image * python-graphviz * scikit-image * matplotlib * numpy</p>
@@ -665,7 +693,7 @@ dask.array&lt;from-value, shape=(1, 512, 512, 3), dtype=uint8, chunksize=(1, 512
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f9ddc557990&gt;
+&lt;matplotlib.image.AxesImage at 0x7f25ed5e8390&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -927,7 +955,7 @@ dask.array&lt;add, shape=(4, 256, 256), dtype=float64, chunksize=(1, 256, 256), 
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f9ddc119c90&gt;
+&lt;matplotlib.image.AxesImage at 0x7f25ec19c7d0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1035,7 +1063,7 @@ dask.array&lt;add, shape=(4, 256, 256), dtype=float64, chunksize=(1, 256, 256), 
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f9ddc041d90&gt;
+&lt;matplotlib.image.AxesImage at 0x7f25ec0bf790&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1088,7 +1116,7 @@ Number of labels: 78
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f9dd47aa550&gt;
+&lt;matplotlib.image.AxesImage at 0x7f25ec033bd0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
