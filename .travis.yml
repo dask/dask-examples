@@ -30,7 +30,7 @@ install:
     - conda install -q pathlib nbconvert nbformat jupyter_client ipykernel
 
     # Install documentation dependencies
-    - pip install nbsphinx dask-sphinx-theme sphinx==2.3.1
+    - pip install nbsphinx dask-sphinx-theme sphinx
 
     # Debug info
     - conda list
@@ -38,7 +38,7 @@ install:
 script:
     - set -e
     - source activate test
-    - sphinx-build -M html . _build -vv
+    - sphinx-build -M html . _build -v
     - pip install doctr
     - doctr deploy --built-docs _build/html .
 
