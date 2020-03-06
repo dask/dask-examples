@@ -11,7 +11,7 @@ A file browser listing example notebooks is available to the left.  There are ov
 Dask dashboard plots are available to the right.  These will activate when you
 run the cells in your Jupyter notebooks that create a Dask `Client` (these are already written for you).
 
-To get started, double click on a notebook on the left, like `dataframes.ipynb`, and start running through the Jupyter notebook cells.
+To get started, double click on a notebook on the left, like `dataframe.ipynb`, and start running through the Jupyter notebook cells.
 
 Learn More
 ----------
