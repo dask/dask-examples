@@ -529,7 +529,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:43507</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:39825</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -563,6 +563,15 @@ div.rendered_html tbody tr:hover {
 <span class="n">b</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">)</span><span class="o">.</span><span class="n">to_textfiles</span><span class="p">(</span><span class="s1">&#39;data/*.json&#39;</span><span class="p">)</span>   <span class="c1"># Encode as JSON, write to disk</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.7/site-packages/fsspec/implementations/local.py:33: FutureWarning: The default value of auto_mkdir=True has been deprecated and will be changed to auto_mkdir=False by default in a future release.
+  FutureWarning,
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -600,8 +609,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 40, &#34;name&#34;: [&#34;Denisse&#34;, &#34;West&#34;], &#34;occupation&#34;: &#34;Biochemist&#34;, &#34;telephone&#34;: &#34;716.190.4454&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;778 Bonnie Brae Drive&#34;, &#34;city&#34;: &#34;Battle Creek&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;4061 1029 7295 2016&#34;, &#34;expiration-date&#34;: &#34;08/19&#34;}}
-{&#34;age&#34;: 34, &#34;name&#34;: [&#34;Tashia&#34;, &#34;Donovan&#34;], &#34;occupation&#34;: &#34;Lavatory Attendant&#34;, &#34;telephone&#34;: &#34;1-401-587-2335&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1397 Estero Thruway&#34;, &#34;city&#34;: &#34;Tifton&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;4573 5634 8917 3365&#34;, &#34;expiration-date&#34;: &#34;07/23&#34;}}
+{&#34;age&#34;: 28, &#34;name&#34;: [&#34;Reginald&#34;, &#34;Rocha&#34;], &#34;occupation&#34;: &#34;Amusement Arcade Worker&#34;, &#34;telephone&#34;: &#34;+1-(975)-805-0646&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;412 Pollock Stravenue&#34;, &#34;city&#34;: &#34;Temple&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5447 7039 8783 0808&#34;, &#34;expiration-date&#34;: &#34;11/23&#34;}}
+{&#34;age&#34;: 58, &#34;name&#34;: [&#34;Emelda&#34;, &#34;Cash&#34;], &#34;occupation&#34;: &#34;Shoe Maker&#34;, &#34;telephone&#34;: &#34;1-930-868-1341&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;40 Guy Wynd&#34;, &#34;city&#34;: &#34;Tinley Park&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;2565 2262 6349 1676&#34;, &#34;expiration-date&#34;: &#34;11/16&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -641,20 +650,20 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 40,
-  &#39;name&#39;: [&#39;Denisse&#39;, &#39;West&#39;],
-  &#39;occupation&#39;: &#39;Biochemist&#39;,
-  &#39;telephone&#39;: &#39;716.190.4454&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;778 Bonnie Brae Drive&#39;, &#39;city&#39;: &#39;Battle Creek&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4061 1029 7295 2016&#39;,
-   &#39;expiration-date&#39;: &#39;08/19&#39;}},
- {&#39;age&#39;: 34,
-  &#39;name&#39;: [&#39;Tashia&#39;, &#39;Donovan&#39;],
-  &#39;occupation&#39;: &#39;Lavatory Attendant&#39;,
-  &#39;telephone&#39;: &#39;1-401-587-2335&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1397 Estero Thruway&#39;, &#39;city&#39;: &#39;Tifton&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4573 5634 8917 3365&#39;,
-   &#39;expiration-date&#39;: &#39;07/23&#39;}})
+({&#39;age&#39;: 28,
+  &#39;name&#39;: [&#39;Reginald&#39;, &#39;Rocha&#39;],
+  &#39;occupation&#39;: &#39;Amusement Arcade Worker&#39;,
+  &#39;telephone&#39;: &#39;+1-(975)-805-0646&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;412 Pollock Stravenue&#39;, &#39;city&#39;: &#39;Temple&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5447 7039 8783 0808&#39;,
+   &#39;expiration-date&#39;: &#39;11/23&#39;}},
+ {&#39;age&#39;: 58,
+  &#39;name&#39;: [&#39;Emelda&#39;, &#39;Cash&#39;],
+  &#39;occupation&#39;: &#39;Shoe Maker&#39;,
+  &#39;telephone&#39;: &#39;1-930-868-1341&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;40 Guy Wynd&#39;, &#39;city&#39;: &#39;Tinley Park&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2565 2262 6349 1676&#39;,
+   &#39;expiration-date&#39;: &#39;11/16&#39;}})
 </pre></div></div>
 </div>
 </div>
@@ -676,20 +685,19 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 40,
-  &#39;name&#39;: [&#39;Denisse&#39;, &#39;West&#39;],
-  &#39;occupation&#39;: &#39;Biochemist&#39;,
-  &#39;telephone&#39;: &#39;716.190.4454&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;778 Bonnie Brae Drive&#39;, &#39;city&#39;: &#39;Battle Creek&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4061 1029 7295 2016&#39;,
-   &#39;expiration-date&#39;: &#39;08/19&#39;}},
- {&#39;age&#39;: 34,
-  &#39;name&#39;: [&#39;Tashia&#39;, &#39;Donovan&#39;],
-  &#39;occupation&#39;: &#39;Lavatory Attendant&#39;,
-  &#39;telephone&#39;: &#39;1-401-587-2335&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1397 Estero Thruway&#39;, &#39;city&#39;: &#39;Tifton&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4573 5634 8917 3365&#39;,
-   &#39;expiration-date&#39;: &#39;07/23&#39;}})
+({&#39;age&#39;: 58,
+  &#39;name&#39;: [&#39;Emelda&#39;, &#39;Cash&#39;],
+  &#39;occupation&#39;: &#39;Shoe Maker&#39;,
+  &#39;telephone&#39;: &#39;1-930-868-1341&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;40 Guy Wynd&#39;, &#39;city&#39;: &#39;Tinley Park&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2565 2262 6349 1676&#39;,
+   &#39;expiration-date&#39;: &#39;11/16&#39;}},
+ {&#39;age&#39;: 47,
+  &#39;name&#39;: [&#39;Porsche&#39;, &#39;Cervantes&#39;],
+  &#39;occupation&#39;: &#39;Producer&#39;,
+  &#39;telephone&#39;: &#39;822.066.4939&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1150 Albion Street&#39;, &#39;city&#39;: &#39;Cicero&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3735 849041 73624&#39;, &#39;expiration-date&#39;: &#39;12/21&#39;}})
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -707,7 +715,7 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-(&#39;Biochemist&#39;, &#39;Lavatory Attendant&#39;)
+(&#39;Amusement Arcade Worker&#39;, &#39;Shoe Maker&#39;)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -770,16 +778,16 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[(&#39;Counsellor&#39;, 16),
- (&#39;Minicab Driver&#39;, 15),
- (&#39;Building Foreman&#39;, 15),
- (&#39;Instrument Supervisor&#39;, 14),
- (&#39;Systems Manager&#39;, 14),
- (&#39;Housing Assistant&#39;, 14),
- (&#39;Foundry Worker&#39;, 13),
- (&#39;Sales Support&#39;, 13),
- (&#39;Theatre Technician&#39;, 13),
- (&#39;Youth Worker&#39;, 13)]
+[(&#39;Royal Marine&#39;, 16),
+ (&#39;Gardener&#39;, 15),
+ (&#39;Sound Engineer&#39;, 15),
+ (&#39;Radiologist&#39;, 14),
+ (&#39;Cabinet Maker&#39;, 13),
+ (&#39;Florist&#39;, 13),
+ (&#39;Tennis Coach&#39;, 13),
+ (&#39;Payroll Clerk&#39;, 13),
+ (&#39;Patent Attorney&#39;, 13),
+ (&#39;Playgroup Leader&#39;, 13)]
 </pre></div></div>
 </div>
 </div>
@@ -836,13 +844,13 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 40,
-  &#39;name&#39;: [&#39;Denisse&#39;, &#39;West&#39;],
-  &#39;occupation&#39;: &#39;Biochemist&#39;,
-  &#39;telephone&#39;: &#39;716.190.4454&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;778 Bonnie Brae Drive&#39;, &#39;city&#39;: &#39;Battle Creek&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4061 1029 7295 2016&#39;,
-   &#39;expiration-date&#39;: &#39;08/19&#39;}},)
+({&#39;age&#39;: 28,
+  &#39;name&#39;: [&#39;Reginald&#39;, &#39;Rocha&#39;],
+  &#39;occupation&#39;: &#39;Amusement Arcade Worker&#39;,
+  &#39;telephone&#39;: &#39;+1-(975)-805-0646&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;412 Pollock Stravenue&#39;, &#39;city&#39;: &#39;Temple&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5447 7039 8783 0808&#39;,
+   &#39;expiration-date&#39;: &#39;11/23&#39;}},)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -872,14 +880,14 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 40,
-  &#39;occupation&#39;: &#39;Biochemist&#39;,
-  &#39;telephone&#39;: &#39;716.190.4454&#39;,
-  &#39;credit-card-number&#39;: &#39;4061 1029 7295 2016&#39;,
-  &#39;credit-card-expiration&#39;: &#39;08/19&#39;,
-  &#39;name&#39;: &#39;Denisse West&#39;,
-  &#39;street-address&#39;: &#39;778 Bonnie Brae Drive&#39;,
-  &#39;city&#39;: &#39;Battle Creek&#39;},)
+({&#39;age&#39;: 28,
+  &#39;occupation&#39;: &#39;Amusement Arcade Worker&#39;,
+  &#39;telephone&#39;: &#39;+1-(975)-805-0646&#39;,
+  &#39;credit-card-number&#39;: &#39;5447 7039 8783 0808&#39;,
+  &#39;credit-card-expiration&#39;: &#39;11/23&#39;,
+  &#39;name&#39;: &#39;Reginald Rocha&#39;,
+  &#39;street-address&#39;: &#39;412 Pollock Stravenue&#39;,
+  &#39;city&#39;: &#39;Temple&#39;},)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -928,58 +936,58 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
   <tbody>
     <tr>
       <th>0</th>
-      <td>40</td>
-      <td>Biochemist</td>
-      <td>716.190.4454</td>
-      <td>4061 1029 7295 2016</td>
-      <td>08/19</td>
-      <td>Denisse West</td>
-      <td>778 Bonnie Brae Drive</td>
-      <td>Battle Creek</td>
+      <td>28</td>
+      <td>Amusement Arcade Worker</td>
+      <td>+1-(975)-805-0646</td>
+      <td>5447 7039 8783 0808</td>
+      <td>11/23</td>
+      <td>Reginald Rocha</td>
+      <td>412 Pollock Stravenue</td>
+      <td>Temple</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>34</td>
-      <td>Lavatory Attendant</td>
-      <td>1-401-587-2335</td>
-      <td>4573 5634 8917 3365</td>
-      <td>07/23</td>
-      <td>Tashia Donovan</td>
-      <td>1397 Estero Thruway</td>
-      <td>Tifton</td>
+      <td>58</td>
+      <td>Shoe Maker</td>
+      <td>1-930-868-1341</td>
+      <td>2565 2262 6349 1676</td>
+      <td>11/16</td>
+      <td>Emelda Cash</td>
+      <td>40 Guy Wynd</td>
+      <td>Tinley Park</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>33</td>
-      <td>Scientific Officer</td>
-      <td>(012) 122-0832</td>
-      <td>2254 8937 3555 0862</td>
-      <td>05/25</td>
-      <td>Angelika Rhodes</td>
-      <td>290 Mckinley Ferry</td>
-      <td>Amsterdam</td>
+      <td>25</td>
+      <td>Trade Mark Agent</td>
+      <td>(848) 933-7527</td>
+      <td>5274 2728 6258 8194</td>
+      <td>07/19</td>
+      <td>Edwin Guerrero</td>
+      <td>920 Sunnydale Green</td>
+      <td>Ansonia</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>16</td>
-      <td>Hot Foil Printer</td>
-      <td>1-272-683-3362</td>
-      <td>5481 4517 2324 3145</td>
-      <td>07/22</td>
-      <td>Moises Knight</td>
-      <td>203 Sacramento Grove</td>
-      <td>Maple Valley</td>
+      <td>47</td>
+      <td>Producer</td>
+      <td>822.066.4939</td>
+      <td>3735 849041 73624</td>
+      <td>12/21</td>
+      <td>Porsche Cervantes</td>
+      <td>1150 Albion Street</td>
+      <td>Cicero</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>51</td>
-      <td>Foundry Worker</td>
-      <td>747.516.0596</td>
-      <td>3480 667222 36496</td>
-      <td>03/22</td>
-      <td>Roosevelt Webb</td>
-      <td>1148 Music Concourse Access Side road</td>
-      <td>Farmington</td>
+      <td>53</td>
+      <td>Show Jumper</td>
+      <td>(370) 876-1903</td>
+      <td>5528 3301 5970 5790</td>
+      <td>08/16</td>
+      <td>Alonzo Owen</td>
+      <td>1379 Bowling Green Extension</td>
+      <td>Collinsville</td>
     </tr>
   </tbody>
 </table>
@@ -1001,16 +1009,16 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Counsellor               16
-Building Foreman         15
-Minicab Driver           15
-Instrument Supervisor    14
-Systems Manager          14
-Housing Assistant        14
-Foundry Worker           13
-Wheel Clamper            13
-Hygienist                13
-Carpet Fitter            13
+Royal Marine                     16
+Gardener                         15
+Sound Engineer                   15
+Radiologist                      14
+Florist                          13
+Cabinet Maker                    13
+Payroll Clerk                    13
+Playgroup Leader                 13
+Patent Attorney                  13
+Aircraft Maintenance Engineer    13
 Name: occupation, dtype: int64
 </pre></div></div>
 </div>
