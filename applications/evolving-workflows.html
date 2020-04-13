@@ -155,8 +155,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Basic Examples:</span></p>
-<ul>
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../array.html">Dask Arrays</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bag.html">Dask Bags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataframe.html">Dask DataFrames</a></li>
@@ -165,12 +164,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning.html">Dask for Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xarray.html">Xarray with Dask Arrays</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Dataframes:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../dataframes/01-data-access.html">DataFrames: Read and Write Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataframes/02-groupby.html">DataFrames: Groupby</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Machine Learning:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/parallel-prediction.html">Score and Predict Large Datasets</a></li>
@@ -185,7 +182,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/glm.html">Generalized Linear Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/svd.html">Singular Value Decomposition</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Applications:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="async-await.html">Async/Await and Non-Blocking Execution</a></li>
@@ -204,7 +200,6 @@
 <li class="toctree-l1"><a class="reference internal" href="satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stencils-with-numba.html">Stencil Computations with Numba</a></li>
 </ul>
-<p class="caption"><span class="caption-text">User Surveys:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../surveys/2019.html">2019 Dask User Survey Results</a></li>
 </ul>
@@ -491,6 +486,28 @@ div.rendered_html tbody tr:nth-child(odd) {
 div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
 </style>
 <div class="admonition-live-notebook admonition">
 <p class="admonition-title">Live Notebook</p>
@@ -573,8 +590,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2.3 ms, sys: 3.29 ms, total: 5.59 ms
-Wall time: 14.1 s
+CPU times: user 5.02 ms, sys: 700 µs, total: 5.72 ms
+Wall time: 12.2 s
 </pre></div></div>
 </div>
 </div>
@@ -603,8 +620,8 @@ Wall time: 14.1 s
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.0.104/10168/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.0.104:8787/status' target='_blank'>http://10.20.0.104:8787/status</a>
+  <li><b>Scheduler: </b>inproc://10.20.0.98/10244/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.0.98:8787/status' target='_blank'>http://10.20.0.98:8787/status</a>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -662,8 +679,8 @@ Wall time: 14.1 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 346 ms, sys: 24.9 ms, total: 370 ms
-Wall time: 2.81 s
+CPU times: user 257 ms, sys: 28.4 ms, total: 286 ms
+Wall time: 2.22 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -672,75 +689,56 @@ Wall time: 2.81 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[1.1851631852798068,
- 1.4752334507104328,
- 1.6043971003608404,
- 1.1731750270761523,
- 1.7191972117621588,
- 1.6443723777519397,
- 1.5270524257739515,
- 1.2249262654305442,
- 1.3412744547817996,
- 1.1726767121075272,
- 1.259251622393101,
- 1.7649860624670715,
- 1.6792089992983494,
- 1.892416032362367,
- 1.1543490260903315,
- 1.646175840513152,
- 1.5979881836399532,
- 1.5247825469374434,
- 1.0704272590196582,
- 1.664980390834799,
- 1.5021254954348273,
- 1.3750055457942123,
- 1.6256191526052786,
- 1.902179541084512,
- 1.530991746058448,
- 1.908856633213536,
- 1.9638194813624597,
- 1.2337233953022944,
- 1.4518554916595603,
- 1.2896378514026443,
- 1.7305103894203004,
- 1.1897653170541256,
- 1.332429406101072,
- 1.3456422415447546,
- 1.3723421086500824,
- 1.1993662115425718,
- 1.1118898387643368,
- 1.8261172022859717,
- 1.3504979966642465,
- 1.1318382867798924,
- 1.354044626243212,
- 1.356930281194681,
- 1.0513479882361287,
- 1.640403578087801,
- 1.1962622477262026,
- 1.2594971435521143,
- 1.3225131618596446,
- 1.6567256525758438,
- 1.209318803071169,
- 1.7813544094529803,
- 1.5133192753762552,
- 1.6881692118869722,
- 1.045188871149025,
- 1.8067900737817708,
- 1.0183125140193914,
- 1.3470353241693294,
- 1.0855449086337847,
- 1.5637235557764473,
- 1.5645307269594124,
- 1.952915326624604,
- 1.7964808368990606,
- 1.5084757387135386,
- 1.822069638851413,
- 1.568208197938687,
- 1.1658665982440513,
- 1.154757028690328,
- 1.987810595203412,
- 1.155059236045767,
- 1.2550688087384627]
+[1.9357699039812921,
+ 1.076226241165258,
+ 1.7808762568475134,
+ 1.3731836257140162,
+ 1.0314434507491599,
+ 1.6028769230025013,
+ 1.6815503566328396,
+ 1.357502471146085,
+ 1.737168980513709,
+ 1.9006009770147385,
+ 1.2199679447484606,
+ 1.6038617142185354,
+ 1.3724812388281213,
+ 1.0921638600553603,
+ 1.862956480202733,
+ 1.7616078848837131,
+ 1.2121144324367306,
+ 1.8476683555613849,
+ 1.4676939997593386,
+ 1.303148311528341,
+ 1.9404067517810288,
+ 1.6690821954516664,
+ 1.2787079519451168,
+ 1.7762827073169265,
+ 1.36383820594305,
+ 1.0128115508202788,
+ 1.8801728090302852,
+ 1.6729604420867026,
+ 1.9153206285469273,
+ 1.705622737809696,
+ 1.107795077222336,
+ 1.1535123814178276,
+ 1.4593224465047798,
+ 1.9173947585928799,
+ 1.5564310656989306,
+ 1.1635279509118415,
+ 1.7147156318846513,
+ 1.4245687769655757,
+ 1.9394386684619773,
+ 1.4946340821409627,
+ 1.8169009472020001,
+ 1.4456644388741888,
+ 1.1305420563423818,
+ 1.2457779777202427,
+ 1.7953786846580586,
+ 1.5723576964014137,
+ 1.8008957528607452,
+ 1.744988840501807,
+ 1.921310477870507,
+ 1.421778913992111]
 </pre></div></div>
 </div>
 </div>
@@ -795,56 +793,70 @@ Wall time: 2.81 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[1.7773757841117468,
- 1.6718136909264494,
- 1.6118643887764077,
- 1.6435081770495623,
- 1.7805054394767552,
- 1.7166095813584494,
- 1.5354256192933216,
- 1.7773696800804466,
- 1.7681959796377023,
- 1.798222362018382,
- 1.3053383237517504,
- 1.4808840285271716,
- 1.103276952143534,
- 1.948802160728886,
- 1.8464424726166677,
- 1.2004405233362516,
- 1.8767441246617063,
- 1.8263818690872509,
- 1.4034474855154084,
- 1.2068284630329402,
- 1.1585150753704967,
- 1.0589160381931546,
- 1.3307327854887823,
- 1.7146178568414059,
- 1.832549488959304,
- 1.2131984391417663,
- 1.9805819861669227,
- 1.6794280685809393,
- 1.4216556554057584,
- 1.0887117535829707,
- 1.8161037202332344,
- 1.6375863146629315,
- 1.718595525475495,
- 1.675415068759961,
- 1.838279325090522,
- 1.9062645285540567,
- 1.4818336315628924,
- 1.9729223769326047,
- 1.2249347467514773,
- 1.043859053131361,
- 1.4036120691391674,
- 1.4368642475258504,
- 1.4773295595118037,
- 1.1496437350197106,
- 1.6864000542871804,
- 1.6940508170307422,
- 1.6679420632690136,
- 1.0086405960124538,
- 1.9060375272434864,
- 1.5653093403455292]
+[1.773915703393401,
+ 1.4230082745840718,
+ 1.5608987799010654,
+ 1.0650468241947415,
+ 1.8591456241912174,
+ 1.664545294159367,
+ 1.7734689838811215,
+ 1.3051321729697987,
+ 1.6069125581576404,
+ 1.258435002276897,
+ 1.441355898117703,
+ 1.725486963774136,
+ 1.155150043750028,
+ 1.4629791977216864,
+ 1.8505945856851524,
+ 1.4483965296477033,
+ 1.0698807316723467,
+ 1.848732723582913,
+ 1.1205891047363719,
+ 1.1319190419459106,
+ 1.2836041825585078,
+ 1.460690026345341,
+ 1.8811845907046014,
+ 1.4909102406911048,
+ 1.0569405176900775,
+ 1.9022898980032197,
+ 1.9999638386748106,
+ 1.240183077894783,
+ 1.6784898522898057,
+ 1.5630246277999473,
+ 1.671778745668674,
+ 1.8402536007925954,
+ 1.9870925207293335,
+ 1.3330596893797217,
+ 1.1529940771971239,
+ 1.82871993666657,
+ 1.1218026840375042,
+ 1.9518107113377887,
+ 1.3075392092815856,
+ 1.4744184580310251,
+ 1.96035329023809,
+ 1.4980963186029925,
+ 1.6693522199336024,
+ 1.675482681134139,
+ 1.2282583937177285,
+ 1.0402762363054867,
+ 1.0182855690324708,
+ 1.2709696423782564,
+ 1.9302961857368741,
+ 1.3191536601896714,
+ 1.621573786721104,
+ 1.4773322899093373,
+ 1.0494145892193414,
+ 1.9722693986406759,
+ 1.5831073147012624,
+ 1.4956128602248315,
+ 1.4224515245201101,
+ 1.610096838723524,
+ 1.5892861357924772,
+ 1.9113427232330347,
+ 1.027185245284792,
+ 1.2825874953189171,
+ 1.8794772284892471,
+ 1.7090633287834724]
 </pre></div></div>
 </div>
 </div>
@@ -880,8 +892,8 @@ Wall time: 2.81 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 252 ms, sys: 18.9 ms, total: 271 ms
-Wall time: 2.28 s
+CPU times: user 199 ms, sys: 32.4 ms, total: 232 ms
+Wall time: 2.22 s
 </pre></div></div>
 </div>
 </div>

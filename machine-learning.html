@@ -155,8 +155,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Basic Examples:</span></p>
-<ul class="current">
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="array.html">Dask Arrays</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bag.html">Dask Bags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataframe.html">Dask DataFrames</a></li>
@@ -172,12 +171,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="xarray.html">Xarray with Dask Arrays</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Dataframes:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="dataframes/01-data-access.html">DataFrames: Read and Write Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataframes/02-groupby.html">DataFrames: Groupby</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Machine Learning:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/parallel-prediction.html">Score and Predict Large Datasets</a></li>
@@ -192,7 +189,6 @@
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/glm.html">Generalized Linear Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/svd.html">Singular Value Decomposition</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Applications:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
@@ -204,7 +200,6 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
 </ul>
-<p class="caption"><span class="caption-text">User Surveys:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="surveys/2019.html">2019 Dask User Survey Results</a></li>
 </ul>
@@ -491,6 +486,28 @@ div.rendered_html tbody tr:nth-child(odd) {
 div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
 </style>
 <div class="admonition-live-notebook admonition">
 <p class="admonition-title">Live Notebook</p>
@@ -521,8 +538,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.0.104/13825/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.0.104:8787/status' target='_blank'>http://10.20.0.104:8787/status</a>
+  <li><b>Scheduler: </b>inproc://10.20.0.98/13767/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.0.98:8787/status' target='_blank'>http://10.20.0.98:8787/status</a>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -691,10 +708,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.320468</td>
-      <td>0.020165</td>
-      <td>0.028700</td>
-      <td>0.006611</td>
+      <td>0.308229</td>
+      <td>0.073349</td>
+      <td>0.027146</td>
+      <td>0.004368</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>True</td>
@@ -708,10 +725,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>1</th>
-      <td>0.330778</td>
-      <td>0.009481</td>
-      <td>0.027802</td>
-      <td>0.004025</td>
+      <td>0.321991</td>
+      <td>0.011219</td>
+      <td>0.029603</td>
+      <td>0.004724</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>False</td>
@@ -725,10 +742,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>2</th>
-      <td>0.169455</td>
-      <td>0.033688</td>
-      <td>0.017304</td>
-      <td>0.005895</td>
+      <td>0.217218</td>
+      <td>0.011324</td>
+      <td>0.016735</td>
+      <td>0.007481</td>
       <td>0.001</td>
       <td>poly</td>
       <td>True</td>
@@ -742,10 +759,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>3</th>
-      <td>0.214665</td>
-      <td>0.020288</td>
-      <td>0.016329</td>
-      <td>0.000427</td>
+      <td>0.186882</td>
+      <td>0.005849</td>
+      <td>0.011451</td>
+      <td>0.003048</td>
       <td>0.001</td>
       <td>poly</td>
       <td>False</td>
@@ -759,10 +776,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>4</th>
-      <td>0.344853</td>
-      <td>0.050228</td>
-      <td>0.029321</td>
-      <td>0.002247</td>
+      <td>0.339795</td>
+      <td>0.005421</td>
+      <td>0.035288</td>
+      <td>0.003743</td>
       <td>0.001</td>
       <td>sigmoid</td>
       <td>True</td>
@@ -811,7 +828,7 @@ array([0, 1, 1, 1, 0])
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-1.0
+0.972
 </pre></div></div>
 </div>
 <p>For more on training scikit-learn models with distributed joblib, see the <a class="reference external" href="http://dask-ml.readthedocs.io/en/latest/joblib.html">dask-ml documentation</a>.</p>

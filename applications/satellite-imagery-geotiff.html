@@ -155,8 +155,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Basic Examples:</span></p>
-<ul>
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../array.html">Dask Arrays</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bag.html">Dask Bags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataframe.html">Dask DataFrames</a></li>
@@ -165,12 +164,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning.html">Dask for Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xarray.html">Xarray with Dask Arrays</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Dataframes:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../dataframes/01-data-access.html">DataFrames: Read and Write Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataframes/02-groupby.html">DataFrames: Groupby</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Machine Learning:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/parallel-prediction.html">Score and Predict Large Datasets</a></li>
@@ -185,7 +182,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/glm.html">Generalized Linear Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/svd.html">Singular Value Decomposition</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Applications:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="async-await.html">Async/Await and Non-Blocking Execution</a></li>
@@ -205,7 +201,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="stencils-with-numba.html">Stencil Computations with Numba</a></li>
 </ul>
-<p class="caption"><span class="caption-text">User Surveys:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../surveys/2019.html">2019 Dask User Survey Results</a></li>
 </ul>
@@ -492,6 +487,28 @@ div.rendered_html tbody tr:nth-child(odd) {
 div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
 </style>
 <div class="admonition-live-notebook admonition">
 <p class="admonition-title">Live Notebook</p>
@@ -515,19 +532,19 @@ div.rendered_html tbody tr:hover {
 Collecting rasterio
   Downloading rasterio-1.1.3-cp37-cp37m-manylinux1_x86_64.whl (18.1 MB)
 
-Collecting snuggs&gt;=1.4.1
-  Downloading snuggs-1.4.7-py3-none-any.whl (5.4 kB)
-Requirement already satisfied: numpy in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from rasterio) (1.17.5)
-Collecting affine
-  Downloading affine-2.3.0-py2.py3-none-any.whl (15 kB)
 Collecting click-plugins
   Downloading click_plugins-1.1.1-py2.py3-none-any.whl (7.5 kB)
+Requirement already satisfied: click&lt;8,&gt;=4.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from rasterio) (7.1.1)
 Collecting cligj&gt;=0.5
   Downloading cligj-0.5.0-py3-none-any.whl (5.7 kB)
-Requirement already satisfied: click&lt;8,&gt;=4.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from rasterio) (7.1.1)
+Requirement already satisfied: numpy in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from rasterio) (1.17.5)
 Requirement already satisfied: attrs in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from rasterio) (19.3.0)
-Requirement already satisfied: pyparsing&gt;=2.1.6 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from snuggs&gt;=1.4.1-&gt;rasterio) (2.4.6)
-Installing collected packages: snuggs, affine, click-plugins, cligj, rasterio
+Collecting snuggs&gt;=1.4.1
+  Downloading snuggs-1.4.7-py3-none-any.whl (5.4 kB)
+Collecting affine
+  Downloading affine-2.3.0-py2.py3-none-any.whl (15 kB)
+Requirement already satisfied: pyparsing&gt;=2.1.6 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from snuggs&gt;=1.4.1-&gt;rasterio) (2.4.7)
+Installing collected packages: click-plugins, cligj, snuggs, affine, rasterio
 Successfully installed affine-2.3.0 click-plugins-1.1.1 cligj-0.5.0 rasterio-1.1.3 snuggs-1.4.7
 </pre></div></div>
 </div>
@@ -661,21 +678,427 @@ True
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<pre>&lt;xarray.DataArray (band: 1, y: 7841, x: 7721)&gt;
-dask.array&lt;open_rasterio-b9a4055996ec1cbbea848c68d246cb39&lt;this-array&gt;, shape=(1, 7841, 7721), dtype=uint16, chunksize=(1, 1024, 1024), chunktype=numpy.ndarray&gt;
-Coordinates:
-  * band     (band) int64 1
-  * y        (y) float64 4.423e+06 4.423e+06 4.423e+06 ... 4.188e+06 4.188e+06
-  * x        (x) float64 4.134e+05 4.134e+05 4.135e+05 ... 6.45e+05 6.45e+05
-Attributes:
-    transform:      (30.0, 0.0, 413385.0, 0.0, -30.0, 4423215.0)
-    crs:            +init=epsg:32613
-    res:            (30.0, 30.0)
-    is_tiled:       1
-    nodatavals:     (nan,)
-    scales:         (1.0,)
-    offsets:        (0.0,)
-    AREA_OR_POINT:  Point</pre></div>
+<div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<title>Show/Hide data repr</title>
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<title>Show/Hide attributes</title>
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+.xr-wrap {
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt, dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><div class='xr-wrap'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>band</span>: 1</li><li><span class='xr-has-index'>y</span>: 7841</li><li><span class='xr-has-index'>x</span>: 7721</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-aaf02cd2-8fa3-4a6d-aca5-084a24972c1d' class='xr-array-in' type='checkbox' ><label for='section-aaf02cd2-8fa3-4a6d-aca5-084a24972c1d' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>dask.array&lt;chunksize=(1, 1024, 1024), meta=np.ndarray&gt;</span></div><pre class='xr-array-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 121.08 MB </td> <td> 2.10 MB </td></tr>
+    <tr><th> Shape </th><td> (1, 7841, 7721) </td> <td> (1, 1024, 1024) </td></tr>
+    <tr><th> Count </th><td> 65 Tasks </td><td> 64 Chunks </td></tr>
+    <tr><th> Type </th><td> uint16 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="193" height="184" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="24" y2="14" style="stroke-width:2" />
+  <line x1="10" y1="15" x2="24" y2="30" />
+  <line x1="10" y1="31" x2="24" y2="46" />
+  <line x1="10" y1="47" x2="24" y2="61" />
+  <line x1="10" y1="62" x2="24" y2="77" />
+  <line x1="10" y1="78" x2="24" y2="93" />
+  <line x1="10" y1="94" x2="24" y2="108" />
+  <line x1="10" y1="109" x2="24" y2="124" />
+  <line x1="10" y1="120" x2="24" y2="134" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="10" y2="120" style="stroke-width:2" />
+  <line x1="24" y1="14" x2="24" y2="134" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.000000,0.000000 24.948598,14.948598 24.948598,134.948598 10.000000,120.000000" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="128" y2="0" style="stroke-width:2" />
+  <line x1="24" y1="14" x2="143" y2="14" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="24" y2="14" style="stroke-width:2" />
+  <line x1="25" y1="0" x2="40" y2="14" />
+  <line x1="41" y1="0" x2="56" y2="14" />
+  <line x1="57" y1="0" x2="71" y2="14" />
+  <line x1="72" y1="0" x2="87" y2="14" />
+  <line x1="88" y1="0" x2="103" y2="14" />
+  <line x1="104" y1="0" x2="118" y2="14" />
+  <line x1="119" y1="0" x2="134" y2="14" />
+  <line x1="128" y1="0" x2="143" y2="14" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.000000,0.000000 128.163500,0.000000 143.112098,14.948598 24.948598,14.948598" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="24" y1="14" x2="143" y2="14" style="stroke-width:2" />
+  <line x1="24" y1="30" x2="143" y2="30" />
+  <line x1="24" y1="46" x2="143" y2="46" />
+  <line x1="24" y1="61" x2="143" y2="61" />
+  <line x1="24" y1="77" x2="143" y2="77" />
+  <line x1="24" y1="93" x2="143" y2="93" />
+  <line x1="24" y1="108" x2="143" y2="108" />
+  <line x1="24" y1="124" x2="143" y2="124" />
+  <line x1="24" y1="134" x2="143" y2="134" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="24" y1="14" x2="24" y2="134" style="stroke-width:2" />
+  <line x1="40" y1="14" x2="40" y2="134" />
+  <line x1="56" y1="14" x2="56" y2="134" />
+  <line x1="71" y1="14" x2="71" y2="134" />
+  <line x1="87" y1="14" x2="87" y2="134" />
+  <line x1="103" y1="14" x2="103" y2="134" />
+  <line x1="118" y1="14" x2="118" y2="134" />
+  <line x1="134" y1="14" x2="134" y2="134" />
+  <line x1="143" y1="14" x2="143" y2="134" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="24.948598,14.948598 143.112098,14.948598 143.112098,134.948598 24.948598,134.948598" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="84.030348" y="154.948598" font-size="1.0rem" font-weight="100" text-anchor="middle" >7721</text>
+  <text x="163.112098" y="74.948598" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,163.112098,74.948598)">7841</text>
+  <text x="7.474299" y="147.474299" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,7.474299,147.474299)">1</text>
+</svg>
+</td>
+</tr>
+</table></pre></div></li><li class='xr-section-item'><input id='section-afb66d56-f304-45e6-ae8e-81a794acae22' class='xr-section-summary-in' type='checkbox'  checked><label for='section-afb66d56-f304-45e6-ae8e-81a794acae22' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>band</span></div><div class='xr-var-dims'>(band)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1</div><input id='attrs-1c7c2a88-bd65-45e4-b9e9-be0ea4c66527' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-1c7c2a88-bd65-45e4-b9e9-be0ea4c66527' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f032202d-61a8-49fc-8c10-afb529c9a56d' class='xr-var-data-in' type='checkbox'><label for='data-f032202d-61a8-49fc-8c10-afb529c9a56d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><pre class='xr-var-data'>array([1])</pre></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>4.423e+06 4.423e+06 ... 4.188e+06</div><input id='attrs-2a9bf478-0f12-4f0e-90f3-a198afe08c41' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-2a9bf478-0f12-4f0e-90f3-a198afe08c41' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-664c30ac-fd0f-4870-a304-fd30f7dee43a' class='xr-var-data-in' type='checkbox'><label for='data-664c30ac-fd0f-4870-a304-fd30f7dee43a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><pre class='xr-var-data'>array([4423200., 4423170., 4423140., ..., 4188060., 4188030., 4188000.])</pre></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>4.134e+05 4.134e+05 ... 6.45e+05</div><input id='attrs-6ce2ebb6-84de-46f0-a5d6-c20335553fd9' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-6ce2ebb6-84de-46f0-a5d6-c20335553fd9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8eb88f64-37b0-48ca-8020-0a90d203d1bb' class='xr-var-data-in' type='checkbox'><label for='data-8eb88f64-37b0-48ca-8020-0a90d203d1bb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><pre class='xr-var-data'>array([413400., 413430., 413460., ..., 644940., 644970., 645000.])</pre></li></ul></div></li><li class='xr-section-item'><input id='section-63d466e1-062c-463a-bb63-e3782e219f7d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-63d466e1-062c-463a-bb63-e3782e219f7d' class='xr-section-summary' >Attributes: <span>(8)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>transform :</span></dt><dd>(30.0, 0.0, 413385.0, 0.0, -30.0, 4423215.0)</dd><dt><span>crs :</span></dt><dd>+init=epsg:32613</dd><dt><span>res :</span></dt><dd>(30.0, 30.0)</dd><dt><span>is_tiled :</span></dt><dd>1</dd><dt><span>nodatavals :</span></dt><dd>(nan,)</dd><dt><span>scales :</span></dt><dd>(1.0,)</dd><dt><span>offsets :</span></dt><dd>(0.0,)</dd><dt><span>AREA_OR_POINT :</span></dt><dd>Point</dd></dl></div></li></ul></div></div></div>
 </div>
 <p>Each dataset’s data is a Dask array.</p>
 <div class="nbinput docutils container">
@@ -806,8 +1229,8 @@ Attributes:
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.0.104/11265/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.0.104:8787/status' target='_blank'>http://10.20.0.104:8787/status</a>
+  <li><b>Scheduler: </b>inproc://10.20.0.98/11368/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.0.98:8787/status' target='_blank'>http://10.20.0.98:8787/status</a>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">

@@ -155,8 +155,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Basic Examples:</span></p>
-<ul>
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../array.html">Dask Arrays</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bag.html">Dask Bags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataframe.html">Dask DataFrames</a></li>
@@ -165,7 +164,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning.html">Dask for Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xarray.html">Xarray with Dask Arrays</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Dataframes:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="01-data-access.html">DataFrames: Read and Write Data</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">DataFrames: Groupby</a><ul>
@@ -177,7 +175,6 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Machine Learning:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/parallel-prediction.html">Score and Predict Large Datasets</a></li>
@@ -192,7 +189,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/glm.html">Generalized Linear Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/svd.html">Singular Value Decomposition</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Applications:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
@@ -204,7 +200,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
 </ul>
-<p class="caption"><span class="caption-text">User Surveys:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../surveys/2019.html">2019 Dask User Survey Results</a></li>
 </ul>
@@ -491,6 +486,28 @@ div.rendered_html tbody tr:nth-child(odd) {
 div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
 </style>
 <div class="admonition-live-notebook admonition">
 <p class="admonition-title">Live Notebook</p>
@@ -524,8 +541,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.0.104/12353/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.0.104:8787/status' target='_blank'>http://10.20.0.104:8787/status</a>
+  <li><b>Scheduler: </b>inproc://10.20.0.98/12453/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.0.98:8787/status' target='_blank'>http://10.20.0.98:8787/status</a>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -664,32 +681,32 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 name
-Alice      -0.001288
-Bob        -0.000138
-Charlie    -0.001464
-Dan         0.000557
-Edith       0.000323
-Frank      -0.002771
-George      0.001768
-Hannah     -0.000012
-Ingrid      0.002886
-Jerry      -0.000336
-Kevin      -0.001243
-Laura      -0.000889
-Michael    -0.001826
-Norbert     0.000752
-Oliver     -0.001408
-Patricia    0.002524
-Quinn      -0.000017
-Ray        -0.002624
-Sarah       0.001079
-Tim         0.001381
-Ursula      0.000906
-Victor     -0.000036
-Wendy      -0.000082
-Xavier      0.002058
-Yvonne     -0.002836
-Zelda      -0.002458
+Alice       0.001237
+Bob         0.000665
+Charlie    -0.001139
+Dan        -0.000138
+Edith      -0.001284
+Frank       0.001816
+George     -0.001740
+Hannah     -0.000139
+Ingrid      0.000002
+Jerry      -0.002472
+Kevin      -0.001120
+Laura      -0.002000
+Michael    -0.001045
+Norbert    -0.001298
+Oliver     -0.001008
+Patricia   -0.002762
+Quinn       0.001232
+Ray        -0.000067
+Sarah       0.000815
+Tim         0.001450
+Ursula     -0.000855
+Victor      0.001065
+Wendy       0.001890
+Xavier     -0.003227
+Yvonne      0.002355
+Zelda      -0.001197
 Name: x, dtype: float64
 </pre></div></div>
 </div>
@@ -708,8 +725,8 @@ Name: x, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 317 ms, sys: 5.39 ms, total: 322 ms
-Wall time: 235 ms
+CPU times: user 282 ms, sys: 30.5 ms, total: 312 ms
+Wall time: 227 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -726,8 +743,8 @@ Wall time: 235 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 648 ms, sys: 12.7 ms, total: 661 ms
-Wall time: 452 ms
+CPU times: user 643 ms, sys: 11.4 ms, total: 654 ms
+Wall time: 451 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -744,8 +761,8 @@ Wall time: 452 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.01 s, sys: 67.7 ms, total: 1.07 s
-Wall time: 816 ms
+CPU times: user 1.02 s, sys: 59.6 ms, total: 1.08 s
+Wall time: 814 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -796,38 +813,38 @@ Wall time: 816 ms
   <tbody>
     <tr>
       <th>Alice</th>
-      <td>-0.001288</td>
-      <td>0.575867</td>
-      <td>-0.003948</td>
-      <td>99798</td>
+      <td>0.001237</td>
+      <td>0.577547</td>
+      <td>-0.001045</td>
+      <td>99335</td>
     </tr>
     <tr>
       <th>Bob</th>
-      <td>-0.000138</td>
-      <td>0.578217</td>
-      <td>-0.000601</td>
-      <td>99281</td>
+      <td>0.000665</td>
+      <td>0.578397</td>
+      <td>-0.002369</td>
+      <td>99773</td>
     </tr>
     <tr>
       <th>Charlie</th>
-      <td>-0.001464</td>
-      <td>0.577129</td>
-      <td>0.000440</td>
-      <td>99595</td>
+      <td>-0.001139</td>
+      <td>0.579180</td>
+      <td>-0.003365</td>
+      <td>99248</td>
     </tr>
     <tr>
       <th>Dan</th>
-      <td>0.000557</td>
-      <td>0.577578</td>
-      <td>0.000072</td>
-      <td>99233</td>
+      <td>-0.000138</td>
+      <td>0.577922</td>
+      <td>-0.000917</td>
+      <td>100039</td>
     </tr>
     <tr>
       <th>Edith</th>
-      <td>0.000323</td>
-      <td>0.575953</td>
-      <td>0.000615</td>
-      <td>99719</td>
+      <td>-0.001284</td>
+      <td>0.577516</td>
+      <td>0.002100</td>
+      <td>99511</td>
     </tr>
   </tbody>
 </table>
@@ -910,8 +927,8 @@ Wall time: 816 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 5.66 s, sys: 2.13 s, total: 7.78 s
-Wall time: 5.22 s
+CPU times: user 5.72 s, sys: 1.79 s, total: 7.51 s
+Wall time: 5.07 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">

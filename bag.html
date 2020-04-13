@@ -155,8 +155,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Basic Examples:</span></p>
-<ul class="current">
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="array.html">Dask Arrays</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Dask Bags</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Start-Dask-Client-for-Dashboard">Start Dask Client for Dashboard</a></li>
@@ -175,12 +174,10 @@
 <li class="toctree-l1"><a class="reference internal" href="machine-learning.html">Dask for Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xarray.html">Xarray with Dask Arrays</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Dataframes:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="dataframes/01-data-access.html">DataFrames: Read and Write Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataframes/02-groupby.html">DataFrames: Groupby</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Machine Learning:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/parallel-prediction.html">Score and Predict Large Datasets</a></li>
@@ -195,7 +192,6 @@
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/glm.html">Generalized Linear Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/svd.html">Singular Value Decomposition</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Applications:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
@@ -207,7 +203,6 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
 </ul>
-<p class="caption"><span class="caption-text">User Surveys:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="surveys/2019.html">2019 Dask User Survey Results</a></li>
 </ul>
@@ -494,6 +489,28 @@ div.rendered_html tbody tr:nth-child(odd) {
 div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
 </style>
 <div class="admonition-live-notebook admonition">
 <p class="admonition-title">Live Notebook</p>
@@ -529,7 +546,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:39825</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:43151</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
 </ul>
 </td>
@@ -563,15 +580,6 @@ div.rendered_html tbody tr:hover {
 <span class="n">b</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">)</span><span class="o">.</span><span class="n">to_textfiles</span><span class="p">(</span><span class="s1">&#39;data/*.json&#39;</span><span class="p">)</span>   <span class="c1"># Encode as JSON, write to disk</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/home/travis/miniconda/envs/test/lib/python3.7/site-packages/fsspec/implementations/local.py:33: FutureWarning: The default value of auto_mkdir=True has been deprecated and will be changed to auto_mkdir=False by default in a future release.
-  FutureWarning,
-</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -609,8 +617,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 28, &#34;name&#34;: [&#34;Reginald&#34;, &#34;Rocha&#34;], &#34;occupation&#34;: &#34;Amusement Arcade Worker&#34;, &#34;telephone&#34;: &#34;+1-(975)-805-0646&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;412 Pollock Stravenue&#34;, &#34;city&#34;: &#34;Temple&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5447 7039 8783 0808&#34;, &#34;expiration-date&#34;: &#34;11/23&#34;}}
-{&#34;age&#34;: 58, &#34;name&#34;: [&#34;Emelda&#34;, &#34;Cash&#34;], &#34;occupation&#34;: &#34;Shoe Maker&#34;, &#34;telephone&#34;: &#34;1-930-868-1341&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;40 Guy Wynd&#34;, &#34;city&#34;: &#34;Tinley Park&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;2565 2262 6349 1676&#34;, &#34;expiration-date&#34;: &#34;11/16&#34;}}
+{&#34;age&#34;: 56, &#34;name&#34;: [&#34;Nenita&#34;, &#34;Bolton&#34;], &#34;occupation&#34;: &#34;Teachers Assistant&#34;, &#34;telephone&#34;: &#34;102-455-1998&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1305 Cottonwood Private&#34;, &#34;city&#34;: &#34;Boca Raton&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3496 176030 53878&#34;, &#34;expiration-date&#34;: &#34;04/25&#34;}}
+{&#34;age&#34;: 31, &#34;name&#34;: [&#34;Arlena&#34;, &#34;Suarez&#34;], &#34;occupation&#34;: &#34;Labelling Operator&#34;, &#34;telephone&#34;: &#34;411.011.5292&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;999 Pioche Brae&#34;, &#34;city&#34;: &#34;Detroit&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3727 453881 03772&#34;, &#34;expiration-date&#34;: &#34;08/25&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -650,20 +658,18 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 28,
-  &#39;name&#39;: [&#39;Reginald&#39;, &#39;Rocha&#39;],
-  &#39;occupation&#39;: &#39;Amusement Arcade Worker&#39;,
-  &#39;telephone&#39;: &#39;+1-(975)-805-0646&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;412 Pollock Stravenue&#39;, &#39;city&#39;: &#39;Temple&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5447 7039 8783 0808&#39;,
-   &#39;expiration-date&#39;: &#39;11/23&#39;}},
- {&#39;age&#39;: 58,
-  &#39;name&#39;: [&#39;Emelda&#39;, &#39;Cash&#39;],
-  &#39;occupation&#39;: &#39;Shoe Maker&#39;,
-  &#39;telephone&#39;: &#39;1-930-868-1341&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;40 Guy Wynd&#39;, &#39;city&#39;: &#39;Tinley Park&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2565 2262 6349 1676&#39;,
-   &#39;expiration-date&#39;: &#39;11/16&#39;}})
+({&#39;age&#39;: 56,
+  &#39;name&#39;: [&#39;Nenita&#39;, &#39;Bolton&#39;],
+  &#39;occupation&#39;: &#39;Teachers Assistant&#39;,
+  &#39;telephone&#39;: &#39;102-455-1998&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1305 Cottonwood Private&#39;, &#39;city&#39;: &#39;Boca Raton&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3496 176030 53878&#39;, &#39;expiration-date&#39;: &#39;04/25&#39;}},
+ {&#39;age&#39;: 31,
+  &#39;name&#39;: [&#39;Arlena&#39;, &#39;Suarez&#39;],
+  &#39;occupation&#39;: &#39;Labelling Operator&#39;,
+  &#39;telephone&#39;: &#39;411.011.5292&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;999 Pioche Brae&#39;, &#39;city&#39;: &#39;Detroit&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3727 453881 03772&#39;, &#39;expiration-date&#39;: &#39;08/25&#39;}})
 </pre></div></div>
 </div>
 </div>
@@ -685,19 +691,18 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 58,
-  &#39;name&#39;: [&#39;Emelda&#39;, &#39;Cash&#39;],
-  &#39;occupation&#39;: &#39;Shoe Maker&#39;,
-  &#39;telephone&#39;: &#39;1-930-868-1341&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;40 Guy Wynd&#39;, &#39;city&#39;: &#39;Tinley Park&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2565 2262 6349 1676&#39;,
-   &#39;expiration-date&#39;: &#39;11/16&#39;}},
- {&#39;age&#39;: 47,
-  &#39;name&#39;: [&#39;Porsche&#39;, &#39;Cervantes&#39;],
-  &#39;occupation&#39;: &#39;Producer&#39;,
-  &#39;telephone&#39;: &#39;822.066.4939&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1150 Albion Street&#39;, &#39;city&#39;: &#39;Cicero&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3735 849041 73624&#39;, &#39;expiration-date&#39;: &#39;12/21&#39;}})
+({&#39;age&#39;: 56,
+  &#39;name&#39;: [&#39;Nenita&#39;, &#39;Bolton&#39;],
+  &#39;occupation&#39;: &#39;Teachers Assistant&#39;,
+  &#39;telephone&#39;: &#39;102-455-1998&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1305 Cottonwood Private&#39;, &#39;city&#39;: &#39;Boca Raton&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3496 176030 53878&#39;, &#39;expiration-date&#39;: &#39;04/25&#39;}},
+ {&#39;age&#39;: 31,
+  &#39;name&#39;: [&#39;Arlena&#39;, &#39;Suarez&#39;],
+  &#39;occupation&#39;: &#39;Labelling Operator&#39;,
+  &#39;telephone&#39;: &#39;411.011.5292&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;999 Pioche Brae&#39;, &#39;city&#39;: &#39;Detroit&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3727 453881 03772&#39;, &#39;expiration-date&#39;: &#39;08/25&#39;}})
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -715,7 +720,7 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-(&#39;Amusement Arcade Worker&#39;, &#39;Shoe Maker&#39;)
+(&#39;Teachers Assistant&#39;, &#39;Labelling Operator&#39;)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -778,16 +783,16 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[(&#39;Royal Marine&#39;, 16),
- (&#39;Gardener&#39;, 15),
- (&#39;Sound Engineer&#39;, 15),
- (&#39;Radiologist&#39;, 14),
- (&#39;Cabinet Maker&#39;, 13),
- (&#39;Florist&#39;, 13),
- (&#39;Tennis Coach&#39;, 13),
- (&#39;Payroll Clerk&#39;, 13),
- (&#39;Patent Attorney&#39;, 13),
- (&#39;Playgroup Leader&#39;, 13)]
+[(&#39;Hearing Therapist&#39;, 16),
+ (&#39;Portfolio Manager&#39;, 15),
+ (&#39;Gambler&#39;, 15),
+ (&#39;Metal Dealer&#39;, 14),
+ (&#39;Professional Wrestler&#39;, 14),
+ (&#39;Stone Sawyer&#39;, 14),
+ (&#39;Radio Producer&#39;, 13),
+ (&#39;Maid&#39;, 13),
+ (&#39;Travel Clerk&#39;, 13),
+ (&#39;Transport Manager&#39;, 13)]
 </pre></div></div>
 </div>
 </div>
@@ -844,13 +849,12 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 28,
-  &#39;name&#39;: [&#39;Reginald&#39;, &#39;Rocha&#39;],
-  &#39;occupation&#39;: &#39;Amusement Arcade Worker&#39;,
-  &#39;telephone&#39;: &#39;+1-(975)-805-0646&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;412 Pollock Stravenue&#39;, &#39;city&#39;: &#39;Temple&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5447 7039 8783 0808&#39;,
-   &#39;expiration-date&#39;: &#39;11/23&#39;}},)
+({&#39;age&#39;: 56,
+  &#39;name&#39;: [&#39;Nenita&#39;, &#39;Bolton&#39;],
+  &#39;occupation&#39;: &#39;Teachers Assistant&#39;,
+  &#39;telephone&#39;: &#39;102-455-1998&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1305 Cottonwood Private&#39;, &#39;city&#39;: &#39;Boca Raton&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3496 176030 53878&#39;, &#39;expiration-date&#39;: &#39;04/25&#39;}},)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -880,14 +884,14 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 28,
-  &#39;occupation&#39;: &#39;Amusement Arcade Worker&#39;,
-  &#39;telephone&#39;: &#39;+1-(975)-805-0646&#39;,
-  &#39;credit-card-number&#39;: &#39;5447 7039 8783 0808&#39;,
-  &#39;credit-card-expiration&#39;: &#39;11/23&#39;,
-  &#39;name&#39;: &#39;Reginald Rocha&#39;,
-  &#39;street-address&#39;: &#39;412 Pollock Stravenue&#39;,
-  &#39;city&#39;: &#39;Temple&#39;},)
+({&#39;age&#39;: 56,
+  &#39;occupation&#39;: &#39;Teachers Assistant&#39;,
+  &#39;telephone&#39;: &#39;102-455-1998&#39;,
+  &#39;credit-card-number&#39;: &#39;3496 176030 53878&#39;,
+  &#39;credit-card-expiration&#39;: &#39;04/25&#39;,
+  &#39;name&#39;: &#39;Nenita Bolton&#39;,
+  &#39;street-address&#39;: &#39;1305 Cottonwood Private&#39;,
+  &#39;city&#39;: &#39;Boca Raton&#39;},)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -936,58 +940,58 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
   <tbody>
     <tr>
       <th>0</th>
-      <td>28</td>
-      <td>Amusement Arcade Worker</td>
-      <td>+1-(975)-805-0646</td>
-      <td>5447 7039 8783 0808</td>
-      <td>11/23</td>
-      <td>Reginald Rocha</td>
-      <td>412 Pollock Stravenue</td>
-      <td>Temple</td>
+      <td>56</td>
+      <td>Teachers Assistant</td>
+      <td>102-455-1998</td>
+      <td>3496 176030 53878</td>
+      <td>04/25</td>
+      <td>Nenita Bolton</td>
+      <td>1305 Cottonwood Private</td>
+      <td>Boca Raton</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>58</td>
-      <td>Shoe Maker</td>
-      <td>1-930-868-1341</td>
-      <td>2565 2262 6349 1676</td>
-      <td>11/16</td>
-      <td>Emelda Cash</td>
-      <td>40 Guy Wynd</td>
-      <td>Tinley Park</td>
+      <td>31</td>
+      <td>Labelling Operator</td>
+      <td>411.011.5292</td>
+      <td>3727 453881 03772</td>
+      <td>08/25</td>
+      <td>Arlena Suarez</td>
+      <td>999 Pioche Brae</td>
+      <td>Detroit</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>25</td>
-      <td>Trade Mark Agent</td>
-      <td>(848) 933-7527</td>
-      <td>5274 2728 6258 8194</td>
-      <td>07/19</td>
-      <td>Edwin Guerrero</td>
-      <td>920 Sunnydale Green</td>
-      <td>Ansonia</td>
+      <td>48</td>
+      <td>Planning Manager</td>
+      <td>1-432-412-3426</td>
+      <td>5151 0215 2285 3623</td>
+      <td>04/24</td>
+      <td>Woodrow Garza</td>
+      <td>32 Ney Heights</td>
+      <td>Oak Ridge</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>47</td>
-      <td>Producer</td>
-      <td>822.066.4939</td>
-      <td>3735 849041 73624</td>
-      <td>12/21</td>
-      <td>Porsche Cervantes</td>
-      <td>1150 Albion Street</td>
-      <td>Cicero</td>
+      <td>43</td>
+      <td>Forest Ranger</td>
+      <td>403-408-1988</td>
+      <td>4716 9554 6754 5788</td>
+      <td>03/20</td>
+      <td>Micheal Morris</td>
+      <td>925 Harper Private</td>
+      <td>Clearwater</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>53</td>
-      <td>Show Jumper</td>
-      <td>(370) 876-1903</td>
-      <td>5528 3301 5970 5790</td>
-      <td>08/16</td>
-      <td>Alonzo Owen</td>
-      <td>1379 Bowling Green Extension</td>
-      <td>Collinsville</td>
+      <td>47</td>
+      <td>Training Officer</td>
+      <td>578-775-5737</td>
+      <td>5276 5346 7625 4646</td>
+      <td>01/21</td>
+      <td>Margart Acosta</td>
+      <td>904 Lakeview Pike</td>
+      <td>Evansville</td>
     </tr>
   </tbody>
 </table>
@@ -1009,16 +1013,16 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Royal Marine                     16
-Gardener                         15
-Sound Engineer                   15
-Radiologist                      14
-Florist                          13
-Cabinet Maker                    13
-Payroll Clerk                    13
-Playgroup Leader                 13
-Patent Attorney                  13
-Aircraft Maintenance Engineer    13
+Hearing Therapist        16
+Portfolio Manager        15
+Gambler                  15
+Professional Wrestler    14
+Metal Dealer             14
+Stone Sawyer             14
+Travel Clerk             13
+Maid                     13
+Chiropodist              13
+Radio Producer           13
 Name: occupation, dtype: int64
 </pre></div></div>
 </div>
