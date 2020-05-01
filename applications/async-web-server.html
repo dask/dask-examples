@@ -205,6 +205,7 @@
 <li class="toctree-l1"><a class="reference internal" href="prefect-etl.html">ETL Pipelines with Prefect</a></li>
 <li class="toctree-l1"><a class="reference internal" href="satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stencils-with-numba.html">Stencil Computations with Numba</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forecasting-with-prophet.html">Time Series Forecasting</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../surveys/2019.html">2019 Dask User Survey Results</a></li>
@@ -566,7 +567,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;tornado.httpserver.HTTPServer at 0x7f513c45e9d0&gt;
+&lt;tornado.httpserver.HTTPServer at 0x7fc5e8608f10&gt;
 </pre></div></div>
 </div>
 <div class="section" id="Speed">
@@ -618,7 +619,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fast , 1 simultaneous requests,  total time:  0.003967761993408203
+http://localhost:8000/fast , 1 simultaneous requests,  total time:  0.0036933422088623047
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -635,7 +636,7 @@ http://localhost:8000/fast , 1 simultaneous requests,  total time:  0.0039677619
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fast , 100 simultaneous requests,  total time:  0.17277765274047852
+http://localhost:8000/fast , 100 simultaneous requests,  total time:  0.17618656158447266
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -652,7 +653,7 @@ http://localhost:8000/fast , 100 simultaneous requests,  total time:  0.17277765
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fib/28 , 1 simultaneous requests,  total time:  0.0908970832824707
+http://localhost:8000/fib/28 , 1 simultaneous requests,  total time:  0.09097790718078613
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -669,7 +670,7 @@ http://localhost:8000/fib/28 , 1 simultaneous requests,  total time:  0.09089708
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fib/28 , 100 simultaneous requests,  total time:  8.956363677978516
+http://localhost:8000/fib/28 , 100 simultaneous requests,  total time:  9.031256675720215
 </pre></div></div>
 </div>
 </div>
@@ -692,8 +693,8 @@ http://localhost:8000/fib/28 , 100 simultaneous requests,  total time:  8.956363
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fib/35 , 1 simultaneous requests,  total time:  2.5342323780059814
-http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.5345492362976074
+http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.572141647338867
+http://localhost:8000/fib/35 , 1 simultaneous requests,  total time:  2.5726876258850098
 </pre></div></div>
 </div>
 </div>
@@ -729,8 +730,8 @@ http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.5345492362
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:44573</li>
-  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:46655</li>
+  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -787,7 +788,7 @@ http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.5345492362
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;tornado.httpserver.HTTPServer at 0x7f513c49ce90&gt;
+&lt;tornado.httpserver.HTTPServer at 0x7fc59be636d0&gt;
 </pre></div></div>
 </div>
 </div>
@@ -814,7 +815,7 @@ http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.5345492362
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fib/28 , 20 simultaneous requests,  total time:  1.8567309379577637
+http://localhost:8000/fib/28 , 20 simultaneous requests,  total time:  1.8736021518707275
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -832,7 +833,7 @@ http://localhost:8000/fib/28 , 20 simultaneous requests,  total time:  1.8567309
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:9000/fib/28 , 20 simultaneous requests,  total time:  0.30141568183898926
+http://localhost:9000/fib/28 , 20 simultaneous requests,  total time:  0.2311251163482666
 </pre></div></div>
 </div>
 </div>
@@ -858,8 +859,8 @@ http://localhost:9000/fib/28 , 20 simultaneous requests,  total time:  0.3014156
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fib/35 , 1 simultaneous requests,  total time:  2.61513090133667
-http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.6153182983398438
+http://localhost:8000/fib/35 , 1 simultaneous requests,  total time:  2.666411876678467
+http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.666463851928711
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -880,8 +881,8 @@ http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.6153182983
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:9000/fast , 1 simultaneous requests,  total time:  0.005114555358886719
-http://localhost:9000/fib/35 , 1 simultaneous requests,  total time:  2.652588367462158
+http://localhost:9000/fast , 1 simultaneous requests,  total time:  0.0043833255767822266
+http://localhost:9000/fib/35 , 1 simultaneous requests,  total time:  2.5776877403259277
 </pre></div></div>
 </div>
 </div>
@@ -913,7 +914,7 @@ http://localhost:9000/fib/35 , 1 simultaneous requests,  total time:  2.65258836
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Roundtrip latency: 7.37 ms
+Roundtrip latency: 5.99 ms
 </pre></div></div>
 </div>
 </div>

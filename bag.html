@@ -202,6 +202,7 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/prefect-etl.html">ETL Pipelines with Prefect</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/forecasting-with-prophet.html">Time Series Forecasting</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="surveys/2019.html">2019 Dask User Survey Results</a></li>
@@ -546,8 +547,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:43151</li>
-  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:40507</li>
+  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -617,8 +618,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 56, &#34;name&#34;: [&#34;Nenita&#34;, &#34;Bolton&#34;], &#34;occupation&#34;: &#34;Teachers Assistant&#34;, &#34;telephone&#34;: &#34;102-455-1998&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1305 Cottonwood Private&#34;, &#34;city&#34;: &#34;Boca Raton&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3496 176030 53878&#34;, &#34;expiration-date&#34;: &#34;04/25&#34;}}
-{&#34;age&#34;: 31, &#34;name&#34;: [&#34;Arlena&#34;, &#34;Suarez&#34;], &#34;occupation&#34;: &#34;Labelling Operator&#34;, &#34;telephone&#34;: &#34;411.011.5292&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;999 Pioche Brae&#34;, &#34;city&#34;: &#34;Detroit&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3727 453881 03772&#34;, &#34;expiration-date&#34;: &#34;08/25&#34;}}
+{&#34;age&#34;: 50, &#34;name&#34;: [&#34;Jewel&#34;, &#34;Mccray&#34;], &#34;occupation&#34;: &#34;Cafe Worker&#34;, &#34;telephone&#34;: &#34;1-653-552-3900&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1113 Walnut Mews&#34;, &#34;city&#34;: &#34;Ponca City&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3794 913218 45392&#34;, &#34;expiration-date&#34;: &#34;06/24&#34;}}
+{&#34;age&#34;: 19, &#34;name&#34;: [&#34;Sanford&#34;, &#34;Pratt&#34;], &#34;occupation&#34;: &#34;Sheriff Principal&#34;, &#34;telephone&#34;: &#34;(361) 542-4201&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;620 Calgary Gardens&#34;, &#34;city&#34;: &#34;Commerce City&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3746 201078 69615&#34;, &#34;expiration-date&#34;: &#34;06/17&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -658,18 +659,18 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 56,
-  &#39;name&#39;: [&#39;Nenita&#39;, &#39;Bolton&#39;],
-  &#39;occupation&#39;: &#39;Teachers Assistant&#39;,
-  &#39;telephone&#39;: &#39;102-455-1998&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1305 Cottonwood Private&#39;, &#39;city&#39;: &#39;Boca Raton&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3496 176030 53878&#39;, &#39;expiration-date&#39;: &#39;04/25&#39;}},
- {&#39;age&#39;: 31,
-  &#39;name&#39;: [&#39;Arlena&#39;, &#39;Suarez&#39;],
-  &#39;occupation&#39;: &#39;Labelling Operator&#39;,
-  &#39;telephone&#39;: &#39;411.011.5292&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;999 Pioche Brae&#39;, &#39;city&#39;: &#39;Detroit&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3727 453881 03772&#39;, &#39;expiration-date&#39;: &#39;08/25&#39;}})
+({&#39;age&#39;: 50,
+  &#39;name&#39;: [&#39;Jewel&#39;, &#39;Mccray&#39;],
+  &#39;occupation&#39;: &#39;Cafe Worker&#39;,
+  &#39;telephone&#39;: &#39;1-653-552-3900&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1113 Walnut Mews&#39;, &#39;city&#39;: &#39;Ponca City&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3794 913218 45392&#39;, &#39;expiration-date&#39;: &#39;06/24&#39;}},
+ {&#39;age&#39;: 19,
+  &#39;name&#39;: [&#39;Sanford&#39;, &#39;Pratt&#39;],
+  &#39;occupation&#39;: &#39;Sheriff Principal&#39;,
+  &#39;telephone&#39;: &#39;(361) 542-4201&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;620 Calgary Gardens&#39;, &#39;city&#39;: &#39;Commerce City&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3746 201078 69615&#39;, &#39;expiration-date&#39;: &#39;06/17&#39;}})
 </pre></div></div>
 </div>
 </div>
@@ -691,18 +692,18 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 56,
-  &#39;name&#39;: [&#39;Nenita&#39;, &#39;Bolton&#39;],
-  &#39;occupation&#39;: &#39;Teachers Assistant&#39;,
-  &#39;telephone&#39;: &#39;102-455-1998&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1305 Cottonwood Private&#39;, &#39;city&#39;: &#39;Boca Raton&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3496 176030 53878&#39;, &#39;expiration-date&#39;: &#39;04/25&#39;}},
- {&#39;age&#39;: 31,
-  &#39;name&#39;: [&#39;Arlena&#39;, &#39;Suarez&#39;],
-  &#39;occupation&#39;: &#39;Labelling Operator&#39;,
-  &#39;telephone&#39;: &#39;411.011.5292&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;999 Pioche Brae&#39;, &#39;city&#39;: &#39;Detroit&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3727 453881 03772&#39;, &#39;expiration-date&#39;: &#39;08/25&#39;}})
+({&#39;age&#39;: 50,
+  &#39;name&#39;: [&#39;Jewel&#39;, &#39;Mccray&#39;],
+  &#39;occupation&#39;: &#39;Cafe Worker&#39;,
+  &#39;telephone&#39;: &#39;1-653-552-3900&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1113 Walnut Mews&#39;, &#39;city&#39;: &#39;Ponca City&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3794 913218 45392&#39;, &#39;expiration-date&#39;: &#39;06/24&#39;}},
+ {&#39;age&#39;: 42,
+  &#39;name&#39;: [&#39;Scottie&#39;, &#39;Valenzuela&#39;],
+  &#39;occupation&#39;: &#39;Audit Manager&#39;,
+  &#39;telephone&#39;: &#39;556-264-3418&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1323 Carl Viaduct&#39;, &#39;city&#39;: &#39;Gresham&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3763 743021 26680&#39;, &#39;expiration-date&#39;: &#39;01/17&#39;}})
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -720,7 +721,7 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-(&#39;Teachers Assistant&#39;, &#39;Labelling Operator&#39;)
+(&#39;Cafe Worker&#39;, &#39;Sheriff Principal&#39;)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -783,16 +784,16 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[(&#39;Hearing Therapist&#39;, 16),
- (&#39;Portfolio Manager&#39;, 15),
- (&#39;Gambler&#39;, 15),
- (&#39;Metal Dealer&#39;, 14),
- (&#39;Professional Wrestler&#39;, 14),
- (&#39;Stone Sawyer&#39;, 14),
- (&#39;Radio Producer&#39;, 13),
- (&#39;Maid&#39;, 13),
- (&#39;Travel Clerk&#39;, 13),
- (&#39;Transport Manager&#39;, 13)]
+[(&#39;Medal Dealer&#39;, 15),
+ (&#39;Tax Assistant&#39;, 15),
+ (&#39;Artist&#39;, 14),
+ (&#39;Hypnotherapist&#39;, 14),
+ (&#39;Saw Miller&#39;, 14),
+ (&#39;Car Delivery Driver&#39;, 13),
+ (&#39;Bank Manager&#39;, 13),
+ (&#39;Blinds Installer&#39;, 13),
+ (&#39;Marketing Assistant&#39;, 13),
+ (&#39;Maths Teacher&#39;, 13)]
 </pre></div></div>
 </div>
 </div>
@@ -849,12 +850,12 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 56,
-  &#39;name&#39;: [&#39;Nenita&#39;, &#39;Bolton&#39;],
-  &#39;occupation&#39;: &#39;Teachers Assistant&#39;,
-  &#39;telephone&#39;: &#39;102-455-1998&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1305 Cottonwood Private&#39;, &#39;city&#39;: &#39;Boca Raton&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3496 176030 53878&#39;, &#39;expiration-date&#39;: &#39;04/25&#39;}},)
+({&#39;age&#39;: 50,
+  &#39;name&#39;: [&#39;Jewel&#39;, &#39;Mccray&#39;],
+  &#39;occupation&#39;: &#39;Cafe Worker&#39;,
+  &#39;telephone&#39;: &#39;1-653-552-3900&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1113 Walnut Mews&#39;, &#39;city&#39;: &#39;Ponca City&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3794 913218 45392&#39;, &#39;expiration-date&#39;: &#39;06/24&#39;}},)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -884,14 +885,14 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 56,
-  &#39;occupation&#39;: &#39;Teachers Assistant&#39;,
-  &#39;telephone&#39;: &#39;102-455-1998&#39;,
-  &#39;credit-card-number&#39;: &#39;3496 176030 53878&#39;,
-  &#39;credit-card-expiration&#39;: &#39;04/25&#39;,
-  &#39;name&#39;: &#39;Nenita Bolton&#39;,
-  &#39;street-address&#39;: &#39;1305 Cottonwood Private&#39;,
-  &#39;city&#39;: &#39;Boca Raton&#39;},)
+({&#39;age&#39;: 50,
+  &#39;occupation&#39;: &#39;Cafe Worker&#39;,
+  &#39;telephone&#39;: &#39;1-653-552-3900&#39;,
+  &#39;credit-card-number&#39;: &#39;3794 913218 45392&#39;,
+  &#39;credit-card-expiration&#39;: &#39;06/24&#39;,
+  &#39;name&#39;: &#39;Jewel Mccray&#39;,
+  &#39;street-address&#39;: &#39;1113 Walnut Mews&#39;,
+  &#39;city&#39;: &#39;Ponca City&#39;},)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -940,58 +941,58 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
   <tbody>
     <tr>
       <th>0</th>
-      <td>56</td>
-      <td>Teachers Assistant</td>
-      <td>102-455-1998</td>
-      <td>3496 176030 53878</td>
-      <td>04/25</td>
-      <td>Nenita Bolton</td>
-      <td>1305 Cottonwood Private</td>
-      <td>Boca Raton</td>
+      <td>50</td>
+      <td>Cafe Worker</td>
+      <td>1-653-552-3900</td>
+      <td>3794 913218 45392</td>
+      <td>06/24</td>
+      <td>Jewel Mccray</td>
+      <td>1113 Walnut Mews</td>
+      <td>Ponca City</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>31</td>
-      <td>Labelling Operator</td>
-      <td>411.011.5292</td>
-      <td>3727 453881 03772</td>
-      <td>08/25</td>
-      <td>Arlena Suarez</td>
-      <td>999 Pioche Brae</td>
-      <td>Detroit</td>
+      <td>19</td>
+      <td>Sheriff Principal</td>
+      <td>(361) 542-4201</td>
+      <td>3746 201078 69615</td>
+      <td>06/17</td>
+      <td>Sanford Pratt</td>
+      <td>620 Calgary Gardens</td>
+      <td>Commerce City</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>48</td>
-      <td>Planning Manager</td>
-      <td>1-432-412-3426</td>
-      <td>5151 0215 2285 3623</td>
-      <td>04/24</td>
-      <td>Woodrow Garza</td>
-      <td>32 Ney Heights</td>
-      <td>Oak Ridge</td>
+      <td>42</td>
+      <td>Audit Manager</td>
+      <td>556-264-3418</td>
+      <td>3763 743021 26680</td>
+      <td>01/17</td>
+      <td>Scottie Valenzuela</td>
+      <td>1323 Carl Viaduct</td>
+      <td>Gresham</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>43</td>
-      <td>Forest Ranger</td>
-      <td>403-408-1988</td>
-      <td>4716 9554 6754 5788</td>
-      <td>03/20</td>
-      <td>Micheal Morris</td>
-      <td>925 Harper Private</td>
-      <td>Clearwater</td>
+      <td>25</td>
+      <td>Arborist</td>
+      <td>709.805.8558</td>
+      <td>3488 939705 06928</td>
+      <td>03/21</td>
+      <td>Toby Glover</td>
+      <td>685 Havens Pike</td>
+      <td>Natchez</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>47</td>
-      <td>Training Officer</td>
-      <td>578-775-5737</td>
-      <td>5276 5346 7625 4646</td>
-      <td>01/21</td>
-      <td>Margart Acosta</td>
-      <td>904 Lakeview Pike</td>
-      <td>Evansville</td>
+      <td>19</td>
+      <td>Stable Hand</td>
+      <td>337.570.3874</td>
+      <td>5378 0031 3411 8030</td>
+      <td>10/25</td>
+      <td>Jamie Henson</td>
+      <td>1246 Kirkwood Hill</td>
+      <td>La Puente</td>
     </tr>
   </tbody>
 </table>
@@ -1013,16 +1014,16 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Hearing Therapist        16
-Portfolio Manager        15
-Gambler                  15
-Professional Wrestler    14
-Metal Dealer             14
-Stone Sawyer             14
-Travel Clerk             13
-Maid                     13
-Chiropodist              13
-Radio Producer           13
+Tax Assistant          15
+Medal Dealer           15
+Saw Miller             14
+Artist                 14
+Hypnotherapist         14
+Bank Manager           13
+Maths Teacher          13
+Optical Assistant      13
+Advertising Agent      13
+Vehicle Body Worker    13
 Name: occupation, dtype: int64
 </pre></div></div>
 </div>

@@ -69,6 +69,7 @@ Applications:
    applications/prefect-etl
    applications/satellite-imagery-geotiff
    applications/stencils-with-numba
+   applications/forecasting-with-prophet
 
 User Surveys:
 -------------
