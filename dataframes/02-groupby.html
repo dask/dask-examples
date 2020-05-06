@@ -49,7 +49,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Scale Scikit-Learn for Small Data Problems" href="../machine-learning/scale-scikit-learn.html" />
+    <link rel="next" title="Blockwise Ensemble Methods" href="../machine-learning/blockwise-ensemble.html" />
     <link rel="prev" title="DataFrames: Read and Write Data" href="01-data-access.html" />
     <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
   
@@ -176,6 +176,7 @@
 </li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/blockwise-ensemble.html">Blockwise Ensemble Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/parallel-prediction.html">Score and Predict Large Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/torch-prediction.html">Batch Prediction with PyTorch</a></li>
@@ -542,8 +543,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.0.60/12700/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.0.60:8787/status' target='_blank'>http://10.20.0.60:8787/status</a></li>
+  <li><b>Scheduler: </b>inproc://10.20.0.129/12685/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.0.129:8787/status' target='_blank'>http://10.20.0.129:8787/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -682,32 +683,32 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 name
-Alice       0.002836
-Bob        -0.000196
-Charlie     0.000411
-Dan         0.002063
-Edith      -0.000138
-Frank       0.001621
-George     -0.000934
-Hannah     -0.001534
-Ingrid     -0.001415
-Jerry      -0.004634
-Kevin       0.001152
-Laura       0.003408
-Michael    -0.004555
-Norbert     0.001743
-Oliver     -0.002719
-Patricia    0.000358
-Quinn      -0.000525
-Ray        -0.002292
-Sarah       0.000559
-Tim         0.000808
-Ursula      0.002964
-Victor     -0.001764
-Wendy      -0.001183
-Xavier     -0.000229
-Yvonne     -0.003473
-Zelda       0.001493
+Alice       0.002008
+Bob         0.000363
+Charlie     0.000171
+Dan        -0.000037
+Edith      -0.001301
+Frank       0.001961
+George     -0.000852
+Hannah     -0.000658
+Ingrid      0.000397
+Jerry       0.003091
+Kevin      -0.002151
+Laura       0.000209
+Michael    -0.000559
+Norbert     0.002674
+Oliver      0.001699
+Patricia   -0.000480
+Quinn      -0.002670
+Ray         0.000910
+Sarah       0.000605
+Tim        -0.000958
+Ursula     -0.000990
+Victor     -0.001047
+Wendy      -0.000050
+Xavier      0.001233
+Yvonne      0.003492
+Zelda       0.001609
 Name: x, dtype: float64
 </pre></div></div>
 </div>
@@ -726,8 +727,8 @@ Name: x, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 278 ms, sys: 23.8 ms, total: 302 ms
-Wall time: 217 ms
+CPU times: user 288 ms, sys: 13.2 ms, total: 302 ms
+Wall time: 215 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -744,8 +745,8 @@ Wall time: 217 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 633 ms, sys: 18.5 ms, total: 652 ms
-Wall time: 445 ms
+CPU times: user 631 ms, sys: 18.8 ms, total: 650 ms
+Wall time: 448 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -762,8 +763,8 @@ Wall time: 445 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.03 s, sys: 53.3 ms, total: 1.08 s
-Wall time: 832 ms
+CPU times: user 985 ms, sys: 80 ms, total: 1.07 s
+Wall time: 800 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -814,38 +815,38 @@ Wall time: 832 ms
   <tbody>
     <tr>
       <th>Alice</th>
-      <td>0.002836</td>
-      <td>0.577734</td>
-      <td>-0.001067</td>
-      <td>99915</td>
+      <td>0.002008</td>
+      <td>0.578193</td>
+      <td>-0.000324</td>
+      <td>99857</td>
     </tr>
     <tr>
       <th>Bob</th>
-      <td>-0.000196</td>
-      <td>0.577960</td>
-      <td>-0.000878</td>
-      <td>100028</td>
+      <td>0.000363</td>
+      <td>0.576651</td>
+      <td>-0.002428</td>
+      <td>99769</td>
     </tr>
     <tr>
       <th>Charlie</th>
-      <td>0.000411</td>
-      <td>0.576950</td>
-      <td>0.002011</td>
-      <td>99643</td>
+      <td>0.000171</td>
+      <td>0.576454</td>
+      <td>-0.000578</td>
+      <td>99303</td>
     </tr>
     <tr>
       <th>Dan</th>
-      <td>0.002063</td>
-      <td>0.578846</td>
-      <td>0.002027</td>
-      <td>99978</td>
+      <td>-0.000037</td>
+      <td>0.578057</td>
+      <td>0.000470</td>
+      <td>99264</td>
     </tr>
     <tr>
       <th>Edith</th>
-      <td>-0.000138</td>
-      <td>0.578669</td>
-      <td>-0.001602</td>
-      <td>99743</td>
+      <td>-0.001301</td>
+      <td>0.577011</td>
+      <td>-0.001971</td>
+      <td>99552</td>
     </tr>
   </tbody>
 </table>
@@ -928,8 +929,8 @@ Wall time: 832 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 5.47 s, sys: 1.75 s, total: 7.22 s
-Wall time: 4.85 s
+CPU times: user 5.49 s, sys: 2.03 s, total: 7.52 s
+Wall time: 5 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -989,7 +990,7 @@ ga('send', 'pageview');
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../machine-learning/scale-scikit-learn.html" class="btn btn-neutral float-right" title="Scale Scikit-Learn for Small Data Problems" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../machine-learning/blockwise-ensemble.html" class="btn btn-neutral float-right" title="Blockwise Ensemble Methods" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="01-data-access.html" class="btn btn-neutral float-left" title="DataFrames: Read and Write Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
