@@ -671,8 +671,8 @@ Importing plotly failed. Interactive plots will not work.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2.21 s, sys: 99.5 ms, total: 2.31 s
-Wall time: 2.31 s
+CPU times: user 2.19 s, sys: 108 ms, total: 2.3 s
+Wall time: 2.48 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -681,7 +681,7 @@ Wall time: 2.31 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;fbprophet.forecaster.Prophet at 0x7f825f0ca6d0&gt;
+&lt;fbprophet.forecaster.Prophet at 0x7f1f37fc4350&gt;
 </pre></div></div>
 </div>
 <p>And we can make a forecast. Again, Dask isn’t involved here.</p>
@@ -735,7 +735,7 @@ Wall time: 2.31 s
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:33599</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:40975</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
@@ -769,7 +769,7 @@ Wall time: 2.31 s
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 INFO:fbprophet:Making 11 forecasts with cutoffs between 2010-02-15 00:00:00 and 2015-01-20 00:00:00
-INFO:fbprophet:Applying in parallel with &lt;Client: &#39;tcp://127.0.0.1:33599&#39; processes=2 threads=2, memory=8.36 GB&gt;
+INFO:fbprophet:Applying in parallel with &lt;Client: &#39;tcp://127.0.0.1:40975&#39; processes=2 threads=2, memory=8.36 GB&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -777,8 +777,8 @@ INFO:fbprophet:Applying in parallel with &lt;Client: &#39;tcp://127.0.0.1:33599&
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.44 s, sys: 160 ms, total: 1.6 s
-Wall time: 39.2 s
+CPU times: user 1.04 s, sys: 153 ms, total: 1.19 s
+Wall time: 37.5 s
 </pre></div></div>
 </div>
 <p>Be sure to watch the Dask Dashboard as that runs. The models are fit in parallel on the cluster. At the start there’s bit of overhead from having to move the model and data to the workers but after that the scaling looks quite nice.</p>

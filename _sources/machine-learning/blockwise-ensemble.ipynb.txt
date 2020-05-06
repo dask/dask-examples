@@ -30,7 +30,7 @@
     "import dask_ml.datasets\n",
     "import dask_ml.ensemble\n",
     "\n",
-    "client = Client()\n",
+    "client = Client(n_workers=4, threads_per_worker=1)\n",
     "\n",
     "X, y = dask_ml.datasets.make_classification(n_samples=1_000_000,\n",
     "                                            n_informative=10,\n",
