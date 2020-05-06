@@ -41,6 +41,7 @@ Machine Learning:
 .. toctree::
    :maxdepth: 1
 
+   machine-learning/blockwise-ensemble
    machine-learning/scale-scikit-learn
    machine-learning/parallel-prediction
    machine-learning/torch-prediction
