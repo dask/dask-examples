@@ -155,7 +155,8 @@
               
             
             
-              <ul>
+              <p class="caption"><span class="caption-text">Basic Examples</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../array.html">Dask Arrays</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bag.html">Dask Bags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataframe.html">Dask DataFrames</a></li>
@@ -164,10 +165,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning.html">Dask for Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xarray.html">Xarray with Dask Arrays</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Dataframes</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../dataframes/01-data-access.html">DataFrames: Read and Write Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataframes/02-groupby.html">DataFrames: Groupby</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Machine Learning</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/blockwise-ensemble.html">Blockwise Ensemble Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
@@ -183,6 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/glm.html">Generalized Linear Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/svd.html">Singular Value Decomposition</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Applications</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="async-await.html">Async/Await and Non-Blocking Execution</a></li>
@@ -198,6 +202,7 @@
 </ul>
 </li>
 </ul>
+<p class="caption"><span class="caption-text">User Surveys</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../surveys/2019.html">2019 Dask User Survey Results</a></li>
 </ul>
@@ -331,20 +336,33 @@ div.nboutput.container div.prompt pre {
 /* all prompts */
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
-    min-width: 7ex;
-    padding-top: 0.3rem;
-    padding-right: 0.3rem;
-    text-align: right;
-    flex: 0;
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
 }
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
 @media (max-width: 540px) {
     div.nbinput.container div.prompt,
     div.nboutput.container div.prompt {
+        width: unset;
         text-align: left;
         padding: 0.4em;
     }
     div.nboutput.container div.prompt.empty {
         padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
     }
 }
 
@@ -437,7 +455,7 @@ div.nboutput.container div.output_area div[class*=highlight].math,
 div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
-    padding: 0.3rem;
+    padding: 5px;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -671,8 +689,8 @@ Importing plotly failed. Interactive plots will not work.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2.19 s, sys: 108 ms, total: 2.3 s
-Wall time: 2.48 s
+CPU times: user 2.19 s, sys: 100 ms, total: 2.29 s
+Wall time: 2.29 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -681,7 +699,7 @@ Wall time: 2.48 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;fbprophet.forecaster.Prophet at 0x7f1f37fc4350&gt;
+&lt;fbprophet.forecaster.Prophet at 0x7f52ddfee5d0&gt;
 </pre></div></div>
 </div>
 <p>And we can make a forecast. Again, Dask isn’t involved here.</p>
@@ -735,7 +753,7 @@ Wall time: 2.48 s
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:40975</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:36321</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
@@ -769,7 +787,7 @@ Wall time: 2.48 s
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 INFO:fbprophet:Making 11 forecasts with cutoffs between 2010-02-15 00:00:00 and 2015-01-20 00:00:00
-INFO:fbprophet:Applying in parallel with &lt;Client: &#39;tcp://127.0.0.1:40975&#39; processes=2 threads=2, memory=8.36 GB&gt;
+INFO:fbprophet:Applying in parallel with &lt;Client: &#39;tcp://127.0.0.1:36321&#39; processes=2 threads=2, memory=8.36 GB&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -777,8 +795,8 @@ INFO:fbprophet:Applying in parallel with &lt;Client: &#39;tcp://127.0.0.1:40975&
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.04 s, sys: 153 ms, total: 1.19 s
-Wall time: 37.5 s
+CPU times: user 1.4 s, sys: 240 ms, total: 1.64 s
+Wall time: 38.9 s
 </pre></div></div>
 </div>
 <p>Be sure to watch the Dask Dashboard as that runs. The models are fit in parallel on the cluster. At the start there’s bit of overhead from having to move the model and data to the workers but after that the scaling looks quite nice.</p>

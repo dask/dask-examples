@@ -12,11 +12,9 @@ You can run these examples in a live session here: |Binder|
 .. |Binder| image:: https://mybinder.org/badge.svg
    :target: https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab
 
-Basic Examples:
----------------
-
 .. toctree::
    :maxdepth: 1
+   :caption: Basic Examples
 
    array
    bag
@@ -26,20 +24,16 @@ Basic Examples:
    machine-learning
    xarray
 
-Dataframes:
------------
-
 .. toctree::
    :maxdepth: 1
+   :caption: Dataframes
 
    dataframes/01-data-access
    dataframes/02-groupby
 
-Machine Learning:
------------------
-
 .. toctree::
    :maxdepth: 1
+   :caption: Machine Learning
 
    machine-learning/blockwise-ensemble
    machine-learning/scale-scikit-learn
@@ -55,11 +49,9 @@ Machine Learning:
    machine-learning/glm
    machine-learning/svd
 
-Applications:
--------------
-
 .. toctree::
    :maxdepth: 1
+   :caption: Applications
 
    applications/json-data-on-the-web
    applications/async-await
@@ -72,11 +64,9 @@ Applications:
    applications/stencils-with-numba
    applications/forecasting-with-prophet
 
-User Surveys:
--------------
-
 .. toctree::
    :maxdepth: 1
+   :caption: User Surveys
 
    surveys/2019.ipynb
 

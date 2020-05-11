@@ -155,7 +155,8 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">Basic Examples</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="array.html">Dask Arrays</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Dask Bags</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Start-Dask-Client-for-Dashboard">Start Dask Client for Dashboard</a></li>
@@ -174,10 +175,12 @@
 <li class="toctree-l1"><a class="reference internal" href="machine-learning.html">Dask for Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xarray.html">Xarray with Dask Arrays</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Dataframes</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="dataframes/01-data-access.html">DataFrames: Read and Write Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataframes/02-groupby.html">DataFrames: Groupby</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Machine Learning</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/blockwise-ensemble.html">Blockwise Ensemble Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
@@ -193,6 +196,7 @@
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/glm.html">Generalized Linear Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/svd.html">Singular Value Decomposition</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Applications</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
@@ -205,6 +209,7 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/forecasting-with-prophet.html">Time Series Forecasting</a></li>
 </ul>
+<p class="caption"><span class="caption-text">User Surveys</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="surveys/2019.html">2019 Dask User Survey Results</a></li>
 </ul>
@@ -338,20 +343,33 @@ div.nboutput.container div.prompt pre {
 /* all prompts */
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
-    min-width: 7ex;
-    padding-top: 0.3rem;
-    padding-right: 0.3rem;
-    text-align: right;
-    flex: 0;
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
 }
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
 @media (max-width: 540px) {
     div.nbinput.container div.prompt,
     div.nboutput.container div.prompt {
+        width: unset;
         text-align: left;
         padding: 0.4em;
     }
     div.nboutput.container div.prompt.empty {
         padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
     }
 }
 
@@ -444,7 +462,7 @@ div.nboutput.container div.output_area div[class*=highlight].math,
 div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
-    padding: 0.3rem;
+    padding: 5px;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -548,7 +566,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:38617</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:42679</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
@@ -619,8 +637,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 47, &#34;name&#34;: [&#34;Lakia&#34;, &#34;Gillespie&#34;], &#34;occupation&#34;: &#34;Produce Supervisor&#34;, &#34;telephone&#34;: &#34;(409) 642-3608&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;998 Cecilia Loop&#34;, &#34;city&#34;: &#34;Hoffman Estates&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;4093 9455 9057 0293&#34;, &#34;expiration-date&#34;: &#34;05/23&#34;}}
-{&#34;age&#34;: 34, &#34;name&#34;: [&#34;Apryl&#34;, &#34;Serrano&#34;], &#34;occupation&#34;: &#34;Armourer&#34;, &#34;telephone&#34;: &#34;1-527-848-8473&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;738 Avenue I Parkway&#34;, &#34;city&#34;: &#34;McHenry&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;4661 5049 1008 6944&#34;, &#34;expiration-date&#34;: &#34;05/21&#34;}}
+{&#34;age&#34;: 55, &#34;name&#34;: [&#34;Lizeth&#34;, &#34;Tucker&#34;], &#34;occupation&#34;: &#34;Panel Beater&#34;, &#34;telephone&#34;: &#34;(679) 120-9827&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1250 Belcher Nene&#34;, &#34;city&#34;: &#34;Hartford&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3445 965131 42044&#34;, &#34;expiration-date&#34;: &#34;09/20&#34;}}
+{&#34;age&#34;: 28, &#34;name&#34;: [&#34;Thomas&#34;, &#34;Hammond&#34;], &#34;occupation&#34;: &#34;Make Up Artist&#34;, &#34;telephone&#34;: &#34;182.766.7904&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1157 Northridge Place&#34;, &#34;city&#34;: &#34;Rancho Santa Margarita&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;2599 6853 7972 2847&#34;, &#34;expiration-date&#34;: &#34;11/25&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -660,20 +678,20 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 47,
-  &#39;name&#39;: [&#39;Lakia&#39;, &#39;Gillespie&#39;],
-  &#39;occupation&#39;: &#39;Produce Supervisor&#39;,
-  &#39;telephone&#39;: &#39;(409) 642-3608&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;998 Cecilia Loop&#39;, &#39;city&#39;: &#39;Hoffman Estates&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4093 9455 9057 0293&#39;,
-   &#39;expiration-date&#39;: &#39;05/23&#39;}},
- {&#39;age&#39;: 34,
-  &#39;name&#39;: [&#39;Apryl&#39;, &#39;Serrano&#39;],
-  &#39;occupation&#39;: &#39;Armourer&#39;,
-  &#39;telephone&#39;: &#39;1-527-848-8473&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;738 Avenue I Parkway&#39;, &#39;city&#39;: &#39;McHenry&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4661 5049 1008 6944&#39;,
-   &#39;expiration-date&#39;: &#39;05/21&#39;}})
+({&#39;age&#39;: 55,
+  &#39;name&#39;: [&#39;Lizeth&#39;, &#39;Tucker&#39;],
+  &#39;occupation&#39;: &#39;Panel Beater&#39;,
+  &#39;telephone&#39;: &#39;(679) 120-9827&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1250 Belcher Nene&#39;, &#39;city&#39;: &#39;Hartford&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3445 965131 42044&#39;, &#39;expiration-date&#39;: &#39;09/20&#39;}},
+ {&#39;age&#39;: 28,
+  &#39;name&#39;: [&#39;Thomas&#39;, &#39;Hammond&#39;],
+  &#39;occupation&#39;: &#39;Make Up Artist&#39;,
+  &#39;telephone&#39;: &#39;182.766.7904&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1157 Northridge Place&#39;,
+   &#39;city&#39;: &#39;Rancho Santa Margarita&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2599 6853 7972 2847&#39;,
+   &#39;expiration-date&#39;: &#39;11/25&#39;}})
 </pre></div></div>
 </div>
 </div>
@@ -695,20 +713,19 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 47,
-  &#39;name&#39;: [&#39;Lakia&#39;, &#39;Gillespie&#39;],
-  &#39;occupation&#39;: &#39;Produce Supervisor&#39;,
-  &#39;telephone&#39;: &#39;(409) 642-3608&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;998 Cecilia Loop&#39;, &#39;city&#39;: &#39;Hoffman Estates&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4093 9455 9057 0293&#39;,
-   &#39;expiration-date&#39;: &#39;05/23&#39;}},
- {&#39;age&#39;: 34,
-  &#39;name&#39;: [&#39;Apryl&#39;, &#39;Serrano&#39;],
-  &#39;occupation&#39;: &#39;Armourer&#39;,
-  &#39;telephone&#39;: &#39;1-527-848-8473&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;738 Avenue I Parkway&#39;, &#39;city&#39;: &#39;McHenry&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4661 5049 1008 6944&#39;,
-   &#39;expiration-date&#39;: &#39;05/21&#39;}})
+({&#39;age&#39;: 55,
+  &#39;name&#39;: [&#39;Lizeth&#39;, &#39;Tucker&#39;],
+  &#39;occupation&#39;: &#39;Panel Beater&#39;,
+  &#39;telephone&#39;: &#39;(679) 120-9827&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1250 Belcher Nene&#39;, &#39;city&#39;: &#39;Hartford&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3445 965131 42044&#39;, &#39;expiration-date&#39;: &#39;09/20&#39;}},
+ {&#39;age&#39;: 41,
+  &#39;name&#39;: [&#39;Donny&#39;, &#39;Craft&#39;],
+  &#39;occupation&#39;: &#39;Circus Proprietor&#39;,
+  &#39;telephone&#39;: &#39;717.125.7158&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;528 Dorman Bay&#39;, &#39;city&#39;: &#39;Greenfield&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5308 6231 5311 8234&#39;,
+   &#39;expiration-date&#39;: &#39;03/24&#39;}})
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -726,7 +743,7 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-(&#39;Produce Supervisor&#39;, &#39;Armourer&#39;)
+(&#39;Panel Beater&#39;, &#39;Make Up Artist&#39;)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -789,16 +806,16 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[(&#39;Mattress Maker&#39;, 14),
- (&#39;Reprographic Assistant&#39;, 14),
- (&#39;Actor&#39;, 14),
- (&#39;Project Worker&#39;, 14),
- (&#39;Lighting Designer&#39;, 13),
- (&#39;Radio Director&#39;, 13),
- (&#39;Car Wash Attendant&#39;, 13),
- (&#39;Machine Fitters&#39;, 13),
- (&#39;Medical Researcher&#39;, 13),
- (&#39;Aircraft Engineer&#39;, 13)]
+[(&#39;Lighting Designer&#39;, 15),
+ (&#39;Transport Clerk&#39;, 15),
+ (&#39;Radio Controller&#39;, 15),
+ (&#39;Planning Manager&#39;, 14),
+ (&#39;Bus Conductor&#39;, 14),
+ (&#39;Tea Blender&#39;, 14),
+ (&#39;Underwriter&#39;, 13),
+ (&#39;Parts Man&#39;, 13),
+ (&#39;Parts Supervisor&#39;, 13),
+ (&#39;Chauffeur&#39;, 13)]
 </pre></div></div>
 </div>
 </div>
@@ -855,13 +872,12 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 47,
-  &#39;name&#39;: [&#39;Lakia&#39;, &#39;Gillespie&#39;],
-  &#39;occupation&#39;: &#39;Produce Supervisor&#39;,
-  &#39;telephone&#39;: &#39;(409) 642-3608&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;998 Cecilia Loop&#39;, &#39;city&#39;: &#39;Hoffman Estates&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4093 9455 9057 0293&#39;,
-   &#39;expiration-date&#39;: &#39;05/23&#39;}},)
+({&#39;age&#39;: 55,
+  &#39;name&#39;: [&#39;Lizeth&#39;, &#39;Tucker&#39;],
+  &#39;occupation&#39;: &#39;Panel Beater&#39;,
+  &#39;telephone&#39;: &#39;(679) 120-9827&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1250 Belcher Nene&#39;, &#39;city&#39;: &#39;Hartford&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3445 965131 42044&#39;, &#39;expiration-date&#39;: &#39;09/20&#39;}},)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -891,14 +907,14 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 47,
-  &#39;occupation&#39;: &#39;Produce Supervisor&#39;,
-  &#39;telephone&#39;: &#39;(409) 642-3608&#39;,
-  &#39;credit-card-number&#39;: &#39;4093 9455 9057 0293&#39;,
-  &#39;credit-card-expiration&#39;: &#39;05/23&#39;,
-  &#39;name&#39;: &#39;Lakia Gillespie&#39;,
-  &#39;street-address&#39;: &#39;998 Cecilia Loop&#39;,
-  &#39;city&#39;: &#39;Hoffman Estates&#39;},)
+({&#39;age&#39;: 55,
+  &#39;occupation&#39;: &#39;Panel Beater&#39;,
+  &#39;telephone&#39;: &#39;(679) 120-9827&#39;,
+  &#39;credit-card-number&#39;: &#39;3445 965131 42044&#39;,
+  &#39;credit-card-expiration&#39;: &#39;09/20&#39;,
+  &#39;name&#39;: &#39;Lizeth Tucker&#39;,
+  &#39;street-address&#39;: &#39;1250 Belcher Nene&#39;,
+  &#39;city&#39;: &#39;Hartford&#39;},)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -947,58 +963,58 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
   <tbody>
     <tr>
       <th>0</th>
-      <td>47</td>
-      <td>Produce Supervisor</td>
-      <td>(409) 642-3608</td>
-      <td>4093 9455 9057 0293</td>
-      <td>05/23</td>
-      <td>Lakia Gillespie</td>
-      <td>998 Cecilia Loop</td>
-      <td>Hoffman Estates</td>
+      <td>55</td>
+      <td>Panel Beater</td>
+      <td>(679) 120-9827</td>
+      <td>3445 965131 42044</td>
+      <td>09/20</td>
+      <td>Lizeth Tucker</td>
+      <td>1250 Belcher Nene</td>
+      <td>Hartford</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>34</td>
-      <td>Armourer</td>
-      <td>1-527-848-8473</td>
-      <td>4661 5049 1008 6944</td>
-      <td>05/21</td>
-      <td>Apryl Serrano</td>
-      <td>738 Avenue I Parkway</td>
-      <td>McHenry</td>
+      <td>28</td>
+      <td>Make Up Artist</td>
+      <td>182.766.7904</td>
+      <td>2599 6853 7972 2847</td>
+      <td>11/25</td>
+      <td>Thomas Hammond</td>
+      <td>1157 Northridge Place</td>
+      <td>Rancho Santa Margarita</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>46</td>
-      <td>Meat Inspector</td>
-      <td>492.473.1109</td>
-      <td>4746 6775 7244 0366</td>
-      <td>04/25</td>
-      <td>Kimbra Vinson</td>
-      <td>29 Farnum Mall</td>
-      <td>Mamaroneck</td>
+      <td>23</td>
+      <td>Merchant Seaman</td>
+      <td>712.775.0496</td>
+      <td>3471 114793 23351</td>
+      <td>02/25</td>
+      <td>Christinia Odom</td>
+      <td>212 Hancock Drive</td>
+      <td>St. Charles</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>51</td>
-      <td>Marketing Agent</td>
-      <td>1-718-538-6159</td>
-      <td>4735 9642 2300 8963</td>
-      <td>07/25</td>
-      <td>Michale Rivas</td>
-      <td>516 Nantucket Brae</td>
-      <td>Xenia</td>
+      <td>41</td>
+      <td>Circus Proprietor</td>
+      <td>717.125.7158</td>
+      <td>5308 6231 5311 8234</td>
+      <td>03/24</td>
+      <td>Donny Craft</td>
+      <td>528 Dorman Bay</td>
+      <td>Greenfield</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>50</td>
-      <td>Hypnotherapist</td>
-      <td>197.931.2755</td>
-      <td>4394 2821 6815 6586</td>
-      <td>02/24</td>
-      <td>Tamica Bolton</td>
-      <td>586 Chaves Avenue</td>
-      <td>Wausau</td>
+      <td>65</td>
+      <td>Word Processing Operator</td>
+      <td>695-329-8979</td>
+      <td>4719 1288 2684 4923</td>
+      <td>06/20</td>
+      <td>Norman Sexton</td>
+      <td>1093 Jerrold Bypass</td>
+      <td>St. Louis</td>
     </tr>
   </tbody>
 </table>
@@ -1020,16 +1036,16 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Reprographic Assistant    14
-Mattress Maker            14
-Actor                     14
-Project Worker            14
-Lighting Designer         13
-Car Wash Attendant        13
-Radio Director            13
-Aircraft Engineer         13
-Medical Researcher        13
-Machine Fitters           13
+Lighting Designer    15
+Radio Controller     15
+Transport Clerk      15
+Tea Blender          14
+Bus Conductor        14
+Planning Manager     14
+Parts Supervisor     13
+Chauffeur            13
+Pasteuriser          13
+Parts Man            13
 Name: occupation, dtype: int64
 </pre></div></div>
 </div>

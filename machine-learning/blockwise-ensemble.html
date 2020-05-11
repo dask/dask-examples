@@ -155,7 +155,8 @@
               
             
             
-              <ul>
+              <p class="caption"><span class="caption-text">Basic Examples</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../array.html">Dask Arrays</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bag.html">Dask Bags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataframe.html">Dask DataFrames</a></li>
@@ -164,10 +165,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning.html">Dask for Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xarray.html">Xarray with Dask Arrays</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Dataframes</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../dataframes/01-data-access.html">DataFrames: Read and Write Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataframes/02-groupby.html">DataFrames: Groupby</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Machine Learning</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Blockwise Ensemble Methods</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Classification">Classification</a></li>
@@ -188,6 +191,7 @@
 <li class="toctree-l1"><a class="reference internal" href="glm.html">Generalized Linear Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="svd.html">Singular Value Decomposition</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Applications</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
@@ -200,6 +204,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/forecasting-with-prophet.html">Time Series Forecasting</a></li>
 </ul>
+<p class="caption"><span class="caption-text">User Surveys</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../surveys/2019.html">2019 Dask User Survey Results</a></li>
 </ul>
@@ -333,20 +338,33 @@ div.nboutput.container div.prompt pre {
 /* all prompts */
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
-    min-width: 7ex;
-    padding-top: 0.3rem;
-    padding-right: 0.3rem;
-    text-align: right;
-    flex: 0;
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
 }
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
 @media (max-width: 540px) {
     div.nbinput.container div.prompt,
     div.nboutput.container div.prompt {
+        width: unset;
         text-align: left;
         padding: 0.4em;
     }
     div.nboutput.container div.prompt.empty {
         padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
     }
 }
 
@@ -439,7 +457,7 @@ div.nboutput.container div.output_area div[class*=highlight].math,
 div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
-    padding: 0.3rem;
+    padding: 5px;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -803,7 +821,7 @@ BlockwiseVotingClassifier(classes=[0, 1],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([1, 1, 1, 0, 1, 0, 1, 1, 0, 0])
+array([1, 1, 0, 0, 1, 1, 0, 1, 1, 0])
 </pre></div></div>
 </div>
 <p>With <code class="docutils literal notranslate"><span class="pre">voting=&quot;soft&quot;</span></code> we have access to <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code>, as long as the subestimator has a <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> method. These subestimators should be well-calibrated for the predictions to be meaningful. See <a class="reference external" href="https://scikit-learn.org/stable/modules/calibration.html#calibration">probability calibration</a> for more.</p>
@@ -838,11 +856,11 @@ array([1, 1, 1, 0, 1, 0, 1, 1, 0, 0])
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([[1.47100629e-01, 8.52899371e-01],
-       [2.17488632e-03, 9.97825114e-01],
-       [2.92785555e-02, 9.70721444e-01],
-       [9.99963310e-01, 3.66902527e-05],
-       [6.35489296e-02, 9.36451070e-01]])
+array([[0.29442628, 0.70557372],
+       [0.00623985, 0.99376015],
+       [0.53543229, 0.46456771],
+       [0.97906029, 0.02093971],
+       [0.01850773, 0.98149227]])
 </pre></div></div>
 </div>
 <p>The stages here are similar to the <code class="docutils literal notranslate"><span class="pre">voting=&quot;hard&quot;</span></code> case. Only now instead of taking the majority vote we average the probabilities predicted by each sub-estimator.</p>
@@ -941,8 +959,8 @@ array([[1.47100629e-01, 8.52899371e-01],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([ -67.87846036, -135.77323381, -186.02192651, -105.65534   ,
-       -150.93714667])
+array([-303.18662532,  161.27399872,  154.07608817,    0.91554862,
+       -370.5237366 ])
 </pre></div></div>
 </div>
 <p>As usual with Dask-ML, scoring is done in parallel (and distributed on a cluster if you’re connected to one).</p>
@@ -1084,7 +1102,7 @@ LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
--11.358729088091163
+-11.351994187707255
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1102,7 +1120,7 @@ LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.12146889851913055
+0.0765880329657942
 </pre></div></div>
 </div>
 <p>This shows that ensuring your needs to be relatively uniform across partitions. Even including the standard controls to normalize whatever underlying force is generating the non-stationary data (e.g. a time trend compontent or differencing timeseries data, dummy variables for geographic regions, etc) is not sufficient when your dataset is partioned by the non-uniform variable. You would still need to either shuffle your data prior to fitting, or just sample and fit the sub-estimator on the

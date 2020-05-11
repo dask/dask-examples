@@ -155,7 +155,8 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">Basic Examples</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="array.html">Dask Arrays</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bag.html">Dask Bags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataframe.html">Dask DataFrames</a></li>
@@ -174,10 +175,12 @@
 <li class="toctree-l1"><a class="reference internal" href="machine-learning.html">Dask for Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xarray.html">Xarray with Dask Arrays</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Dataframes</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="dataframes/01-data-access.html">DataFrames: Read and Write Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataframes/02-groupby.html">DataFrames: Groupby</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Machine Learning</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/blockwise-ensemble.html">Blockwise Ensemble Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
@@ -193,6 +196,7 @@
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/glm.html">Generalized Linear Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/svd.html">Singular Value Decomposition</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Applications</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
@@ -205,6 +209,7 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/forecasting-with-prophet.html">Time Series Forecasting</a></li>
 </ul>
+<p class="caption"><span class="caption-text">User Surveys</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="surveys/2019.html">2019 Dask User Survey Results</a></li>
 </ul>
@@ -338,20 +343,33 @@ div.nboutput.container div.prompt pre {
 /* all prompts */
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
-    min-width: 7ex;
-    padding-top: 0.3rem;
-    padding-right: 0.3rem;
-    text-align: right;
-    flex: 0;
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
 }
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
 @media (max-width: 540px) {
     div.nbinput.container div.prompt,
     div.nboutput.container div.prompt {
+        width: unset;
         text-align: left;
         padding: 0.4em;
     }
     div.nboutput.container div.prompt.empty {
         padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
     }
 }
 
@@ -444,7 +462,7 @@ div.nboutput.container div.output_area div[class*=highlight].math,
 div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
-    padding: 0.3rem;
+    padding: 5px;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -520,6 +538,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Custom-Workloads-with-Dask-Delayed">
 <h1>Custom Workloads with Dask Delayed<a class="headerlink" href="#Custom-Workloads-with-Dask-Delayed" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="http://dask.readthedocs.io/en/latest/_images/dask_horizontal.svg"><img alt="Dask logo" src="http://dask.readthedocs.io/en/latest/_images/dask_horizontal.svg" width="30%" /></a></p>
 <p><em>Because not all problems are dataframes</em></p>
 <p>This notebook shows using <a class="reference external" href="http://dask.pydata.org/en/latest/delayed.html">dask.delayed</a> to parallelize generic Python code.</p>
 <p>Dask.delayed is a simple and powerful way to parallelize existing code. It allows users to delay function calls into a task graph with dependencies. Dask.delayed doesn’t provide any fancy parallel algorithms like Dask.dataframe, but it does give the user complete control over what they want to build.</p>
@@ -549,7 +568,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:38227</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:40673</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
@@ -609,8 +628,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 11.5 ms, sys: 168 µs, total: 11.7 ms
-Wall time: 726 ms
+CPU times: user 35.4 ms, sys: 2.93 ms, total: 38.3 ms
+Wall time: 1.27 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -658,7 +677,7 @@ Wall time: 726 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Delayed(&#39;add-49a81943-82ef-4a72-ad93-3f4eced3014a&#39;)
+Delayed(&#39;add-91320559-7e0d-44cc-b19b-2751ec130a05&#39;)
 </pre></div></div>
 </div>
 </div>
@@ -737,8 +756,8 @@ Delayed(&#39;add-49a81943-82ef-4a72-ad93-3f4eced3014a&#39;)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 30.2 ms, sys: 8.36 ms, total: 38.5 ms
-Wall time: 33.6 ms
+CPU times: user 23.7 ms, sys: 7.56 ms, total: 31.3 ms
+Wall time: 28.2 ms
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">

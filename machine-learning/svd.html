@@ -155,7 +155,8 @@
               
             
             
-              <ul>
+              <p class="caption"><span class="caption-text">Basic Examples</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../array.html">Dask Arrays</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bag.html">Dask Bags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataframe.html">Dask DataFrames</a></li>
@@ -164,10 +165,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning.html">Dask for Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xarray.html">Xarray with Dask Arrays</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Dataframes</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../dataframes/01-data-access.html">DataFrames: Read and Write Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataframes/02-groupby.html">DataFrames: Groupby</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Machine Learning</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="blockwise-ensemble.html">Blockwise Ensemble Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
@@ -188,6 +191,7 @@
 </ul>
 </li>
 </ul>
+<p class="caption"><span class="caption-text">Applications</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
@@ -200,6 +204,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applications/forecasting-with-prophet.html">Time Series Forecasting</a></li>
 </ul>
+<p class="caption"><span class="caption-text">User Surveys</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../surveys/2019.html">2019 Dask User Survey Results</a></li>
 </ul>
@@ -333,20 +338,33 @@ div.nboutput.container div.prompt pre {
 /* all prompts */
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
-    min-width: 7ex;
-    padding-top: 0.3rem;
-    padding-right: 0.3rem;
-    text-align: right;
-    flex: 0;
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
 }
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
 @media (max-width: 540px) {
     div.nbinput.container div.prompt,
     div.nboutput.container div.prompt {
+        width: unset;
         text-align: left;
         padding: 0.4em;
     }
     div.nboutput.container div.prompt.empty {
         padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
     }
 }
 
@@ -439,7 +457,7 @@ div.nboutput.container div.output_area div[class*=highlight].math,
 div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
-    padding: 0.3rem;
+    padding: 5px;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -542,8 +560,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.0.5/15596/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.0.5:8787/status' target='_blank'>http://10.20.0.5:8787/status</a></li>
+  <li><b>Scheduler: </b>inproc://10.20.0.45/15521/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.0.45:8787/status' target='_blank'>http://10.20.0.45:8787/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -607,19 +625,19 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([[ 0.100011  ,  0.09993592,  0.09985772, ...,  0.10018889,
-         0.09981831,  0.09999798],
-       [ 0.06679935, -0.05921729,  0.21558779, ...,  0.13379253,
-         0.01499681, -0.15376433],
-       [-0.03457274, -0.06572079, -0.1718178 , ...,  0.0751645 ,
-         0.06438098,  0.17500731],
+array([[ 0.10000852,  0.10014562,  0.10012918, ...,  0.09990138,
+         0.10012688,  0.10009148],
+       [ 0.00604356,  0.00086154,  0.07762558, ..., -0.27422399,
+        -0.06419597,  0.17866488],
+       [-0.11206165,  0.0202299 , -0.0383646 , ...,  0.07482435,
+        -0.09267087,  0.06387393],
        ...,
-       [-0.16495853,  0.16233346,  0.09808333, ...,  0.04218882,
-        -0.05103012,  0.03788214],
-       [ 0.07679707,  0.18721837, -0.02863406, ..., -0.0932611 ,
-        -0.01180151,  0.14546259],
-       [-0.09860506, -0.0032389 ,  0.09923642, ..., -0.08493103,
-         0.15734857, -0.0367866 ]])
+       [-0.00844644,  0.11920219,  0.12201034, ...,  0.03050381,
+        -0.04556906, -0.08063483],
+       [ 0.23933669,  0.13459436, -0.00295621, ..., -0.05792453,
+        -0.14348842,  0.12268885],
+       [-0.11601862,  0.03416677, -0.07060188, ..., -0.10727144,
+         0.17176928, -0.05123945]])
 </pre></div></div>
 </div>
 </div>
@@ -672,16 +690,16 @@ array([[ 0.100011  ,  0.09993592,  0.09985772, ...,  0.10018889,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([[ 0.00997218,  0.0100031 ,  0.00996698, ...,  0.00999454,
-         0.00999251,  0.01002546],
-       [ 0.00616816,  0.00201791,  0.00221486, ...,  0.00206037,
-         0.00195406,  0.00171623],
-       [ 0.00900908,  0.00353796, -0.01139262, ..., -0.00293642,
-        -0.01098365, -0.00748516],
-       [ 0.00690613, -0.01196605, -0.00983724, ..., -0.02379931,
-        -0.00903063, -0.00662415],
-       [ 0.00352031,  0.00459629, -0.002489  , ..., -0.0106614 ,
-        -0.00883377,  0.00556118]])
+array([[ 0.01011448,  0.01001784,  0.01000921, ...,  0.01008934,
+         0.01008995,  0.01003825],
+       [ 0.000902  ,  0.00198975,  0.00962207, ...,  0.00436218,
+        -0.00377358, -0.0053053 ],
+       [ 0.01141908,  0.01757894,  0.00333052, ..., -0.00025175,
+        -0.00280441,  0.00586028],
+       [-0.01175653,  0.01742544,  0.00449698, ...,  0.00684736,
+         0.0167701 ,  0.00072711],
+       [ 0.00482278,  0.00194298, -0.00697226, ..., -0.00646703,
+         0.0019633 , -0.00424521]])
 </pre></div></div>
 </div>
 </div>

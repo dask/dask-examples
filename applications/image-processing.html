@@ -155,7 +155,8 @@
               
             
             
-              <ul>
+              <p class="caption"><span class="caption-text">Basic Examples</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../array.html">Dask Arrays</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bag.html">Dask Bags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataframe.html">Dask DataFrames</a></li>
@@ -164,10 +165,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning.html">Dask for Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xarray.html">Xarray with Dask Arrays</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Dataframes</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../dataframes/01-data-access.html">DataFrames: Read and Write Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataframes/02-groupby.html">DataFrames: Groupby</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Machine Learning</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/blockwise-ensemble.html">Blockwise Ensemble Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
@@ -183,6 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/glm.html">Generalized Linear Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine-learning/svd.html">Singular Value Decomposition</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Applications</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="async-await.html">Async/Await and Non-Blocking Execution</a></li>
@@ -203,6 +207,7 @@
 <li class="toctree-l1"><a class="reference internal" href="stencils-with-numba.html">Stencil Computations with Numba</a></li>
 <li class="toctree-l1"><a class="reference internal" href="forecasting-with-prophet.html">Time Series Forecasting</a></li>
 </ul>
+<p class="caption"><span class="caption-text">User Surveys</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../surveys/2019.html">2019 Dask User Survey Results</a></li>
 </ul>
@@ -336,20 +341,33 @@ div.nboutput.container div.prompt pre {
 /* all prompts */
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
-    min-width: 7ex;
-    padding-top: 0.3rem;
-    padding-right: 0.3rem;
-    text-align: right;
-    flex: 0;
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
 }
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
 @media (max-width: 540px) {
     div.nbinput.container div.prompt,
     div.nboutput.container div.prompt {
+        width: unset;
         text-align: left;
         padding: 0.4em;
     }
     div.nboutput.container div.prompt.empty {
         padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
     }
 }
 
@@ -442,7 +460,7 @@ div.nboutput.container div.output_area div[class*=highlight].math,
 div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
-    padding: 0.3rem;
+    padding: 5px;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -564,29 +582,44 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Collecting scikit-image
-  Downloading scikit_image-0.16.2-cp37-cp37m-manylinux1_x86_64.whl (26.5 MB)
+  Downloading scikit_image-0.17.1-cp37-cp37m-manylinux1_x86_64.whl (12.3 MB)
 
-Requirement already satisfied: pillow&gt;=4.3.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from scikit-image) (7.0.0)
-Requirement already satisfied: scipy&gt;=0.19.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from scikit-image) (1.4.1)
-Collecting PyWavelets&gt;=0.4.0
+Requirement already satisfied: tifffile&gt;=2019.7.26 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from scikit-image) (2020.5.7)
+Requirement already satisfied: matplotlib!=3.0.0,&gt;=2.0.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from scikit-image) (3.2.1)
+Collecting PyWavelets&gt;=1.1.1
   Downloading PyWavelets-1.1.1-cp37-cp37m-manylinux1_x86_64.whl (4.4 MB)
 
+Collecting pooch&gt;=0.5.2
+  Downloading pooch-1.1.0-py3-none-any.whl (44 kB)
+
+Requirement already satisfied: numpy&gt;=1.15.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from scikit-image) (1.17.5)
+Requirement already satisfied: scipy&gt;=1.0.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from scikit-image) (1.4.1)
 Collecting imageio&gt;=2.3.0
   Downloading imageio-2.8.0-py3-none-any.whl (3.3 MB)
 
-Requirement already satisfied: matplotlib!=3.0.0,&gt;=2.0.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from scikit-image) (3.2.1)
+Requirement already satisfied: pillow!=7.1.0,!=7.1.1,&gt;=4.3.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from scikit-image) (7.0.0)
 Collecting networkx&gt;=2.0
   Downloading networkx-2.4-py3-none-any.whl (1.6 MB)
 
-Requirement already satisfied: numpy&gt;=1.13.3 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from scipy&gt;=0.19.0-&gt;scikit-image) (1.17.5)
+Collecting imagecodecs&gt;=2020.2.18
+  Downloading imagecodecs-2020.2.18-cp37-cp37m-manylinux2014_x86_64.whl (18.1 MB)
+
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (1.2.0)
 Requirement already satisfied: cycler&gt;=0.10 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (0.10.0)
 Requirement already satisfied: python-dateutil&gt;=2.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (2.8.1)
 Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (2.4.7)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (1.2.0)
+Collecting appdirs
+  Downloading appdirs-1.4.4-py2.py3-none-any.whl (9.6 kB)
+Requirement already satisfied: requests in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from pooch&gt;=0.5.2-&gt;scikit-image) (2.23.0)
+Requirement already satisfied: packaging in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from pooch&gt;=0.5.2-&gt;scikit-image) (20.1)
 Requirement already satisfied: decorator&gt;=4.3.0 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from networkx&gt;=2.0-&gt;scikit-image) (4.4.2)
 Requirement already satisfied: six in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from cycler&gt;=0.10-&gt;matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (1.14.0)
-Installing collected packages: PyWavelets, imageio, networkx, scikit-image
-Successfully installed PyWavelets-1.1.1 imageio-2.8.0 networkx-2.4 scikit-image-0.16.2
+Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests-&gt;pooch&gt;=0.5.2-&gt;scikit-image) (3.0.4)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests-&gt;pooch&gt;=0.5.2-&gt;scikit-image) (2.9)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests-&gt;pooch&gt;=0.5.2-&gt;scikit-image) (1.25.9)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /home/travis/miniconda/envs/test/lib/python3.7/site-packages (from requests-&gt;pooch&gt;=0.5.2-&gt;scikit-image) (2020.4.5.1)
+Installing collected packages: PyWavelets, appdirs, pooch, imageio, networkx, scikit-image, imagecodecs
+Successfully installed PyWavelets-1.1.1 appdirs-1.4.4 imagecodecs-2020.2.18 imageio-2.8.0 networkx-2.4 pooch-1.1.0 scikit-image-0.17.1
 </pre></div></div>
 </div>
 <p>If you are running this notebook on your own computer and not in the mybinder environment, you’ll additionally need to ensure your Python environment contains: * dask * dask-image * python-graphviz * scikit-image * matplotlib * numpy</p>
@@ -711,7 +744,7 @@ dask.array&lt;from-value, shape=(1, 512, 512, 3), dtype=uint8, chunksize=(1, 512
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f6daf50c4d0&gt;
+&lt;matplotlib.image.AxesImage at 0x7fe705d9b610&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -973,7 +1006,7 @@ dask.array&lt;add, shape=(4, 256, 256), dtype=float64, chunksize=(1, 256, 256), 
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f6dac029f10&gt;
+&lt;matplotlib.image.AxesImage at 0x7fe7040e1890&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1081,7 +1114,7 @@ dask.array&lt;add, shape=(4, 256, 256), dtype=float64, chunksize=(1, 256, 256), 
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f6d96f39090&gt;
+&lt;matplotlib.image.AxesImage at 0x7fe6f57f4910&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1134,7 +1167,7 @@ Number of labels: 78
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f6d96ea5f50&gt;
+&lt;matplotlib.image.AxesImage at 0x7fe6f576a910&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">

@@ -155,7 +155,8 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">Basic Examples</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="array.html">Dask Arrays</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bag.html">Dask Bags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataframe.html">Dask DataFrames</a></li>
@@ -171,10 +172,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="xarray.html">Xarray with Dask Arrays</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Dataframes</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="dataframes/01-data-access.html">DataFrames: Read and Write Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataframes/02-groupby.html">DataFrames: Groupby</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Machine Learning</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/blockwise-ensemble.html">Blockwise Ensemble Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
@@ -190,6 +193,7 @@
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/glm.html">Generalized Linear Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning/svd.html">Singular Value Decomposition</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Applications</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
@@ -202,6 +206,7 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/forecasting-with-prophet.html">Time Series Forecasting</a></li>
 </ul>
+<p class="caption"><span class="caption-text">User Surveys</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="surveys/2019.html">2019 Dask User Survey Results</a></li>
 </ul>
@@ -335,20 +340,33 @@ div.nboutput.container div.prompt pre {
 /* all prompts */
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
-    min-width: 7ex;
-    padding-top: 0.3rem;
-    padding-right: 0.3rem;
-    text-align: right;
-    flex: 0;
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
 }
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
 @media (max-width: 540px) {
     div.nbinput.container div.prompt,
     div.nboutput.container div.prompt {
+        width: unset;
         text-align: left;
         padding: 0.4em;
     }
     div.nboutput.container div.prompt.empty {
         padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
     }
 }
 
@@ -441,7 +459,7 @@ div.nboutput.container div.output_area div[class*=highlight].math,
 div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
-    padding: 0.3rem;
+    padding: 5px;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -540,8 +558,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.0.5/14060/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.0.5:8787/status' target='_blank'>http://10.20.0.5:8787/status</a></li>
+  <li><b>Scheduler: </b>inproc://10.20.0.45/13980/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.0.45:8787/status' target='_blank'>http://10.20.0.45:8787/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -557,6 +575,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Distributed-Training">
 <h2>Distributed Training<a class="headerlink" href="#Distributed-Training" title="Permalink to this headline">¶</a></h2>
+<p><img alt="53c72a8823384b7d9ba61e15e0923b20" src="_images/scikit-learn-logo-notext.png" /> <a class="reference internal" href="_images/joblib_logo.svg"><img alt="dcf59078926b4970ad0e3c88fbc37832" src="_images/joblib_logo.svg" width="20%" /></a></p>
 <p>Scikit-learn uses <a class="reference external" href="http://joblib.readthedocs.io/">joblib</a> for single-machine parallelism. This lets you train most estimators (anything that accepts an <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> parameter) using all the cores of your laptop or workstation.</p>
 <p>Alternatively, Scikit-Learn can use Dask for parallelism. This lets you train those estimators using all the cores of your <em>cluster</em> without significantly changing your code.</p>
 <p>This is most useful for training large models on medium-sized datasets. You may have a large model when searching over many hyper-parameters, or when using an ensemble method with many individual estimators. For too small datasets, training times will typically be small enough that cluster-wide parallelism isn’t helpful. For too large datasets (larger than a single machine’s memory), the scikit-learn estimators may not be able to cope (see below).</p>
@@ -710,10 +729,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.284695</td>
-      <td>0.063041</td>
-      <td>0.025857</td>
-      <td>0.003216</td>
+      <td>0.279823</td>
+      <td>0.018110</td>
+      <td>0.027326</td>
+      <td>0.009946</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>True</td>
@@ -727,10 +746,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>1</th>
-      <td>0.320087</td>
-      <td>0.006922</td>
-      <td>0.029673</td>
-      <td>0.006803</td>
+      <td>0.347486</td>
+      <td>0.008855</td>
+      <td>0.030940</td>
+      <td>0.006801</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>False</td>
@@ -744,10 +763,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>2</th>
-      <td>0.210154</td>
-      <td>0.012064</td>
-      <td>0.015420</td>
-      <td>0.005883</td>
+      <td>0.203628</td>
+      <td>0.010750</td>
+      <td>0.016023</td>
+      <td>0.004833</td>
       <td>0.001</td>
       <td>poly</td>
       <td>True</td>
@@ -761,10 +780,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>3</th>
-      <td>0.187018</td>
-      <td>0.014098</td>
-      <td>0.018585</td>
-      <td>0.005785</td>
+      <td>0.188852</td>
+      <td>0.035296</td>
+      <td>0.014128</td>
+      <td>0.006939</td>
       <td>0.001</td>
       <td>poly</td>
       <td>False</td>
@@ -778,10 +797,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>4</th>
-      <td>0.340702</td>
-      <td>0.001574</td>
-      <td>0.039371</td>
-      <td>0.002524</td>
+      <td>0.351389</td>
+      <td>0.011544</td>
+      <td>0.028144</td>
+      <td>0.008167</td>
       <td>0.001</td>
       <td>sigmoid</td>
       <td>True</td>
