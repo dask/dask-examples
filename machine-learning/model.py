@@ -2,13 +2,15 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import torchtext
 
 
 class CNN(nn.Module):
     def __init__(self, n_filters=100, filter_sizes=(2,3,4), output_dim=2, dropout=0.2, pretrained_embeddings=None):
         
         super().__init__()
-        self.embedding = nn.Embedding.from_pretrained(torch.FloatTensor(pretrained_embeddings))
+        # will be used to initialize model embeddings layer
+        self.embedding = nn.Embedding.from_pretrained(pretrained_embeddings)
         self.embedding.weight.requires_grad = False # save some computation
         embedding_dim = self.embedding.embedding_dim
         self.conv_0 = nn.Conv1d(in_channels = 1, 
