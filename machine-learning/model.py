@@ -2,6 +2,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from torch.nn.utils.rnn import pad_sequence
 import torchtext
 
 
@@ -26,8 +27,10 @@ class CNN(nn.Module):
         self.dropout = nn.Dropout(dropout)
         
     def forward(self, text):
+        # padding_value ought to be 1: TEXT.vocab.stoi[TEXT.pad_token]
+        padded_batch = pad_sequence(text, batch_first=True, padding_value=1)
         #text = [batch size, sent len]
-        embedded = self.embedding(text)
+        embedded = self.embedding(padded_batch)
         #embedded = [batch size, sent len, emb dim]
         embedded = embedded.unsqueeze(1)
         #embedded = [batch size, 1, sent len, emb dim]
@@ -43,4 +46,4 @@ class CNN(nn.Module):
         #cat = [batch size, n_filters * len(filter_sizes)]
         logits = self.fc(cat)
         #logits = [batch_size, output_dim]
-        return F.softmax(logits, dim=-1)
+        return torch.log(F.softmax(logits, dim=-1))
