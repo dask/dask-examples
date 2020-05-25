@@ -4,12 +4,14 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.nn.utils.rnn import pad_sequence
 import torchtext
+import numpy as np
 
 
 class CNN(nn.Module):
-    def __init__(self, n_filters=100, filter_sizes=(2,3,4), output_dim=2, dropout=0.2, pretrained_embeddings=None):
+    def __init__(self, n_filters=100, filter_sizes=(2,3,4), output_dim=2, dropout=0.2, pretrained_embeddings=None, TEXT=None):
         
         super().__init__()
+        self.TEXT = TEXT
         # will be used to initialize model embeddings layer
         self.embedding = nn.Embedding.from_pretrained(pretrained_embeddings)
         self.embedding.weight.requires_grad = False # save some computation
@@ -27,10 +29,12 @@ class CNN(nn.Module):
         self.dropout = nn.Dropout(dropout)
         
     def forward(self, text):
-        # padding_value ought to be 1: TEXT.vocab.stoi[TEXT.pad_token]
-        padded_batch = pad_sequence(text, batch_first=True, padding_value=1)
+#         # bit of a hack to preprocess data inside the network
+#         if isinstance(text, np.ndarray):
+#             text = self.TEXT.process(text)
+        
         #text = [batch size, sent len]
-        embedded = self.embedding(padded_batch)
+        embedded = self.embedding(text)
         #embedded = [batch size, sent len, emb dim]
         embedded = embedded.unsqueeze(1)
         #embedded = [batch size, 1, sent len, emb dim]
@@ -46,4 +50,4 @@ class CNN(nn.Module):
         #cat = [batch size, n_filters * len(filter_sizes)]
         logits = self.fc(cat)
         #logits = [batch_size, output_dim]
-        return torch.log(F.softmax(logits, dim=-1))
+        return F.softmax(logits, dim=-1)
