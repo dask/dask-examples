@@ -583,7 +583,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:36063</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:42837</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
@@ -600,7 +600,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Distributed-Training">
 <h2>Distributed Training<a class="headerlink" href="#Distributed-Training" title="Permalink to this headline">¶</a></h2>
-<p><img alt="867b953362dd46369d03b02ae3ff64ee" src="../_images/scikit-learn-logo-notext1.png" /> <a class="reference internal" href="../_images/joblib_logo1.svg"><img alt="838742a17d494517a807346e049398cb" src="../_images/joblib_logo1.svg" width="20%" /></a></p>
+<p><img alt="bb8807c1e89f48c6b309c240a4ce9698" src="../_images/scikit-learn-logo-notext1.png" /> <a class="reference internal" href="../_images/joblib_logo1.svg"><img alt="0c0740c060e54c7e827b3aaa392eb6c0" src="../_images/joblib_logo1.svg" width="20%" /></a></p>
 <p>Scikit-learn uses <a class="reference external" href="http://joblib.readthedocs.io/">joblib</a> for single-machine parallelism. This lets you train most estimators (anything that accepts an <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> parameter) using all the cores of your laptop or workstation.</p>
 <p>Alternatively, Scikit-Learn can use Dask for parallelism. This lets you train those estimators using all the cores of your <em>cluster</em> without significantly changing your code.</p>
 <p>This is most useful for training large models on medium-sized datasets. You may have a large model when searching over many hyper-parameters, or when using an ensemble method with many individual estimators. For too small datasets, training times will typically be small enough that cluster-wide parallelism isn’t helpful. For too large datasets (larger than a single machine’s memory), the scikit-learn estimators may not be able to cope (though Dask-ML provides other ways for working with larger
@@ -740,7 +740,7 @@ Fitting 3 folds for each of 8 candidates, totalling 24 fits
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 [Parallel(n_jobs=-1)]: Using backend DaskDistributedBackend with 4 concurrent workers.
-[Parallel(n_jobs=-1)]: Done  24 out of  24 | elapsed:   12.1s finished
+[Parallel(n_jobs=-1)]: Done  24 out of  24 | elapsed:    9.6s finished
 /home/travis/miniconda/envs/test/lib/python3.7/site-packages/sklearn/model_selection/_search.py:823: FutureWarning: The parameter &#39;iid&#39; is deprecated in 0.22 and will be removed in 0.24.
   &#34;removed in 0.24.&#34;, FutureWarning
 </pre></div></div>
