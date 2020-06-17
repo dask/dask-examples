@@ -172,6 +172,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#Start-Dask-Client-for-Dashboard">Start Dask Client for Dashboard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Artifical-dataset">Artifical dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Groupby-Aggregations">Groupby Aggregations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Custom-Aggregations">Custom Aggregations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Many-groups">Many groups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Groupby-Apply">Groupby Apply</a></li>
 </ul>
@@ -561,8 +562,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.1.60/12822/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.1.60:8787/status' target='_blank'>http://10.20.1.60:8787/status</a></li>
+  <li><b>Scheduler: </b>inproc://10.20.0.60/12741/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.0.60:8787/status' target='_blank'>http://10.20.0.60:8787/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -701,32 +702,32 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 name
-Alice       0.001965
-Bob        -0.000500
-Charlie     0.003994
-Dan         0.001503
-Edith      -0.000818
-Frank      -0.000162
-George      0.002223
-Hannah     -0.001077
-Ingrid      0.000342
-Jerry      -0.001803
-Kevin       0.000598
-Laura      -0.000120
-Michael     0.000386
-Norbert    -0.001431
-Oliver      0.001123
-Patricia   -0.001940
-Quinn       0.000131
-Ray        -0.000507
-Sarah       0.003966
-Tim         0.000566
-Ursula     -0.000268
-Victor      0.001848
-Wendy      -0.001151
-Xavier      0.000647
-Yvonne     -0.001778
-Zelda       0.003179
+Alice      -0.000881
+Bob         0.001446
+Charlie    -0.000934
+Dan         0.002732
+Edith       0.000205
+Frank      -0.000631
+George      0.000288
+Hannah     -0.001711
+Ingrid      0.001157
+Jerry       0.000662
+Kevin      -0.001666
+Laura       0.000156
+Michael    -0.003798
+Norbert     0.002238
+Oliver      0.001466
+Patricia   -0.002314
+Quinn       0.000375
+Ray         0.002129
+Sarah       0.000559
+Tim         0.002054
+Ursula      0.003161
+Victor      0.002170
+Wendy      -0.001432
+Xavier      0.000860
+Yvonne      0.000193
+Zelda      -0.000511
 Name: x, dtype: float64
 </pre></div></div>
 </div>
@@ -745,8 +746,8 @@ Name: x, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 273 ms, sys: 25.3 ms, total: 299 ms
-Wall time: 219 ms
+CPU times: user 312 ms, sys: 23.6 ms, total: 336 ms
+Wall time: 254 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -763,8 +764,8 @@ Wall time: 219 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 647 ms, sys: 15.7 ms, total: 663 ms
-Wall time: 463 ms
+CPU times: user 658 ms, sys: 28.5 ms, total: 687 ms
+Wall time: 467 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -781,8 +782,8 @@ Wall time: 463 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.02 s, sys: 64.3 ms, total: 1.09 s
-Wall time: 814 ms
+CPU times: user 1.05 s, sys: 71.5 ms, total: 1.12 s
+Wall time: 842 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -833,38 +834,38 @@ Wall time: 814 ms
   <tbody>
     <tr>
       <th>Alice</th>
-      <td>0.001965</td>
-      <td>0.577941</td>
-      <td>0.001149</td>
-      <td>99640</td>
+      <td>-0.000881</td>
+      <td>0.576956</td>
+      <td>-0.001644</td>
+      <td>99230</td>
     </tr>
     <tr>
       <th>Bob</th>
-      <td>-0.000500</td>
-      <td>0.575962</td>
-      <td>-0.004281</td>
-      <td>99600</td>
+      <td>0.001446</td>
+      <td>0.577651</td>
+      <td>-0.003951</td>
+      <td>99605</td>
     </tr>
     <tr>
       <th>Charlie</th>
-      <td>0.003994</td>
-      <td>0.576197</td>
-      <td>-0.001578</td>
-      <td>99390</td>
+      <td>-0.000934</td>
+      <td>0.578302</td>
+      <td>0.001021</td>
+      <td>100011</td>
     </tr>
     <tr>
       <th>Dan</th>
-      <td>0.001503</td>
-      <td>0.577516</td>
-      <td>-0.000270</td>
-      <td>99477</td>
+      <td>0.002732</td>
+      <td>0.577515</td>
+      <td>0.001788</td>
+      <td>99967</td>
     </tr>
     <tr>
       <th>Edith</th>
-      <td>-0.000818</td>
-      <td>0.578589</td>
-      <td>0.002273</td>
-      <td>99783</td>
+      <td>0.000205</td>
+      <td>0.578548</td>
+      <td>-0.000668</td>
+      <td>99602</td>
     </tr>
   </tbody>
 </table>
@@ -872,6 +873,10 @@ Wall time: 814 ms
 </div>
 <p>This is the same as with Pandas. Generally speaking, Dask.dataframe groupby-aggregations are roughly same performance as Pandas groupby-aggregations, just more scalable.</p>
 <p>You can read more about Pandas’ common aggregations in <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/groupby.html#aggregation">the Pandas documentation</a>.</p>
+</div>
+<div class="section" id="Custom-Aggregations">
+<h2>Custom Aggregations<a class="headerlink" href="#Custom-Aggregations" title="Permalink to this headline">¶</a></h2>
+<p>Dask dataframe Aggregate is available for custom aggregations (See <a class="reference external" href="https://docs.dask.org/en/latest/dataframe-groupby.html#aggregate">Dask dataframe Aggregate Documentation</a>)</p>
 </div>
 <div class="section" id="Many-groups">
 <h2>Many groups<a class="headerlink" href="#Many-groups" title="Permalink to this headline">¶</a></h2>
@@ -892,7 +897,7 @@ Wall time: 814 ms
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/dataframes_02-groupby_15_0.png" src="../_images/dataframes_02-groupby_15_0.png" />
+<img alt="../_images/dataframes_02-groupby_16_0.png" src="../_images/dataframes_02-groupby_16_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -910,7 +915,7 @@ Wall time: 814 ms
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/dataframes_02-groupby_16_0.png" src="../_images/dataframes_02-groupby_16_0.png" />
+<img alt="../_images/dataframes_02-groupby_17_0.png" src="../_images/dataframes_02-groupby_17_0.png" />
 </div>
 </div>
 </div>
@@ -947,8 +952,8 @@ Wall time: 814 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 5.55 s, sys: 1.98 s, total: 7.53 s
-Wall time: 5.02 s
+CPU times: user 5.86 s, sys: 1.95 s, total: 7.81 s
+Wall time: 5.17 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
