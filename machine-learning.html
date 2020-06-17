@@ -40,7 +40,7 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
         <script src="_static/js/custom.js"></script>
     
@@ -558,8 +558,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.0.209/14042/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.0.209:8787/status' target='_blank'>http://10.20.0.209:8787/status</a></li>
+  <li><b>Scheduler: </b>inproc://10.20.1.60/14143/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.1.60:8787/status' target='_blank'>http://10.20.1.60:8787/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -575,7 +575,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Distributed-Training">
 <h2>Distributed Training<a class="headerlink" href="#Distributed-Training" title="Permalink to this headline">¶</a></h2>
-<p><img alt="9e99e42d8b8b4abb8a2fcfa5f0cdb483" src="_images/scikit-learn-logo-notext.png" /> <a class="reference internal" href="_images/joblib_logo.svg"><img alt="29323926ee0042e89eebfd3eb4edd629" src="_images/joblib_logo.svg" width="20%" /></a></p>
+<p><img alt="4d140babf26c4aa2b5d3b425d3550f09" src="_images/scikit-learn-logo-notext.png" /> <img alt="db82ff5d005f4b80a554e72ab94c8837" class="no-scaled-link" src="_images/joblib_logo.svg" width="20%" /></p>
 <p>Scikit-learn uses <a class="reference external" href="http://joblib.readthedocs.io/">joblib</a> for single-machine parallelism. This lets you train most estimators (anything that accepts an <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> parameter) using all the cores of your laptop or workstation.</p>
 <p>Alternatively, Scikit-Learn can use Dask for parallelism. This lets you train those estimators using all the cores of your <em>cluster</em> without significantly changing your code.</p>
 <p>This is most useful for training large models on medium-sized datasets. You may have a large model when searching over many hyper-parameters, or when using an ensemble method with many individual estimators. For too small datasets, training times will typically be small enough that cluster-wide parallelism isn’t helpful. For too large datasets (larger than a single machine’s memory), the scikit-learn estimators may not be able to cope (see below).</p>
@@ -729,10 +729,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.277297</td>
-      <td>0.058155</td>
-      <td>0.029563</td>
-      <td>0.002524</td>
+      <td>0.293407</td>
+      <td>0.082767</td>
+      <td>0.034444</td>
+      <td>0.002876</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>True</td>
@@ -746,10 +746,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>1</th>
-      <td>0.327175</td>
-      <td>0.022600</td>
-      <td>0.032349</td>
-      <td>0.001791</td>
+      <td>0.339950</td>
+      <td>0.036117</td>
+      <td>0.037191</td>
+      <td>0.008880</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>False</td>
@@ -763,10 +763,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>2</th>
-      <td>0.211100</td>
-      <td>0.022577</td>
-      <td>0.019745</td>
-      <td>0.004351</td>
+      <td>0.224217</td>
+      <td>0.014823</td>
+      <td>0.020381</td>
+      <td>0.002982</td>
       <td>0.001</td>
       <td>poly</td>
       <td>True</td>
@@ -780,10 +780,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>3</th>
-      <td>0.183800</td>
-      <td>0.008063</td>
-      <td>0.012944</td>
-      <td>0.002381</td>
+      <td>0.155602</td>
+      <td>0.029725</td>
+      <td>0.015515</td>
+      <td>0.001368</td>
       <td>0.001</td>
       <td>poly</td>
       <td>False</td>
@@ -797,10 +797,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>4</th>
-      <td>0.340615</td>
-      <td>0.009599</td>
-      <td>0.030642</td>
-      <td>0.008655</td>
+      <td>0.334494</td>
+      <td>0.061509</td>
+      <td>0.029658</td>
+      <td>0.003152</td>
       <td>0.001</td>
       <td>sigmoid</td>
       <td>True</td>

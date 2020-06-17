@@ -40,7 +40,7 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
         <script src="../_static/js/custom.js"></script>
     
@@ -606,7 +606,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>Following the <a class="reference external" href="https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html">tutorial</a>, we’ll finetune the model.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -621,7 +621,7 @@ div.rendered_html tbody tr:hover {
 <h2>Finetune the model<a class="headerlink" href="#Finetune-the-model" title="Permalink to this headline">¶</a></h2>
 <p>Our base model is resnet18. It predicts for 1,000 categories, while ours just predicts 2 (ants or bees). To make this model train quickly on examples.dask.org, we’ll only use a couple of epochs.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -630,7 +630,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -646,27 +646,27 @@ div.rendered_html tbody tr:hover {
 <div class="highlight"><pre>
 Epoch 0/1
 ----------
-train Loss: 0.5446 Acc: 0.7213
-val Loss: 0.3002 Acc: 0.8824
+train Loss: 0.6196 Acc: 0.6844
+val Loss: 0.2042 Acc: 0.9281
 
 Epoch 1/1
 ----------
-train Loss: 0.5793 Acc: 0.7664
-val Loss: 0.1800 Acc: 0.9346
+train Loss: 0.4517 Acc: 0.7787
+val Loss: 0.1458 Acc: 0.9477
 
-Training complete in 0m 55s
-Best val Acc: 0.934641
-CPU times: user 4min 8s, sys: 2min 39s, total: 6min 48s
-Wall time: 55.9 s
+Training complete in 0m 4s
+Best val Acc: 0.947712
+CPU times: user 3.92 s, sys: 2.03 s, total: 5.95 s
+Wall time: 6.33 s
 </pre></div></div>
 </div>
 <p>Things seem OK on a few random images:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">visualize_model</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
+<span></span><span class="n">visualize_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -674,8 +674,7 @@ Wall time: 55.9 s
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/machine-learning_torch-prediction_13_0.png" src="../_images/machine-learning_torch-prediction_13_0.png" />
-</div>
+<img alt="../_images/machine-learning_torch-prediction_13_0.svg" src="../_images/machine-learning_torch-prediction_13_0.svg" /></div>
 </div>
 </div>
 <div class="section" id="Batch-Prediction-with-Dask">
@@ -686,7 +685,7 @@ Wall time: 55.9 s
 <li><p><strong>PyTorch neural networks are large.</strong> We don’t want them in Dask task graphs, and we only want to move them around once.</p></li>
 </ol>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -698,7 +697,7 @@ Wall time: 55.9 s
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -707,8 +706,8 @@ Wall time: 55.9 s
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:43647</li>
-  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:46227</li>
+  <li><b>Dashboard: </b><a href='http://127.0.0.1:34861/status' target='_blank'>http://127.0.0.1:34861/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -716,7 +715,7 @@ Wall time: 55.9 s
 <ul style="text-align: left; list-style:none; margin: 0; padding: 0;">
   <li><b>Workers: </b>2</li>
   <li><b>Cores: </b>4</li>
-  <li><b>Memory: </b>31.62 GB</li>
+  <li><b>Memory: </b>100.00 GB</li>
 </ul>
 </td>
 </tr>
@@ -726,7 +725,7 @@ Wall time: 55.9 s
 <h3>Loading the data on the workers<a class="headerlink" href="#Loading-the-data-on-the-workers" title="Permalink to this headline">¶</a></h3>
 <p>First, we’ll define a couple helpers to load the data and preprocess it for the neural network. We’ll use <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code> here so that the execuation is lazy and happens on the cluster. See <a class="reference internal" href="../delayed.html"><span class="doc">the delayed example</span></a> for more on using <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -759,7 +758,7 @@ Wall time: 55.9 s
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -776,7 +775,7 @@ Wall time: 55.9 s
 </div>
 <p>The PyTorch model expects tensors of a specific shape, so let’s transform them.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -786,32 +785,32 @@ Wall time: 55.9 s
 </div>
 <p>And the model expects batches of inputs, so let’s stack a few together.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">batches</span> <span class="o">=</span> <span class="p">[</span><span class="n">dask</span><span class="o">.</span><span class="n">delayed</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">)(</span><span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">)</span>
+<span></span><span class="n">batches</span> <span class="o">=</span> <span class="p">[</span><span class="n">dask</span><span class="o">.</span><span class="n">delayed</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">)(</span><span class="n">batch</span><span class="p">)</span>
            <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">toolz</span><span class="o">.</span><span class="n">partition_all</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">tensors</span><span class="p">)]</span>
 <span class="n">batches</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[Delayed(&#39;stack-0bdfad49-aef0-460f-a715-7470e74a0fdd&#39;),
- Delayed(&#39;stack-e7685443-656f-4112-8717-eb386cd8bdf7&#39;),
- Delayed(&#39;stack-cf6e47e0-79bc-4d60-b9ce-14da3af2177e&#39;),
- Delayed(&#39;stack-fccfe6b7-38cf-4a05-a8c1-2da55194bf0b&#39;),
- Delayed(&#39;stack-4aec6506-a711-496b-924f-fb5f2e6ff018&#39;)]
+[Delayed(&#39;stack-da59d324-464a-4dce-adfa-0dc99dc53299&#39;),
+ Delayed(&#39;stack-939f881b-58ba-4bb5-b4eb-1df6ccfa850f&#39;),
+ Delayed(&#39;stack-e3809d5d-84f2-4279-a1a6-71131f4d2c53&#39;),
+ Delayed(&#39;stack-a172c545-7cdd-467f-a2bc-e5c5ae611d50&#39;),
+ Delayed(&#39;stack-8698c88b-6e05-442d-8346-8af67d0992ae&#39;)]
 </pre></div></div>
 </div>
 <p>Finally, we’ll write a small <code class="docutils literal notranslate"><span class="pre">predict</span></code> helper to predict the output class (0 or 1).</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -830,7 +829,7 @@ Wall time: 55.9 s
 <h3>Moving the model around<a class="headerlink" href="#Moving-the-model-around" title="Permalink to this headline">¶</a></h3>
 <p>PyTorch neural networks are large, so we don’t want to repeat it many times in our task graph (once per batch).</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -841,7 +840,7 @@ Wall time: 55.9 s
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -850,18 +849,19 @@ Wall time: 55.9 s
 </pre></div></div>
 </div>
 <p>Instead, we’ll also wrap the model itself in <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code>. This means the model only shows up once in the Dask graph.</p>
+<p>Additionally, since we performed fine-tuning in the above (and that runs on a GPU if its available), we should move the model back to the CPU.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">dmodel</span> <span class="o">=</span> <span class="n">dask</span><span class="o">.</span><span class="n">delayed</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span></span><span class="n">dmodel</span> <span class="o">=</span> <span class="n">dask</span><span class="o">.</span><span class="n">delayed</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span> <span class="c1"># ensuring model is on the CPU</span>
 </pre></div>
 </div>
 </div>
 <p>Now we’ll use the (delayed) <code class="docutils literal notranslate"><span class="pre">predict</span></code> method to get our predictions.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -871,7 +871,7 @@ Wall time: 55.9 s
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -881,7 +881,7 @@ Wall time: 55.9 s
 <p>The visualization is a bit messy, but the large PyTorch model is the box that’s an ancestor of both <code class="docutils literal notranslate"><span class="pre">predict</span></code> tasks.</p>
 <p>Now, we can do the computation, using the Dask cluster to do all the work. Because the dataset we’re working with is small, it’s safe to just use <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code> to bring the results back to the local Client. For a larger dataset you would want to write to disk or cloud storage or continue processing the predictions on the cluster.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -891,27 +891,27 @@ Wall time: 55.9 s
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-(array([0, 0, 0, 0, 0, 0, 1, 0, 0, 0]),
+(array([1, 1, 1, 0, 1, 0, 1, 1, 1, 1]),
+ array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
+ array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
+ array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
+ array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
+ array([1, 1, 1, 1, 1, 1, 1, 0, 1, 0]),
+ array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
+ array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
+ array([1, 1, 1, 0, 0, 0, 0, 0, 0, 0]),
+ array([0, 0, 0, 1, 0, 0, 0, 0, 0, 0]),
+ array([1, 0, 0, 0, 0, 0, 0, 0, 0, 0]),
+ array([0, 0, 0, 1, 0, 0, 0, 0, 0, 0]),
+ array([0, 0, 0, 1, 0, 0, 0, 0, 0, 0]),
  array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]),
- array([0, 0, 0, 0, 0, 0, 0, 0, 0, 1]),
- array([0, 1, 0, 0, 0, 0, 0, 0, 0, 0]),
- array([0, 0, 1, 0, 0, 0, 0, 1, 0, 0]),
- array([0, 0, 0, 0, 0, 0, 0, 0, 0, 1]),
  array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]),
- array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
- array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
- array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
- array([1, 1, 1, 1, 1, 0, 1, 1, 1, 1]),
- array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
- array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
- array([1, 1, 1, 1, 1, 1, 1, 0, 1, 1]),
- array([1, 1, 1, 1, 1, 1, 0, 1, 1, 1]),
- array([1, 0, 1]))
+ array([0, 0, 0]))
 </pre></div></div>
 </div>
 </div>

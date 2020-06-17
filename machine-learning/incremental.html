@@ -40,7 +40,7 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
         <script src="../_static/js/custom.js"></script>
     
@@ -556,7 +556,7 @@ div.rendered_html tbody tr:hover {
 <li><p>training, predicting, and scoring on this wrapped estimator</p></li>
 </ul>
 <p>Although this example uses Scikit-Learn’s SGDClassifer, the <code class="docutils literal notranslate"><span class="pre">Incremental</span></code> meta-estimator will work for any class that implements <code class="docutils literal notranslate"><span class="pre">partial_fit</span></code> and the <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html">scikit-learn base estimator API</a>.</p>
-<p><img alt="6621da2a45de40b4a12a9bd69e093802" src="http://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" /> <a class="reference internal" href="https://www.continuum.io/sites/default/files/dask_stacked.png"><img alt="c1c9e4ecdf594c8f88b5faa029fd6329" src="https://www.continuum.io/sites/default/files/dask_stacked.png" style="width: 100px;" /></a></p>
+<p><img alt="45f7144066c949dc877836871cee6839" src="http://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" /> <img alt="ce12ffa281c342a89520a10ffb4af2b0" class="no-scaled-link" src="https://www.continuum.io/sites/default/files/dask_stacked.png" style="width: 100px;" /></p>
 <div class="section" id="Setup-Dask">
 <h2>Setup Dask<a class="headerlink" href="#Setup-Dask" title="Permalink to this headline">¶</a></h2>
 <p>We first start a Dask client in order to get access to the Dask dashboard, which will provide progress and performance metrics.</p>
@@ -582,7 +582,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:43015</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:45509</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
@@ -858,7 +858,7 @@ Incremental(assume_equal_chunks=True,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.6025
+0.6064
 </pre></div></div>
 </div>
 </div>
@@ -891,16 +891,16 @@ Incremental(assume_equal_chunks=True,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Score: 0.598
-Score: 0.599
-Score: 0.6176
-Score: 0.6185
-Score: 0.6295
-Score: 0.6375
-Score: 0.6397
-Score: 0.6281
-Score: 0.6341
-Score: 0.6381
+Score: 0.6112
+Score: 0.6042
+Score: 0.6384
+Score: 0.6385
+Score: 0.6402
+Score: 0.6535
+Score: 0.6429
+Score: 0.6639
+Score: 0.6666
+Score: 0.6677
 </pre></div></div>
 </div>
 </div>
@@ -982,11 +982,11 @@ Score: 0.6381
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1,
-       1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
-       1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1,
-       0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0,
-       0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1])
+array([1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0,
+       1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1,
+       0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0,
+       0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1,
+       1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1])
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1004,7 +1004,7 @@ array([0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.6381
+0.6677
 </pre></div></div>
 </div>
 </div>
