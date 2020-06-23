@@ -251,7 +251,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Blockwise Ensemble Methods</li>
     
@@ -821,7 +821,7 @@ BlockwiseVotingClassifier(classes=[0, 1],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([0, 1, 0, 1, 1, 1, 1, 1, 1, 0])
+array([1, 0, 0, 1, 0, 1, 1, 1, 0, 1])
 </pre></div></div>
 </div>
 <p>With <code class="docutils literal notranslate"><span class="pre">voting=&quot;soft&quot;</span></code> we have access to <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code>, as long as the subestimator has a <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> method. These subestimators should be well-calibrated for the predictions to be meaningful. See <a class="reference external" href="https://scikit-learn.org/stable/modules/calibration.html#calibration">probability calibration</a> for more.</p>
@@ -856,11 +856,11 @@ array([0, 1, 0, 1, 1, 1, 1, 1, 1, 0])
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([[0.98959727, 0.01040273],
-       [0.05661972, 0.94338028],
-       [0.50940201, 0.49059799],
-       [0.10863549, 0.89136451],
-       [0.22441053, 0.77558947]])
+array([[3.07280542e-05, 9.99969272e-01],
+       [9.03695326e-01, 9.63046738e-02],
+       [6.17506309e-01, 3.82493691e-01],
+       [2.17768288e-02, 9.78223171e-01],
+       [9.83957546e-01, 1.60424536e-02]])
 </pre></div></div>
 </div>
 <p>The stages here are similar to the <code class="docutils literal notranslate"><span class="pre">voting=&quot;hard&quot;</span></code> case. Only now instead of taking the majority vote we average the probabilities predicted by each sub-estimator.</p>
@@ -959,8 +959,8 @@ array([[0.98959727, 0.01040273],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([ 97.45286707, 194.76638129,  -9.99188826,  48.5152508 ,
-        31.9520281 ])
+array([  50.20503297,  149.07621403,  -35.98805448, -277.07093403,
+       -108.68037448])
 </pre></div></div>
 </div>
 <p>As usual with Dask-ML, scoring is done in parallel (and distributed on a cluster if you’re connected to one).</p>
@@ -1102,7 +1102,7 @@ LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
--11.633036326230357
+-11.56597535744589
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1120,7 +1120,7 @@ LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.14803386699565824
+0.07610446017568406
 </pre></div></div>
 </div>
 <p>This shows that ensuring your needs to be relatively uniform across partitions. Even including the standard controls to normalize whatever underlying force is generating the non-stationary data (e.g. a time trend compontent or differencing timeseries data, dummy variables for geographic regions, etc) is not sufficient when your dataset is partioned by the non-uniform variable. You would still need to either shuffle your data prior to fitting, or just sample and fit the sub-estimator on the
@@ -1158,11 +1158,19 @@ ga('send', 'pageview');
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2018, Dask Developers
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1173,7 +1181,6 @@ ga('send', 'pageview');
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

@@ -253,7 +253,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Dask for Machine Learning</li>
     
@@ -558,8 +558,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.0.60/14122/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.0.60:8787/status' target='_blank'>http://10.20.0.60:8787/status</a></li>
+  <li><b>Scheduler: </b>inproc://10.20.0.80/14237/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.0.80:8787/status' target='_blank'>http://10.20.0.80:8787/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -575,7 +575,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Distributed-Training">
 <h2>Distributed Training<a class="headerlink" href="#Distributed-Training" title="Permalink to this headline">¶</a></h2>
-<p><img alt="394a02ededc544c9beb895d7506c130c" src="_images/scikit-learn-logo-notext.png" /> <img alt="4b385b79c0964a179a13add39fc23337" class="no-scaled-link" src="_images/joblib_logo.svg" width="20%" /></p>
+<p><img alt="7ceda3ccd12049fd8b114cdb432d05e4" src="_images/scikit-learn-logo-notext.png" /> <img alt="9311fcfaa15b4534afdcc7d8cf1cdeaf" class="no-scaled-link" src="_images/joblib_logo.svg" width="20%" /></p>
 <p>Scikit-learn uses <a class="reference external" href="http://joblib.readthedocs.io/">joblib</a> for single-machine parallelism. This lets you train most estimators (anything that accepts an <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> parameter) using all the cores of your laptop or workstation.</p>
 <p>Alternatively, Scikit-Learn can use Dask for parallelism. This lets you train those estimators using all the cores of your <em>cluster</em> without significantly changing your code.</p>
 <p>This is most useful for training large models on medium-sized datasets. You may have a large model when searching over many hyper-parameters, or when using an ensemble method with many individual estimators. For too small datasets, training times will typically be small enough that cluster-wide parallelism isn’t helpful. For too large datasets (larger than a single machine’s memory), the scikit-learn estimators may not be able to cope (see below).</p>
@@ -729,10 +729,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.270803</td>
-      <td>0.073249</td>
-      <td>0.027045</td>
-      <td>0.003865</td>
+      <td>0.277595</td>
+      <td>0.061164</td>
+      <td>0.034010</td>
+      <td>0.003210</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>True</td>
@@ -746,10 +746,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>1</th>
-      <td>0.332110</td>
-      <td>0.019009</td>
-      <td>0.034672</td>
-      <td>0.000737</td>
+      <td>0.324769</td>
+      <td>0.016540</td>
+      <td>0.034406</td>
+      <td>0.002851</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>False</td>
@@ -763,10 +763,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>2</th>
-      <td>0.232496</td>
-      <td>0.023543</td>
-      <td>0.013837</td>
-      <td>0.001614</td>
+      <td>0.206740</td>
+      <td>0.023740</td>
+      <td>0.015288</td>
+      <td>0.006948</td>
       <td>0.001</td>
       <td>poly</td>
       <td>True</td>
@@ -780,10 +780,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>3</th>
-      <td>0.179946</td>
-      <td>0.011694</td>
-      <td>0.012376</td>
-      <td>0.003585</td>
+      <td>0.195467</td>
+      <td>0.016492</td>
+      <td>0.016665</td>
+      <td>0.001137</td>
       <td>0.001</td>
       <td>poly</td>
       <td>False</td>
@@ -797,10 +797,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>4</th>
-      <td>0.338937</td>
-      <td>0.005716</td>
-      <td>0.034159</td>
-      <td>0.011418</td>
+      <td>0.345188</td>
+      <td>0.013151</td>
+      <td>0.031515</td>
+      <td>0.002337</td>
       <td>0.001</td>
       <td>sigmoid</td>
       <td>True</td>
@@ -849,7 +849,7 @@ array([0, 1, 1, 1, 0])
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.988
+0.956
 </pre></div></div>
 </div>
 <p>For more on training scikit-learn models with distributed joblib, see the <a class="reference external" href="http://dask-ml.readthedocs.io/en/latest/joblib.html">dask-ml documentation</a>.</p>
@@ -1020,11 +1020,19 @@ ga('send', 'pageview');
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2018, Dask Developers
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1035,7 +1043,6 @@ ga('send', 'pageview');
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

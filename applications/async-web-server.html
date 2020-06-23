@@ -259,7 +259,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Asynchronous Computation: Web Servers + Dask</li>
     
@@ -539,7 +539,7 @@ div.rendered_html tbody tr:hover {
 <p class="admonition-title">Live Notebook</p>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/applications/async-web-server.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/applications/async-web-server.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/applications/async-web-server.ipynb">on Github</a>.</p>
 </div>
-<p><img alt="90403926772e4e338a77dc86643c7349" class="no-scaled-link" src="http://dask.pydata.org/en/latest/_images/dask_horizontal.svg" width="30%" /></p>
+<p><img alt="89fb6026c75148d3851bd6fd01671cf5" class="no-scaled-link" src="http://dask.pydata.org/en/latest/_images/dask_horizontal.svg" width="30%" /></p>
 <div class="section" id="Asynchronous-Computation:-Web-Servers-+-Dask">
 <h1>Asynchronous Computation: Web Servers + Dask<a class="headerlink" href="#Asynchronous-Computation:-Web-Servers-+-Dask" title="Permalink to this headline">¶</a></h1>
 <p>Lets imagine a simple web server that serves both fast-loading pages and also performs some computation on slower loading pages. In our case this will be a simple Fibonnaci serving application, but you can imagine replacing the <code class="docutils literal notranslate"><span class="pre">fib</span></code> function for running a machine learning model on some input data, fetching results from a database, etc..</p>
@@ -587,7 +587,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;tornado.httpserver.HTTPServer at 0x7f28f4cf5250&gt;
+&lt;tornado.httpserver.HTTPServer at 0x7f9791110690&gt;
 </pre></div></div>
 </div>
 <div class="section" id="Speed">
@@ -639,7 +639,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fast , 1 simultaneous requests,  total time:  0.004749774932861328
+http://localhost:8000/fast , 1 simultaneous requests,  total time:  0.004792690277099609
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -656,7 +656,7 @@ http://localhost:8000/fast , 1 simultaneous requests,  total time:  0.0047497749
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fast , 100 simultaneous requests,  total time:  0.17814087867736816
+http://localhost:8000/fast , 100 simultaneous requests,  total time:  0.1719658374786377
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -673,7 +673,7 @@ http://localhost:8000/fast , 100 simultaneous requests,  total time:  0.17814087
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fib/28 , 1 simultaneous requests,  total time:  0.0911862850189209
+http://localhost:8000/fib/28 , 1 simultaneous requests,  total time:  0.08815503120422363
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -690,7 +690,7 @@ http://localhost:8000/fib/28 , 1 simultaneous requests,  total time:  0.09118628
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fib/28 , 100 simultaneous requests,  total time:  9.037279605865479
+http://localhost:8000/fib/28 , 100 simultaneous requests,  total time:  8.728217124938965
 </pre></div></div>
 </div>
 </div>
@@ -713,8 +713,8 @@ http://localhost:8000/fib/28 , 100 simultaneous requests,  total time:  9.037279
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fib/35 , 1 simultaneous requests,  total time:  2.546832323074341
-http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.5472400188446045
+http://localhost:8000/fib/35 , 1 simultaneous requests,  total time:  2.469780445098877
+http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.470050096511841
 </pre></div></div>
 </div>
 </div>
@@ -750,7 +750,7 @@ http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.5472400188
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:33257</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:32771</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
@@ -808,7 +808,7 @@ http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.5472400188
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;tornado.httpserver.HTTPServer at 0x7f28f00e63d0&gt;
+&lt;tornado.httpserver.HTTPServer at 0x7f97910e1c10&gt;
 </pre></div></div>
 </div>
 </div>
@@ -835,7 +835,7 @@ http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.5472400188
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fib/28 , 20 simultaneous requests,  total time:  1.9419798851013184
+http://localhost:8000/fib/28 , 20 simultaneous requests,  total time:  1.8652379512786865
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -853,7 +853,7 @@ http://localhost:8000/fib/28 , 20 simultaneous requests,  total time:  1.9419798
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:9000/fib/28 , 20 simultaneous requests,  total time:  0.21858930587768555
+http://localhost:9000/fib/28 , 20 simultaneous requests,  total time:  0.22310757637023926
 </pre></div></div>
 </div>
 </div>
@@ -879,8 +879,8 @@ http://localhost:9000/fib/28 , 20 simultaneous requests,  total time:  0.2185893
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fib/35 , 1 simultaneous requests,  total time:  2.6392879486083984
-http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.640707015991211
+http://localhost:8000/fib/35 , 1 simultaneous requests,  total time:  2.529148817062378
+http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.5295023918151855
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -901,8 +901,8 @@ http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.6407070159
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:9000/fast , 1 simultaneous requests,  total time:  0.004780292510986328
-http://localhost:9000/fib/35 , 1 simultaneous requests,  total time:  2.5553641319274902
+http://localhost:9000/fast , 1 simultaneous requests,  total time:  0.004814863204956055
+http://localhost:9000/fib/35 , 1 simultaneous requests,  total time:  2.486659526824951
 </pre></div></div>
 </div>
 </div>
@@ -934,7 +934,7 @@ http://localhost:9000/fib/35 , 1 simultaneous requests,  total time:  2.55536413
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Roundtrip latency: 7.13 ms
+Roundtrip latency: 6.51 ms
 </pre></div></div>
 </div>
 </div>
@@ -970,11 +970,19 @@ ga('send', 'pageview');
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2018, Dask Developers
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -985,7 +993,6 @@ ga('send', 'pageview');
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
