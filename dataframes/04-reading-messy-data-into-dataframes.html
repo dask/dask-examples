@@ -1,0 +1,2108 @@
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>DataFrames: Reading in messy data &mdash; Dask Examples  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+        <script src="../_static/js/custom.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
+  
+</head>
+
+<body class="wy-body-for-nav">
+
+  
+    <nav id="explore-links">
+        <a href="https://docs.dask.org/">
+        <img class="caption" src="../_static/images/dask-horizontal-white.svg"/>
+        </a>
+
+        <ul>
+        <li>
+            <a>Get Started</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
+            <li><a href="https://examples.dask.org"> Examples </a></li>
+            <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
+            <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
+            <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
+            <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
+            <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
+            <li><a href="https://dask.org/slides"> Slides </a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="">Algorithms</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
+            <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
+            <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
+            <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
+            <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
+            <li><a href="http://ml.dask.org">Machine Learning</a></li>
+            <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+            <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
+            <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
+            <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
+            <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a>Community</a>
+            <ul>
+            <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
+            <li><a href="https://github.com/dask">Github</a></li>
+            <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
+            <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
+            <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
+            <li><a href="https://www.youtube.com/channel/UCj9eavqmvwaCyKhIlu2GaoA/"> YouTube Channel </a></li>
+            </ul>
+        </li>
+        </ul>
+
+    </nav>
+  
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Dask Examples
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Basic Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../array.html">Dask Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bag.html">Dask Bags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataframe.html">Dask DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../delayed.html">Custom Workloads with Dask Delayed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../futures.html">Custom Workloads with Futures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning.html">Dask for Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../xarray.html">Xarray with Dask Arrays</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Dataframes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01-data-access.html">DataFrames: Read and Write Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-groupby.html">DataFrames: Groupby</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/blockwise-ensemble.html">Blockwise Ensemble Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/parallel-prediction.html">Score and Predict Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/torch-prediction.html">Batch Prediction with PyTorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/training-on-large-datasets.html">Train Models on Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/incremental.html">Incrementally Train Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/text-vectorization.html">Text Vectorization Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/hyperparam-opt.html">Hyperparameter optimization with Dask</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/xgboost.html">Scale XGBoost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/voting-classifier.html">Use Voting Classifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/tpot.html">Automate Machine Learning with TPOT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/glm.html">Generalized Linear Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/svd.html">Singular Value Decomposition</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Applications</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/async-web-server.html">Asynchronous Computation: Web Servers + Dask</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/evolving-workflows.html">Handle Evolving Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/image-processing.html">Image Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html">ETL Pipelines with Prefect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/forecasting-with-prophet.html">Time Series Forecasting</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Surveys</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../surveys/2019.html">2019 Dask User Survey Results</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Dask Examples</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>DataFrames: Reading in messy data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/dataframes/04-reading-messy-data-into-dataframes.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="admonition-live-notebook admonition">
+<p class="admonition-title">Live Notebook</p>
+<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/dataframes/04-reading-messy-data-into-dataframes.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/dataframes/04-reading-messy-data-into-dataframes.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/dataframes/04-reading-messy-data-into-dataframes.ipynb">on Github</a>.</p>
+</div>
+<div class="section" id="DataFrames:-Reading-in-messy-data">
+<h1>DataFrames: Reading in messy data<a class="headerlink" href="#DataFrames:-Reading-in-messy-data" title="Permalink to this headline">¶</a></h1>
+<p>In the <a class="reference internal" href="01-data-access.html"><span class="doc">01-data-access</span></a> example we show how Dask Dataframes can read and store data in many of the same formats as Pandas dataframes. One key difference, when using Dask Dataframes is that instead of opening a single file with a function like <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html">pandas.read_csv</a>, we typically open many files at once with
+<a class="reference external" href="https://docs.dask.org/en/latest/dataframe-api.html#dask.dataframe.read_csv">dask.dataframe.read_csv</a>. This enables us to treat a collection of files as a single dataset. Most of the time this works really well. But real data is messy and in this notebook we will explore a more advanced technique to bring messy datasets into a dask dataframe.</p>
+<div class="section" id="Start-Dask-Client-for-Dashboard">
+<h2>Start Dask Client for Dashboard<a class="headerlink" href="#Start-Dask-Client-for-Dashboard" title="Permalink to this headline">¶</a></h2>
+<p>Starting the Dask Client is optional. It will provide a dashboard which is useful to gain insight on the computation.</p>
+<p>The link to the dashboard will become visible when you create the client below. We recommend having it open on one side of your screen while using your notebook on the other side. This can take some effort to arrange your windows, but seeing them both at the same is very useful when learning.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">n_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">memory_limit</span><span class="o">=</span><span class="s1">&#39;2GB&#39;</span><span class="p">)</span>
+<span class="n">client</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<table style="border: 2px solid white;">
+<tr>
+<td style="vertical-align: top; border: 0px solid white">
+<h3 style="text-align: left;">Client</h3>
+<ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
+  <li><b>Scheduler: </b>inproc://10.20.0.251/13449/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.0.251:8787/status' target='_blank'>http://10.20.0.251:8787/status</a></li>
+</ul>
+</td>
+<td style="vertical-align: top; border: 0px solid white">
+<h3 style="text-align: left;">Cluster</h3>
+<ul style="text-align: left; list-style:none; margin: 0; padding: 0;">
+  <li><b>Workers: </b>1</li>
+  <li><b>Cores: </b>4</li>
+  <li><b>Memory: </b>2.00 GB</li>
+</ul>
+</td>
+</tr>
+</table></div>
+</div>
+</div>
+<div class="section" id="Create-artificial-dataset">
+<h2>Create artificial dataset<a class="headerlink" href="#Create-artificial-dataset" title="Permalink to this headline">¶</a></h2>
+<p>First we create an artificial dataset and write it to many CSV files.</p>
+<p>You don’t need to understand this section, we’re just creating a dataset for the rest of the notebook.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">dask</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">dask</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">timeseries</span><span class="p">()</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div><strong>Dask DataFrame Structure:</strong></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+    <tr>
+      <th>npartitions=30</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2000-01-01</th>
+      <td>int64</td>
+      <td>object</td>
+      <td>float64</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th>2000-01-02</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2000-01-30</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2000-01-31</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div>Dask Name: make-timeseries, 30 tasks</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Provide date for filename given index</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; name(0)</span>
+<span class="sd">    &#39;2000-01-01&#39;</span>
+<span class="sd">    &gt;&gt;&gt; name(10)</span>
+<span class="sd">    &#39;2000-01-11&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/*.csv&#39;</span><span class="p">,</span> <span class="n">name_function</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Read-CSV-files">
+<h2>Read CSV files<a class="headerlink" href="#Read-CSV-files" title="Permalink to this headline">¶</a></h2>
+<p>We now have many CSV files in our data directory, one for each day in the month of January 2000. Each CSV file holds timeseries data for that day. We can read all of them as one logical dataframe using the <code class="docutils literal notranslate"><span class="pre">dd.read_csv</span></code> function with a glob string.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span>ls data/*.csv <span class="p">|</span> head
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+data/2000-01-01.csv
+data/2000-01-02.csv
+data/2000-01-03.csv
+data/2000-01-04.csv
+data/2000-01-05.csv
+data/2000-01-06.csv
+data/2000-01-07.csv
+data/2000-01-08.csv
+data/2000-01-09.csv
+data/2000-01-10.csv
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">dask.dataframe</span> <span class="k">as</span> <span class="nn">dd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/2000-*-*.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div><strong>Dask DataFrame Structure:</strong></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+    <tr>
+      <th>npartitions=30</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td>int64</td>
+      <td>object</td>
+      <td>float64</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div>Dask Name: from-delayed, 90 tasks</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1018</td>
+      <td>Quinn</td>
+      <td>-0.214106</td>
+      <td>-0.322587</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1040</td>
+      <td>Tim</td>
+      <td>-0.863415</td>
+      <td>0.608971</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>969</td>
+      <td>Dan</td>
+      <td>0.114130</td>
+      <td>-0.454055</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>966</td>
+      <td>Frank</td>
+      <td>-0.599144</td>
+      <td>-0.728896</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>996</td>
+      <td>Edith</td>
+      <td>0.704954</td>
+      <td>0.648928</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Let’s look at some statistics on the data</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>2.592000e+06</td>
+      <td>2.592000e+06</td>
+      <td>2.592000e+06</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>9.999994e+02</td>
+      <td>-2.320816e-06</td>
+      <td>-2.076002e-04</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>3.161908e+01</td>
+      <td>5.771946e-01</td>
+      <td>5.775654e-01</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>8.440000e+02</td>
+      <td>-9.999992e-01</td>
+      <td>-9.999998e-01</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>9.790000e+02</td>
+      <td>-4.929638e-01</td>
+      <td>-4.951169e-01</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1.000000e+03</td>
+      <td>7.697586e-03</td>
+      <td>4.330178e-03</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>1.022000e+03</td>
+      <td>5.038608e-01</td>
+      <td>5.057660e-01</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1.160000e+03</td>
+      <td>9.999999e-01</td>
+      <td>9.999993e-01</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Make-some-messy-data">
+<h1>Make some messy data<a class="headerlink" href="#Make-some-messy-data" title="Permalink to this headline">¶</a></h1>
+<p>Now this works great, and in most cases dd.read_csv or dd.read_parquet etc are the preferred way to read in large collections of data files into a dask dataframe, but real world data is often very messy and some files may be broken or badly formatted. To simulate this we are going to create some fake messy data by tweaking our example csv files. For the file <code class="docutils literal notranslate"><span class="pre">data/2000-01-05.csv</span></code> we will replace with no data and for the file <code class="docutils literal notranslate"><span class="pre">data/2000-01-07.csv</span></code> we will remove the <code class="docutils literal notranslate"><span class="pre">y</span></code> column</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># corrupt the data in data/2000-01-05.csv</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/2000-01-05.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># remove y column from data/2000-01-07.csv</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/2000-01-07.csv&#39;</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/2000-01-07.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span>head data/2000-01-05.csv
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span>head data/2000-01-07.csv
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+id,name,x
+952,Ursula,0.4506292091345929
+992,Wendy,0.8073622955208448
+1011,Dan,-0.7378103676249637
+1066,Michael,-0.7794946980418203
+1015,Alice,0.3026334133542379
+1041,Patricia,0.08081873936832927
+971,Tim,-0.8422181087789915
+992,Frank,0.6507382725472803
+1022,Michael,0.08653786857196555
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Reading-the-messy-data">
+<h1>Reading the messy data<a class="headerlink" href="#Reading-the-messy-data" title="Permalink to this headline">¶</a></h1>
+<p>Let’s try reading in the collection of files again</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/2000-*-*.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1018</td>
+      <td>Quinn</td>
+      <td>-0.214106</td>
+      <td>-0.322587</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1040</td>
+      <td>Tim</td>
+      <td>-0.863415</td>
+      <td>0.608971</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>969</td>
+      <td>Dan</td>
+      <td>0.114130</td>
+      <td>-0.454055</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>966</td>
+      <td>Frank</td>
+      <td>-0.599144</td>
+      <td>-0.728896</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>996</td>
+      <td>Edith</td>
+      <td>0.704954</td>
+      <td>0.648928</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Ok this looks like it worked, let us calculate the dataset statistics again</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+distributed.worker - WARNING -  Compute Failed
+Function:  execute_task
+args:      ((subgraph_callable, (&lt;function check_meta at 0x7fbfb619c9e0&gt;, (&lt;function apply at 0x7fbfdc3cbf80&gt;, &lt;function pandas_read_text at 0x7fbfb608a710&gt;, [&lt;function _make_parser_function.&lt;locals&gt;.parser_f at 0x7fbfbc2aa4d0&gt;, (&lt;function read_block_from_file at 0x7fbfb4c86680&gt;, &lt;OpenFile &#39;/home/travis/build/dask/dask-examples/dataframes/data/2000-01-07.csv&#39;&gt;, 0, 64000000, b&#39;\n&#39;), b&#39;id,name,x,y\n&#39;, (&lt;class &#39;dict&#39;&gt;, []), (&lt;class &#39;dict&#39;&gt;, [[&#39;id&#39;, dtype(&#39;int64&#39;)], [&#39;name&#39;, dtype(&#39;O&#39;)], [&#39;x&#39;, dtype(&#39;float64&#39;)], [&#39;y&#39;, dtype(&#39;float64&#39;)]]), [&#39;id&#39;, &#39;name&#39;, &#39;x&#39;, &#39;y&#39;]], (&lt;class &#39;dict&#39;&gt;, [[&#39;write_header&#39;, False], [&#39;enforce&#39;, False], [&#39;path&#39;, None]])), Empty DataFrame
+Columns: [id, name, x, y]
+Index: [], &#39;from_delayed&#39;), &#39;from-delayed-11d955a74a1edf1acb4c512a3e454dd2&#39;))
+kwargs:    {}
+Exception: ValueError(&#39;Length mismatch: Expected axis has 3 elements, new values have 4 elements&#39;)
+
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-14-f353d64adb46&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>df<span class="ansi-blue-fg">.</span>describe<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>compute<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/dask/base.py</span> in <span class="ansi-cyan-fg">compute</span><span class="ansi-blue-fg">(self, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    163</span>         dask<span class="ansi-blue-fg">.</span>base<span class="ansi-blue-fg">.</span>compute
+<span class="ansi-green-intense-fg ansi-bold">    164</span>         &#34;&#34;&#34;
+<span class="ansi-green-fg">--&gt; 165</span><span class="ansi-red-fg">         </span><span class="ansi-blue-fg">(</span>result<span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">=</span> compute<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> traverse<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">False</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    166</span>         <span class="ansi-green-fg">return</span> result
+<span class="ansi-green-intense-fg ansi-bold">    167</span>
+
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/dask/base.py</span> in <span class="ansi-cyan-fg">compute</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    434</span>     keys <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>x<span class="ansi-blue-fg">.</span>__dask_keys__<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> x <span class="ansi-green-fg">in</span> collections<span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">    435</span>     postcomputes <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>x<span class="ansi-blue-fg">.</span>__dask_postcompute__<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> x <span class="ansi-green-fg">in</span> collections<span class="ansi-blue-fg">]</span>
+<span class="ansi-green-fg">--&gt; 436</span><span class="ansi-red-fg">     </span>results <span class="ansi-blue-fg">=</span> schedule<span class="ansi-blue-fg">(</span>dsk<span class="ansi-blue-fg">,</span> keys<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    437</span>     <span class="ansi-green-fg">return</span> repack<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">[</span>f<span class="ansi-blue-fg">(</span>r<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>a<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> r<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">(</span>f<span class="ansi-blue-fg">,</span> a<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">in</span> zip<span class="ansi-blue-fg">(</span>results<span class="ansi-blue-fg">,</span> postcomputes<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    438</span>
+
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/distributed/client.py</span> in <span class="ansi-cyan-fg">get</span><span class="ansi-blue-fg">(self, dsk, keys, restrictions, loose_restrictions, resources, sync, asynchronous, direct, retries, priority, fifo_timeout, actors, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2680</span>                     should_rejoin <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">False</span>
+<span class="ansi-green-intense-fg ansi-bold">   2681</span>             <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-&gt; 2682</span><span class="ansi-red-fg">                 </span>results <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>gather<span class="ansi-blue-fg">(</span>packed<span class="ansi-blue-fg">,</span> asynchronous<span class="ansi-blue-fg">=</span>asynchronous<span class="ansi-blue-fg">,</span> direct<span class="ansi-blue-fg">=</span>direct<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2683</span>             <span class="ansi-green-fg">finally</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   2684</span>                 <span class="ansi-green-fg">for</span> f <span class="ansi-green-fg">in</span> futures<span class="ansi-blue-fg">.</span>values<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/distributed/client.py</span> in <span class="ansi-cyan-fg">gather</span><span class="ansi-blue-fg">(self, futures, errors, direct, asynchronous)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1980</span>                 direct<span class="ansi-blue-fg">=</span>direct<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">   1981</span>                 local_worker<span class="ansi-blue-fg">=</span>local_worker<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-fg">-&gt; 1982</span><span class="ansi-red-fg">                 </span>asynchronous<span class="ansi-blue-fg">=</span>asynchronous<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">   1983</span>             )
+<span class="ansi-green-intense-fg ansi-bold">   1984</span>
+
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/distributed/client.py</span> in <span class="ansi-cyan-fg">sync</span><span class="ansi-blue-fg">(self, func, asynchronous, callback_timeout, *args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    830</span>         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    831</span>             return sync(
+<span class="ansi-green-fg">--&gt; 832</span><span class="ansi-red-fg">                 </span>self<span class="ansi-blue-fg">.</span>loop<span class="ansi-blue-fg">,</span> func<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> callback_timeout<span class="ansi-blue-fg">=</span>callback_timeout<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs
+<span class="ansi-green-intense-fg ansi-bold">    833</span>             )
+<span class="ansi-green-intense-fg ansi-bold">    834</span>
+
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/distributed/utils.py</span> in <span class="ansi-cyan-fg">sync</span><span class="ansi-blue-fg">(loop, func, callback_timeout, *args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    337</span>     <span class="ansi-green-fg">if</span> error<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    338</span>         typ<span class="ansi-blue-fg">,</span> exc<span class="ansi-blue-fg">,</span> tb <span class="ansi-blue-fg">=</span> error<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span>
+<span class="ansi-green-fg">--&gt; 339</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">raise</span> exc<span class="ansi-blue-fg">.</span>with_traceback<span class="ansi-blue-fg">(</span>tb<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    340</span>     <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    341</span>         <span class="ansi-green-fg">return</span> result<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span>
+
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/distributed/utils.py</span> in <span class="ansi-cyan-fg">f</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">    321</span>             <span class="ansi-green-fg">if</span> callback_timeout <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    322</span>                 future <span class="ansi-blue-fg">=</span> asyncio<span class="ansi-blue-fg">.</span>wait_for<span class="ansi-blue-fg">(</span>future<span class="ansi-blue-fg">,</span> callback_timeout<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">--&gt; 323</span><span class="ansi-red-fg">             </span>result<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">yield</span> future
+<span class="ansi-green-intense-fg ansi-bold">    324</span>         <span class="ansi-green-fg">except</span> Exception <span class="ansi-green-fg">as</span> exc<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    325</span>             error<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> sys<span class="ansi-blue-fg">.</span>exc_info<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/tornado/gen.py</span> in <span class="ansi-cyan-fg">run</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1131</span>
+<span class="ansi-green-intense-fg ansi-bold">   1132</span>                     <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-&gt; 1133</span><span class="ansi-red-fg">                         </span>value <span class="ansi-blue-fg">=</span> future<span class="ansi-blue-fg">.</span>result<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1134</span>                     <span class="ansi-green-fg">except</span> Exception<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   1135</span>                         self<span class="ansi-blue-fg">.</span>had_exception <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">True</span>
+
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/distributed/client.py</span> in <span class="ansi-cyan-fg">_gather</span><span class="ansi-blue-fg">(self, futures, errors, direct, local_worker)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1839</span>                             exc <span class="ansi-blue-fg">=</span> CancelledError<span class="ansi-blue-fg">(</span>key<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1840</span>                         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-&gt; 1841</span><span class="ansi-red-fg">                             </span><span class="ansi-green-fg">raise</span> exception<span class="ansi-blue-fg">.</span>with_traceback<span class="ansi-blue-fg">(</span>traceback<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1842</span>                         <span class="ansi-green-fg">raise</span> exc
+<span class="ansi-green-intense-fg ansi-bold">   1843</span>                     <span class="ansi-green-fg">if</span> errors <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#34;skip&#34;</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/dask/utils.py</span> in <span class="ansi-cyan-fg">apply</span><span class="ansi-blue-fg">(func, args, kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">     27</span> <span class="ansi-green-fg">def</span> apply<span class="ansi-blue-fg">(</span>func<span class="ansi-blue-fg">,</span> args<span class="ansi-blue-fg">,</span> kwargs<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">     28</span>     <span class="ansi-green-fg">if</span> kwargs<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">---&gt; 29</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> func<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     30</span>     <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">     31</span>         <span class="ansi-green-fg">return</span> func<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/dask/dataframe/io/csv.py</span> in <span class="ansi-cyan-fg">pandas_read_text</span><span class="ansi-blue-fg">(reader, b, header, kwargs, dtypes, columns, write_header, enforce, path)</span>
+<span class="ansi-green-intense-fg ansi-bold">     73</span>         <span class="ansi-green-fg">raise</span> ValueError<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;Columns do not match&#34;</span><span class="ansi-blue-fg">,</span> df<span class="ansi-blue-fg">.</span>columns<span class="ansi-blue-fg">,</span> columns<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     74</span>     <span class="ansi-green-fg">elif</span> columns<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">---&gt; 75</span><span class="ansi-red-fg">         </span>df<span class="ansi-blue-fg">.</span>columns <span class="ansi-blue-fg">=</span> columns
+<span class="ansi-green-intense-fg ansi-bold">     76</span>     <span class="ansi-green-fg">if</span> path<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">     77</span>         colname<span class="ansi-blue-fg">,</span> path<span class="ansi-blue-fg">,</span> paths <span class="ansi-blue-fg">=</span> path
+
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/pandas/core/generic.py</span> in <span class="ansi-cyan-fg">__setattr__</span><span class="ansi-blue-fg">(self, name, value)</span>
+<span class="ansi-green-intense-fg ansi-bold">   5190</span>         <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   5191</span>             object<span class="ansi-blue-fg">.</span>__getattribute__<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">-&gt; 5192</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> object<span class="ansi-blue-fg">.</span>__setattr__<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">,</span> value<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   5193</span>         <span class="ansi-green-fg">except</span> AttributeError<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   5194</span>             <span class="ansi-green-fg">pass</span>
+
+<span class="ansi-green-fg">pandas/_libs/properties.pyx</span> in <span class="ansi-cyan-fg">pandas._libs.properties.AxisProperty.__set__</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/pandas/core/generic.py</span> in <span class="ansi-cyan-fg">_set_axis</span><span class="ansi-blue-fg">(self, axis, labels)</span>
+<span class="ansi-green-intense-fg ansi-bold">    688</span>
+<span class="ansi-green-intense-fg ansi-bold">    689</span>     <span class="ansi-green-fg">def</span> _set_axis<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> axis<span class="ansi-blue-fg">,</span> labels<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 690</span><span class="ansi-red-fg">         </span>self<span class="ansi-blue-fg">.</span>_data<span class="ansi-blue-fg">.</span>set_axis<span class="ansi-blue-fg">(</span>axis<span class="ansi-blue-fg">,</span> labels<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    691</span>         self<span class="ansi-blue-fg">.</span>_clear_item_cache<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    692</span>
+
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/pandas/core/internals/managers.py</span> in <span class="ansi-cyan-fg">set_axis</span><span class="ansi-blue-fg">(self, axis, new_labels)</span>
+<span class="ansi-green-intense-fg ansi-bold">    181</span>             raise ValueError(
+<span class="ansi-green-intense-fg ansi-bold">    182</span>                 <span class="ansi-blue-fg">&#34;Length mismatch: Expected axis has {old} elements, new &#34;</span>
+<span class="ansi-green-fg">--&gt; 183</span><span class="ansi-red-fg">                 </span><span class="ansi-blue-fg">&#34;values have {new} elements&#34;</span><span class="ansi-blue-fg">.</span>format<span class="ansi-blue-fg">(</span>old<span class="ansi-blue-fg">=</span>old_len<span class="ansi-blue-fg">,</span> new<span class="ansi-blue-fg">=</span>new_len<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    184</span>             )
+<span class="ansi-green-intense-fg ansi-bold">    185</span>
+
+<span class="ansi-red-fg">ValueError</span>: Length mismatch: Expected axis has 3 elements, new values have 4 elements
+</pre></div></div>
+</div>
+<p>So what happened?</p>
+<p>When creating a dask dataframe from a collection of files, dd.read_csv samples the first few files in the dataset to determine the datatypes and columns available. Since it has not opened all the files it does not now if some of them are corrupt. Hence, <code class="docutils literal notranslate"><span class="pre">df.head()</span></code> works since it is only looking at the first file. <code class="docutils literal notranslate"><span class="pre">df.describe.compute()</span></code> fails because of the corrupt data in <code class="docutils literal notranslate"><span class="pre">data/2000-01-05.csv</span></code></p>
+</div>
+<div class="section" id="Building-a-delayed-reader">
+<h1>Building a delayed reader<a class="headerlink" href="#Building-a-delayed-reader" title="Permalink to this headline">¶</a></h1>
+<p>To get around this problem we are going to use a more advanced technique to build our dask dataframe. This method can also be used any time some custom logic is required when reading each file. Essentially, we are going to build a function that uses pandas and some error checking and returns a pandas dataframe. If we find a bad data file we will either find a way to fix/clean the data or we will return and empty pandas dataframe with the same structure as the good data.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">io</span>
+
+<span class="k">def</span> <span class="nf">read_data</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+
+    <span class="c1"># for this to work we need to explicitly set the datatypes of our pandas dataframe</span>
+    <span class="n">dtypes</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">}</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># try reading in the data with pandas</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="c1"># if this fails create an empty pandas dataframe with the same dtypes as the good data</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="n">names</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="p">)</span>
+
+    <span class="c1"># for the case with the missing column, add a column of data with NaN&#39;s</span>
+    <span class="k">if</span> <span class="s1">&#39;y&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s test this function on a good file and the two bad files</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># test function on a normal file</span>
+<span class="n">read_data</span><span class="p">(</span><span class="s1">&#39;data/2000-01-01.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1018</td>
+      <td>Quinn</td>
+      <td>-0.214106</td>
+      <td>-0.322587</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1040</td>
+      <td>Tim</td>
+      <td>-0.863415</td>
+      <td>0.608971</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>969</td>
+      <td>Dan</td>
+      <td>0.114130</td>
+      <td>-0.454055</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>966</td>
+      <td>Frank</td>
+      <td>-0.599144</td>
+      <td>-0.728896</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>996</td>
+      <td>Edith</td>
+      <td>0.704954</td>
+      <td>0.648928</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># test function on the empty file</span>
+<span class="n">read_data</span><span class="p">(</span><span class="s1">&#39;data/2000-01-05.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># test function on the file missing the y column</span>
+<span class="n">read_data</span><span class="p">(</span><span class="s1">&#39;data/2000-01-07.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>952</td>
+      <td>Ursula</td>
+      <td>0.450629</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>992</td>
+      <td>Wendy</td>
+      <td>0.807362</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1011</td>
+      <td>Dan</td>
+      <td>-0.737810</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1066</td>
+      <td>Michael</td>
+      <td>-0.779495</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1015</td>
+      <td>Alice</td>
+      <td>0.302633</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="Assembling-the-dask-dataframe">
+<h1>Assembling the dask dataframe<a class="headerlink" href="#Assembling-the-dask-dataframe" title="Permalink to this headline">¶</a></h1>
+<p>First we take our <code class="docutils literal notranslate"><span class="pre">read_data</span></code> function and convert it to a dask delayed function</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">dask</span> <span class="kn">import</span> <span class="n">delayed</span>
+<span class="n">read_data</span> <span class="o">=</span> <span class="n">delayed</span><span class="p">(</span><span class="n">read_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Let us look at what the function does now</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">read_data</span><span class="p">(</span><span class="s1">&#39;data/2000-01-01.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Delayed(&#39;read_data-f10c57f7-c68c-418b-8715-7b86879b4f08&#39;)
+</pre></div></div>
+</div>
+<p>It creates a delayed object, to actually run read the file we need to run <code class="docutils literal notranslate"><span class="pre">.compute()</span></code></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1018</td>
+      <td>Quinn</td>
+      <td>-0.214106</td>
+      <td>-0.322587</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1040</td>
+      <td>Tim</td>
+      <td>-0.863415</td>
+      <td>0.608971</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>969</td>
+      <td>Dan</td>
+      <td>0.114130</td>
+      <td>-0.454055</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>966</td>
+      <td>Frank</td>
+      <td>-0.599144</td>
+      <td>-0.728896</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>996</td>
+      <td>Edith</td>
+      <td>0.704954</td>
+      <td>0.648928</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>86395</th>
+      <td>1042</td>
+      <td>Ray</td>
+      <td>0.495498</td>
+      <td>-0.018391</td>
+    </tr>
+    <tr>
+      <th>86396</th>
+      <td>987</td>
+      <td>Ursula</td>
+      <td>0.594174</td>
+      <td>-0.214342</td>
+    </tr>
+    <tr>
+      <th>86397</th>
+      <td>1018</td>
+      <td>Edith</td>
+      <td>-0.379049</td>
+      <td>-0.771167</td>
+    </tr>
+    <tr>
+      <th>86398</th>
+      <td>1033</td>
+      <td>Alice</td>
+      <td>0.129724</td>
+      <td>0.699833</td>
+    </tr>
+    <tr>
+      <th>86399</th>
+      <td>979</td>
+      <td>Tim</td>
+      <td>0.532669</td>
+      <td>-0.610288</td>
+    </tr>
+  </tbody>
+</table>
+<p>86400 rows × 4 columns</p>
+</div></div>
+</div>
+<p>Now let’s build a list of all the available csv files</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># loop over all the files</span>
+<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+<span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="s1">&#39;data/2000-*-*.csv&#39;</span><span class="p">)</span>
+<span class="n">files</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;data/2000-01-13.csv&#39;,
+ &#39;data/2000-01-02.csv&#39;,
+ &#39;data/2000-01-24.csv&#39;,
+ &#39;data/2000-01-04.csv&#39;,
+ &#39;data/2000-01-09.csv&#39;,
+ &#39;data/2000-01-17.csv&#39;,
+ &#39;data/2000-01-06.csv&#39;,
+ &#39;data/2000-01-08.csv&#39;,
+ &#39;data/2000-01-11.csv&#39;,
+ &#39;data/2000-01-28.csv&#39;,
+ &#39;data/2000-01-29.csv&#39;,
+ &#39;data/2000-01-18.csv&#39;,
+ &#39;data/2000-01-16.csv&#39;,
+ &#39;data/2000-01-05.csv&#39;,
+ &#39;data/2000-01-30.csv&#39;,
+ &#39;data/2000-01-20.csv&#39;,
+ &#39;data/2000-01-19.csv&#39;,
+ &#39;data/2000-01-21.csv&#39;,
+ &#39;data/2000-01-27.csv&#39;,
+ &#39;data/2000-01-12.csv&#39;,
+ &#39;data/2000-01-01.csv&#39;,
+ &#39;data/2000-01-07.csv&#39;,
+ &#39;data/2000-01-10.csv&#39;,
+ &#39;data/2000-01-25.csv&#39;,
+ &#39;data/2000-01-14.csv&#39;,
+ &#39;data/2000-01-26.csv&#39;,
+ &#39;data/2000-01-23.csv&#39;,
+ &#39;data/2000-01-03.csv&#39;,
+ &#39;data/2000-01-15.csv&#39;,
+ &#39;data/2000-01-22.csv&#39;]
+</pre></div></div>
+</div>
+<p>Now we run the delayed read_data function on each file in the list</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="p">[</span><span class="n">read_data</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">]</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[Delayed(&#39;read_data-b7e83935-c933-438b-845e-97682f804327&#39;),
+ Delayed(&#39;read_data-6e3296c3-eb11-4232-8de6-3883b684844b&#39;),
+ Delayed(&#39;read_data-3b82a49b-180b-46f5-b37b-4887ce73fedb&#39;),
+ Delayed(&#39;read_data-40235c0c-24e8-44e6-bbe4-966124512995&#39;),
+ Delayed(&#39;read_data-50cf9c60-42d3-4260-892f-261b9574fead&#39;),
+ Delayed(&#39;read_data-2da9cc05-caa7-44dd-9dcd-35461cb3db38&#39;),
+ Delayed(&#39;read_data-9f08925f-daad-47d3-992c-d75362419670&#39;),
+ Delayed(&#39;read_data-a33ba865-8e8a-4ea0-a7bc-99a60a47964d&#39;),
+ Delayed(&#39;read_data-b7c651cf-0df5-4157-ae4c-0899bd752a0c&#39;),
+ Delayed(&#39;read_data-8557b9ee-6ab5-4084-8c8e-5f05a2225b74&#39;),
+ Delayed(&#39;read_data-6344e4c6-8e17-4001-b98f-931bf8e6725d&#39;),
+ Delayed(&#39;read_data-91998419-6cc9-4517-a25c-60783e916611&#39;),
+ Delayed(&#39;read_data-f30334fc-b31b-4ee2-be4b-af23eb2a97f8&#39;),
+ Delayed(&#39;read_data-94b37894-4c15-4780-9abf-4ac55a2c349b&#39;),
+ Delayed(&#39;read_data-64beb63a-3233-452e-b040-5dd100e45481&#39;),
+ Delayed(&#39;read_data-95f654ab-57d5-4d31-8ff9-5867c0430bc1&#39;),
+ Delayed(&#39;read_data-920311cf-c117-4989-b90f-8c364ff068cb&#39;),
+ Delayed(&#39;read_data-dfc8d710-9c55-4d27-964a-e122ed2e7c88&#39;),
+ Delayed(&#39;read_data-daa62032-1a00-4bb6-9433-22ed275dfd91&#39;),
+ Delayed(&#39;read_data-a3e0b021-cdde-4225-aab1-67840d0924f7&#39;),
+ Delayed(&#39;read_data-54ce119c-40c7-44b1-96ef-7bb5654af0a8&#39;),
+ Delayed(&#39;read_data-bdf4eed4-82a5-40cf-9329-cace230add41&#39;),
+ Delayed(&#39;read_data-0cec9ea6-4407-472d-af1c-8a7b590272dd&#39;),
+ Delayed(&#39;read_data-90e3cecc-b5b6-44e3-b623-8e3041f5d638&#39;),
+ Delayed(&#39;read_data-8b445979-04c9-4fbb-99a0-19fab7109304&#39;),
+ Delayed(&#39;read_data-1aeefdcd-ec38-4a20-a3d1-9294572f6bf9&#39;),
+ Delayed(&#39;read_data-d12f221e-7c52-4c3d-80aa-80cdae7ec089&#39;),
+ Delayed(&#39;read_data-09774a33-cee3-4b47-b0db-75114a5ed03b&#39;),
+ Delayed(&#39;read_data-fe6afea6-1f74-4eed-a8a8-8e806e40bd81&#39;),
+ Delayed(&#39;read_data-4fd1ae00-21f8-4094-950b-9a61fb9facf2&#39;)]
+</pre></div></div>
+</div>
+<p>Then we use <a class="reference external" href="https://docs.dask.org/en/latest/dataframe-api.html#dask.dataframe.from_delayed">dask.dataframe.from_delayed</a>. This function creates a Dask DataFrame from a list of delayed objects as long as each delayed object returns a pandas dataframe. The structure of each individual dataframe returned must also be the same.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">from_delayed</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">})</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div><strong>Dask DataFrame Structure:</strong></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+    <tr>
+      <th>npartitions=30</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td>int64</td>
+      <td>object</td>
+      <td>float64</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div>Dask Name: from-delayed, 60 tasks</div></div>
+</div>
+<p>Note: we provided the dtypes in the <code class="docutils literal notranslate"><span class="pre">meta</span></code> keyword to explicitly tell Dask Dataframe what kind of dataframe to expect. If we did not do this Dask would infer this from the first delayed object which could be slow if it was a large csv file</p>
+<div class="section" id="Now-let’s-see-if-this-works">
+<h2>Now let’s see if this works<a class="headerlink" href="#Now-let’s-see-if-this-works" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1041</td>
+      <td>Yvonne</td>
+      <td>0.463499</td>
+      <td>0.368413</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1001</td>
+      <td>Wendy</td>
+      <td>0.958907</td>
+      <td>0.722575</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1046</td>
+      <td>Patricia</td>
+      <td>0.435074</td>
+      <td>-0.318281</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>991</td>
+      <td>Alice</td>
+      <td>-0.850399</td>
+      <td>-0.323550</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1008</td>
+      <td>George</td>
+      <td>0.579771</td>
+      <td>-0.822412</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.7/site-packages/dask/array/numpy_compat.py:40: RuntimeWarning: invalid value encountered in true_divide
+  x = np.divide(x1, x2, out)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>2.505600e+06</td>
+      <td>2.505600e+06</td>
+      <td>2.419200e+06</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>9.999989e+02</td>
+      <td>1.041765e-04</td>
+      <td>-1.630995e-04</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>3.162035e+01</td>
+      <td>5.772541e-01</td>
+      <td>5.775452e-01</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>8.440000e+02</td>
+      <td>-9.999992e-01</td>
+      <td>-9.999998e-01</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>9.790000e+02</td>
+      <td>-4.929638e-01</td>
+      <td>-4.951169e-01</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1.000000e+03</td>
+      <td>7.697586e-03</td>
+      <td>4.330178e-03</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>1.022000e+03</td>
+      <td>5.038608e-01</td>
+      <td>5.057660e-01</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1.160000e+03</td>
+      <td>9.999999e-01</td>
+      <td>9.999993e-01</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="Success!">
+<h2>Success!<a class="headerlink" href="#Success!" title="Permalink to this headline">¶</a></h2>
+<p>To recap, in this example, we looked at an approach to create a Dask Dataframe from a collection of many data files. Typically you would use built-in functions like <code class="docutils literal notranslate"><span class="pre">dd.read_csv</span></code> or <code class="docutils literal notranslate"><span class="pre">dd.read_parquet</span></code> to do this. Sometimes, this is not possible because of messy/corrupted files in your dataset or some custom processing that might need to be done.</p>
+<p>In these cases, you can build a Dask DataFrame with the following steps.</p>
+<ol class="arabic simple">
+<li><p>Create a regular python function that reads the data, performs any transformations, error checking etc and always returns a Pandas dataframe with the same structure</p></li>
+<li><p>Convert this read function to a delayed object using the <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code> function</p></li>
+<li><p>Call each file in your dataset with the delayed data reader and assemble the output as a list of delayed objects</p></li>
+<li><p>Used <code class="docutils literal notranslate"><span class="pre">dd.from_delayed</span></code> to covert the list of delayed objects to a Dask Dataframe</p></li>
+</ol>
+<p>This same technique can be used in other situations as well. Another example might be data files that require using a specialized reader, or several transformations before they can be converted to a pandas dataframe.</p>
+</div>
+</div>
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-18218874-5', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018, Dask Developers
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
