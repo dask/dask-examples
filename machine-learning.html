@@ -559,8 +559,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.0.251/14431/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.0.251:8787/status' target='_blank'>http://10.20.0.251:8787/status</a></li>
+  <li><b>Scheduler: </b>inproc://10.20.1.11/14308/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.1.11:8787/status' target='_blank'>http://10.20.1.11:8787/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -576,7 +576,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Distributed-Training">
 <h2>Distributed Training<a class="headerlink" href="#Distributed-Training" title="Permalink to this headline">¶</a></h2>
-<p><img alt="723b727e41f04393b921f809a3c16bd5" src="_images/scikit-learn-logo-notext.png" /> <img alt="771174d8b38942ce930a552ee6ad3e63" class="no-scaled-link" src="_images/joblib_logo.svg" width="20%" /></p>
+<p><img alt="6502fa32814b4eef8a195ee466417758" src="_images/scikit-learn-logo-notext.png" /> <img alt="16926b02d03a480fbcb1b6c127994d64" class="no-scaled-link" src="_images/joblib_logo.svg" width="20%" /></p>
 <p>Scikit-learn uses <a class="reference external" href="http://joblib.readthedocs.io/">joblib</a> for single-machine parallelism. This lets you train most estimators (anything that accepts an <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> parameter) using all the cores of your laptop or workstation.</p>
 <p>Alternatively, Scikit-Learn can use Dask for parallelism. This lets you train those estimators using all the cores of your <em>cluster</em> without significantly changing your code.</p>
 <p>This is most useful for training large models on medium-sized datasets. You may have a large model when searching over many hyper-parameters, or when using an ensemble method with many individual estimators. For too small datasets, training times will typically be small enough that cluster-wide parallelism isn’t helpful. For too large datasets (larger than a single machine’s memory), the scikit-learn estimators may not be able to cope (see below).</p>
@@ -674,8 +674,8 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/travis/miniconda/envs/test/lib/python3.7/site-packages/sklearn/model_selection/_search.py:823: FutureWarning: The parameter &#39;iid&#39; is deprecated in 0.22 and will be removed in 0.24.
-  &#34;removed in 0.24.&#34;, FutureWarning
+/home/travis/miniconda/envs/test/lib/python3.8/site-packages/sklearn/model_selection/_search.py:847: FutureWarning: The parameter &#39;iid&#39; is deprecated in 0.22 and will be removed in 0.24.
+  warnings.warn(
 </pre></div></div>
 </div>
 <p>We fit 48 different models, one for each hyper-parameter combination in <code class="docutils literal notranslate"><span class="pre">param_grid</span></code>, distributed across the cluster. At this point, we have a regular scikit-learn model, which can be used for prediction, scoring, etc.</p>
@@ -730,10 +730,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.291924</td>
-      <td>0.014062</td>
-      <td>0.031236</td>
-      <td>0.014553</td>
+      <td>0.322926</td>
+      <td>0.033860</td>
+      <td>0.032852</td>
+      <td>0.001611</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>True</td>
@@ -747,10 +747,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>1</th>
-      <td>0.348257</td>
-      <td>0.014402</td>
-      <td>0.029411</td>
-      <td>0.006112</td>
+      <td>0.338746</td>
+      <td>0.015048</td>
+      <td>0.032758</td>
+      <td>0.007252</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>False</td>
@@ -764,10 +764,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>2</th>
-      <td>0.188318</td>
-      <td>0.007768</td>
-      <td>0.021112</td>
-      <td>0.003326</td>
+      <td>0.216105</td>
+      <td>0.007205</td>
+      <td>0.022121</td>
+      <td>0.004848</td>
       <td>0.001</td>
       <td>poly</td>
       <td>True</td>
@@ -781,10 +781,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>3</th>
-      <td>0.176211</td>
-      <td>0.017428</td>
-      <td>0.017496</td>
-      <td>0.002804</td>
+      <td>0.189840</td>
+      <td>0.019363</td>
+      <td>0.013108</td>
+      <td>0.007409</td>
       <td>0.001</td>
       <td>poly</td>
       <td>False</td>
@@ -798,10 +798,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>4</th>
-      <td>0.337847</td>
-      <td>0.007769</td>
-      <td>0.029999</td>
-      <td>0.001863</td>
+      <td>0.338742</td>
+      <td>0.011970</td>
+      <td>0.040401</td>
+      <td>0.005326</td>
       <td>0.001</td>
       <td>sigmoid</td>
       <td>True</td>
@@ -963,9 +963,7 @@ array([0, 1, 1, 1, 0])
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-KMeans(algorithm=&#39;full&#39;, copy_x=True, init=&#39;k-means||&#39;, init_max_iter=2,
-       max_iter=300, n_clusters=3, n_jobs=1, oversampling_factor=10,
-       precompute_distances=&#39;auto&#39;, random_state=None, tol=0.0001)
+KMeans(init_max_iter=2, n_clusters=3, oversampling_factor=10)
 </pre></div></div>
 </div>
 <p>We’ll plot a sample of points, colored by the cluster each falls into.</p>

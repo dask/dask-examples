@@ -603,8 +603,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.0.251/14966/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.0.251:8787/status' target='_blank'>http://10.20.0.251:8787/status</a></li>
+  <li><b>Scheduler: </b>inproc://10.20.1.11/14875/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.1.11:8787/status' target='_blank'>http://10.20.1.11:8787/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -638,30 +638,11 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/home/travis/miniconda/envs/test/lib/python3.7/site-packages/pandas/plotting/_matplotlib/tools.py:307: MatplotlibDeprecationWarning:
-The rowNum attribute was deprecated in Matplotlib 3.2 and will be removed two minor releases later. Use ax.get_subplotspec().rowspan.start instead.
-  layout[ax.rowNum, ax.colNum] = ax.get_visible()
-/home/travis/miniconda/envs/test/lib/python3.7/site-packages/pandas/plotting/_matplotlib/tools.py:307: MatplotlibDeprecationWarning:
-The colNum attribute was deprecated in Matplotlib 3.2 and will be removed two minor releases later. Use ax.get_subplotspec().colspan.start instead.
-  layout[ax.rowNum, ax.colNum] = ax.get_visible()
-/home/travis/miniconda/envs/test/lib/python3.7/site-packages/pandas/plotting/_matplotlib/tools.py:313: MatplotlibDeprecationWarning:
-The rowNum attribute was deprecated in Matplotlib 3.2 and will be removed two minor releases later. Use ax.get_subplotspec().rowspan.start instead.
-  if not layout[ax.rowNum + 1, ax.colNum]:
-/home/travis/miniconda/envs/test/lib/python3.7/site-packages/pandas/plotting/_matplotlib/tools.py:313: MatplotlibDeprecationWarning:
-The colNum attribute was deprecated in Matplotlib 3.2 and will be removed two minor releases later. Use ax.get_subplotspec().colspan.start instead.
-  if not layout[ax.rowNum + 1, ax.colNum]:
-</pre></div></div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/machine-learning_hyperparam-opt_8_1.png" src="../_images/machine-learning_hyperparam-opt_8_1.png" />
+<img alt="../_images/machine-learning_hyperparam-opt_8_0.png" src="../_images/machine-learning_hyperparam-opt_8_0.png" />
 </div>
 </div>
 <div class="section" id="Add-random-dimensions">
@@ -972,8 +953,8 @@ bytes = 240.00 kB
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2.89 s, sys: 1.02 s, total: 3.91 s
-Wall time: 2.31 s
+CPU times: user 5.83 s, sys: 1.36 s, total: 7.18 s
+Wall time: 5.17 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -982,18 +963,13 @@ Wall time: 2.31 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-HyperbandSearchCV(aggressiveness=3,
-                  estimator=MLPClassifier(activation=&#39;relu&#39;, alpha=0.0001,
-                                          batch_size=&#39;auto&#39;, beta_1=0.9,
-                                          beta_2=0.999, early_stopping=False,
-                                          epsilon=1e-08,
-                                          hidden_layer_sizes=(100,),
-                                          learning_rate=&#39;constant&#39;,
-                                          learning_rate_init=0.001,
-                                          max_fun=15000, max_iter=200,
-                                          momentum=0.9, n_iter_no_change=10,
-                                          nesterovs_momentum=True, power_t=0.5,
-                                          random_stat...
+HyperbandSearchCV(estimator=MLPClassifier(), max_iter=8,
+                  parameters={&#39;activation&#39;: [&#39;relu&#39;, &#39;logistic&#39;, &#39;tanh&#39;],
+                              &#39;alpha&#39;: array([1.00000000e-06, 1.00693863e-06, 1.01392541e-06, 1.02096066e-06,
+       1.02804473e-06, 1.03517796e-06, 1.04236067e-06, 1.04959323e-06,
+       1.05687597e-06, 1.06420924e-06, 1.07159340e-06, 1.07902879e-06,
+       1.08651577e-06, 1.09405471e-06, 1.10164595e-06, 1.1...
+       9.01477631e-04, 9.07732653e-04, 9.14031075e-04, 9.20373200e-04,
        9.26759330e-04, 9.33189772e-04, 9.39664831e-04, 9.46184819e-04,
        9.52750047e-04, 9.59360829e-04, 9.66017480e-04, 9.72720319e-04,
        9.79469667e-04, 9.86265846e-04, 9.93109181e-04, 1.00000000e-03]),
@@ -1002,8 +978,7 @@ HyperbandSearchCV(aggressiveness=3,
                                                      (6, 6, 6, 6),
                                                      (4, 4, 4, 4, 4, 4),
                                                      (12, 6, 3, 3)]},
-                  patience=True, prefix=&#39;&#39;, random_state=None, scoring=None,
-                  test_size=None, tol=0.001, verbose=False)
+                  patience=True)
 </pre></div></div>
 </div>
 <p>The dashboard will be active while this is running. It will show which workers are running <code class="docutils literal notranslate"><span class="pre">partial_fit</span></code> and <code class="docutils literal notranslate"><span class="pre">score</span></code> calls. This takes about 10 seconds.</p>
@@ -1026,7 +1001,7 @@ HyperbandSearchCV(aggressiveness=3,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.6656
+0.794
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1044,14 +1019,8 @@ HyperbandSearchCV(aggressiveness=3,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-MLPClassifier(activation=&#39;relu&#39;, alpha=2.2456979955397764e-06, batch_size=128,
-              beta_1=0.9, beta_2=0.999, early_stopping=False, epsilon=1e-08,
-              hidden_layer_sizes=(12, 12), learning_rate=&#39;constant&#39;,
-              learning_rate_init=0.001, max_fun=15000, max_iter=200,
-              momentum=0.9, n_iter_no_change=10, nesterovs_momentum=True,
-              power_t=0.5, random_state=None, shuffle=True, solver=&#39;adam&#39;,
-              tol=0.0001, validation_fraction=0.1, verbose=False,
-              warm_start=False)
+MLPClassifier(alpha=0.0002095662399480433, batch_size=32,
+              hidden_layer_sizes=(24,))
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1087,107 +1056,107 @@ MLPClassifier(activation=&#39;relu&#39;, alpha=2.2456979955397764e-06, batch_siz
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>mean_partial_fit_time</th>
-      <th>std_partial_fit_time</th>
-      <th>mean_score_time</th>
       <th>partial_fit_calls</th>
-      <th>model_id</th>
       <th>test_score</th>
-      <th>rank_test_score</th>
-      <th>std_score_time</th>
-      <th>params</th>
-      <th>param_batch_size</th>
-      <th>param_activation</th>
-      <th>param_hidden_layer_sizes</th>
-      <th>bracket</th>
+      <th>mean_partial_fit_time</th>
       <th>param_alpha</th>
+      <th>rank_test_score</th>
+      <th>param_hidden_layer_sizes</th>
+      <th>mean_score_time</th>
+      <th>param_batch_size</th>
+      <th>bracket</th>
+      <th>std_partial_fit_time</th>
+      <th>model_id</th>
+      <th>param_activation</th>
+      <th>params</th>
+      <th>std_score_time</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.361961</td>
-      <td>0.100132</td>
-      <td>0.030492</td>
-      <td>4</td>
+      <td>2</td>
+      <td>0.5014</td>
+      <td>0.611202</td>
+      <td>0.000001</td>
+      <td>3</td>
+      <td>(24,)</td>
+      <td>0.039477</td>
+      <td>16</td>
+      <td>1</td>
+      <td>0.053856</td>
       <td>bracket=1-0</td>
-      <td>0.5012</td>
-      <td>1</td>
-      <td>0.011725</td>
-      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
-      <td>64</td>
-      <td>tanh</td>
-      <td>(12, 6, 3, 3)</td>
-      <td>1</td>
-      <td>0.000008</td>
+      <td>logistic</td>
+      <td>{'hidden_layer_sizes': (24,), 'batch_size': 16...</td>
+      <td>0.013695</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.307218</td>
-      <td>0.041616</td>
-      <td>0.043175</td>
       <td>2</td>
-      <td>bracket=1-1</td>
-      <td>0.5012</td>
-      <td>1</td>
-      <td>0.010362</td>
-      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
-      <td>256</td>
-      <td>logistic</td>
+      <td>0.5426</td>
+      <td>1.535363</td>
+      <td>0.000031</td>
+      <td>2</td>
       <td>(6, 6, 6, 6)</td>
+      <td>0.013016</td>
+      <td>16</td>
       <td>1</td>
-      <td>0.000064</td>
+      <td>0.442091</td>
+      <td>bracket=1-1</td>
+      <td>relu</td>
+      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
+      <td>0.001088</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.145749</td>
-      <td>0.037567</td>
-      <td>0.029338</td>
-      <td>2</td>
-      <td>bracket=1-2</td>
-      <td>0.4918</td>
-      <td>3</td>
-      <td>0.002763</td>
-      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
-      <td>512</td>
-      <td>relu</td>
-      <td>(12, 12)</td>
+      <td>6</td>
+      <td>0.7940</td>
+      <td>1.027413</td>
+      <td>0.000210</td>
       <td>1</td>
-      <td>0.000006</td>
+      <td>(24,)</td>
+      <td>0.016485</td>
+      <td>32</td>
+      <td>1</td>
+      <td>0.899270</td>
+      <td>bracket=1-2</td>
+      <td>relu</td>
+      <td>{'hidden_layer_sizes': (24,), 'batch_size': 32...</td>
+      <td>0.009960</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.219499</td>
-      <td>0.109015</td>
-      <td>0.012932</td>
-      <td>8</td>
-      <td>bracket=0-0</td>
-      <td>0.6656</td>
-      <td>1</td>
-      <td>0.005450</td>
-      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
-      <td>128</td>
-      <td>relu</td>
-      <td>(12, 12)</td>
+      <td>3</td>
+      <td>0.5004</td>
+      <td>0.913455</td>
+      <td>0.000030</td>
+      <td>2</td>
+      <td>(6, 6, 6, 6)</td>
+      <td>0.041844</td>
+      <td>256</td>
       <td>0</td>
-      <td>0.000002</td>
+      <td>0.261566</td>
+      <td>bracket=0-0</td>
+      <td>logistic</td>
+      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
+      <td>0.006259</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.130926</td>
-      <td>0.071407</td>
-      <td>0.012644</td>
       <td>8</td>
-      <td>bracket=0-1</td>
-      <td>0.6360</td>
-      <td>2</td>
-      <td>0.006449</td>
-      <td>{'hidden_layer_sizes': (24,), 'batch_size': 25...</td>
-      <td>256</td>
-      <td>relu</td>
-      <td>(24,)</td>
+      <td>0.5476</td>
+      <td>0.430298</td>
+      <td>0.000011</td>
+      <td>1</td>
+      <td>(12, 12)</td>
+      <td>0.030489</td>
+      <td>512</td>
       <td>0</td>
-      <td>0.000031</td>
+      <td>0.209382</td>
+      <td>bracket=0-1</td>
+      <td>tanh</td>
+      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
+      <td>0.008996</td>
     </tr>
   </tbody>
 </table>
@@ -1208,7 +1177,7 @@ MLPClassifier(activation=&#39;relu&#39;, alpha=2.2456979955397764e-06, batch_siz
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.6558
+0.7864
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1277,7 +1246,7 @@ MLPClassifier(activation=&#39;relu&#39;, alpha=2.2456979955397764e-06, batch_siz
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([1, 0, 1, ..., 1, 1, 0])
+array([1, 0, 1, ..., 1, 0, 0])
 </pre></div></div>
 </div>
 <p>It also has some other attributes.</p>
@@ -1327,58 +1296,58 @@ array([1, 0, 1, ..., 1, 1, 0])
   <tbody>
     <tr>
       <th>0</th>
-      <td>bracket=1-0</td>
-      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
+      <td>bracket=0-0</td>
+      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
       <td>1</td>
-      <td>0.267193</td>
-      <td>0.4964</td>
-      <td>0.016817</td>
-      <td>0.433133</td>
-      <td>1</td>
+      <td>1.175022</td>
+      <td>0.5004</td>
+      <td>0.048103</td>
+      <td>1.403442</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>bracket=1-1</td>
-      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
+      <td>bracket=0-1</td>
+      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
       <td>1</td>
-      <td>0.348834</td>
-      <td>0.5012</td>
-      <td>0.032813</td>
-      <td>0.433135</td>
-      <td>1</td>
+      <td>0.656801</td>
+      <td>0.4748</td>
+      <td>0.026378</td>
+      <td>1.403444</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>bracket=1-2</td>
-      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
+      <td>bracket=1-0</td>
+      <td>{'hidden_layer_sizes': (24,), 'batch_size': 16...</td>
       <td>1</td>
-      <td>0.183316</td>
-      <td>0.3652</td>
-      <td>0.032101</td>
-      <td>0.433136</td>
+      <td>0.665059</td>
+      <td>0.5004</td>
+      <td>0.053172</td>
+      <td>1.762216</td>
       <td>1</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>bracket=0-0</td>
-      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
+      <td>bracket=1-1</td>
+      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
       <td>1</td>
-      <td>0.338866</td>
-      <td>0.4984</td>
-      <td>0.021874</td>
-      <td>0.589344</td>
-      <td>0</td>
+      <td>1.093272</td>
+      <td>0.5216</td>
+      <td>0.011928</td>
+      <td>1.762218</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>bracket=0-1</td>
-      <td>{'hidden_layer_sizes': (24,), 'batch_size': 25...</td>
+      <td>bracket=1-2</td>
+      <td>{'hidden_layer_sizes': (24,), 'batch_size': 32...</td>
       <td>1</td>
-      <td>0.238644</td>
-      <td>0.5098</td>
-      <td>0.013198</td>
-      <td>0.589346</td>
-      <td>0</td>
+      <td>1.644564</td>
+      <td>0.5790</td>
+      <td>0.032931</td>
+      <td>1.762219</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>

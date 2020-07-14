@@ -636,15 +636,7 @@ fits in memory and we won’t need to move large amounts of data between workers
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 BlockwiseVotingClassifier(classes=[0, 1],
-                          estimator=RidgeClassifier(alpha=1.0,
-                                                    class_weight=None,
-                                                    copy_X=True,
-                                                    fit_intercept=True,
-                                                    max_iter=None,
-                                                    normalize=False,
-                                                    random_state=0,
-                                                    solver=&#39;auto&#39;, tol=0.001),
-                          voting=&#39;hard&#39;)
+                          estimator=RidgeClassifier(random_state=0))
 </pre></div></div>
 </div>
 <p>We can train normally. This will <em>independently</em> fit a clone of <code class="docutils literal notranslate"><span class="pre">subestimator</span></code> on each partition of <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
@@ -673,36 +665,16 @@ BlockwiseVotingClassifier(classes=[0, 1],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[RidgeClassifier(alpha=1.0, class_weight=None, copy_X=True, fit_intercept=True,
-                 max_iter=None, normalize=False, random_state=0, solver=&#39;auto&#39;,
-                 tol=0.001),
- RidgeClassifier(alpha=1.0, class_weight=None, copy_X=True, fit_intercept=True,
-                 max_iter=None, normalize=False, random_state=0, solver=&#39;auto&#39;,
-                 tol=0.001),
- RidgeClassifier(alpha=1.0, class_weight=None, copy_X=True, fit_intercept=True,
-                 max_iter=None, normalize=False, random_state=0, solver=&#39;auto&#39;,
-                 tol=0.001),
- RidgeClassifier(alpha=1.0, class_weight=None, copy_X=True, fit_intercept=True,
-                 max_iter=None, normalize=False, random_state=0, solver=&#39;auto&#39;,
-                 tol=0.001),
- RidgeClassifier(alpha=1.0, class_weight=None, copy_X=True, fit_intercept=True,
-                 max_iter=None, normalize=False, random_state=0, solver=&#39;auto&#39;,
-                 tol=0.001),
- RidgeClassifier(alpha=1.0, class_weight=None, copy_X=True, fit_intercept=True,
-                 max_iter=None, normalize=False, random_state=0, solver=&#39;auto&#39;,
-                 tol=0.001),
- RidgeClassifier(alpha=1.0, class_weight=None, copy_X=True, fit_intercept=True,
-                 max_iter=None, normalize=False, random_state=0, solver=&#39;auto&#39;,
-                 tol=0.001),
- RidgeClassifier(alpha=1.0, class_weight=None, copy_X=True, fit_intercept=True,
-                 max_iter=None, normalize=False, random_state=0, solver=&#39;auto&#39;,
-                 tol=0.001),
- RidgeClassifier(alpha=1.0, class_weight=None, copy_X=True, fit_intercept=True,
-                 max_iter=None, normalize=False, random_state=0, solver=&#39;auto&#39;,
-                 tol=0.001),
- RidgeClassifier(alpha=1.0, class_weight=None, copy_X=True, fit_intercept=True,
-                 max_iter=None, normalize=False, random_state=0, solver=&#39;auto&#39;,
-                 tol=0.001)]
+[RidgeClassifier(random_state=0),
+ RidgeClassifier(random_state=0),
+ RidgeClassifier(random_state=0),
+ RidgeClassifier(random_state=0),
+ RidgeClassifier(random_state=0),
+ RidgeClassifier(random_state=0),
+ RidgeClassifier(random_state=0),
+ RidgeClassifier(random_state=0),
+ RidgeClassifier(random_state=0),
+ RidgeClassifier(random_state=0)]
 </pre></div></div>
 </div>
 <p>These are different estimators! They’ve been trained on separate batches of data and have learned different parameters. We can plot the difference in the learned <code class="docutils literal notranslate"><span class="pre">coef_</span></code> of the first two models to visualize this.</p>
@@ -822,7 +794,7 @@ BlockwiseVotingClassifier(classes=[0, 1],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([1, 0, 1, 1, 0, 1, 1, 0, 0, 1])
+array([0, 0, 0, 1, 0, 1, 1, 1, 1, 1])
 </pre></div></div>
 </div>
 <p>With <code class="docutils literal notranslate"><span class="pre">voting=&quot;soft&quot;</span></code> we have access to <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code>, as long as the subestimator has a <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> method. These subestimators should be well-calibrated for the predictions to be meaningful. See <a class="reference external" href="https://scikit-learn.org/stable/modules/calibration.html#calibration">probability calibration</a> for more.</p>
@@ -857,11 +829,11 @@ array([1, 0, 1, 1, 0, 1, 1, 0, 0, 1])
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([[3.17689831e-03, 9.96823102e-01],
-       [7.90845778e-01, 2.09154222e-01],
-       [6.91067654e-02, 9.30893235e-01],
-       [1.48597933e-04, 9.99851402e-01],
-       [9.90017205e-01, 9.98279496e-03]])
+array([[9.97743516e-01, 2.25648378e-03],
+       [9.82095953e-01, 1.79040473e-02],
+       [8.28349413e-01, 1.71650587e-01],
+       [3.32407277e-02, 9.66759272e-01],
+       [9.99974624e-01, 2.53764743e-05]])
 </pre></div></div>
 </div>
 <p>The stages here are similar to the <code class="docutils literal notranslate"><span class="pre">voting=&quot;hard&quot;</span></code> case. Only now instead of taking the majority vote we average the probabilities predicted by each sub-estimator.</p>
@@ -960,8 +932,8 @@ array([[3.17689831e-03, 9.96823102e-01],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([ -19.79308226,  106.18123515,   43.31527684,   -6.76247481,
-       -100.21034597])
+array([ -31.73583044,  -47.52480005,  145.03069131, -293.03368446,
+       -140.00409157])
 </pre></div></div>
 </div>
 <p>As usual with Dask-ML, scoring is done in parallel (and distributed on a cluster if you’re connected to one).</p>
@@ -1084,7 +1056,7 @@ array([ -19.79308226,  106.18123515,   43.31527684,   -6.76247481,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False)
+LinearRegression()
 </pre></div></div>
 </div>
 <p>Comparing the scores, we find that the sampled dataset performs much better, despite training on less data.</p>
@@ -1103,7 +1075,7 @@ LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
--11.48212954243839
+-11.31092651322267
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1121,7 +1093,7 @@ LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.07685480147725265
+0.021490425690907644
 </pre></div></div>
 </div>
 <p>This shows that ensuring your needs to be relatively uniform across partitions. Even including the standard controls to normalize whatever underlying force is generating the non-stationary data (e.g. a time trend compontent or differencing timeseries data, dummy variables for geographic regions, etc) is not sufficient when your dataset is partioned by the non-uniform variable. You would still need to either shuffle your data prior to fitting, or just sample and fit the sub-estimator on the
