@@ -41,7 +41,6 @@ You can run these examples in a live session here: |Binder|
    machine-learning/torch-prediction
    machine-learning/training-on-large-datasets
    machine-learning/incremental
-   machine-learning/text-count-vectorizer
    machine-learning/text-vectorization
    machine-learning/hyperparam-opt.ipynb
    machine-learning/xgboost
