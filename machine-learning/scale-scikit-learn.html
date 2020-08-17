@@ -584,7 +584,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:36925</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:42301</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
@@ -601,7 +601,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Distributed-Training">
 <h2>Distributed Training<a class="headerlink" href="#Distributed-Training" title="Permalink to this headline">¶</a></h2>
-<p><img alt="0127f9a36110435cbdbb221f917abf9c" src="../_images/scikit-learn-logo-notext1.png" /> <img alt="bb9d069ff0c0475c89d493b7fab63263" class="no-scaled-link" src="../_images/joblib_logo1.svg" width="20%" /></p>
+<p><img alt="85a1251ea79642eba03854da1e446b7b" src="../_images/scikit-learn-logo-notext1.png" /> <img alt="259aca9d0d3a4c79bf9483f49b4be662" class="no-scaled-link" src="../_images/joblib_logo1.svg" width="20%" /></p>
 <p>Scikit-learn uses <a class="reference external" href="http://joblib.readthedocs.io/">joblib</a> for single-machine parallelism. This lets you train most estimators (anything that accepts an <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> parameter) using all the cores of your laptop or workstation.</p>
 <p>Alternatively, Scikit-Learn can use Dask for parallelism. This lets you train those estimators using all the cores of your <em>cluster</em> without significantly changing your code.</p>
 <p>This is most useful for training large models on medium-sized datasets. You may have a large model when searching over many hyper-parameters, or when using an ensemble method with many individual estimators. For too small datasets, training times will typically be small enough that cluster-wide parallelism isn’t helpful. For too large datasets (larger than a single machine’s memory), the scikit-learn estimators may not be able to cope (though Dask-ML provides other ways for working with larger
