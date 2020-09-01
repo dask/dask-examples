@@ -44,7 +44,7 @@
    "metadata": {},
    "source": [
     "<a id='environment_setup'></a>\n",
-    "## Setting up your environment"
+    "## Setting up your environment\n"
    ]
   },
   {
@@ -86,7 +86,7 @@
    "metadata": {},
    "source": [
     "<a id='imports'></a>\n",
-    "## Importing dask-image"
+    "## Importing dask-image\n"
    ]
   },
   {
@@ -130,7 +130,7 @@
    "metadata": {},
    "source": [
     "<a id='example_data'></a>\n",
-    "## Getting the example data"
+    "## Getting the example data\n"
    ]
   },
   {
@@ -204,7 +204,7 @@
    "metadata": {},
    "source": [
     "<a id='reading_image_data'></a>\n",
-    "## Reading in image data"
+    "## Reading in image data\n"
    ]
   },
   {
@@ -212,7 +212,7 @@
    "metadata": {},
    "source": [
     "<a id='reading_a_single_image'></a>\n",
-    "### Reading a single image"
+    "### Reading a single image\n"
    ]
   },
   {
@@ -258,7 +258,7 @@
    "metadata": {},
    "source": [
     "<a id='reading_multiple_images'></a>\n",
-    "### Reading multiple images"
+    "### Reading multiple images\n"
    ]
   },
   {
@@ -331,7 +331,7 @@
    "metadata": {},
    "source": [
     "<a id='applying_custom_function'></a>\n",
-    "## Applying your own custom function to images"
+    "## Applying your own custom function to images\n"
    ]
   },
   {
@@ -340,7 +340,7 @@
    "source": [
     "Next you'll want to do some image processing, and apply a function to your images.\n",
     "\n",
-    "We'll use a very simple example: converting an RGB image to grayscale. But you can also use this method to apply arbittrary functions to dask images. To convert our image to grayscale, we'll use the equation to calcuate luminance ([reference pdf](http://www.poynton.com/PDFs/ColorFAQ.pdf))\": \n",
+    "We'll use a very simple example: converting an RGB image to grayscale. But you can also use this method to apply arbittrary functions to dask images. To convert our image to grayscale, we'll use the equation to calculate luminance ([reference pdf](http://www.poynton.com/PDFs/ColorFAQ.pdf))\": \n",
     "\n",
     "`Y = 0.2125 R + 0.7154 G + 0.0721 B` \n",
     "\n",
@@ -401,8 +401,8 @@
     "ax1.imshow(single_image_result[0, ...], cmap='gray')  # display the first (and only) frame of the image\n",
     "\n",
     "# Subplot headings\n",
-    "ax0.set_title('Original iamge')\n",
-    "ax1.set_title('Processed iamge')\n",
+    "ax0.set_title('Original image')\n",
+    "ax1.set_title('Processed image')\n",
     "\n",
     "# Don't display axes\n",
     "ax0.axis('off')\n",
@@ -417,7 +417,7 @@
    "metadata": {},
    "source": [
     "<a id='embarrassingly_parallel'></a>\n",
-    "### Embarrassingly parallel problems"
+    "### Embarrassingly parallel problems\n"
    ]
   },
   {
@@ -478,14 +478,14 @@
    "metadata": {},
    "source": [
     "<a id='joining_images'></a>\n",
-    "## Joining partial images together"
+    "## Joining partial images together\n"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Ok, Things are looking pretty good! But how can we join these image chunks together?\n",
+    "OK, Things are looking pretty good! But how can we join these image chunks together?\n",
     "\n",
     "So far, we haven't needed any information from neighboring pixels to do our calculations. But there are lots of functions (like those in [dask-image ndfilters](https://dask-image.readthedocs.io/en/latest/dask_image.ndfilters.html)) that *do* need this for accurate results. You could end up with unwanted edge effects if you don't tell dask how your images should be joined.\n",
     "\n",
@@ -517,7 +517,7 @@
    "metadata": {},
    "source": [
     "<a id='segmentation_pipeline'></a>\n",
-    "## A segmentation analysis pipeline"
+    "## A segmentation analysis pipeline\n"
    ]
   },
   {
@@ -535,7 +535,7 @@
    "metadata": {},
    "source": [
     "<a id='filtering'></a>\n",
-    "### Filtering"
+    "### Filtering\n"
    ]
   },
   {
@@ -574,7 +574,7 @@
     "ax1.imshow(smoothed_image - combined_image, cmap='gray')\n",
     "\n",
     "# Subplot headings\n",
-    "ax0.set_title('Smoothed iamge')\n",
+    "ax0.set_title('Smoothed image')\n",
     "ax1.set_title('Difference from original')\n",
     "\n",
     "# Don't display axes\n",
@@ -606,7 +606,7 @@
    "metadata": {},
    "source": [
     "<a id='segmenting'></a>\n",
-    "### Segmenting"
+    "### Segmenting\n"
    ]
   },
   {
@@ -667,7 +667,7 @@
    "metadata": {},
    "source": [
     "<a id='analyzing'></a>\n",
-    "### Analyzing"
+    "### Analyzing\n"
    ]
   },
   {
@@ -703,7 +703,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Let's also calculate the standard deviation of the pixel values in our greyscale iamge."
+    "Let's also calculate the standard deviation of the pixel values in our greyscale image."
    ]
   },
   {
@@ -753,7 +753,7 @@
    "metadata": {},
    "source": [
     "<a id='next_steps'></a>\n",
-    "## Next steps"
+    "## Next steps\n"
    ]
   },
   {
@@ -780,7 +780,7 @@
    "metadata": {},
    "source": [
     "<a id='cleanup'></a>\n",
-    "## Cleaning up temporary directories and files"
+    "## Cleaning up temporary directories and files\n"
    ]
   },
   {
