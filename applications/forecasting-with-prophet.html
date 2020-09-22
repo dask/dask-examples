@@ -206,6 +206,7 @@
 <p class="caption"><span class="caption-text">User Surveys</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../surveys/2019.html">2019 Dask User Survey Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../surveys/2020.html">2020 Dask User Survey Results</a></li>
 </ul>
 
             
@@ -692,8 +693,8 @@ Importing plotly failed. Interactive plots will not work.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2.22 s, sys: 83.7 ms, total: 2.3 s
-Wall time: 2.3 s
+CPU times: user 2.27 s, sys: 78.7 ms, total: 2.35 s
+Wall time: 2.35 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -702,7 +703,7 @@ Wall time: 2.3 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;fbprophet.forecaster.Prophet at 0x7f6610c2f790&gt;
+&lt;fbprophet.forecaster.Prophet at 0x7fbb97dc96d0&gt;
 </pre></div></div>
 </div>
 <p>And we can make a forecast. Again, Dask isn’t involved here.</p>
@@ -756,7 +757,7 @@ Wall time: 2.3 s
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:45019</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:37445</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
@@ -790,7 +791,7 @@ Wall time: 2.3 s
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 INFO:fbprophet:Making 11 forecasts with cutoffs between 2010-02-15 00:00:00 and 2015-01-20 00:00:00
-INFO:fbprophet:Applying in parallel with &lt;Client: &#39;tcp://127.0.0.1:45019&#39; processes=2 threads=2, memory=8.36 GB&gt;
+INFO:fbprophet:Applying in parallel with &lt;Client: &#39;tcp://127.0.0.1:37445&#39; processes=2 threads=2, memory=8.36 GB&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -798,8 +799,8 @@ INFO:fbprophet:Applying in parallel with &lt;Client: &#39;tcp://127.0.0.1:45019&
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2.62 s, sys: 445 ms, total: 3.06 s
-Wall time: 56.3 s
+CPU times: user 2.15 s, sys: 189 ms, total: 2.34 s
+Wall time: 52.5 s
 </pre></div></div>
 </div>
 <p>Be sure to watch the Dask Dashboard as that runs. The models are fit in parallel on the cluster. At the start there’s bit of overhead from having to move the model and data to the workers but after that the scaling looks quite nice.</p>

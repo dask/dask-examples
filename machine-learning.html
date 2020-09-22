@@ -210,6 +210,7 @@
 <p class="caption"><span class="caption-text">User Surveys</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="surveys/2019.html">2019 Dask User Survey Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="surveys/2020.html">2020 Dask User Survey Results</a></li>
 </ul>
 
             
@@ -559,8 +560,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.0.76/12511/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.0.76:8787/status' target='_blank'>http://10.20.0.76:8787/status</a></li>
+  <li><b>Scheduler: </b>inproc://10.20.0.29/12446/1</li>
+  <li><b>Dashboard: </b><a href='http://10.20.0.29:8787/status' target='_blank'>http://10.20.0.29:8787/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -576,7 +577,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Distributed-Training">
 <h2>Distributed Training<a class="headerlink" href="#Distributed-Training" title="Permalink to this headline">¶</a></h2>
-<p><img alt="938fd0aacad24642b592c5b302c3a8d1" src="_images/scikit-learn-logo-notext.png" /> <img alt="20b670e1967a40fda1e956d2c5192d90" class="no-scaled-link" src="_images/joblib_logo.svg" width="20%" /></p>
+<p><img alt="fb3be97224ff4c1988e9555326b2b6ab" src="_images/scikit-learn-logo-notext.png" /> <img alt="8c9e7c3e281e42d09ad11ac15d6054d0" class="no-scaled-link" src="_images/joblib_logo.svg" width="20%" /></p>
 <p>Scikit-learn uses <a class="reference external" href="http://joblib.readthedocs.io/">joblib</a> for single-machine parallelism. This lets you train most estimators (anything that accepts an <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> parameter) using all the cores of your laptop or workstation.</p>
 <p>Alternatively, Scikit-Learn can use Dask for parallelism. This lets you train those estimators using all the cores of your <em>cluster</em> without significantly changing your code.</p>
 <p>This is most useful for training large models on medium-sized datasets. You may have a large model when searching over many hyper-parameters, or when using an ensemble method with many individual estimators. For too small datasets, training times will typically be small enough that cluster-wide parallelism isn’t helpful. For too large datasets (larger than a single machine’s memory), the scikit-learn estimators may not be able to cope (see below).</p>
@@ -730,10 +731,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.293204</td>
-      <td>0.057899</td>
-      <td>0.028044</td>
-      <td>0.004352</td>
+      <td>0.307232</td>
+      <td>0.064381</td>
+      <td>0.032366</td>
+      <td>0.003643</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>True</td>
@@ -747,10 +748,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>1</th>
-      <td>0.361452</td>
-      <td>0.021044</td>
-      <td>0.030687</td>
-      <td>0.007882</td>
+      <td>0.325416</td>
+      <td>0.054433</td>
+      <td>0.025952</td>
+      <td>0.002808</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>False</td>
@@ -764,10 +765,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>2</th>
-      <td>0.192186</td>
-      <td>0.029538</td>
-      <td>0.023073</td>
-      <td>0.005530</td>
+      <td>0.200864</td>
+      <td>0.019144</td>
+      <td>0.014105</td>
+      <td>0.007259</td>
       <td>0.001</td>
       <td>poly</td>
       <td>True</td>
@@ -781,10 +782,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>3</th>
-      <td>0.181457</td>
-      <td>0.009832</td>
-      <td>0.015168</td>
-      <td>0.000167</td>
+      <td>0.181894</td>
+      <td>0.009618</td>
+      <td>0.012464</td>
+      <td>0.005090</td>
       <td>0.001</td>
       <td>poly</td>
       <td>False</td>
@@ -798,10 +799,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>4</th>
-      <td>0.364223</td>
-      <td>0.019194</td>
-      <td>0.032355</td>
-      <td>0.002206</td>
+      <td>0.351020</td>
+      <td>0.010481</td>
+      <td>0.033251</td>
+      <td>0.001909</td>
       <td>0.001</td>
       <td>sigmoid</td>
       <td>True</td>

@@ -216,6 +216,7 @@
 <p class="caption"><span class="caption-text">User Surveys</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../surveys/2019.html">2019 Dask User Survey Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../surveys/2020.html">2020 Dask User Survey Results</a></li>
 </ul>
 
             
@@ -557,7 +558,7 @@ div.rendered_html tbody tr:hover {
 <li><p>training, predicting, and scoring on this wrapped estimator</p></li>
 </ul>
 <p>Although this example uses Scikit-Learn’s SGDClassifer, the <code class="docutils literal notranslate"><span class="pre">Incremental</span></code> meta-estimator will work for any class that implements <code class="docutils literal notranslate"><span class="pre">partial_fit</span></code> and the <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html">scikit-learn base estimator API</a>.</p>
-<p><img alt="d97d189c27c3401284916fcc4d9d6cc1" src="http://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" /> <img alt="3b3f19ae48fe4091bca139b5cbf07151" class="no-scaled-link" src="https://www.continuum.io/sites/default/files/dask_stacked.png" style="width: 100px;" /></p>
+<p><img alt="76a560aadf8d450091b56c1ed5b4615e" src="http://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" /> <img alt="dc4033cfbac147b5a36b429a9eb7bb59" class="no-scaled-link" src="https://www.continuum.io/sites/default/files/dask_stacked.png" style="width: 100px;" /></p>
 <div class="section" id="Setup-Dask">
 <h2>Setup Dask<a class="headerlink" href="#Setup-Dask" title="Permalink to this headline">¶</a></h2>
 <p>We first start a Dask client in order to get access to the Dask dashboard, which will provide progress and performance metrics.</p>
@@ -583,7 +584,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:33665</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:43751</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
@@ -848,7 +849,7 @@ Incremental(estimator=SGDClassifier(loss=&#39;log&#39;), scoring=&#39;accuracy&#
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.6127
+0.5928
 </pre></div></div>
 </div>
 </div>
@@ -881,16 +882,16 @@ Incremental(estimator=SGDClassifier(loss=&#39;log&#39;), scoring=&#39;accuracy&#
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Score: 0.6107
-Score: 0.6274
-Score: 0.6536
-Score: 0.6367
-Score: 0.6371
-Score: 0.6583
-Score: 0.6535
-Score: 0.6717
-Score: 0.6707
-Score: 0.6656
+Score: 0.6177
+Score: 0.6018
+Score: 0.6216
+Score: 0.641
+Score: 0.6353
+Score: 0.6409
+Score: 0.6448
+Score: 0.6667
+Score: 0.6524
+Score: 0.662
 </pre></div></div>
 </div>
 </div>
@@ -972,11 +973,11 @@ Score: 0.6656
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0,
-       1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0,
-       0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0,
-       0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0,
-       0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1])
+array([0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1,
+       0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1,
+       0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1,
+       1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0,
+       1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0])
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -994,7 +995,7 @@ array([1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.6656
+0.662
 </pre></div></div>
 </div>
 </div>
