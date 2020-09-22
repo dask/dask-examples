@@ -69,6 +69,7 @@ You can run these examples in a live session here: |Binder|
    :caption: User Surveys
 
    surveys/2019.ipynb
+   surveys/2020.ipynb
 
 .. raw:: html
 
