@@ -22,6 +22,7 @@ You can run these examples in a live session here: |Binder|
    delayed
    futures
    machine-learning
+   sql
    xarray
 
 .. toctree::
