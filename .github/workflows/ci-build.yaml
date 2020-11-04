@@ -1,0 +1,49 @@
+name: CI
+on:
+  push:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+
+      - name: Install graphviz
+        shell: bash -l {0}
+        run: |
+          sudo apt-get update && sudo apt-get install graphviz
+
+      - name: Setup Conda Environment
+        uses: goanpeca/setup-miniconda@v1
+        with:
+          miniconda-version: "latest"
+          python-version: "3.7"
+          environment-file: binder/environment.yml
+          activate-environment: dask-examples
+          auto-activate-base: false
+
+      - name: Install testing and docs dependencies
+        shell: bash -l {0}
+        run: |
+          conda install -q pathlib nbconvert nbformat jupyter_client ipykernel
+          pip install nbsphinx dask-sphinx-theme sphinx
+
+      - name: Build
+        shell: bash -l {0}
+        run: sphinx-build -M html . _build -v
+
+      - name: Install SSH Client
+        if: github.ref == 'refs/heads/master'
+        uses: webfactory/ssh-agent@v0.4.1
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Deploy
+        if: github.ref == 'refs/heads/master'
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          SSH: true
+          BRANCH: gh-pages
+          FOLDER: _build/html
+          CLEAN: true
