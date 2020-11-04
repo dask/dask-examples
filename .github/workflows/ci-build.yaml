@@ -1,6 +1,5 @@
 name: CI
-on:
-  push:
+on: [push, pull_request]
 
 jobs:
   build-and-deploy:
@@ -34,13 +33,13 @@ jobs:
         run: sphinx-build -M html . _build -v
 
       - name: Install SSH Client
-        if: github.ref == 'refs/heads/master'
+        if: ${{ github.ref == 'refs/heads/master' && github.event_name != 'pull_request'}}
         uses: webfactory/ssh-agent@v0.4.1
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
       - name: Deploy
-        if: github.ref == 'refs/heads/master'
+        if: ${{ github.ref == 'refs/heads/master' && github.event_name != 'pull_request'}}
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           SSH: true
