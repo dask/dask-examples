@@ -1,14 +1,7 @@
 
 
-
-
-
-
-
-
-
 <!DOCTYPE html>
-<html lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -18,15 +11,15 @@
   
 
   
-  
-  
-  
-
-  
   <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/explore.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/nbsphinx.css" type="text/css" />
+
+  
+  
+  
+  
 
   
   <!--[if lt IE 9]>
@@ -51,8 +44,27 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Custom Workloads with Dask Delayed" href="delayed.html" />
     <link rel="prev" title="Dask Bags" href="bag.html" />
-    <link rel="shortcut icon" href="_static/images/favicon.ico"/>
+  <link rel="shortcut icon" href="_static/images/favicon.ico"/>
   
+  <meta name="Description" content="Dask DataFrames">
+  <meta property="og:description" content="Dask DataFrames">
+  <meta name="twitter:description" content="Dask DataFrames" />
+  <meta property="og:title" content="Dask Examples  documentation - Dask DataFrames">
+  <meta property="og:image" content="https://github.com/dask.png">
+  <meta property="og:image:secure_url" content="https://github.com/dask.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="380" />
+  <meta property="og:image:height" content="380" />
+  <meta property="og:url" content="dataframe.html">
+  <meta property="og:site_name" content="Dask Examples  documentation">
+
+  <meta name="twitter:site" content="https://dask.org" />
+  <meta name="twitter:creator" content="@dask_dev" />
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="https://github.com/dask.png" />
+  <meta name="twitter:image:alt" content="Dask Examples  documentation">
+  
+
 </head>
 
 <body class="wy-body-for-nav">
@@ -110,7 +122,7 @@
             <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
             <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
             <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-            <li><a href="https://www.youtube.com/channel/UCj9eavqmvwaCyKhIlu2GaoA/"> YouTube Channel </a></li>
+            <li><a href="https://youtube.com/c/dask-dev"> YouTube Channel </a></li>
             </ul>
         </li>
         </ul>
@@ -284,21 +296,35 @@
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput.container,
-div.nbinput.container div.prompt,
-div.nbinput.container div.input_area,
-div.nbinput.container div[class*=highlight],
-div.nbinput.container div[class*=highlight] pre,
-div.nboutput.container,
-div.nboutput.container div.prompt,
-div.nboutput.container div.output_area,
-div.nboutput.container div[class*=highlight],
-div.nboutput.container div[class*=highlight] pre {
-    background: none;
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
     border: none;
-    padding: 0 0;
+    padding: 0;
     margin: 0;
     box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
 }
 
 /* avoid gaps between output lines */
@@ -399,7 +425,7 @@ div.nboutput.container div.output_area {
 div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
-    background: #f5f5f5;
+    /*background: #f5f5f5;*/
 }
 
 /* override MathJax center alignment in output cells */
@@ -465,6 +491,7 @@ div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
     padding: 5px;
+    margin: 0;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -567,7 +594,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:43939</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:42405</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
@@ -774,24 +801,24 @@ dtype: object
   <tbody>
     <tr>
       <th>2000-01-01 00:00:00</th>
-      <td>1007</td>
-      <td>Michael</td>
-      <td>0.39</td>
-      <td>0.13</td>
+      <td>1012</td>
+      <td>Tim</td>
+      <td>-0.02</td>
+      <td>0.87</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:01</th>
-      <td>985</td>
-      <td>Alice</td>
-      <td>0.59</td>
-      <td>-0.49</td>
+      <td>971</td>
+      <td>Frank</td>
+      <td>0.87</td>
+      <td>-0.36</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:02</th>
-      <td>986</td>
+      <td>999</td>
       <td>Ingrid</td>
-      <td>-0.26</td>
-      <td>0.21</td>
+      <td>0.57</td>
+      <td>-0.77</td>
     </tr>
   </tbody>
 </table>
@@ -870,7 +897,7 @@ Dan        0.58
 Edith      0.58
            ...
 Victor     0.58
-Wendy      0.57
+Wendy      0.58
 Xavier     0.58
 Yvonne     0.58
 Zelda      0.58
@@ -948,28 +975,28 @@ Name: x, Length: 26, dtype: float64
   <tbody>
     <tr>
       <th>2000-01-01 00:00:00</th>
-      <td>1.92e-03</td>
-      <td>4.93e-03</td>
+      <td>-1.41e-02</td>
+      <td>1.05e-02</td>
     </tr>
     <tr>
       <th>2000-01-01 01:00:00</th>
-      <td>3.37e-03</td>
-      <td>-1.73e-02</td>
+      <td>-1.84e-03</td>
+      <td>2.25e-03</td>
     </tr>
     <tr>
       <th>2000-01-01 02:00:00</th>
-      <td>-1.30e-02</td>
-      <td>-6.46e-03</td>
+      <td>-1.22e-02</td>
+      <td>1.54e-02</td>
     </tr>
     <tr>
       <th>2000-01-01 03:00:00</th>
-      <td>-1.48e-02</td>
-      <td>1.64e-02</td>
+      <td>2.01e-04</td>
+      <td>1.46e-02</td>
     </tr>
     <tr>
       <th>2000-01-01 04:00:00</th>
-      <td>-2.54e-03</td>
-      <td>9.14e-03</td>
+      <td>-1.55e-02</td>
+      <td>-2.57e-03</td>
     </tr>
   </tbody>
 </table>
@@ -1044,28 +1071,28 @@ Name: x, Length: 26, dtype: float64
   <tbody>
     <tr>
       <th>2000-01-01 00:00:00</th>
-      <td>0.39</td>
-      <td>0.13</td>
+      <td>-0.02</td>
+      <td>0.87</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:01</th>
-      <td>0.49</td>
-      <td>-0.18</td>
+      <td>0.43</td>
+      <td>0.26</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:02</th>
-      <td>0.24</td>
-      <td>-0.05</td>
+      <td>0.47</td>
+      <td>-0.08</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:03</th>
-      <td>0.18</td>
-      <td>-0.25</td>
+      <td>0.20</td>
+      <td>-0.16</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:04</th>
-      <td>0.03</td>
-      <td>-0.26</td>
+      <td>0.22</td>
+      <td>-0.18</td>
     </tr>
   </tbody>
 </table>
@@ -1152,8 +1179,8 @@ Name: x, Length: 26, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 21.9 ms, sys: 7.96 ms, total: 29.9 ms
-Wall time: 46.9 ms
+CPU times: user 22.8 ms, sys: 12.5 ms, total: 35.3 ms
+Wall time: 52.3 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1195,38 +1222,38 @@ Wall time: 46.9 ms
   <tbody>
     <tr>
       <th>2000-01-05 00:00:00</th>
-      <td>1015</td>
-      <td>Michael</td>
-      <td>0.20</td>
-      <td>-0.76</td>
+      <td>940</td>
+      <td>Oliver</td>
+      <td>-2.64e-01</td>
+      <td>-0.28</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:01</th>
-      <td>974</td>
-      <td>Patricia</td>
-      <td>0.17</td>
-      <td>0.08</td>
+      <td>1023</td>
+      <td>Jerry</td>
+      <td>-3.00e-01</td>
+      <td>0.54</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:02</th>
-      <td>983</td>
-      <td>Tim</td>
-      <td>-0.23</td>
-      <td>0.99</td>
+      <td>963</td>
+      <td>Dan</td>
+      <td>7.46e-01</td>
+      <td>-0.70</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:03</th>
-      <td>960</td>
-      <td>Laura</td>
-      <td>-0.51</td>
-      <td>0.21</td>
+      <td>978</td>
+      <td>Alice</td>
+      <td>1.09e-03</td>
+      <td>0.57</td>
     </tr>
     <tr>
       <th>2000-01-05 00:00:04</th>
-      <td>988</td>
-      <td>Xavier</td>
-      <td>-0.18</td>
-      <td>-0.91</td>
+      <td>1024</td>
+      <td>Michael</td>
+      <td>-4.79e-01</td>
+      <td>0.05</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1237,38 +1264,38 @@ Wall time: 46.9 ms
     </tr>
     <tr>
       <th>2000-01-05 23:59:55</th>
-      <td>1004</td>
-      <td>Victor</td>
-      <td>-0.72</td>
-      <td>0.64</td>
+      <td>1054</td>
+      <td>Edith</td>
+      <td>-5.57e-01</td>
+      <td>-0.85</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:56</th>
-      <td>986</td>
-      <td>Oliver</td>
-      <td>-0.58</td>
-      <td>0.25</td>
+      <td>966</td>
+      <td>Frank</td>
+      <td>4.22e-02</td>
+      <td>0.47</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:57</th>
-      <td>979</td>
-      <td>Hannah</td>
-      <td>0.55</td>
-      <td>0.03</td>
+      <td>927</td>
+      <td>Zelda</td>
+      <td>3.41e-01</td>
+      <td>0.56</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:58</th>
-      <td>998</td>
-      <td>Ingrid</td>
-      <td>0.51</td>
-      <td>0.51</td>
+      <td>1030</td>
+      <td>Charlie</td>
+      <td>-9.37e-01</td>
+      <td>-0.15</td>
     </tr>
     <tr>
       <th>2000-01-05 23:59:59</th>
-      <td>1000</td>
-      <td>Wendy</td>
-      <td>0.39</td>
-      <td>0.09</td>
+      <td>1027</td>
+      <td>Zelda</td>
+      <td>9.35e-01</td>
+      <td>-0.65</td>
     </tr>
   </tbody>
 </table>
@@ -1385,8 +1412,8 @@ Wall time: 46.9 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 340 ms, sys: 18.4 ms, total: 358 ms
-Wall time: 2.5 s
+CPU times: user 255 ms, sys: 21.3 ms, total: 276 ms
+Wall time: 2.01 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1426,33 +1453,33 @@ Wall time: 2.5 s
   <tbody>
     <tr>
       <th>Alice</th>
-      <td>985</td>
-      <td>0.59</td>
-      <td>-0.49</td>
+      <td>1035</td>
+      <td>5.01e-01</td>
+      <td>-0.07</td>
+    </tr>
+    <tr>
+      <th>Alice</th>
+      <td>979</td>
+      <td>6.66e-01</td>
+      <td>-0.48</td>
     </tr>
     <tr>
       <th>Alice</th>
       <td>977</td>
-      <td>-0.66</td>
-      <td>-0.46</td>
+      <td>3.04e-01</td>
+      <td>0.34</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1012</td>
-      <td>0.66</td>
-      <td>0.92</td>
+      <td>1000</td>
+      <td>3.55e-01</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>959</td>
-      <td>0.73</td>
-      <td>0.95</td>
-    </tr>
-    <tr>
-      <th>Alice</th>
-      <td>1010</td>
-      <td>-0.13</td>
-      <td>0.66</td>
+      <td>965</td>
+      <td>-3.71e-01</td>
+      <td>-0.56</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1462,37 +1489,37 @@ Wall time: 2.5 s
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1003</td>
-      <td>0.91</td>
-      <td>0.93</td>
+      <td>995</td>
+      <td>-9.40e-01</td>
+      <td>-0.73</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1010</td>
-      <td>0.22</td>
-      <td>-0.93</td>
+      <td>1006</td>
+      <td>5.41e-03</td>
+      <td>-0.25</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1033</td>
+      <td>1047</td>
+      <td>4.31e-01</td>
       <td>-0.64</td>
-      <td>-0.39</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>994</td>
-      <td>0.98</td>
-      <td>-0.24</td>
+      <td>968</td>
+      <td>1.21e-01</td>
+      <td>0.99</td>
     </tr>
     <tr>
       <th>Alice</th>
-      <td>1016</td>
-      <td>-0.40</td>
-      <td>0.37</td>
+      <td>1043</td>
+      <td>4.11e-01</td>
+      <td>0.43</td>
     </tr>
   </tbody>
 </table>
-<p>99670 rows × 3 columns</p>
+<p>99934 rows × 3 columns</p>
 </div></div>
 </div>
 </div>

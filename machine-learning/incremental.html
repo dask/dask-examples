@@ -1,14 +1,7 @@
 
 
-
-
-
-
-
-
-
 <!DOCTYPE html>
-<html lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -18,15 +11,15 @@
   
 
   
-  
-  
-  
-
-  
   <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
+
+  
+  
+  
+  
 
   
   <!--[if lt IE 9]>
@@ -51,8 +44,27 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Text Vectorization Pipeline" href="text-vectorization.html" />
     <link rel="prev" title="Train Models on Large Datasets" href="training-on-large-datasets.html" />
-    <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
+  <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
   
+  <meta name="Description" content="Incrementally Train Large Datasets">
+  <meta property="og:description" content="Incrementally Train Large Datasets">
+  <meta name="twitter:description" content="Incrementally Train Large Datasets" />
+  <meta property="og:title" content="Dask Examples  documentation - Incrementally Train Large Datasets">
+  <meta property="og:image" content="https://github.com/dask.png">
+  <meta property="og:image:secure_url" content="https://github.com/dask.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="380" />
+  <meta property="og:image:height" content="380" />
+  <meta property="og:url" content="machine-learning/incremental.html">
+  <meta property="og:site_name" content="Dask Examples  documentation">
+
+  <meta name="twitter:site" content="https://dask.org" />
+  <meta name="twitter:creator" content="@dask_dev" />
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="https://github.com/dask.png" />
+  <meta name="twitter:image:alt" content="Dask Examples  documentation">
+  
+
 </head>
 
 <body class="wy-body-for-nav">
@@ -110,7 +122,7 @@
             <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
             <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
             <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-            <li><a href="https://www.youtube.com/channel/UCj9eavqmvwaCyKhIlu2GaoA/"> YouTube Channel </a></li>
+            <li><a href="https://youtube.com/c/dask-dev"> YouTube Channel </a></li>
             </ul>
         </li>
         </ul>
@@ -287,21 +299,35 @@
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput.container,
-div.nbinput.container div.prompt,
-div.nbinput.container div.input_area,
-div.nbinput.container div[class*=highlight],
-div.nbinput.container div[class*=highlight] pre,
-div.nboutput.container,
-div.nboutput.container div.prompt,
-div.nboutput.container div.output_area,
-div.nboutput.container div[class*=highlight],
-div.nboutput.container div[class*=highlight] pre {
-    background: none;
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
     border: none;
-    padding: 0 0;
+    padding: 0;
     margin: 0;
     box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
 }
 
 /* avoid gaps between output lines */
@@ -402,7 +428,7 @@ div.nboutput.container div.output_area {
 div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
-    background: #f5f5f5;
+    /*background: #f5f5f5;*/
 }
 
 /* override MathJax center alignment in output cells */
@@ -468,6 +494,7 @@ div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
     padding: 5px;
+    margin: 0;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -558,7 +585,7 @@ div.rendered_html tbody tr:hover {
 <li><p>training, predicting, and scoring on this wrapped estimator</p></li>
 </ul>
 <p>Although this example uses Scikit-Learn’s SGDClassifer, the <code class="docutils literal notranslate"><span class="pre">Incremental</span></code> meta-estimator will work for any class that implements <code class="docutils literal notranslate"><span class="pre">partial_fit</span></code> and the <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html">scikit-learn base estimator API</a>.</p>
-<p><img alt="76a560aadf8d450091b56c1ed5b4615e" src="http://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" /> <img alt="dc4033cfbac147b5a36b429a9eb7bb59" class="no-scaled-link" src="https://www.continuum.io/sites/default/files/dask_stacked.png" style="width: 100px;" /></p>
+<p><img alt="315edd6cab5e4c45ab2301db079c4c43" src="http://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" /> <img alt="7f1934d458d348f1942de06e2a955315" class="no-scaled-link" src="https://www.continuum.io/sites/default/files/dask_stacked.png" style="width: 100px;" /></p>
 <div class="section" id="Setup-Dask">
 <h2>Setup Dask<a class="headerlink" href="#Setup-Dask" title="Permalink to this headline">¶</a></h2>
 <p>We first start a Dask client in order to get access to the Dask dashboard, which will provide progress and performance metrics.</p>
@@ -584,7 +611,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:43751</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:45051</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
@@ -593,7 +620,7 @@ div.rendered_html tbody tr:hover {
 <ul style="text-align: left; list-style:none; margin: 0; padding: 0;">
   <li><b>Workers: </b>4</li>
   <li><b>Cores: </b>4</li>
-  <li><b>Memory: </b>8.36 GB</li>
+  <li><b>Memory: </b>7.29 GB</li>
 </ul>
 </td>
 </tr>
@@ -849,7 +876,7 @@ Incremental(estimator=SGDClassifier(loss=&#39;log&#39;), scoring=&#39;accuracy&#
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.5928
+0.5929
 </pre></div></div>
 </div>
 </div>
@@ -882,16 +909,16 @@ Incremental(estimator=SGDClassifier(loss=&#39;log&#39;), scoring=&#39;accuracy&#
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Score: 0.6177
-Score: 0.6018
-Score: 0.6216
-Score: 0.641
-Score: 0.6353
-Score: 0.6409
-Score: 0.6448
-Score: 0.6667
-Score: 0.6524
-Score: 0.662
+Score: 0.5833
+Score: 0.5729
+Score: 0.5809
+Score: 0.6022
+Score: 0.5942
+Score: 0.5927
+Score: 0.6121
+Score: 0.6163
+Score: 0.6201
+Score: 0.6232
 </pre></div></div>
 </div>
 </div>
@@ -973,11 +1000,11 @@ Score: 0.662
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1,
-       0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1,
-       0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1,
-       1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0,
-       1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0])
+array([0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1,
+       1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0,
+       1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1,
+       0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1,
+       1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0])
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -995,7 +1022,7 @@ array([0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.662
+0.6232
 </pre></div></div>
 </div>
 </div>

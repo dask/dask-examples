@@ -1,14 +1,7 @@
 
 
-
-
-
-
-
-
-
 <!DOCTYPE html>
-<html lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -18,15 +11,15 @@
   
 
   
-  
-  
-  
-
-  
   <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
+
+  
+  
+  
+  
 
   
   <!--[if lt IE 9]>
@@ -51,8 +44,27 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="DataFrames: Groupby" href="02-groupby.html" />
     <link rel="prev" title="Xarray with Dask Arrays" href="../xarray.html" />
-    <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
+  <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
   
+  <meta name="Description" content="DataFrames: Read and Write Data">
+  <meta property="og:description" content="DataFrames: Read and Write Data">
+  <meta name="twitter:description" content="DataFrames: Read and Write Data" />
+  <meta property="og:title" content="Dask Examples  documentation - DataFrames: Read and Write Data">
+  <meta property="og:image" content="https://github.com/dask.png">
+  <meta property="og:image:secure_url" content="https://github.com/dask.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="380" />
+  <meta property="og:image:height" content="380" />
+  <meta property="og:url" content="dataframes/01-data-access.html">
+  <meta property="og:site_name" content="Dask Examples  documentation">
+
+  <meta name="twitter:site" content="https://dask.org" />
+  <meta name="twitter:creator" content="@dask_dev" />
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="https://github.com/dask.png" />
+  <meta name="twitter:image:alt" content="Dask Examples  documentation">
+  
+
 </head>
 
 <body class="wy-body-for-nav">
@@ -110,7 +122,7 @@
             <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
             <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
             <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-            <li><a href="https://www.youtube.com/channel/UCj9eavqmvwaCyKhIlu2GaoA/"> YouTube Channel </a></li>
+            <li><a href="https://youtube.com/c/dask-dev"> YouTube Channel </a></li>
             </ul>
         </li>
         </ul>
@@ -285,21 +297,35 @@
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput.container,
-div.nbinput.container div.prompt,
-div.nbinput.container div.input_area,
-div.nbinput.container div[class*=highlight],
-div.nbinput.container div[class*=highlight] pre,
-div.nboutput.container,
-div.nboutput.container div.prompt,
-div.nboutput.container div.output_area,
-div.nboutput.container div[class*=highlight],
-div.nboutput.container div[class*=highlight] pre {
-    background: none;
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
     border: none;
-    padding: 0 0;
+    padding: 0;
     margin: 0;
     box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
 }
 
 /* avoid gaps between output lines */
@@ -400,7 +426,7 @@ div.nboutput.container div.output_area {
 div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
-    background: #f5f5f5;
+    /*background: #f5f5f5;*/
 }
 
 /* override MathJax center alignment in output cells */
@@ -466,6 +492,7 @@ div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
     padding: 5px;
+    margin: 0;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -558,7 +585,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/travis/miniconda/envs/test/lib/python3.8/site-packages/IPython/core/display.py:717: UserWarning: Consider using IPython.display.IFrame instead
+/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/IPython/core/display.py:717: UserWarning: Consider using IPython.display.IFrame instead
   warnings.warn(&#34;Consider using IPython.display.IFrame instead&#34;)
 </pre></div></div>
 </div>
@@ -594,8 +621,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.0.29/10670/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.0.29:8787/status' target='_blank'>http://10.20.0.29:8787/status</a></li>
+  <li><b>Scheduler: </b>inproc://10.1.0.4/9851/1</li>
+  <li><b>Dashboard: </b><a href='http://10.1.0.4:8787/status' target='_blank'>http://10.1.0.4:8787/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -703,7 +730,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div>Dask Name: make-timeseries, 30 tasks</div></div>
 </div>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
@@ -729,6 +756,44 @@ div.rendered_html tbody tr:hover {
 <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/*.csv&#39;</span><span class="p">,</span> <span class="n">name_function</span><span class="o">=</span><span class="n">name</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-01.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-02.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-03.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-04.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-05.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-06.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-07.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-08.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-09.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-10.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-11.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-12.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-13.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-14.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-15.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-16.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-17.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-18.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-19.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-20.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-21.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-22.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-23.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-24.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-25.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-26.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-27.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-28.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-29.csv&#39;,
+ &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-30.csv&#39;]
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Read-CSV-files">
@@ -775,15 +840,15 @@ data/2000-01-10.csv
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 timestamp,id,name,x,y
-2000-01-01 00:00:00,1008,Patricia,0.15864472106038807,0.9812639644999739
-2000-01-01 00:00:01,1008,Quinn,-0.4126941258179131,0.4203676743717186
-2000-01-01 00:00:02,1067,Laura,0.4535217643829417,-0.5306091691946111
-2000-01-01 00:00:03,996,Sarah,0.3730665706802092,-0.2805804812925936
-2000-01-01 00:00:04,1006,Victor,-0.034958764953235466,0.4285228268018819
-2000-01-01 00:00:05,1016,Michael,-0.7525136278832607,0.8630818092750212
-2000-01-01 00:00:06,1035,Victor,-0.8839599244134992,-0.320766615490806
-2000-01-01 00:00:07,1010,Hannah,0.8943454583497881,-0.18104494559906015
-2000-01-01 00:00:08,967,Ingrid,0.4897953274656761,0.9719138041728912
+2000-01-01 00:00:00,956,Alice,-0.4807276944690151,0.23356788043142274
+2000-01-01 00:00:01,1021,Sarah,-0.3484081198819542,-0.2911518751131208
+2000-01-01 00:00:02,1025,Victor,0.8476634344555833,-0.16005592140365543
+2000-01-01 00:00:03,993,Ray,0.08069276228720024,0.20530953887879644
+2000-01-01 00:00:04,1042,Frank,0.8084479486913967,-0.06031440805396504
+2000-01-01 00:00:05,1019,Michael,-0.44176535520155413,-0.3175961488952834
+2000-01-01 00:00:06,1000,Tim,0.265404109447662,-0.4416574643407474
+2000-01-01 00:00:07,987,Bob,0.8133956909053868,-0.5520896178063626
+2000-01-01 00:00:08,1010,Ingrid,0.48954392824103965,-0.5004332236304483
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -801,15 +866,15 @@ timestamp,id,name,x,y
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 timestamp,id,name,x,y
-2000-01-30 00:00:00,976,Kevin,0.09357418699164488,-0.9053659669393135
-2000-01-30 00:00:01,1035,Hannah,0.17306525311006804,0.7134161812081383
-2000-01-30 00:00:02,1008,Xavier,0.9075295114097659,0.8372240248569134
-2000-01-30 00:00:03,997,Kevin,0.9215202812973804,-0.3760860377300812
-2000-01-30 00:00:04,1041,Tim,0.23835615535432653,-0.5653024786717102
-2000-01-30 00:00:05,1037,Laura,0.9624217527679262,0.2736877802612838
-2000-01-30 00:00:06,959,Laura,0.6161362614673098,0.20051029156609568
-2000-01-30 00:00:07,1022,Tim,0.4180747755458363,0.8072654001168373
-2000-01-30 00:00:08,973,Zelda,0.6730613511586587,0.48907780151975455
+2000-01-30 00:00:00,1010,Norbert,0.6388864196859816,0.4404903971820411
+2000-01-30 00:00:01,947,Sarah,-0.9389995612083972,-0.3973788781388472
+2000-01-30 00:00:02,1005,Quinn,-0.48404866201305374,-0.04634673894903685
+2000-01-30 00:00:03,1035,Jerry,0.9583721569302004,-0.20237635709714885
+2000-01-30 00:00:04,1012,Hannah,0.2657948312028029,-0.6734865104543839
+2000-01-30 00:00:05,928,Quinn,0.07751635230308618,-0.14444273590061463
+2000-01-30 00:00:06,1023,Quinn,-0.5327028173448654,-0.7794600508434462
+2000-01-30 00:00:07,1010,Jerry,0.28484348676422333,-0.13229459801520815
+2000-01-30 00:00:08,995,George,0.9336344851309977,-0.9433452431671332
 </pre></div></div>
 </div>
 <p>We can read one file with <code class="docutils literal notranslate"><span class="pre">pandas.read_csv</span></code> or many files with <code class="docutils literal notranslate"><span class="pre">dask.dataframe.read_csv</span></code></p>
@@ -859,42 +924,42 @@ timestamp,id,name,x,y
     <tr>
       <th>0</th>
       <td>2000-01-01 00:00:00</td>
-      <td>1008</td>
-      <td>Patricia</td>
-      <td>0.158645</td>
-      <td>0.981264</td>
+      <td>956</td>
+      <td>Alice</td>
+      <td>-0.480728</td>
+      <td>0.233568</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2000-01-01 00:00:01</td>
-      <td>1008</td>
-      <td>Quinn</td>
-      <td>-0.412694</td>
-      <td>0.420368</td>
+      <td>1021</td>
+      <td>Sarah</td>
+      <td>-0.348408</td>
+      <td>-0.291152</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2000-01-01 00:00:02</td>
-      <td>1067</td>
-      <td>Laura</td>
-      <td>0.453522</td>
-      <td>-0.530609</td>
+      <td>1025</td>
+      <td>Victor</td>
+      <td>0.847663</td>
+      <td>-0.160056</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2000-01-01 00:00:03</td>
-      <td>996</td>
-      <td>Sarah</td>
-      <td>0.373067</td>
-      <td>-0.280580</td>
+      <td>993</td>
+      <td>Ray</td>
+      <td>0.080693</td>
+      <td>0.205310</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2000-01-01 00:00:04</td>
-      <td>1006</td>
-      <td>Victor</td>
-      <td>-0.034959</td>
-      <td>0.428523</td>
+      <td>1042</td>
+      <td>Frank</td>
+      <td>0.808448</td>
+      <td>-0.060314</td>
     </tr>
   </tbody>
 </table>
@@ -1040,42 +1105,42 @@ timestamp,id,name,x,y
     <tr>
       <th>0</th>
       <td>2000-01-01 00:00:00</td>
-      <td>1008</td>
-      <td>Patricia</td>
-      <td>0.158645</td>
-      <td>0.981264</td>
+      <td>956</td>
+      <td>Alice</td>
+      <td>-0.480728</td>
+      <td>0.233568</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2000-01-01 00:00:01</td>
-      <td>1008</td>
-      <td>Quinn</td>
-      <td>-0.412694</td>
-      <td>0.420368</td>
+      <td>1021</td>
+      <td>Sarah</td>
+      <td>-0.348408</td>
+      <td>-0.291152</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2000-01-01 00:00:02</td>
-      <td>1067</td>
-      <td>Laura</td>
-      <td>0.453522</td>
-      <td>-0.530609</td>
+      <td>1025</td>
+      <td>Victor</td>
+      <td>0.847663</td>
+      <td>-0.160056</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2000-01-01 00:00:03</td>
-      <td>996</td>
-      <td>Sarah</td>
-      <td>0.373067</td>
-      <td>-0.280580</td>
+      <td>993</td>
+      <td>Ray</td>
+      <td>0.080693</td>
+      <td>0.205310</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2000-01-01 00:00:04</td>
-      <td>1006</td>
-      <td>Victor</td>
-      <td>-0.034959</td>
-      <td>0.428523</td>
+      <td>1042</td>
+      <td>Frank</td>
+      <td>0.808448</td>
+      <td>-0.060314</td>
     </tr>
   </tbody>
 </table>
@@ -1217,8 +1282,8 @@ timestamp,id,name,x,y
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 4.46 s, sys: 576 ms, total: 5.04 s
-Wall time: 3.26 s
+CPU times: user 3.96 s, sys: 587 ms, total: 4.55 s
+Wall time: 3.14 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1228,32 +1293,32 @@ Wall time: 3.26 s
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 name
-Alice      -0.000248
-Bob         0.001779
-Charlie     0.001204
-Dan        -0.001487
-Edith      -0.000077
-Frank       0.000306
-George      0.003272
-Hannah      0.000319
-Ingrid      0.000977
-Jerry       0.001534
-Kevin       0.000038
-Laura       0.003747
-Michael    -0.001695
-Norbert     0.000770
-Oliver     -0.000202
-Patricia    0.003887
-Quinn      -0.003282
-Ray         0.002201
-Sarah      -0.001342
-Tim        -0.000890
-Ursula     -0.000344
-Victor     -0.000660
-Wendy      -0.000872
-Xavier      0.000632
-Yvonne     -0.000476
-Zelda      -0.000115
+Alice       0.000391
+Bob        -0.000239
+Charlie     0.004081
+Dan        -0.000132
+Edith      -0.000661
+Frank       0.003799
+George      0.002192
+Hannah      0.003944
+Ingrid     -0.001456
+Jerry       0.002225
+Kevin      -0.001252
+Laura       0.000384
+Michael    -0.000504
+Norbert    -0.000153
+Oliver      0.001463
+Patricia    0.002335
+Quinn      -0.001586
+Ray         0.001449
+Sarah      -0.003739
+Tim         0.002277
+Ursula     -0.000669
+Victor     -0.000065
+Wendy       0.001108
+Xavier     -0.001508
+Yvonne      0.000187
+Zelda      -0.000180
 Name: x, dtype: float64
 </pre></div></div>
 </div>
@@ -1293,14 +1358,14 @@ Name: x, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-_common_metadata  part.15.parquet  part.22.parquet  part.2.parquet
-_metadata         part.16.parquet  part.23.parquet  part.3.parquet
-part.0.parquet    part.17.parquet  part.24.parquet  part.4.parquet
-part.10.parquet   part.18.parquet  part.25.parquet  part.5.parquet
-part.11.parquet   part.19.parquet  part.26.parquet  part.6.parquet
-part.12.parquet   part.1.parquet   part.27.parquet  part.7.parquet
-part.13.parquet   part.20.parquet  part.28.parquet  part.8.parquet
-part.14.parquet   part.21.parquet  part.29.parquet  part.9.parquet
+_common_metadata  part.14.parquet  part.21.parquet  part.29.parquet
+_metadata         part.15.parquet  part.22.parquet  part.3.parquet
+part.0.parquet    part.16.parquet  part.23.parquet  part.4.parquet
+part.1.parquet    part.17.parquet  part.24.parquet  part.5.parquet
+part.10.parquet   part.18.parquet  part.25.parquet  part.6.parquet
+part.11.parquet   part.19.parquet  part.26.parquet  part.7.parquet
+part.12.parquet   part.2.parquet   part.27.parquet  part.8.parquet
+part.13.parquet   part.20.parquet  part.28.parquet  part.9.parquet
 </pre></div></div>
 </div>
 </div>
@@ -1415,7 +1480,7 @@ part.14.parquet   part.21.parquet  part.29.parquet  part.9.parquet
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.36 s, sys: 149 ms, total: 1.51 s
+CPU times: user 1.26 s, sys: 115 ms, total: 1.37 s
 Wall time: 1.03 s
 </pre></div></div>
 </div>
@@ -1426,32 +1491,32 @@ Wall time: 1.03 s
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 name
-Alice      -0.000248
-Bob         0.001779
-Charlie     0.001204
-Dan        -0.001487
-Edith      -0.000077
-Frank       0.000306
-George      0.003272
-Hannah      0.000319
-Ingrid      0.000977
-Jerry       0.001534
-Kevin       0.000038
-Laura       0.003747
-Michael    -0.001695
-Norbert     0.000770
-Oliver     -0.000202
-Patricia    0.003887
-Quinn      -0.003282
-Ray         0.002201
-Sarah      -0.001342
-Tim        -0.000890
-Ursula     -0.000344
-Victor     -0.000660
-Wendy      -0.000872
-Xavier      0.000632
-Yvonne     -0.000476
-Zelda      -0.000115
+Alice       0.000391
+Bob        -0.000239
+Charlie     0.004081
+Dan        -0.000132
+Edith      -0.000661
+Frank       0.003799
+George      0.002192
+Hannah      0.003944
+Ingrid     -0.001456
+Jerry       0.002225
+Kevin      -0.001252
+Laura       0.000384
+Michael    -0.000504
+Norbert    -0.000153
+Oliver      0.001463
+Patricia    0.002335
+Quinn      -0.001586
+Ray         0.001449
+Sarah      -0.003739
+Tim         0.002277
+Ursula     -0.000669
+Victor     -0.000065
+Wendy       0.001108
+Xavier     -0.001508
+Yvonne      0.000187
+Zelda      -0.000180
 Name: x, dtype: float64
 </pre></div></div>
 </div>
@@ -1475,8 +1540,8 @@ Name: x, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.29 s, sys: 115 ms, total: 1.41 s
-Wall time: 1.03 s
+CPU times: user 1.2 s, sys: 80.1 ms, total: 1.28 s
+Wall time: 997 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1486,32 +1551,32 @@ Wall time: 1.03 s
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 name
-Alice      -0.000248
-Bob         0.001779
-Charlie     0.001204
-Dan        -0.001487
-Edith      -0.000077
-Frank       0.000306
-George      0.003272
-Hannah      0.000319
-Ingrid      0.000977
-Jerry       0.001534
-Kevin       0.000038
-Laura       0.003747
-Michael    -0.001695
-Norbert     0.000770
-Oliver     -0.000202
-Patricia    0.003887
-Quinn      -0.003282
-Ray         0.002201
-Sarah      -0.001342
-Tim        -0.000890
-Ursula     -0.000344
-Victor     -0.000660
-Wendy      -0.000872
-Xavier      0.000632
-Yvonne     -0.000476
-Zelda      -0.000115
+Alice       0.000391
+Bob        -0.000239
+Charlie     0.004081
+Dan        -0.000132
+Edith      -0.000661
+Frank       0.003799
+George      0.002192
+Hannah      0.003944
+Ingrid     -0.001456
+Jerry       0.002225
+Kevin      -0.001252
+Laura       0.000384
+Michael    -0.000504
+Norbert    -0.000153
+Oliver      0.001463
+Patricia    0.002335
+Quinn      -0.001586
+Ray         0.001449
+Sarah      -0.003739
+Tim         0.002277
+Ursula     -0.000669
+Victor     -0.000065
+Wendy       0.001108
+Xavier     -0.001508
+Yvonne      0.000187
+Zelda      -0.000180
 Name: x, dtype: float64
 </pre></div></div>
 </div>

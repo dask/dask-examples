@@ -1,14 +1,7 @@
 
 
-
-
-
-
-
-
-
 <!DOCTYPE html>
-<html lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -18,15 +11,15 @@
   
 
   
-  
-  
-  
-
-  
   <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
+
+  
+  
+  
+  
 
   
   <!--[if lt IE 9]>
@@ -51,8 +44,27 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Scale XGBoost" href="xgboost.html" />
     <link rel="prev" title="Text Vectorization Pipeline" href="text-vectorization.html" />
-    <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
+  <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
   
+  <meta name="Description" content="Hyperparameter optimization with Dask">
+  <meta property="og:description" content="Hyperparameter optimization with Dask">
+  <meta name="twitter:description" content="Hyperparameter optimization with Dask" />
+  <meta property="og:title" content="Dask Examples  documentation - Hyperparameter optimization with Dask">
+  <meta property="og:image" content="https://github.com/dask.png">
+  <meta property="og:image:secure_url" content="https://github.com/dask.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="380" />
+  <meta property="og:image:height" content="380" />
+  <meta property="og:url" content="machine-learning/hyperparam-opt.html">
+  <meta property="og:site_name" content="Dask Examples  documentation">
+
+  <meta name="twitter:site" content="https://dask.org" />
+  <meta name="twitter:creator" content="@dask_dev" />
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="https://github.com/dask.png" />
+  <meta name="twitter:image:alt" content="Dask Examples  documentation">
+  
+
 </head>
 
 <body class="wy-body-for-nav">
@@ -110,7 +122,7 @@
             <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
             <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
             <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-            <li><a href="https://www.youtube.com/channel/UCj9eavqmvwaCyKhIlu2GaoA/"> YouTube Channel </a></li>
+            <li><a href="https://youtube.com/c/dask-dev"> YouTube Channel </a></li>
             </ul>
         </li>
         </ul>
@@ -290,21 +302,35 @@
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput.container,
-div.nbinput.container div.prompt,
-div.nbinput.container div.input_area,
-div.nbinput.container div[class*=highlight],
-div.nbinput.container div[class*=highlight] pre,
-div.nboutput.container,
-div.nboutput.container div.prompt,
-div.nboutput.container div.output_area,
-div.nboutput.container div[class*=highlight],
-div.nboutput.container div[class*=highlight] pre {
-    background: none;
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
     border: none;
-    padding: 0 0;
+    padding: 0;
     margin: 0;
     box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
 }
 
 /* avoid gaps between output lines */
@@ -405,7 +431,7 @@ div.nboutput.container div.output_area {
 div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
-    background: #f5f5f5;
+    /*background: #f5f5f5;*/
 }
 
 /* override MathJax center alignment in output cells */
@@ -471,6 +497,7 @@ div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
     padding: 5px;
+    margin: 0;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -604,8 +631,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.0.29/12975/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.0.29:8787/status' target='_blank'>http://10.20.0.29:8787/status</a></li>
+  <li><b>Scheduler: </b>inproc://10.1.0.4/12310/1</li>
+  <li><b>Dashboard: </b><a href='http://10.1.0.4:8787/status' target='_blank'>http://10.1.0.4:8787/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -639,11 +666,20 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:xlabel=&#39;0&#39;, ylabel=&#39;1&#39;&gt;
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/machine-learning_hyperparam-opt_8_0.png" src="../_images/machine-learning_hyperparam-opt_8_0.png" />
+<img alt="../_images/machine-learning_hyperparam-opt_8_1.png" src="../_images/machine-learning_hyperparam-opt_8_1.png" />
 </div>
 </div>
 <div class="section" id="Add-random-dimensions">
@@ -954,8 +990,8 @@ bytes = 240.00 kB
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3.52 s, sys: 422 ms, total: 3.94 s
-Wall time: 3.18 s
+CPU times: user 7.33 s, sys: 1.41 s, total: 8.74 s
+Wall time: 6.81 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1002,7 +1038,7 @@ HyperbandSearchCV(estimator=MLPClassifier(), max_iter=8,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.5012
+0.8522
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1020,8 +1056,8 @@ HyperbandSearchCV(estimator=MLPClassifier(), max_iter=8,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-MLPClassifier(activation=&#39;tanh&#39;, alpha=1.3277708293554291e-05, batch_size=64,
-              hidden_layer_sizes=(4, 4, 4, 4, 4, 4))
+MLPClassifier(activation=&#39;tanh&#39;, alpha=5.293266058360567e-06, batch_size=16,
+              hidden_layer_sizes=(12, 12))
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1057,107 +1093,107 @@ MLPClassifier(activation=&#39;tanh&#39;, alpha=1.3277708293554291e-05, batch_siz
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>param_hidden_layer_sizes</th>
       <th>std_partial_fit_time</th>
-      <th>std_score_time</th>
-      <th>mean_partial_fit_time</th>
-      <th>params</th>
+      <th>param_hidden_layer_sizes</th>
       <th>rank_test_score</th>
-      <th>param_alpha</th>
-      <th>partial_fit_calls</th>
-      <th>model_id</th>
-      <th>mean_score_time</th>
-      <th>param_batch_size</th>
-      <th>param_activation</th>
-      <th>test_score</th>
       <th>bracket</th>
+      <th>model_id</th>
+      <th>partial_fit_calls</th>
+      <th>mean_partial_fit_time</th>
+      <th>test_score</th>
+      <th>mean_score_time</th>
+      <th>param_activation</th>
+      <th>std_score_time</th>
+      <th>param_batch_size</th>
+      <th>param_alpha</th>
+      <th>params</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>(6, 6, 6, 6)</td>
-      <td>0.182302</td>
-      <td>0.025032</td>
-      <td>0.579878</td>
-      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
-      <td>1</td>
-      <td>0.000599</td>
+      <td>0.209327</td>
+      <td>(24,)</td>
       <td>2</td>
-      <td>bracket=1-0</td>
-      <td>0.060113</td>
-      <td>32</td>
-      <td>logistic</td>
-      <td>0.4924</td>
       <td>1</td>
+      <td>bracket=1-0</td>
+      <td>2</td>
+      <td>0.331165</td>
+      <td>0.5062</td>
+      <td>0.021565</td>
+      <td>logistic</td>
+      <td>0.002234</td>
+      <td>256</td>
+      <td>0.000097</td>
+      <td>{'hidden_layer_sizes': (24,), 'batch_size': 25...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>(12, 6, 3, 3)</td>
-      <td>0.089067</td>
-      <td>0.005063</td>
-      <td>0.722142</td>
-      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
-      <td>2</td>
-      <td>0.000090</td>
-      <td>2</td>
-      <td>bracket=1-1</td>
-      <td>0.051653</td>
-      <td>512</td>
-      <td>logistic</td>
-      <td>0.0000</td>
+      <td>0.227294</td>
+      <td>(24,)</td>
       <td>1</td>
+      <td>1</td>
+      <td>bracket=1-1</td>
+      <td>6</td>
+      <td>0.900739</td>
+      <td>0.8072</td>
+      <td>0.017352</td>
+      <td>relu</td>
+      <td>0.005527</td>
+      <td>32</td>
+      <td>0.000013</td>
+      <td>{'hidden_layer_sizes': (24,), 'batch_size': 32...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>(4, 4, 4, 4, 4, 4)</td>
-      <td>0.025861</td>
-      <td>0.018269</td>
-      <td>0.782479</td>
-      <td>{'hidden_layer_sizes': (4, 4, 4, 4, 4, 4), 'ba...</td>
-      <td>2</td>
-      <td>0.000119</td>
-      <td>2</td>
-      <td>bracket=1-2</td>
-      <td>0.043797</td>
-      <td>512</td>
-      <td>logistic</td>
-      <td>0.0000</td>
+      <td>0.054522</td>
+      <td>(6, 6, 6, 6)</td>
+      <td>3</td>
       <td>1</td>
+      <td>bracket=1-2</td>
+      <td>2</td>
+      <td>0.491820</td>
+      <td>0.4938</td>
+      <td>0.025157</td>
+      <td>logistic</td>
+      <td>0.000723</td>
+      <td>64</td>
+      <td>0.000155</td>
+      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>(12, 6, 3, 3)</td>
-      <td>0.188312</td>
-      <td>0.017544</td>
-      <td>0.649341</td>
-      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
-      <td>2</td>
-      <td>0.000006</td>
-      <td>3</td>
-      <td>bracket=0-0</td>
-      <td>0.039079</td>
-      <td>32</td>
-      <td>relu</td>
-      <td>0.4988</td>
+      <td>0.353923</td>
+      <td>(12, 12)</td>
+      <td>1</td>
       <td>0</td>
+      <td>bracket=0-0</td>
+      <td>8</td>
+      <td>0.731342</td>
+      <td>0.8522</td>
+      <td>0.020912</td>
+      <td>tanh</td>
+      <td>0.006635</td>
+      <td>16</td>
+      <td>0.000005</td>
+      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>(4, 4, 4, 4, 4, 4)</td>
-      <td>0.008830</td>
-      <td>0.001027</td>
-      <td>0.864502</td>
-      <td>{'hidden_layer_sizes': (4, 4, 4, 4, 4, 4), 'ba...</td>
-      <td>1</td>
-      <td>0.000013</td>
-      <td>3</td>
-      <td>bracket=0-1</td>
-      <td>0.066290</td>
-      <td>64</td>
-      <td>tanh</td>
-      <td>0.5012</td>
+      <td>0.394766</td>
+      <td>(12, 6, 3, 3)</td>
+      <td>2</td>
       <td>0</td>
+      <td>bracket=0-1</td>
+      <td>3</td>
+      <td>1.427878</td>
+      <td>0.4906</td>
+      <td>0.016739</td>
+      <td>logistic</td>
+      <td>0.005912</td>
+      <td>16</td>
+      <td>0.000001</td>
+      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
     </tr>
   </tbody>
 </table>
@@ -1178,7 +1214,7 @@ MLPClassifier(activation=&#39;tanh&#39;, alpha=1.3277708293554291e-05, batch_siz
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.4958
+0.85
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1247,7 +1283,7 @@ MLPClassifier(activation=&#39;tanh&#39;, alpha=1.3277708293554291e-05, batch_siz
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([0, 0, 0, ..., 0, 0, 1])
+array([1, 0, 1, ..., 1, 0, 0])
 </pre></div></div>
 </div>
 <p>It also has some other attributes.</p>
@@ -1298,57 +1334,57 @@ array([0, 0, 0, ..., 0, 0, 1])
     <tr>
       <th>0</th>
       <td>bracket=1-0</td>
-      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
+      <td>{'hidden_layer_sizes': (24,), 'batch_size': 25...</td>
       <td>1</td>
-      <td>0.397576</td>
-      <td>0.4924</td>
-      <td>0.035082</td>
-      <td>0.930123</td>
+      <td>0.540492</td>
+      <td>0.5062</td>
+      <td>0.019332</td>
+      <td>1.287910</td>
       <td>1</td>
     </tr>
     <tr>
       <th>1</th>
       <td>bracket=1-1</td>
-      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
+      <td>{'hidden_layer_sizes': (24,), 'batch_size': 32...</td>
       <td>1</td>
-      <td>0.811209</td>
-      <td>0.0000</td>
-      <td>0.046590</td>
-      <td>0.930125</td>
+      <td>1.209856</td>
+      <td>0.5494</td>
+      <td>0.011400</td>
+      <td>1.287912</td>
       <td>1</td>
     </tr>
     <tr>
       <th>2</th>
       <td>bracket=1-2</td>
-      <td>{'hidden_layer_sizes': (4, 4, 4, 4, 4, 4), 'ba...</td>
+      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
       <td>1</td>
-      <td>0.808340</td>
-      <td>0.0000</td>
-      <td>0.025528</td>
-      <td>0.930126</td>
+      <td>0.546342</td>
+      <td>0.5062</td>
+      <td>0.025880</td>
+      <td>1.287913</td>
       <td>1</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>bracket=0-0</td>
-      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
+      <td>bracket=1-1</td>
+      <td>{'hidden_layer_sizes': (24,), 'batch_size': 32...</td>
+      <td>2</td>
+      <td>0.867707</td>
+      <td>0.6124</td>
+      <td>0.019617</td>
+      <td>2.203149</td>
       <td>1</td>
-      <td>0.461029</td>
-      <td>0.4986</td>
-      <td>0.056623</td>
-      <td>0.969892</td>
-      <td>0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>bracket=0-1</td>
-      <td>{'hidden_layer_sizes': (4, 4, 4, 4, 4, 4), 'ba...</td>
+      <td>bracket=1-0</td>
+      <td>{'hidden_layer_sizes': (24,), 'batch_size': 25...</td>
+      <td>2</td>
+      <td>0.121839</td>
+      <td>0.5062</td>
+      <td>0.023799</td>
+      <td>2.203151</td>
       <td>1</td>
-      <td>0.873332</td>
-      <td>0.5078</td>
-      <td>0.067317</td>
-      <td>0.969895</td>
-      <td>0</td>
     </tr>
   </tbody>
 </table>

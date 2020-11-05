@@ -1,14 +1,7 @@
 
 
-
-
-
-
-
-
-
 <!DOCTYPE html>
-<html lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -18,15 +11,15 @@
   
 
   
-  
-  
-  
-
-  
   <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
+
+  
+  
+  
+  
 
   
   <!--[if lt IE 9]>
@@ -50,8 +43,27 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="2019 Dask User Survey Results" href="2019.html" />
-    <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
+  <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
   
+  <meta name="Description" content="2020 Dask User Survey Results">
+  <meta property="og:description" content="2020 Dask User Survey Results">
+  <meta name="twitter:description" content="2020 Dask User Survey Results" />
+  <meta property="og:title" content="Dask Examples  documentation - 2020 Dask User Survey Results">
+  <meta property="og:image" content="https://github.com/dask.png">
+  <meta property="og:image:secure_url" content="https://github.com/dask.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="380" />
+  <meta property="og:image:height" content="380" />
+  <meta property="og:url" content="surveys/2020.html">
+  <meta property="og:site_name" content="Dask Examples  documentation">
+
+  <meta name="twitter:site" content="https://dask.org" />
+  <meta name="twitter:creator" content="@dask_dev" />
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="https://github.com/dask.png" />
+  <meta name="twitter:image:alt" content="Dask Examples  documentation">
+  
+
 </head>
 
 <body class="wy-body-for-nav">
@@ -109,7 +121,7 @@
             <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
             <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
             <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-            <li><a href="https://www.youtube.com/channel/UCj9eavqmvwaCyKhIlu2GaoA/"> YouTube Channel </a></li>
+            <li><a href="https://youtube.com/c/dask-dev"> YouTube Channel </a></li>
             </ul>
         </li>
         </ul>
@@ -280,21 +292,35 @@
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput.container,
-div.nbinput.container div.prompt,
-div.nbinput.container div.input_area,
-div.nbinput.container div[class*=highlight],
-div.nbinput.container div[class*=highlight] pre,
-div.nboutput.container,
-div.nboutput.container div.prompt,
-div.nboutput.container div.output_area,
-div.nboutput.container div[class*=highlight],
-div.nboutput.container div[class*=highlight] pre {
-    background: none;
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
     border: none;
-    padding: 0 0;
+    padding: 0;
     margin: 0;
     box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
 }
 
 /* avoid gaps between output lines */
@@ -395,7 +421,7 @@ div.nboutput.container div.output_area {
 div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
-    background: #f5f5f5;
+    /*background: #f5f5f5;*/
 }
 
 /* override MathJax center alignment in output cells */
@@ -461,6 +487,7 @@ div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
     padding: 5px;
+    margin: 0;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -594,11 +621,20 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:xlabel=&#39;count&#39;, ylabel=&#39;Do you use Dask projects to deploy?&#39;&gt;
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/surveys_2020_3_0.png" src="../_images/surveys_2020_3_0.png" />
+<img alt="../_images/surveys_2020_3_1.png" src="../_images/surveys_2020_3_1.png" />
 </div>
 </div>
 <p>Most people access the dashboard through a web browser. Those not using the dashboard are likely (hopefully) just using Dask on a single machine with the threaded scheduler (though the dashboard works fine on a single machine as well).</p>
@@ -612,11 +648,20 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:xlabel=&#39;count&#39;, ylabel=&#34;How do you view Dask&#39;s dashboard?&#34;&gt;
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/surveys_2020_5_0.png" src="../_images/surveys_2020_5_0.png" />
+<img alt="../_images/surveys_2020_5_1.png" src="../_images/surveys_2020_5_1.png" />
 </div>
 </div>
 <p>Dask’s learning materials are farily similar to last year. The most notable differences are from our survey form providing more options (our <a class="reference external" href="https://www.youtube.com/channel/UCj9eavqmvwaCyKhIlu2GaoA">YouTube channel</a> and “Gitter chat”). Other than that, <a class="reference external" href="https://examples.dask.org">https://examples.dask.org</a> might be relatively more popular.</p>
@@ -643,11 +688,21 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[Text(0, 0.5, &#39;&#39;),
+ Text(0.5, 1.0, &#39;What Dask resources have you used for support in the last six months?&#39;)]
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/surveys_2020_7_0.png" src="../_images/surveys_2020_7_0.png" />
+<img alt="../_images/surveys_2020_7_1.png" src="../_images/surveys_2020_7_1.png" />
 </div>
 </div>
 </div>
@@ -698,11 +753,20 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Text(0.5, 1.0, &#39;2020&#39;)
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/surveys_2020_10_0.png" src="../_images/surveys_2020_10_0.png" />
+<img alt="../_images/surveys_2020_10_1.png" src="../_images/surveys_2020_10_1.png" />
 </div>
 </div>
 <p>A few observations</p>
@@ -725,11 +789,20 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:xlabel=&#39;count&#39;, ylabel=&#39;Dask APIs&#39;&gt;
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/surveys_2020_12_0.png" src="../_images/surveys_2020_12_0.png" />
+<img alt="../_images/surveys_2020_12_1.png" src="../_images/surveys_2020_12_1.png" />
 </div>
 </div>
 <p>Just like last year, about 65% of our users are using Dask on a cluster at least some of the time.</p>
@@ -772,11 +845,20 @@ Name: Local machine or Cluster?, dtype: float64
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:xlabel=&#39;count&#39;, ylabel=&#39;Local machine or Cluster?&#39;&gt;
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/surveys_2020_16_0.png" src="../_images/surveys_2020_16_0.png" />
+<img alt="../_images/surveys_2020_16_1.png" src="../_images/surveys_2020_16_1.png" />
 </div>
 </div>
 <p>Just like last year, most repondents thought that more documentation and examples would be the most valuable improvements to the project.</p>
@@ -812,167 +894,167 @@ Name: Local machine or Cluster?, dtype: float64
 </div>
 <div class="output_area rendered_html docutils container">
 <style  type="text/css" >
-    #T_2a00112e_fcf8_11ea_895e_42010a14001drow0_col0 {
+    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow0_col0 {
             background-color:  #fff7fb;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow0_col1 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow0_col1 {
             background-color:  #cacee5;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow0_col2 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow0_col2 {
             background-color:  #023858;
             color:  #f1f1f1;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow0_col3 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow0_col3 {
             background-color:  #f1ebf4;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow0_col4 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow0_col4 {
             background-color:  #c4cbe3;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow1_col0 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow1_col0 {
             background-color:  #fff7fb;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow1_col1 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow1_col1 {
             background-color:  #3b92c1;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow1_col2 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow1_col2 {
             background-color:  #023858;
             color:  #f1f1f1;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow1_col3 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow1_col3 {
             background-color:  #62a2cb;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow1_col4 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow1_col4 {
             background-color:  #bdc8e1;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow2_col0 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow2_col0 {
             background-color:  #fff7fb;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow2_col1 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow2_col1 {
             background-color:  #c2cbe2;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow2_col2 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow2_col2 {
             background-color:  #023858;
             color:  #f1f1f1;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow2_col3 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow2_col3 {
             background-color:  #94b6d7;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow2_col4 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow2_col4 {
             background-color:  #e0dded;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow3_col0 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow3_col0 {
             background-color:  #fff7fb;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow3_col1 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow3_col1 {
             background-color:  #e6e2ef;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow3_col2 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow3_col2 {
             background-color:  #023858;
             color:  #f1f1f1;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow3_col3 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow3_col3 {
             background-color:  #ced0e6;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow3_col4 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow3_col4 {
             background-color:  #c5cce3;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow4_col0 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow4_col0 {
             background-color:  #dedcec;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow4_col1 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow4_col1 {
             background-color:  #fff7fb;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow4_col2 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow4_col2 {
             background-color:  #023858;
             color:  #f1f1f1;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow4_col3 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow4_col3 {
             background-color:  #1c7fb8;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow4_col4 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow4_col4 {
             background-color:  #73a9cf;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow5_col0 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow5_col0 {
             background-color:  #fff7fb;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow5_col1 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow5_col1 {
             background-color:  #b4c4df;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow5_col2 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow5_col2 {
             background-color:  #023858;
             color:  #f1f1f1;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow5_col3 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow5_col3 {
             background-color:  #b4c4df;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow5_col4 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow5_col4 {
             background-color:  #eee9f3;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow6_col0 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow6_col0 {
             background-color:  #faf2f8;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow6_col1 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow6_col1 {
             background-color:  #e7e3f0;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow6_col2 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow6_col2 {
             background-color:  #023858;
             color:  #f1f1f1;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow6_col3 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow6_col3 {
             background-color:  #fff7fb;
             color:  #000000;
-        }    #T_2a00112e_fcf8_11ea_895e_42010a14001drow6_col4 {
+        }    #T_a048c3fc_1f54_11eb_b381_000d3a029cbarow6_col4 {
             background-color:  #f4eef6;
             color:  #000000;
-        }</style><table id="T_2a00112e_fcf8_11ea_895e_42010a14001d" ><caption>2019 normalized by row. Darker means that a higher proporiton of users of that API prefer that priority.</caption><thead>    <tr>        <th class="index_name level0" >Which would help you most right now?</th>        <th class="col_heading level0 col0" >Bug fixes</th>        <th class="col_heading level0 col1" >More documentation</th>        <th class="col_heading level0 col2" >More examples in my field</th>        <th class="col_heading level0 col3" >New features</th>        <th class="col_heading level0 col4" >Performance improvements</th>    </tr>    <tr>        <th class="index_name level0" >Dask APIs</th>        <th class="blank" ></th>        <th class="blank" ></th>        <th class="blank" ></th>        <th class="blank" ></th>        <th class="blank" ></th>    </tr></thead><tbody>
+        }</style><table id="T_a048c3fc_1f54_11eb_b381_000d3a029cba" ><caption>2019 normalized by row. Darker means that a higher proporiton of users of that API prefer that priority.</caption><thead>    <tr>        <th class="index_name level0" >Which would help you most right now?</th>        <th class="col_heading level0 col0" >Bug fixes</th>        <th class="col_heading level0 col1" >More documentation</th>        <th class="col_heading level0 col2" >More examples in my field</th>        <th class="col_heading level0 col3" >New features</th>        <th class="col_heading level0 col4" >Performance improvements</th>    </tr>    <tr>        <th class="index_name level0" >Dask APIs</th>        <th class="blank" ></th>        <th class="blank" ></th>        <th class="blank" ></th>        <th class="blank" ></th>        <th class="blank" ></th>    </tr></thead><tbody>
                 <tr>
-                        <th id="T_2a00112e_fcf8_11ea_895e_42010a14001dlevel0_row0" class="row_heading level0 row0" >Array</th>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow0_col0" class="data row0 col0" >10</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow0_col1" class="data row0 col1" >24</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow0_col2" class="data row0 col2" >62</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow0_col3" class="data row0 col3" >15</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow0_col4" class="data row0 col4" >25</td>
+                        <th id="T_a048c3fc_1f54_11eb_b381_000d3a029cbalevel0_row0" class="row_heading level0 row0" >Array</th>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow0_col0" class="data row0 col0" >10</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow0_col1" class="data row0 col1" >24</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow0_col2" class="data row0 col2" >62</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow0_col3" class="data row0 col3" >15</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow0_col4" class="data row0 col4" >25</td>
             </tr>
             <tr>
-                        <th id="T_2a00112e_fcf8_11ea_895e_42010a14001dlevel0_row1" class="row_heading level0 row1" >Bag</th>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow1_col0" class="data row1 col0" >3</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow1_col1" class="data row1 col1" >11</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow1_col2" class="data row1 col2" >16</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow1_col3" class="data row1 col3" >10</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow1_col4" class="data row1 col4" >7</td>
+                        <th id="T_a048c3fc_1f54_11eb_b381_000d3a029cbalevel0_row1" class="row_heading level0 row1" >Bag</th>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow1_col0" class="data row1 col0" >3</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow1_col1" class="data row1 col1" >11</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow1_col2" class="data row1 col2" >16</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow1_col3" class="data row1 col3" >10</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow1_col4" class="data row1 col4" >7</td>
             </tr>
             <tr>
-                        <th id="T_2a00112e_fcf8_11ea_895e_42010a14001dlevel0_row2" class="row_heading level0 row2" >DataFrame</th>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow2_col0" class="data row2 col0" >16</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow2_col1" class="data row2 col1" >32</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow2_col2" class="data row2 col2" >71</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow2_col3" class="data row2 col3" >39</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow2_col4" class="data row2 col4" >26</td>
+                        <th id="T_a048c3fc_1f54_11eb_b381_000d3a029cbalevel0_row2" class="row_heading level0 row2" >DataFrame</th>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow2_col0" class="data row2 col0" >16</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow2_col1" class="data row2 col1" >32</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow2_col2" class="data row2 col2" >71</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow2_col3" class="data row2 col3" >39</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow2_col4" class="data row2 col4" >26</td>
             </tr>
             <tr>
-                        <th id="T_2a00112e_fcf8_11ea_895e_42010a14001dlevel0_row3" class="row_heading level0 row3" >Delayed</th>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow3_col0" class="data row3 col0" >16</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow3_col1" class="data row3 col1" >22</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow3_col2" class="data row3 col2" >55</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow3_col3" class="data row3 col3" >26</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow3_col4" class="data row3 col4" >27</td>
+                        <th id="T_a048c3fc_1f54_11eb_b381_000d3a029cbalevel0_row3" class="row_heading level0 row3" >Delayed</th>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow3_col0" class="data row3 col0" >16</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow3_col1" class="data row3 col1" >22</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow3_col2" class="data row3 col2" >55</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow3_col3" class="data row3 col3" >26</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow3_col4" class="data row3 col4" >27</td>
             </tr>
             <tr>
-                        <th id="T_2a00112e_fcf8_11ea_895e_42010a14001dlevel0_row4" class="row_heading level0 row4" >Futures</th>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow4_col0" class="data row4 col0" >12</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow4_col1" class="data row4 col1" >9</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow4_col2" class="data row4 col2" >25</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow4_col3" class="data row4 col3" >20</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow4_col4" class="data row4 col4" >17</td>
+                        <th id="T_a048c3fc_1f54_11eb_b381_000d3a029cbalevel0_row4" class="row_heading level0 row4" >Futures</th>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow4_col0" class="data row4 col0" >12</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow4_col1" class="data row4 col1" >9</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow4_col2" class="data row4 col2" >25</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow4_col3" class="data row4 col3" >20</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow4_col4" class="data row4 col4" >17</td>
             </tr>
             <tr>
-                        <th id="T_2a00112e_fcf8_11ea_895e_42010a14001dlevel0_row5" class="row_heading level0 row5" >ML</th>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow5_col0" class="data row5 col0" >5</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow5_col1" class="data row5 col1" >11</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow5_col2" class="data row5 col2" >23</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow5_col3" class="data row5 col3" >11</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow5_col4" class="data row5 col4" >7</td>
+                        <th id="T_a048c3fc_1f54_11eb_b381_000d3a029cbalevel0_row5" class="row_heading level0 row5" >ML</th>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow5_col0" class="data row5 col0" >5</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow5_col1" class="data row5 col1" >11</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow5_col2" class="data row5 col2" >23</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow5_col3" class="data row5 col3" >11</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow5_col4" class="data row5 col4" >7</td>
             </tr>
             <tr>
-                        <th id="T_2a00112e_fcf8_11ea_895e_42010a14001dlevel0_row6" class="row_heading level0 row6" >Xarray</th>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow6_col0" class="data row6 col0" >8</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow6_col1" class="data row6 col1" >11</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow6_col2" class="data row6 col2" >34</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow6_col3" class="data row6 col3" >7</td>
-                        <td id="T_2a00112e_fcf8_11ea_895e_42010a14001drow6_col4" class="data row6 col4" >9</td>
+                        <th id="T_a048c3fc_1f54_11eb_b381_000d3a029cbalevel0_row6" class="row_heading level0 row6" >Xarray</th>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow6_col0" class="data row6 col0" >8</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow6_col1" class="data row6 col1" >11</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow6_col2" class="data row6 col2" >34</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow6_col3" class="data row6 col3" >7</td>
+                        <td id="T_a048c3fc_1f54_11eb_b381_000d3a029cbarow6_col4" class="data row6 col4" >9</td>
             </tr>
     </tbody></table></div>
 </div>
@@ -1007,167 +1089,167 @@ Name: Local machine or Cluster?, dtype: float64
 </div>
 <div class="output_area rendered_html docutils container">
 <style  type="text/css" >
-    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow0_col0 {
+    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow0_col0 {
             background-color:  #fff7fb;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow0_col1 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow0_col1 {
             background-color:  #f1ebf5;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow0_col2 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow0_col2 {
             background-color:  #023858;
             color:  #f1f1f1;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow0_col3 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow0_col3 {
             background-color:  #f5eef6;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow0_col4 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow0_col4 {
             background-color:  #d0d1e6;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow1_col0 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow1_col0 {
             background-color:  #f0eaf4;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow1_col1 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow1_col1 {
             background-color:  #fff7fb;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow1_col2 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow1_col2 {
             background-color:  #023858;
             color:  #f1f1f1;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow1_col3 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow1_col3 {
             background-color:  #f0eaf4;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow1_col4 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow1_col4 {
             background-color:  #4c99c5;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow2_col0 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow2_col0 {
             background-color:  #f5eff6;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow2_col1 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow2_col1 {
             background-color:  #fff7fb;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow2_col2 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow2_col2 {
             background-color:  #023858;
             color:  #f1f1f1;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow2_col3 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow2_col3 {
             background-color:  #fcf4fa;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow2_col4 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow2_col4 {
             background-color:  #8eb3d5;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow3_col0 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow3_col0 {
             background-color:  #fff7fb;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow3_col1 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow3_col1 {
             background-color:  #ebe6f2;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow3_col2 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow3_col2 {
             background-color:  #023858;
             color:  #f1f1f1;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow3_col3 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow3_col3 {
             background-color:  #f5eff6;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow3_col4 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow3_col4 {
             background-color:  #3d93c2;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow4_col0 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow4_col0 {
             background-color:  #fff7fb;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow4_col1 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow4_col1 {
             background-color:  #f5eef6;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow4_col2 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow4_col2 {
             background-color:  #0567a2;
             color:  #f1f1f1;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow4_col3 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow4_col3 {
             background-color:  #cacee5;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow4_col4 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow4_col4 {
             background-color:  #023858;
             color:  #f1f1f1;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow5_col0 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow5_col0 {
             background-color:  #ede8f3;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow5_col1 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow5_col1 {
             background-color:  #fff7fb;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow5_col2 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow5_col2 {
             background-color:  #023858;
             color:  #f1f1f1;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow5_col3 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow5_col3 {
             background-color:  #c1cae2;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow5_col4 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow5_col4 {
             background-color:  #80aed2;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow6_col0 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow6_col0 {
             background-color:  #fff7fb;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow6_col1 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow6_col1 {
             background-color:  #f8f1f8;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow6_col2 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow6_col2 {
             background-color:  #023858;
             color:  #f1f1f1;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow6_col3 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow6_col3 {
             background-color:  #c9cee4;
             color:  #000000;
-        }    #T_2a05feb8_fcf8_11ea_895e_42010a14001drow6_col4 {
+        }    #T_a04fc968_1f54_11eb_b381_000d3a029cbarow6_col4 {
             background-color:  #86b0d3;
             color:  #000000;
-        }</style><table id="T_2a05feb8_fcf8_11ea_895e_42010a14001d" ><caption>2020 normalized by row. Darker means that a higher proporiton of users of that API prefer that priority.</caption><thead>    <tr>        <th class="index_name level0" >Which would help you most right now?</th>        <th class="col_heading level0 col0" >Bug fixes</th>        <th class="col_heading level0 col1" >More documentation</th>        <th class="col_heading level0 col2" >More examples in my field</th>        <th class="col_heading level0 col3" >New features</th>        <th class="col_heading level0 col4" >Performance improvements</th>    </tr>    <tr>        <th class="index_name level0" >Dask APIs</th>        <th class="blank" ></th>        <th class="blank" ></th>        <th class="blank" ></th>        <th class="blank" ></th>        <th class="blank" ></th>    </tr></thead><tbody>
+        }</style><table id="T_a04fc968_1f54_11eb_b381_000d3a029cba" ><caption>2020 normalized by row. Darker means that a higher proporiton of users of that API prefer that priority.</caption><thead>    <tr>        <th class="index_name level0" >Which would help you most right now?</th>        <th class="col_heading level0 col0" >Bug fixes</th>        <th class="col_heading level0 col1" >More documentation</th>        <th class="col_heading level0 col2" >More examples in my field</th>        <th class="col_heading level0 col3" >New features</th>        <th class="col_heading level0 col4" >Performance improvements</th>    </tr>    <tr>        <th class="index_name level0" >Dask APIs</th>        <th class="blank" ></th>        <th class="blank" ></th>        <th class="blank" ></th>        <th class="blank" ></th>        <th class="blank" ></th>    </tr></thead><tbody>
                 <tr>
-                        <th id="T_2a05feb8_fcf8_11ea_895e_42010a14001dlevel0_row0" class="row_heading level0 row0" >Array</th>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow0_col0" class="data row0 col0" >12</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow0_col1" class="data row0 col1" >16</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow0_col2" class="data row0 col2" >56</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow0_col3" class="data row0 col3" >15</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow0_col4" class="data row0 col4" >23</td>
+                        <th id="T_a04fc968_1f54_11eb_b381_000d3a029cbalevel0_row0" class="row_heading level0 row0" >Array</th>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow0_col0" class="data row0 col0" >12</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow0_col1" class="data row0 col1" >16</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow0_col2" class="data row0 col2" >56</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow0_col3" class="data row0 col3" >15</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow0_col4" class="data row0 col4" >23</td>
             </tr>
             <tr>
-                        <th id="T_2a05feb8_fcf8_11ea_895e_42010a14001dlevel0_row1" class="row_heading level0 row1" >Bag</th>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow1_col0" class="data row1 col0" >7</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow1_col1" class="data row1 col1" >5</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow1_col2" class="data row1 col2" >24</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow1_col3" class="data row1 col3" >7</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow1_col4" class="data row1 col4" >16</td>
+                        <th id="T_a04fc968_1f54_11eb_b381_000d3a029cbalevel0_row1" class="row_heading level0 row1" >Bag</th>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow1_col0" class="data row1 col0" >7</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow1_col1" class="data row1 col1" >5</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow1_col2" class="data row1 col2" >24</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow1_col3" class="data row1 col3" >7</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow1_col4" class="data row1 col4" >16</td>
             </tr>
             <tr>
-                        <th id="T_2a05feb8_fcf8_11ea_895e_42010a14001dlevel0_row2" class="row_heading level0 row2" >DataFrame</th>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow2_col0" class="data row2 col0" >24</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow2_col1" class="data row2 col1" >21</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow2_col2" class="data row2 col2" >67</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow2_col3" class="data row2 col3" >22</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow2_col4" class="data row2 col4" >41</td>
+                        <th id="T_a04fc968_1f54_11eb_b381_000d3a029cbalevel0_row2" class="row_heading level0 row2" >DataFrame</th>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow2_col0" class="data row2 col0" >24</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow2_col1" class="data row2 col1" >21</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow2_col2" class="data row2 col2" >67</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow2_col3" class="data row2 col3" >22</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow2_col4" class="data row2 col4" >41</td>
             </tr>
             <tr>
-                        <th id="T_2a05feb8_fcf8_11ea_895e_42010a14001dlevel0_row3" class="row_heading level0 row3" >Delayed</th>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow3_col0" class="data row3 col0" >15</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow3_col1" class="data row3 col1" >19</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow3_col2" class="data row3 col2" >46</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow3_col3" class="data row3 col3" >17</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow3_col4" class="data row3 col4" >34</td>
+                        <th id="T_a04fc968_1f54_11eb_b381_000d3a029cbalevel0_row3" class="row_heading level0 row3" >Delayed</th>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow3_col0" class="data row3 col0" >15</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow3_col1" class="data row3 col1" >19</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow3_col2" class="data row3 col2" >46</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow3_col3" class="data row3 col3" >17</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow3_col4" class="data row3 col4" >34</td>
             </tr>
             <tr>
-                        <th id="T_2a05feb8_fcf8_11ea_895e_42010a14001dlevel0_row4" class="row_heading level0 row4" >Futures</th>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow4_col0" class="data row4 col0" >9</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow4_col1" class="data row4 col1" >10</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow4_col2" class="data row4 col2" >21</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow4_col3" class="data row4 col3" >13</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow4_col4" class="data row4 col4" >24</td>
+                        <th id="T_a04fc968_1f54_11eb_b381_000d3a029cbalevel0_row4" class="row_heading level0 row4" >Futures</th>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow4_col0" class="data row4 col0" >9</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow4_col1" class="data row4 col1" >10</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow4_col2" class="data row4 col2" >21</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow4_col3" class="data row4 col3" >13</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow4_col4" class="data row4 col4" >24</td>
             </tr>
             <tr>
-                        <th id="T_2a05feb8_fcf8_11ea_895e_42010a14001dlevel0_row5" class="row_heading level0 row5" >ML</th>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow5_col0" class="data row5 col0" >6</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow5_col1" class="data row5 col1" >4</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow5_col2" class="data row5 col2" >21</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow5_col3" class="data row5 col3" >9</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow5_col4" class="data row5 col4" >12</td>
+                        <th id="T_a04fc968_1f54_11eb_b381_000d3a029cbalevel0_row5" class="row_heading level0 row5" >ML</th>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow5_col0" class="data row5 col0" >6</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow5_col1" class="data row5 col1" >4</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow5_col2" class="data row5 col2" >21</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow5_col3" class="data row5 col3" >9</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow5_col4" class="data row5 col4" >12</td>
             </tr>
             <tr>
-                        <th id="T_2a05feb8_fcf8_11ea_895e_42010a14001dlevel0_row6" class="row_heading level0 row6" >Xarray</th>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow6_col0" class="data row6 col0" >3</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow6_col1" class="data row6 col1" >4</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow6_col2" class="data row6 col2" >25</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow6_col3" class="data row6 col3" >9</td>
-                        <td id="T_2a05feb8_fcf8_11ea_895e_42010a14001drow6_col4" class="data row6 col4" >13</td>
+                        <th id="T_a04fc968_1f54_11eb_b381_000d3a029cbalevel0_row6" class="row_heading level0 row6" >Xarray</th>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow6_col0" class="data row6 col0" >3</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow6_col1" class="data row6 col1" >4</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow6_col2" class="data row6 col2" >25</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow6_col3" class="data row6 col3" >9</td>
+                        <td id="T_a04fc968_1f54_11eb_b381_000d3a029cbarow6_col4" class="data row6 col4" >13</td>
             </tr>
     </tbody></table></div>
 </div>
@@ -1199,15 +1281,24 @@ Name: Local machine or Cluster?, dtype: float64
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/travis/miniconda/envs/test/lib/python3.8/site-packages/seaborn/_decorators.py:36: FutureWarning: Pass the following variable as a keyword arg: x. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
+/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/seaborn/_decorators.py:36: FutureWarning: Pass the following variable as a keyword arg: x. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
   warnings.warn(
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;seaborn.axisgrid.FacetGrid at 0x7f60650eb940&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/surveys_2020_22_1.png" src="../_images/surveys_2020_22_1.png" />
+<img alt="../_images/surveys_2020_22_2.png" src="../_images/surveys_2020_22_2.png" />
 </div>
 </div>
 <p>There really aren’t any changes compared to last year in the relative importance of each feature. Perhaps the biggest movement was in “Ease of deployment” where “Critical to me” is now relatively more popular (though it was the most popular even last year).</p>
@@ -1226,11 +1317,20 @@ Name: Local machine or Cluster?, dtype: float64
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:xlabel=&#39;count&#39;, ylabel=&#39;If you use a cluster, how do you launch Dask? &#39;&gt;
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/surveys_2020_25_0.png" src="../_images/surveys_2020_25_0.png" />
+<img alt="../_images/surveys_2020_25_1.png" src="../_images/surveys_2020_25_1.png" />
 </div>
 </div>
 <p>Dask users are about as happy with its stability as last year.</p>

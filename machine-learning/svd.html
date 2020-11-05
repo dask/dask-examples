@@ -1,14 +1,7 @@
 
 
-
-
-
-
-
-
-
 <!DOCTYPE html>
-<html lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -18,15 +11,15 @@
   
 
   
-  
-  
-  
-
-  
   <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
+
+  
+  
+  
+  
 
   
   <!--[if lt IE 9]>
@@ -51,8 +44,27 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Analyze web-hosted JSON data" href="../applications/json-data-on-the-web.html" />
     <link rel="prev" title="Generalized Linear Models" href="glm.html" />
-    <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
+  <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
   
+  <meta name="Description" content="Singular Value Decomposition">
+  <meta property="og:description" content="Singular Value Decomposition">
+  <meta name="twitter:description" content="Singular Value Decomposition" />
+  <meta property="og:title" content="Dask Examples  documentation - Singular Value Decomposition">
+  <meta property="og:image" content="https://github.com/dask.png">
+  <meta property="og:image:secure_url" content="https://github.com/dask.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="380" />
+  <meta property="og:image:height" content="380" />
+  <meta property="og:url" content="machine-learning/svd.html">
+  <meta property="og:site_name" content="Dask Examples  documentation">
+
+  <meta name="twitter:site" content="https://dask.org" />
+  <meta name="twitter:creator" content="@dask_dev" />
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="https://github.com/dask.png" />
+  <meta name="twitter:image:alt" content="Dask Examples  documentation">
+  
+
 </head>
 
 <body class="wy-body-for-nav">
@@ -110,7 +122,7 @@
             <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
             <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
             <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-            <li><a href="https://www.youtube.com/channel/UCj9eavqmvwaCyKhIlu2GaoA/"> YouTube Channel </a></li>
+            <li><a href="https://youtube.com/c/dask-dev"> YouTube Channel </a></li>
             </ul>
         </li>
         </ul>
@@ -279,21 +291,35 @@
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput.container,
-div.nbinput.container div.prompt,
-div.nbinput.container div.input_area,
-div.nbinput.container div[class*=highlight],
-div.nbinput.container div[class*=highlight] pre,
-div.nboutput.container,
-div.nboutput.container div.prompt,
-div.nboutput.container div.output_area,
-div.nboutput.container div[class*=highlight],
-div.nboutput.container div[class*=highlight] pre {
-    background: none;
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
     border: none;
-    padding: 0 0;
+    padding: 0;
     margin: 0;
     box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
 }
 
 /* avoid gaps between output lines */
@@ -394,7 +420,7 @@ div.nboutput.container div.output_area {
 div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
-    background: #f5f5f5;
+    /*background: #f5f5f5;*/
 }
 
 /* override MathJax center alignment in output cells */
@@ -460,6 +486,7 @@ div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
     padding: 5px;
+    margin: 0;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -562,8 +589,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.20.0.29/13981/1</li>
-  <li><b>Dashboard: </b><a href='http://10.20.0.29:8787/status' target='_blank'>http://10.20.0.29:8787/status</a></li>
+  <li><b>Scheduler: </b>inproc://10.1.0.4/13333/1</li>
+  <li><b>Dashboard: </b><a href='http://10.1.0.4:8787/status' target='_blank'>http://10.1.0.4:8787/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -604,12 +631,25 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Unable to revert mtime: /usr/share/fonts/cMap
+Unable to revert mtime: /usr/share/fonts/cmap/adobe-cns1
+Unable to revert mtime: /usr/share/fonts/cmap/adobe-gb1
+Unable to revert mtime: /usr/share/fonts/cmap/adobe-japan1
+Unable to revert mtime: /usr/share/fonts/cmap/adobe-japan2
+Unable to revert mtime: /usr/share/fonts/cmap/adobe-korea1
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/machine-learning_svd_5_0.png" src="../_images/machine-learning_svd_5_0.png" />
+<img alt="../_images/machine-learning_svd_5_1.png" src="../_images/machine-learning_svd_5_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -627,19 +667,19 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([[ 0.10008089,  0.10004503,  0.10005492, ...,  0.09998363,
-         0.09981999,  0.10000054],
-       [ 0.03280906,  0.11527031,  0.01201647, ...,  0.20713216,
-         0.110397  , -0.02092431],
-       [-0.01378367, -0.11409254,  0.01243394, ..., -0.15792336,
-        -0.00880201, -0.06837556],
+array([[ 0.09992082,  0.09993675,  0.09996502, ...,  0.10009746,
+         0.10002466,  0.10013189],
+       [ 0.02608503, -0.01174011,  0.04272372, ...,  0.15256018,
+        -0.05723219, -0.11752038],
+       [-0.08479097, -0.21986996,  0.12593679, ..., -0.02860584,
+        -0.07429703,  0.06399719],
        ...,
-       [-0.05572225, -0.0829156 , -0.00752608, ..., -0.01827848,
-        -0.0428163 , -0.07813348],
-       [ 0.04364889,  0.08284049, -0.03870059, ..., -0.05717976,
-        -0.00560695,  0.06592779],
-       [-0.08192455,  0.15614165,  0.03542713, ...,  0.08540583,
-        -0.0584596 , -0.00716079]])
+       [-0.06150464,  0.08937633,  0.07615227, ..., -0.05762186,
+        -0.0921007 , -0.03746399],
+       [ 0.00235594, -0.15813301,  0.08181782, ..., -0.02157965,
+        -0.07701798,  0.132846  ],
+       [-0.15758709, -0.04640436, -0.12710611, ...,  0.05718691,
+         0.19998608, -0.06726297]])
 </pre></div></div>
 </div>
 </div>
@@ -669,12 +709,25 @@ array([[ 0.10008089,  0.10004503,  0.10005492, ...,  0.09998363,
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Unable to revert mtime: /usr/share/fonts/cMap
+Unable to revert mtime: /usr/share/fonts/cmap/adobe-cns1
+Unable to revert mtime: /usr/share/fonts/cmap/adobe-gb1
+Unable to revert mtime: /usr/share/fonts/cmap/adobe-japan1
+Unable to revert mtime: /usr/share/fonts/cmap/adobe-japan2
+Unable to revert mtime: /usr/share/fonts/cmap/adobe-korea1
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/machine-learning_svd_9_0.png" src="../_images/machine-learning_svd_9_0.png" />
+<img alt="../_images/machine-learning_svd_9_1.png" src="../_images/machine-learning_svd_9_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -692,16 +745,16 @@ array([[ 0.10008089,  0.10004503,  0.10005492, ...,  0.09998363,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([[ 0.00995324,  0.00998563,  0.00996927, ...,  0.01002037,
-         0.00999485,  0.01006774],
-       [-0.0026085 ,  0.00499134,  0.00870917, ...,  0.01252687,
-        -0.0190831 , -0.01262311],
-       [ 0.00292741, -0.0122953 , -0.00339253, ..., -0.01045251,
-        -0.0181253 , -0.00997402],
-       [ 0.00279544, -0.00387972, -0.00322801, ..., -0.00075087,
-        -0.00891793, -0.00045845],
-       [-0.01175107, -0.00964227, -0.00225358, ...,  0.00380927,
-        -0.0001745 , -0.00191984]])
+array([[ 0.01008093,  0.01002767,  0.01001088, ...,  0.00998123,
+         0.00995744,  0.00998887],
+       [ 0.00457332, -0.00610299,  0.00122888, ..., -0.00795117,
+         0.01425934,  0.00249007],
+       [-0.00434141, -0.00049321,  0.00026305, ..., -0.00536936,
+        -0.01519261,  0.01357645],
+       [ 0.01113088,  0.00546555,  0.009834  , ..., -0.00835454,
+        -0.00829086,  0.00275697],
+       [-0.021591  ,  0.00133266, -0.00551717, ...,  0.00413169,
+         0.00055874, -0.00024488]])
 </pre></div></div>
 </div>
 </div>

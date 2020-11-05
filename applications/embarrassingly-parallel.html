@@ -1,14 +1,7 @@
 
 
-
-
-
-
-
-
-
 <!DOCTYPE html>
-<html lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -18,15 +11,15 @@
   
 
   
-  
-  
-  
-
-  
   <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
+
+  
+  
+  
+  
 
   
   <!--[if lt IE 9]>
@@ -51,8 +44,27 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Handle Evolving Workflows" href="evolving-workflows.html" />
     <link rel="prev" title="Asynchronous Computation: Web Servers + Dask" href="async-web-server.html" />
-    <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
+  <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
   
+  <meta name="Description" content="Embarrassingly parallel Workloads">
+  <meta property="og:description" content="Embarrassingly parallel Workloads">
+  <meta name="twitter:description" content="Embarrassingly parallel Workloads" />
+  <meta property="og:title" content="Dask Examples  documentation - Embarrassingly parallel Workloads">
+  <meta property="og:image" content="https://github.com/dask.png">
+  <meta property="og:image:secure_url" content="https://github.com/dask.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="380" />
+  <meta property="og:image:height" content="380" />
+  <meta property="og:url" content="applications/embarrassingly-parallel.html">
+  <meta property="og:site_name" content="Dask Examples  documentation">
+
+  <meta name="twitter:site" content="https://dask.org" />
+  <meta name="twitter:creator" content="@dask_dev" />
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="https://github.com/dask.png" />
+  <meta name="twitter:image:alt" content="Dask Examples  documentation">
+  
+
 </head>
 
 <body class="wy-body-for-nav">
@@ -110,7 +122,7 @@
             <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
             <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
             <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-            <li><a href="https://www.youtube.com/channel/UCj9eavqmvwaCyKhIlu2GaoA/"> YouTube Channel </a></li>
+            <li><a href="https://youtube.com/c/dask-dev"> YouTube Channel </a></li>
             </ul>
         </li>
         </ul>
@@ -284,21 +296,35 @@
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput.container,
-div.nbinput.container div.prompt,
-div.nbinput.container div.input_area,
-div.nbinput.container div[class*=highlight],
-div.nbinput.container div[class*=highlight] pre,
-div.nboutput.container,
-div.nboutput.container div.prompt,
-div.nboutput.container div.output_area,
-div.nboutput.container div[class*=highlight],
-div.nboutput.container div[class*=highlight] pre {
-    background: none;
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
     border: none;
-    padding: 0 0;
+    padding: 0;
     margin: 0;
     box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
 }
 
 /* avoid gaps between output lines */
@@ -399,7 +425,7 @@ div.nboutput.container div.output_area {
 div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
-    background: #f5f5f5;
+    /*background: #f5f5f5;*/
 }
 
 /* override MathJax center alignment in output cells */
@@ -465,6 +491,7 @@ div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
     padding: 5px;
+    margin: 0;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -579,7 +606,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:43455</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:37449</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
@@ -588,7 +615,7 @@ div.rendered_html tbody tr:hover {
 <ul style="text-align: left; list-style:none; margin: 0; padding: 0;">
   <li><b>Workers: </b>1</li>
   <li><b>Cores: </b>4</li>
-  <li><b>Memory: </b>8.36 GB</li>
+  <li><b>Memory: </b>7.29 GB</li>
 </ul>
 </td>
 </tr>
@@ -627,8 +654,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 11.8 ms, sys: 441 µs, total: 12.2 ms
-Wall time: 590 ms
+CPU times: user 16.1 ms, sys: 1.56 ms, total: 17.7 ms
+Wall time: 680 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -690,38 +717,38 @@ Wall time: 590 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.387880</td>
-      <td>0.615994</td>
-      <td>0.582225</td>
-      <td>0.030784</td>
+      <td>0.917425</td>
+      <td>0.023600</td>
+      <td>0.074229</td>
+      <td>0.306332</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.728708</td>
-      <td>0.854112</td>
-      <td>0.720303</td>
-      <td>0.631800</td>
+      <td>0.725396</td>
+      <td>0.176398</td>
+      <td>0.468464</td>
+      <td>0.927168</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.378565</td>
-      <td>0.351432</td>
-      <td>0.245616</td>
-      <td>0.307289</td>
+      <td>0.051585</td>
+      <td>0.978093</td>
+      <td>0.798318</td>
+      <td>0.849326</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.069852</td>
-      <td>0.639209</td>
-      <td>0.643282</td>
-      <td>0.373286</td>
+      <td>0.415890</td>
+      <td>0.389498</td>
+      <td>0.739096</td>
+      <td>0.156245</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.462060</td>
-      <td>0.131741</td>
-      <td>0.900111</td>
-      <td>0.900243</td>
+      <td>0.925907</td>
+      <td>0.141322</td>
+      <td>0.745410</td>
+      <td>0.907787</td>
     </tr>
   </tbody>
 </table>
@@ -755,8 +782,8 @@ Wall time: 590 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 113 ms, sys: 21.4 ms, total: 135 ms
-Wall time: 5.76 s
+CPU times: user 117 ms, sys: 30.2 ms, total: 147 ms
+Wall time: 5.71 s
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -774,16 +801,16 @@ Wall time: 5.76 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[1.6168830119763782,
- 2.934922836350971,
- 1.2829004998779738,
- 1.7256289508870464,
- 2.394154608745843,
- 2.631590959918678,
- 1.4070787809043193,
- 3.119780449996893,
- 1.2696008025587726,
- 1.7984941147709974]
+[1.3215861996020557,
+ 2.2974258869796893,
+ 2.6773225450034364,
+ 1.7007286095296346,
+ 2.7204254249253657,
+ 1.1849691112198275,
+ 0.954387678144776,
+ 1.9127986084858828,
+ 1.8866838418466565,
+ 1.3728003166558527]
 </pre></div></div>
 </div>
 <p>Note that this is not very clever as we can easily parallelize code.</p>
@@ -821,8 +848,8 @@ Wall time: 5.76 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.51 ms, sys: 0 ns, total: 1.51 ms
-Wall time: 1.27 ms
+CPU times: user 1.39 ms, sys: 0 ns, total: 1.39 ms
+Wall time: 1.32 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -840,7 +867,7 @@ Wall time: 1.27 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Delayed(&#39;costly_simulation-5c8b02cf-1cf4-445c-909d-f0daf2f3ac5b&#39;)
+Delayed(&#39;costly_simulation-c68411d9-258f-4a46-baff-fa160e5d3d21&#39;)
 </pre></div></div>
 </div>
 </div>
@@ -862,8 +889,8 @@ Delayed(&#39;costly_simulation-5c8b02cf-1cf4-445c-909d-f0daf2f3ac5b&#39;)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 44.8 ms, sys: 1.3 ms, total: 46.1 ms
-Wall time: 1.2 s
+CPU times: user 70.3 ms, sys: 16.9 ms, total: 87.3 ms
+Wall time: 2.02 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -872,16 +899,16 @@ Wall time: 1.2 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-(1.6168830119763782,
- 2.934922836350971,
- 1.2829004998779738,
- 1.7256289508870464,
- 2.394154608745843,
- 2.631590959918678,
- 1.4070787809043193,
- 3.119780449996893,
- 1.2696008025587726,
- 1.7984941147709974)
+(1.3215861996020557,
+ 2.2974258869796893,
+ 2.6773225450034364,
+ 1.7007286095296346,
+ 2.7204254249253657,
+ 1.1849691112198275,
+ 0.954387678144776,
+ 1.9127986084858828,
+ 1.8866838418466565,
+ 1.3728003166558527)
 </pre></div></div>
 </div>
 <p>Notice that this was faster than running these same computations sequentially with a for loop.</p>
@@ -931,11 +958,11 @@ Wall time: 1.2 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-(1.6168830119763782,
- 2.934922836350971,
- 1.2829004998779738,
- 1.7256289508870464,
- 2.394154608745843)
+(1.3215861996020557,
+ 2.2974258869796893,
+ 2.6773225450034364,
+ 1.7007286095296346,
+ 2.7204254249253657)
 </pre></div></div>
 </div>
 </div>
@@ -972,11 +999,11 @@ Wall time: 1.2 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[1.6168830119763782,
- 2.934922836350971,
- 1.2829004998779738,
- 1.7256289508870464,
- 2.394154608745843]
+[1.3215861996020557,
+ 2.2974258869796893,
+ 2.6773225450034364,
+ 1.7007286095296346,
+ 2.7204254249253657]
 </pre></div></div>
 </div>
 <p>But the code above can be run in fewer lines with <code class="docutils literal notranslate"><span class="pre">client.map()</span></code> function, allowing to call a given function on a list of parameters.</p>
@@ -1025,7 +1052,7 @@ Wall time: 1.2 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-1.6168830119763782
+1.3215861996020557
 </pre></div></div>
 </div>
 <p>We encourage you to watch the <a class="reference external" href="../proxy/8787/status">dashboard’s status page</a> to watch on going computation.</p>
@@ -1078,44 +1105,44 @@ Wall time: 1.2 s
   </thead>
   <tbody>
     <tr>
-      <th>410</th>
-      <td>0.607117</td>
-      <td>0.239072</td>
-      <td>0.337391</td>
-      <td>0.019739</td>
-      <td>1.203320</td>
+      <th>464</th>
+      <td>0.415251</td>
+      <td>0.420004</td>
+      <td>0.159388</td>
+      <td>0.377245</td>
+      <td>1.371889</td>
     </tr>
     <tr>
-      <th>171</th>
-      <td>0.959760</td>
-      <td>0.422119</td>
-      <td>0.845245</td>
-      <td>0.997473</td>
-      <td>3.224596</td>
+      <th>148</th>
+      <td>0.363328</td>
+      <td>0.173304</td>
+      <td>0.401343</td>
+      <td>0.249878</td>
+      <td>1.187852</td>
     </tr>
     <tr>
-      <th>386</th>
-      <td>0.380140</td>
-      <td>0.611879</td>
-      <td>0.200659</td>
-      <td>0.866908</td>
-      <td>2.059585</td>
+      <th>41</th>
+      <td>0.419986</td>
+      <td>0.077691</td>
+      <td>0.232811</td>
+      <td>0.236968</td>
+      <td>0.967456</td>
     </tr>
     <tr>
-      <th>267</th>
-      <td>0.189089</td>
-      <td>0.442579</td>
-      <td>0.954924</td>
-      <td>0.024030</td>
-      <td>1.610622</td>
+      <th>120</th>
+      <td>0.631505</td>
+      <td>0.199658</td>
+      <td>0.260932</td>
+      <td>0.550808</td>
+      <td>1.642902</td>
     </tr>
     <tr>
-      <th>124</th>
-      <td>0.475562</td>
-      <td>0.763346</td>
-      <td>0.433995</td>
-      <td>0.138670</td>
-      <td>1.811573</td>
+      <th>333</th>
+      <td>0.868869</td>
+      <td>0.135635</td>
+      <td>0.767698</td>
+      <td>0.747250</td>
+      <td>2.519451</td>
     </tr>
   </tbody>
 </table>
@@ -1163,7 +1190,7 @@ Wall time: 1.2 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2.007477304862891
+1.9501247815468665
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1182,7 +1209,7 @@ Wall time: 1.2 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-255
+233
 </pre></div></div>
 </div>
 </div>
@@ -1216,8 +1243,8 @@ many tasks</a>.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 845 ms, sys: 89 ms, total: 934 ms
-Wall time: 9.82 s
+CPU times: user 753 ms, sys: 135 ms, total: 887 ms
+Wall time: 9.05 s
 </pre></div></div>
 </div>
 <p>Looking on Dashboard here, you should see only 100 tasks to run instead of 500, each taking 5x more time in average, because each one is actually calling our function 5 times.</p>
