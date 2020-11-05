@@ -8,11 +8,6 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v2
 
-      - name: Install graphviz
-        shell: bash -l {0}
-        run: |
-          sudo apt-get update && sudo apt-get install graphviz
-
       - name: Setup Conda Environment
         uses: goanpeca/setup-miniconda@v1
         with:
@@ -32,17 +27,11 @@ jobs:
         shell: bash -l {0}
         run: sphinx-build -M html . _build -v
 
-      - name: Install SSH Client
-        if: ${{ github.ref == 'refs/heads/master' && github.event_name != 'pull_request'}}
-        uses: webfactory/ssh-agent@v0.4.1
-        with:
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
-
       - name: Deploy
         if: ${{ github.ref == 'refs/heads/master' && github.event_name != 'pull_request'}}
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
-          SSH: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
           FOLDER: _build/html
           CLEAN: true
