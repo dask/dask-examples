@@ -31,7 +31,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
@@ -599,37 +598,38 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Collecting tpot
-  Downloading TPOT-0.11.6.post1-py3-none-any.whl (86 kB)
-     |████████████████████████████████| 86 kB 7.9 MB/s
-Requirement already satisfied: numpy&gt;=1.16.3 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from tpot) (1.18.5)
+  Downloading TPOT-0.11.6.post3-py3-none-any.whl (86 kB)
+     |████████████████████████████████| 86 kB 5.6 MB/s
+Requirement already satisfied: pandas&gt;=0.24.2 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from tpot) (1.0.5)
+Requirement already satisfied: scipy&gt;=1.3.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from tpot) (1.6.0)
+Requirement already satisfied: tqdm&gt;=4.36.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from tpot) (4.55.0)
+Requirement already satisfied: joblib&gt;=0.13.2 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from tpot) (1.0.0)
 Requirement already satisfied: scikit-learn&gt;=0.22.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from tpot) (0.23.2)
-Requirement already satisfied: scipy&gt;=1.3.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from tpot) (1.5.3)
-Requirement already satisfied: joblib&gt;=0.13.2 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from tpot) (0.17.0)
-Collecting update-checker&gt;=0.16
-  Downloading update_checker-0.18.0-py3-none-any.whl (7.0 kB)
-Collecting stopit&gt;=1.1.1
-  Downloading stopit-1.1.2.tar.gz (18 kB)
+Requirement already satisfied: xgboost&gt;=1.1.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from tpot) (1.3.0)
+Requirement already satisfied: numpy&gt;=1.16.3 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from tpot) (1.18.5)
 Collecting deap&gt;=1.2
   Downloading deap-1.3.1-cp38-cp38-manylinux2010_x86_64.whl (157 kB)
-     |████████████████████████████████| 157 kB 31.0 MB/s
-Requirement already satisfied: pandas&gt;=0.24.2 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from tpot) (1.0.5)
-Requirement already satisfied: tqdm&gt;=4.36.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from tpot) (4.52.0)
-Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from scikit-learn&gt;=0.22.0-&gt;tpot) (2.1.0)
-Requirement already satisfied: requests&gt;=2.3.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from update-checker&gt;=0.16-&gt;tpot) (2.25.0)
-Requirement already satisfied: pytz&gt;=2017.2 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from pandas&gt;=0.24.2-&gt;tpot) (2020.4)
+     |████████████████████████████████| 157 kB 14.8 MB/s
+Requirement already satisfied: pytz&gt;=2017.2 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from pandas&gt;=0.24.2-&gt;tpot) (2019.3)
 Requirement already satisfied: python-dateutil&gt;=2.6.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from pandas&gt;=0.24.2-&gt;tpot) (2.8.1)
-Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from requests&gt;=2.3.0-&gt;update-checker&gt;=0.16-&gt;tpot) (2.10)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from requests&gt;=2.3.0-&gt;update-checker&gt;=0.16-&gt;tpot) (1.25.11)
-Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from requests&gt;=2.3.0-&gt;update-checker&gt;=0.16-&gt;tpot) (3.0.4)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from requests&gt;=2.3.0-&gt;update-checker&gt;=0.16-&gt;tpot) (2020.11.8)
 Requirement already satisfied: six&gt;=1.5 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from python-dateutil&gt;=2.6.1-&gt;pandas&gt;=0.24.2-&gt;tpot) (1.15.0)
+Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from scikit-learn&gt;=0.22.0-&gt;tpot) (2.1.0)
+Collecting stopit&gt;=1.1.1
+  Downloading stopit-1.1.2.tar.gz (18 kB)
+Collecting update-checker&gt;=0.16
+  Downloading update_checker-0.18.0-py3-none-any.whl (7.0 kB)
+Requirement already satisfied: requests&gt;=2.3.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from update-checker&gt;=0.16-&gt;tpot) (2.25.1)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from requests&gt;=2.3.0-&gt;update-checker&gt;=0.16-&gt;tpot) (2.10)
+Requirement already satisfied: chardet&lt;5,&gt;=3.0.2 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from requests&gt;=2.3.0-&gt;update-checker&gt;=0.16-&gt;tpot) (3.0.4)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from requests&gt;=2.3.0-&gt;update-checker&gt;=0.16-&gt;tpot) (1.26.2)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from requests&gt;=2.3.0-&gt;update-checker&gt;=0.16-&gt;tpot) (2020.12.5)
 Building wheels for collected packages: stopit
   Building wheel for stopit (setup.py) ... - done
-  Created wheel for stopit: filename=stopit-1.1.2-py3-none-any.whl size=11956 sha256=b05eb3e65aec70196c963ddae0f65d89102fe3da4e8082da2415f0cf75da0b13
+  Created wheel for stopit: filename=stopit-1.1.2-py3-none-any.whl size=11955 sha256=6e174d4aeaf721427194e4bd5d5be481b4e130b4312d90096236584a5edfaa7d
   Stored in directory: /home/runner/.cache/pip/wheels/a8/bb/8f/6b9328d23c2dcedbfeb8498b9f650d55d463089e3b8fc0bfb2
 Successfully built stopit
 Installing collected packages: update-checker, stopit, deap, tpot
-Successfully installed deap-1.3.1 stopit-1.1.2 tpot-0.11.6.post1 update-checker-0.18.0
+Successfully installed deap-1.3.1 stopit-1.1.2 tpot-0.11.6.post3 update-checker-0.18.0
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -678,7 +678,7 @@ Successfully installed deap-1.3.1 stopit-1.1.2 tpot-0.11.6.post1 update-checker-
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:45599</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:37857</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>

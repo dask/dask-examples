@@ -19,32 +19,31 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "1. [Setting up your environment](#environment_setup)\n",
-    "1. [Importing dask-image](#imports)\n",
-    "1. [Getting the example data](#example_data)\n",
-    "1. [Reading in image data](#reading_image_data)\n",
-    "    1. [Reading a single image](#reading_a_single_image)\n",
-    "    1. [Reading multiple images](#reading_multiple_images)\n",
+    "1. [Setting up your environment](#Setting-up-your-environment)\n",
+    "1. [Importing dask-image](#Importing-dask-image)\n",
+    "1. [Getting the example data](#Getting-the-example-data)\n",
+    "1. [Reading in image data](#Reading-in-image-data)\n",
+    "    1. [Reading a single image](#Reading-a-single-image)\n",
+    "    1. [Reading multiple images](#Reading-multiple-images)\n",
     "\n",
-    "1. [Applying your own custom function to images](#applying_custom_function)\n",
-    "    1. [Embarrassingly parallel problems](#embarrassingly_parallel)\n",
+    "1. [Applying your own custom function to images](#Applying-your-own-custom-function-to-images)\n",
+    "    1. [Embarrassingly parallel problems](#Embarrassingly-parallel-problems)\n",
     "\n",
-    "1. [Joining partial images together](#joining_images)\n",
+    "1. [Joining partial images together](#Joining-partial-images-together)\n",
     "\n",
-    "1. [A segmentation analysis pipeline](#segmentation_pipeline)\n",
-    "    1. [Filtering](#filtering)\n",
-    "    1. [Segmenting](#segmenting)\n",
-    "    1. [Analyzing](#analyzing)\n",
-    "1. [Next steps](#next_steps)\n",
-    "1. [Cleaning up temporary directories and files]('#cleanup)"
+    "1. [A segmentation analysis pipeline](#A-segmentation-analysis-pipeline)\n",
+    "    1. [Filtering](#Filtering)\n",
+    "    1. [Segmenting](#Segmenting)\n",
+    "    1. [Analyzing](#Analyzing)\n",
+    "1. [Next steps](#Next-steps)\n",
+    "1. [Cleaning up temporary directories and files](#Cleaning-up-temporary-directories-and-files)"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "<a id='environment_setup'></a>\n",
-    "## Setting up your environment\n"
+    "## [Setting up your environment](#Setting-up-your-environment)\n"
    ]
   },
   {
@@ -85,8 +84,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "<a id='imports'></a>\n",
-    "## Importing dask-image\n"
+    "## [Importing dask-image](#Importing-dask-image)\n"
    ]
   },
   {
@@ -129,8 +127,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "<a id='example_data'></a>\n",
-    "## Getting the example data\n"
+    "## [Getting the example data](#Getting-the-example-data)\n"
    ]
   },
   {
@@ -203,21 +200,21 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "<a id='reading_image_data'></a>\n",
-    "## Reading in image data\n"
+    "## [Reading in image data](#Reading-in-image-data)\n"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "<a id='reading_a_single_image'></a>\n",
-    "### Reading a single image\n"
+    "### [Reading a single image](#Reading-a-single-image)\n"
    ]
   },
   {
    "cell_type": "markdown",
+   "execution_count": null,
    "metadata": {},
+   "outputs": [],
    "source": [
     "Let's load a public domain image of the astronaut Eileen Collins with dask-image [imread()](http://image.dask.org/en/latest/dask_image.imread.html). This image was originally downloaded from the NASA Great Images database <https://flic.kr/p/r9qvLn>."
    ]
@@ -257,13 +254,14 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "<a id='reading_multiple_images'></a>\n",
-    "### Reading multiple images\n"
+    "### [Reading multiple images](#Reading-multiple-images)\n"
    ]
   },
   {
    "cell_type": "markdown",
+   "execution_count": null,
    "metadata": {},
+   "outputs": [],
    "source": [
     "In many cases, you may have multiple images stored on disk, for example:\n",
     "`image_00.png`, `image_01.png`, ... `image_NN.png`. These can be read into a dask array as multiple image frames."
@@ -330,8 +328,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "<a id='applying_custom_function'></a>\n",
-    "## Applying your own custom function to images\n"
+    "## [Applying your own custom function to images](#Applying-your-own-custom-function-to-images)\n"
    ]
   },
   {
@@ -416,8 +413,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "<a id='embarrassingly_parallel'></a>\n",
-    "### Embarrassingly parallel problems\n"
+    "### [Embarrassingly parallel problems](#Embarrassingly-parallel-problems)\n"
    ]
   },
   {
@@ -477,8 +473,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "<a id='joining_images'></a>\n",
-    "## Joining partial images together\n"
+    "## [Joining partial images together](#Joining-partial-images-together)\n"
    ]
   },
   {
@@ -516,8 +511,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "<a id='segmentation_pipeline'></a>\n",
-    "## A segmentation analysis pipeline\n"
+    "## [A segmentation analysis pipeline](#A-segmentation-analysis-pipeline)"
    ]
   },
   {
@@ -525,17 +519,16 @@
    "metadata": {},
    "source": [
     "We'll walk through a simple image segmentation and analysis pipeline with three steps:\n",
-    "1. [Filtering]('#filtering)\n",
-    "1. [Segmenting]('#segmenting')\n",
-    "1. [Analyzing]('#analyzing')"
+    "1. [Filtering](#Filtering)\n",
+    "1. [Segmenting](#Segmenting)\n",
+    "1. [Analyzing](#Analyzing)"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "<a id='filtering'></a>\n",
-    "### Filtering\n"
+    "### [Filtering](#Filtering)\n"
    ]
   },
   {
@@ -605,8 +598,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "<a id='segmenting'></a>\n",
-    "### Segmenting\n"
+    "### [Segmenting](#Segmenting)\n"
    ]
   },
   {
@@ -666,8 +658,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "<a id='analyzing'></a>\n",
-    "### Analyzing\n"
+    "### [Analyzing](#Analysing)\n"
    ]
   },
   {
@@ -752,8 +743,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "<a id='next_steps'></a>\n",
-    "## Next steps\n"
+    "## [Next steps](#Next-steps)\n"
    ]
   },
   {
@@ -779,8 +769,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "<a id='cleanup'></a>\n",
-    "## Cleaning up temporary directories and files\n"
+    "## [Cleaning up temporary directories and files](#Cleaning-up-temporary-directories-and-files)\n"
    ]
   },
   {
