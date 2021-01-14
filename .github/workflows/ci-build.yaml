@@ -23,6 +23,17 @@ jobs:
           conda install -q pathlib nbconvert nbformat jupyter_client ipykernel
           pip install nbsphinx dask-sphinx-theme sphinx
 
+      - name: Execute Notebooks
+        shell: bash -l {0}
+        run: |
+          pip install nbmake==0.1 pytest-xdist
+          pytest \
+            -n=auto \
+            --nbmake \
+            --overwrite \
+            --forked \
+            --ignore machine-learning/torch-prediction.ipynb 
+
       - name: Build
         shell: bash -l {0}
         run: sphinx-build -M html . _build -v
