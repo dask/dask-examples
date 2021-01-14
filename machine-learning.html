@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Dask for Machine Learning &mdash; Dask Examples  documentation</title>
   
@@ -18,7 +18,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -136,7 +139,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Dask Examples
+            <a href="index.html" class="icon icon-home"> Dask Examples
           
 
           
@@ -262,6 +265,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -273,7 +278,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/machine-learning.ipynb.txt" rel="nofollow"> View page source</a>
           
         
@@ -576,6 +581,17 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/node.py:151: UserWarning: Port 8787 is already in use.
+Perhaps you already have a cluster running?
+Hosting the HTTP server on port 41219 instead
+  warnings.warn(
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -586,8 +602,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.1.0.4/11435/1</li>
-  <li><b>Dashboard: </b><a href='http://10.1.0.4:8787/status' target='_blank'>http://10.1.0.4:8787/status</a></li>
+  <li><b>Scheduler: </b>inproc://10.1.0.4/7084/1</li>
+  <li><b>Dashboard: </b><a href='http://10.1.0.4:41219/status' target='_blank'>http://10.1.0.4:41219/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -603,7 +619,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Distributed-Training">
 <h2>Distributed Training<a class="headerlink" href="#Distributed-Training" title="Permalink to this headline">¶</a></h2>
-<p><img alt="178d2d254db4474b98830f107297d6a0" src="_images/scikit-learn-logo-notext.png" /> <img alt="1a75e7309bc64d6d93f4b2f7989694cc" class="no-scaled-link" src="_images/joblib_logo.svg" width="20%" /></p>
+<p><img alt="38abf78b49c14b7090caac23c4015746" src="_images/scikit-learn-logo-notext.png" /> <img alt="cac814f24c1247e39d38d198ab25d0ea" class="no-scaled-link" src="_images/joblib_logo.svg" width="20%" /></p>
 <p>Scikit-learn uses <a class="reference external" href="http://joblib.readthedocs.io/">joblib</a> for single-machine parallelism. This lets you train most estimators (anything that accepts an <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> parameter) using all the cores of your laptop or workstation.</p>
 <p>Alternatively, Scikit-Learn can use Dask for parallelism. This lets you train those estimators using all the cores of your <em>cluster</em> without significantly changing your code.</p>
 <p>This is most useful for training large models on medium-sized datasets. You may have a large model when searching over many hyper-parameters, or when using an ensemble method with many individual estimators. For too small datasets, training times will typically be small enough that cluster-wide parallelism isn’t helpful. For too large datasets (larger than a single machine’s memory), the scikit-learn estimators may not be able to cope (see below).</p>
@@ -757,10 +773,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.260204</td>
-      <td>0.002330</td>
-      <td>0.025033</td>
-      <td>0.004819</td>
+      <td>0.281757</td>
+      <td>0.028381</td>
+      <td>0.031847</td>
+      <td>0.006431</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>True</td>
@@ -774,10 +790,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>1</th>
-      <td>0.272804</td>
-      <td>0.010545</td>
-      <td>0.022952</td>
-      <td>0.002341</td>
+      <td>0.302007</td>
+      <td>0.040334</td>
+      <td>0.023815</td>
+      <td>0.002342</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>False</td>
@@ -791,10 +807,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>2</th>
-      <td>0.141793</td>
-      <td>0.011219</td>
-      <td>0.013720</td>
-      <td>0.003172</td>
+      <td>0.148769</td>
+      <td>0.010645</td>
+      <td>0.015993</td>
+      <td>0.003539</td>
       <td>0.001</td>
       <td>poly</td>
       <td>True</td>
@@ -808,10 +824,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>3</th>
-      <td>0.144742</td>
-      <td>0.003548</td>
-      <td>0.014305</td>
-      <td>0.000320</td>
+      <td>0.170737</td>
+      <td>0.020296</td>
+      <td>0.012334</td>
+      <td>0.001556</td>
       <td>0.001</td>
       <td>poly</td>
       <td>False</td>
@@ -825,10 +841,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>4</th>
-      <td>0.313554</td>
-      <td>0.011103</td>
-      <td>0.024909</td>
-      <td>0.003533</td>
+      <td>0.331724</td>
+      <td>0.007535</td>
+      <td>0.032123</td>
+      <td>0.004971</td>
       <td>0.001</td>
       <td>sigmoid</td>
       <td>True</td>
@@ -1005,20 +1021,11 @@ KMeans(init_max_iter=2, n_clusters=3, oversampling_factor=10)
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;matplotlib.collections.PathCollection at 0x7fce522fedc0&gt;
-</pre></div></div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/machine-learning_24_1.png" src="_images/machine-learning_24_1.png" />
+<img alt="_images/machine-learning_24_0.png" src="_images/machine-learning_24_0.png" />
 </div>
 </div>
 <p>For all the estimators implemented in Dask-ML, see the <a class="reference external" href="http://dask-ml.readthedocs.io/en/latest/modules/api.html">API documentation</a>.</p>
@@ -1040,37 +1047,29 @@ ga('send', 'pageview');
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="xarray.html" class="btn btn-neutral float-right" title="Xarray with Dask Arrays" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="futures.html" class="btn btn-neutral float-left" title="Custom Workloads with Futures" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="xarray.html" class="btn btn-neutral float-right" title="Xarray with Dask Arrays" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="futures.html" class="btn btn-neutral float-left" title="Custom Workloads with Futures" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2018, Dask Developers
+        &#169; Copyright 2018, Dask Developers.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

@@ -29,9 +29,48 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 1,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:51.085063Z",
+     "iopub.status.busy": "2021-01-14T10:42:51.084460Z",
+     "iopub.status.idle": "2021-01-14T10:42:52.341894Z",
+     "shell.execute_reply": "2021-01-14T10:42:52.342543Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<table style=\"border: 2px solid white;\">\n",
+       "<tr>\n",
+       "<td style=\"vertical-align: top; border: 0px solid white\">\n",
+       "<h3 style=\"text-align: left;\">Client</h3>\n",
+       "<ul style=\"text-align: left; list-style: none; margin: 0; padding: 0;\">\n",
+       "  <li><b>Scheduler: </b>tcp://127.0.0.1:45093</li>\n",
+       "  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>\n",
+       "</ul>\n",
+       "</td>\n",
+       "<td style=\"vertical-align: top; border: 0px solid white\">\n",
+       "<h3 style=\"text-align: left;\">Cluster</h3>\n",
+       "<ul style=\"text-align: left; list-style:none; margin: 0; padding: 0;\">\n",
+       "  <li><b>Workers: </b>1</li>\n",
+       "  <li><b>Cores: </b>4</li>\n",
+       "  <li><b>Memory: </b>7.29 GB</li>\n",
+       "</ul>\n",
+       "</td>\n",
+       "</tr>\n",
+       "</table>"
+      ],
+      "text/plain": [
+       "<Client: 'tcp://127.0.0.1:45093' processes=1 threads=4, memory=7.29 GB>"
+      ]
+     },
+     "execution_count": 1,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "from dask.distributed import Client, progress\n",
     "client = Client(threads_per_worker=4, n_workers=1)\n",
@@ -49,8 +88,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 2,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:52.346942Z",
+     "iopub.status.busy": "2021-01-14T10:42:52.344650Z",
+     "iopub.status.idle": "2021-01-14T10:42:52.348742Z",
+     "shell.execute_reply": "2021-01-14T10:42:52.349051Z"
+    }
+   },
    "outputs": [],
    "source": [
     "import time\n",
@@ -78,9 +124,27 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 3,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:52.351874Z",
+     "iopub.status.busy": "2021-01-14T10:42:52.351435Z",
+     "iopub.status.idle": "2021-01-14T10:42:53.084717Z",
+     "shell.execute_reply": "2021-01-14T10:42:53.084338Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "2"
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "inc(1)"
    ]
@@ -94,9 +158,30 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 4,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:53.089102Z",
+     "iopub.status.busy": "2021-01-14T10:42:53.088681Z",
+     "iopub.status.idle": "2021-01-14T10:42:53.096261Z",
+     "shell.execute_reply": "2021-01-14T10:42:53.095468Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<b>Future: inc</b> <font color=\"gray\">status: </font><font color=\"black\">pending</font>, <font color=\"gray\">key: </font>inc-ded4cee446df04cc23f55af1874e1453"
+      ],
+      "text/plain": [
+       "<Future: pending, key: inc-ded4cee446df04cc23f55af1874e1453>"
+      ]
+     },
+     "execution_count": 4,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "future = client.submit(inc, 1)  # returns immediately with pending future\n",
     "future"
@@ -111,9 +196,30 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 5,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:53.099640Z",
+     "iopub.status.busy": "2021-01-14T10:42:53.099219Z",
+     "iopub.status.idle": "2021-01-14T10:42:53.103588Z",
+     "shell.execute_reply": "2021-01-14T10:42:53.103216Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<b>Future: inc</b> <font color=\"gray\">status: </font><font color=\"black\">pending</font>, <font color=\"gray\">key: </font>inc-ded4cee446df04cc23f55af1874e1453"
+      ],
+      "text/plain": [
+       "<Future: pending, key: inc-ded4cee446df04cc23f55af1874e1453>"
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "future  # scheduler and client talk constantly"
    ]
@@ -127,9 +233,27 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 6,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:53.106558Z",
+     "iopub.status.busy": "2021-01-14T10:42:53.106160Z",
+     "iopub.status.idle": "2021-01-14T10:42:53.792947Z",
+     "shell.execute_reply": "2021-01-14T10:42:53.792170Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "2"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "future.result()"
    ]
@@ -145,9 +269,30 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 7,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:53.796582Z",
+     "iopub.status.busy": "2021-01-14T10:42:53.796164Z",
+     "iopub.status.idle": "2021-01-14T10:42:53.806756Z",
+     "shell.execute_reply": "2021-01-14T10:42:53.807287Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<b>Future: add</b> <font color=\"gray\">status: </font><font color=\"black\">pending</font>, <font color=\"gray\">key: </font>add-94cecd1124c620c007c395a00ea20c38"
+      ],
+      "text/plain": [
+       "<Future: pending, key: add-94cecd1124c620c007c395a00ea20c38>"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "x = client.submit(inc, 1)\n",
     "y = client.submit(double, 2)\n",
@@ -157,9 +302,27 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 8,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:53.810183Z",
+     "iopub.status.busy": "2021-01-14T10:42:53.809786Z",
+     "iopub.status.idle": "2021-01-14T10:42:55.378338Z",
+     "shell.execute_reply": "2021-01-14T10:42:55.377934Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "6"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "z.result()"
    ]
@@ -187,8 +350,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 9,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:55.381390Z",
+     "iopub.status.busy": "2021-01-14T10:42:55.380980Z",
+     "iopub.status.idle": "2021-01-14T10:42:55.384018Z",
+     "shell.execute_reply": "2021-01-14T10:42:55.384408Z"
+    }
+   },
    "outputs": [],
    "source": [
     "zs = []"
@@ -196,9 +366,25 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 10,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:55.388235Z",
+     "iopub.status.busy": "2021-01-14T10:42:55.387835Z",
+     "iopub.status.idle": "2021-01-14T10:42:55.518600Z",
+     "shell.execute_reply": "2021-01-14T10:42:55.518961Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "CPU times: user 106 ms, sys: 12.1 ms, total: 118 ms\n",
+      "Wall time: 126 ms\n"
+     ]
+    }
+   ],
    "source": [
     "%%time\n",
     "\n",
@@ -211,8 +397,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 11,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:55.529953Z",
+     "iopub.status.busy": "2021-01-14T10:42:55.529313Z",
+     "iopub.status.idle": "2021-01-14T10:42:55.566168Z",
+     "shell.execute_reply": "2021-01-14T10:42:55.565786Z"
+    }
+   },
    "outputs": [],
    "source": [
     "total = client.submit(sum, zs)"
@@ -229,8 +422,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 12,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:55.574569Z",
+     "iopub.status.busy": "2021-01-14T10:42:55.573190Z",
+     "iopub.status.idle": "2021-01-14T10:42:55.576937Z",
+     "shell.execute_reply": "2021-01-14T10:42:55.577299Z"
+    }
+   },
    "outputs": [],
    "source": [
     "client.cluster.scale(10)  # ask for ten 4-thread workers"
@@ -257,8 +457,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 13,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:55.602651Z",
+     "iopub.status.busy": "2021-01-14T10:42:55.594793Z",
+     "iopub.status.idle": "2021-01-14T10:42:55.622340Z",
+     "shell.execute_reply": "2021-01-14T10:42:55.621446Z"
+    }
+   },
    "outputs": [],
    "source": [
     "L = zs\n",
@@ -300,8 +507,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 14,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:55.628038Z",
+     "iopub.status.busy": "2021-01-14T10:42:55.626959Z",
+     "iopub.status.idle": "2021-01-14T10:42:55.629464Z",
+     "shell.execute_reply": "2021-01-14T10:42:55.630020Z"
+    }
+   },
    "outputs": [],
    "source": [
     "del future, L, new_L, total  # clear out some old work"
@@ -309,8 +523,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 15,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:55.637491Z",
+     "iopub.status.busy": "2021-01-14T10:42:55.637065Z",
+     "iopub.status.idle": "2021-01-14T10:43:15.680969Z",
+     "shell.execute_reply": "2021-01-14T10:43:15.681586Z"
+    }
+   },
    "outputs": [],
    "source": [
     "from dask.distributed import as_completed\n",
@@ -343,7 +564,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.1"
+   "version": "3.8.6"
   }
  },
  "nbformat": 4,

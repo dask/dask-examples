@@ -18,6 +18,12 @@
    "cell_type": "code",
    "execution_count": 1,
    "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:45:53.726726Z",
+     "iopub.status.busy": "2021-01-14T10:45:53.725589Z",
+     "iopub.status.idle": "2021-01-14T10:45:54.251341Z",
+     "shell.execute_reply": "2021-01-14T10:45:54.251720Z"
+    },
     "slideshow": {
      "slide_type": "subslide"
     }
@@ -27,8 +33,8 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "Dask versoin: 1.2.2\n",
-      "Pandas versoin: 0.24.2\n"
+      "Dask versoin: 2.20.0\n",
+      "Pandas versoin: 1.0.5\n"
      ]
     }
    ],
@@ -62,6 +68,12 @@
    "cell_type": "code",
    "execution_count": 2,
    "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:45:54.254437Z",
+     "iopub.status.busy": "2021-01-14T10:45:54.253584Z",
+     "iopub.status.idle": "2021-01-14T10:45:55.398782Z",
+     "shell.execute_reply": "2021-01-14T10:45:55.399415Z"
+    },
     "slideshow": {
      "slide_type": "subslide"
     }
@@ -73,25 +85,25 @@
        "<table style=\"border: 2px solid white;\">\n",
        "<tr>\n",
        "<td style=\"vertical-align: top; border: 0px solid white\">\n",
-       "<h3>Client</h3>\n",
-       "<ul>\n",
-       "  <li><b>Scheduler: </b>tcp://127.0.0.1:58069\n",
-       "  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>\n",
+       "<h3 style=\"text-align: left;\">Client</h3>\n",
+       "<ul style=\"text-align: left; list-style: none; margin: 0; padding: 0;\">\n",
+       "  <li><b>Scheduler: </b>tcp://127.0.0.1:45849</li>\n",
+       "  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>\n",
        "</ul>\n",
        "</td>\n",
        "<td style=\"vertical-align: top; border: 0px solid white\">\n",
-       "<h3>Cluster</h3>\n",
-       "<ul>\n",
-       "  <li><b>Workers: </b>4</li>\n",
-       "  <li><b>Cores: </b>4</li>\n",
-       "  <li><b>Memory: </b>8.50 GB</li>\n",
+       "<h3 style=\"text-align: left;\">Cluster</h3>\n",
+       "<ul style=\"text-align: left; list-style:none; margin: 0; padding: 0;\">\n",
+       "  <li><b>Workers: </b>2</li>\n",
+       "  <li><b>Cores: </b>2</li>\n",
+       "  <li><b>Memory: </b>7.29 GB</li>\n",
        "</ul>\n",
        "</td>\n",
        "</tr>\n",
        "</table>"
       ],
       "text/plain": [
-       "<Client: scheduler='tcp://127.0.0.1:58069' processes=4 cores=4>"
+       "<Client: 'tcp://127.0.0.1:45849' processes=2 threads=2, memory=7.29 GB>"
       ]
      },
      "execution_count": 2,
@@ -131,6 +143,12 @@
    "cell_type": "code",
    "execution_count": 3,
    "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:45:55.402256Z",
+     "iopub.status.busy": "2021-01-14T10:45:55.401417Z",
+     "iopub.status.idle": "2021-01-14T10:45:55.424887Z",
+     "shell.execute_reply": "2021-01-14T10:45:55.425464Z"
+    },
     "slideshow": {
      "slide_type": "fragment"
     }
@@ -174,7 +192,7 @@
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>2000-01-01</th>\n",
-       "      <td>int32</td>\n",
+       "      <td>int64</td>\n",
        "      <td>object</td>\n",
        "      <td>float64</td>\n",
        "      <td>float64</td>\n",
@@ -216,7 +234,7 @@
        "Dask DataFrame Structure:\n",
        "                   id    name        x        y\n",
        "npartitions=30                                 \n",
-       "2000-01-01      int32  object  float64  float64\n",
+       "2000-01-01      int64  object  float64  float64\n",
        "2000-01-02        ...     ...      ...      ...\n",
        "...               ...     ...      ...      ...\n",
        "2000-01-30        ...     ...      ...      ...\n",
@@ -249,7 +267,14 @@
   {
    "cell_type": "code",
    "execution_count": 4,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:45:55.427998Z",
+     "iopub.status.busy": "2021-01-14T10:45:55.427173Z",
+     "iopub.status.idle": "2021-01-14T10:45:55.795575Z",
+     "shell.execute_reply": "2021-01-14T10:45:55.796201Z"
+    }
+   },
    "outputs": [
     {
      "data": {
@@ -288,27 +313,27 @@
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:00</th>\n",
-       "      <td>972</td>\n",
-       "      <td>Alice</td>\n",
-       "      <td>0.532136</td>\n",
-       "      <td>0.229624</td>\n",
+       "      <td>989</td>\n",
+       "      <td>Bob</td>\n",
+       "      <td>-0.960733</td>\n",
+       "      <td>-0.979164</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:01</th>\n",
-       "      <td>964</td>\n",
-       "      <td>Patricia</td>\n",
-       "      <td>0.004575</td>\n",
-       "      <td>-0.344598</td>\n",
+       "      <td>1085</td>\n",
+       "      <td>Tim</td>\n",
+       "      <td>0.890618</td>\n",
+       "      <td>-0.608660</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
        "</table>\n",
        "</div>"
       ],
       "text/plain": [
-       "                      id      name         x         y\n",
-       "timestamp                                             \n",
-       "2000-01-01 00:00:00  972     Alice  0.532136  0.229624\n",
-       "2000-01-01 00:00:01  964  Patricia  0.004575 -0.344598"
+       "                       id name         x         y\n",
+       "timestamp                                         \n",
+       "2000-01-01 00:00:00   989  Bob -0.960733 -0.979164\n",
+       "2000-01-01 00:00:01  1085  Tim  0.890618 -0.608660"
       ]
      },
      "execution_count": 4,
@@ -336,6 +361,12 @@
    "cell_type": "code",
    "execution_count": 5,
    "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:45:55.798872Z",
+     "iopub.status.busy": "2021-01-14T10:45:55.797976Z",
+     "iopub.status.idle": "2021-01-14T10:45:58.223281Z",
+     "shell.execute_reply": "2021-01-14T10:45:58.224062Z"
+    },
     "slideshow": {
      "slide_type": "subslide"
     }
@@ -385,27 +416,27 @@
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:00</th>\n",
-       "      <td>972</td>\n",
-       "      <td>Alice</td>\n",
-       "      <td>0.532136</td>\n",
-       "      <td>0.229624</td>\n",
+       "      <td>989</td>\n",
+       "      <td>Bob</td>\n",
+       "      <td>-0.960733</td>\n",
+       "      <td>-0.979164</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:01</th>\n",
-       "      <td>964</td>\n",
-       "      <td>Patricia</td>\n",
-       "      <td>0.004575</td>\n",
-       "      <td>-0.344598</td>\n",
+       "      <td>1085</td>\n",
+       "      <td>Tim</td>\n",
+       "      <td>0.890618</td>\n",
+       "      <td>-0.608660</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
        "</table>\n",
        "</div>"
       ],
       "text/plain": [
-       "                      id      name         x         y\n",
-       "timestamp                                             \n",
-       "2000-01-01 00:00:00  972     Alice  0.532136  0.229624\n",
-       "2000-01-01 00:00:01  964  Patricia  0.004575 -0.344598"
+       "                       id name         x         y\n",
+       "timestamp                                         \n",
+       "2000-01-01 00:00:00   989  Bob -0.960733 -0.979164\n",
+       "2000-01-01 00:00:01  1085  Tim  0.890618 -0.608660"
       ]
      },
      "execution_count": 5,
@@ -430,7 +461,14 @@
   {
    "cell_type": "code",
    "execution_count": 6,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:45:58.226612Z",
+     "iopub.status.busy": "2021-01-14T10:45:58.225824Z",
+     "iopub.status.idle": "2021-01-14T10:45:58.230693Z",
+     "shell.execute_reply": "2021-01-14T10:45:58.231253Z"
+    }
+   },
    "outputs": [
     {
      "name": "stdout",
@@ -438,7 +476,7 @@
      "text": [
       "Pandas shape: (2592000, 4)\n",
       "---------------------------\n",
-      "Dask lazy shape: (Delayed('int-f7698154-62ad-435d-a7fa-ec5212b44a1c'), 4)\n"
+      "Dask lazy shape: (Delayed('int-a654c829-8792-4a03-aff4-60d53c0d6c30'), 4)\n"
      ]
     }
    ],
@@ -458,7 +496,14 @@
   {
    "cell_type": "code",
    "execution_count": 7,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:45:58.233677Z",
+     "iopub.status.busy": "2021-01-14T10:45:58.232778Z",
+     "iopub.status.idle": "2021-01-14T10:45:58.915198Z",
+     "shell.execute_reply": "2021-01-14T10:45:58.915522Z"
+    }
+   },
    "outputs": [
     {
      "name": "stdout",
@@ -489,6 +534,12 @@
    "cell_type": "code",
    "execution_count": 8,
    "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:45:58.918672Z",
+     "iopub.status.busy": "2021-01-14T10:45:58.918269Z",
+     "iopub.status.idle": "2021-01-14T10:45:59.194688Z",
+     "shell.execute_reply": "2021-01-14T10:45:59.195447Z"
+    },
     "slideshow": {
      "slide_type": "subslide"
     }
@@ -532,7 +583,7 @@
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:00</th>\n",
-       "      <td>int32</td>\n",
+       "      <td>int64</td>\n",
        "      <td>object</td>\n",
        "      <td>float64</td>\n",
        "      <td>float64</td>\n",
@@ -574,7 +625,7 @@
        "Dask DataFrame Structure:\n",
        "                        id    name        x        y\n",
        "npartitions=10                                      \n",
-       "2000-01-01 00:00:00  int32  object  float64  float64\n",
+       "2000-01-01 00:00:00  int64  object  float64  float64\n",
        "2000-01-04 00:00:00    ...     ...      ...      ...\n",
        "...                    ...     ...      ...      ...\n",
        "2000-01-28 00:00:00    ...     ...      ...      ...\n",
@@ -618,6 +669,12 @@
    "cell_type": "code",
    "execution_count": 9,
    "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:45:59.198744Z",
+     "iopub.status.busy": "2021-01-14T10:45:59.198340Z",
+     "iopub.status.idle": "2021-01-14T10:45:59.351054Z",
+     "shell.execute_reply": "2021-01-14T10:45:59.350680Z"
+    },
     "slideshow": {
      "slide_type": "subslide"
     }
@@ -627,10 +684,10 @@
      "data": {
       "text/plain": [
        "timestamp    2000-01-01 00:00:00\n",
-       "id                           972\n",
-       "name                       Alice\n",
-       "x                       0.532136\n",
-       "y                       0.229624\n",
+       "id                           989\n",
+       "name                         Bob\n",
+       "x                      -0.960733\n",
+       "y                      -0.979164\n",
        "Name: 0, dtype: object"
       ]
      },
@@ -649,28 +706,17 @@
    "cell_type": "code",
    "execution_count": 10,
    "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:45:59.357605Z",
+     "iopub.status.busy": "2021-01-14T10:45:59.357184Z",
+     "iopub.status.idle": "2021-01-14T10:46:00.613841Z",
+     "shell.execute_reply": "2021-01-14T10:46:00.614355Z"
+    },
     "slideshow": {
      "slide_type": "subslide"
     }
    },
    "outputs": [
-    {
-     "name": "stderr",
-     "output_type": "stream",
-     "text": [
-      "c:\\users\\jsber\\.virtualenvs\\dask-examples-3r4mgfnb\\lib\\site-packages\\distributed\\worker.py:3101: UserWarning: Large object of size 9.42 MB detected in task graph: \n",
-      "  (slice(0, 0, None), None, 'reset_index-8356d669ad1 ... 54123c422adde')\n",
-      "Consider scattering large objects ahead of time\n",
-      "with client.scatter to reduce scheduler burden and \n",
-      "keep data on workers\n",
-      "\n",
-      "    future = client.submit(func, big_data)    # bad\n",
-      "\n",
-      "    big_future = client.scatter(big_data)     # good\n",
-      "    future = client.submit(func, big_future)  # good\n",
-      "  % (format_bytes(len(b)), s)\n"
-     ]
-    },
     {
      "data": {
       "text/html": [
@@ -703,99 +749,99 @@
        "    <tr>\n",
        "      <th>0</th>\n",
        "      <td>2000-01-01</td>\n",
-       "      <td>972</td>\n",
-       "      <td>Alice</td>\n",
-       "      <td>0.532136</td>\n",
-       "      <td>0.229624</td>\n",
+       "      <td>989</td>\n",
+       "      <td>Bob</td>\n",
+       "      <td>-0.960733</td>\n",
+       "      <td>-0.979164</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>0</th>\n",
        "      <td>2000-01-04</td>\n",
-       "      <td>994</td>\n",
-       "      <td>Ingrid</td>\n",
-       "      <td>0.380598</td>\n",
-       "      <td>-0.739793</td>\n",
+       "      <td>1014</td>\n",
+       "      <td>Yvonne</td>\n",
+       "      <td>-0.118582</td>\n",
+       "      <td>-0.742809</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>0</th>\n",
        "      <td>2000-01-07</td>\n",
-       "      <td>974</td>\n",
-       "      <td>Bob</td>\n",
-       "      <td>0.927427</td>\n",
-       "      <td>0.390628</td>\n",
+       "      <td>1002</td>\n",
+       "      <td>Edith</td>\n",
+       "      <td>0.626416</td>\n",
+       "      <td>0.600232</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>0</th>\n",
        "      <td>2000-01-10</td>\n",
-       "      <td>1016</td>\n",
-       "      <td>Wendy</td>\n",
-       "      <td>-0.485949</td>\n",
-       "      <td>-0.738365</td>\n",
+       "      <td>1026</td>\n",
+       "      <td>Quinn</td>\n",
+       "      <td>-0.777740</td>\n",
+       "      <td>0.043237</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>0</th>\n",
        "      <td>2000-01-13</td>\n",
-       "      <td>973</td>\n",
-       "      <td>Xavier</td>\n",
-       "      <td>0.708157</td>\n",
-       "      <td>-0.507682</td>\n",
+       "      <td>1018</td>\n",
+       "      <td>Ingrid</td>\n",
+       "      <td>-0.991763</td>\n",
+       "      <td>-0.142150</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>0</th>\n",
        "      <td>2000-01-16</td>\n",
-       "      <td>966</td>\n",
-       "      <td>Edith</td>\n",
-       "      <td>0.161352</td>\n",
-       "      <td>-0.822572</td>\n",
+       "      <td>1002</td>\n",
+       "      <td>Oliver</td>\n",
+       "      <td>0.528523</td>\n",
+       "      <td>0.745428</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>0</th>\n",
        "      <td>2000-01-19</td>\n",
-       "      <td>971</td>\n",
-       "      <td>Yvonne</td>\n",
-       "      <td>-0.193811</td>\n",
-       "      <td>0.302984</td>\n",
+       "      <td>1043</td>\n",
+       "      <td>Sarah</td>\n",
+       "      <td>0.574502</td>\n",
+       "      <td>-0.678625</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>0</th>\n",
        "      <td>2000-01-22</td>\n",
-       "      <td>976</td>\n",
-       "      <td>Yvonne</td>\n",
-       "      <td>-0.829687</td>\n",
-       "      <td>-0.782505</td>\n",
+       "      <td>924</td>\n",
+       "      <td>Charlie</td>\n",
+       "      <td>-0.451292</td>\n",
+       "      <td>0.789699</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>0</th>\n",
        "      <td>2000-01-25</td>\n",
-       "      <td>1026</td>\n",
-       "      <td>Laura</td>\n",
-       "      <td>-0.597932</td>\n",
-       "      <td>-0.762958</td>\n",
+       "      <td>1043</td>\n",
+       "      <td>Bob</td>\n",
+       "      <td>0.114970</td>\n",
+       "      <td>0.478908</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>0</th>\n",
        "      <td>2000-01-28</td>\n",
-       "      <td>958</td>\n",
-       "      <td>Ingrid</td>\n",
-       "      <td>0.773340</td>\n",
-       "      <td>0.877205</td>\n",
+       "      <td>959</td>\n",
+       "      <td>Oliver</td>\n",
+       "      <td>0.480886</td>\n",
+       "      <td>0.631892</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
        "</table>\n",
        "</div>"
       ],
       "text/plain": [
-       "   timestamp    id    name         x         y\n",
-       "0 2000-01-01   972   Alice  0.532136  0.229624\n",
-       "0 2000-01-04   994  Ingrid  0.380598 -0.739793\n",
-       "0 2000-01-07   974     Bob  0.927427  0.390628\n",
-       "0 2000-01-10  1016   Wendy -0.485949 -0.738365\n",
-       "0 2000-01-13   973  Xavier  0.708157 -0.507682\n",
-       "0 2000-01-16   966   Edith  0.161352 -0.822572\n",
-       "0 2000-01-19   971  Yvonne -0.193811  0.302984\n",
-       "0 2000-01-22   976  Yvonne -0.829687 -0.782505\n",
-       "0 2000-01-25  1026   Laura -0.597932 -0.762958\n",
-       "0 2000-01-28   958  Ingrid  0.773340  0.877205"
+       "   timestamp    id     name         x         y\n",
+       "0 2000-01-01   989      Bob -0.960733 -0.979164\n",
+       "0 2000-01-04  1014   Yvonne -0.118582 -0.742809\n",
+       "0 2000-01-07  1002    Edith  0.626416  0.600232\n",
+       "0 2000-01-10  1026    Quinn -0.777740  0.043237\n",
+       "0 2000-01-13  1018   Ingrid -0.991763 -0.142150\n",
+       "0 2000-01-16  1002   Oliver  0.528523  0.745428\n",
+       "0 2000-01-19  1043    Sarah  0.574502 -0.678625\n",
+       "0 2000-01-22   924  Charlie -0.451292  0.789699\n",
+       "0 2000-01-25  1043      Bob  0.114970  0.478908\n",
+       "0 2000-01-28   959   Oliver  0.480886  0.631892"
       ]
      },
      "execution_count": 10,
@@ -851,7 +897,14 @@
   {
    "cell_type": "code",
    "execution_count": 11,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:46:00.616725Z",
+     "iopub.status.busy": "2021-01-14T10:46:00.616198Z",
+     "iopub.status.idle": "2021-01-14T10:46:00.867148Z",
+     "shell.execute_reply": "2021-01-14T10:46:00.867462Z"
+    }
+   },
    "outputs": [
     {
      "name": "stdout",
@@ -902,6 +955,12 @@
    "cell_type": "code",
    "execution_count": 12,
    "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:46:00.875364Z",
+     "iopub.status.busy": "2021-01-14T10:46:00.873041Z",
+     "iopub.status.idle": "2021-01-14T10:46:00.879570Z",
+     "shell.execute_reply": "2021-01-14T10:46:00.880157Z"
+    },
     "slideshow": {
      "slide_type": "fragment"
     }
@@ -954,7 +1013,14 @@
   {
    "cell_type": "code",
    "execution_count": 13,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:46:00.883429Z",
+     "iopub.status.busy": "2021-01-14T10:46:00.883035Z",
+     "iopub.status.idle": "2021-01-14T10:46:01.365987Z",
+     "shell.execute_reply": "2021-01-14T10:46:01.366531Z"
+    }
+   },
    "outputs": [
     {
      "data": {
@@ -992,18 +1058,18 @@
        "  </thead>\n",
        "  <tbody>\n",
        "    <tr>\n",
-       "      <th>2000-01-01 00:00:00</th>\n",
-       "      <td>972</td>\n",
-       "      <td>Alice</td>\n",
-       "      <td>0.532136</td>\n",
-       "      <td>22.962368</td>\n",
+       "      <th>2000-01-01 00:00:06</th>\n",
+       "      <td>1061</td>\n",
+       "      <td>Ursula</td>\n",
+       "      <td>0.517719</td>\n",
+       "      <td>22.404978</td>\n",
        "    </tr>\n",
        "    <tr>\n",
-       "      <th>2000-01-01 00:00:17</th>\n",
-       "      <td>1035</td>\n",
-       "      <td>Norbert</td>\n",
-       "      <td>0.599016</td>\n",
-       "      <td>-63.052837</td>\n",
+       "      <th>2000-01-01 00:00:09</th>\n",
+       "      <td>1042</td>\n",
+       "      <td>Michael</td>\n",
+       "      <td>0.559344</td>\n",
+       "      <td>64.885913</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
        "</table>\n",
@@ -1012,8 +1078,8 @@
       "text/plain": [
        "                       ID     name         x          y\n",
        "timestamp                                              \n",
-       "2000-01-01 00:00:00   972    Alice  0.532136  22.962368\n",
-       "2000-01-01 00:00:17  1035  Norbert  0.599016 -63.052837"
+       "2000-01-01 00:00:06  1061   Ursula  0.517719  22.404978\n",
+       "2000-01-01 00:00:09  1042  Michael  0.559344  64.885913"
       ]
      },
      "execution_count": 13,
@@ -1057,7 +1123,14 @@
   {
    "cell_type": "code",
    "execution_count": 14,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:46:01.369943Z",
+     "iopub.status.busy": "2021-01-14T10:46:01.369539Z",
+     "iopub.status.idle": "2021-01-14T10:46:01.481909Z",
+     "shell.execute_reply": "2021-01-14T10:46:01.481544Z"
+    }
+   },
    "outputs": [
     {
      "data": {
@@ -1096,27 +1169,27 @@
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:00</th>\n",
-       "      <td>972</td>\n",
-       "      <td>Alice</td>\n",
-       "      <td>0.532136</td>\n",
-       "      <td>2296.236839</td>\n",
+       "      <td>989</td>\n",
+       "      <td>Bob</td>\n",
+       "      <td>-0.960733</td>\n",
+       "      <td>-0.979164</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:01</th>\n",
-       "      <td>964</td>\n",
-       "      <td>Patricia</td>\n",
-       "      <td>0.004575</td>\n",
-       "      <td>-0.344598</td>\n",
+       "      <td>1085</td>\n",
+       "      <td>Tim</td>\n",
+       "      <td>0.890618</td>\n",
+       "      <td>-0.608660</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
        "</table>\n",
        "</div>"
       ],
       "text/plain": [
-       "                      ID      name         x            y\n",
-       "timestamp                                                \n",
-       "2000-01-01 00:00:00  972     Alice  0.532136  2296.236839\n",
-       "2000-01-01 00:00:01  964  Patricia  0.004575    -0.344598"
+       "                       ID name         x         y\n",
+       "timestamp                                         \n",
+       "2000-01-01 00:00:00   989  Bob -0.960733 -0.979164\n",
+       "2000-01-01 00:00:01  1085  Tim  0.890618 -0.608660"
       ]
      },
      "execution_count": 14,
@@ -1133,7 +1206,14 @@
   {
    "cell_type": "code",
    "execution_count": 15,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:46:01.489724Z",
+     "iopub.status.busy": "2021-01-14T10:46:01.489325Z",
+     "iopub.status.idle": "2021-01-14T10:46:01.547306Z",
+     "shell.execute_reply": "2021-01-14T10:46:01.547653Z"
+    }
+   },
    "outputs": [
     {
      "data": {
@@ -1172,27 +1252,27 @@
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:00</th>\n",
-       "      <td>972</td>\n",
-       "      <td>Alice</td>\n",
-       "      <td>0.532136</td>\n",
-       "      <td>22.962368</td>\n",
+       "      <td>989</td>\n",
+       "      <td>Bob</td>\n",
+       "      <td>-0.960733</td>\n",
+       "      <td>-0.979164</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:01</th>\n",
-       "      <td>964</td>\n",
-       "      <td>Patricia</td>\n",
-       "      <td>0.004575</td>\n",
-       "      <td>-0.344598</td>\n",
+       "      <td>1085</td>\n",
+       "      <td>Tim</td>\n",
+       "      <td>0.890618</td>\n",
+       "      <td>-0.608660</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
        "</table>\n",
        "</div>"
       ],
       "text/plain": [
-       "                      ID      name         x          y\n",
-       "timestamp                                              \n",
-       "2000-01-01 00:00:00  972     Alice  0.532136  22.962368\n",
-       "2000-01-01 00:00:01  964  Patricia  0.004575  -0.344598"
+       "                       ID name         x         y\n",
+       "timestamp                                         \n",
+       "2000-01-01 00:00:00   989  Bob -0.960733 -0.979164\n",
+       "2000-01-01 00:00:01  1085  Tim  0.890618 -0.608660"
       ]
      },
      "execution_count": 15,
@@ -1230,7 +1310,14 @@
   {
    "cell_type": "code",
    "execution_count": 16,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:46:01.551826Z",
+     "iopub.status.busy": "2021-01-14T10:46:01.551405Z",
+     "iopub.status.idle": "2021-01-14T10:46:02.190841Z",
+     "shell.execute_reply": "2021-01-14T10:46:02.191508Z"
+    }
+   },
    "outputs": [
     {
      "data": {
@@ -1271,29 +1358,29 @@
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:00</th>\n",
-       "      <td>972</td>\n",
-       "      <td>Alice</td>\n",
-       "      <td>0.532136</td>\n",
-       "      <td>2296.236839</td>\n",
-       "      <td>Al</td>\n",
+       "      <td>989</td>\n",
+       "      <td>Bob</td>\n",
+       "      <td>-0.960733</td>\n",
+       "      <td>-0.979164</td>\n",
+       "      <td>Bo</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:01</th>\n",
-       "      <td>964</td>\n",
-       "      <td>Patricia</td>\n",
-       "      <td>0.004575</td>\n",
-       "      <td>-0.344598</td>\n",
-       "      <td>Pa</td>\n",
+       "      <td>1085</td>\n",
+       "      <td>Tim</td>\n",
+       "      <td>0.890618</td>\n",
+       "      <td>-0.608660</td>\n",
+       "      <td>Ti</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
        "</table>\n",
        "</div>"
       ],
       "text/plain": [
-       "                      ID      name         x            y initials\n",
-       "timestamp                                                         \n",
-       "2000-01-01 00:00:00  972     Alice  0.532136  2296.236839       Al\n",
-       "2000-01-01 00:00:01  964  Patricia  0.004575    -0.344598       Pa"
+       "                       ID name         x         y initials\n",
+       "timestamp                                                  \n",
+       "2000-01-01 00:00:00   989  Bob -0.960733 -0.979164       Bo\n",
+       "2000-01-01 00:00:01  1085  Tim  0.890618 -0.608660       Ti"
       ]
      },
      "execution_count": 16,
@@ -1309,13 +1396,20 @@
   {
    "cell_type": "code",
    "execution_count": 17,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:46:02.196341Z",
+     "iopub.status.busy": "2021-01-14T10:46:02.195704Z",
+     "iopub.status.idle": "2021-01-14T10:46:02.292713Z",
+     "shell.execute_reply": "2021-01-14T10:46:02.292107Z"
+    }
+   },
    "outputs": [
     {
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "c:\\users\\jsber\\.virtualenvs\\dask-examples-3r4mgfnb\\lib\\site-packages\\dask\\dataframe\\core.py:2345: UserWarning: \n",
+      "/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/dask/dataframe/core.py:3199: UserWarning: \n",
       "You did not provide metadata, so Dask is running your function on a small dataset to guess output types. It is possible that Dask will guess incorrectly.\n",
       "To provide an explicit output types or to silence this message, please provide the `meta=` keyword, as described in the map or apply function that you are using.\n",
       "  Before: .apply(func)\n",
@@ -1363,29 +1457,29 @@
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:00</th>\n",
-       "      <td>972</td>\n",
-       "      <td>Alice</td>\n",
-       "      <td>0.532136</td>\n",
-       "      <td>22.962368</td>\n",
-       "      <td>Al</td>\n",
+       "      <td>989</td>\n",
+       "      <td>Bob</td>\n",
+       "      <td>-0.960733</td>\n",
+       "      <td>-0.979164</td>\n",
+       "      <td>Bo</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:01</th>\n",
-       "      <td>964</td>\n",
-       "      <td>Patricia</td>\n",
-       "      <td>0.004575</td>\n",
-       "      <td>-0.344598</td>\n",
-       "      <td>Pa</td>\n",
+       "      <td>1085</td>\n",
+       "      <td>Tim</td>\n",
+       "      <td>0.890618</td>\n",
+       "      <td>-0.608660</td>\n",
+       "      <td>Ti</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
        "</table>\n",
        "</div>"
       ],
       "text/plain": [
-       "                      ID      name         x          y initials\n",
-       "timestamp                                                       \n",
-       "2000-01-01 00:00:00  972     Alice  0.532136  22.962368       Al\n",
-       "2000-01-01 00:00:01  964  Patricia  0.004575  -0.344598       Pa"
+       "                       ID name         x         y initials\n",
+       "timestamp                                                  \n",
+       "2000-01-01 00:00:00   989  Bob -0.960733 -0.979164       Bo\n",
+       "2000-01-01 00:00:01  1085  Tim  0.890618 -0.608660       Ti"
       ]
      },
      "execution_count": 17,
@@ -1409,7 +1503,14 @@
   {
    "cell_type": "code",
    "execution_count": 18,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:46:02.296677Z",
+     "iopub.status.busy": "2021-01-14T10:46:02.296241Z",
+     "iopub.status.idle": "2021-01-14T10:46:02.298946Z",
+     "shell.execute_reply": "2021-01-14T10:46:02.299605Z"
+    }
+   },
    "outputs": [],
    "source": [
     "# Describe the outcome type of the calculation\n",
@@ -1419,7 +1520,14 @@
   {
    "cell_type": "code",
    "execution_count": 19,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:46:02.306664Z",
+     "iopub.status.busy": "2021-01-14T10:46:02.306274Z",
+     "iopub.status.idle": "2021-01-14T10:46:02.427244Z",
+     "shell.execute_reply": "2021-01-14T10:46:02.427827Z"
+    }
+   },
    "outputs": [
     {
      "data": {
@@ -1460,29 +1568,29 @@
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:00</th>\n",
-       "      <td>972</td>\n",
-       "      <td>Alice</td>\n",
-       "      <td>0.532136</td>\n",
-       "      <td>22.962368</td>\n",
-       "      <td>Al</td>\n",
+       "      <td>989</td>\n",
+       "      <td>Bob</td>\n",
+       "      <td>-0.960733</td>\n",
+       "      <td>-0.979164</td>\n",
+       "      <td>Bo</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:01</th>\n",
-       "      <td>964</td>\n",
-       "      <td>Patricia</td>\n",
-       "      <td>0.004575</td>\n",
-       "      <td>-0.344598</td>\n",
-       "      <td>Pa</td>\n",
+       "      <td>1085</td>\n",
+       "      <td>Tim</td>\n",
+       "      <td>0.890618</td>\n",
+       "      <td>-0.608660</td>\n",
+       "      <td>Ti</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
        "</table>\n",
        "</div>"
       ],
       "text/plain": [
-       "                      ID      name         x          y initials\n",
-       "timestamp                                                       \n",
-       "2000-01-01 00:00:00  972     Alice  0.532136  22.962368       Al\n",
-       "2000-01-01 00:00:01  964  Patricia  0.004575  -0.344598       Pa"
+       "                       ID name         x         y initials\n",
+       "timestamp                                                  \n",
+       "2000-01-01 00:00:00   989  Bob -0.960733 -0.979164       Bo\n",
+       "2000-01-01 00:00:01  1085  Tim  0.890618 -0.608660       Ti"
       ]
      },
      "execution_count": 19,
@@ -1498,7 +1606,14 @@
   {
    "cell_type": "code",
    "execution_count": 20,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:46:02.431689Z",
+     "iopub.status.busy": "2021-01-14T10:46:02.431262Z",
+     "iopub.status.idle": "2021-01-14T10:46:02.434344Z",
+     "shell.execute_reply": "2021-01-14T10:46:02.433980Z"
+    }
+   },
    "outputs": [],
    "source": [
     "# similar when using a function\n",
@@ -1512,7 +1627,14 @@
   {
    "cell_type": "code",
    "execution_count": 21,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:46:02.443554Z",
+     "iopub.status.busy": "2021-01-14T10:46:02.441148Z",
+     "iopub.status.idle": "2021-01-14T10:46:04.481588Z",
+     "shell.execute_reply": "2021-01-14T10:46:04.482207Z"
+    }
+   },
    "outputs": [
     {
      "data": {
@@ -1555,31 +1677,31 @@
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:00</th>\n",
-       "      <td>972</td>\n",
-       "      <td>Alice</td>\n",
-       "      <td>0.532136</td>\n",
-       "      <td>22.962368</td>\n",
-       "      <td>Al</td>\n",
-       "      <td>532.136479</td>\n",
+       "      <td>989</td>\n",
+       "      <td>Bob</td>\n",
+       "      <td>-0.960733</td>\n",
+       "      <td>-0.979164</td>\n",
+       "      <td>Bo</td>\n",
+       "      <td>0.979164</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:01</th>\n",
-       "      <td>964</td>\n",
-       "      <td>Patricia</td>\n",
-       "      <td>0.004575</td>\n",
-       "      <td>-0.344598</td>\n",
-       "      <td>Pa</td>\n",
-       "      <td>4.574854</td>\n",
+       "      <td>1085</td>\n",
+       "      <td>Tim</td>\n",
+       "      <td>0.890618</td>\n",
+       "      <td>-0.608660</td>\n",
+       "      <td>Ti</td>\n",
+       "      <td>890.617959</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
        "</table>\n",
        "</div>"
       ],
       "text/plain": [
-       "                      ID      name         x          y initials           z\n",
-       "timestamp                                                                   \n",
-       "2000-01-01 00:00:00  972     Alice  0.532136  22.962368       Al  532.136479\n",
-       "2000-01-01 00:00:01  964  Patricia  0.004575  -0.344598       Pa    4.574854"
+       "                       ID name         x         y initials           z\n",
+       "timestamp                                                              \n",
+       "2000-01-01 00:00:00   989  Bob -0.960733 -0.979164       Bo    0.979164\n",
+       "2000-01-01 00:00:01  1085  Tim  0.890618 -0.608660       Ti  890.617959"
       ]
      },
      "execution_count": 21,
@@ -1606,7 +1728,14 @@
   {
    "cell_type": "code",
    "execution_count": 22,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:46:04.485254Z",
+     "iopub.status.busy": "2021-01-14T10:46:04.484311Z",
+     "iopub.status.idle": "2021-01-14T10:46:06.554804Z",
+     "shell.execute_reply": "2021-01-14T10:46:06.555517Z"
+    }
+   },
    "outputs": [
     {
      "data": {
@@ -1647,56 +1776,56 @@
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:00</th>\n",
-       "      <td>972</td>\n",
-       "      <td>Alice</td>\n",
-       "      <td>0.532136</td>\n",
-       "      <td>22.962368</td>\n",
+       "      <td>989</td>\n",
+       "      <td>Bob</td>\n",
+       "      <td>-0.960733</td>\n",
+       "      <td>-0.979164</td>\n",
        "      <td>NaN</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:01</th>\n",
-       "      <td>964</td>\n",
-       "      <td>Patricia</td>\n",
-       "      <td>0.004575</td>\n",
-       "      <td>-0.344598</td>\n",
-       "      <td>23.312937</td>\n",
+       "      <td>1085</td>\n",
+       "      <td>Tim</td>\n",
+       "      <td>0.890618</td>\n",
+       "      <td>-0.608660</td>\n",
+       "      <td>1.888061</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:02</th>\n",
-       "      <td>1025</td>\n",
-       "      <td>Edith</td>\n",
-       "      <td>-0.195473</td>\n",
-       "      <td>-0.975117</td>\n",
-       "      <td>0.661493</td>\n",
+       "      <td>989</td>\n",
+       "      <td>Yvonne</td>\n",
+       "      <td>0.865960</td>\n",
+       "      <td>-0.116929</td>\n",
+       "      <td>0.492349</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:03</th>\n",
-       "      <td>974</td>\n",
-       "      <td>Quinn</td>\n",
-       "      <td>-0.320977</td>\n",
-       "      <td>-0.465554</td>\n",
-       "      <td>0.524791</td>\n",
+       "      <td>1002</td>\n",
+       "      <td>Patricia</td>\n",
+       "      <td>-0.530507</td>\n",
+       "      <td>0.864893</td>\n",
+       "      <td>1.707072</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:04</th>\n",
-       "      <td>1000</td>\n",
-       "      <td>Kevin</td>\n",
-       "      <td>0.838521</td>\n",
-       "      <td>0.253437</td>\n",
-       "      <td>1.364325</td>\n",
+       "      <td>979</td>\n",
+       "      <td>George</td>\n",
+       "      <td>0.252877</td>\n",
+       "      <td>0.418369</td>\n",
+       "      <td>0.901706</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
        "</table>\n",
        "</div>"
       ],
       "text/plain": [
-       "                       ID      name         x          y       dist\n",
-       "timestamp                                                          \n",
-       "2000-01-01 00:00:00   972     Alice  0.532136  22.962368        NaN\n",
-       "2000-01-01 00:00:01   964  Patricia  0.004575  -0.344598  23.312937\n",
-       "2000-01-01 00:00:02  1025     Edith -0.195473  -0.975117   0.661493\n",
-       "2000-01-01 00:00:03   974     Quinn -0.320977  -0.465554   0.524791\n",
-       "2000-01-01 00:00:04  1000     Kevin  0.838521   0.253437   1.364325"
+       "                       ID      name         x         y      dist\n",
+       "timestamp                                                        \n",
+       "2000-01-01 00:00:00   989       Bob -0.960733 -0.979164       NaN\n",
+       "2000-01-01 00:00:01  1085       Tim  0.890618 -0.608660  1.888061\n",
+       "2000-01-01 00:00:02   989    Yvonne  0.865960 -0.116929  0.492349\n",
+       "2000-01-01 00:00:03  1002  Patricia -0.530507  0.864893  1.707072\n",
+       "2000-01-01 00:00:04   979    George  0.252877  0.418369  0.901706"
       ]
      },
      "execution_count": 22,
@@ -1733,7 +1862,14 @@
   {
    "cell_type": "code",
    "execution_count": 23,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:46:06.558465Z",
+     "iopub.status.busy": "2021-01-14T10:46:06.557465Z",
+     "iopub.status.idle": "2021-01-14T10:46:07.674564Z",
+     "shell.execute_reply": "2021-01-14T10:46:07.675272Z"
+    }
+   },
    "outputs": [
     {
      "data": {
@@ -1776,20 +1912,20 @@
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:00</th>\n",
-       "      <td>972</td>\n",
-       "      <td>Alice</td>\n",
-       "      <td>0.532136</td>\n",
-       "      <td>2296.236839</td>\n",
-       "      <td>Al</td>\n",
+       "      <td>989</td>\n",
+       "      <td>Bob</td>\n",
+       "      <td>-0.960733</td>\n",
+       "      <td>-0.979164</td>\n",
+       "      <td>Bo</td>\n",
        "      <td>00:00:00</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:01</th>\n",
-       "      <td>964</td>\n",
-       "      <td>Patricia</td>\n",
-       "      <td>0.004575</td>\n",
-       "      <td>-0.344598</td>\n",
-       "      <td>Pa</td>\n",
+       "      <td>1085</td>\n",
+       "      <td>Tim</td>\n",
+       "      <td>0.890618</td>\n",
+       "      <td>-0.608660</td>\n",
+       "      <td>Ti</td>\n",
        "      <td>00:00:01</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
@@ -1797,10 +1933,10 @@
        "</div>"
       ],
       "text/plain": [
-       "                      ID      name         x            y initials     times\n",
-       "timestamp                                                                   \n",
-       "2000-01-01 00:00:00  972     Alice  0.532136  2296.236839       Al  00:00:00\n",
-       "2000-01-01 00:00:01  964  Patricia  0.004575    -0.344598       Pa  00:00:01"
+       "                       ID name         x         y initials     times\n",
+       "timestamp                                                            \n",
+       "2000-01-01 00:00:00   989  Bob -0.960733 -0.979164       Bo  00:00:00\n",
+       "2000-01-01 00:00:01  1085  Tim  0.890618 -0.608660       Ti  00:00:01"
       ]
      },
      "execution_count": 23,
@@ -1817,7 +1953,14 @@
   {
    "cell_type": "code",
    "execution_count": 24,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:46:07.677996Z",
+     "iopub.status.busy": "2021-01-14T10:46:07.677118Z",
+     "iopub.status.idle": "2021-01-14T10:46:17.062131Z",
+     "shell.execute_reply": "2021-01-14T10:46:17.062794Z"
+    }
+   },
    "outputs": [
     {
      "data": {
@@ -1862,22 +2005,22 @@
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:00</th>\n",
-       "      <td>972</td>\n",
-       "      <td>Alice</td>\n",
-       "      <td>0.532136</td>\n",
-       "      <td>22.962368</td>\n",
-       "      <td>Al</td>\n",
-       "      <td>532.136479</td>\n",
+       "      <td>989</td>\n",
+       "      <td>Bob</td>\n",
+       "      <td>-0.960733</td>\n",
+       "      <td>-0.979164</td>\n",
+       "      <td>Bo</td>\n",
+       "      <td>0.979164</td>\n",
        "      <td>00:00:00</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:01</th>\n",
-       "      <td>964</td>\n",
-       "      <td>Patricia</td>\n",
-       "      <td>0.004575</td>\n",
-       "      <td>-0.344598</td>\n",
-       "      <td>Pa</td>\n",
-       "      <td>4.574854</td>\n",
+       "      <td>1085</td>\n",
+       "      <td>Tim</td>\n",
+       "      <td>0.890618</td>\n",
+       "      <td>-0.608660</td>\n",
+       "      <td>Ti</td>\n",
+       "      <td>890.617959</td>\n",
        "      <td>00:00:01</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
@@ -1885,10 +2028,10 @@
        "</div>"
       ],
       "text/plain": [
-       "                      ID      name         x          y initials           z  \\\n",
-       "timestamp                                                                      \n",
-       "2000-01-01 00:00:00  972     Alice  0.532136  22.962368       Al  532.136479   \n",
-       "2000-01-01 00:00:01  964  Patricia  0.004575  -0.344598       Pa    4.574854   \n",
+       "                       ID name         x         y initials           z  \\\n",
+       "timestamp                                                                 \n",
+       "2000-01-01 00:00:00   989  Bob -0.960733 -0.979164       Bo    0.979164   \n",
+       "2000-01-01 00:00:01  1085  Tim  0.890618 -0.608660       Ti  890.617959   \n",
        "\n",
        "                        times  \n",
        "timestamp                      \n",
@@ -1920,7 +2063,14 @@
   {
    "cell_type": "code",
    "execution_count": 25,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:46:17.066658Z",
+     "iopub.status.busy": "2021-01-14T10:46:17.066252Z",
+     "iopub.status.idle": "2021-01-14T10:46:18.049050Z",
+     "shell.execute_reply": "2021-01-14T10:46:18.049810Z"
+    }
+   },
    "outputs": [],
    "source": [
     "# no issue with regular drop columns\n",
@@ -1931,7 +2081,14 @@
   {
    "cell_type": "code",
    "execution_count": 26,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:46:18.055241Z",
+     "iopub.status.busy": "2021-01-14T10:46:18.051486Z",
+     "iopub.status.idle": "2021-01-14T10:46:18.409148Z",
+     "shell.execute_reply": "2021-01-14T10:46:18.409845Z"
+    }
+   },
    "outputs": [],
    "source": [
     "# Pandas\n",
@@ -1943,7 +2100,14 @@
   {
    "cell_type": "code",
    "execution_count": 27,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:46:18.412697Z",
+     "iopub.status.busy": "2021-01-14T10:46:18.411669Z",
+     "iopub.status.idle": "2021-01-14T10:46:19.506655Z",
+     "shell.execute_reply": "2021-01-14T10:46:19.507257Z"
+    }
+   },
    "outputs": [
     {
      "data": {
@@ -1984,18 +2148,18 @@
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:00</th>\n",
-       "      <td>972</td>\n",
-       "      <td>Alice</td>\n",
-       "      <td>0.532136</td>\n",
-       "      <td>2296.236839</td>\n",
+       "      <td>989</td>\n",
+       "      <td>Bob</td>\n",
+       "      <td>-0.960733</td>\n",
+       "      <td>-0.979164</td>\n",
        "      <td>00:00:00</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:01</th>\n",
-       "      <td>964</td>\n",
-       "      <td>Patricia</td>\n",
-       "      <td>0.004575</td>\n",
-       "      <td>-0.344598</td>\n",
+       "      <td>1085</td>\n",
+       "      <td>Tim</td>\n",
+       "      <td>0.890618</td>\n",
+       "      <td>-0.608660</td>\n",
        "      <td>00:00:01</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
@@ -2003,10 +2167,10 @@
        "</div>"
       ],
       "text/plain": [
-       "                      ID      name         x            y     times\n",
-       "timestamp                                                          \n",
-       "2000-01-01 00:00:00  972     Alice  0.532136  2296.236839  00:00:00\n",
-       "2000-01-01 00:00:01  964  Patricia  0.004575    -0.344598  00:00:01"
+       "                       ID name         x         y     times\n",
+       "timestamp                                                   \n",
+       "2000-01-01 00:00:00   989  Bob -0.960733 -0.979164  00:00:00\n",
+       "2000-01-01 00:00:01  1085  Tim  0.890618 -0.608660  00:00:01"
       ]
      },
      "execution_count": 27,
@@ -2029,7 +2193,14 @@
   {
    "cell_type": "code",
    "execution_count": 28,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:46:19.510829Z",
+     "iopub.status.busy": "2021-01-14T10:46:19.509070Z",
+     "iopub.status.idle": "2021-01-14T10:46:54.578251Z",
+     "shell.execute_reply": "2021-01-14T10:46:54.578856Z"
+    }
+   },
    "outputs": [
     {
      "data": {
@@ -2070,18 +2241,18 @@
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:00</th>\n",
-       "      <td>972</td>\n",
-       "      <td>Alice</td>\n",
-       "      <td>0.532136</td>\n",
-       "      <td>22.962368</td>\n",
+       "      <td>989</td>\n",
+       "      <td>Bob</td>\n",
+       "      <td>-0.960733</td>\n",
+       "      <td>-0.979164</td>\n",
        "      <td>00:00:00</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:01</th>\n",
-       "      <td>964</td>\n",
-       "      <td>Patricia</td>\n",
-       "      <td>0.004575</td>\n",
-       "      <td>-0.344598</td>\n",
+       "      <td>1085</td>\n",
+       "      <td>Tim</td>\n",
+       "      <td>0.890618</td>\n",
+       "      <td>-0.608660</td>\n",
        "      <td>00:00:01</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
@@ -2089,10 +2260,10 @@
        "</div>"
       ],
       "text/plain": [
-       "                      ID      name         x          y     times\n",
-       "timestamp                                                        \n",
-       "2000-01-01 00:00:00  972     Alice  0.532136  22.962368  00:00:00\n",
-       "2000-01-01 00:00:01  964  Patricia  0.004575  -0.344598  00:00:01"
+       "                       ID name         x         y     times\n",
+       "timestamp                                                   \n",
+       "2000-01-01 00:00:00   989  Bob -0.960733 -0.979164  00:00:00\n",
+       "2000-01-01 00:00:01  1085  Tim  0.890618 -0.608660  00:00:01"
       ]
      },
      "execution_count": 28,
@@ -2116,7 +2287,14 @@
   {
    "cell_type": "code",
    "execution_count": 29,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:46:54.581889Z",
+     "iopub.status.busy": "2021-01-14T10:46:54.580821Z",
+     "iopub.status.idle": "2021-01-14T10:46:54.662797Z",
+     "shell.execute_reply": "2021-01-14T10:46:54.663463Z"
+    }
+   },
    "outputs": [
     {
      "data": {
@@ -2149,18 +2327,18 @@
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>0</th>\n",
-       "      <td>972</td>\n",
-       "      <td>Alice</td>\n",
-       "      <td>0.532136</td>\n",
-       "      <td>2296.236839</td>\n",
+       "      <td>989</td>\n",
+       "      <td>Bob</td>\n",
+       "      <td>-0.960733</td>\n",
+       "      <td>-0.979164</td>\n",
        "      <td>00:00:00</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>1</th>\n",
-       "      <td>964</td>\n",
-       "      <td>Patricia</td>\n",
-       "      <td>0.004575</td>\n",
-       "      <td>-0.344598</td>\n",
+       "      <td>1085</td>\n",
+       "      <td>Tim</td>\n",
+       "      <td>0.890618</td>\n",
+       "      <td>-0.608660</td>\n",
        "      <td>00:00:01</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
@@ -2168,9 +2346,9 @@
        "</div>"
       ],
       "text/plain": [
-       "    ID      name         x            y     times\n",
-       "0  972     Alice  0.532136  2296.236839  00:00:00\n",
-       "1  964  Patricia  0.004575    -0.344598  00:00:01"
+       "     ID name         x         y     times\n",
+       "0   989  Bob -0.960733 -0.979164  00:00:00\n",
+       "1  1085  Tim  0.890618 -0.608660  00:00:01"
       ]
      },
      "execution_count": 29,
@@ -2187,7 +2365,14 @@
   {
    "cell_type": "code",
    "execution_count": 30,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:46:54.666206Z",
+     "iopub.status.busy": "2021-01-14T10:46:54.665394Z",
+     "iopub.status.idle": "2021-01-14T10:46:54.719347Z",
+     "shell.execute_reply": "2021-01-14T10:46:54.720249Z"
+    }
+   },
    "outputs": [
     {
      "data": {
@@ -2220,18 +2405,18 @@
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>0</th>\n",
-       "      <td>972</td>\n",
-       "      <td>Alice</td>\n",
-       "      <td>0.532136</td>\n",
-       "      <td>22.962368</td>\n",
+       "      <td>989</td>\n",
+       "      <td>Bob</td>\n",
+       "      <td>-0.960733</td>\n",
+       "      <td>-0.979164</td>\n",
        "      <td>00:00:00</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>1</th>\n",
-       "      <td>964</td>\n",
-       "      <td>Patricia</td>\n",
-       "      <td>0.004575</td>\n",
-       "      <td>-0.344598</td>\n",
+       "      <td>1085</td>\n",
+       "      <td>Tim</td>\n",
+       "      <td>0.890618</td>\n",
+       "      <td>-0.608660</td>\n",
        "      <td>00:00:01</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
@@ -2239,9 +2424,9 @@
        "</div>"
       ],
       "text/plain": [
-       "    ID      name         x          y     times\n",
-       "0  972     Alice  0.532136  22.962368  00:00:00\n",
-       "1  964  Patricia  0.004575  -0.344598  00:00:01"
+       "     ID name         x         y     times\n",
+       "0   989  Bob -0.960733 -0.979164  00:00:00\n",
+       "1  1085  Tim  0.890618 -0.608660  00:00:01"
       ]
      },
      "execution_count": 30,
@@ -2287,7 +2472,14 @@
   {
    "cell_type": "code",
    "execution_count": 31,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:46:54.722998Z",
+     "iopub.status.busy": "2021-01-14T10:46:54.722065Z",
+     "iopub.status.idle": "2021-01-14T10:46:54.726149Z",
+     "shell.execute_reply": "2021-01-14T10:46:54.726712Z"
+    }
+   },
    "outputs": [],
    "source": [
     "from pathlib import Path\n",
@@ -2298,13 +2490,21 @@
   {
    "cell_type": "code",
    "execution_count": 32,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:46:54.729335Z",
+     "iopub.status.busy": "2021-01-14T10:46:54.728460Z",
+     "iopub.status.idle": "2021-01-14T10:47:19.746536Z",
+     "shell.execute_reply": "2021-01-14T10:47:19.747136Z"
+    }
+   },
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "Wall time: 22.1 s\n"
+      "CPU times: user 14 s, sys: 228 ms, total: 14.3 s\n",
+      "Wall time: 25 s\n"
      ]
     }
    ],
@@ -2317,12 +2517,49 @@
   {
    "cell_type": "code",
    "execution_count": 33,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:47:19.749867Z",
+     "iopub.status.busy": "2021-01-14T10:47:19.749020Z",
+     "iopub.status.idle": "2021-01-14T10:47:19.755652Z",
+     "shell.execute_reply": "2021-01-14T10:47:19.756319Z"
+    }
+   },
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "[WindowsPath('data/pdf_single_file.csv')]"
+       "[PosixPath('data/2000-01-29.csv'),\n",
+       " PosixPath('data/2000-01-11.csv'),\n",
+       " PosixPath('data/2000-01-23.csv'),\n",
+       " PosixPath('data/2000-01-28.csv'),\n",
+       " PosixPath('data/2000-01-18.csv'),\n",
+       " PosixPath('data/2000-01-26.csv'),\n",
+       " PosixPath('data/2000-01-03.csv'),\n",
+       " PosixPath('data/2000-01-14.csv'),\n",
+       " PosixPath('data/2000-01-08.csv'),\n",
+       " PosixPath('data/2000-01-15.csv'),\n",
+       " PosixPath('data/2000-01-27.csv'),\n",
+       " PosixPath('data/2000-01-09.csv'),\n",
+       " PosixPath('data/2000-01-16.csv'),\n",
+       " PosixPath('data/2000-01-21.csv'),\n",
+       " PosixPath('data/2000-01-10.csv'),\n",
+       " PosixPath('data/2000-01-07.csv'),\n",
+       " PosixPath('data/2000-01-05.csv'),\n",
+       " PosixPath('data/pdf_single_file.csv'),\n",
+       " PosixPath('data/2000-01-01.csv'),\n",
+       " PosixPath('data/2000-01-02.csv'),\n",
+       " PosixPath('data/2000-01-20.csv'),\n",
+       " PosixPath('data/2000-01-12.csv'),\n",
+       " PosixPath('data/2000-01-13.csv'),\n",
+       " PosixPath('data/2000-01-22.csv'),\n",
+       " PosixPath('data/2000-01-06.csv'),\n",
+       " PosixPath('data/2000-01-19.csv'),\n",
+       " PosixPath('data/2000-01-24.csv'),\n",
+       " PosixPath('data/2000-01-25.csv'),\n",
+       " PosixPath('data/2000-01-17.csv'),\n",
+       " PosixPath('data/2000-01-30.csv'),\n",
+       " PosixPath('data/2000-01-04.csv')]"
       ]
      },
      "execution_count": 33,
@@ -2346,7 +2583,14 @@
   {
    "cell_type": "code",
    "execution_count": 34,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:47:19.759358Z",
+     "iopub.status.busy": "2021-01-14T10:47:19.758547Z",
+     "iopub.status.idle": "2021-01-14T10:47:19.762464Z",
+     "shell.execute_reply": "2021-01-14T10:47:19.763038Z"
+    }
+   },
    "outputs": [],
    "source": [
     "output_dask_dir = Path('data/dask_multi_files/')\n",
@@ -2356,48 +2600,56 @@
   {
    "cell_type": "code",
    "execution_count": 35,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:47:19.765651Z",
+     "iopub.status.busy": "2021-01-14T10:47:19.764804Z",
+     "iopub.status.idle": "2021-01-14T10:47:41.196505Z",
+     "shell.execute_reply": "2021-01-14T10:47:41.196136Z"
+    }
+   },
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "Wall time: 13.7 s\n"
+      "CPU times: user 511 ms, sys: 64.3 ms, total: 576 ms\n",
+      "Wall time: 21.4 s\n"
      ]
     },
     {
      "data": {
       "text/plain": [
-       "['data\\\\dask_multi_files/ddf00.csv',\n",
-       " 'data\\\\dask_multi_files/ddf01.csv',\n",
-       " 'data\\\\dask_multi_files/ddf02.csv',\n",
-       " 'data\\\\dask_multi_files/ddf03.csv',\n",
-       " 'data\\\\dask_multi_files/ddf04.csv',\n",
-       " 'data\\\\dask_multi_files/ddf05.csv',\n",
-       " 'data\\\\dask_multi_files/ddf06.csv',\n",
-       " 'data\\\\dask_multi_files/ddf07.csv',\n",
-       " 'data\\\\dask_multi_files/ddf08.csv',\n",
-       " 'data\\\\dask_multi_files/ddf09.csv',\n",
-       " 'data\\\\dask_multi_files/ddf10.csv',\n",
-       " 'data\\\\dask_multi_files/ddf11.csv',\n",
-       " 'data\\\\dask_multi_files/ddf12.csv',\n",
-       " 'data\\\\dask_multi_files/ddf13.csv',\n",
-       " 'data\\\\dask_multi_files/ddf14.csv',\n",
-       " 'data\\\\dask_multi_files/ddf15.csv',\n",
-       " 'data\\\\dask_multi_files/ddf16.csv',\n",
-       " 'data\\\\dask_multi_files/ddf17.csv',\n",
-       " 'data\\\\dask_multi_files/ddf18.csv',\n",
-       " 'data\\\\dask_multi_files/ddf19.csv',\n",
-       " 'data\\\\dask_multi_files/ddf20.csv',\n",
-       " 'data\\\\dask_multi_files/ddf21.csv',\n",
-       " 'data\\\\dask_multi_files/ddf22.csv',\n",
-       " 'data\\\\dask_multi_files/ddf23.csv',\n",
-       " 'data\\\\dask_multi_files/ddf24.csv',\n",
-       " 'data\\\\dask_multi_files/ddf25.csv',\n",
-       " 'data\\\\dask_multi_files/ddf26.csv',\n",
-       " 'data\\\\dask_multi_files/ddf27.csv',\n",
-       " 'data\\\\dask_multi_files/ddf28.csv',\n",
-       " 'data\\\\dask_multi_files/ddf29.csv']"
+       "['/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf00.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf01.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf02.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf03.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf04.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf05.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf06.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf07.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf08.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf09.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf10.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf11.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf12.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf13.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf14.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf15.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf16.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf17.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf18.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf19.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf20.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf21.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf22.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf23.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf24.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf25.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf26.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf27.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf28.csv',\n",
+       " '/home/runner/work/dask-examples/dask-examples/dataframes/data/dask_multi_files/ddf29.csv']"
       ]
      },
      "execution_count": 35,
@@ -2423,7 +2675,14 @@
   {
    "cell_type": "code",
    "execution_count": 36,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:47:41.200375Z",
+     "iopub.status.busy": "2021-01-14T10:47:41.199979Z",
+     "iopub.status.idle": "2021-01-14T10:47:41.212813Z",
+     "shell.execute_reply": "2021-01-14T10:47:41.213575Z"
+    }
+   },
    "outputs": [
     {
      "data": {
@@ -2457,14 +2716,32 @@
   {
    "cell_type": "code",
    "execution_count": 37,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:47:41.216588Z",
+     "iopub.status.busy": "2021-01-14T10:47:41.216178Z",
+     "iopub.status.idle": "2021-01-14T10:47:43.638361Z",
+     "shell.execute_reply": "2021-01-14T10:47:43.638887Z"
+    }
+   },
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "Wall time: 6.58 s\n"
+      "CPU times: user 2.18 s, sys: 183 ms, total: 2.36 s\n",
+      "Wall time: 2.41 s\n"
      ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "2592000"
+      ]
+     },
+     "execution_count": 37,
+     "metadata": {},
+     "output_type": "execute_result"
     }
    ],
    "source": [
@@ -2478,14 +2755,121 @@
   {
    "cell_type": "code",
    "execution_count": 38,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:47:43.642429Z",
+     "iopub.status.busy": "2021-01-14T10:47:43.642007Z",
+     "iopub.status.idle": "2021-01-14T10:47:43.669057Z",
+     "shell.execute_reply": "2021-01-14T10:47:43.668683Z"
+    }
+   },
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "Wall time: 99.9 ms\n"
+      "CPU times: user 14.2 ms, sys: 0 ns, total: 14.2 ms\n",
+      "Wall time: 13.9 ms\n"
      ]
+    },
+    {
+     "data": {
+      "text/html": [
+       "<div><strong>Dask DataFrame Structure:</strong></div>\n",
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>ID</th>\n",
+       "      <th>name</th>\n",
+       "      <th>x</th>\n",
+       "      <th>y</th>\n",
+       "      <th>times</th>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>npartitions=30</th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th></th>\n",
+       "      <td>int64</td>\n",
+       "      <td>object</td>\n",
+       "      <td>float64</td>\n",
+       "      <td>float64</td>\n",
+       "      <td>object</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th></th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>...</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th></th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th></th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>\n",
+       "<div>Dask Name: read-csv, 30 tasks</div>"
+      ],
+      "text/plain": [
+       "Dask DataFrame Structure:\n",
+       "                   ID    name        x        y   times\n",
+       "npartitions=30                                         \n",
+       "                int64  object  float64  float64  object\n",
+       "                  ...     ...      ...      ...     ...\n",
+       "...               ...     ...      ...      ...     ...\n",
+       "                  ...     ...      ...      ...     ...\n",
+       "                  ...     ...      ...      ...     ...\n",
+       "Dask Name: read-csv, 30 tasks"
+      ]
+     },
+     "execution_count": 38,
+     "metadata": {},
+     "output_type": "execute_result"
     }
    ],
    "source": [
@@ -2505,14 +2889,32 @@
   {
    "cell_type": "code",
    "execution_count": 39,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:47:43.672098Z",
+     "iopub.status.busy": "2021-01-14T10:47:43.671702Z",
+     "iopub.status.idle": "2021-01-14T10:47:45.135504Z",
+     "shell.execute_reply": "2021-01-14T10:47:45.135114Z"
+    }
+   },
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "Wall time: 2.92 s\n"
+      "CPU times: user 113 ms, sys: 153 µs, total: 113 ms\n",
+      "Wall time: 1.46 s\n"
      ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "2592000"
+      ]
+     },
+     "execution_count": 39,
+     "metadata": {},
+     "output_type": "execute_result"
     }
    ],
    "source": [
@@ -2534,7 +2936,14 @@
   {
    "cell_type": "code",
    "execution_count": 40,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:47:45.138575Z",
+     "iopub.status.busy": "2021-01-14T10:47:45.138180Z",
+     "iopub.status.idle": "2021-01-14T10:47:45.360483Z",
+     "shell.execute_reply": "2021-01-14T10:47:45.360081Z"
+    }
+   },
    "outputs": [
     {
      "data": {
@@ -2567,18 +2976,18 @@
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>0</th>\n",
-       "      <td>972</td>\n",
-       "      <td>Alice</td>\n",
-       "      <td>0.532136</td>\n",
-       "      <td>22.962368</td>\n",
+       "      <td>989</td>\n",
+       "      <td>Bob</td>\n",
+       "      <td>-0.960733</td>\n",
+       "      <td>-0.979164</td>\n",
        "      <td>00:00:00</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>1</th>\n",
-       "      <td>964</td>\n",
-       "      <td>Patricia</td>\n",
-       "      <td>0.004575</td>\n",
-       "      <td>-0.344598</td>\n",
+       "      <td>1085</td>\n",
+       "      <td>Tim</td>\n",
+       "      <td>0.890618</td>\n",
+       "      <td>-0.608660</td>\n",
        "      <td>00:00:01</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
@@ -2586,9 +2995,9 @@
        "</div>"
       ],
       "text/plain": [
-       "    ID      name         x          y     times\n",
-       "0  972     Alice  0.532136  22.962368  00:00:00\n",
-       "1  964  Patricia  0.004575  -0.344598  00:00:01"
+       "     ID name         x         y     times\n",
+       "0   989  Bob -0.960733 -0.979164  00:00:00\n",
+       "1  1085  Tim  0.890618 -0.608660  00:00:01"
       ]
      },
      "execution_count": 40,
@@ -2625,7 +3034,14 @@
   {
    "cell_type": "code",
    "execution_count": 41,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:47:45.364670Z",
+     "iopub.status.busy": "2021-01-14T10:47:45.364257Z",
+     "iopub.status.idle": "2021-01-14T10:47:50.657463Z",
+     "shell.execute_reply": "2021-01-14T10:47:50.657818Z"
+    }
+   },
    "outputs": [
     {
      "data": {
@@ -2656,32 +3072,32 @@
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>0</th>\n",
-       "      <td>Alice</td>\n",
-       "      <td>972</td>\n",
+       "      <td>Bob</td>\n",
+       "      <td>989</td>\n",
        "      <td>00</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>1</th>\n",
-       "      <td>Patricia</td>\n",
-       "      <td>964</td>\n",
+       "      <td>Tim</td>\n",
+       "      <td>1085</td>\n",
        "      <td>00</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>2</th>\n",
-       "      <td>Edith</td>\n",
-       "      <td>1025</td>\n",
+       "      <td>Yvonne</td>\n",
+       "      <td>989</td>\n",
        "      <td>00</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>3</th>\n",
-       "      <td>Quinn</td>\n",
-       "      <td>974</td>\n",
+       "      <td>Patricia</td>\n",
+       "      <td>1002</td>\n",
        "      <td>00</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>4</th>\n",
-       "      <td>Kevin</td>\n",
-       "      <td>1000</td>\n",
+       "      <td>George</td>\n",
+       "      <td>979</td>\n",
        "      <td>00</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
@@ -2690,11 +3106,11 @@
       ],
       "text/plain": [
        "       name    ID seconds\n",
-       "0     Alice   972      00\n",
-       "1  Patricia   964      00\n",
-       "2     Edith  1025      00\n",
-       "3     Quinn   974      00\n",
-       "4     Kevin  1000      00"
+       "0       Bob   989      00\n",
+       "1       Tim  1085      00\n",
+       "2    Yvonne   989      00\n",
+       "3  Patricia  1002      00\n",
+       "4    George   979      00"
       ]
      },
      "execution_count": 41,
@@ -2713,7 +3129,14 @@
   {
    "cell_type": "code",
    "execution_count": 42,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:47:50.660701Z",
+     "iopub.status.busy": "2021-01-14T10:47:50.659890Z",
+     "iopub.status.idle": "2021-01-14T10:47:52.448743Z",
+     "shell.execute_reply": "2021-01-14T10:47:52.449121Z"
+    }
+   },
    "outputs": [],
    "source": [
     "pdf_gb = pdf.groupby(pdf.name)\n",
@@ -2726,7 +3149,14 @@
   {
    "cell_type": "code",
    "execution_count": 43,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:47:52.451796Z",
+     "iopub.status.busy": "2021-01-14T10:47:52.450972Z",
+     "iopub.status.idle": "2021-01-14T10:47:52.479403Z",
+     "shell.execute_reply": "2021-01-14T10:47:52.479778Z"
+    }
+   },
    "outputs": [
     {
      "name": "stdout",
@@ -2734,14 +3164,15 @@
      "text": [
       "       Weight                                                 ID  \\\n",
       "name                                                               \n",
-      "Alice   99611  [1024, 1025, 1026, 1027, 1028, 1029, 1030, 103...   \n",
-      "Bob     99846  [1024, 1025, 1026, 1027, 1028, 1029, 1030, 103...   \n",
+      "Alice   99451  [1024, 1025, 1026, 1027, 1028, 1029, 1030, 103...   \n",
+      "Bob     99945  [1024, 1025, 1026, 1027, 1028, 1029, 1030, 103...   \n",
       "\n",
       "                                                 seconds  \n",
       "name                                                      \n",
-      "Alice  [70, 52, 37, 45, 40, 03, 56, 61, 04, 00, 62, 7...  \n",
-      "Bob    [70, 52, 37, 45, 40, 03, 56, 61, 04, 00, 62, 7...  \n",
-      "Wall time: 150 ms\n"
+      "Alice  [24, 26, 56, 23, 78, 92, 65, 84, 13, 40, 30, 6...  \n",
+      "Bob    [24, 26, 56, 23, 78, 92, 65, 84, 13, 40, 30, 6...  \n",
+      "CPU times: user 21.6 ms, sys: 139 µs, total: 21.8 ms\n",
+      "Wall time: 22.1 ms\n"
      ]
     }
    ],
@@ -2770,7 +3201,14 @@
   {
    "cell_type": "code",
    "execution_count": 44,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:47:52.482450Z",
+     "iopub.status.busy": "2021-01-14T10:47:52.481609Z",
+     "iopub.status.idle": "2021-01-14T10:47:53.317635Z",
+     "shell.execute_reply": "2021-01-14T10:47:53.318261Z"
+    }
+   },
    "outputs": [
     {
      "data": {
@@ -2801,14 +3239,14 @@
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>0</th>\n",
-       "      <td>Alice</td>\n",
-       "      <td>972</td>\n",
+       "      <td>Bob</td>\n",
+       "      <td>989</td>\n",
        "      <td>00</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>1</th>\n",
-       "      <td>Patricia</td>\n",
-       "      <td>964</td>\n",
+       "      <td>Tim</td>\n",
+       "      <td>1085</td>\n",
        "      <td>01</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
@@ -2816,9 +3254,9 @@
        "</div>"
       ],
       "text/plain": [
-       "       name   ID seconds\n",
-       "0     Alice  972      00\n",
-       "1  Patricia  964      01"
+       "  name    ID seconds\n",
+       "0  Bob   989      00\n",
+       "1  Tim  1085      01"
       ]
      },
      "execution_count": 44,
@@ -2837,7 +3275,14 @@
   {
    "cell_type": "code",
    "execution_count": 45,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:47:53.321253Z",
+     "iopub.status.busy": "2021-01-14T10:47:53.320361Z",
+     "iopub.status.idle": "2021-01-14T10:47:53.333697Z",
+     "shell.execute_reply": "2021-01-14T10:47:53.334338Z"
+    }
+   },
    "outputs": [
     {
      "data": {
@@ -2857,7 +3302,14 @@
   {
    "cell_type": "code",
    "execution_count": 46,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:47:53.340758Z",
+     "iopub.status.busy": "2021-01-14T10:47:53.336214Z",
+     "iopub.status.idle": "2021-01-14T10:47:53.573846Z",
+     "shell.execute_reply": "2021-01-14T10:47:53.574558Z"
+    }
+   },
    "outputs": [],
    "source": [
     "df_gb = ddf.groupby(ddf.name)\n",
@@ -2870,14 +3322,79 @@
   {
    "cell_type": "code",
    "execution_count": 47,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:47:53.577360Z",
+     "iopub.status.busy": "2021-01-14T10:47:53.576519Z",
+     "iopub.status.idle": "2021-01-14T10:48:07.289371Z",
+     "shell.execute_reply": "2021-01-14T10:48:07.289692Z"
+    }
+   },
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "Wall time: 20 s\n"
+      "CPU times: user 1.49 s, sys: 64.3 ms, total: 1.55 s\n",
+      "Wall time: 13.7 s\n"
      ]
+    },
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Weight</th>\n",
+       "      <th>ID_att</th>\n",
+       "      <th>seconds_att</th>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>name</th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>Victor</th>\n",
+       "      <td>100448</td>\n",
+       "      <td>[1024, 1025, 1026, 1027, 1028, 1029, 1030, 103...</td>\n",
+       "      <td>[18, 32, 17, 16, 53, 37, 30, 11, 07, 01, 02, 1...</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "        Weight                                             ID_att  \\\n",
+       "name                                                                \n",
+       "Victor  100448  [1024, 1025, 1026, 1027, 1028, 1029, 1030, 103...   \n",
+       "\n",
+       "                                              seconds_att  \n",
+       "name                                                       \n",
+       "Victor  [18, 32, 17, 16, 53, 37, 30, 11, 07, 01, 02, 1...  "
+      ]
+     },
+     "execution_count": 47,
+     "metadata": {},
+     "output_type": "execute_result"
     }
    ],
    "source": [
@@ -2899,7 +3416,14 @@
   {
    "cell_type": "code",
    "execution_count": 48,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:07.293098Z",
+     "iopub.status.busy": "2021-01-14T10:48:07.292696Z",
+     "iopub.status.idle": "2021-01-14T10:48:07.295235Z",
+     "shell.execute_reply": "2021-01-14T10:48:07.295660Z"
+    }
+   },
    "outputs": [],
    "source": [
     "import itertools\n",
@@ -2912,14 +3436,87 @@
   {
    "cell_type": "code",
    "execution_count": 49,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:07.305578Z",
+     "iopub.status.busy": "2021-01-14T10:48:07.303314Z",
+     "iopub.status.idle": "2021-01-14T10:48:10.032639Z",
+     "shell.execute_reply": "2021-01-14T10:48:10.032186Z"
+    }
+   },
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "Wall time: 2.98 s\n"
+      "CPU times: user 182 ms, sys: 12.8 ms, total: 195 ms\n",
+      "Wall time: 2.71 s\n"
      ]
+    },
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Weight</th>\n",
+       "      <th>ID</th>\n",
+       "      <th>seconds</th>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>name</th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>Alice</th>\n",
+       "      <td>99451</td>\n",
+       "      <td>[1024, 1025, 1026, 1027, 1028, 1029, 1030, 103...</td>\n",
+       "      <td>[05, 13, 59, 33, 43, 23, 38, 47, 04, 12, 36, 4...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>Bob</th>\n",
+       "      <td>99945</td>\n",
+       "      <td>[1024, 1025, 1026, 1027, 1028, 1029, 1030, 103...</td>\n",
+       "      <td>[05, 13, 59, 33, 43, 23, 38, 47, 04, 12, 36, 4...</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "       Weight                                                 ID  \\\n",
+       "name                                                               \n",
+       "Alice   99451  [1024, 1025, 1026, 1027, 1028, 1029, 1030, 103...   \n",
+       "Bob     99945  [1024, 1025, 1026, 1027, 1028, 1029, 1030, 103...   \n",
+       "\n",
+       "                                                 seconds  \n",
+       "name                                                      \n",
+       "Alice  [05, 13, 59, 33, 43, 23, 38, 47, 04, 12, 36, 4...  \n",
+       "Bob    [05, 13, 59, 33, 43, 23, 38, 47, 04, 12, 36, 4...  "
+      ]
+     },
+     "execution_count": 49,
+     "metadata": {},
+     "output_type": "execute_result"
     }
    ],
    "source": [
@@ -2955,7 +3552,14 @@
   {
    "cell_type": "code",
    "execution_count": 50,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:10.036108Z",
+     "iopub.status.busy": "2021-01-14T10:48:10.035700Z",
+     "iopub.status.idle": "2021-01-14T10:48:10.087581Z",
+     "shell.execute_reply": "2021-01-14T10:48:10.087195Z"
+    }
+   },
    "outputs": [
     {
      "data": {
@@ -2994,19 +3598,19 @@
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>2000-01-01</th>\n",
-       "      <td>1035</td>\n",
-       "      <td>Xavier</td>\n",
-       "      <td>0.066367</td>\n",
-       "      <td>0.765965</td>\n",
+       "      <td>977</td>\n",
+       "      <td>Oliver</td>\n",
+       "      <td>-0.466367</td>\n",
+       "      <td>-0.152702</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
        "</table>\n",
        "</div>"
       ],
       "text/plain": [
-       "              id    name         x         y\n",
-       "timestamp                                   \n",
-       "2000-01-01  1035  Xavier  0.066367  0.765965"
+       "             id    name         x         y\n",
+       "timestamp                                  \n",
+       "2000-01-01  977  Oliver -0.466367 -0.152702"
       ]
      },
      "execution_count": 50,
@@ -3023,7 +3627,14 @@
   {
    "cell_type": "code",
    "execution_count": 51,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:10.098533Z",
+     "iopub.status.busy": "2021-01-14T10:48:10.097736Z",
+     "iopub.status.idle": "2021-01-14T10:48:10.101189Z",
+     "shell.execute_reply": "2021-01-14T10:48:10.100613Z"
+    }
+   },
    "outputs": [],
    "source": [
     "def func_dist2(df, coor_x, coor_y):\n",
@@ -3085,7 +3696,14 @@
   {
    "cell_type": "code",
    "execution_count": 52,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:10.110808Z",
+     "iopub.status.busy": "2021-01-14T10:48:10.109109Z",
+     "iopub.status.idle": "2021-01-14T10:48:10.113427Z",
+     "shell.execute_reply": "2021-01-14T10:48:10.113072Z"
+    }
+   },
    "outputs": [],
    "source": [
     "# Still results with an error\n",
@@ -3141,7 +3759,14 @@
   {
    "cell_type": "code",
    "execution_count": 53,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:10.118557Z",
+     "iopub.status.busy": "2021-01-14T10:48:10.118020Z",
+     "iopub.status.idle": "2021-01-14T10:48:10.179445Z",
+     "shell.execute_reply": "2021-01-14T10:48:10.179855Z"
+    }
+   },
    "outputs": [
     {
      "data": {
@@ -3182,29 +3807,29 @@
        "  <tbody>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:00</th>\n",
-       "      <td>995</td>\n",
-       "      <td>Jerry</td>\n",
-       "      <td>-0.464037</td>\n",
-       "      <td>0.255622</td>\n",
+       "      <td>1011</td>\n",
+       "      <td>Quinn</td>\n",
+       "      <td>0.750660</td>\n",
+       "      <td>-0.974292</td>\n",
        "      <td>NaN</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>2000-01-01 00:00:01</th>\n",
-       "      <td>973</td>\n",
-       "      <td>Frank</td>\n",
-       "      <td>-0.446939</td>\n",
-       "      <td>0.055328</td>\n",
-       "      <td>0.201022</td>\n",
+       "      <td>1015</td>\n",
+       "      <td>Oliver</td>\n",
+       "      <td>-0.443239</td>\n",
+       "      <td>0.184505</td>\n",
+       "      <td>1.663792</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
        "</table>\n",
        "</div>"
       ],
       "text/plain": [
-       "                      id   name         x         y       col\n",
-       "timestamp                                                    \n",
-       "2000-01-01 00:00:00  995  Jerry -0.464037  0.255622       NaN\n",
-       "2000-01-01 00:00:01  973  Frank -0.446939  0.055328  0.201022"
+       "                       id    name         x         y       col\n",
+       "timestamp                                                      \n",
+       "2000-01-01 00:00:00  1011   Quinn  0.750660 -0.974292       NaN\n",
+       "2000-01-01 00:00:01  1015  Oliver -0.443239  0.184505  1.663792"
       ]
      },
      "execution_count": 53,
@@ -3248,7 +3873,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.6.5"
+   "version": "3.8.6"
   },
   "mimetype": "text/x-python",
   "name": "python",

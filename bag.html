@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Dask Bags &mdash; Dask Examples  documentation</title>
   
@@ -18,7 +18,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -136,7 +139,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Dask Examples
+            <a href="index.html" class="icon icon-home"> Dask Examples
           
 
           
@@ -265,6 +268,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -276,7 +281,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/bag.ipynb.txt" rel="nofollow"> View page source</a>
           
         
@@ -584,6 +589,17 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/node.py:151: UserWarning: Port 8787 is already in use.
+Perhaps you already have a cluster running?
+Hosting the HTTP server on port 36329 instead
+  warnings.warn(
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -594,8 +610,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:44513</li>
-  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:33273</li>
+  <li><b>Dashboard: </b><a href='http://127.0.0.1:36329/status' target='_blank'>http://127.0.0.1:36329/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -665,8 +681,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 37, &#34;name&#34;: [&#34;Jacquelynn&#34;, &#34;Phelps&#34;], &#34;occupation&#34;: &#34;Security Consultant&#34;, &#34;telephone&#34;: &#34;503.139.9992&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;689 Garden Green&#34;, &#34;city&#34;: &#34;Shakopee&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;4208 3697 3820 5427&#34;, &#34;expiration-date&#34;: &#34;01/21&#34;}}
-{&#34;age&#34;: 56, &#34;name&#34;: [&#34;Kurt&#34;, &#34;Cantu&#34;], &#34;occupation&#34;: &#34;Car Dealer&#34;, &#34;telephone&#34;: &#34;299-641-1333&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;874 Robert Kirk Gate&#34;, &#34;city&#34;: &#34;Natchez&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3783 955212 03420&#34;, &#34;expiration-date&#34;: &#34;10/23&#34;}}
+{&#34;age&#34;: 56, &#34;name&#34;: [&#34;Le&#34;, &#34;Morton&#34;], &#34;occupation&#34;: &#34;Medical Secretary&#34;, &#34;telephone&#34;: &#34;591.139.2820&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1296 Young Bend&#34;, &#34;city&#34;: &#34;Great Falls&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3444 778222 54046&#34;, &#34;expiration-date&#34;: &#34;08/20&#34;}}
+{&#34;age&#34;: 17, &#34;name&#34;: [&#34;Mary&#34;, &#34;Pugh&#34;], &#34;occupation&#34;: &#34;Industrial Consultant&#34;, &#34;telephone&#34;: &#34;066.481.6992&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1298 Jamestown Square&#34;, &#34;city&#34;: &#34;Mount Clemens&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3400 563471 96728&#34;, &#34;expiration-date&#34;: &#34;02/20&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -706,19 +722,18 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 37,
-  &#39;name&#39;: [&#39;Jacquelynn&#39;, &#39;Phelps&#39;],
-  &#39;occupation&#39;: &#39;Security Consultant&#39;,
-  &#39;telephone&#39;: &#39;503.139.9992&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;689 Garden Green&#39;, &#39;city&#39;: &#39;Shakopee&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4208 3697 3820 5427&#39;,
-   &#39;expiration-date&#39;: &#39;01/21&#39;}},
- {&#39;age&#39;: 56,
-  &#39;name&#39;: [&#39;Kurt&#39;, &#39;Cantu&#39;],
-  &#39;occupation&#39;: &#39;Car Dealer&#39;,
-  &#39;telephone&#39;: &#39;299-641-1333&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;874 Robert Kirk Gate&#39;, &#39;city&#39;: &#39;Natchez&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3783 955212 03420&#39;, &#39;expiration-date&#39;: &#39;10/23&#39;}})
+({&#39;age&#39;: 56,
+  &#39;name&#39;: [&#39;Le&#39;, &#39;Morton&#39;],
+  &#39;occupation&#39;: &#39;Medical Secretary&#39;,
+  &#39;telephone&#39;: &#39;591.139.2820&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1296 Young Bend&#39;, &#39;city&#39;: &#39;Great Falls&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3444 778222 54046&#39;, &#39;expiration-date&#39;: &#39;08/20&#39;}},
+ {&#39;age&#39;: 17,
+  &#39;name&#39;: [&#39;Mary&#39;, &#39;Pugh&#39;],
+  &#39;occupation&#39;: &#39;Industrial Consultant&#39;,
+  &#39;telephone&#39;: &#39;066.481.6992&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1298 Jamestown Square&#39;, &#39;city&#39;: &#39;Mount Clemens&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3400 563471 96728&#39;, &#39;expiration-date&#39;: &#39;02/20&#39;}})
 </pre></div></div>
 </div>
 </div>
@@ -740,19 +755,19 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 37,
-  &#39;name&#39;: [&#39;Jacquelynn&#39;, &#39;Phelps&#39;],
-  &#39;occupation&#39;: &#39;Security Consultant&#39;,
-  &#39;telephone&#39;: &#39;503.139.9992&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;689 Garden Green&#39;, &#39;city&#39;: &#39;Shakopee&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4208 3697 3820 5427&#39;,
-   &#39;expiration-date&#39;: &#39;01/21&#39;}},
- {&#39;age&#39;: 56,
-  &#39;name&#39;: [&#39;Kurt&#39;, &#39;Cantu&#39;],
-  &#39;occupation&#39;: &#39;Car Dealer&#39;,
-  &#39;telephone&#39;: &#39;299-641-1333&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;874 Robert Kirk Gate&#39;, &#39;city&#39;: &#39;Natchez&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3783 955212 03420&#39;, &#39;expiration-date&#39;: &#39;10/23&#39;}})
+({&#39;age&#39;: 56,
+  &#39;name&#39;: [&#39;Le&#39;, &#39;Morton&#39;],
+  &#39;occupation&#39;: &#39;Medical Secretary&#39;,
+  &#39;telephone&#39;: &#39;591.139.2820&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1296 Young Bend&#39;, &#39;city&#39;: &#39;Great Falls&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3444 778222 54046&#39;, &#39;expiration-date&#39;: &#39;08/20&#39;}},
+ {&#39;age&#39;: 65,
+  &#39;name&#39;: [&#39;Glayds&#39;, &#39;Harvey&#39;],
+  &#39;occupation&#39;: &#39;Sales Assistant&#39;,
+  &#39;telephone&#39;: &#39;(468) 305-6734&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1070 Doric Drung&#39;, &#39;city&#39;: &#39;Rockwall&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4790 9026 6695 6340&#39;,
+   &#39;expiration-date&#39;: &#39;06/16&#39;}})
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -770,7 +785,7 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-(&#39;Security Consultant&#39;, &#39;Car Dealer&#39;)
+(&#39;Medical Secretary&#39;, &#39;Industrial Consultant&#39;)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -833,16 +848,16 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[(&#39;Writer&#39;, 14),
- (&#39;Technician&#39;, 14),
- (&#39;Outdoor Pursuits&#39;, 14),
- (&#39;Off Shore&#39;, 14),
- (&#39;Business Consultant&#39;, 13),
- (&#39;Labourer&#39;, 13),
- (&#39;Pig Man&#39;, 13),
- (&#39;Travel Guide Writer&#39;, 13),
- (&#39;Messenger&#39;, 13),
- (&#39;Cargo Operator&#39;, 13)]
+[(&#39;Vehicle Assessor&#39;, 16),
+ (&#39;Housewife&#39;, 14),
+ (&#39;Cable TV Installer&#39;, 13),
+ (&#39;Town Clerk&#39;, 13),
+ (&#39;Investigator&#39;, 13),
+ (&#39;Fruiterer&#39;, 13),
+ (&#39;Lathe Operator&#39;, 12),
+ (&#39;Bank Clerk&#39;, 12),
+ (&#39;Aromatherapist&#39;, 12),
+ (&#39;Masseuse&#39;, 12)]
 </pre></div></div>
 </div>
 </div>
@@ -899,13 +914,12 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 37,
-  &#39;name&#39;: [&#39;Jacquelynn&#39;, &#39;Phelps&#39;],
-  &#39;occupation&#39;: &#39;Security Consultant&#39;,
-  &#39;telephone&#39;: &#39;503.139.9992&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;689 Garden Green&#39;, &#39;city&#39;: &#39;Shakopee&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4208 3697 3820 5427&#39;,
-   &#39;expiration-date&#39;: &#39;01/21&#39;}},)
+({&#39;age&#39;: 56,
+  &#39;name&#39;: [&#39;Le&#39;, &#39;Morton&#39;],
+  &#39;occupation&#39;: &#39;Medical Secretary&#39;,
+  &#39;telephone&#39;: &#39;591.139.2820&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1296 Young Bend&#39;, &#39;city&#39;: &#39;Great Falls&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3444 778222 54046&#39;, &#39;expiration-date&#39;: &#39;08/20&#39;}},)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -935,14 +949,14 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 37,
-  &#39;occupation&#39;: &#39;Security Consultant&#39;,
-  &#39;telephone&#39;: &#39;503.139.9992&#39;,
-  &#39;credit-card-number&#39;: &#39;4208 3697 3820 5427&#39;,
-  &#39;credit-card-expiration&#39;: &#39;01/21&#39;,
-  &#39;name&#39;: &#39;Jacquelynn Phelps&#39;,
-  &#39;street-address&#39;: &#39;689 Garden Green&#39;,
-  &#39;city&#39;: &#39;Shakopee&#39;},)
+({&#39;age&#39;: 56,
+  &#39;occupation&#39;: &#39;Medical Secretary&#39;,
+  &#39;telephone&#39;: &#39;591.139.2820&#39;,
+  &#39;credit-card-number&#39;: &#39;3444 778222 54046&#39;,
+  &#39;credit-card-expiration&#39;: &#39;08/20&#39;,
+  &#39;name&#39;: &#39;Le Morton&#39;,
+  &#39;street-address&#39;: &#39;1296 Young Bend&#39;,
+  &#39;city&#39;: &#39;Great Falls&#39;},)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -991,58 +1005,58 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
   <tbody>
     <tr>
       <th>0</th>
-      <td>37</td>
-      <td>Security Consultant</td>
-      <td>503.139.9992</td>
-      <td>4208 3697 3820 5427</td>
-      <td>01/21</td>
-      <td>Jacquelynn Phelps</td>
-      <td>689 Garden Green</td>
-      <td>Shakopee</td>
+      <td>56</td>
+      <td>Medical Secretary</td>
+      <td>591.139.2820</td>
+      <td>3444 778222 54046</td>
+      <td>08/20</td>
+      <td>Le Morton</td>
+      <td>1296 Young Bend</td>
+      <td>Great Falls</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>56</td>
-      <td>Car Dealer</td>
-      <td>299-641-1333</td>
-      <td>3783 955212 03420</td>
-      <td>10/23</td>
-      <td>Kurt Cantu</td>
-      <td>874 Robert Kirk Gate</td>
-      <td>Natchez</td>
+      <td>17</td>
+      <td>Industrial Consultant</td>
+      <td>066.481.6992</td>
+      <td>3400 563471 96728</td>
+      <td>02/20</td>
+      <td>Mary Pugh</td>
+      <td>1298 Jamestown Square</td>
+      <td>Mount Clemens</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>60</td>
-      <td>Radio Operator</td>
-      <td>162.389.8745</td>
-      <td>5166 5665 3320 6578</td>
-      <td>03/20</td>
-      <td>Exie Anderson</td>
-      <td>294 Apollo Parade</td>
-      <td>Forest Grove</td>
+      <td>65</td>
+      <td>Sales Assistant</td>
+      <td>(468) 305-6734</td>
+      <td>4790 9026 6695 6340</td>
+      <td>06/16</td>
+      <td>Glayds Harvey</td>
+      <td>1070 Doric Drung</td>
+      <td>Rockwall</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>17</td>
-      <td>Planning Engineer</td>
-      <td>863-052-3855</td>
-      <td>3725 736778 80052</td>
-      <td>01/25</td>
-      <td>Booker Mullen</td>
-      <td>350 Battery Crosby Parkway</td>
-      <td>Pasco</td>
+      <td>33</td>
+      <td>Charge Hand</td>
+      <td>+1-(723)-613-3031</td>
+      <td>3797 255724 62716</td>
+      <td>08/24</td>
+      <td>Darius Hunt</td>
+      <td>289 Mabini Nene</td>
+      <td>Bellingham</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>36</td>
-      <td>Air Traffic Controller</td>
-      <td>052.430.1264</td>
-      <td>4993 1464 1813 6604</td>
-      <td>09/25</td>
-      <td>Ricky Levine</td>
-      <td>812 Sumner Glen</td>
-      <td>Orem</td>
+      <td>66</td>
+      <td>Projectionist</td>
+      <td>+1-(588)-266-1704</td>
+      <td>3436 492655 07632</td>
+      <td>03/20</td>
+      <td>Marvin Weber</td>
+      <td>542 Stanyan Loop</td>
+      <td>Ocala</td>
     </tr>
   </tbody>
 </table>
@@ -1064,16 +1078,16 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Technician             14
-Writer                 14
-Off Shore              14
-Outdoor Pursuits       14
-Business Consultant    13
-Travel Guide Writer    13
-Cargo Operator         13
-Messenger              13
-Pig Man                13
-Labourer               13
+Vehicle Assessor      16
+Housewife             14
+Investigator          13
+Town Clerk            13
+Cable TV Installer    13
+Fruiterer             13
+Psychoanalyst         12
+Home Help             12
+Aromatherapist        12
+Lathe Operator        12
 Name: occupation, dtype: int64
 </pre></div></div>
 </div>
@@ -1104,37 +1118,29 @@ ga('send', 'pageview');
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="dataframe.html" class="btn btn-neutral float-right" title="Dask DataFrames" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="array.html" class="btn btn-neutral float-left" title="Dask Arrays" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="dataframe.html" class="btn btn-neutral float-right" title="Dask DataFrames" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="array.html" class="btn btn-neutral float-left" title="Dask Arrays" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2018, Dask Developers
+        &#169; Copyright 2018, Dask Developers.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

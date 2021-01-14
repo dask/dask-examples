@@ -23,9 +23,48 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 1,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:41.267130Z",
+     "iopub.status.busy": "2021-01-14T10:48:41.266607Z",
+     "iopub.status.idle": "2021-01-14T10:48:42.621056Z",
+     "shell.execute_reply": "2021-01-14T10:48:42.621728Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<table style=\"border: 2px solid white;\">\n",
+       "<tr>\n",
+       "<td style=\"vertical-align: top; border: 0px solid white\">\n",
+       "<h3 style=\"text-align: left;\">Client</h3>\n",
+       "<ul style=\"text-align: left; list-style: none; margin: 0; padding: 0;\">\n",
+       "  <li><b>Scheduler: </b>inproc://10.1.0.4/8415/1</li>\n",
+       "  <li><b>Dashboard: </b><a href='http://10.1.0.4:8787/status' target='_blank'>http://10.1.0.4:8787/status</a></li>\n",
+       "</ul>\n",
+       "</td>\n",
+       "<td style=\"vertical-align: top; border: 0px solid white\">\n",
+       "<h3 style=\"text-align: left;\">Cluster</h3>\n",
+       "<ul style=\"text-align: left; list-style:none; margin: 0; padding: 0;\">\n",
+       "  <li><b>Workers: </b>1</li>\n",
+       "  <li><b>Cores: </b>4</li>\n",
+       "  <li><b>Memory: </b>2.00 GB</li>\n",
+       "</ul>\n",
+       "</td>\n",
+       "</tr>\n",
+       "</table>"
+      ],
+      "text/plain": [
+       "<Client: 'inproc://10.1.0.4/8415/1' processes=1 threads=4, memory=2.00 GB>"
+      ]
+     },
+     "execution_count": 1,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "from dask.distributed import Client, progress\n",
     "client = Client(processes=False, threads_per_worker=4,\n",
@@ -42,9 +81,84 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 2,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:42.624487Z",
+     "iopub.status.busy": "2021-01-14T10:48:42.623667Z",
+     "iopub.status.idle": "2021-01-14T10:48:42.821867Z",
+     "shell.execute_reply": "2021-01-14T10:48:42.822194Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<table>\n",
+       "<tr>\n",
+       "<td>\n",
+       "<table>\n",
+       "  <thead>\n",
+       "    <tr><td> </td><th> Array </th><th> Chunk </th></tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr><th> Bytes </th><td> 160.00 MB </td> <td> 8.00 MB </td></tr>\n",
+       "    <tr><th> Shape </th><td> (200000, 100) </td> <td> (10000, 100) </td></tr>\n",
+       "    <tr><th> Count </th><td> 20 Tasks </td><td> 20 Chunks </td></tr>\n",
+       "    <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</td>\n",
+       "<td>\n",
+       "<svg width=\"75\" height=\"170\" style=\"stroke:rgb(0,0,0);stroke-width:1\" >\n",
+       "\n",
+       "  <!-- Horizontal lines -->\n",
+       "  <line x1=\"0\" y1=\"0\" x2=\"25\" y2=\"0\" style=\"stroke-width:2\" />\n",
+       "  <line x1=\"0\" y1=\"6\" x2=\"25\" y2=\"6\" />\n",
+       "  <line x1=\"0\" y1=\"12\" x2=\"25\" y2=\"12\" />\n",
+       "  <line x1=\"0\" y1=\"18\" x2=\"25\" y2=\"18\" />\n",
+       "  <line x1=\"0\" y1=\"24\" x2=\"25\" y2=\"24\" />\n",
+       "  <line x1=\"0\" y1=\"30\" x2=\"25\" y2=\"30\" />\n",
+       "  <line x1=\"0\" y1=\"36\" x2=\"25\" y2=\"36\" />\n",
+       "  <line x1=\"0\" y1=\"42\" x2=\"25\" y2=\"42\" />\n",
+       "  <line x1=\"0\" y1=\"48\" x2=\"25\" y2=\"48\" />\n",
+       "  <line x1=\"0\" y1=\"54\" x2=\"25\" y2=\"54\" />\n",
+       "  <line x1=\"0\" y1=\"60\" x2=\"25\" y2=\"60\" />\n",
+       "  <line x1=\"0\" y1=\"66\" x2=\"25\" y2=\"66\" />\n",
+       "  <line x1=\"0\" y1=\"72\" x2=\"25\" y2=\"72\" />\n",
+       "  <line x1=\"0\" y1=\"78\" x2=\"25\" y2=\"78\" />\n",
+       "  <line x1=\"0\" y1=\"84\" x2=\"25\" y2=\"84\" />\n",
+       "  <line x1=\"0\" y1=\"90\" x2=\"25\" y2=\"90\" />\n",
+       "  <line x1=\"0\" y1=\"96\" x2=\"25\" y2=\"96\" />\n",
+       "  <line x1=\"0\" y1=\"102\" x2=\"25\" y2=\"102\" />\n",
+       "  <line x1=\"0\" y1=\"108\" x2=\"25\" y2=\"108\" />\n",
+       "  <line x1=\"0\" y1=\"114\" x2=\"25\" y2=\"114\" />\n",
+       "  <line x1=\"0\" y1=\"120\" x2=\"25\" y2=\"120\" style=\"stroke-width:2\" />\n",
+       "\n",
+       "  <!-- Vertical lines -->\n",
+       "  <line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"120\" style=\"stroke-width:2\" />\n",
+       "  <line x1=\"25\" y1=\"0\" x2=\"25\" y2=\"120\" style=\"stroke-width:2\" />\n",
+       "\n",
+       "  <!-- Colored Rectangle -->\n",
+       "  <polygon points=\"0.000000,0.000000 25.412617,0.000000 25.412617,120.000000 0.000000,120.000000\" style=\"fill:#ECB172A0;stroke-width:0\"/>\n",
+       "\n",
+       "  <!-- Text -->\n",
+       "  <text x=\"12.706308\" y=\"140.000000\" font-size=\"1.0rem\" font-weight=\"100\" text-anchor=\"middle\" >100</text>\n",
+       "  <text x=\"45.412617\" y=\"60.000000\" font-size=\"1.0rem\" font-weight=\"100\" text-anchor=\"middle\" transform=\"rotate(-90,45.412617,60.000000)\">200000</text>\n",
+       "</svg>\n",
+       "</td>\n",
+       "</tr>\n",
+       "</table>"
+      ],
+      "text/plain": [
+       "dask.array<normal, shape=(200000, 100), dtype=float64, chunksize=(10000, 100), chunktype=numpy.ndarray>"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "from dask_glm.datasets import make_regression\n",
     "X, y = make_regression(n_samples=200000, n_features=100, n_informative=5, chunksize=10000)\n",
@@ -53,8 +167,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 3,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:42.824621Z",
+     "iopub.status.busy": "2021-01-14T10:48:42.824144Z",
+     "iopub.status.idle": "2021-01-14T10:48:42.840549Z",
+     "shell.execute_reply": "2021-01-14T10:48:42.841101Z"
+    }
+   },
    "outputs": [],
    "source": [
     "import dask\n",
@@ -72,8 +193,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 4,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:42.843698Z",
+     "iopub.status.busy": "2021-01-14T10:48:42.843158Z",
+     "iopub.status.idle": "2021-01-14T10:48:52.463204Z",
+     "shell.execute_reply": "2021-01-14T10:48:52.462526Z"
+    }
+   },
    "outputs": [],
    "source": [
     "import dask_glm.algorithms\n",
@@ -90,9 +218,25 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 5,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:52.469835Z",
+     "iopub.status.busy": "2021-01-14T10:48:52.469329Z",
+     "iopub.status.idle": "2021-01-14T10:49:00.370121Z",
+     "shell.execute_reply": "2021-01-14T10:49:00.368870Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/dask/core.py:121: RuntimeWarning: overflow encountered in exp\n",
+      "  return func(*(_execute_task(a, cache) for a in args))\n"
+     ]
+    }
+   ],
    "source": [
     "b = dask_glm.algorithms.proximal_grad(X, y, max_iter=5)"
    ]
@@ -108,9 +252,35 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 6,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:00.376045Z",
+     "iopub.status.busy": "2021-01-14T10:49:00.375487Z",
+     "iopub.status.idle": "2021-01-14T10:49:07.662164Z",
+     "shell.execute_reply": "2021-01-14T10:49:07.661610Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/dask/core.py:121: RuntimeWarning: overflow encountered in exp\n",
+      "  return func(*(_execute_task(a, cache) for a in args))\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/dask/core.py:121: RuntimeWarning: overflow encountered in exp\n",
+      "  return func(*(_execute_task(a, cache) for a in args))\n",
+      "/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/dask/core.py:121: RuntimeWarning: overflow encountered in exp\n",
+      "  return func(*(_execute_task(a, cache) for a in args))\n"
+     ]
+    }
+   ],
    "source": [
     "import dask_glm.families\n",
     "import dask_glm.regularizers\n",
@@ -128,8 +298,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 7,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:07.670605Z",
+     "iopub.status.busy": "2021-01-14T10:49:07.670080Z",
+     "iopub.status.idle": "2021-01-14T10:49:07.849908Z",
+     "shell.execute_reply": "2021-01-14T10:49:07.850737Z"
+    }
+   },
    "outputs": [],
    "source": [
     "dask_glm.families.Poisson??"
@@ -137,8 +314,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 8,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:07.854969Z",
+     "iopub.status.busy": "2021-01-14T10:49:07.854561Z",
+     "iopub.status.idle": "2021-01-14T10:49:07.898057Z",
+     "shell.execute_reply": "2021-01-14T10:49:07.895921Z"
+    }
+   },
    "outputs": [],
    "source": [
     "dask_glm.regularizers.ElasticNet??"
@@ -168,7 +352,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.6.4"
+   "version": "3.8.6"
   }
  },
  "nbformat": 4,

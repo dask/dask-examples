@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Image Processing &mdash; Dask Examples  documentation</title>
   
@@ -18,7 +18,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -136,7 +139,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Dask Examples
+            <a href="../index.html" class="icon icon-home"> Dask Examples
           
 
           
@@ -281,6 +284,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -292,7 +297,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/applications/image-processing.ipynb.txt" rel="nofollow"> View page source</a>
           
         
@@ -630,29 +635,27 @@ div.rendered_html tbody tr:hover {
 <div class="highlight"><pre>
 Collecting scikit-image
   Downloading scikit_image-0.18.1-cp38-cp38-manylinux1_x86_64.whl (30.2 MB)
-     |████████████████████████████████| 30.2 MB 10.3 MB/s
-Requirement already satisfied: matplotlib!=3.0.0,&gt;=2.0.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from scikit-image) (3.3.3)
-Requirement already satisfied: pillow!=7.1.0,!=7.1.1,&gt;=4.3.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from scikit-image) (8.0.1)
-Requirement already satisfied: numpy&gt;=1.16.5 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from scikit-image) (1.18.5)
-Requirement already satisfied: tifffile&gt;=2019.7.26 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from scikit-image) (2020.12.8)
+     |████████████████████████████████| 30.2 MB 10.6 MB/s
 Requirement already satisfied: scipy&gt;=1.0.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from scikit-image) (1.6.0)
-Collecting imageio&gt;=2.3.0
-  Downloading imageio-2.9.0-py3-none-any.whl (3.3 MB)
-     |████████████████████████████████| 3.3 MB 83.8 MB/s
-Requirement already satisfied: python-dateutil&gt;=2.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (2.8.1)
+Requirement already satisfied: numpy&gt;=1.16.5 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from scikit-image) (1.18.5)
+Requirement already satisfied: imageio&gt;=2.3.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from scikit-image) (2.9.0)
+Requirement already satisfied: pillow!=7.1.0,!=7.1.1,&gt;=4.3.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from scikit-image) (8.1.0)
+Requirement already satisfied: tifffile&gt;=2019.7.26 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from scikit-image) (2021.1.11)
+Requirement already satisfied: matplotlib!=3.0.0,&gt;=2.0.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from scikit-image) (3.3.3)
+Requirement already satisfied: cycler&gt;=0.10 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (0.10.0)
 Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (1.3.1)
 Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.3 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (2.4.7)
-Requirement already satisfied: cycler&gt;=0.10 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (0.10.0)
+Requirement already satisfied: python-dateutil&gt;=2.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (2.8.1)
 Requirement already satisfied: six in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from cycler&gt;=0.10-&gt;matplotlib!=3.0.0,&gt;=2.0.0-&gt;scikit-image) (1.15.0)
 Collecting networkx&gt;=2.0
   Downloading networkx-2.5-py3-none-any.whl (1.6 MB)
-     |████████████████████████████████| 1.6 MB 112.3 MB/s
+     |████████████████████████████████| 1.6 MB 73.0 MB/s
 Requirement already satisfied: decorator&gt;=4.3.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from networkx&gt;=2.0-&gt;scikit-image) (4.4.2)
 Collecting PyWavelets&gt;=1.1.1
   Downloading PyWavelets-1.1.1-cp38-cp38-manylinux1_x86_64.whl (4.4 MB)
-     |████████████████████████████████| 4.4 MB 77.9 MB/s
-Installing collected packages: PyWavelets, networkx, imageio, scikit-image
-Successfully installed PyWavelets-1.1.1 imageio-2.9.0 networkx-2.5 scikit-image-0.18.1
+     |████████████████████████████████| 4.4 MB 69.8 MB/s
+Installing collected packages: PyWavelets, networkx, scikit-image
+Successfully installed PyWavelets-1.1.1 networkx-2.5 scikit-image-0.18.1
 </pre></div></div>
 </div>
 <p>If you are running this notebook on your own computer and not in the mybinder environment, you’ll additionally need to ensure your Python environment contains: * dask * dask-image * python-graphviz * scikit-image * matplotlib * numpy</p>
@@ -785,7 +788,7 @@ dask.array&lt;from-value, shape=(1, 512, 512, 3), dtype=uint8, chunksize=(1, 512
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f122c7079d0&gt;
+&lt;matplotlib.image.AxesImage at 0x7fb358000070&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1082,7 +1085,7 @@ Unable to revert mtime: /usr/share/fonts/cmap/adobe-korea1
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f122c4bf5b0&gt;
+&lt;matplotlib.image.AxesImage at 0x7fb354575dc0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1208,7 +1211,7 @@ Unable to revert mtime: /usr/share/fonts/cmap/adobe-korea1
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f122c2b8550&gt;
+&lt;matplotlib.image.AxesImage at 0x7fb354427760&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1261,7 +1264,7 @@ Number of labels: 78
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f122c21c550&gt;
+&lt;matplotlib.image.AxesImage at 0x7fb3543889a0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1470,37 +1473,29 @@ ga('send', 'pageview');
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="prefect-etl.html" class="btn btn-neutral float-right" title="ETL Pipelines with Prefect" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="evolving-workflows.html" class="btn btn-neutral float-left" title="Handle Evolving Workflows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="prefect-etl.html" class="btn btn-neutral float-right" title="ETL Pipelines with Prefect" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="evolving-workflows.html" class="btn btn-neutral float-left" title="Handle Evolving Workflows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2018, Dask Developers
+        &#169; Copyright 2018, Dask Developers.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

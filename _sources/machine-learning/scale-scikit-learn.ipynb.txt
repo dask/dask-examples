@@ -15,11 +15,39 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 1,
    "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:39.663216Z",
+     "iopub.status.busy": "2021-01-14T10:49:39.662680Z",
+     "iopub.status.idle": "2021-01-14T10:49:39.691120Z",
+     "shell.execute_reply": "2021-01-14T10:49:39.692336Z"
+    },
     "keep_output": true
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "\n",
+       "        <iframe\n",
+       "            width=\"560\"\n",
+       "            height=\"315\"\n",
+       "            src=\"https://www.youtube.com/embed/5Zf6DQaf7jk?frameborder=0&allow=autoplay%3B+encrypted-media\"\n",
+       "            frameborder=\"0\"\n",
+       "            allowfullscreen\n",
+       "        ></iframe>\n",
+       "        "
+      ],
+      "text/plain": [
+       "<IPython.lib.display.IFrame at 0x7fe5b872f9a0>"
+      ]
+     },
+     "execution_count": 1,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "from IPython.display import IFrame\n",
     "\n",
@@ -28,9 +56,48 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 2,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:39.697076Z",
+     "iopub.status.busy": "2021-01-14T10:49:39.695558Z",
+     "iopub.status.idle": "2021-01-14T10:49:42.834413Z",
+     "shell.execute_reply": "2021-01-14T10:49:42.834758Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<table style=\"border: 2px solid white;\">\n",
+       "<tr>\n",
+       "<td style=\"vertical-align: top; border: 0px solid white\">\n",
+       "<h3 style=\"text-align: left;\">Client</h3>\n",
+       "<ul style=\"text-align: left; list-style: none; margin: 0; padding: 0;\">\n",
+       "  <li><b>Scheduler: </b>tcp://127.0.0.1:39085</li>\n",
+       "  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>\n",
+       "</ul>\n",
+       "</td>\n",
+       "<td style=\"vertical-align: top; border: 0px solid white\">\n",
+       "<h3 style=\"text-align: left;\">Cluster</h3>\n",
+       "<ul style=\"text-align: left; list-style:none; margin: 0; padding: 0;\">\n",
+       "  <li><b>Workers: </b>4</li>\n",
+       "  <li><b>Cores: </b>4</li>\n",
+       "  <li><b>Memory: </b>8.00 GB</li>\n",
+       "</ul>\n",
+       "</td>\n",
+       "</tr>\n",
+       "</table>"
+      ],
+      "text/plain": [
+       "<Client: 'tcp://127.0.0.1:39085' processes=4 threads=4, memory=8.00 GB>"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "from dask.distributed import Client, progress\n",
     "client = Client(n_workers=4, threads_per_worker=1, memory_limit='2GB')\n",
@@ -63,8 +130,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 3,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:42.840450Z",
+     "iopub.status.busy": "2021-01-14T10:49:42.840040Z",
+     "iopub.status.idle": "2021-01-14T10:49:43.279093Z",
+     "shell.execute_reply": "2021-01-14T10:49:43.276770Z"
+    }
+   },
    "outputs": [],
    "source": [
     "from pprint import pprint\n",
@@ -81,9 +155,34 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 4,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:43.288784Z",
+     "iopub.status.busy": "2021-01-14T10:49:43.288363Z",
+     "iopub.status.idle": "2021-01-14T10:49:53.517075Z",
+     "shell.execute_reply": "2021-01-14T10:49:53.517827Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Loading 20 newsgroups dataset for categories:\n",
+      "['alt.atheism', 'talk.religion.misc']\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "857 documents\n",
+      "2 categories\n",
+      "\n"
+     ]
+    }
+   ],
    "source": [
     "# Scale Up: set categories=None to use all the categories\n",
     "categories = [\n",
@@ -109,8 +208,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 5,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:53.521166Z",
+     "iopub.status.busy": "2021-01-14T10:49:53.520185Z",
+     "iopub.status.idle": "2021-01-14T10:49:53.528159Z",
+     "shell.execute_reply": "2021-01-14T10:49:53.528939Z"
+    }
+   },
    "outputs": [],
    "source": [
     "pipeline = Pipeline([\n",
@@ -136,8 +242,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 6,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:53.532599Z",
+     "iopub.status.busy": "2021-01-14T10:49:53.531264Z",
+     "iopub.status.idle": "2021-01-14T10:49:53.537529Z",
+     "shell.execute_reply": "2021-01-14T10:49:53.538253Z"
+    }
+   },
    "outputs": [],
    "source": [
     "parameters = {\n",
@@ -151,8 +264,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 7,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:53.541072Z",
+     "iopub.status.busy": "2021-01-14T10:49:53.540147Z",
+     "iopub.status.idle": "2021-01-14T10:49:53.545801Z",
+     "shell.execute_reply": "2021-01-14T10:49:53.546518Z"
+    }
+   },
    "outputs": [],
    "source": [
     "grid_search = GridSearchCV(pipeline, parameters, n_jobs=-1, verbose=1, cv=3, refit=False, iid=False)"
@@ -175,9 +295,40 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 8,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:53.551440Z",
+     "iopub.status.busy": "2021-01-14T10:49:53.549208Z",
+     "iopub.status.idle": "2021-01-14T10:50:04.327063Z",
+     "shell.execute_reply": "2021-01-14T10:50:04.326481Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Fitting 3 folds for each of 8 candidates, totalling 24 fits\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "[Parallel(n_jobs=-1)]: Using backend DaskDistributedBackend with 4 concurrent workers.\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "[Parallel(n_jobs=-1)]: Done  24 out of  24 | elapsed:   10.7s finished\n",
+      "/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/sklearn/model_selection/_search.py:847: FutureWarning: The parameter 'iid' is deprecated in 0.22 and will be removed in 0.24.\n",
+      "  warnings.warn(\n"
+     ]
+    }
+   ],
    "source": [
     "import joblib\n",
     "\n",
@@ -208,8 +359,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 9,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:50:04.330266Z",
+     "iopub.status.busy": "2021-01-14T10:50:04.329821Z",
+     "iopub.status.idle": "2021-01-14T10:50:04.546022Z",
+     "shell.execute_reply": "2021-01-14T10:50:04.546789Z"
+    }
+   },
    "outputs": [],
    "source": [
     "from sklearn.datasets import load_digits\n",
@@ -226,9 +384,27 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 10,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:50:04.559159Z",
+     "iopub.status.busy": "2021-01-14T10:50:04.558265Z",
+     "iopub.status.idle": "2021-01-14T10:50:04.685352Z",
+     "shell.execute_reply": "2021-01-14T10:50:04.686290Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(1797, 64)"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "X, y = load_digits(return_X_y=True)\n",
     "X.shape"
@@ -236,8 +412,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 11,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:50:04.690825Z",
+     "iopub.status.busy": "2021-01-14T10:50:04.690320Z",
+     "iopub.status.idle": "2021-01-14T10:50:04.694594Z",
+     "shell.execute_reply": "2021-01-14T10:50:04.695703Z"
+    }
+   },
    "outputs": [],
    "source": [
     "svc = ParallelPostFit(SVC(random_state=0, gamma='scale'))\n",
@@ -259,9 +442,36 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 12,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:50:04.701103Z",
+     "iopub.status.busy": "2021-01-14T10:50:04.700692Z",
+     "iopub.status.idle": "2021-01-14T10:50:07.668048Z",
+     "shell.execute_reply": "2021-01-14T10:50:07.668478Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/sklearn/model_selection/_search.py:847: FutureWarning: The parameter 'iid' is deprecated in 0.22 and will be removed in 0.24.\n",
+      "  warnings.warn(\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "GridSearchCV(cv=3, estimator=ParallelPostFit(estimator=SVC(random_state=0)),\n",
+       "             iid=False, param_grid={'estimator__C': [0.01, 1.0, 10]})"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "grid_search.fit(X, y)"
    ]
@@ -276,8 +486,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 13,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:50:07.670736Z",
+     "iopub.status.busy": "2021-01-14T10:50:07.670194Z",
+     "iopub.status.idle": "2021-01-14T10:50:07.677656Z",
+     "shell.execute_reply": "2021-01-14T10:50:07.678204Z"
+    }
+   },
    "outputs": [],
    "source": [
     "import dask.array as da"
@@ -285,9 +502,74 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 14,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:50:07.682007Z",
+     "iopub.status.busy": "2021-01-14T10:50:07.680104Z",
+     "iopub.status.idle": "2021-01-14T10:50:07.715497Z",
+     "shell.execute_reply": "2021-01-14T10:50:07.715968Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<table>\n",
+       "<tr>\n",
+       "<td>\n",
+       "<table>\n",
+       "  <thead>\n",
+       "    <tr><td> </td><th> Array </th><th> Chunk </th></tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr><th> Bytes </th><td> 9.20 MB </td> <td> 920.06 kB </td></tr>\n",
+       "    <tr><th> Shape </th><td> (17970, 64) </td> <td> (1797, 64) </td></tr>\n",
+       "    <tr><th> Count </th><td> 11 Tasks </td><td> 10 Chunks </td></tr>\n",
+       "    <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</td>\n",
+       "<td>\n",
+       "<svg width=\"75\" height=\"170\" style=\"stroke:rgb(0,0,0);stroke-width:1\" >\n",
+       "\n",
+       "  <!-- Horizontal lines -->\n",
+       "  <line x1=\"0\" y1=\"0\" x2=\"25\" y2=\"0\" style=\"stroke-width:2\" />\n",
+       "  <line x1=\"0\" y1=\"12\" x2=\"25\" y2=\"12\" />\n",
+       "  <line x1=\"0\" y1=\"24\" x2=\"25\" y2=\"24\" />\n",
+       "  <line x1=\"0\" y1=\"36\" x2=\"25\" y2=\"36\" />\n",
+       "  <line x1=\"0\" y1=\"48\" x2=\"25\" y2=\"48\" />\n",
+       "  <line x1=\"0\" y1=\"60\" x2=\"25\" y2=\"60\" />\n",
+       "  <line x1=\"0\" y1=\"72\" x2=\"25\" y2=\"72\" />\n",
+       "  <line x1=\"0\" y1=\"84\" x2=\"25\" y2=\"84\" />\n",
+       "  <line x1=\"0\" y1=\"96\" x2=\"25\" y2=\"96\" />\n",
+       "  <line x1=\"0\" y1=\"108\" x2=\"25\" y2=\"108\" />\n",
+       "  <line x1=\"0\" y1=\"120\" x2=\"25\" y2=\"120\" style=\"stroke-width:2\" />\n",
+       "\n",
+       "  <!-- Vertical lines -->\n",
+       "  <line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"120\" style=\"stroke-width:2\" />\n",
+       "  <line x1=\"25\" y1=\"0\" x2=\"25\" y2=\"120\" style=\"stroke-width:2\" />\n",
+       "\n",
+       "  <!-- Colored Rectangle -->\n",
+       "  <polygon points=\"0.000000,0.000000 25.412617,0.000000 25.412617,120.000000 0.000000,120.000000\" style=\"fill:#ECB172A0;stroke-width:0\"/>\n",
+       "\n",
+       "  <!-- Text -->\n",
+       "  <text x=\"12.706308\" y=\"140.000000\" font-size=\"1.0rem\" font-weight=\"100\" text-anchor=\"middle\" >64</text>\n",
+       "  <text x=\"45.412617\" y=\"60.000000\" font-size=\"1.0rem\" font-weight=\"100\" text-anchor=\"middle\" transform=\"rotate(-90,45.412617,60.000000)\">17970</text>\n",
+       "</svg>\n",
+       "</td>\n",
+       "</tr>\n",
+       "</table>"
+      ],
+      "text/plain": [
+       "dask.array<concatenate, shape=(17970, 64), dtype=float64, chunksize=(1797, 64), chunktype=numpy.ndarray>"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "big_X = da.concatenate([\n",
     "    da.from_array(X, chunks=X.shape)\n",
@@ -306,9 +588,74 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 15,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:50:07.718803Z",
+     "iopub.status.busy": "2021-01-14T10:50:07.718265Z",
+     "iopub.status.idle": "2021-01-14T10:50:07.736224Z",
+     "shell.execute_reply": "2021-01-14T10:50:07.736636Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<table>\n",
+       "<tr>\n",
+       "<td>\n",
+       "<table>\n",
+       "  <thead>\n",
+       "    <tr><td> </td><th> Array </th><th> Chunk </th></tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr><th> Bytes </th><td> 143.76 kB </td> <td> 14.38 kB </td></tr>\n",
+       "    <tr><th> Shape </th><td> (17970,) </td> <td> (1797,) </td></tr>\n",
+       "    <tr><th> Count </th><td> 21 Tasks </td><td> 10 Chunks </td></tr>\n",
+       "    <tr><th> Type </th><td> int64 </td><td> numpy.ndarray </td></tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</td>\n",
+       "<td>\n",
+       "<svg width=\"170\" height=\"75\" style=\"stroke:rgb(0,0,0);stroke-width:1\" >\n",
+       "\n",
+       "  <!-- Horizontal lines -->\n",
+       "  <line x1=\"0\" y1=\"0\" x2=\"120\" y2=\"0\" style=\"stroke-width:2\" />\n",
+       "  <line x1=\"0\" y1=\"25\" x2=\"120\" y2=\"25\" style=\"stroke-width:2\" />\n",
+       "\n",
+       "  <!-- Vertical lines -->\n",
+       "  <line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"25\" style=\"stroke-width:2\" />\n",
+       "  <line x1=\"12\" y1=\"0\" x2=\"12\" y2=\"25\" />\n",
+       "  <line x1=\"24\" y1=\"0\" x2=\"24\" y2=\"25\" />\n",
+       "  <line x1=\"36\" y1=\"0\" x2=\"36\" y2=\"25\" />\n",
+       "  <line x1=\"48\" y1=\"0\" x2=\"48\" y2=\"25\" />\n",
+       "  <line x1=\"60\" y1=\"0\" x2=\"60\" y2=\"25\" />\n",
+       "  <line x1=\"72\" y1=\"0\" x2=\"72\" y2=\"25\" />\n",
+       "  <line x1=\"84\" y1=\"0\" x2=\"84\" y2=\"25\" />\n",
+       "  <line x1=\"96\" y1=\"0\" x2=\"96\" y2=\"25\" />\n",
+       "  <line x1=\"108\" y1=\"0\" x2=\"108\" y2=\"25\" />\n",
+       "  <line x1=\"120\" y1=\"0\" x2=\"120\" y2=\"25\" style=\"stroke-width:2\" />\n",
+       "\n",
+       "  <!-- Colored Rectangle -->\n",
+       "  <polygon points=\"0.000000,0.000000 120.000000,0.000000 120.000000,25.412617 0.000000,25.412617\" style=\"fill:#ECB172A0;stroke-width:0\"/>\n",
+       "\n",
+       "  <!-- Text -->\n",
+       "  <text x=\"60.000000\" y=\"45.412617\" font-size=\"1.0rem\" font-weight=\"100\" text-anchor=\"middle\" >17970</text>\n",
+       "  <text x=\"140.000000\" y=\"12.706308\" font-size=\"1.0rem\" font-weight=\"100\" text-anchor=\"middle\" transform=\"rotate(0,140.000000,12.706308)\">1</text>\n",
+       "</svg>\n",
+       "</td>\n",
+       "</tr>\n",
+       "</table>"
+      ],
+      "text/plain": [
+       "dask.array<_predict, shape=(17970,), dtype=int64, chunksize=(1797,), chunktype=numpy.ndarray>"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "predicted = grid_search.predict(big_X)\n",
     "predicted"
@@ -338,7 +685,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.3"
+   "version": "3.8.6"
   }
  },
  "nbformat": 4,

@@ -23,9 +23,48 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 1,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:11.334330Z",
+     "iopub.status.busy": "2021-01-14T10:48:11.333761Z",
+     "iopub.status.idle": "2021-01-14T10:48:12.352376Z",
+     "shell.execute_reply": "2021-01-14T10:48:12.352911Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<table style=\"border: 2px solid white;\">\n",
+       "<tr>\n",
+       "<td style=\"vertical-align: top; border: 0px solid white\">\n",
+       "<h3 style=\"text-align: left;\">Client</h3>\n",
+       "<ul style=\"text-align: left; list-style: none; margin: 0; padding: 0;\">\n",
+       "  <li><b>Scheduler: </b>inproc://10.1.0.4/8351/1</li>\n",
+       "  <li><b>Dashboard: </b><a href='http://10.1.0.4:8787/status' target='_blank'>http://10.1.0.4:8787/status</a></li>\n",
+       "</ul>\n",
+       "</td>\n",
+       "<td style=\"vertical-align: top; border: 0px solid white\">\n",
+       "<h3 style=\"text-align: left;\">Cluster</h3>\n",
+       "<ul style=\"text-align: left; list-style:none; margin: 0; padding: 0;\">\n",
+       "  <li><b>Workers: </b>1</li>\n",
+       "  <li><b>Cores: </b>4</li>\n",
+       "  <li><b>Memory: </b>2.00 GB</li>\n",
+       "</ul>\n",
+       "</td>\n",
+       "</tr>\n",
+       "</table>"
+      ],
+      "text/plain": [
+       "<Client: 'inproc://10.1.0.4/8351/1' processes=1 threads=4, memory=2.00 GB>"
+      ]
+     },
+     "execution_count": 1,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "from dask.distributed import Client\n",
     "client = Client(n_workers=1, threads_per_worker=4, processes=False, memory_limit='2GB')\n",
@@ -45,9 +84,109 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 2,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:12.357242Z",
+     "iopub.status.busy": "2021-01-14T10:48:12.356479Z",
+     "iopub.status.idle": "2021-01-14T10:48:12.593665Z",
+     "shell.execute_reply": "2021-01-14T10:48:12.593298Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div><strong>Dask DataFrame Structure:</strong></div>\n",
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>id</th>\n",
+       "      <th>name</th>\n",
+       "      <th>x</th>\n",
+       "      <th>y</th>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>npartitions=30</th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>2000-01-01</th>\n",
+       "      <td>int64</td>\n",
+       "      <td>object</td>\n",
+       "      <td>float64</td>\n",
+       "      <td>float64</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2000-01-02</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>...</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2000-01-30</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2000-01-31</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>\n",
+       "<div>Dask Name: make-timeseries, 30 tasks</div>"
+      ],
+      "text/plain": [
+       "Dask DataFrame Structure:\n",
+       "                   id    name        x        y\n",
+       "npartitions=30                                 \n",
+       "2000-01-01      int64  object  float64  float64\n",
+       "2000-01-02        ...     ...      ...      ...\n",
+       "...               ...     ...      ...      ...\n",
+       "2000-01-30        ...     ...      ...      ...\n",
+       "2000-01-31        ...     ...      ...      ...\n",
+       "Dask Name: make-timeseries, 30 tasks"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "import dask\n",
     "df = dask.datasets.timeseries()\n",
@@ -56,8 +195,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 3,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:12.608212Z",
+     "iopub.status.busy": "2021-01-14T10:48:12.597981Z",
+     "iopub.status.idle": "2021-01-14T10:48:31.145563Z",
+     "shell.execute_reply": "2021-01-14T10:48:31.145971Z"
+    }
+   },
    "outputs": [],
    "source": [
     "import os\n",
@@ -92,18 +238,142 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 4,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:31.156419Z",
+     "iopub.status.busy": "2021-01-14T10:48:31.149209Z",
+     "iopub.status.idle": "2021-01-14T10:48:31.312914Z",
+     "shell.execute_reply": "2021-01-14T10:48:31.313265Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "data/2000-01-01.csv\r\n",
+      "data/2000-01-02.csv\r\n",
+      "data/2000-01-03.csv\r\n",
+      "data/2000-01-04.csv\r\n",
+      "data/2000-01-05.csv\r\n",
+      "data/2000-01-06.csv\r\n",
+      "data/2000-01-07.csv\r\n",
+      "data/2000-01-08.csv\r\n",
+      "data/2000-01-09.csv\r\n",
+      "data/2000-01-10.csv\r\n"
+     ]
+    }
+   ],
    "source": [
     "!ls data/*.csv | head"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 5,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:31.317966Z",
+     "iopub.status.busy": "2021-01-14T10:48:31.317527Z",
+     "iopub.status.idle": "2021-01-14T10:48:31.380769Z",
+     "shell.execute_reply": "2021-01-14T10:48:31.381414Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div><strong>Dask DataFrame Structure:</strong></div>\n",
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>id</th>\n",
+       "      <th>name</th>\n",
+       "      <th>x</th>\n",
+       "      <th>y</th>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>npartitions=30</th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th></th>\n",
+       "      <td>int64</td>\n",
+       "      <td>object</td>\n",
+       "      <td>float64</td>\n",
+       "      <td>float64</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th></th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>...</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th></th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th></th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>\n",
+       "<div>Dask Name: read-csv, 30 tasks</div>"
+      ],
+      "text/plain": [
+       "Dask DataFrame Structure:\n",
+       "                   id    name        x        y\n",
+       "npartitions=30                                 \n",
+       "                int64  object  float64  float64\n",
+       "                  ...     ...      ...      ...\n",
+       "...               ...     ...      ...      ...\n",
+       "                  ...     ...      ...      ...\n",
+       "                  ...     ...      ...      ...\n",
+       "Dask Name: read-csv, 30 tasks"
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "import dask.dataframe as dd\n",
     "\n",
@@ -113,9 +383,97 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 6,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:31.395509Z",
+     "iopub.status.busy": "2021-01-14T10:48:31.391252Z",
+     "iopub.status.idle": "2021-01-14T10:48:31.472089Z",
+     "shell.execute_reply": "2021-01-14T10:48:31.471707Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>id</th>\n",
+       "      <th>name</th>\n",
+       "      <th>x</th>\n",
+       "      <th>y</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>1031</td>\n",
+       "      <td>Norbert</td>\n",
+       "      <td>-0.285591</td>\n",
+       "      <td>-0.415443</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>1077</td>\n",
+       "      <td>Victor</td>\n",
+       "      <td>-0.125232</td>\n",
+       "      <td>0.414574</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>1018</td>\n",
+       "      <td>Tim</td>\n",
+       "      <td>-0.530455</td>\n",
+       "      <td>0.291435</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>1017</td>\n",
+       "      <td>Edith</td>\n",
+       "      <td>-0.334858</td>\n",
+       "      <td>0.315679</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>1020</td>\n",
+       "      <td>Sarah</td>\n",
+       "      <td>-0.106480</td>\n",
+       "      <td>-0.854046</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "     id     name         x         y\n",
+       "0  1031  Norbert -0.285591 -0.415443\n",
+       "1  1077   Victor -0.125232  0.414574\n",
+       "2  1018      Tim -0.530455  0.291435\n",
+       "3  1017    Edith -0.334858  0.315679\n",
+       "4  1020    Sarah -0.106480 -0.854046"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "df.head()"
    ]
@@ -129,9 +487,112 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 7,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:31.476963Z",
+     "iopub.status.busy": "2021-01-14T10:48:31.475847Z",
+     "iopub.status.idle": "2021-01-14T10:48:34.711158Z",
+     "shell.execute_reply": "2021-01-14T10:48:34.710797Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>id</th>\n",
+       "      <th>x</th>\n",
+       "      <th>y</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>count</th>\n",
+       "      <td>2.592000e+06</td>\n",
+       "      <td>2.592000e+06</td>\n",
+       "      <td>2.592000e+06</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>mean</th>\n",
+       "      <td>1.000040e+03</td>\n",
+       "      <td>-1.865578e-04</td>\n",
+       "      <td>-4.504002e-04</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>std</th>\n",
+       "      <td>3.162330e+01</td>\n",
+       "      <td>5.770384e-01</td>\n",
+       "      <td>5.772731e-01</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>min</th>\n",
+       "      <td>8.530000e+02</td>\n",
+       "      <td>-9.999990e-01</td>\n",
+       "      <td>-9.999995e-01</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>25%</th>\n",
+       "      <td>9.790000e+02</td>\n",
+       "      <td>-4.924140e-01</td>\n",
+       "      <td>-4.945359e-01</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>50%</th>\n",
+       "      <td>1.000000e+03</td>\n",
+       "      <td>4.400842e-03</td>\n",
+       "      <td>8.770296e-03</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>75%</th>\n",
+       "      <td>1.022000e+03</td>\n",
+       "      <td>5.044882e-01</td>\n",
+       "      <td>5.054544e-01</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>max</th>\n",
+       "      <td>1.166000e+03</td>\n",
+       "      <td>9.999993e-01</td>\n",
+       "      <td>9.999999e-01</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "                 id             x             y\n",
+       "count  2.592000e+06  2.592000e+06  2.592000e+06\n",
+       "mean   1.000040e+03 -1.865578e-04 -4.504002e-04\n",
+       "std    3.162330e+01  5.770384e-01  5.772731e-01\n",
+       "min    8.530000e+02 -9.999990e-01 -9.999995e-01\n",
+       "25%    9.790000e+02 -4.924140e-01 -4.945359e-01\n",
+       "50%    1.000000e+03  4.400842e-03  8.770296e-03\n",
+       "75%    1.022000e+03  5.044882e-01  5.054544e-01\n",
+       "max    1.166000e+03  9.999993e-01  9.999999e-01"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "df.describe().compute()"
    ]
@@ -147,8 +608,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 8,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:34.714404Z",
+     "iopub.status.busy": "2021-01-14T10:48:34.713997Z",
+     "iopub.status.idle": "2021-01-14T10:48:34.718357Z",
+     "shell.execute_reply": "2021-01-14T10:48:34.718016Z"
+    }
+   },
    "outputs": [],
    "source": [
     "# corrupt the data in data/2000-01-05.csv\n",
@@ -158,8 +626,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 9,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:34.721936Z",
+     "iopub.status.busy": "2021-01-14T10:48:34.721508Z",
+     "iopub.status.idle": "2021-01-14T10:48:35.118013Z",
+     "shell.execute_reply": "2021-01-14T10:48:35.119007Z"
+    }
+   },
    "outputs": [],
    "source": [
     "# remove y column from data/2000-01-07.csv\n",
@@ -171,8 +646,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 10,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:35.122926Z",
+     "iopub.status.busy": "2021-01-14T10:48:35.121752Z",
+     "iopub.status.idle": "2021-01-14T10:48:35.320100Z",
+     "shell.execute_reply": "2021-01-14T10:48:35.320537Z"
+    }
+   },
    "outputs": [],
    "source": [
     "!head data/2000-01-05.csv"
@@ -180,9 +662,33 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 11,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:35.331925Z",
+     "iopub.status.busy": "2021-01-14T10:48:35.325281Z",
+     "iopub.status.idle": "2021-01-14T10:48:35.485606Z",
+     "shell.execute_reply": "2021-01-14T10:48:35.485207Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "id,name,x\r\n",
+      "967,Laura,0.4341572011626995\r\n",
+      "1022,George,0.13477427067650938\r\n",
+      "1037,Oliver,0.4025775422116451\r\n",
+      "1022,Bob,-0.9912760196055932\r\n",
+      "1006,Ray,-0.12982165632020234\r\n",
+      "960,George,-0.8806411585206141\r\n",
+      "1048,Bob,0.3086024326246655\r\n",
+      "949,Jerry,-0.4242706465864399\r\n",
+      "986,Wendy,-0.20820823386390508\r\n"
+     ]
+    }
+   ],
    "source": [
     "!head data/2000-01-07.csv"
    ]
@@ -198,8 +704,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 12,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:35.489376Z",
+     "iopub.status.busy": "2021-01-14T10:48:35.488943Z",
+     "iopub.status.idle": "2021-01-14T10:48:35.507894Z",
+     "shell.execute_reply": "2021-01-14T10:48:35.509238Z"
+    }
+   },
    "outputs": [],
    "source": [
     "df = dd.read_csv('data/2000-*-*.csv')"
@@ -207,9 +720,97 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 13,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:35.515323Z",
+     "iopub.status.busy": "2021-01-14T10:48:35.514728Z",
+     "iopub.status.idle": "2021-01-14T10:48:35.653856Z",
+     "shell.execute_reply": "2021-01-14T10:48:35.654539Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>id</th>\n",
+       "      <th>name</th>\n",
+       "      <th>x</th>\n",
+       "      <th>y</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>1031</td>\n",
+       "      <td>Norbert</td>\n",
+       "      <td>-0.285591</td>\n",
+       "      <td>-0.415443</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>1077</td>\n",
+       "      <td>Victor</td>\n",
+       "      <td>-0.125232</td>\n",
+       "      <td>0.414574</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>1018</td>\n",
+       "      <td>Tim</td>\n",
+       "      <td>-0.530455</td>\n",
+       "      <td>0.291435</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>1017</td>\n",
+       "      <td>Edith</td>\n",
+       "      <td>-0.334858</td>\n",
+       "      <td>0.315679</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>1020</td>\n",
+       "      <td>Sarah</td>\n",
+       "      <td>-0.106480</td>\n",
+       "      <td>-0.854046</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "     id     name         x         y\n",
+       "0  1031  Norbert -0.285591 -0.415443\n",
+       "1  1077   Victor -0.125232  0.414574\n",
+       "2  1018      Tim -0.530455  0.291435\n",
+       "3  1017    Edith -0.334858  0.315679\n",
+       "4  1020    Sarah -0.106480 -0.854046"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "df.head()"
    ]
@@ -223,13 +824,57 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 14,
    "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:35.658701Z",
+     "iopub.status.busy": "2021-01-14T10:48:35.656889Z",
+     "iopub.status.idle": "2021-01-14T10:48:36.622849Z",
+     "shell.execute_reply": "2021-01-14T10:48:36.621784Z"
+    },
     "tags": [
      "raises-exception"
     ]
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "distributed.worker - WARNING -  Compute Failed\n",
+      "Function:  execute_task\n",
+      "args:      ((subgraph_callable, (<function pandas_read_text at 0x7fd286f13d30>, <function _make_parser_function.<locals>.parser_f at 0x7fd28d0693a0>, (<function read_block_from_file at 0x7fd284ef6550>, <OpenFile '/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-07.csv'>, 0, 64000000, b'\\n'), b'id,name,x,y\\n', {}, {'id': dtype('int64'), 'name': dtype('O'), 'x': dtype('float64'), 'y': dtype('float64')}, ['id', 'name', 'x', 'y'], False, False, None), 'read-csv-be1fa3ac9b1647bb775e0bad009b4961'))\n",
+      "kwargs:    {}\n",
+      "Exception: ValueError('Length mismatch: Expected axis has 3 elements, new values have 4 elements')\n",
+      "\n"
+     ]
+    },
+    {
+     "ename": "ValueError",
+     "evalue": "Length mismatch: Expected axis has 3 elements, new values have 4 elements",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mValueError\u001b[0m                                Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-14-f353d64adb46>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mdf\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mdescribe\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcompute\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;32m/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/dask/base.py\u001b[0m in \u001b[0;36mcompute\u001b[0;34m(self, **kwargs)\u001b[0m\n\u001b[1;32m    164\u001b[0m         \u001b[0mdask\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mbase\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcompute\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    165\u001b[0m         \"\"\"\n\u001b[0;32m--> 166\u001b[0;31m         \u001b[0;34m(\u001b[0m\u001b[0mresult\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;34m)\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mcompute\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mtraverse\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;32mFalse\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m**\u001b[0m\u001b[0mkwargs\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    167\u001b[0m         \u001b[0;32mreturn\u001b[0m \u001b[0mresult\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    168\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/dask/base.py\u001b[0m in \u001b[0;36mcompute\u001b[0;34m(*args, **kwargs)\u001b[0m\n\u001b[1;32m    442\u001b[0m         \u001b[0mpostcomputes\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mappend\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mx\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m__dask_postcompute__\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    443\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 444\u001b[0;31m     \u001b[0mresults\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mschedule\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mdsk\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mkeys\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m**\u001b[0m\u001b[0mkwargs\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    445\u001b[0m     \u001b[0;32mreturn\u001b[0m \u001b[0mrepack\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0mf\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mr\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m*\u001b[0m\u001b[0ma\u001b[0m\u001b[0;34m)\u001b[0m \u001b[0;32mfor\u001b[0m \u001b[0mr\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m(\u001b[0m\u001b[0mf\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0ma\u001b[0m\u001b[0;34m)\u001b[0m \u001b[0;32min\u001b[0m \u001b[0mzip\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mresults\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mpostcomputes\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    446\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/client.py\u001b[0m in \u001b[0;36mget\u001b[0;34m(self, dsk, keys, restrictions, loose_restrictions, resources, sync, asynchronous, direct, retries, priority, fifo_timeout, actors, **kwargs)\u001b[0m\n\u001b[1;32m   2723\u001b[0m                     \u001b[0mshould_rejoin\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;32mFalse\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   2724\u001b[0m             \u001b[0;32mtry\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m-> 2725\u001b[0;31m                 \u001b[0mresults\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mgather\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mpacked\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0masynchronous\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0masynchronous\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mdirect\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0mdirect\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m   2726\u001b[0m             \u001b[0;32mfinally\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   2727\u001b[0m                 \u001b[0;32mfor\u001b[0m \u001b[0mf\u001b[0m \u001b[0;32min\u001b[0m \u001b[0mfutures\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mvalues\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/client.py\u001b[0m in \u001b[0;36mgather\u001b[0;34m(self, futures, errors, direct, asynchronous)\u001b[0m\n\u001b[1;32m   1984\u001b[0m             \u001b[0;32melse\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1985\u001b[0m                 \u001b[0mlocal_worker\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;32mNone\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m-> 1986\u001b[0;31m             return self.sync(\n\u001b[0m\u001b[1;32m   1987\u001b[0m                 \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_gather\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1988\u001b[0m                 \u001b[0mfutures\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/client.py\u001b[0m in \u001b[0;36msync\u001b[0;34m(self, func, asynchronous, callback_timeout, *args, **kwargs)\u001b[0m\n\u001b[1;32m    830\u001b[0m             \u001b[0;32mreturn\u001b[0m \u001b[0mfuture\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    831\u001b[0m         \u001b[0;32melse\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 832\u001b[0;31m             return sync(\n\u001b[0m\u001b[1;32m    833\u001b[0m                 \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mloop\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mfunc\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m*\u001b[0m\u001b[0margs\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mcallback_timeout\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0mcallback_timeout\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m**\u001b[0m\u001b[0mkwargs\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    834\u001b[0m             )\n",
+      "\u001b[0;32m/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/utils.py\u001b[0m in \u001b[0;36msync\u001b[0;34m(loop, func, callback_timeout, *args, **kwargs)\u001b[0m\n\u001b[1;32m    338\u001b[0m     \u001b[0;32mif\u001b[0m \u001b[0merror\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    339\u001b[0m         \u001b[0mtyp\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mexc\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mtb\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0merror\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 340\u001b[0;31m         \u001b[0;32mraise\u001b[0m \u001b[0mexc\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mwith_traceback\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mtb\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    341\u001b[0m     \u001b[0;32melse\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    342\u001b[0m         \u001b[0;32mreturn\u001b[0m \u001b[0mresult\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/utils.py\u001b[0m in \u001b[0;36mf\u001b[0;34m()\u001b[0m\n\u001b[1;32m    322\u001b[0m             \u001b[0;32mif\u001b[0m \u001b[0mcallback_timeout\u001b[0m \u001b[0;32mis\u001b[0m \u001b[0;32mnot\u001b[0m \u001b[0;32mNone\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    323\u001b[0m                 \u001b[0mfuture\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0masyncio\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mwait_for\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mfuture\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mcallback_timeout\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 324\u001b[0;31m             \u001b[0mresult\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m]\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;32myield\u001b[0m \u001b[0mfuture\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    325\u001b[0m         \u001b[0;32mexcept\u001b[0m \u001b[0mException\u001b[0m \u001b[0;32mas\u001b[0m \u001b[0mexc\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    326\u001b[0m             \u001b[0merror\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m]\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0msys\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mexc_info\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/tornado/gen.py\u001b[0m in \u001b[0;36mrun\u001b[0;34m(self)\u001b[0m\n\u001b[1;32m    760\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    761\u001b[0m                     \u001b[0;32mtry\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 762\u001b[0;31m                         \u001b[0mvalue\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mfuture\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mresult\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    763\u001b[0m                     \u001b[0;32mexcept\u001b[0m \u001b[0mException\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    764\u001b[0m                         \u001b[0mexc_info\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0msys\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mexc_info\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/client.py\u001b[0m in \u001b[0;36m_gather\u001b[0;34m(self, futures, errors, direct, local_worker)\u001b[0m\n\u001b[1;32m   1849\u001b[0m                             \u001b[0mexc\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mCancelledError\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mkey\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1850\u001b[0m                         \u001b[0;32melse\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m-> 1851\u001b[0;31m                             \u001b[0;32mraise\u001b[0m \u001b[0mexception\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mwith_traceback\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mtraceback\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m   1852\u001b[0m                         \u001b[0;32mraise\u001b[0m \u001b[0mexc\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1853\u001b[0m                     \u001b[0;32mif\u001b[0m \u001b[0merrors\u001b[0m \u001b[0;34m==\u001b[0m \u001b[0;34m\"skip\"\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/dask/dataframe/io/csv.py\u001b[0m in \u001b[0;36mpandas_read_text\u001b[0;34m(reader, b, header, kwargs, dtypes, columns, write_header, enforce, path)\u001b[0m\n\u001b[1;32m    154\u001b[0m         \u001b[0;32mraise\u001b[0m \u001b[0mValueError\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"Columns do not match\"\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mdf\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcolumns\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mcolumns\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    155\u001b[0m     \u001b[0;32melif\u001b[0m \u001b[0mcolumns\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 156\u001b[0;31m         \u001b[0mdf\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcolumns\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mcolumns\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    157\u001b[0m     \u001b[0;32mif\u001b[0m \u001b[0mpath\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    158\u001b[0m         \u001b[0mcolname\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mpath\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mpaths\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mpath\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/pandas/core/generic.py\u001b[0m in \u001b[0;36m__setattr__\u001b[0;34m(self, name, value)\u001b[0m\n\u001b[1;32m   5285\u001b[0m         \u001b[0;32mtry\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   5286\u001b[0m             \u001b[0mobject\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m__getattribute__\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mname\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m-> 5287\u001b[0;31m             \u001b[0;32mreturn\u001b[0m \u001b[0mobject\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m__setattr__\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mname\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mvalue\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m   5288\u001b[0m         \u001b[0;32mexcept\u001b[0m \u001b[0mAttributeError\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   5289\u001b[0m             \u001b[0;32mpass\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32mpandas/_libs/properties.pyx\u001b[0m in \u001b[0;36mpandas._libs.properties.AxisProperty.__set__\u001b[0;34m()\u001b[0m\n",
+      "\u001b[0;32m/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/pandas/core/generic.py\u001b[0m in \u001b[0;36m_set_axis\u001b[0;34m(self, axis, labels)\u001b[0m\n\u001b[1;32m    659\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    660\u001b[0m     \u001b[0;32mdef\u001b[0m \u001b[0m_set_axis\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0maxis\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mlabels\u001b[0m\u001b[0;34m)\u001b[0m \u001b[0;34m->\u001b[0m \u001b[0;32mNone\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 661\u001b[0;31m         \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_data\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mset_axis\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0maxis\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mlabels\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    662\u001b[0m         \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_clear_item_cache\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    663\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/pandas/core/internals/managers.py\u001b[0m in \u001b[0;36mset_axis\u001b[0;34m(self, axis, new_labels)\u001b[0m\n\u001b[1;32m    175\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    176\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0mnew_len\u001b[0m \u001b[0;34m!=\u001b[0m \u001b[0mold_len\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 177\u001b[0;31m             raise ValueError(\n\u001b[0m\u001b[1;32m    178\u001b[0m                 \u001b[0;34mf\"Length mismatch: Expected axis has {old_len} elements, new \"\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    179\u001b[0m                 \u001b[0;34mf\"values have {new_len} elements\"\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mValueError\u001b[0m: Length mismatch: Expected axis has 3 elements, new values have 4 elements"
+     ]
+    }
+   ],
    "source": [
     "df.describe().compute()"
    ]
@@ -254,8 +899,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 15,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:36.727073Z",
+     "iopub.status.busy": "2021-01-14T10:48:36.726566Z",
+     "iopub.status.idle": "2021-01-14T10:48:36.729969Z",
+     "shell.execute_reply": "2021-01-14T10:48:36.730678Z"
+    }
+   },
    "outputs": [],
    "source": [
     "import numpy as np\n",
@@ -288,9 +940,97 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 16,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:36.735160Z",
+     "iopub.status.busy": "2021-01-14T10:48:36.734629Z",
+     "iopub.status.idle": "2021-01-14T10:48:36.848510Z",
+     "shell.execute_reply": "2021-01-14T10:48:36.849395Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>id</th>\n",
+       "      <th>name</th>\n",
+       "      <th>x</th>\n",
+       "      <th>y</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>1031</td>\n",
+       "      <td>Norbert</td>\n",
+       "      <td>-0.285591</td>\n",
+       "      <td>-0.415443</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>1077</td>\n",
+       "      <td>Victor</td>\n",
+       "      <td>-0.125232</td>\n",
+       "      <td>0.414574</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>1018</td>\n",
+       "      <td>Tim</td>\n",
+       "      <td>-0.530455</td>\n",
+       "      <td>0.291435</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>1017</td>\n",
+       "      <td>Edith</td>\n",
+       "      <td>-0.334858</td>\n",
+       "      <td>0.315679</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>1020</td>\n",
+       "      <td>Sarah</td>\n",
+       "      <td>-0.106480</td>\n",
+       "      <td>-0.854046</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "     id     name         x         y\n",
+       "0  1031  Norbert -0.285591 -0.415443\n",
+       "1  1077   Victor -0.125232  0.414574\n",
+       "2  1018      Tim -0.530455  0.291435\n",
+       "3  1017    Edith -0.334858  0.315679\n",
+       "4  1020    Sarah -0.106480 -0.854046"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "# test function on a normal file\n",
     "read_data('data/2000-01-01.csv').head()"
@@ -298,9 +1038,59 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 17,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:36.865303Z",
+     "iopub.status.busy": "2021-01-14T10:48:36.859261Z",
+     "iopub.status.idle": "2021-01-14T10:48:36.869878Z",
+     "shell.execute_reply": "2021-01-14T10:48:36.872123Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>id</th>\n",
+       "      <th>name</th>\n",
+       "      <th>x</th>\n",
+       "      <th>y</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "Empty DataFrame\n",
+       "Columns: [id, name, x, y]\n",
+       "Index: []"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "# test function on the empty file\n",
     "read_data('data/2000-01-05.csv').head()"
@@ -308,9 +1098,97 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 18,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:36.877576Z",
+     "iopub.status.busy": "2021-01-14T10:48:36.874633Z",
+     "iopub.status.idle": "2021-01-14T10:48:36.950621Z",
+     "shell.execute_reply": "2021-01-14T10:48:36.951219Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>id</th>\n",
+       "      <th>name</th>\n",
+       "      <th>x</th>\n",
+       "      <th>y</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>967</td>\n",
+       "      <td>Laura</td>\n",
+       "      <td>0.434157</td>\n",
+       "      <td>NaN</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>1022</td>\n",
+       "      <td>George</td>\n",
+       "      <td>0.134774</td>\n",
+       "      <td>NaN</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>1037</td>\n",
+       "      <td>Oliver</td>\n",
+       "      <td>0.402578</td>\n",
+       "      <td>NaN</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>1022</td>\n",
+       "      <td>Bob</td>\n",
+       "      <td>-0.991276</td>\n",
+       "      <td>NaN</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>1006</td>\n",
+       "      <td>Ray</td>\n",
+       "      <td>-0.129822</td>\n",
+       "      <td>NaN</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "     id    name         x   y\n",
+       "0   967   Laura  0.434157 NaN\n",
+       "1  1022  George  0.134774 NaN\n",
+       "2  1037  Oliver  0.402578 NaN\n",
+       "3  1022     Bob -0.991276 NaN\n",
+       "4  1006     Ray -0.129822 NaN"
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "# test function on the file missing the y column\n",
     "read_data('data/2000-01-07.csv').head()"
@@ -327,8 +1205,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 19,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:36.954333Z",
+     "iopub.status.busy": "2021-01-14T10:48:36.953905Z",
+     "iopub.status.idle": "2021-01-14T10:48:36.958296Z",
+     "shell.execute_reply": "2021-01-14T10:48:36.958965Z"
+    }
+   },
    "outputs": [],
    "source": [
     "from dask import delayed\n",
@@ -344,9 +1229,27 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 20,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:36.961988Z",
+     "iopub.status.busy": "2021-01-14T10:48:36.961518Z",
+     "iopub.status.idle": "2021-01-14T10:48:36.968071Z",
+     "shell.execute_reply": "2021-01-14T10:48:36.968630Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Delayed('read_data-8a0e1fc2-94d9-4d86-81f0-092f89dc83df')"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "df = read_data('data/2000-01-01.csv')\n",
     "df"
@@ -361,9 +1264,148 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 21,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:36.972301Z",
+     "iopub.status.busy": "2021-01-14T10:48:36.971711Z",
+     "iopub.status.idle": "2021-01-14T10:48:37.069450Z",
+     "shell.execute_reply": "2021-01-14T10:48:37.070069Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>id</th>\n",
+       "      <th>name</th>\n",
+       "      <th>x</th>\n",
+       "      <th>y</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>1031</td>\n",
+       "      <td>Norbert</td>\n",
+       "      <td>-0.285591</td>\n",
+       "      <td>-0.415443</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>1077</td>\n",
+       "      <td>Victor</td>\n",
+       "      <td>-0.125232</td>\n",
+       "      <td>0.414574</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>1018</td>\n",
+       "      <td>Tim</td>\n",
+       "      <td>-0.530455</td>\n",
+       "      <td>0.291435</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>1017</td>\n",
+       "      <td>Edith</td>\n",
+       "      <td>-0.334858</td>\n",
+       "      <td>0.315679</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>1020</td>\n",
+       "      <td>Sarah</td>\n",
+       "      <td>-0.106480</td>\n",
+       "      <td>-0.854046</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>...</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>86395</th>\n",
+       "      <td>984</td>\n",
+       "      <td>Patricia</td>\n",
+       "      <td>-0.036748</td>\n",
+       "      <td>-0.032029</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>86396</th>\n",
+       "      <td>986</td>\n",
+       "      <td>Frank</td>\n",
+       "      <td>0.784252</td>\n",
+       "      <td>0.591889</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>86397</th>\n",
+       "      <td>969</td>\n",
+       "      <td>Yvonne</td>\n",
+       "      <td>-0.572503</td>\n",
+       "      <td>-0.743844</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>86398</th>\n",
+       "      <td>977</td>\n",
+       "      <td>Michael</td>\n",
+       "      <td>-0.791680</td>\n",
+       "      <td>0.052211</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>86399</th>\n",
+       "      <td>1004</td>\n",
+       "      <td>Yvonne</td>\n",
+       "      <td>-0.068366</td>\n",
+       "      <td>-0.062019</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "<p>86400 rows × 4 columns</p>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "         id      name         x         y\n",
+       "0      1031   Norbert -0.285591 -0.415443\n",
+       "1      1077    Victor -0.125232  0.414574\n",
+       "2      1018       Tim -0.530455  0.291435\n",
+       "3      1017     Edith -0.334858  0.315679\n",
+       "4      1020     Sarah -0.106480 -0.854046\n",
+       "...     ...       ...       ...       ...\n",
+       "86395   984  Patricia -0.036748 -0.032029\n",
+       "86396   986     Frank  0.784252  0.591889\n",
+       "86397   969    Yvonne -0.572503 -0.743844\n",
+       "86398   977   Michael -0.791680  0.052211\n",
+       "86399  1004    Yvonne -0.068366 -0.062019\n",
+       "\n",
+       "[86400 rows x 4 columns]"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "df.compute()"
    ]
@@ -377,9 +1419,56 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 22,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:37.073580Z",
+     "iopub.status.busy": "2021-01-14T10:48:37.072285Z",
+     "iopub.status.idle": "2021-01-14T10:48:37.080522Z",
+     "shell.execute_reply": "2021-01-14T10:48:37.081174Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['data/2000-01-29.csv',\n",
+       " 'data/2000-01-11.csv',\n",
+       " 'data/2000-01-23.csv',\n",
+       " 'data/2000-01-28.csv',\n",
+       " 'data/2000-01-18.csv',\n",
+       " 'data/2000-01-26.csv',\n",
+       " 'data/2000-01-03.csv',\n",
+       " 'data/2000-01-14.csv',\n",
+       " 'data/2000-01-08.csv',\n",
+       " 'data/2000-01-15.csv',\n",
+       " 'data/2000-01-27.csv',\n",
+       " 'data/2000-01-09.csv',\n",
+       " 'data/2000-01-16.csv',\n",
+       " 'data/2000-01-21.csv',\n",
+       " 'data/2000-01-10.csv',\n",
+       " 'data/2000-01-07.csv',\n",
+       " 'data/2000-01-05.csv',\n",
+       " 'data/2000-01-01.csv',\n",
+       " 'data/2000-01-02.csv',\n",
+       " 'data/2000-01-20.csv',\n",
+       " 'data/2000-01-12.csv',\n",
+       " 'data/2000-01-13.csv',\n",
+       " 'data/2000-01-22.csv',\n",
+       " 'data/2000-01-06.csv',\n",
+       " 'data/2000-01-19.csv',\n",
+       " 'data/2000-01-24.csv',\n",
+       " 'data/2000-01-25.csv',\n",
+       " 'data/2000-01-17.csv',\n",
+       " 'data/2000-01-30.csv',\n",
+       " 'data/2000-01-04.csv']"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "# loop over all the files\n",
     "from glob import glob\n",
@@ -396,9 +1485,56 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 23,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:37.086685Z",
+     "iopub.status.busy": "2021-01-14T10:48:37.086277Z",
+     "iopub.status.idle": "2021-01-14T10:48:37.093373Z",
+     "shell.execute_reply": "2021-01-14T10:48:37.093034Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[Delayed('read_data-5cd7a8c2-7f8b-4d8f-97db-0df972ef642e'),\n",
+       " Delayed('read_data-0216fe95-5e08-4d4d-9dcb-ffdf051fc7ec'),\n",
+       " Delayed('read_data-31f254a5-9b6d-4d81-8996-4871cd05f49a'),\n",
+       " Delayed('read_data-445e8d49-f0ec-43b4-a538-82e0e845d7fe'),\n",
+       " Delayed('read_data-ced50558-a8db-47a5-9c3c-992bca0473c5'),\n",
+       " Delayed('read_data-c44b07d9-de6b-47ee-9fb3-7b40256fde71'),\n",
+       " Delayed('read_data-e451e918-3b91-4e2d-8f39-e588147cc226'),\n",
+       " Delayed('read_data-c8a3b987-3ce5-4b27-872b-165c424a8071'),\n",
+       " Delayed('read_data-a3840716-1d80-4f2a-a959-727f9e3d725d'),\n",
+       " Delayed('read_data-00e6cf77-daa3-4efa-8c1d-cab761058582'),\n",
+       " Delayed('read_data-d4607c01-705a-426c-81ed-e2facc9dbe82'),\n",
+       " Delayed('read_data-b2896e2e-5d61-45a5-a1e1-356d37c13170'),\n",
+       " Delayed('read_data-03e7bc8d-9486-4a6e-bbb0-293a96fbd2ed'),\n",
+       " Delayed('read_data-c3c72765-e483-4e61-b23e-19ab676dea88'),\n",
+       " Delayed('read_data-a9437614-b720-4fe4-80f3-9c4edcc5fe5a'),\n",
+       " Delayed('read_data-e64c56e3-6ebf-4a81-a2e3-6da1f6357669'),\n",
+       " Delayed('read_data-132413d6-a225-4e26-ab8d-9fc280f51e90'),\n",
+       " Delayed('read_data-3af3b948-af81-4a2a-9ccd-471fb6ca9e08'),\n",
+       " Delayed('read_data-49c2d7af-3234-4293-a144-518a016daa26'),\n",
+       " Delayed('read_data-405c2e04-d1e5-46a7-b39e-17130db6eee1'),\n",
+       " Delayed('read_data-062ec8c9-85cc-49a7-8450-0c65d69cd16c'),\n",
+       " Delayed('read_data-64f528c5-a3b7-436f-887c-08aed616a971'),\n",
+       " Delayed('read_data-024afd53-dc54-4700-9789-dbc8adc68c7f'),\n",
+       " Delayed('read_data-ae424259-1327-41ea-b7ec-acfa3078a909'),\n",
+       " Delayed('read_data-7d444ffb-da70-4050-afb6-e657120e5a3c'),\n",
+       " Delayed('read_data-15d62a5c-1487-455c-bea2-b2d5d17842a6'),\n",
+       " Delayed('read_data-91b022c4-ad27-4df3-932b-0711754620eb'),\n",
+       " Delayed('read_data-bd40daf5-988a-40d4-baf7-4e714185069a'),\n",
+       " Delayed('read_data-1e4f02d9-aa74-4e3d-917d-7eb2746e9f7b'),\n",
+       " Delayed('read_data-c86461ce-8373-4f0c-98fa-46cf0055dc31')]"
+      ]
+     },
+     "execution_count": 23,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "df = [read_data(file) for file in files]\n",
     "df"
@@ -413,9 +1549,109 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 24,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:37.100321Z",
+     "iopub.status.busy": "2021-01-14T10:48:37.097097Z",
+     "iopub.status.idle": "2021-01-14T10:48:37.109496Z",
+     "shell.execute_reply": "2021-01-14T10:48:37.109161Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div><strong>Dask DataFrame Structure:</strong></div>\n",
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>id</th>\n",
+       "      <th>name</th>\n",
+       "      <th>x</th>\n",
+       "      <th>y</th>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>npartitions=30</th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th></th>\n",
+       "      <td>int64</td>\n",
+       "      <td>object</td>\n",
+       "      <td>float64</td>\n",
+       "      <td>float64</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th></th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>...</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th></th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th></th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>\n",
+       "<div>Dask Name: from-delayed, 60 tasks</div>"
+      ],
+      "text/plain": [
+       "Dask DataFrame Structure:\n",
+       "                   id    name        x        y\n",
+       "npartitions=30                                 \n",
+       "                int64  object  float64  float64\n",
+       "                  ...     ...      ...      ...\n",
+       "...               ...     ...      ...      ...\n",
+       "                  ...     ...      ...      ...\n",
+       "                  ...     ...      ...      ...\n",
+       "Dask Name: from-delayed, 60 tasks"
+      ]
+     },
+     "execution_count": 24,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "df = dd.from_delayed(df, meta={'id': int, 'name': str, 'x': float, 'y': float})\n",
     "df"
@@ -437,18 +1673,217 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 25,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:37.116619Z",
+     "iopub.status.busy": "2021-01-14T10:48:37.111729Z",
+     "iopub.status.idle": "2021-01-14T10:48:37.175387Z",
+     "shell.execute_reply": "2021-01-14T10:48:37.175784Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>id</th>\n",
+       "      <th>name</th>\n",
+       "      <th>x</th>\n",
+       "      <th>y</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>1032</td>\n",
+       "      <td>Patricia</td>\n",
+       "      <td>-0.980309</td>\n",
+       "      <td>0.269225</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>935</td>\n",
+       "      <td>Hannah</td>\n",
+       "      <td>-0.846994</td>\n",
+       "      <td>-0.182445</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>969</td>\n",
+       "      <td>Oliver</td>\n",
+       "      <td>0.482768</td>\n",
+       "      <td>-0.641575</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>1079</td>\n",
+       "      <td>Zelda</td>\n",
+       "      <td>0.269655</td>\n",
+       "      <td>0.043605</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>1022</td>\n",
+       "      <td>Zelda</td>\n",
+       "      <td>-0.059803</td>\n",
+       "      <td>-0.727712</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "     id      name         x         y\n",
+       "0  1032  Patricia -0.980309  0.269225\n",
+       "1   935    Hannah -0.846994 -0.182445\n",
+       "2   969    Oliver  0.482768 -0.641575\n",
+       "3  1079     Zelda  0.269655  0.043605\n",
+       "4  1022     Zelda -0.059803 -0.727712"
+      ]
+     },
+     "execution_count": 25,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "df.head()"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 26,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:48:37.184030Z",
+     "iopub.status.busy": "2021-01-14T10:48:37.183401Z",
+     "iopub.status.idle": "2021-01-14T10:48:39.950309Z",
+     "shell.execute_reply": "2021-01-14T10:48:39.950969Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/dask/array/numpy_compat.py:40: RuntimeWarning: invalid value encountered in true_divide\n",
+      "  x = np.divide(x1, x2, out)\n"
+     ]
+    },
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>id</th>\n",
+       "      <th>x</th>\n",
+       "      <th>y</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>count</th>\n",
+       "      <td>2.505600e+06</td>\n",
+       "      <td>2.505600e+06</td>\n",
+       "      <td>2.419200e+06</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>mean</th>\n",
+       "      <td>1.000039e+03</td>\n",
+       "      <td>-1.115737e-04</td>\n",
+       "      <td>-3.991555e-04</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>std</th>\n",
+       "      <td>3.162804e+01</td>\n",
+       "      <td>5.770438e-01</td>\n",
+       "      <td>5.773141e-01</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>min</th>\n",
+       "      <td>8.530000e+02</td>\n",
+       "      <td>-9.999990e-01</td>\n",
+       "      <td>-9.999995e-01</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>25%</th>\n",
+       "      <td>9.790000e+02</td>\n",
+       "      <td>-4.924140e-01</td>\n",
+       "      <td>-4.945359e-01</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>50%</th>\n",
+       "      <td>1.000000e+03</td>\n",
+       "      <td>4.400842e-03</td>\n",
+       "      <td>8.770296e-03</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>75%</th>\n",
+       "      <td>1.022000e+03</td>\n",
+       "      <td>5.044882e-01</td>\n",
+       "      <td>5.054544e-01</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>max</th>\n",
+       "      <td>1.157000e+03</td>\n",
+       "      <td>9.999993e-01</td>\n",
+       "      <td>9.999999e-01</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "                 id             x             y\n",
+       "count  2.505600e+06  2.505600e+06  2.419200e+06\n",
+       "mean   1.000039e+03 -1.115737e-04 -3.991555e-04\n",
+       "std    3.162804e+01  5.770438e-01  5.773141e-01\n",
+       "min    8.530000e+02 -9.999990e-01 -9.999995e-01\n",
+       "25%    9.790000e+02 -4.924140e-01 -4.945359e-01\n",
+       "50%    1.000000e+03  4.400842e-03  8.770296e-03\n",
+       "75%    1.022000e+03  5.044882e-01  5.054544e-01\n",
+       "max    1.157000e+03  9.999993e-01  9.999999e-01"
+      ]
+     },
+     "execution_count": 26,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "df.describe().compute()"
    ]
@@ -488,7 +1923,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.8.3"
+   "version": "3.8.6"
   }
  },
  "nbformat": 4,

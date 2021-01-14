@@ -22,8 +22,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 1,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:17.826860Z",
+     "iopub.status.busy": "2021-01-14T10:43:17.826319Z",
+     "iopub.status.idle": "2021-01-14T10:43:18.137220Z",
+     "shell.execute_reply": "2021-01-14T10:43:18.137723Z"
+    }
+   },
    "outputs": [],
    "source": [
     "import dask\n",
@@ -40,8 +47,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 2,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:18.141124Z",
+     "iopub.status.busy": "2021-01-14T10:43:18.140593Z",
+     "iopub.status.idle": "2021-01-14T10:43:18.668955Z",
+     "shell.execute_reply": "2021-01-14T10:43:18.669666Z"
+    }
+   },
    "outputs": [],
    "source": [
     "from dask.distributed import Client, LocalCluster\n",
@@ -60,9 +74,48 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 3,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:18.672339Z",
+     "iopub.status.busy": "2021-01-14T10:43:18.671490Z",
+     "iopub.status.idle": "2021-01-14T10:43:22.171974Z",
+     "shell.execute_reply": "2021-01-14T10:43:22.172670Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<table style=\"border: 2px solid white;\">\n",
+       "<tr>\n",
+       "<td style=\"vertical-align: top; border: 0px solid white\">\n",
+       "<h3 style=\"text-align: left;\">Client</h3>\n",
+       "<ul style=\"text-align: left; list-style: none; margin: 0; padding: 0;\">\n",
+       "  <li><b>Scheduler: </b>tcp://127.0.0.1:44357</li>\n",
+       "  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>\n",
+       "</ul>\n",
+       "</td>\n",
+       "<td style=\"vertical-align: top; border: 0px solid white\">\n",
+       "<h3 style=\"text-align: left;\">Cluster</h3>\n",
+       "<ul style=\"text-align: left; list-style:none; margin: 0; padding: 0;\">\n",
+       "  <li><b>Workers: </b>4</li>\n",
+       "  <li><b>Cores: </b>4</li>\n",
+       "  <li><b>Memory: </b>1.60 GB</li>\n",
+       "</ul>\n",
+       "</td>\n",
+       "</tr>\n",
+       "</table>"
+      ],
+      "text/plain": [
+       "<Client: 'tcp://127.0.0.1:44357' processes=4 threads=4, memory=1.60 GB>"
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "cluster = LocalCluster(threads_per_worker=1, n_workers=4, memory_limit=400e6)\n",
     "client = Client(cluster)\n",
@@ -80,8 +133,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 4,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:22.176050Z",
+     "iopub.status.busy": "2021-01-14T10:43:22.174882Z",
+     "iopub.status.idle": "2021-01-14T10:43:22.179444Z",
+     "shell.execute_reply": "2021-01-14T10:43:22.180051Z"
+    }
+   },
    "outputs": [],
    "source": [
     "def multiply_by_two(x):\n",
@@ -91,8 +151,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 5,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:22.182592Z",
+     "iopub.status.busy": "2021-01-14T10:43:22.181750Z",
+     "iopub.status.idle": "2021-01-14T10:43:22.204479Z",
+     "shell.execute_reply": "2021-01-14T10:43:22.205149Z"
+    }
+   },
    "outputs": [],
    "source": [
     "N = 400\n",
@@ -120,8 +187,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 6,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:22.208025Z",
+     "iopub.status.busy": "2021-01-14T10:43:22.207179Z",
+     "iopub.status.idle": "2021-01-14T10:43:22.220169Z",
+     "shell.execute_reply": "2021-01-14T10:43:22.220742Z"
+    }
+   },
    "outputs": [],
    "source": [
     "all_current_workers = [w.pid for w in cluster.scheduler.workers.values()]\n",
@@ -130,8 +204,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 7,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:22.223364Z",
+     "iopub.status.busy": "2021-01-14T10:43:22.222544Z",
+     "iopub.status.idle": "2021-01-14T10:43:22.232645Z",
+     "shell.execute_reply": "2021-01-14T10:43:22.233204Z"
+    }
+   },
    "outputs": [],
    "source": [
     "def kill_a_worker():\n",
@@ -151,9 +232,31 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 8,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:22.236208Z",
+     "iopub.status.busy": "2021-01-14T10:43:22.235359Z",
+     "iopub.status.idle": "2021-01-14T10:43:28.341006Z",
+     "shell.execute_reply": "2021-01-14T10:43:28.341351Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "distributed.nanny - WARNING - Restarting worker\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "distributed.nanny - WARNING - Restarting worker\n"
+     ]
+    }
+   ],
    "source": [
     "summed = client.compute(summed)\n",
     "\n",
@@ -171,9 +274,24 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 9,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:28.345320Z",
+     "iopub.status.busy": "2021-01-14T10:43:28.344899Z",
+     "iopub.status.idle": "2021-01-14T10:43:28.350952Z",
+     "shell.execute_reply": "2021-01-14T10:43:28.351520Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "`sum(range(400))` on cluster: 159600\t(should be 159600)\n"
+     ]
+    }
+   ],
    "source": [
     "print(f\"`sum(range({N}))` on cluster: {summed.result()}\\t(should be {N * (N-1)})\")"
    ]
@@ -196,7 +314,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.3"
+   "version": "3.8.6"
   }
  },
  "nbformat": 4,

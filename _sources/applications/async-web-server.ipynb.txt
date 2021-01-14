@@ -16,14 +16,31 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 1,
    "metadata": {
     "collapsed": false,
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:37.312074Z",
+     "iopub.status.busy": "2021-01-14T10:43:37.307751Z",
+     "iopub.status.idle": "2021-01-14T10:43:37.348715Z",
+     "shell.execute_reply": "2021-01-14T10:43:37.349327Z"
+    },
     "jupyter": {
      "outputs_hidden": false
     }
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<tornado.httpserver.HTTPServer at 0x7f5a744ef460>"
+      ]
+     },
+     "execution_count": 1,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "import tornado.ioloop\n",
     "import tornado.web\n",
@@ -68,9 +85,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 2,
    "metadata": {
     "collapsed": false,
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:37.352037Z",
+     "iopub.status.busy": "2021-01-14T10:43:37.351166Z",
+     "iopub.status.idle": "2021-01-14T10:43:37.358276Z",
+     "shell.execute_reply": "2021-01-14T10:43:37.358842Z"
+    },
     "jupyter": {
      "outputs_hidden": false
     }
@@ -109,56 +132,112 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 3,
    "metadata": {
     "collapsed": false,
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:37.361348Z",
+     "iopub.status.busy": "2021-01-14T10:43:37.360549Z",
+     "iopub.status.idle": "2021-01-14T10:43:37.369798Z",
+     "shell.execute_reply": "2021-01-14T10:43:37.368691Z"
+    },
     "jupyter": {
      "outputs_hidden": false
     }
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "http://localhost:8000/fast , 1 simultaneous requests,  total time:  0.003348112106323242\n"
+     ]
+    }
+   ],
    "source": [
     "await measure('http://localhost:8000/fast', n=1)"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 4,
    "metadata": {
     "collapsed": false,
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:37.372081Z",
+     "iopub.status.busy": "2021-01-14T10:43:37.371250Z",
+     "iopub.status.idle": "2021-01-14T10:43:37.507983Z",
+     "shell.execute_reply": "2021-01-14T10:43:37.506858Z"
+    },
     "jupyter": {
      "outputs_hidden": false
     }
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "http://localhost:8000/fast , 100 simultaneous requests,  total time:  0.13060569763183594\n"
+     ]
+    }
+   ],
    "source": [
     "await measure('http://localhost:8000/fast', n=100)"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 5,
    "metadata": {
     "collapsed": false,
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:37.510398Z",
+     "iopub.status.busy": "2021-01-14T10:43:37.509573Z",
+     "iopub.status.idle": "2021-01-14T10:43:37.605442Z",
+     "shell.execute_reply": "2021-01-14T10:43:37.604450Z"
+    },
     "jupyter": {
      "outputs_hidden": false
     }
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "http://localhost:8000/fib/28 , 1 simultaneous requests,  total time:  0.09028172492980957\n"
+     ]
+    }
+   ],
    "source": [
     "await measure('http://localhost:8000/fib/28', n=1)"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 6,
    "metadata": {
     "collapsed": false,
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:37.607818Z",
+     "iopub.status.busy": "2021-01-14T10:43:37.606987Z",
+     "iopub.status.idle": "2021-01-14T10:43:47.909713Z",
+     "shell.execute_reply": "2021-01-14T10:43:47.909114Z"
+    },
     "jupyter": {
      "outputs_hidden": false
     }
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "http://localhost:8000/fib/28 , 100 simultaneous requests,  total time:  10.297530889511108\n"
+     ]
+    }
+   ],
    "source": [
     "await measure('http://localhost:8000/fib/28', n=100)"
    ]
@@ -174,14 +253,29 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 7,
    "metadata": {
     "collapsed": false,
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:47.912223Z",
+     "iopub.status.busy": "2021-01-14T10:43:47.911357Z",
+     "iopub.status.idle": "2021-01-14T10:43:50.478765Z",
+     "shell.execute_reply": "2021-01-14T10:43:50.478201Z"
+    },
     "jupyter": {
      "outputs_hidden": false
     }
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "http://localhost:8000/fib/35 , 1 simultaneous requests,  total time:  2.561539649963379\n",
+      "http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.56154727935791\n"
+     ]
+    }
+   ],
    "source": [
     "a = asyncio.ensure_future(measure('http://localhost:8000/fib/35', n=1))\n",
     "b = asyncio.ensure_future(measure('http://localhost:8000/fast', n=1))\n",
@@ -211,9 +305,48 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 8,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:50.481802Z",
+     "iopub.status.busy": "2021-01-14T10:43:50.481401Z",
+     "iopub.status.idle": "2021-01-14T10:43:51.763135Z",
+     "shell.execute_reply": "2021-01-14T10:43:51.761036Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<table style=\"border: 2px solid white;\">\n",
+       "<tr>\n",
+       "<td style=\"vertical-align: top; border: 0px solid white\">\n",
+       "<h3 style=\"text-align: left;\">Client</h3>\n",
+       "<ul style=\"text-align: left; list-style: none; margin: 0; padding: 0;\">\n",
+       "  <li><b>Scheduler: </b>tcp://127.0.0.1:40811</li>\n",
+       "  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>\n",
+       "</ul>\n",
+       "</td>\n",
+       "<td style=\"vertical-align: top; border: 0px solid white\">\n",
+       "<h3 style=\"text-align: left;\">Cluster</h3>\n",
+       "<ul style=\"text-align: left; list-style:none; margin: 0; padding: 0;\">\n",
+       "  <li><b>Workers: </b>2</li>\n",
+       "  <li><b>Cores: </b>2</li>\n",
+       "  <li><b>Memory: </b>7.29 GB</li>\n",
+       "</ul>\n",
+       "</td>\n",
+       "</tr>\n",
+       "</table>"
+      ],
+      "text/plain": [
+       "<Client: 'tcp://127.0.0.1:40811' processes=2 threads=2, memory=7.29 GB>"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "from dask.distributed import Client\n",
     "\n",
@@ -223,14 +356,31 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 9,
    "metadata": {
     "collapsed": false,
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:51.769262Z",
+     "iopub.status.busy": "2021-01-14T10:43:51.768103Z",
+     "iopub.status.idle": "2021-01-14T10:43:51.773515Z",
+     "shell.execute_reply": "2021-01-14T10:43:51.773161Z"
+    },
     "jupyter": {
      "outputs_hidden": false
     }
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<tornado.httpserver.HTTPServer at 0x7f5a744ef5e0>"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "\n",
     "def fib(n):\n",
@@ -283,14 +433,28 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 10,
    "metadata": {
     "collapsed": false,
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:51.776083Z",
+     "iopub.status.busy": "2021-01-14T10:43:51.775681Z",
+     "iopub.status.idle": "2021-01-14T10:43:53.607524Z",
+     "shell.execute_reply": "2021-01-14T10:43:53.605713Z"
+    },
     "jupyter": {
      "outputs_hidden": false
     }
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "http://localhost:8000/fib/28 , 20 simultaneous requests,  total time:  1.8247489929199219\n"
+     ]
+    }
+   ],
    "source": [
     "# Before parallelism\n",
     "await measure('http://localhost:8000/fib/28', n=20)"
@@ -298,14 +462,28 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 11,
    "metadata": {
     "collapsed": false,
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:53.612645Z",
+     "iopub.status.busy": "2021-01-14T10:43:53.612226Z",
+     "iopub.status.idle": "2021-01-14T10:43:53.844069Z",
+     "shell.execute_reply": "2021-01-14T10:43:53.843346Z"
+    },
     "jupyter": {
      "outputs_hidden": false
     }
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "http://localhost:9000/fib/28 , 20 simultaneous requests,  total time:  0.23087596893310547\n"
+     ]
+    }
+   ],
    "source": [
     "# After parallelism\n",
     "await measure('http://localhost:9000/fib/28', n=20)"
@@ -324,14 +502,29 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 12,
    "metadata": {
     "collapsed": false,
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:53.850586Z",
+     "iopub.status.busy": "2021-01-14T10:43:53.850178Z",
+     "iopub.status.idle": "2021-01-14T10:43:56.750451Z",
+     "shell.execute_reply": "2021-01-14T10:43:56.749888Z"
+    },
     "jupyter": {
      "outputs_hidden": false
     }
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "http://localhost:8000/fib/35 , 1 simultaneous requests,  total time:  2.889683246612549\n",
+      "http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.8900492191314697\n"
+     ]
+    }
+   ],
    "source": [
     "# Before async\n",
     "a = asyncio.ensure_future(measure('http://localhost:8000/fib/35', n=1))\n",
@@ -342,14 +535,35 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 13,
    "metadata": {
     "collapsed": false,
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:56.753046Z",
+     "iopub.status.busy": "2021-01-14T10:43:56.752155Z",
+     "iopub.status.idle": "2021-01-14T10:43:59.837825Z",
+     "shell.execute_reply": "2021-01-14T10:43:59.836227Z"
+    },
     "jupyter": {
      "outputs_hidden": false
     }
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "http://localhost:9000/fast , 1 simultaneous requests,  total time:  0.004990577697753906\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "http://localhost:9000/fib/35 , 1 simultaneous requests,  total time:  3.0786397457122803\n"
+     ]
+    }
+   ],
    "source": [
     "# After async\n",
     "a = asyncio.ensure_future(measure('http://localhost:9000/fib/35', n=1))\n",
@@ -374,14 +588,28 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 14,
    "metadata": {
     "collapsed": false,
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:43:59.844258Z",
+     "iopub.status.busy": "2021-01-14T10:43:59.839676Z",
+     "iopub.status.idle": "2021-01-14T10:43:59.851104Z",
+     "shell.execute_reply": "2021-01-14T10:43:59.849847Z"
+    },
     "jupyter": {
      "outputs_hidden": false
     }
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Roundtrip latency: 5.70 ms\n"
+     ]
+    }
+   ],
    "source": [
     "async def f():\n",
     "    start = time()\n",
@@ -409,7 +637,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.4"
+   "version": "3.8.6"
   }
  },
  "nbformat": 4,

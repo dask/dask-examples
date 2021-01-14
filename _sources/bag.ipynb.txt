@@ -28,9 +28,58 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 1,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:28.391423Z",
+     "iopub.status.busy": "2021-01-14T10:42:28.390949Z",
+     "iopub.status.idle": "2021-01-14T10:42:31.245840Z",
+     "shell.execute_reply": "2021-01-14T10:42:31.246191Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/node.py:151: UserWarning: Port 8787 is already in use.\n",
+      "Perhaps you already have a cluster running?\n",
+      "Hosting the HTTP server on port 36329 instead\n",
+      "  warnings.warn(\n"
+     ]
+    },
+    {
+     "data": {
+      "text/html": [
+       "<table style=\"border: 2px solid white;\">\n",
+       "<tr>\n",
+       "<td style=\"vertical-align: top; border: 0px solid white\">\n",
+       "<h3 style=\"text-align: left;\">Client</h3>\n",
+       "<ul style=\"text-align: left; list-style: none; margin: 0; padding: 0;\">\n",
+       "  <li><b>Scheduler: </b>tcp://127.0.0.1:33273</li>\n",
+       "  <li><b>Dashboard: </b><a href='http://127.0.0.1:36329/status' target='_blank'>http://127.0.0.1:36329/status</a></li>\n",
+       "</ul>\n",
+       "</td>\n",
+       "<td style=\"vertical-align: top; border: 0px solid white\">\n",
+       "<h3 style=\"text-align: left;\">Cluster</h3>\n",
+       "<ul style=\"text-align: left; list-style:none; margin: 0; padding: 0;\">\n",
+       "  <li><b>Workers: </b>4</li>\n",
+       "  <li><b>Cores: </b>4</li>\n",
+       "  <li><b>Memory: </b>7.29 GB</li>\n",
+       "</ul>\n",
+       "</td>\n",
+       "</tr>\n",
+       "</table>"
+      ],
+      "text/plain": [
+       "<Client: 'tcp://127.0.0.1:33273' processes=4 threads=4, memory=7.29 GB>"
+      ]
+     },
+     "execution_count": 1,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "from dask.distributed import Client, progress\n",
     "client = Client(n_workers=4, threads_per_worker=1)\n",
@@ -48,9 +97,36 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 2,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:31.248413Z",
+     "iopub.status.busy": "2021-01-14T10:42:31.247995Z",
+     "iopub.status.idle": "2021-01-14T10:42:32.757429Z",
+     "shell.execute_reply": "2021-01-14T10:42:32.757028Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['/home/runner/work/dask-examples/dask-examples/data/0.json',\n",
+       " '/home/runner/work/dask-examples/dask-examples/data/1.json',\n",
+       " '/home/runner/work/dask-examples/dask-examples/data/2.json',\n",
+       " '/home/runner/work/dask-examples/dask-examples/data/3.json',\n",
+       " '/home/runner/work/dask-examples/dask-examples/data/4.json',\n",
+       " '/home/runner/work/dask-examples/dask-examples/data/5.json',\n",
+       " '/home/runner/work/dask-examples/dask-examples/data/6.json',\n",
+       " '/home/runner/work/dask-examples/dask-examples/data/7.json',\n",
+       " '/home/runner/work/dask-examples/dask-examples/data/8.json',\n",
+       " '/home/runner/work/dask-examples/dask-examples/data/9.json']"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "import dask\n",
     "import json\n",
@@ -73,18 +149,52 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 3,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:32.768110Z",
+     "iopub.status.busy": "2021-01-14T10:42:32.767708Z",
+     "iopub.status.idle": "2021-01-14T10:42:32.924165Z",
+     "shell.execute_reply": "2021-01-14T10:42:32.924512Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{\"age\": 56, \"name\": [\"Le\", \"Morton\"], \"occupation\": \"Medical Secretary\", \"telephone\": \"591.139.2820\", \"address\": {\"address\": \"1296 Young Bend\", \"city\": \"Great Falls\"}, \"credit-card\": {\"number\": \"3444 778222 54046\", \"expiration-date\": \"08/20\"}}\r\n",
+      "{\"age\": 17, \"name\": [\"Mary\", \"Pugh\"], \"occupation\": \"Industrial Consultant\", \"telephone\": \"066.481.6992\", \"address\": {\"address\": \"1298 Jamestown Square\", \"city\": \"Mount Clemens\"}, \"credit-card\": {\"number\": \"3400 563471 96728\", \"expiration-date\": \"02/20\"}}\r\n"
+     ]
+    }
+   ],
    "source": [
     "!head -n 2 data/0.json"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 4,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:32.927315Z",
+     "iopub.status.busy": "2021-01-14T10:42:32.926419Z",
+     "iopub.status.idle": "2021-01-14T10:42:32.935576Z",
+     "shell.execute_reply": "2021-01-14T10:42:32.936280Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "dask.bag<loads, npartitions=10>"
+      ]
+     },
+     "execution_count": 4,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "import dask.bag as db\n",
     "import json\n",
@@ -95,9 +205,38 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 5,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:32.938848Z",
+     "iopub.status.busy": "2021-01-14T10:42:32.938032Z",
+     "iopub.status.idle": "2021-01-14T10:42:32.958187Z",
+     "shell.execute_reply": "2021-01-14T10:42:32.959280Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "({'age': 56,\n",
+       "  'name': ['Le', 'Morton'],\n",
+       "  'occupation': 'Medical Secretary',\n",
+       "  'telephone': '591.139.2820',\n",
+       "  'address': {'address': '1296 Young Bend', 'city': 'Great Falls'},\n",
+       "  'credit-card': {'number': '3444 778222 54046', 'expiration-date': '08/20'}},\n",
+       " {'age': 17,\n",
+       "  'name': ['Mary', 'Pugh'],\n",
+       "  'occupation': 'Industrial Consultant',\n",
+       "  'telephone': '066.481.6992',\n",
+       "  'address': {'address': '1298 Jamestown Square', 'city': 'Mount Clemens'},\n",
+       "  'credit-card': {'number': '3400 563471 96728', 'expiration-date': '02/20'}})"
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "b.take(2)"
    ]
@@ -113,27 +252,93 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 6,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:32.963743Z",
+     "iopub.status.busy": "2021-01-14T10:42:32.961162Z",
+     "iopub.status.idle": "2021-01-14T10:42:32.979873Z",
+     "shell.execute_reply": "2021-01-14T10:42:32.979457Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "({'age': 56,\n",
+       "  'name': ['Le', 'Morton'],\n",
+       "  'occupation': 'Medical Secretary',\n",
+       "  'telephone': '591.139.2820',\n",
+       "  'address': {'address': '1296 Young Bend', 'city': 'Great Falls'},\n",
+       "  'credit-card': {'number': '3444 778222 54046', 'expiration-date': '08/20'}},\n",
+       " {'age': 65,\n",
+       "  'name': ['Glayds', 'Harvey'],\n",
+       "  'occupation': 'Sales Assistant',\n",
+       "  'telephone': '(468) 305-6734',\n",
+       "  'address': {'address': '1070 Doric Drung', 'city': 'Rockwall'},\n",
+       "  'credit-card': {'number': '4790 9026 6695 6340',\n",
+       "   'expiration-date': '06/16'}})"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "b.filter(lambda record: record['age'] > 30).take(2)  # Select only people over 30"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 7,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:32.983611Z",
+     "iopub.status.busy": "2021-01-14T10:42:32.983143Z",
+     "iopub.status.idle": "2021-01-14T10:42:33.002458Z",
+     "shell.execute_reply": "2021-01-14T10:42:33.002779Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "('Medical Secretary', 'Industrial Consultant')"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "b.map(lambda record: record['occupation']).take(2)  # Select the occupation field"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 8,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:33.005257Z",
+     "iopub.status.busy": "2021-01-14T10:42:33.004427Z",
+     "iopub.status.idle": "2021-01-14T10:42:33.121858Z",
+     "shell.execute_reply": "2021-01-14T10:42:33.121510Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "10000"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "b.count().compute()  # Count total number of records"
    ]
@@ -149,9 +354,27 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 9,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:33.126689Z",
+     "iopub.status.busy": "2021-01-14T10:42:33.126295Z",
+     "iopub.status.idle": "2021-01-14T10:42:33.130328Z",
+     "shell.execute_reply": "2021-01-14T10:42:33.130892Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "dask.bag<topk-aggregate, npartitions=1>"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "result = (b.filter(lambda record: record['age'] > 30)\n",
     "           .map(lambda record: record['occupation'])\n",
@@ -169,9 +392,36 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 10,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:33.133455Z",
+     "iopub.status.busy": "2021-01-14T10:42:33.132537Z",
+     "iopub.status.idle": "2021-01-14T10:42:33.262949Z",
+     "shell.execute_reply": "2021-01-14T10:42:33.262589Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[('Vehicle Assessor', 16),\n",
+       " ('Housewife', 14),\n",
+       " ('Cable TV Installer', 13),\n",
+       " ('Town Clerk', 13),\n",
+       " ('Investigator', 13),\n",
+       " ('Fruiterer', 13),\n",
+       " ('Lathe Operator', 12),\n",
+       " ('Bank Clerk', 12),\n",
+       " ('Aromatherapist', 12),\n",
+       " ('Masseuse', 12)]"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "result.compute()"
    ]
@@ -187,9 +437,36 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 11,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:33.265201Z",
+     "iopub.status.busy": "2021-01-14T10:42:33.264803Z",
+     "iopub.status.idle": "2021-01-14T10:42:33.411818Z",
+     "shell.execute_reply": "2021-01-14T10:42:33.411421Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['/home/runner/work/dask-examples/dask-examples/data/processed.0.json',\n",
+       " '/home/runner/work/dask-examples/dask-examples/data/processed.1.json',\n",
+       " '/home/runner/work/dask-examples/dask-examples/data/processed.2.json',\n",
+       " '/home/runner/work/dask-examples/dask-examples/data/processed.3.json',\n",
+       " '/home/runner/work/dask-examples/dask-examples/data/processed.4.json',\n",
+       " '/home/runner/work/dask-examples/dask-examples/data/processed.5.json',\n",
+       " '/home/runner/work/dask-examples/dask-examples/data/processed.6.json',\n",
+       " '/home/runner/work/dask-examples/dask-examples/data/processed.7.json',\n",
+       " '/home/runner/work/dask-examples/dask-examples/data/processed.8.json',\n",
+       " '/home/runner/work/dask-examples/dask-examples/data/processed.9.json']"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "(b.filter(lambda record: record['age'] > 30)  # Select records of interest\n",
     "  .map(json.dumps)                            # Convert Python objects to text\n",
@@ -211,18 +488,66 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 12,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:33.415401Z",
+     "iopub.status.busy": "2021-01-14T10:42:33.414990Z",
+     "iopub.status.idle": "2021-01-14T10:42:33.435883Z",
+     "shell.execute_reply": "2021-01-14T10:42:33.435498Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "({'age': 56,\n",
+       "  'name': ['Le', 'Morton'],\n",
+       "  'occupation': 'Medical Secretary',\n",
+       "  'telephone': '591.139.2820',\n",
+       "  'address': {'address': '1296 Young Bend', 'city': 'Great Falls'},\n",
+       "  'credit-card': {'number': '3444 778222 54046', 'expiration-date': '08/20'}},)"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "b.take(1)"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 13,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:33.440887Z",
+     "iopub.status.busy": "2021-01-14T10:42:33.440486Z",
+     "iopub.status.idle": "2021-01-14T10:42:33.461103Z",
+     "shell.execute_reply": "2021-01-14T10:42:33.460758Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "({'age': 56,\n",
+       "  'occupation': 'Medical Secretary',\n",
+       "  'telephone': '591.139.2820',\n",
+       "  'credit-card-number': '3444 778222 54046',\n",
+       "  'credit-card-expiration': '08/20',\n",
+       "  'name': 'Le Morton',\n",
+       "  'street-address': '1296 Young Bend',\n",
+       "  'city': 'Great Falls'},)"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "def flatten(record):\n",
     "    return {\n",
@@ -241,9 +566,128 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 14,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:33.463628Z",
+     "iopub.status.busy": "2021-01-14T10:42:33.462693Z",
+     "iopub.status.idle": "2021-01-14T10:42:33.943028Z",
+     "shell.execute_reply": "2021-01-14T10:42:33.943401Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>age</th>\n",
+       "      <th>occupation</th>\n",
+       "      <th>telephone</th>\n",
+       "      <th>credit-card-number</th>\n",
+       "      <th>credit-card-expiration</th>\n",
+       "      <th>name</th>\n",
+       "      <th>street-address</th>\n",
+       "      <th>city</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>56</td>\n",
+       "      <td>Medical Secretary</td>\n",
+       "      <td>591.139.2820</td>\n",
+       "      <td>3444 778222 54046</td>\n",
+       "      <td>08/20</td>\n",
+       "      <td>Le Morton</td>\n",
+       "      <td>1296 Young Bend</td>\n",
+       "      <td>Great Falls</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>17</td>\n",
+       "      <td>Industrial Consultant</td>\n",
+       "      <td>066.481.6992</td>\n",
+       "      <td>3400 563471 96728</td>\n",
+       "      <td>02/20</td>\n",
+       "      <td>Mary Pugh</td>\n",
+       "      <td>1298 Jamestown Square</td>\n",
+       "      <td>Mount Clemens</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>65</td>\n",
+       "      <td>Sales Assistant</td>\n",
+       "      <td>(468) 305-6734</td>\n",
+       "      <td>4790 9026 6695 6340</td>\n",
+       "      <td>06/16</td>\n",
+       "      <td>Glayds Harvey</td>\n",
+       "      <td>1070 Doric Drung</td>\n",
+       "      <td>Rockwall</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>33</td>\n",
+       "      <td>Charge Hand</td>\n",
+       "      <td>+1-(723)-613-3031</td>\n",
+       "      <td>3797 255724 62716</td>\n",
+       "      <td>08/24</td>\n",
+       "      <td>Darius Hunt</td>\n",
+       "      <td>289 Mabini Nene</td>\n",
+       "      <td>Bellingham</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>66</td>\n",
+       "      <td>Projectionist</td>\n",
+       "      <td>+1-(588)-266-1704</td>\n",
+       "      <td>3436 492655 07632</td>\n",
+       "      <td>03/20</td>\n",
+       "      <td>Marvin Weber</td>\n",
+       "      <td>542 Stanyan Loop</td>\n",
+       "      <td>Ocala</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   age             occupation          telephone   credit-card-number  \\\n",
+       "0   56      Medical Secretary       591.139.2820    3444 778222 54046   \n",
+       "1   17  Industrial Consultant       066.481.6992    3400 563471 96728   \n",
+       "2   65        Sales Assistant     (468) 305-6734  4790 9026 6695 6340   \n",
+       "3   33            Charge Hand  +1-(723)-613-3031    3797 255724 62716   \n",
+       "4   66          Projectionist  +1-(588)-266-1704    3436 492655 07632   \n",
+       "\n",
+       "  credit-card-expiration           name         street-address           city  \n",
+       "0                  08/20      Le Morton        1296 Young Bend    Great Falls  \n",
+       "1                  02/20      Mary Pugh  1298 Jamestown Square  Mount Clemens  \n",
+       "2                  06/16  Glayds Harvey       1070 Doric Drung       Rockwall  \n",
+       "3                  08/24    Darius Hunt        289 Mabini Nene     Bellingham  \n",
+       "4                  03/20   Marvin Weber       542 Stanyan Loop          Ocala  "
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "df = b.map(flatten).to_dataframe()\n",
     "df.head()"
@@ -258,9 +702,37 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 15,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:42:33.952925Z",
+     "iopub.status.busy": "2021-01-14T10:42:33.952527Z",
+     "iopub.status.idle": "2021-01-14T10:42:34.610969Z",
+     "shell.execute_reply": "2021-01-14T10:42:34.611307Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Vehicle Assessor      16\n",
+       "Housewife             14\n",
+       "Investigator          13\n",
+       "Town Clerk            13\n",
+       "Cable TV Installer    13\n",
+       "Fruiterer             13\n",
+       "Psychoanalyst         12\n",
+       "Home Help             12\n",
+       "Aromatherapist        12\n",
+       "Lathe Operator        12\n",
+       "Name: occupation, dtype: int64"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "df[df.age > 30].occupation.value_counts().nlargest(10).compute()"
    ]
@@ -295,7 +767,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.3"
+   "version": "3.8.6"
   }
  },
  "nbformat": 4,

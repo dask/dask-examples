@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Blockwise Ensemble Methods &mdash; Dask Examples  documentation</title>
   
@@ -18,7 +18,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -136,7 +139,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Dask Examples
+            <a href="../index.html" class="icon icon-home"> Dask Examples
           
 
           
@@ -260,6 +263,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -271,7 +276,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/machine-learning/blockwise-ensemble.ipynb.txt" rel="nofollow"> View page source</a>
           
         
@@ -729,22 +734,11 @@ BlockwiseVotingClassifier(classes=[0, 1],
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-[[],
- Text(0.5, 0, &#39;Feature&#39;),
- Text(0.5, 1.0, &#39;Difference in Learned Coefficients&#39;)]
-</pre></div></div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/machine-learning_blockwise-ensemble_11_1.png" src="../_images/machine-learning_blockwise-ensemble_11_1.png" />
+<img alt="../_images/machine-learning_blockwise-ensemble_11_0.png" src="../_images/machine-learning_blockwise-ensemble_11_0.png" />
 </div>
 </div>
 <p>That said, the assumption backing this entire process is that the distribution of the data is relatively uniform across partitions. The parameters learned by the each member of the ensemble should be relatively similar, and so will give relatively similar predictions when applied to the same data.</p>
@@ -832,7 +826,7 @@ BlockwiseVotingClassifier(classes=[0, 1],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([0, 1, 0, 1, 0, 0, 0, 1, 1, 1])
+array([0, 1, 0, 0, 0, 1, 0, 1, 1, 0])
 </pre></div></div>
 </div>
 <p>With <code class="docutils literal notranslate"><span class="pre">voting=&quot;soft&quot;</span></code> we have access to <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code>, as long as the subestimator has a <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> method. These subestimators should be well-calibrated for the predictions to be meaningful. See <a class="reference external" href="https://scikit-learn.org/stable/modules/calibration.html#calibration">probability calibration</a> for more.</p>
@@ -867,11 +861,11 @@ array([0, 1, 0, 1, 0, 0, 0, 1, 1, 1])
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([[9.98131063e-01, 1.86893745e-03],
-       [4.60245619e-03, 9.95397544e-01],
-       [9.87053786e-01, 1.29462145e-02],
-       [9.03476834e-04, 9.99096523e-01],
-       [9.96470083e-01, 3.52991704e-03]])
+array([[0.82142852, 0.17857148],
+       [0.12007944, 0.87992056],
+       [0.94876877, 0.05123123],
+       [0.91949217, 0.08050783],
+       [0.56871399, 0.43128601]])
 </pre></div></div>
 </div>
 <p>The stages here are similar to the <code class="docutils literal notranslate"><span class="pre">voting=&quot;hard&quot;</span></code> case. Only now instead of taking the majority vote we average the probabilities predicted by each sub-estimator.</p>
@@ -970,8 +964,8 @@ array([[9.98131063e-01, 1.86893745e-03],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([-185.89336249,   30.73150795, -155.07308314,  223.50935394,
-         85.75621546])
+array([-209.83798979,  153.34999104,   79.37186412, -228.01129689,
+        333.11851764])
 </pre></div></div>
 </div>
 <p>As usual with Dask-ML, scoring is done in parallel (and distributed on a cluster if you’re connected to one).</p>
@@ -1052,22 +1046,11 @@ array([-185.89336249,   30.73150795, -155.07308314,  223.50935394,
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-[Text(0.5, 0, &#39;Feature 0&#39;),
- Text(0, 0.5, &#39;target&#39;),
- Text(0.5, 1.0, &#39;Non-stationary data (by partition)&#39;)]
-</pre></div></div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/machine-learning_blockwise-ensemble_32_1.png" src="../_images/machine-learning_blockwise-ensemble_32_1.png" />
+<img alt="../_images/machine-learning_blockwise-ensemble_32_0.png" src="../_images/machine-learning_blockwise-ensemble_32_0.png" />
 </div>
 </div>
 <p>Now let’s fit two estimators:</p>
@@ -1124,7 +1107,7 @@ LinearRegression()
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
--11.536307085558791
+-11.096587887414355
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1142,7 +1125,7 @@ LinearRegression()
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.1257076319207896
+0.09051854628005862
 </pre></div></div>
 </div>
 <p>This shows that ensuring your needs to be relatively uniform across partitions. Even including the standard controls to normalize whatever underlying force is generating the non-stationary data (e.g. a time trend compontent or differencing timeseries data, dummy variables for geographic regions, etc) is not sufficient when your dataset is partioned by the non-uniform variable. You would still need to either shuffle your data prior to fitting, or just sample and fit the sub-estimator on the
@@ -1165,37 +1148,29 @@ ga('send', 'pageview');
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="scale-scikit-learn.html" class="btn btn-neutral float-right" title="Scale Scikit-Learn for Small Data Problems" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../dataframes/02-groupby.html" class="btn btn-neutral float-left" title="DataFrames: Groupby" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="scale-scikit-learn.html" class="btn btn-neutral float-right" title="Scale Scikit-Learn for Small Data Problems" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../dataframes/02-groupby.html" class="btn btn-neutral float-left" title="DataFrames: Groupby" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2018, Dask Developers
+        &#169; Copyright 2018, Dask Developers.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

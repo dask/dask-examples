@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Hyperparameter optimization with Dask &mdash; Dask Examples  documentation</title>
   
@@ -18,7 +18,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -136,7 +139,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Dask Examples
+            <a href="../index.html" class="icon icon-home"> Dask Examples
           
 
           
@@ -271,6 +274,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -282,7 +287,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/machine-learning/hyperparam-opt.ipynb.txt" rel="nofollow"> View page source</a>
           
         
@@ -630,7 +635,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.1.0.4/11995/1</li>
+  <li><b>Scheduler: </b>inproc://10.1.0.4/8457/1</li>
   <li><b>Dashboard: </b><a href='http://10.1.0.4:8787/status' target='_blank'>http://10.1.0.4:8787/status</a></li>
 </ul>
 </td>
@@ -665,20 +670,11 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;AxesSubplot:xlabel=&#39;0&#39;, ylabel=&#39;1&#39;&gt;
-</pre></div></div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/machine-learning_hyperparam-opt_8_1.png" src="../_images/machine-learning_hyperparam-opt_8_1.png" />
+<img alt="../_images/machine-learning_hyperparam-opt_8_0.png" src="../_images/machine-learning_hyperparam-opt_8_0.png" />
 </div>
 </div>
 <div class="section" id="Add-random-dimensions">
@@ -989,8 +985,8 @@ bytes = 240.00 kB
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 7.72 s, sys: 1.29 s, total: 9.01 s
-Wall time: 7.22 s
+CPU times: user 2.57 s, sys: 156 ms, total: 2.72 s
+Wall time: 4.06 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1037,7 +1033,7 @@ HyperbandSearchCV(estimator=MLPClassifier(), max_iter=8,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.8548
+0.5654
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1055,8 +1051,8 @@ HyperbandSearchCV(estimator=MLPClassifier(), max_iter=8,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-MLPClassifier(activation=&#39;tanh&#39;, alpha=1.6003103137387017e-05, batch_size=16,
-              hidden_layer_sizes=(12, 12))
+MLPClassifier(activation=&#39;tanh&#39;, alpha=2.010496416260497e-06, batch_size=32,
+              hidden_layer_sizes=(4, 4, 4, 4, 4, 4))
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1092,107 +1088,107 @@ MLPClassifier(activation=&#39;tanh&#39;, alpha=1.6003103137387017e-05, batch_siz
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>mean_partial_fit_time</th>
-      <th>std_partial_fit_time</th>
-      <th>std_score_time</th>
+      <th>param_alpha</th>
+      <th>partial_fit_calls</th>
+      <th>mean_score_time</th>
       <th>model_id</th>
-      <th>test_score</th>
       <th>param_hidden_layer_sizes</th>
       <th>param_activation</th>
-      <th>param_alpha</th>
+      <th>std_score_time</th>
       <th>param_batch_size</th>
-      <th>params</th>
-      <th>mean_score_time</th>
-      <th>rank_test_score</th>
-      <th>partial_fit_calls</th>
       <th>bracket</th>
+      <th>params</th>
+      <th>test_score</th>
+      <th>rank_test_score</th>
+      <th>mean_partial_fit_time</th>
+      <th>std_partial_fit_time</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.931655</td>
-      <td>0.042608</td>
-      <td>0.009743</td>
+      <td>0.000017</td>
+      <td>2</td>
+      <td>0.016706</td>
       <td>bracket=1-0</td>
-      <td>0.4992</td>
       <td>(6, 6, 6, 6)</td>
       <td>logistic</td>
-      <td>0.000986</td>
-      <td>32</td>
-      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
-      <td>0.027861</td>
-      <td>2</td>
-      <td>2</td>
+      <td>0.010332</td>
+      <td>128</td>
       <td>1</td>
+      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
+      <td>0.4894</td>
+      <td>3</td>
+      <td>0.338711</td>
+      <td>0.015633</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.958513</td>
-      <td>0.271973</td>
-      <td>0.008546</td>
+      <td>0.000031</td>
+      <td>2</td>
+      <td>0.034787</td>
       <td>bracket=1-1</td>
-      <td>0.8040</td>
       <td>(12, 12)</td>
-      <td>relu</td>
-      <td>0.000674</td>
-      <td>16</td>
+      <td>logistic</td>
+      <td>0.000737</td>
+      <td>128</td>
+      <td>1</td>
       <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
-      <td>0.022014</td>
+      <td>0.5106</td>
       <td>1</td>
-      <td>6</td>
-      <td>1</td>
+      <td>0.250874</td>
+      <td>0.049119</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.863716</td>
-      <td>0.105642</td>
-      <td>0.006472</td>
+      <td>0.000001</td>
+      <td>2</td>
+      <td>0.016971</td>
       <td>bracket=1-2</td>
-      <td>0.4992</td>
-      <td>(12, 6, 3, 3)</td>
+      <td>(4, 4, 4, 4, 4, 4)</td>
       <td>relu</td>
-      <td>0.000004</td>
-      <td>64</td>
-      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
-      <td>0.026646</td>
-      <td>2</td>
-      <td>2</td>
+      <td>0.000205</td>
+      <td>512</td>
       <td>1</td>
+      <td>{'hidden_layer_sizes': (4, 4, 4, 4, 4, 4), 'ba...</td>
+      <td>0.5106</td>
+      <td>1</td>
+      <td>0.153489</td>
+      <td>0.008385</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.516189</td>
-      <td>0.052659</td>
-      <td>0.013183</td>
+      <td>0.000002</td>
+      <td>8</td>
+      <td>0.017569</td>
       <td>bracket=0-0</td>
-      <td>0.4934</td>
-      <td>(6, 6, 6, 6)</td>
+      <td>[4, 4, 4, 4, 4, 4]</td>
       <td>tanh</td>
-      <td>0.000069</td>
-      <td>64</td>
-      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
-      <td>0.052809</td>
-      <td>2</td>
-      <td>3</td>
+      <td>0.010754</td>
+      <td>32</td>
       <td>0</td>
+      <td>{'hidden_layer_sizes': (4, 4, 4, 4, 4, 4), 'ba...</td>
+      <td>0.5654</td>
+      <td>1</td>
+      <td>0.497521</td>
+      <td>0.316641</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.756165</td>
-      <td>0.283826</td>
-      <td>0.006456</td>
+      <td>0.000813</td>
+      <td>3</td>
+      <td>0.033582</td>
       <td>bracket=0-1</td>
-      <td>0.8548</td>
-      <td>(12, 12)</td>
+      <td>[4, 4, 4, 4, 4, 4]</td>
       <td>tanh</td>
-      <td>0.000016</td>
-      <td>16</td>
-      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
-      <td>0.017400</td>
-      <td>1</td>
-      <td>8</td>
+      <td>0.017094</td>
+      <td>512</td>
       <td>0</td>
+      <td>{'hidden_layer_sizes': (4, 4, 4, 4, 4, 4), 'ba...</td>
+      <td>0.0000</td>
+      <td>2</td>
+      <td>0.129465</td>
+      <td>0.062709</td>
     </tr>
   </tbody>
 </table>
@@ -1213,7 +1209,7 @@ MLPClassifier(activation=&#39;tanh&#39;, alpha=1.6003103137387017e-05, batch_siz
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.8496
+0.5706
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1282,7 +1278,7 @@ MLPClassifier(activation=&#39;tanh&#39;, alpha=1.6003103137387017e-05, batch_siz
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([1, 0, 1, ..., 1, 0, 0])
+array([1, 1, 1, ..., 1, 0, 1])
 </pre></div></div>
 </div>
 <p>It also has some other attributes.</p>
@@ -1335,10 +1331,10 @@ array([1, 0, 1, ..., 1, 0, 0])
       <td>bracket=1-0</td>
       <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
       <td>1</td>
-      <td>0.889047</td>
-      <td>0.4992</td>
-      <td>0.037604</td>
-      <td>1.672360</td>
+      <td>0.354344</td>
+      <td>0.4894</td>
+      <td>0.027038</td>
+      <td>0.514815</td>
       <td>1</td>
     </tr>
     <tr>
@@ -1346,44 +1342,44 @@ array([1, 0, 1, ..., 1, 0, 0])
       <td>bracket=1-1</td>
       <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
       <td>1</td>
-      <td>1.101526</td>
-      <td>0.5068</td>
-      <td>0.030401</td>
-      <td>1.672363</td>
+      <td>0.299993</td>
+      <td>0.5106</td>
+      <td>0.034050</td>
+      <td>0.514816</td>
       <td>1</td>
     </tr>
     <tr>
       <th>2</th>
       <td>bracket=1-2</td>
-      <td>{'hidden_layer_sizes': (12, 6, 3, 3), 'batch_s...</td>
+      <td>{'hidden_layer_sizes': (4, 4, 4, 4, 4, 4), 'ba...</td>
       <td>1</td>
-      <td>0.969359</td>
-      <td>0.4992</td>
-      <td>0.033118</td>
-      <td>1.672363</td>
+      <td>0.161874</td>
+      <td>0.5106</td>
+      <td>0.016766</td>
+      <td>0.514816</td>
       <td>1</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>bracket=0-0</td>
-      <td>{'hidden_layer_sizes': (6, 6, 6, 6), 'batch_si...</td>
+      <td>bracket=1-1</td>
+      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
+      <td>2</td>
+      <td>0.201755</td>
+      <td>0.5106</td>
+      <td>0.035524</td>
+      <td>0.820638</td>
       <td>1</td>
-      <td>0.568848</td>
-      <td>0.4934</td>
-      <td>0.065992</td>
-      <td>1.831008</td>
-      <td>0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>bracket=0-1</td>
-      <td>{'hidden_layer_sizes': (12, 12), 'batch_size':...</td>
+      <td>bracket=1-2</td>
+      <td>{'hidden_layer_sizes': (4, 4, 4, 4, 4, 4), 'ba...</td>
+      <td>2</td>
+      <td>0.145104</td>
+      <td>0.5106</td>
+      <td>0.017176</td>
+      <td>0.820639</td>
       <td>1</td>
-      <td>1.189668</td>
-      <td>0.5384</td>
-      <td>0.029160</td>
-      <td>1.831009</td>
-      <td>0</td>
     </tr>
   </tbody>
 </table>
@@ -1417,37 +1413,29 @@ ga('send', 'pageview');
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="xgboost.html" class="btn btn-neutral float-right" title="Scale XGBoost" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="text-vectorization.html" class="btn btn-neutral float-left" title="Text Vectorization Pipeline" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="xgboost.html" class="btn btn-neutral float-right" title="Scale XGBoost" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="text-vectorization.html" class="btn btn-neutral float-left" title="Text Vectorization Pipeline" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2018, Dask Developers
+        &#169; Copyright 2018, Dask Developers.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

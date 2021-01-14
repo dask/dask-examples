@@ -18,9 +18,48 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 1,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:50:22.574866Z",
+     "iopub.status.busy": "2021-01-14T10:50:22.574354Z",
+     "iopub.status.idle": "2021-01-14T10:50:24.844770Z",
+     "shell.execute_reply": "2021-01-14T10:50:24.845466Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<table style=\"border: 2px solid white;\">\n",
+       "<tr>\n",
+       "<td style=\"vertical-align: top; border: 0px solid white\">\n",
+       "<h3 style=\"text-align: left;\">Client</h3>\n",
+       "<ul style=\"text-align: left; list-style: none; margin: 0; padding: 0;\">\n",
+       "  <li><b>Scheduler: </b>tcp://127.0.0.1:41807</li>\n",
+       "  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>\n",
+       "</ul>\n",
+       "</td>\n",
+       "<td style=\"vertical-align: top; border: 0px solid white\">\n",
+       "<h3 style=\"text-align: left;\">Cluster</h3>\n",
+       "<ul style=\"text-align: left; list-style:none; margin: 0; padding: 0;\">\n",
+       "  <li><b>Workers: </b>2</li>\n",
+       "  <li><b>Cores: </b>4</li>\n",
+       "  <li><b>Memory: </b>4.00 GB</li>\n",
+       "</ul>\n",
+       "</td>\n",
+       "</tr>\n",
+       "</table>"
+      ],
+      "text/plain": [
+       "<Client: 'tcp://127.0.0.1:41807' processes=2 threads=4, memory=4.00 GB>"
+      ]
+     },
+     "execution_count": 1,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "from dask.distributed import Client, progress\n",
     "\n",
@@ -39,8 +78,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 2,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:50:24.848628Z",
+     "iopub.status.busy": "2021-01-14T10:50:24.847719Z",
+     "iopub.status.idle": "2021-01-14T10:50:25.382018Z",
+     "shell.execute_reply": "2021-01-14T10:50:25.382706Z"
+    }
+   },
    "outputs": [],
    "source": [
     "import sklearn.datasets\n",
@@ -63,9 +109,95 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 3,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:50:25.385612Z",
+     "iopub.status.busy": "2021-01-14T10:50:25.384709Z",
+     "iopub.status.idle": "2021-01-14T10:50:25.636102Z",
+     "shell.execute_reply": "2021-01-14T10:50:25.636766Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div><strong>Dask DataFrame Structure:</strong></div>\n",
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>text</th>\n",
+       "      <th>target</th>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>npartitions=25</th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>object</td>\n",
+       "      <td>int64</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>453</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>...</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>10872</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>11313</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>\n",
+       "<div>Dask Name: from_pandas, 25 tasks</div>"
+      ],
+      "text/plain": [
+       "Dask DataFrame Structure:\n",
+       "                  text target\n",
+       "npartitions=25               \n",
+       "0               object  int64\n",
+       "453                ...    ...\n",
+       "...                ...    ...\n",
+       "10872              ...    ...\n",
+       "11313              ...    ...\n",
+       "Dask Name: from_pandas, 25 tasks"
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "import dask.dataframe as dd\n",
     "import pandas as pd\n",
@@ -85,9 +217,34 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 4,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:50:25.639510Z",
+     "iopub.status.busy": "2021-01-14T10:50:25.638666Z",
+     "iopub.status.idle": "2021-01-14T10:50:26.000407Z",
+     "shell.execute_reply": "2021-01-14T10:50:26.000728Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "From: lerxst@wam.umd.edu (where's my thing)\n",
+      "Subject: WHAT car is this!?\n",
+      "Nntp-Posting-Host: rac3.wam.umd.edu\n",
+      "Organization: University of Maryland, College Park\n",
+      "Lines: 15\n",
+      "\n",
+      " I was wondering if anyone out there could enlighten me on this car I saw\n",
+      "the other day. It was a 2-door sports car, looked to be from the late 60s/\n",
+      "early 70s. It was called a Bricklin. The doors were really small. In addition,\n",
+      "the front bumper was separate from the rest of the body. This is \n",
+      "all I know. If anyone can tellme a m\n"
+     ]
+    }
+   ],
    "source": [
     "print(df.head().loc[0, 'text'][:500])"
    ]
@@ -110,9 +267,49 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 5,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:50:26.005168Z",
+     "iopub.status.busy": "2021-01-14T10:50:26.004234Z",
+     "iopub.status.idle": "2021-01-14T10:50:26.137561Z",
+     "shell.execute_reply": "2021-01-14T10:50:26.137932Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<table>\n",
+       "<tr>\n",
+       "<td>\n",
+       "<table>\n",
+       "  <thead>\n",
+       "    <tr><td> </td><th> Array </th><th> Chunk </th></tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "\n",
+       "    <tr><th> Shape </th><td> (nan, 1048576) </td> <td> (nan, 1048576) </td></tr>\n",
+       "    <tr><th> Count </th><td> 75 Tasks </td><td> 25 Chunks </td></tr>\n",
+       "    <tr><th> Type </th><td> float64 </td><td> scipy.csr_matrix </td></tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</td>\n",
+       "<td>\n",
+       "\n",
+       "</td>\n",
+       "</tr>\n",
+       "</table>"
+      ],
+      "text/plain": [
+       "dask.array<_transformer, shape=(nan, 1048576), dtype=float64, chunksize=(nan, 1048576), chunktype=scipy.csr_matrix>"
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "import dask_ml.feature_extraction.text\n",
     "\n",
@@ -132,9 +329,28 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 6,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:50:26.143591Z",
+     "iopub.status.busy": "2021-01-14T10:50:26.142515Z",
+     "iopub.status.idle": "2021-01-14T10:50:26.682019Z",
+     "shell.execute_reply": "2021-01-14T10:50:26.681550Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<453x1048576 sparse matrix of type '<class 'numpy.float64'>'\n",
+       "\twith 64357 stored elements in Compressed Sparse Row format>"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "X.blocks[0].compute()"
    ]
@@ -160,18 +376,81 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 7,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:50:26.685514Z",
+     "iopub.status.busy": "2021-01-14T10:50:26.685101Z",
+     "iopub.status.idle": "2021-01-14T10:50:26.689941Z",
+     "shell.execute_reply": "2021-01-14T10:50:26.690528Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['alt.atheism',\n",
+       " 'comp.graphics',\n",
+       " 'comp.os.ms-windows.misc',\n",
+       " 'comp.sys.ibm.pc.hardware',\n",
+       " 'comp.sys.mac.hardware',\n",
+       " 'comp.windows.x',\n",
+       " 'misc.forsale',\n",
+       " 'rec.autos',\n",
+       " 'rec.motorcycles',\n",
+       " 'rec.sport.baseball',\n",
+       " 'rec.sport.hockey',\n",
+       " 'sci.crypt',\n",
+       " 'sci.electronics',\n",
+       " 'sci.med',\n",
+       " 'sci.space',\n",
+       " 'soc.religion.christian',\n",
+       " 'talk.politics.guns',\n",
+       " 'talk.politics.mideast',\n",
+       " 'talk.politics.misc',\n",
+       " 'talk.religion.misc']"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "bunch.target_names"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 8,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:50:26.693249Z",
+     "iopub.status.busy": "2021-01-14T10:50:26.692432Z",
+     "iopub.status.idle": "2021-01-14T10:50:26.724634Z",
+     "shell.execute_reply": "2021-01-14T10:50:26.725224Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Dask Series Structure:\n",
+       "npartitions=25\n",
+       "0        int64\n",
+       "453        ...\n",
+       "         ...  \n",
+       "10872      ...\n",
+       "11313      ...\n",
+       "Name: target, dtype: int64\n",
+       "Dask Name: astype, 101 tasks"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "import numpy as np\n",
     "\n",
@@ -182,8 +461,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 9,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:50:26.728835Z",
+     "iopub.status.busy": "2021-01-14T10:50:26.727034Z",
+     "iopub.status.idle": "2021-01-14T10:50:26.733473Z",
+     "shell.execute_reply": "2021-01-14T10:50:26.734049Z"
+    }
+   },
    "outputs": [],
    "source": [
     "import numpy as np\n",
@@ -203,8 +489,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 10,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:50:26.738126Z",
+     "iopub.status.busy": "2021-01-14T10:50:26.736348Z",
+     "iopub.status.idle": "2021-01-14T10:50:26.744044Z",
+     "shell.execute_reply": "2021-01-14T10:50:26.744600Z"
+    }
+   },
    "outputs": [],
    "source": [
     "sgd = sklearn.linear_model.SGDClassifier(\n",
@@ -227,8 +520,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 11,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:50:26.748227Z",
+     "iopub.status.busy": "2021-01-14T10:50:26.746425Z",
+     "iopub.status.idle": "2021-01-14T10:50:32.206205Z",
+     "shell.execute_reply": "2021-01-14T10:50:32.205189Z"
+    }
+   },
    "outputs": [],
    "source": [
     "pipe.fit(df['text'], y,\n",
@@ -244,9 +544,49 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 12,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:50:32.211305Z",
+     "iopub.status.busy": "2021-01-14T10:50:32.210884Z",
+     "iopub.status.idle": "2021-01-14T10:50:32.242808Z",
+     "shell.execute_reply": "2021-01-14T10:50:32.243627Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<table>\n",
+       "<tr>\n",
+       "<td>\n",
+       "<table>\n",
+       "  <thead>\n",
+       "    <tr><td> </td><th> Array </th><th> Chunk </th></tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr><th> Bytes </th><td> unknown </td> <td> unknown </td></tr>\n",
+       "    <tr><th> Shape </th><td> (nan,) </td> <td> (nan,) </td></tr>\n",
+       "    <tr><th> Count </th><td> 100 Tasks </td><td> 25 Chunks </td></tr>\n",
+       "    <tr><th> Type </th><td> int64 </td><td> numpy.ndarray </td></tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</td>\n",
+       "<td>\n",
+       "\n",
+       "</td>\n",
+       "</tr>\n",
+       "</table>"
+      ],
+      "text/plain": [
+       "dask.array<_predict, shape=(nan,), dtype=int64, chunksize=(nan,), chunktype=numpy.ndarray>"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "predictions = pipe.predict(df['text'])\n",
     "predictions"
@@ -261,9 +601,27 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 13,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:50:32.265614Z",
+     "iopub.status.busy": "2021-01-14T10:50:32.265157Z",
+     "iopub.status.idle": "2021-01-14T10:50:36.010365Z",
+     "shell.execute_reply": "2021-01-14T10:50:36.011452Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0.9647339579282305"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "dask_ml.metrics.accuracy_score(y, predictions)"
    ]
@@ -293,7 +651,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.4"
+   "version": "3.8.6"
   }
  },
  "nbformat": 4,

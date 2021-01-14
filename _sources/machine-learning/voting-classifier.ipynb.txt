@@ -18,8 +18,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 1,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:51:12.329873Z",
+     "iopub.status.busy": "2021-01-14T10:51:12.329381Z",
+     "iopub.status.idle": "2021-01-14T10:51:13.498574Z",
+     "shell.execute_reply": "2021-01-14T10:51:13.499639Z"
+    }
+   },
    "outputs": [],
    "source": [
     "from sklearn.ensemble import VotingClassifier\n",
@@ -39,8 +46,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 2,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:51:13.504077Z",
+     "iopub.status.busy": "2021-01-14T10:51:13.501982Z",
+     "iopub.status.idle": "2021-01-14T10:51:13.512134Z",
+     "shell.execute_reply": "2021-01-14T10:51:13.512550Z"
+    }
+   },
    "outputs": [],
    "source": [
     "X, y = sklearn.datasets.make_classification(n_samples=1_000, n_features=20)"
@@ -55,8 +69,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 3,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:51:13.515566Z",
+     "iopub.status.busy": "2021-01-14T10:51:13.514269Z",
+     "iopub.status.idle": "2021-01-14T10:51:13.519290Z",
+     "shell.execute_reply": "2021-01-14T10:51:13.520070Z"
+    }
+   },
    "outputs": [],
    "source": [
     "classifiers = [\n",
@@ -76,9 +97,38 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 4,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:51:13.523335Z",
+     "iopub.status.busy": "2021-01-14T10:51:13.522296Z",
+     "iopub.status.idle": "2021-01-14T10:51:15.897739Z",
+     "shell.execute_reply": "2021-01-14T10:51:15.897252Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "CPU times: user 21.7 ms, sys: 7.2 ms, total: 28.9 ms\n",
+      "Wall time: 2.35 s\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "VotingClassifier(estimators=[('sgd', SGDClassifier()),\n",
+       "                             ('logisticregression', LogisticRegression()),\n",
+       "                             ('svc', SVC(gamma='auto'))],\n",
+       "                 n_jobs=-1)"
+      ]
+     },
+     "execution_count": 4,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "%time clf.fit(X, y)"
    ]
@@ -94,9 +144,48 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 5,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:51:15.901236Z",
+     "iopub.status.busy": "2021-01-14T10:51:15.900826Z",
+     "iopub.status.idle": "2021-01-14T10:51:18.900652Z",
+     "shell.execute_reply": "2021-01-14T10:51:18.901416Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<table style=\"border: 2px solid white;\">\n",
+       "<tr>\n",
+       "<td style=\"vertical-align: top; border: 0px solid white\">\n",
+       "<h3 style=\"text-align: left;\">Client</h3>\n",
+       "<ul style=\"text-align: left; list-style: none; margin: 0; padding: 0;\">\n",
+       "  <li><b>Scheduler: </b>tcp://127.0.0.1:41187</li>\n",
+       "  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>\n",
+       "</ul>\n",
+       "</td>\n",
+       "<td style=\"vertical-align: top; border: 0px solid white\">\n",
+       "<h3 style=\"text-align: left;\">Cluster</h3>\n",
+       "<ul style=\"text-align: left; list-style:none; margin: 0; padding: 0;\">\n",
+       "  <li><b>Workers: </b>2</li>\n",
+       "  <li><b>Cores: </b>2</li>\n",
+       "  <li><b>Memory: </b>7.29 GB</li>\n",
+       "</ul>\n",
+       "</td>\n",
+       "</tr>\n",
+       "</table>"
+      ],
+      "text/plain": [
+       "<Client: 'tcp://127.0.0.1:41187' processes=2 threads=2, memory=7.29 GB>"
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "import joblib\n",
     "from distributed import Client\n",
@@ -114,9 +203,29 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 6,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:51:18.905286Z",
+     "iopub.status.busy": "2021-01-14T10:51:18.903998Z",
+     "iopub.status.idle": "2021-01-14T10:51:20.728502Z",
+     "shell.execute_reply": "2021-01-14T10:51:20.729110Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "VotingClassifier(estimators=[('sgd', SGDClassifier()),\n",
+      "                             ('logisticregression', LogisticRegression()),\n",
+      "                             ('svc', SVC(gamma='auto'))],\n",
+      "                 n_jobs=-1)\n",
+      "CPU times: user 81.9 ms, sys: 11 ms, total: 92.9 ms\n",
+      "Wall time: 1.82 s\n"
+     ]
+    }
+   ],
    "source": [
     "%%time \n",
     "with joblib.parallel_backend(\"dask\"):\n",
@@ -149,7 +258,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.3"
+   "version": "3.8.6"
   }
  },
  "nbformat": 4,

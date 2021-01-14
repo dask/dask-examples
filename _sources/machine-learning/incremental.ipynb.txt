@@ -46,9 +46,48 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 1,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:19.205544Z",
+     "iopub.status.busy": "2021-01-14T10:49:19.205018Z",
+     "iopub.status.idle": "2021-01-14T10:49:22.412560Z",
+     "shell.execute_reply": "2021-01-14T10:49:22.413419Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<table style=\"border: 2px solid white;\">\n",
+       "<tr>\n",
+       "<td style=\"vertical-align: top; border: 0px solid white\">\n",
+       "<h3 style=\"text-align: left;\">Client</h3>\n",
+       "<ul style=\"text-align: left; list-style: none; margin: 0; padding: 0;\">\n",
+       "  <li><b>Scheduler: </b>tcp://127.0.0.1:43185</li>\n",
+       "  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>\n",
+       "</ul>\n",
+       "</td>\n",
+       "<td style=\"vertical-align: top; border: 0px solid white\">\n",
+       "<h3 style=\"text-align: left;\">Cluster</h3>\n",
+       "<ul style=\"text-align: left; list-style:none; margin: 0; padding: 0;\">\n",
+       "  <li><b>Workers: </b>4</li>\n",
+       "  <li><b>Cores: </b>4</li>\n",
+       "  <li><b>Memory: </b>7.29 GB</li>\n",
+       "</ul>\n",
+       "</td>\n",
+       "</tr>\n",
+       "</table>"
+      ],
+      "text/plain": [
+       "<Client: 'tcp://127.0.0.1:43185' processes=4 threads=4, memory=7.29 GB>"
+      ]
+     },
+     "execution_count": 1,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "from dask.distributed import Client\n",
     "client = Client(n_workers=4, threads_per_worker=1)\n",
@@ -68,9 +107,74 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 2,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:22.417970Z",
+     "iopub.status.busy": "2021-01-14T10:49:22.415294Z",
+     "iopub.status.idle": "2021-01-14T10:49:23.471694Z",
+     "shell.execute_reply": "2021-01-14T10:49:23.472099Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<table>\n",
+       "<tr>\n",
+       "<td>\n",
+       "<table>\n",
+       "  <thead>\n",
+       "    <tr><td> </td><th> Array </th><th> Chunk </th></tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr><th> Bytes </th><td> 80.00 MB </td> <td> 8.00 MB </td></tr>\n",
+       "    <tr><th> Shape </th><td> (100000, 100) </td> <td> (10000, 100) </td></tr>\n",
+       "    <tr><th> Count </th><td> 10 Tasks </td><td> 10 Chunks </td></tr>\n",
+       "    <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</td>\n",
+       "<td>\n",
+       "<svg width=\"75\" height=\"170\" style=\"stroke:rgb(0,0,0);stroke-width:1\" >\n",
+       "\n",
+       "  <!-- Horizontal lines -->\n",
+       "  <line x1=\"0\" y1=\"0\" x2=\"25\" y2=\"0\" style=\"stroke-width:2\" />\n",
+       "  <line x1=\"0\" y1=\"12\" x2=\"25\" y2=\"12\" />\n",
+       "  <line x1=\"0\" y1=\"24\" x2=\"25\" y2=\"24\" />\n",
+       "  <line x1=\"0\" y1=\"36\" x2=\"25\" y2=\"36\" />\n",
+       "  <line x1=\"0\" y1=\"48\" x2=\"25\" y2=\"48\" />\n",
+       "  <line x1=\"0\" y1=\"60\" x2=\"25\" y2=\"60\" />\n",
+       "  <line x1=\"0\" y1=\"72\" x2=\"25\" y2=\"72\" />\n",
+       "  <line x1=\"0\" y1=\"84\" x2=\"25\" y2=\"84\" />\n",
+       "  <line x1=\"0\" y1=\"96\" x2=\"25\" y2=\"96\" />\n",
+       "  <line x1=\"0\" y1=\"108\" x2=\"25\" y2=\"108\" />\n",
+       "  <line x1=\"0\" y1=\"120\" x2=\"25\" y2=\"120\" style=\"stroke-width:2\" />\n",
+       "\n",
+       "  <!-- Vertical lines -->\n",
+       "  <line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"120\" style=\"stroke-width:2\" />\n",
+       "  <line x1=\"25\" y1=\"0\" x2=\"25\" y2=\"120\" style=\"stroke-width:2\" />\n",
+       "\n",
+       "  <!-- Colored Rectangle -->\n",
+       "  <polygon points=\"0.000000,0.000000 25.412617,0.000000 25.412617,120.000000 0.000000,120.000000\" style=\"fill:#ECB172A0;stroke-width:0\"/>\n",
+       "\n",
+       "  <!-- Text -->\n",
+       "  <text x=\"12.706308\" y=\"140.000000\" font-size=\"1.0rem\" font-weight=\"100\" text-anchor=\"middle\" >100</text>\n",
+       "  <text x=\"45.412617\" y=\"60.000000\" font-size=\"1.0rem\" font-weight=\"100\" text-anchor=\"middle\" transform=\"rotate(-90,45.412617,60.000000)\">100000</text>\n",
+       "</svg>\n",
+       "</td>\n",
+       "</tr>\n",
+       "</table>"
+      ],
+      "text/plain": [
+       "dask.array<normal, shape=(100000, 100), dtype=float64, chunksize=(10000, 100), chunktype=numpy.ndarray>"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "import dask\n",
     "import dask.array as da\n",
@@ -102,9 +206,74 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 3,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:23.474811Z",
+     "iopub.status.busy": "2021-01-14T10:49:23.474259Z",
+     "iopub.status.idle": "2021-01-14T10:49:23.533602Z",
+     "shell.execute_reply": "2021-01-14T10:49:23.533954Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<table>\n",
+       "<tr>\n",
+       "<td>\n",
+       "<table>\n",
+       "  <thead>\n",
+       "    <tr><td> </td><th> Array </th><th> Chunk </th></tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr><th> Bytes </th><td> 72.00 MB </td> <td> 7.20 MB </td></tr>\n",
+       "    <tr><th> Shape </th><td> (90000, 100) </td> <td> (9000, 100) </td></tr>\n",
+       "    <tr><th> Count </th><td> 70 Tasks </td><td> 10 Chunks </td></tr>\n",
+       "    <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</td>\n",
+       "<td>\n",
+       "<svg width=\"75\" height=\"170\" style=\"stroke:rgb(0,0,0);stroke-width:1\" >\n",
+       "\n",
+       "  <!-- Horizontal lines -->\n",
+       "  <line x1=\"0\" y1=\"0\" x2=\"25\" y2=\"0\" style=\"stroke-width:2\" />\n",
+       "  <line x1=\"0\" y1=\"12\" x2=\"25\" y2=\"12\" />\n",
+       "  <line x1=\"0\" y1=\"24\" x2=\"25\" y2=\"24\" />\n",
+       "  <line x1=\"0\" y1=\"36\" x2=\"25\" y2=\"36\" />\n",
+       "  <line x1=\"0\" y1=\"48\" x2=\"25\" y2=\"48\" />\n",
+       "  <line x1=\"0\" y1=\"60\" x2=\"25\" y2=\"60\" />\n",
+       "  <line x1=\"0\" y1=\"72\" x2=\"25\" y2=\"72\" />\n",
+       "  <line x1=\"0\" y1=\"84\" x2=\"25\" y2=\"84\" />\n",
+       "  <line x1=\"0\" y1=\"96\" x2=\"25\" y2=\"96\" />\n",
+       "  <line x1=\"0\" y1=\"108\" x2=\"25\" y2=\"108\" />\n",
+       "  <line x1=\"0\" y1=\"120\" x2=\"25\" y2=\"120\" style=\"stroke-width:2\" />\n",
+       "\n",
+       "  <!-- Vertical lines -->\n",
+       "  <line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"120\" style=\"stroke-width:2\" />\n",
+       "  <line x1=\"25\" y1=\"0\" x2=\"25\" y2=\"120\" style=\"stroke-width:2\" />\n",
+       "\n",
+       "  <!-- Colored Rectangle -->\n",
+       "  <polygon points=\"0.000000,0.000000 25.412617,0.000000 25.412617,120.000000 0.000000,120.000000\" style=\"fill:#ECB172A0;stroke-width:0\"/>\n",
+       "\n",
+       "  <!-- Text -->\n",
+       "  <text x=\"12.706308\" y=\"140.000000\" font-size=\"1.0rem\" font-weight=\"100\" text-anchor=\"middle\" >100</text>\n",
+       "  <text x=\"45.412617\" y=\"60.000000\" font-size=\"1.0rem\" font-weight=\"100\" text-anchor=\"middle\" transform=\"rotate(-90,45.412617,60.000000)\">90000</text>\n",
+       "</svg>\n",
+       "</td>\n",
+       "</tr>\n",
+       "</table>"
+      ],
+      "text/plain": [
+       "dask.array<concatenate, shape=(90000, 100), dtype=float64, chunksize=(9000, 100), chunktype=numpy.ndarray>"
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "from dask_ml.model_selection import train_test_split\n",
     "X_train, X_test, y_train, y_test = train_test_split(X, y)\n",
@@ -122,8 +291,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 4,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:23.536181Z",
+     "iopub.status.busy": "2021-01-14T10:49:23.535763Z",
+     "iopub.status.idle": "2021-01-14T10:49:23.658348Z",
+     "shell.execute_reply": "2021-01-14T10:49:23.658777Z"
+    }
+   },
    "outputs": [],
    "source": [
     "X_train, X_test, y_train, y_test = dask.persist(X_train, X_test, y_train, y_test)"
@@ -149,9 +325,27 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 5,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:23.669995Z",
+     "iopub.status.busy": "2021-01-14T10:49:23.669560Z",
+     "iopub.status.idle": "2021-01-14T10:49:29.287632Z",
+     "shell.execute_reply": "2021-01-14T10:49:29.287239Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0, 1])"
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "classes = da.unique(y_train).compute()\n",
     "classes"
@@ -168,8 +362,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 6,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:29.291388Z",
+     "iopub.status.busy": "2021-01-14T10:49:29.290974Z",
+     "iopub.status.idle": "2021-01-14T10:49:29.294179Z",
+     "shell.execute_reply": "2021-01-14T10:49:29.294780Z"
+    }
+   },
    "outputs": [],
    "source": [
     "from sklearn.linear_model import SGDClassifier\n",
@@ -195,8 +396,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 7,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:29.299348Z",
+     "iopub.status.busy": "2021-01-14T10:49:29.298633Z",
+     "iopub.status.idle": "2021-01-14T10:49:29.300528Z",
+     "shell.execute_reply": "2021-01-14T10:49:29.300183Z"
+    }
+   },
    "outputs": [],
    "source": [
     "from dask_ml.wrappers import Incremental\n",
@@ -226,18 +434,54 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 8,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:29.306919Z",
+     "iopub.status.busy": "2021-01-14T10:49:29.306522Z",
+     "iopub.status.idle": "2021-01-14T10:49:29.566827Z",
+     "shell.execute_reply": "2021-01-14T10:49:29.566198Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Incremental(estimator=SGDClassifier(loss='log'), scoring='accuracy')"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "inc.fit(X_train, y_train, classes=classes)"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 9,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:29.578864Z",
+     "iopub.status.busy": "2021-01-14T10:49:29.574535Z",
+     "iopub.status.idle": "2021-01-14T10:49:29.686938Z",
+     "shell.execute_reply": "2021-01-14T10:49:29.686556Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0.5266"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "inc.score(X_test, y_test)"
    ]
@@ -253,8 +497,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
+   "execution_count": 10,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:29.690632Z",
+     "iopub.status.busy": "2021-01-14T10:49:29.690212Z",
+     "iopub.status.idle": "2021-01-14T10:49:29.692844Z",
+     "shell.execute_reply": "2021-01-14T10:49:29.693171Z"
+    }
+   },
    "outputs": [],
    "source": [
     "est = SGDClassifier(loss='log', penalty='l2', tol=0e-3)\n",
@@ -263,9 +514,87 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 11,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:29.699819Z",
+     "iopub.status.busy": "2021-01-14T10:49:29.698887Z",
+     "iopub.status.idle": "2021-01-14T10:49:33.450308Z",
+     "shell.execute_reply": "2021-01-14T10:49:33.450653Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Score: 0.5186\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Score: 0.5181\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Score: 0.5287\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Score: 0.5334\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Score: 0.519\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Score: 0.5305\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Score: 0.5363\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Score: 0.5231\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Score: 0.5383\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Score: 0.543\n"
+     ]
+    }
+   ],
    "source": [
     "for _ in range(10):\n",
     "    inc.partial_fit(X_train, y_train, classes=classes)\n",
@@ -283,27 +612,132 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 12,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:33.456926Z",
+     "iopub.status.busy": "2021-01-14T10:49:33.455963Z",
+     "iopub.status.idle": "2021-01-14T10:49:33.463921Z",
+     "shell.execute_reply": "2021-01-14T10:49:33.462364Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<table>\n",
+       "<tr>\n",
+       "<td>\n",
+       "<table>\n",
+       "  <thead>\n",
+       "    <tr><td> </td><th> Array </th><th> Chunk </th></tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr><th> Bytes </th><td> 80.00 kB </td> <td> 8.00 kB </td></tr>\n",
+       "    <tr><th> Shape </th><td> (10000,) </td> <td> (1000,) </td></tr>\n",
+       "    <tr><th> Count </th><td> 20 Tasks </td><td> 10 Chunks </td></tr>\n",
+       "    <tr><th> Type </th><td> int64 </td><td> numpy.ndarray </td></tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</td>\n",
+       "<td>\n",
+       "<svg width=\"170\" height=\"75\" style=\"stroke:rgb(0,0,0);stroke-width:1\" >\n",
+       "\n",
+       "  <!-- Horizontal lines -->\n",
+       "  <line x1=\"0\" y1=\"0\" x2=\"120\" y2=\"0\" style=\"stroke-width:2\" />\n",
+       "  <line x1=\"0\" y1=\"25\" x2=\"120\" y2=\"25\" style=\"stroke-width:2\" />\n",
+       "\n",
+       "  <!-- Vertical lines -->\n",
+       "  <line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"25\" style=\"stroke-width:2\" />\n",
+       "  <line x1=\"12\" y1=\"0\" x2=\"12\" y2=\"25\" />\n",
+       "  <line x1=\"24\" y1=\"0\" x2=\"24\" y2=\"25\" />\n",
+       "  <line x1=\"36\" y1=\"0\" x2=\"36\" y2=\"25\" />\n",
+       "  <line x1=\"48\" y1=\"0\" x2=\"48\" y2=\"25\" />\n",
+       "  <line x1=\"60\" y1=\"0\" x2=\"60\" y2=\"25\" />\n",
+       "  <line x1=\"72\" y1=\"0\" x2=\"72\" y2=\"25\" />\n",
+       "  <line x1=\"84\" y1=\"0\" x2=\"84\" y2=\"25\" />\n",
+       "  <line x1=\"96\" y1=\"0\" x2=\"96\" y2=\"25\" />\n",
+       "  <line x1=\"108\" y1=\"0\" x2=\"108\" y2=\"25\" />\n",
+       "  <line x1=\"120\" y1=\"0\" x2=\"120\" y2=\"25\" style=\"stroke-width:2\" />\n",
+       "\n",
+       "  <!-- Colored Rectangle -->\n",
+       "  <polygon points=\"0.000000,0.000000 120.000000,0.000000 120.000000,25.412617 0.000000,25.412617\" style=\"fill:#ECB172A0;stroke-width:0\"/>\n",
+       "\n",
+       "  <!-- Text -->\n",
+       "  <text x=\"60.000000\" y=\"45.412617\" font-size=\"1.0rem\" font-weight=\"100\" text-anchor=\"middle\" >10000</text>\n",
+       "  <text x=\"140.000000\" y=\"12.706308\" font-size=\"1.0rem\" font-weight=\"100\" text-anchor=\"middle\" transform=\"rotate(0,140.000000,12.706308)\">1</text>\n",
+       "</svg>\n",
+       "</td>\n",
+       "</tr>\n",
+       "</table>"
+      ],
+      "text/plain": [
+       "dask.array<_predict, shape=(10000,), dtype=int64, chunksize=(1000,), chunktype=numpy.ndarray>"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "inc.predict(X_test)  # Predict produces lazy dask arrays"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 13,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:33.471977Z",
+     "iopub.status.busy": "2021-01-14T10:49:33.471569Z",
+     "iopub.status.idle": "2021-01-14T10:49:33.503702Z",
+     "shell.execute_reply": "2021-01-14T10:49:33.503016Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0,\n",
+       "       1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1,\n",
+       "       1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0,\n",
+       "       0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1,\n",
+       "       1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1])"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "inc.predict(X_test)[:100].compute()  # call compute to get results"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
+   "execution_count": 14,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2021-01-14T10:49:33.509180Z",
+     "iopub.status.busy": "2021-01-14T10:49:33.508781Z",
+     "iopub.status.idle": "2021-01-14T10:49:33.678648Z",
+     "shell.execute_reply": "2021-01-14T10:49:33.678966Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0.543"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "inc.score(X_test, y_test)"
    ]
@@ -339,7 +773,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.6.4"
+   "version": "3.8.6"
   }
  },
  "nbformat": 4,

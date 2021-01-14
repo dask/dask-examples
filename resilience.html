@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Resilience against hardware failures &mdash; Dask Examples  documentation</title>
   
@@ -18,7 +18,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -134,7 +137,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Dask Examples
+            <a href="index.html" class="icon icon-home"> Dask Examples
           
 
           
@@ -253,6 +256,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -264,7 +269,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/resilience.ipynb.txt" rel="nofollow"> View page source</a>
           
         
@@ -559,7 +564,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Increase-resilience">
 <h2>Increase resilience<a class="headerlink" href="#Increase-resilience" title="Permalink to this headline">¶</a></h2>
 <p>Whenever a worker shuts down, the scheduler will increment the suspiciousness counter of <em>all</em> tasks that were assigned (not necessarily computing) to the worker in question. Whenever the suspiciousness of a task exceeds a certain threshold (3 by default), the task will be considered broken. We want to compute many tasks on only a few workers with workers shutting down randomly. So we expect the suspiciousness of all tasks to grow rapidly. Let’s increase the threshold:</p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
@@ -569,15 +574,6 @@ div.rendered_html tbody tr:hover {
 <span class="n">dask</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set</span><span class="p">({</span><span class="s1">&#39;distributed.scheduler.allowed-failures&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">});</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;dask.config.set at 0x7f02605a72e0&gt;
-</pre></div></div>
 </div>
 </div>
 <div class="section" id="All-other-imports">
@@ -619,7 +615,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:37889</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:44357</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
@@ -714,6 +710,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
 </pre></div></div>
 </div>
 </div>
@@ -754,28 +751,25 @@ ga('send', 'pageview');
            
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2018, Dask Developers
+        &#169; Copyright 2018, Dask Developers.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
