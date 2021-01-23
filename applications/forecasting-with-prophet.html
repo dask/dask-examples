@@ -724,8 +724,8 @@ Importing plotly failed. Interactive plots will not work.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2.44 s, sys: 98.1 ms, total: 2.53 s
-Wall time: 3.07 s
+CPU times: user 2.34 s, sys: 91.7 ms, total: 2.43 s
+Wall time: 3.69 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -734,7 +734,7 @@ Wall time: 3.07 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;fbprophet.forecaster.Prophet at 0x7f0af7883f70&gt;
+&lt;fbprophet.forecaster.Prophet at 0x7feca54558e0&gt;
 </pre></div></div>
 </div>
 <p>And we can make a forecast. Again, Dask isn’t involved here.</p>
@@ -785,7 +785,7 @@ Wall time: 3.07 s
 <div class="highlight"><pre>
 /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/node.py:151: UserWarning: Port 8787 is already in use.
 Perhaps you already have a cluster running?
-Hosting the HTTP server on port 40313 instead
+Hosting the HTTP server on port 40437 instead
   warnings.warn(
 </pre></div></div>
 </div>
@@ -799,8 +799,8 @@ Hosting the HTTP server on port 40313 instead
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:43863</li>
-  <li><b>Dashboard: </b><a href='http://127.0.0.1:40313/status' target='_blank'>http://127.0.0.1:40313/status</a></li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:43605</li>
+  <li><b>Dashboard: </b><a href='http://127.0.0.1:40437/status' target='_blank'>http://127.0.0.1:40437/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -833,7 +833,7 @@ Hosting the HTTP server on port 40313 instead
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 INFO:fbprophet:Making 11 forecasts with cutoffs between 2010-02-15 00:00:00 and 2015-01-20 00:00:00
-INFO:fbprophet:Applying in parallel with &lt;Client: &#39;tcp://127.0.0.1:43863&#39; processes=2 threads=2, memory=7.29 GB&gt;
+INFO:fbprophet:Applying in parallel with &lt;Client: &#39;tcp://127.0.0.1:43605&#39; processes=2 threads=2, memory=7.29 GB&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -841,8 +841,8 @@ INFO:fbprophet:Applying in parallel with &lt;Client: &#39;tcp://127.0.0.1:43863&
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 906 ms, sys: 119 ms, total: 1.03 s
-Wall time: 39.6 s
+CPU times: user 889 ms, sys: 63.4 ms, total: 952 ms
+Wall time: 38.6 s
 </pre></div></div>
 </div>
 <p>Be sure to watch the Dask Dashboard as that runs. The models are fit in parallel on the cluster. At the start there’s bit of overhead from having to move the model and data to the workers but after that the scaling looks quite nice.</p>

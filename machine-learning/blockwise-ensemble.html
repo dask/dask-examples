@@ -826,7 +826,7 @@ BlockwiseVotingClassifier(classes=[0, 1],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([0, 1, 0, 0, 0, 1, 0, 1, 1, 0])
+array([0, 0, 0, 1, 1, 1, 1, 0, 1, 0])
 </pre></div></div>
 </div>
 <p>With <code class="docutils literal notranslate"><span class="pre">voting=&quot;soft&quot;</span></code> we have access to <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code>, as long as the subestimator has a <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> method. These subestimators should be well-calibrated for the predictions to be meaningful. See <a class="reference external" href="https://scikit-learn.org/stable/modules/calibration.html#calibration">probability calibration</a> for more.</p>
@@ -861,11 +861,11 @@ array([0, 1, 0, 0, 0, 1, 0, 1, 1, 0])
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([[0.82142852, 0.17857148],
-       [0.12007944, 0.87992056],
-       [0.94876877, 0.05123123],
-       [0.91949217, 0.08050783],
-       [0.56871399, 0.43128601]])
+array([[0.91101707, 0.08898293],
+       [0.9697942 , 0.0302058 ],
+       [0.95138998, 0.04861002],
+       [0.04777112, 0.95222888],
+       [0.06137532, 0.93862468]])
 </pre></div></div>
 </div>
 <p>The stages here are similar to the <code class="docutils literal notranslate"><span class="pre">voting=&quot;hard&quot;</span></code> case. Only now instead of taking the majority vote we average the probabilities predicted by each sub-estimator.</p>
@@ -964,8 +964,8 @@ array([[0.82142852, 0.17857148],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([-209.83798979,  153.34999104,   79.37186412, -228.01129689,
-        333.11851764])
+array([ -80.54959351, -195.918309  ,   97.94513017, -269.56343475,
+         17.47384056])
 </pre></div></div>
 </div>
 <p>As usual with Dask-ML, scoring is done in parallel (and distributed on a cluster if you’re connected to one).</p>
@@ -1107,7 +1107,7 @@ LinearRegression()
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
--11.096587887414355
+-11.474558868166241
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1125,7 +1125,7 @@ LinearRegression()
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.09051854628005862
+0.10071344729666154
 </pre></div></div>
 </div>
 <p>This shows that ensuring your needs to be relatively uniform across partitions. Even including the standard controls to normalize whatever underlying force is generating the non-stationary data (e.g. a time trend compontent or differencing timeseries data, dummy variables for geographic regions, etc) is not sufficient when your dataset is partioned by the non-uniform variable. You would still need to either shuffle your data prior to fitting, or just sample and fit the sub-estimator on the

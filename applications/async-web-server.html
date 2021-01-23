@@ -572,7 +572,7 @@ div.rendered_html tbody tr:hover {
 <p class="admonition-title">Live Notebook</p>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/applications/async-web-server.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/applications/async-web-server.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/applications/async-web-server.ipynb">on Github</a>.</p>
 </div>
-<p><img alt="523a754715ef48e4a40c304ba14d8a6b" class="no-scaled-link" src="http://dask.pydata.org/en/latest/_images/dask_horizontal.svg" width="30%" /></p>
+<p><img alt="3dbb08979226404b8d42b07f11eb874f" class="no-scaled-link" src="http://dask.pydata.org/en/latest/_images/dask_horizontal.svg" width="30%" /></p>
 <div class="section" id="Asynchronous-Computation:-Web-Servers-+-Dask">
 <h1>Asynchronous Computation: Web Servers + Dask<a class="headerlink" href="#Asynchronous-Computation:-Web-Servers-+-Dask" title="Permalink to this headline">¶</a></h1>
 <p>Lets imagine a simple web server that serves both fast-loading pages and also performs some computation on slower loading pages. In our case this will be a simple Fibonnaci serving application, but you can imagine replacing the <code class="docutils literal notranslate"><span class="pre">fib</span></code> function for running a machine learning model on some input data, fetching results from a database, etc..</p>
@@ -620,7 +620,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;tornado.httpserver.HTTPServer at 0x7f5a744ef460&gt;
+&lt;tornado.httpserver.HTTPServer at 0x7ff0f412b070&gt;
 </pre></div></div>
 </div>
 <div class="section" id="Speed">
@@ -672,7 +672,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fast , 1 simultaneous requests,  total time:  0.003348112106323242
+http://localhost:8000/fast , 1 simultaneous requests,  total time:  0.0028336048126220703
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -689,7 +689,7 @@ http://localhost:8000/fast , 1 simultaneous requests,  total time:  0.0033481121
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fast , 100 simultaneous requests,  total time:  0.13060569763183594
+http://localhost:8000/fast , 100 simultaneous requests,  total time:  0.12133455276489258
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -706,7 +706,7 @@ http://localhost:8000/fast , 100 simultaneous requests,  total time:  0.13060569
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fib/28 , 1 simultaneous requests,  total time:  0.09028172492980957
+http://localhost:8000/fib/28 , 1 simultaneous requests,  total time:  0.08865547180175781
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -723,7 +723,7 @@ http://localhost:8000/fib/28 , 1 simultaneous requests,  total time:  0.09028172
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fib/28 , 100 simultaneous requests,  total time:  10.297530889511108
+http://localhost:8000/fib/28 , 100 simultaneous requests,  total time:  10.114142894744873
 </pre></div></div>
 </div>
 </div>
@@ -746,8 +746,8 @@ http://localhost:8000/fib/28 , 100 simultaneous requests,  total time:  10.29753
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fib/35 , 1 simultaneous requests,  total time:  2.561539649963379
-http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.56154727935791
+http://localhost:8000/fib/35 , 1 simultaneous requests,  total time:  2.526989698410034
+http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.5274124145507812
 </pre></div></div>
 </div>
 </div>
@@ -783,7 +783,7 @@ http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.5615472793
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:40811</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:42083</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
@@ -841,7 +841,7 @@ http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.5615472793
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;tornado.httpserver.HTTPServer at 0x7f5a744ef5e0&gt;
+&lt;tornado.httpserver.HTTPServer at 0x7ff0f412b0d0&gt;
 </pre></div></div>
 </div>
 </div>
@@ -868,7 +868,7 @@ http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.5615472793
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fib/28 , 20 simultaneous requests,  total time:  1.8247489929199219
+http://localhost:8000/fib/28 , 20 simultaneous requests,  total time:  1.7978196144104004
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -886,7 +886,7 @@ http://localhost:8000/fib/28 , 20 simultaneous requests,  total time:  1.8247489
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:9000/fib/28 , 20 simultaneous requests,  total time:  0.23087596893310547
+http://localhost:9000/fib/28 , 20 simultaneous requests,  total time:  0.22098469734191895
 </pre></div></div>
 </div>
 </div>
@@ -912,8 +912,8 @@ http://localhost:9000/fib/28 , 20 simultaneous requests,  total time:  0.2308759
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:8000/fib/35 , 1 simultaneous requests,  total time:  2.889683246612549
-http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.8900492191314697
+http://localhost:8000/fib/35 , 1 simultaneous requests,  total time:  2.567854642868042
+http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.572479248046875
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -934,8 +934,8 @@ http://localhost:8000/fast , 1 simultaneous requests,  total time:  2.8900492191
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-http://localhost:9000/fast , 1 simultaneous requests,  total time:  0.004990577697753906
-http://localhost:9000/fib/35 , 1 simultaneous requests,  total time:  3.0786397457122803
+http://localhost:9000/fast , 1 simultaneous requests,  total time:  0.0031440258026123047
+http://localhost:9000/fib/35 , 1 simultaneous requests,  total time:  3.3040928840637207
 </pre></div></div>
 </div>
 </div>
@@ -967,7 +967,7 @@ http://localhost:9000/fib/35 , 1 simultaneous requests,  total time:  3.07863974
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Roundtrip latency: 5.70 ms
+Roundtrip latency: 9.03 ms
 </pre></div></div>
 </div>
 </div>
