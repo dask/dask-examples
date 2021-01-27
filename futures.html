@@ -596,7 +596,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:39101</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:38833</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
@@ -790,8 +790,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 99.3 ms, sys: 19.6 ms, total: 119 ms
-Wall time: 128 ms
+CPU times: user 163 ms, sys: 37.3 ms, total: 200 ms
+Wall time: 184 ms
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -874,7 +874,7 @@ Wall time: 128 ms
 <span class="n">zs</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">inc</span><span class="p">,</span> <span class="n">zs</span><span class="p">)</span>
 <span class="n">seq</span> <span class="o">=</span> <span class="n">as_completed</span><span class="p">(</span><span class="n">zs</span><span class="p">)</span>
 
-<span class="k">while</span> <span class="n">seq</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># at least two futures left</span>
+<span class="k">while</span> <span class="n">seq</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># at least two futures left</span>
     <span class="n">a</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
     <span class="n">b</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
     <span class="n">new</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># add them together</span>

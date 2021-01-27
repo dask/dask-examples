@@ -571,7 +571,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="The-asynchronous=True-parameter">
 <h2>The <code class="docutils literal notranslate"><span class="pre">asynchronous=True</span></code> parameter<a class="headerlink" href="#The-asynchronous=True-parameter" title="Permalink to this headline">¶</a></h2>
 <p>Dask LocalCluster and Client objects can operate in async-await mode if you pass the <code class="docutils literal notranslate"><span class="pre">asynchronous=True</span></code> parameter.</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
@@ -580,6 +580,17 @@ div.rendered_html tbody tr:hover {
 <span class="n">client</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Client</span><span class="p">(</span><span class="n">asynchronous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/node.py:151: UserWarning: Port 8787 is already in use.
+Perhaps you already have a cluster running?
+Hosting the HTTP server on port 37703 instead
+  warnings.warn(
+</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -754,7 +765,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<b>Future: finalize</b> <font color="gray">status: </font><font color="black">pending</font>, <font color="gray">key: </font>finalize-41710e14d7506602540b031b0a33e8ab</div>
+<b>Future: finalize</b> <font color="gray">status: </font><font color="black">pending</font>, <font color="gray">key: </font>finalize-a162acc64c6e27fcdd6e0ed1ff4a1afb</div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -771,8 +782,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-x    666.579293
-y   -883.063639
+x   -140.652217
+y     60.280711
 dtype: float64
 </pre></div></div>
 </div>
