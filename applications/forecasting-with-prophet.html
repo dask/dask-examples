@@ -560,7 +560,7 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="admonition-live-notebook admonition">
 <p class="admonition-title">Live Notebook</p>
-<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/applications/forecasting-with-prophet.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/applications/forecasting-with-prophet.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/applications/forecasting-with-prophet.ipynb">on Github</a>.</p>
+<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/applications/forecasting-with-prophet.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/applications/forecasting-with-prophet.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/main/applications/forecasting-with-prophet.ipynb">on Github</a>.</p>
 </div>
 <div class="section" id="Time-Series-Forecasting">
 <h1>Time Series Forecasting<a class="headerlink" href="#Time-Series-Forecasting" title="Permalink to this headline">¶</a></h1>
@@ -724,8 +724,8 @@ Importing plotly failed. Interactive plots will not work.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3.1 s, sys: 167 ms, total: 3.26 s
-Wall time: 5.1 s
+CPU times: user 2.75 s, sys: 111 ms, total: 2.86 s
+Wall time: 5.04 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -734,7 +734,7 @@ Wall time: 5.1 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;fbprophet.forecaster.Prophet at 0x7f4e31c16940&gt;
+&lt;fbprophet.forecaster.Prophet at 0x7fb85cbde490&gt;
 </pre></div></div>
 </div>
 <p>And we can make a forecast. Again, Dask isn’t involved here.</p>
@@ -785,7 +785,7 @@ Wall time: 5.1 s
 <div class="highlight"><pre>
 /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/node.py:151: UserWarning: Port 8787 is already in use.
 Perhaps you already have a cluster running?
-Hosting the HTTP server on port 43415 instead
+Hosting the HTTP server on port 40617 instead
   warnings.warn(
 </pre></div></div>
 </div>
@@ -799,8 +799,8 @@ Hosting the HTTP server on port 43415 instead
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:38175</li>
-  <li><b>Dashboard: </b><a href='http://127.0.0.1:43415/status' target='_blank'>http://127.0.0.1:43415/status</a></li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:35357</li>
+  <li><b>Dashboard: </b><a href='http://127.0.0.1:40617/status' target='_blank'>http://127.0.0.1:40617/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -833,7 +833,7 @@ Hosting the HTTP server on port 43415 instead
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 INFO:fbprophet:Making 11 forecasts with cutoffs between 2010-02-15 00:00:00 and 2015-01-20 00:00:00
-INFO:fbprophet:Applying in parallel with &lt;Client: &#39;tcp://127.0.0.1:38175&#39; processes=2 threads=2, memory=7.29 GB&gt;
+INFO:fbprophet:Applying in parallel with &lt;Client: &#39;tcp://127.0.0.1:35357&#39; processes=2 threads=2, memory=7.29 GB&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -841,8 +841,8 @@ INFO:fbprophet:Applying in parallel with &lt;Client: &#39;tcp://127.0.0.1:38175&
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2.11 s, sys: 157 ms, total: 2.27 s
-Wall time: 56.2 s
+CPU times: user 1.07 s, sys: 114 ms, total: 1.19 s
+Wall time: 40.3 s
 </pre></div></div>
 </div>
 <p>Be sure to watch the Dask Dashboard as that runs. The models are fit in parallel on the cluster. At the start there’s bit of overhead from having to move the model and data to the workers but after that the scaling looks quite nice.</p>

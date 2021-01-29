@@ -567,7 +567,7 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="admonition-live-notebook admonition">
 <p class="admonition-title">Live Notebook</p>
-<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/bag.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/bag.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/bag.ipynb">on Github</a>.</p>
+<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/bag.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/bag.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/main/bag.ipynb">on Github</a>.</p>
 </div>
 <div class="section" id="Dask-Bags">
 <h1>Dask Bags<a class="headerlink" href="#Dask-Bags" title="Permalink to this headline">¶</a></h1>
@@ -589,6 +589,17 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/node.py:151: UserWarning: Port 8787 is already in use.
+Perhaps you already have a cluster running?
+Hosting the HTTP server on port 41855 instead
+  warnings.warn(
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -599,8 +610,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:35065</li>
-  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:38471</li>
+  <li><b>Dashboard: </b><a href='http://127.0.0.1:41855/status' target='_blank'>http://127.0.0.1:41855/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -670,8 +681,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 45, &#34;name&#34;: [&#34;Andrew&#34;, &#34;Burris&#34;], &#34;occupation&#34;: &#34;Analytical Chemist&#34;, &#34;telephone&#34;: &#34;1-359-948-7231&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;931 Santa Marina Arcade&#34;, &#34;city&#34;: &#34;Castle Rock&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;4476 0103 2588 4696&#34;, &#34;expiration-date&#34;: &#34;03/19&#34;}}
-{&#34;age&#34;: 45, &#34;name&#34;: [&#34;Holley&#34;, &#34;Boyle&#34;], &#34;occupation&#34;: &#34;Ship Broker&#34;, &#34;telephone&#34;: &#34;(140) 832-8654&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;43 Harlan Drung&#34;, &#34;city&#34;: &#34;Huber Heights&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;4158 6233 7813 1610&#34;, &#34;expiration-date&#34;: &#34;06/17&#34;}}
+{&#34;age&#34;: 17, &#34;name&#34;: [&#34;Sang&#34;, &#34;Harrington&#34;], &#34;occupation&#34;: &#34;Acoustic Engineer&#34;, &#34;telephone&#34;: &#34;555.305.0242&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;60 Ocean Trail&#34;, &#34;city&#34;: &#34;La Mesa&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5564 8609 9238 8995&#34;, &#34;expiration-date&#34;: &#34;06/21&#34;}}
+{&#34;age&#34;: 61, &#34;name&#34;: [&#34;Rolando&#34;, &#34;Calhoun&#34;], &#34;occupation&#34;: &#34;Aerial Erector&#34;, &#34;telephone&#34;: &#34;1-073-052-3379&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;6 Zoe Garden&#34;, &#34;city&#34;: &#34;Waukegan&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5406 0743 6038 6720&#34;, &#34;expiration-date&#34;: &#34;01/16&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -711,20 +722,20 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 45,
-  &#39;name&#39;: [&#39;Andrew&#39;, &#39;Burris&#39;],
-  &#39;occupation&#39;: &#39;Analytical Chemist&#39;,
-  &#39;telephone&#39;: &#39;1-359-948-7231&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;931 Santa Marina Arcade&#39;, &#39;city&#39;: &#39;Castle Rock&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4476 0103 2588 4696&#39;,
-   &#39;expiration-date&#39;: &#39;03/19&#39;}},
- {&#39;age&#39;: 45,
-  &#39;name&#39;: [&#39;Holley&#39;, &#39;Boyle&#39;],
-  &#39;occupation&#39;: &#39;Ship Broker&#39;,
-  &#39;telephone&#39;: &#39;(140) 832-8654&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;43 Harlan Drung&#39;, &#39;city&#39;: &#39;Huber Heights&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4158 6233 7813 1610&#39;,
-   &#39;expiration-date&#39;: &#39;06/17&#39;}})
+({&#39;age&#39;: 17,
+  &#39;name&#39;: [&#39;Sang&#39;, &#39;Harrington&#39;],
+  &#39;occupation&#39;: &#39;Acoustic Engineer&#39;,
+  &#39;telephone&#39;: &#39;555.305.0242&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;60 Ocean Trail&#39;, &#39;city&#39;: &#39;La Mesa&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5564 8609 9238 8995&#39;,
+   &#39;expiration-date&#39;: &#39;06/21&#39;}},
+ {&#39;age&#39;: 61,
+  &#39;name&#39;: [&#39;Rolando&#39;, &#39;Calhoun&#39;],
+  &#39;occupation&#39;: &#39;Aerial Erector&#39;,
+  &#39;telephone&#39;: &#39;1-073-052-3379&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;6 Zoe Garden&#39;, &#39;city&#39;: &#39;Waukegan&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5406 0743 6038 6720&#39;,
+   &#39;expiration-date&#39;: &#39;01/16&#39;}})
 </pre></div></div>
 </div>
 </div>
@@ -746,20 +757,19 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 45,
-  &#39;name&#39;: [&#39;Andrew&#39;, &#39;Burris&#39;],
-  &#39;occupation&#39;: &#39;Analytical Chemist&#39;,
-  &#39;telephone&#39;: &#39;1-359-948-7231&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;931 Santa Marina Arcade&#39;, &#39;city&#39;: &#39;Castle Rock&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4476 0103 2588 4696&#39;,
-   &#39;expiration-date&#39;: &#39;03/19&#39;}},
- {&#39;age&#39;: 45,
-  &#39;name&#39;: [&#39;Holley&#39;, &#39;Boyle&#39;],
-  &#39;occupation&#39;: &#39;Ship Broker&#39;,
-  &#39;telephone&#39;: &#39;(140) 832-8654&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;43 Harlan Drung&#39;, &#39;city&#39;: &#39;Huber Heights&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4158 6233 7813 1610&#39;,
-   &#39;expiration-date&#39;: &#39;06/17&#39;}})
+({&#39;age&#39;: 61,
+  &#39;name&#39;: [&#39;Rolando&#39;, &#39;Calhoun&#39;],
+  &#39;occupation&#39;: &#39;Aerial Erector&#39;,
+  &#39;telephone&#39;: &#39;1-073-052-3379&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;6 Zoe Garden&#39;, &#39;city&#39;: &#39;Waukegan&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5406 0743 6038 6720&#39;,
+   &#39;expiration-date&#39;: &#39;01/16&#39;}},
+ {&#39;age&#39;: 51,
+  &#39;name&#39;: [&#39;Curt&#39;, &#39;Garza&#39;],
+  &#39;occupation&#39;: &#39;Ceiling Fixer&#39;,
+  &#39;telephone&#39;: &#39;(994) 213-9475&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1190 Mark Twain Plantation&#39;, &#39;city&#39;: &#39;Bettendorf&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3794 811438 69084&#39;, &#39;expiration-date&#39;: &#39;05/17&#39;}})
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -777,7 +787,7 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-(&#39;Analytical Chemist&#39;, &#39;Ship Broker&#39;)
+(&#39;Acoustic Engineer&#39;, &#39;Aerial Erector&#39;)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -840,16 +850,16 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[(&#39;Masseur&#39;, 15),
- (&#39;Quality Inspector&#39;, 14),
- (&#39;Postmaster&#39;, 14),
- (&#39;Cartoonist&#39;, 13),
- (&#39;Tennis Coach&#39;, 13),
- (&#39;Merchandiser&#39;, 13),
- (&#39;Radio Producer&#39;, 13),
- (&#39;Pest Controller&#39;, 13),
- (&#39;Resin Caster&#39;, 13),
- (&#39;Property Dealer&#39;, 13)]
+[(&#39;Miner&#39;, 17),
+ (&#39;Gynaecologist&#39;, 15),
+ (&#39;Store Detective&#39;, 14),
+ (&#39;Barmaid&#39;, 14),
+ (&#39;Health Visitor&#39;, 14),
+ (&#39;Trinity House Pilot&#39;, 14),
+ (&#39;Tug Skipper&#39;, 13),
+ (&#39;Machine Minder&#39;, 13),
+ (&#39;Journalist&#39;, 12),
+ (&#39;Photographer&#39;, 12)]
 </pre></div></div>
 </div>
 </div>
@@ -906,13 +916,13 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 45,
-  &#39;name&#39;: [&#39;Andrew&#39;, &#39;Burris&#39;],
-  &#39;occupation&#39;: &#39;Analytical Chemist&#39;,
-  &#39;telephone&#39;: &#39;1-359-948-7231&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;931 Santa Marina Arcade&#39;, &#39;city&#39;: &#39;Castle Rock&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4476 0103 2588 4696&#39;,
-   &#39;expiration-date&#39;: &#39;03/19&#39;}},)
+({&#39;age&#39;: 17,
+  &#39;name&#39;: [&#39;Sang&#39;, &#39;Harrington&#39;],
+  &#39;occupation&#39;: &#39;Acoustic Engineer&#39;,
+  &#39;telephone&#39;: &#39;555.305.0242&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;60 Ocean Trail&#39;, &#39;city&#39;: &#39;La Mesa&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5564 8609 9238 8995&#39;,
+   &#39;expiration-date&#39;: &#39;06/21&#39;}},)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -942,14 +952,14 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 45,
-  &#39;occupation&#39;: &#39;Analytical Chemist&#39;,
-  &#39;telephone&#39;: &#39;1-359-948-7231&#39;,
-  &#39;credit-card-number&#39;: &#39;4476 0103 2588 4696&#39;,
-  &#39;credit-card-expiration&#39;: &#39;03/19&#39;,
-  &#39;name&#39;: &#39;Andrew Burris&#39;,
-  &#39;street-address&#39;: &#39;931 Santa Marina Arcade&#39;,
-  &#39;city&#39;: &#39;Castle Rock&#39;},)
+({&#39;age&#39;: 17,
+  &#39;occupation&#39;: &#39;Acoustic Engineer&#39;,
+  &#39;telephone&#39;: &#39;555.305.0242&#39;,
+  &#39;credit-card-number&#39;: &#39;5564 8609 9238 8995&#39;,
+  &#39;credit-card-expiration&#39;: &#39;06/21&#39;,
+  &#39;name&#39;: &#39;Sang Harrington&#39;,
+  &#39;street-address&#39;: &#39;60 Ocean Trail&#39;,
+  &#39;city&#39;: &#39;La Mesa&#39;},)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -998,58 +1008,58 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
   <tbody>
     <tr>
       <th>0</th>
-      <td>45</td>
-      <td>Analytical Chemist</td>
-      <td>1-359-948-7231</td>
-      <td>4476 0103 2588 4696</td>
-      <td>03/19</td>
-      <td>Andrew Burris</td>
-      <td>931 Santa Marina Arcade</td>
-      <td>Castle Rock</td>
+      <td>17</td>
+      <td>Acoustic Engineer</td>
+      <td>555.305.0242</td>
+      <td>5564 8609 9238 8995</td>
+      <td>06/21</td>
+      <td>Sang Harrington</td>
+      <td>60 Ocean Trail</td>
+      <td>La Mesa</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>45</td>
-      <td>Ship Broker</td>
-      <td>(140) 832-8654</td>
-      <td>4158 6233 7813 1610</td>
-      <td>06/17</td>
-      <td>Holley Boyle</td>
-      <td>43 Harlan Drung</td>
-      <td>Huber Heights</td>
+      <td>61</td>
+      <td>Aerial Erector</td>
+      <td>1-073-052-3379</td>
+      <td>5406 0743 6038 6720</td>
+      <td>01/16</td>
+      <td>Rolando Calhoun</td>
+      <td>6 Zoe Garden</td>
+      <td>Waukegan</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>26</td>
-      <td>History Teacher</td>
-      <td>517-216-0871</td>
-      <td>4432 1284 7454 9192</td>
-      <td>07/25</td>
-      <td>Donald Hancock</td>
-      <td>1035 Treasury Lane</td>
-      <td>Lynwood</td>
+      <td>16</td>
+      <td>Medical Practitioner</td>
+      <td>(767) 023-7986</td>
+      <td>5231 1287 4952 5357</td>
+      <td>01/20</td>
+      <td>Hugh Mcclure</td>
+      <td>417 Ward Viaduct</td>
+      <td>Plymouth</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>62</td>
-      <td>Lawyer</td>
-      <td>839-194-1128</td>
-      <td>2474 5240 9174 2926</td>
-      <td>01/19</td>
-      <td>Madaline Singleton</td>
-      <td>1189 De Montfort Heights</td>
-      <td>Fountain Valley</td>
+      <td>51</td>
+      <td>Ceiling Fixer</td>
+      <td>(994) 213-9475</td>
+      <td>3794 811438 69084</td>
+      <td>05/17</td>
+      <td>Curt Garza</td>
+      <td>1190 Mark Twain Plantation</td>
+      <td>Bettendorf</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>45</td>
-      <td>Inventor</td>
-      <td>+1-(388)-195-6224</td>
-      <td>3710 353206 60373</td>
-      <td>07/20</td>
-      <td>Shala Perkins</td>
-      <td>318 Osage Esplanade</td>
-      <td>Del Rio</td>
+      <td>49</td>
+      <td>Aircraft Designer</td>
+      <td>+1-(225)-721-7908</td>
+      <td>4095 2197 6352 6674</td>
+      <td>06/22</td>
+      <td>Ying Robles</td>
+      <td>485 Shaw Alley</td>
+      <td>Montgomery</td>
     </tr>
   </tbody>
 </table>
@@ -1071,16 +1081,16 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Masseur              15
-Quality Inspector    14
-Postmaster           14
-Tacker               13
-Merchandiser         13
-Pest Controller      13
-Property Dealer      13
-Radio Producer       13
-Cartoonist           13
-Sports Coach         13
+Miner                            17
+Gynaecologist                    15
+Health Visitor                   14
+Store Detective                  14
+Trinity House Pilot              14
+Barmaid                          14
+Machine Minder                   13
+Tug Skipper                      13
+Steel Worker                     12
+Aircraft Maintenance Engineer    12
 Name: occupation, dtype: int64
 </pre></div></div>
 </div>

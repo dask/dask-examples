@@ -555,7 +555,7 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="admonition-live-notebook admonition">
 <p class="admonition-title">Live Notebook</p>
-<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/resilience.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/resilience.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/resilience.ipynb">on Github</a>.</p>
+<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/resilience.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/resilience.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/main/resilience.ipynb">on Github</a>.</p>
 </div>
 <div class="section" id="Resilience-against-hardware-failures">
 <h1>Resilience against hardware failures<a class="headerlink" href="#Resilience-against-hardware-failures" title="Permalink to this headline">¶</a></h1>
@@ -615,7 +615,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:42957</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:38315</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
@@ -710,39 +710,6 @@ div.rendered_html tbody tr:hover {
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 distributed.nanny - WARNING - Restarting worker
-distributed.core - ERROR - &#39;tcp://127.0.0.1:46691&#39;
-Traceback (most recent call last):
-  File &#34;/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/core.py&#34;, line 597, in handle_stream
-    handler(**merge(extra, msg))
-  File &#34;/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/scheduler.py&#34;, line 2684, in handle_release_data
-    ws = self.workers[worker]
-KeyError: &#39;tcp://127.0.0.1:46691&#39;
-distributed.utils - ERROR - &#39;tcp://127.0.0.1:46691&#39;
-Traceback (most recent call last):
-  File &#34;/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/utils.py&#34;, line 655, in log_errors
-    yield
-  File &#34;/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/scheduler.py&#34;, line 1813, in add_worker
-    await self.handle_worker(comm=comm, worker=address)
-  File &#34;/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/scheduler.py&#34;, line 2770, in handle_worker
-    await self.handle_stream(comm=comm, extra={&#34;worker&#34;: worker})
-  File &#34;/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/core.py&#34;, line 597, in handle_stream
-    handler(**merge(extra, msg))
-  File &#34;/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/scheduler.py&#34;, line 2684, in handle_release_data
-    ws = self.workers[worker]
-KeyError: &#39;tcp://127.0.0.1:46691&#39;
-distributed.core - ERROR - &#39;tcp://127.0.0.1:46691&#39;
-Traceback (most recent call last):
-  File &#34;/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/core.py&#34;, line 528, in handle_comm
-    result = await result
-  File &#34;/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/scheduler.py&#34;, line 1813, in add_worker
-    await self.handle_worker(comm=comm, worker=address)
-  File &#34;/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/scheduler.py&#34;, line 2770, in handle_worker
-    await self.handle_stream(comm=comm, extra={&#34;worker&#34;: worker})
-  File &#34;/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/core.py&#34;, line 597, in handle_stream
-    handler(**merge(extra, msg))
-  File &#34;/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/scheduler.py&#34;, line 2684, in handle_release_data
-    ws = self.workers[worker]
-KeyError: &#39;tcp://127.0.0.1:46691&#39;
 distributed.nanny - WARNING - Restarting worker
 </pre></div></div>
 </div>

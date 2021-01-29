@@ -570,7 +570,7 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="admonition-live-notebook admonition">
 <p class="admonition-title">Live Notebook</p>
-<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/machine-learning/incremental.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/machine-learning/incremental.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/master/machine-learning/incremental.ipynb">on Github</a>.</p>
+<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/machine-learning/incremental.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/machine-learning/incremental.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/main/machine-learning/incremental.ipynb">on Github</a>.</p>
 </div>
 <div class="section" id="Incrementally-Train-Large-Datasets">
 <h1>Incrementally Train Large Datasets<a class="headerlink" href="#Incrementally-Train-Large-Datasets" title="Permalink to this headline">¶</a></h1>
@@ -589,7 +589,7 @@ div.rendered_html tbody tr:hover {
 <li><p>training, predicting, and scoring on this wrapped estimator</p></li>
 </ul>
 <p>Although this example uses Scikit-Learn’s SGDClassifer, the <code class="docutils literal notranslate"><span class="pre">Incremental</span></code> meta-estimator will work for any class that implements <code class="docutils literal notranslate"><span class="pre">partial_fit</span></code> and the <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html">scikit-learn base estimator API</a>.</p>
-<p><img alt="bf9a8b6df795494eb08bf60dbc5b0401" src="http://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" /> <img alt="b35404d880084fb68f2681625b970b75" class="no-scaled-link" src="https://www.continuum.io/sites/default/files/dask_stacked.png" style="width: 100px;" /></p>
+<p><img alt="bff4ff0bf72d4413a8cd8d2cba4f9327" src="http://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" /> <img alt="7c6802b6db80438b9409a1c777b50cec" class="no-scaled-link" src="https://www.continuum.io/sites/default/files/dask_stacked.png" style="width: 100px;" /></p>
 <div class="section" id="Setup-Dask">
 <h2>Setup Dask<a class="headerlink" href="#Setup-Dask" title="Permalink to this headline">¶</a></h2>
 <p>We first start a Dask client in order to get access to the Dask dashboard, which will provide progress and performance metrics.</p>
@@ -615,7 +615,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:39163</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:42857</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
@@ -880,7 +880,7 @@ Incremental(estimator=SGDClassifier(loss=&#39;log&#39;), scoring=&#39;accuracy&#
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.6252
+0.535
 </pre></div></div>
 </div>
 </div>
@@ -913,16 +913,16 @@ Incremental(estimator=SGDClassifier(loss=&#39;log&#39;), scoring=&#39;accuracy&#
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Score: 0.6176
-Score: 0.6016
-Score: 0.6433
-Score: 0.6212
-Score: 0.6245
-Score: 0.659
-Score: 0.6573
-Score: 0.6755
-Score: 0.6631
-Score: 0.6622
+Score: 0.5651
+Score: 0.5512
+Score: 0.5541
+Score: 0.5539
+Score: 0.5689
+Score: 0.575
+Score: 0.5705
+Score: 0.5778
+Score: 0.581
+Score: 0.5757
 </pre></div></div>
 </div>
 </div>
@@ -1004,11 +1004,11 @@ Score: 0.6622
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0,
-       0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1,
-       1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0,
-       0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0,
-       0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0])
+array([0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1,
+       1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1,
+       1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1,
+       0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0,
+       1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0])
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1026,7 +1026,7 @@ array([0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.6622
+0.5757
 </pre></div></div>
 </div>
 </div>
