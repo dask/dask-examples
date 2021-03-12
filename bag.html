@@ -35,8 +35,6 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
         <script src="_static/js/custom.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -596,7 +594,7 @@ div.rendered_html tbody tr:hover {
 <div class="highlight"><pre>
 /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/node.py:151: UserWarning: Port 8787 is already in use.
 Perhaps you already have a cluster running?
-Hosting the HTTP server on port 41855 instead
+Hosting the HTTP server on port 46423 instead
   warnings.warn(
 </pre></div></div>
 </div>
@@ -610,8 +608,8 @@ Hosting the HTTP server on port 41855 instead
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:38471</li>
-  <li><b>Dashboard: </b><a href='http://127.0.0.1:41855/status' target='_blank'>http://127.0.0.1:41855/status</a></li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:34729</li>
+  <li><b>Dashboard: </b><a href='http://127.0.0.1:46423/status' target='_blank'>http://127.0.0.1:46423/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -681,8 +679,8 @@ Hosting the HTTP server on port 41855 instead
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 17, &#34;name&#34;: [&#34;Sang&#34;, &#34;Harrington&#34;], &#34;occupation&#34;: &#34;Acoustic Engineer&#34;, &#34;telephone&#34;: &#34;555.305.0242&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;60 Ocean Trail&#34;, &#34;city&#34;: &#34;La Mesa&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5564 8609 9238 8995&#34;, &#34;expiration-date&#34;: &#34;06/21&#34;}}
-{&#34;age&#34;: 61, &#34;name&#34;: [&#34;Rolando&#34;, &#34;Calhoun&#34;], &#34;occupation&#34;: &#34;Aerial Erector&#34;, &#34;telephone&#34;: &#34;1-073-052-3379&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;6 Zoe Garden&#34;, &#34;city&#34;: &#34;Waukegan&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5406 0743 6038 6720&#34;, &#34;expiration-date&#34;: &#34;01/16&#34;}}
+{&#34;age&#34;: 59, &#34;name&#34;: [&#34;Olevia&#34;, &#34;Frazier&#34;], &#34;occupation&#34;: &#34;Shop Manager&#34;, &#34;telephone&#34;: &#34;277.930.0371&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1383 Hillway Promenade&#34;, &#34;city&#34;: &#34;Gretna&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3464 767413 59033&#34;, &#34;expiration-date&#34;: &#34;02/21&#34;}}
+{&#34;age&#34;: 30, &#34;name&#34;: [&#34;Emely&#34;, &#34;Gomez&#34;], &#34;occupation&#34;: &#34;Hosiery Worker&#34;, &#34;telephone&#34;: &#34;1-358-738-0556&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;902 Pretor Run&#34;, &#34;city&#34;: &#34;Flower Mound&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;2601 1391 2520 6685&#34;, &#34;expiration-date&#34;: &#34;09/17&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -722,20 +720,19 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 17,
-  &#39;name&#39;: [&#39;Sang&#39;, &#39;Harrington&#39;],
-  &#39;occupation&#39;: &#39;Acoustic Engineer&#39;,
-  &#39;telephone&#39;: &#39;555.305.0242&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;60 Ocean Trail&#39;, &#39;city&#39;: &#39;La Mesa&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5564 8609 9238 8995&#39;,
-   &#39;expiration-date&#39;: &#39;06/21&#39;}},
- {&#39;age&#39;: 61,
-  &#39;name&#39;: [&#39;Rolando&#39;, &#39;Calhoun&#39;],
-  &#39;occupation&#39;: &#39;Aerial Erector&#39;,
-  &#39;telephone&#39;: &#39;1-073-052-3379&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;6 Zoe Garden&#39;, &#39;city&#39;: &#39;Waukegan&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5406 0743 6038 6720&#39;,
-   &#39;expiration-date&#39;: &#39;01/16&#39;}})
+({&#39;age&#39;: 59,
+  &#39;name&#39;: [&#39;Olevia&#39;, &#39;Frazier&#39;],
+  &#39;occupation&#39;: &#39;Shop Manager&#39;,
+  &#39;telephone&#39;: &#39;277.930.0371&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1383 Hillway Promenade&#39;, &#39;city&#39;: &#39;Gretna&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3464 767413 59033&#39;, &#39;expiration-date&#39;: &#39;02/21&#39;}},
+ {&#39;age&#39;: 30,
+  &#39;name&#39;: [&#39;Emely&#39;, &#39;Gomez&#39;],
+  &#39;occupation&#39;: &#39;Hosiery Worker&#39;,
+  &#39;telephone&#39;: &#39;1-358-738-0556&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;902 Pretor Run&#39;, &#39;city&#39;: &#39;Flower Mound&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2601 1391 2520 6685&#39;,
+   &#39;expiration-date&#39;: &#39;09/17&#39;}})
 </pre></div></div>
 </div>
 </div>
@@ -757,19 +754,19 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 61,
-  &#39;name&#39;: [&#39;Rolando&#39;, &#39;Calhoun&#39;],
-  &#39;occupation&#39;: &#39;Aerial Erector&#39;,
-  &#39;telephone&#39;: &#39;1-073-052-3379&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;6 Zoe Garden&#39;, &#39;city&#39;: &#39;Waukegan&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5406 0743 6038 6720&#39;,
-   &#39;expiration-date&#39;: &#39;01/16&#39;}},
- {&#39;age&#39;: 51,
-  &#39;name&#39;: [&#39;Curt&#39;, &#39;Garza&#39;],
-  &#39;occupation&#39;: &#39;Ceiling Fixer&#39;,
-  &#39;telephone&#39;: &#39;(994) 213-9475&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;1190 Mark Twain Plantation&#39;, &#39;city&#39;: &#39;Bettendorf&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3794 811438 69084&#39;, &#39;expiration-date&#39;: &#39;05/17&#39;}})
+({&#39;age&#39;: 59,
+  &#39;name&#39;: [&#39;Olevia&#39;, &#39;Frazier&#39;],
+  &#39;occupation&#39;: &#39;Shop Manager&#39;,
+  &#39;telephone&#39;: &#39;277.930.0371&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1383 Hillway Promenade&#39;, &#39;city&#39;: &#39;Gretna&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3464 767413 59033&#39;, &#39;expiration-date&#39;: &#39;02/21&#39;}},
+ {&#39;age&#39;: 44,
+  &#39;name&#39;: [&#39;Bula&#39;, &#39;Newman&#39;],
+  &#39;occupation&#39;: &#39;Hairdresser&#39;,
+  &#39;telephone&#39;: &#39;1-788-321-8035&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;146 Galewood Plantation&#39;, &#39;city&#39;: &#39;Ponca City&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4805 9520 4978 4714&#39;,
+   &#39;expiration-date&#39;: &#39;01/18&#39;}})
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -787,7 +784,7 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-(&#39;Acoustic Engineer&#39;, &#39;Aerial Erector&#39;)
+(&#39;Shop Manager&#39;, &#39;Hosiery Worker&#39;)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -850,16 +847,16 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[(&#39;Miner&#39;, 17),
- (&#39;Gynaecologist&#39;, 15),
- (&#39;Store Detective&#39;, 14),
- (&#39;Barmaid&#39;, 14),
- (&#39;Health Visitor&#39;, 14),
- (&#39;Trinity House Pilot&#39;, 14),
- (&#39;Tug Skipper&#39;, 13),
- (&#39;Machine Minder&#39;, 13),
- (&#39;Journalist&#39;, 12),
- (&#39;Photographer&#39;, 12)]
+[(&#39;Taxi Controller&#39;, 16),
+ (&#39;Cable TV Installer&#39;, 15),
+ (&#39;Production Engineer&#39;, 15),
+ (&#39;Anaesthetist&#39;, 14),
+ (&#39;Warehousewoman&#39;, 13),
+ (&#39;Lift Engineer&#39;, 13),
+ (&#39;Scientific Officer&#39;, 13),
+ (&#39;Radiologist&#39;, 13),
+ (&#39;Scrap Dealer&#39;, 13),
+ (&#39;Publisher&#39;, 13)]
 </pre></div></div>
 </div>
 </div>
@@ -916,13 +913,12 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 17,
-  &#39;name&#39;: [&#39;Sang&#39;, &#39;Harrington&#39;],
-  &#39;occupation&#39;: &#39;Acoustic Engineer&#39;,
-  &#39;telephone&#39;: &#39;555.305.0242&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;60 Ocean Trail&#39;, &#39;city&#39;: &#39;La Mesa&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5564 8609 9238 8995&#39;,
-   &#39;expiration-date&#39;: &#39;06/21&#39;}},)
+({&#39;age&#39;: 59,
+  &#39;name&#39;: [&#39;Olevia&#39;, &#39;Frazier&#39;],
+  &#39;occupation&#39;: &#39;Shop Manager&#39;,
+  &#39;telephone&#39;: &#39;277.930.0371&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1383 Hillway Promenade&#39;, &#39;city&#39;: &#39;Gretna&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3464 767413 59033&#39;, &#39;expiration-date&#39;: &#39;02/21&#39;}},)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -952,14 +948,14 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 17,
-  &#39;occupation&#39;: &#39;Acoustic Engineer&#39;,
-  &#39;telephone&#39;: &#39;555.305.0242&#39;,
-  &#39;credit-card-number&#39;: &#39;5564 8609 9238 8995&#39;,
-  &#39;credit-card-expiration&#39;: &#39;06/21&#39;,
-  &#39;name&#39;: &#39;Sang Harrington&#39;,
-  &#39;street-address&#39;: &#39;60 Ocean Trail&#39;,
-  &#39;city&#39;: &#39;La Mesa&#39;},)
+({&#39;age&#39;: 59,
+  &#39;occupation&#39;: &#39;Shop Manager&#39;,
+  &#39;telephone&#39;: &#39;277.930.0371&#39;,
+  &#39;credit-card-number&#39;: &#39;3464 767413 59033&#39;,
+  &#39;credit-card-expiration&#39;: &#39;02/21&#39;,
+  &#39;name&#39;: &#39;Olevia Frazier&#39;,
+  &#39;street-address&#39;: &#39;1383 Hillway Promenade&#39;,
+  &#39;city&#39;: &#39;Gretna&#39;},)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1008,58 +1004,58 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
   <tbody>
     <tr>
       <th>0</th>
-      <td>17</td>
-      <td>Acoustic Engineer</td>
-      <td>555.305.0242</td>
-      <td>5564 8609 9238 8995</td>
-      <td>06/21</td>
-      <td>Sang Harrington</td>
-      <td>60 Ocean Trail</td>
-      <td>La Mesa</td>
+      <td>59</td>
+      <td>Shop Manager</td>
+      <td>277.930.0371</td>
+      <td>3464 767413 59033</td>
+      <td>02/21</td>
+      <td>Olevia Frazier</td>
+      <td>1383 Hillway Promenade</td>
+      <td>Gretna</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>61</td>
-      <td>Aerial Erector</td>
-      <td>1-073-052-3379</td>
-      <td>5406 0743 6038 6720</td>
-      <td>01/16</td>
-      <td>Rolando Calhoun</td>
-      <td>6 Zoe Garden</td>
-      <td>Waukegan</td>
+      <td>30</td>
+      <td>Hosiery Worker</td>
+      <td>1-358-738-0556</td>
+      <td>2601 1391 2520 6685</td>
+      <td>09/17</td>
+      <td>Emely Gomez</td>
+      <td>902 Pretor Run</td>
+      <td>Flower Mound</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>16</td>
-      <td>Medical Practitioner</td>
-      <td>(767) 023-7986</td>
-      <td>5231 1287 4952 5357</td>
-      <td>01/20</td>
-      <td>Hugh Mcclure</td>
-      <td>417 Ward Viaduct</td>
-      <td>Plymouth</td>
+      <td>44</td>
+      <td>Hairdresser</td>
+      <td>1-788-321-8035</td>
+      <td>4805 9520 4978 4714</td>
+      <td>01/18</td>
+      <td>Bula Newman</td>
+      <td>146 Galewood Plantation</td>
+      <td>Ponca City</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>51</td>
-      <td>Ceiling Fixer</td>
-      <td>(994) 213-9475</td>
-      <td>3794 811438 69084</td>
-      <td>05/17</td>
-      <td>Curt Garza</td>
-      <td>1190 Mark Twain Plantation</td>
-      <td>Bettendorf</td>
+      <td>41</td>
+      <td>Sales Executive</td>
+      <td>(695) 842-6942</td>
+      <td>4437 9053 4721 5852</td>
+      <td>07/20</td>
+      <td>Lewis Padilla</td>
+      <td>56 Forest Knolls Close</td>
+      <td>Ithaca</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>49</td>
-      <td>Aircraft Designer</td>
-      <td>+1-(225)-721-7908</td>
-      <td>4095 2197 6352 6674</td>
-      <td>06/22</td>
-      <td>Ying Robles</td>
-      <td>485 Shaw Alley</td>
-      <td>Montgomery</td>
+      <td>17</td>
+      <td>Outdoor Pursuits</td>
+      <td>901-540-5781</td>
+      <td>4698 6716 8087 3467</td>
+      <td>09/19</td>
+      <td>Max Lyons</td>
+      <td>163 Battery Caulfield Field</td>
+      <td>Bentonville</td>
     </tr>
   </tbody>
 </table>
@@ -1081,16 +1077,16 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Miner                            17
-Gynaecologist                    15
-Health Visitor                   14
-Store Detective                  14
-Trinity House Pilot              14
-Barmaid                          14
-Machine Minder                   13
-Tug Skipper                      13
-Steel Worker                     12
-Aircraft Maintenance Engineer    12
+Taxi Controller        16
+Cable TV Installer     15
+Production Engineer    15
+Anaesthetist           14
+Lift Engineer          13
+Publisher              13
+Scientific Officer     13
+Scrap Dealer           13
+Radiologist            13
+Warehousewoman         13
 Name: occupation, dtype: int64
 </pre></div></div>
 </div>

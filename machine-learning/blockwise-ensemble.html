@@ -35,8 +35,6 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
         <script src="../_static/js/custom.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -826,7 +824,7 @@ BlockwiseVotingClassifier(classes=[0, 1],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([1, 0, 1, 1, 0, 1, 1, 0, 1, 1])
+array([0, 0, 0, 1, 0, 0, 1, 0, 1, 1])
 </pre></div></div>
 </div>
 <p>With <code class="docutils literal notranslate"><span class="pre">voting=&quot;soft&quot;</span></code> we have access to <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code>, as long as the subestimator has a <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> method. These subestimators should be well-calibrated for the predictions to be meaningful. See <a class="reference external" href="https://scikit-learn.org/stable/modules/calibration.html#calibration">probability calibration</a> for more.</p>
@@ -861,11 +859,11 @@ array([1, 0, 1, 1, 0, 1, 1, 0, 1, 1])
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([[0.3843919 , 0.6156081 ],
-       [0.90100829, 0.09899171],
-       [0.00793761, 0.99206239],
-       [0.0019803 , 0.9980197 ],
-       [0.86684797, 0.13315203]])
+array([[9.99866066e-01, 1.33934067e-04],
+       [9.97843256e-01, 2.15674401e-03],
+       [9.19002450e-01, 8.09975503e-02],
+       [4.72856473e-04, 9.99527144e-01],
+       [5.20818521e-01, 4.79181479e-01]])
 </pre></div></div>
 </div>
 <p>The stages here are similar to the <code class="docutils literal notranslate"><span class="pre">voting=&quot;hard&quot;</span></code> case. Only now instead of taking the majority vote we average the probabilities predicted by each sub-estimator.</p>
@@ -964,8 +962,8 @@ array([[0.3843919 , 0.6156081 ],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([ 196.2423029 ,   24.89786349,   36.71109417, -380.72627379,
-         67.44833577])
+array([ 237.0011179 ,  182.34022327,  111.57407876, -150.49161146,
+       -274.28994801])
 </pre></div></div>
 </div>
 <p>As usual with Dask-ML, scoring is done in parallel (and distributed on a cluster if you’re connected to one).</p>
@@ -1107,7 +1105,7 @@ LinearRegression()
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
--11.775611615168788
+-12.020675834378823
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1125,7 +1123,7 @@ LinearRegression()
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.0979675416832625
+0.179606867203295
 </pre></div></div>
 </div>
 <p>This shows that ensuring your needs to be relatively uniform across partitions. Even including the standard controls to normalize whatever underlying force is generating the non-stationary data (e.g. a time trend compontent or differencing timeseries data, dummy variables for geographic regions, etc) is not sufficient when your dataset is partioned by the non-uniform variable. You would still need to either shuffle your data prior to fitting, or just sample and fit the sub-estimator on the

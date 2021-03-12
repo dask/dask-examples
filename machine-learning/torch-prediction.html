@@ -35,8 +35,6 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
         <script src="../_static/js/custom.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -587,7 +585,7 @@ div.rendered_html tbody tr:hover {
 </ol>
 <p>The primary focus is using a Dask cluster for batch prediction.</p>
 <p>Note that the base environment on the examples.dask.org Binder does not include PyTorch or torchvision. To run this example, you’ll need to run</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!conda install -y pytorch-cpu torchvision
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!conda install -y pytorch-cpu torchvision
 </pre></div>
 </div>
 <p>which will take a bit of time to run.</p>
@@ -615,26 +613,26 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <p>The directory looks like</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hymenoptera_data</span><span class="o">/</span>
-    <span class="n">train</span><span class="o">/</span>
-        <span class="n">ants</span><span class="o">/</span>
-            <span class="mf">0013035.</span><span class="n">jpg</span>
-            <span class="o">...</span>
-            <span class="mi">1030023514</span><span class="n">_aad5c608f9</span><span class="o">.</span><span class="n">jpg</span>
-        <span class="n">bees</span><span class="o">/</span>
-            <span class="mi">1092977343</span><span class="n">_cb42b38d62</span><span class="o">.</span><span class="n">jpg</span>
-            <span class="o">...</span>
-            <span class="mi">2486729079_62</span><span class="n">df0920be</span><span class="o">.</span><span class="n">jpg</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>hymenoptera_data/
+    train/
+        ants/
+            0013035.jpg
+            ...
+            1030023514_aad5c608f9.jpg
+        bees/
+            1092977343_cb42b38d62.jpg
+            ...
+            2486729079_62df0920be.jpg
 
-    <span class="n">train</span><span class="o">/</span>
-        <span class="n">ants</span><span class="o">/</span>
-            <span class="mf">0013025.</span><span class="n">jpg</span>
-            <span class="o">...</span>
-            <span class="mi">1030023514</span><span class="n">_aad5c606d9</span><span class="o">.</span><span class="n">jpg</span>
-        <span class="n">bees</span><span class="o">/</span>
-            <span class="mi">1092977343</span><span class="n">_cb42b38e62</span><span class="o">.</span><span class="n">jpg</span>
-            <span class="o">...</span>
-            <span class="mi">2486729079_62</span><span class="n">df0921be</span><span class="o">.</span><span class="n">jpg</span>
+    train/
+        ants/
+            0013025.jpg
+            ...
+            1030023514_aad5c606d9.jpg
+        bees/
+            1092977343_cb42b38e62.jpg
+            ...
+            2486729079_62df0921be.jpg
 </pre></div>
 </div>
 <p>Following the <a class="reference external" href="https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html">tutorial</a>, we’ll finetune the model.</p>

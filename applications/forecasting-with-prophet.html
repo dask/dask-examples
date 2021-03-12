@@ -35,8 +35,6 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
         <script src="../_static/js/custom.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -724,8 +722,8 @@ Importing plotly failed. Interactive plots will not work.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2.75 s, sys: 111 ms, total: 2.86 s
-Wall time: 5.04 s
+CPU times: user 2.42 s, sys: 109 ms, total: 2.53 s
+Wall time: 3.7 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -734,7 +732,7 @@ Wall time: 5.04 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;fbprophet.forecaster.Prophet at 0x7fb85cbde490&gt;
+&lt;fbprophet.forecaster.Prophet at 0x7f16723c1e80&gt;
 </pre></div></div>
 </div>
 <p>And we can make a forecast. Again, Dask isn’t involved here.</p>
@@ -785,7 +783,7 @@ Wall time: 5.04 s
 <div class="highlight"><pre>
 /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/node.py:151: UserWarning: Port 8787 is already in use.
 Perhaps you already have a cluster running?
-Hosting the HTTP server on port 40617 instead
+Hosting the HTTP server on port 43153 instead
   warnings.warn(
 </pre></div></div>
 </div>
@@ -799,8 +797,8 @@ Hosting the HTTP server on port 40617 instead
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:35357</li>
-  <li><b>Dashboard: </b><a href='http://127.0.0.1:40617/status' target='_blank'>http://127.0.0.1:40617/status</a></li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:34825</li>
+  <li><b>Dashboard: </b><a href='http://127.0.0.1:43153/status' target='_blank'>http://127.0.0.1:43153/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -833,7 +831,7 @@ Hosting the HTTP server on port 40617 instead
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 INFO:fbprophet:Making 11 forecasts with cutoffs between 2010-02-15 00:00:00 and 2015-01-20 00:00:00
-INFO:fbprophet:Applying in parallel with &lt;Client: &#39;tcp://127.0.0.1:35357&#39; processes=2 threads=2, memory=7.29 GB&gt;
+INFO:fbprophet:Applying in parallel with &lt;Client: &#39;tcp://127.0.0.1:34825&#39; processes=2 threads=2, memory=7.29 GB&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -841,8 +839,8 @@ INFO:fbprophet:Applying in parallel with &lt;Client: &#39;tcp://127.0.0.1:35357&
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.07 s, sys: 114 ms, total: 1.19 s
-Wall time: 40.3 s
+CPU times: user 1.16 s, sys: 232 ms, total: 1.39 s
+Wall time: 47.1 s
 </pre></div></div>
 </div>
 <p>Be sure to watch the Dask Dashboard as that runs. The models are fit in parallel on the cluster. At the start there’s bit of overhead from having to move the model and data to the workers but after that the scaling looks quite nice.</p>
