@@ -562,7 +562,7 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="admonition-live-notebook admonition">
 <p class="admonition-title">Live Notebook</p>
-<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/applications/evolving-workflows.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/applications/evolving-workflows.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/main/applications/evolving-workflows.ipynb">on Github</a>.</p>
+<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/applications/evolving-workflows.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/applications/evolving-workflows.ipynb"><img alt="Binder" src="https://static.mybinder.org/badge_logo.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/main/applications/evolving-workflows.ipynb">on Github</a>.</p>
 </div>
 <div class="section" id="Handle-Evolving-Workflows">
 <h1>Handle Evolving Workflows<a class="headerlink" href="#Handle-Evolving-Workflows" title="Permalink to this headline">¶</a></h1>
@@ -641,8 +641,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3.4 ms, sys: 318 µs, total: 3.72 ms
-Wall time: 10.3 s
+CPU times: user 917 µs, sys: 3.49 ms, total: 4.4 ms
+Wall time: 11.7 s
 </pre></div></div>
 </div>
 </div>
@@ -661,6 +661,17 @@ Wall time: 10.3 s
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/node.py:151: UserWarning: Port 8787 is already in use.
+Perhaps you already have a cluster running?
+Hosting the HTTP server on port 38439 instead
+  warnings.warn(
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -671,8 +682,8 @@ Wall time: 10.3 s
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.1.0.4/7309/1</li>
-  <li><b>Dashboard: </b><a href='http://10.1.0.4:8787/status' target='_blank'>http://10.1.0.4:8787/status</a></li>
+  <li><b>Scheduler: </b>inproc://10.1.0.4/6840/1</li>
+  <li><b>Dashboard: </b><a href='http://10.1.0.4:38439/status' target='_blank'>http://10.1.0.4:38439/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -730,8 +741,8 @@ Wall time: 10.3 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 233 ms, sys: 24.2 ms, total: 257 ms
-Wall time: 2.45 s
+CPU times: user 269 ms, sys: 24.5 ms, total: 293 ms
+Wall time: 2.49 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -740,63 +751,63 @@ Wall time: 2.45 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[1.3035453437342577,
- 1.8062460169463281,
- 1.066878539792861,
- 1.7715517109133814,
- 1.7988407611671402,
- 1.1932156129745255,
- 1.4010196002936897,
- 1.9098389902118176,
- 1.4898975446627034,
- 1.7110379719713087,
- 1.0027014657320819,
- 1.8849990348152037,
- 1.8289437150605727,
- 1.1744384514943438,
- 1.4007443619675308,
- 1.9484042917226887,
- 1.7017986832503769,
- 1.233111282158142,
- 1.1374489005634496,
- 1.7486853175848456,
- 1.9924201096902339,
- 1.020085807094227,
- 1.7218603450004855,
- 1.144974011995472,
- 1.2959721087902059,
- 1.6927218951316116,
- 1.8105787181168829,
- 1.4313351658321716,
- 1.7019999794707643,
- 1.9780574555348984,
- 1.8044082552089589,
- 1.2387222374121596,
- 1.4452957080936466,
- 1.5471254231917535,
- 1.412707059359279,
- 1.0036362692448972,
- 1.88124963866056,
- 1.541302218972449,
- 1.7718418246835008,
- 1.3032631300111333,
- 1.2388607615507636,
- 1.277501670649133,
- 1.6510417152296275,
- 1.4247501721179674,
- 1.3259485358927043,
- 1.12525725140017,
- 1.4272489111610898,
- 1.9606406185919658,
- 1.0982981433335048,
- 1.58194451229695,
- 1.5993710679617108,
- 1.225946256901351,
- 1.5163102211094186,
- 1.047138032028708,
- 1.014476152934892,
- 1.5713110159733783,
- 1.7973314508426084]
+[1.5118137763529522,
+ 1.9413528084197536,
+ 1.6455597090146643,
+ 1.0628854461335429,
+ 1.7540662723513076,
+ 1.9439038209038206,
+ 1.7429529262454238,
+ 1.4333306970151973,
+ 1.347701528513303,
+ 1.4891178241645264,
+ 1.5244160842233905,
+ 1.0557422564098187,
+ 1.4892372362710873,
+ 1.0069801949806672,
+ 1.6276520390951854,
+ 1.1063876981893719,
+ 1.2322090559705452,
+ 1.4068466000776452,
+ 1.072782540186582,
+ 1.108447441098613,
+ 1.0327810223683889,
+ 1.8714484639704683,
+ 1.4500396601931045,
+ 1.0860993977798696,
+ 1.0137010137379165,
+ 1.8451735536892526,
+ 1.813707679459029,
+ 1.6327942353985878,
+ 1.675605230388753,
+ 1.342793354414615,
+ 1.7785834214071525,
+ 1.7835785460629991,
+ 1.530983318372848,
+ 1.3646924906866027,
+ 1.8559585066847955,
+ 1.8163782357074694,
+ 1.561449645427341,
+ 1.5971583459224892,
+ 1.7023887289310324,
+ 1.836616648450983,
+ 1.7375022096078458,
+ 1.7450611011519974,
+ 1.1549229735974293,
+ 1.6230625787685173,
+ 1.2418372722369306,
+ 1.828113221797938,
+ 1.8092936553094892,
+ 1.763545013714142,
+ 1.4497493816638203,
+ 1.532665559510183,
+ 1.1366193362568804,
+ 1.395639924453992,
+ 1.596045247059517,
+ 1.7020899222943253,
+ 1.5101353445802574,
+ 1.4081072472745748,
+ 1.7838100492073354]
 </pre></div></div>
 </div>
 </div>
@@ -851,52 +862,49 @@ Wall time: 2.45 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[1.4915711502281979,
- 1.1428610682329428,
- 1.567818373504867,
- 1.3512018394490957,
- 1.0716956265013309,
- 1.7172181257167873,
- 1.48970332489997,
- 1.4230018668895426,
- 1.94358744680879,
- 1.7124582464693194,
- 1.1325959645761356,
- 1.23413196172275,
- 1.9525709887657456,
- 1.1109113660782617,
- 1.4945044136235746,
- 1.1205090210660118,
- 1.051500824263921,
- 1.8052520830116823,
- 1.0174315265613343,
- 1.8871326730053877,
- 1.945813033983205,
- 1.3516603249058807,
- 1.9429719451649774,
- 1.4448861986493289,
- 1.1182852202925366,
- 1.398191509043675,
- 1.5869643039894388,
- 1.3999119584899118,
- 1.9370408516395443,
- 1.8588699527182557,
- 1.7849929722931783,
- 1.0644525132308096,
- 1.7244765999555647,
- 1.9555812698560189,
- 1.8141370348481047,
- 1.1754472555661217,
- 1.9973873676925562,
- 1.433113401011787,
- 1.8705657741352573,
- 1.7007960288672304,
- 1.3967981549750126,
- 1.735998595869344,
- 1.287499611289017,
- 1.142597094300092,
- 1.5189947703483613,
- 1.047028068346882]
+[1.0733935742903555,
+ 1.7612664369471291,
+ 1.9087602691599708,
+ 1.4902920136414424,
+ 1.7386454980547845,
+ 1.8986140681874892,
+ 1.60823624689902,
+ 1.3709707351736378,
+ 1.6799759407783068,
+ 1.635060237616419,
+ 1.4775925288065919,
+ 1.5839193637061706,
+ 1.3999468828997879,
+ 1.546905737346962,
+ 1.068445695371413,
+ 1.0845606709325843,
+ 1.7125560192943938,
+ 1.300637622220024,
+ 1.0116437744657572,
+ 1.952292087084635,
+ 1.4580602238234528,
+ 1.842965946471589,
+ 1.3948016170799686,
+ 1.016524473590119,
+ 1.056988710528623,
+ 1.614506323348491,
+ 1.6545299820133101,
+ 1.4921892993882655,
+ 1.4438671982066942,
+ 1.9740947841844805,
+ 1.0373919796575215,
+ 1.9701032378410996,
+ 1.8952746226153379,
+ 1.4383874863558552,
+ 1.578196980981895,
+ 1.1429527156064294,
+ 1.0115769311488607,
+ 1.8746615617663687,
+ 1.3346188756463777,
+ 1.0970032802997849,
+ 1.208611686098894,
+ 1.2617530085451873,
+ 1.0585599258279421]
 </pre></div></div>
 </div>
 </div>
@@ -932,8 +940,8 @@ Wall time: 2.45 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 159 ms, sys: 24.5 ms, total: 183 ms
-Wall time: 1.81 s
+CPU times: user 224 ms, sys: 18.8 ms, total: 243 ms
+Wall time: 2.24 s
 </pre></div></div>
 </div>
 </div>

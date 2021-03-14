@@ -562,7 +562,7 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="admonition-live-notebook admonition">
 <p class="admonition-title">Live Notebook</p>
-<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/applications/stencils-with-numba.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/applications/stencils-with-numba.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/main/applications/stencils-with-numba.ipynb">on Github</a>.</p>
+<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/applications/stencils-with-numba.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/applications/stencils-with-numba.ipynb"><img alt="Binder" src="https://static.mybinder.org/badge_logo.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/main/applications/stencils-with-numba.ipynb">on Github</a>.</p>
 </div>
 <div class="section" id="Stencil-Computations-with-Numba">
 <h1>Stencil Computations with Numba<a class="headerlink" href="#Stencil-Computations-with-Numba" title="Permalink to this headline">¶</a></h1>
@@ -628,7 +628,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-325 ms ± 3.56 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+The slowest run took 4.19 times longer than the fastest. This could mean that an intermediate result is being cached.
+633 ms ± 455 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div></div>
 </div>
 <p>But if we JIT compile this function with Numba, then it runs more quickly.</p>
@@ -650,7 +651,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-166 µs ± 19.6 µs per loop (mean ± std. dev. of 7 runs, 1 loop each)
+161 µs ± 36.9 µs per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div></div>
 </div>
 <p>For those counting, that’s over 1000x faster!</p>
@@ -1670,17 +1671,6 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/node.py:151: UserWarning: Port 8787 is already in use.
-Perhaps you already have a cluster running?
-Hosting the HTTP server on port 45053 instead
-  warnings.warn(
-</pre></div></div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
@@ -1691,8 +1681,8 @@ Hosting the HTTP server on port 45053 instead
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.1.0.4/7094/1</li>
-  <li><b>Dashboard: </b><a href='http://10.1.0.4:45053/status' target='_blank'>http://10.1.0.4:45053/status</a></li>
+  <li><b>Scheduler: </b>inproc://10.1.0.4/6648/1</li>
+  <li><b>Dashboard: </b><a href='http://10.1.0.4:8787/status' target='_blank'>http://10.1.0.4:8787/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -1721,7 +1711,7 @@ Hosting the HTTP server on port 45053 instead
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-123
+121
 </pre></div></div>
 </div>
 </div>

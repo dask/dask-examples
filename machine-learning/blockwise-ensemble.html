@@ -560,7 +560,7 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="admonition-live-notebook admonition">
 <p class="admonition-title">Live Notebook</p>
-<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/machine-learning/blockwise-ensemble.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/machine-learning/blockwise-ensemble.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/main/machine-learning/blockwise-ensemble.ipynb">on Github</a>.</p>
+<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/machine-learning/blockwise-ensemble.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/machine-learning/blockwise-ensemble.ipynb"><img alt="Binder" src="https://static.mybinder.org/badge_logo.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/main/machine-learning/blockwise-ensemble.ipynb">on Github</a>.</p>
 </div>
 <div class="section" id="Blockwise-Ensemble-Methods">
 <h1>Blockwise Ensemble Methods<a class="headerlink" href="#Blockwise-Ensemble-Methods" title="Permalink to this headline">¶</a></h1>
@@ -824,7 +824,7 @@ BlockwiseVotingClassifier(classes=[0, 1],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([0, 0, 0, 1, 0, 0, 1, 0, 1, 1])
+array([1, 0, 1, 1, 0, 0, 0, 0, 1, 1])
 </pre></div></div>
 </div>
 <p>With <code class="docutils literal notranslate"><span class="pre">voting=&quot;soft&quot;</span></code> we have access to <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code>, as long as the subestimator has a <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> method. These subestimators should be well-calibrated for the predictions to be meaningful. See <a class="reference external" href="https://scikit-learn.org/stable/modules/calibration.html#calibration">probability calibration</a> for more.</p>
@@ -859,11 +859,11 @@ array([0, 0, 0, 1, 0, 0, 1, 0, 1, 1])
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([[9.99866066e-01, 1.33934067e-04],
-       [9.97843256e-01, 2.15674401e-03],
-       [9.19002450e-01, 8.09975503e-02],
-       [4.72856473e-04, 9.99527144e-01],
-       [5.20818521e-01, 4.79181479e-01]])
+array([[0.05915153, 0.94084847],
+       [0.99858011, 0.00141989],
+       [0.08870945, 0.91129055],
+       [0.09102449, 0.90897551],
+       [0.89548037, 0.10451963]])
 </pre></div></div>
 </div>
 <p>The stages here are similar to the <code class="docutils literal notranslate"><span class="pre">voting=&quot;hard&quot;</span></code> case. Only now instead of taking the majority vote we average the probabilities predicted by each sub-estimator.</p>
@@ -962,8 +962,8 @@ array([[9.99866066e-01, 1.33934067e-04],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([ 237.0011179 ,  182.34022327,  111.57407876, -150.49161146,
-       -274.28994801])
+array([ 12.09381474, -67.83271201, 142.24390399,  37.26158106,
+       147.48256307])
 </pre></div></div>
 </div>
 <p>As usual with Dask-ML, scoring is done in parallel (and distributed on a cluster if you’re connected to one).</p>
@@ -1105,7 +1105,7 @@ LinearRegression()
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
--12.020675834378823
+-11.204785099255849
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1123,7 +1123,7 @@ LinearRegression()
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.179606867203295
+0.028155767968514822
 </pre></div></div>
 </div>
 <p>This shows that ensuring your needs to be relatively uniform across partitions. Even including the standard controls to normalize whatever underlying force is generating the non-stationary data (e.g. a time trend compontent or differencing timeseries data, dummy variables for geographic regions, etc) is not sufficient when your dataset is partioned by the non-uniform variable. You would still need to either shuffle your data prior to fitting, or just sample and fit the sub-estimator on the
