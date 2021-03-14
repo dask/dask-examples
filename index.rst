@@ -9,7 +9,7 @@ particular features or use cases.
 
 You can run these examples in a live session here: |Binder|
 
-.. |Binder| image:: https://mybinder.org/badge.svg
+.. |Binder| image:: https://static.mybinder.org/badge_logo.svg
    :target: https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab
 
 .. toctree::
