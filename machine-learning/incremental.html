@@ -593,7 +593,7 @@ div.rendered_html tbody tr:hover {
 <li><p>training, predicting, and scoring on this wrapped estimator</p></li>
 </ul>
 <p>Although this example uses Scikit-Learn’s SGDClassifer, the <code class="docutils literal notranslate"><span class="pre">Incremental</span></code> meta-estimator will work for any class that implements <code class="docutils literal notranslate"><span class="pre">partial_fit</span></code> and the <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html">scikit-learn base estimator API</a>.</p>
-<p><img alt="8d61781bdeaf4fc1aa8667c62ab3cea5" src="http://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" /> <img alt="13b8bb55183d4ca5ae0905456dfea0a9" class="no-scaled-link" src="https://www.continuum.io/sites/default/files/dask_stacked.png" style="width: 100px;" /></p>
+<p><img alt="cf0822e0bf394a7eb50cd81f9b2f0894" src="http://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" /> <img alt="7a5a11b1e9554283a8b4315c0e16c9c2" class="no-scaled-link" src="https://www.continuum.io/sites/default/files/dask_stacked.png" style="width: 100px;" /></p>
 <div class="section" id="Setup-Dask">
 <h2>Setup Dask<a class="headerlink" href="#Setup-Dask" title="Permalink to this headline">¶</a></h2>
 <p>We first start a Dask client in order to get access to the Dask dashboard, which will provide progress and performance metrics.</p>
@@ -619,7 +619,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:38439</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:41667</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
@@ -884,7 +884,7 @@ Incremental(estimator=SGDClassifier(loss=&#39;log&#39;), scoring=&#39;accuracy&#
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.5928
+0.5071
 </pre></div></div>
 </div>
 </div>
@@ -917,16 +917,16 @@ Incremental(estimator=SGDClassifier(loss=&#39;log&#39;), scoring=&#39;accuracy&#
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Score: 0.5853
-Score: 0.5925
-Score: 0.6124
-Score: 0.6302
-Score: 0.625
-Score: 0.6266
-Score: 0.6241
-Score: 0.6344
-Score: 0.6315
-Score: 0.6287
+Score: 0.5225
+Score: 0.5142
+Score: 0.5119
+Score: 0.5265
+Score: 0.5187
+Score: 0.5169
+Score: 0.5302
+Score: 0.5171
+Score: 0.5192
+Score: 0.5202
 </pre></div></div>
 </div>
 </div>
@@ -1008,11 +1008,11 @@ Score: 0.6287
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1,
-       1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1,
-       0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
-       1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1,
-       0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1])
+array([1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1,
+       1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0,
+       1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1])
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1030,7 +1030,7 @@ array([1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.6287
+0.5202
 </pre></div></div>
 </div>
 </div>

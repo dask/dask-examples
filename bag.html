@@ -600,7 +600,7 @@ div.rendered_html tbody tr:hover {
 <div class="highlight"><pre>
 /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/node.py:151: UserWarning: Port 8787 is already in use.
 Perhaps you already have a cluster running?
-Hosting the HTTP server on port 45533 instead
+Hosting the HTTP server on port 45513 instead
   warnings.warn(
 </pre></div></div>
 </div>
@@ -614,8 +614,8 @@ Hosting the HTTP server on port 45533 instead
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:41855</li>
-  <li><b>Dashboard: </b><a href='http://127.0.0.1:45533/status' target='_blank'>http://127.0.0.1:45533/status</a></li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:37245</li>
+  <li><b>Dashboard: </b><a href='http://127.0.0.1:45513/status' target='_blank'>http://127.0.0.1:45513/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -685,8 +685,8 @@ Hosting the HTTP server on port 45533 instead
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#34;age&#34;: 21, &#34;name&#34;: [&#34;Duane&#34;, &#34;Campbell&#34;], &#34;occupation&#34;: &#34;Purchasing Assistant&#34;, &#34;telephone&#34;: &#34;1-292-318-0180&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;187 Ship Ferry&#34;, &#34;city&#34;: &#34;Chickasha&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;2466 6916 3234 5822&#34;, &#34;expiration-date&#34;: &#34;12/23&#34;}}
-{&#34;age&#34;: 32, &#34;name&#34;: [&#34;Jeramy&#34;, &#34;Owen&#34;], &#34;occupation&#34;: &#34;Ticket Agent&#34;, &#34;telephone&#34;: &#34;+1-(068)-235-2690&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;777 Cottonwood Road&#34;, &#34;city&#34;: &#34;Downers Grove&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;5166 0447 4858 0831&#34;, &#34;expiration-date&#34;: &#34;08/22&#34;}}
+{&#34;age&#34;: 50, &#34;name&#34;: [&#34;Vella&#34;, &#34;Whitney&#34;], &#34;occupation&#34;: &#34;Product Manager&#34;, &#34;telephone&#34;: &#34;219-424-4060&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;1119 Beaumont Viaduct&#34;, &#34;city&#34;: &#34;Juneau&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3485 504416 47638&#34;, &#34;expiration-date&#34;: &#34;02/18&#34;}}
+{&#34;age&#34;: 17, &#34;name&#34;: [&#34;Yajaira&#34;, &#34;Valentine&#34;], &#34;occupation&#34;: &#34;Lift Attendant&#34;, &#34;telephone&#34;: &#34;001.973.0960&#34;, &#34;address&#34;: {&#34;address&#34;: &#34;697 Atoll Loop&#34;, &#34;city&#34;: &#34;Goose Creek&#34;}, &#34;credit-card&#34;: {&#34;number&#34;: &#34;3400 838300 21973&#34;, &#34;expiration-date&#34;: &#34;05/20&#34;}}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -726,20 +726,18 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 21,
-  &#39;name&#39;: [&#39;Duane&#39;, &#39;Campbell&#39;],
-  &#39;occupation&#39;: &#39;Purchasing Assistant&#39;,
-  &#39;telephone&#39;: &#39;1-292-318-0180&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;187 Ship Ferry&#39;, &#39;city&#39;: &#39;Chickasha&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2466 6916 3234 5822&#39;,
-   &#39;expiration-date&#39;: &#39;12/23&#39;}},
- {&#39;age&#39;: 32,
-  &#39;name&#39;: [&#39;Jeramy&#39;, &#39;Owen&#39;],
-  &#39;occupation&#39;: &#39;Ticket Agent&#39;,
-  &#39;telephone&#39;: &#39;+1-(068)-235-2690&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;777 Cottonwood Road&#39;, &#39;city&#39;: &#39;Downers Grove&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5166 0447 4858 0831&#39;,
-   &#39;expiration-date&#39;: &#39;08/22&#39;}})
+({&#39;age&#39;: 50,
+  &#39;name&#39;: [&#39;Vella&#39;, &#39;Whitney&#39;],
+  &#39;occupation&#39;: &#39;Product Manager&#39;,
+  &#39;telephone&#39;: &#39;219-424-4060&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1119 Beaumont Viaduct&#39;, &#39;city&#39;: &#39;Juneau&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3485 504416 47638&#39;, &#39;expiration-date&#39;: &#39;02/18&#39;}},
+ {&#39;age&#39;: 17,
+  &#39;name&#39;: [&#39;Yajaira&#39;, &#39;Valentine&#39;],
+  &#39;occupation&#39;: &#39;Lift Attendant&#39;,
+  &#39;telephone&#39;: &#39;001.973.0960&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;697 Atoll Loop&#39;, &#39;city&#39;: &#39;Goose Creek&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3400 838300 21973&#39;, &#39;expiration-date&#39;: &#39;05/20&#39;}})
 </pre></div></div>
 </div>
 </div>
@@ -761,19 +759,19 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 32,
-  &#39;name&#39;: [&#39;Jeramy&#39;, &#39;Owen&#39;],
-  &#39;occupation&#39;: &#39;Ticket Agent&#39;,
-  &#39;telephone&#39;: &#39;+1-(068)-235-2690&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;777 Cottonwood Road&#39;, &#39;city&#39;: &#39;Downers Grove&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;5166 0447 4858 0831&#39;,
-   &#39;expiration-date&#39;: &#39;08/22&#39;}},
- {&#39;age&#39;: 66,
-  &#39;name&#39;: [&#39;Derek&#39;, &#39;Mckee&#39;],
-  &#39;occupation&#39;: &#39;Training Advisor&#39;,
-  &#39;telephone&#39;: &#39;(919) 025-7441&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;295 Gates Manor&#39;, &#39;city&#39;: &#39;Johns Creek&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3734 062986 52007&#39;, &#39;expiration-date&#39;: &#39;04/20&#39;}})
+({&#39;age&#39;: 50,
+  &#39;name&#39;: [&#39;Vella&#39;, &#39;Whitney&#39;],
+  &#39;occupation&#39;: &#39;Product Manager&#39;,
+  &#39;telephone&#39;: &#39;219-424-4060&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1119 Beaumont Viaduct&#39;, &#39;city&#39;: &#39;Juneau&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3485 504416 47638&#39;, &#39;expiration-date&#39;: &#39;02/18&#39;}},
+ {&#39;age&#39;: 39,
+  &#39;name&#39;: [&#39;Israel&#39;, &#39;Henry&#39;],
+  &#39;occupation&#39;: &#39;Revenue Clerk&#39;,
+  &#39;telephone&#39;: &#39;408-181-4095&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;874 H Bypass&#39;, &#39;city&#39;: &#39;Cliffside Park&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;4804 9263 5416 5157&#39;,
+   &#39;expiration-date&#39;: &#39;11/23&#39;}})
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -791,7 +789,7 @@ dask.bag&lt;loads, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-(&#39;Purchasing Assistant&#39;, &#39;Ticket Agent&#39;)
+(&#39;Product Manager&#39;, &#39;Lift Attendant&#39;)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -854,16 +852,16 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[(&#39;Marble Mason&#39;, 16),
- (&#39;Bus Driver&#39;, 15),
- (&#39;Regulator&#39;, 14),
- (&#39;Hospital Doctor&#39;, 14),
- (&#39;Production Engineer&#39;, 14),
- (&#39;Quality Controller&#39;, 13),
- (&#39;Patent Agent&#39;, 13),
- (&#39;Househusband&#39;, 13),
- (&#39;Video Artist&#39;, 13),
- (&#39;Builder&#39;, 13)]
+[(&#39;Laundry Staff&#39;, 15),
+ (&#39;Musician&#39;, 15),
+ (&#39;Bank Manager&#39;, 15),
+ (&#39;Motor Mechanic&#39;, 14),
+ (&#39;Fruiterer&#39;, 14),
+ (&#39;Agent&#39;, 14),
+ (&#39;Builder&#39;, 13),
+ (&#39;Racehorse Groom&#39;, 13),
+ (&#39;Tacker&#39;, 13),
+ (&#39;Historian&#39;, 13)]
 </pre></div></div>
 </div>
 </div>
@@ -920,13 +918,12 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 21,
-  &#39;name&#39;: [&#39;Duane&#39;, &#39;Campbell&#39;],
-  &#39;occupation&#39;: &#39;Purchasing Assistant&#39;,
-  &#39;telephone&#39;: &#39;1-292-318-0180&#39;,
-  &#39;address&#39;: {&#39;address&#39;: &#39;187 Ship Ferry&#39;, &#39;city&#39;: &#39;Chickasha&#39;},
-  &#39;credit-card&#39;: {&#39;number&#39;: &#39;2466 6916 3234 5822&#39;,
-   &#39;expiration-date&#39;: &#39;12/23&#39;}},)
+({&#39;age&#39;: 50,
+  &#39;name&#39;: [&#39;Vella&#39;, &#39;Whitney&#39;],
+  &#39;occupation&#39;: &#39;Product Manager&#39;,
+  &#39;telephone&#39;: &#39;219-424-4060&#39;,
+  &#39;address&#39;: {&#39;address&#39;: &#39;1119 Beaumont Viaduct&#39;, &#39;city&#39;: &#39;Juneau&#39;},
+  &#39;credit-card&#39;: {&#39;number&#39;: &#39;3485 504416 47638&#39;, &#39;expiration-date&#39;: &#39;02/18&#39;}},)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -956,14 +953,14 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;age&#39;: 21,
-  &#39;occupation&#39;: &#39;Purchasing Assistant&#39;,
-  &#39;telephone&#39;: &#39;1-292-318-0180&#39;,
-  &#39;credit-card-number&#39;: &#39;2466 6916 3234 5822&#39;,
-  &#39;credit-card-expiration&#39;: &#39;12/23&#39;,
-  &#39;name&#39;: &#39;Duane Campbell&#39;,
-  &#39;street-address&#39;: &#39;187 Ship Ferry&#39;,
-  &#39;city&#39;: &#39;Chickasha&#39;},)
+({&#39;age&#39;: 50,
+  &#39;occupation&#39;: &#39;Product Manager&#39;,
+  &#39;telephone&#39;: &#39;219-424-4060&#39;,
+  &#39;credit-card-number&#39;: &#39;3485 504416 47638&#39;,
+  &#39;credit-card-expiration&#39;: &#39;02/18&#39;,
+  &#39;name&#39;: &#39;Vella Whitney&#39;,
+  &#39;street-address&#39;: &#39;1119 Beaumont Viaduct&#39;,
+  &#39;city&#39;: &#39;Juneau&#39;},)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1012,58 +1009,58 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
   <tbody>
     <tr>
       <th>0</th>
-      <td>21</td>
-      <td>Purchasing Assistant</td>
-      <td>1-292-318-0180</td>
-      <td>2466 6916 3234 5822</td>
-      <td>12/23</td>
-      <td>Duane Campbell</td>
-      <td>187 Ship Ferry</td>
-      <td>Chickasha</td>
+      <td>50</td>
+      <td>Product Manager</td>
+      <td>219-424-4060</td>
+      <td>3485 504416 47638</td>
+      <td>02/18</td>
+      <td>Vella Whitney</td>
+      <td>1119 Beaumont Viaduct</td>
+      <td>Juneau</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>32</td>
-      <td>Ticket Agent</td>
-      <td>+1-(068)-235-2690</td>
-      <td>5166 0447 4858 0831</td>
-      <td>08/22</td>
-      <td>Jeramy Owen</td>
-      <td>777 Cottonwood Road</td>
-      <td>Downers Grove</td>
+      <td>17</td>
+      <td>Lift Attendant</td>
+      <td>001.973.0960</td>
+      <td>3400 838300 21973</td>
+      <td>05/20</td>
+      <td>Yajaira Valentine</td>
+      <td>697 Atoll Loop</td>
+      <td>Goose Creek</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>66</td>
-      <td>Training Advisor</td>
-      <td>(919) 025-7441</td>
-      <td>3734 062986 52007</td>
-      <td>04/20</td>
-      <td>Derek Mckee</td>
-      <td>295 Gates Manor</td>
-      <td>Johns Creek</td>
+      <td>24</td>
+      <td>Mechanic</td>
+      <td>(007) 118-2163</td>
+      <td>5589 1724 9254 4114</td>
+      <td>09/16</td>
+      <td>Elton Garcia</td>
+      <td>227 Pelican Cove Manor</td>
+      <td>Mankato</td>
     </tr>
     <tr>
       <th>3</th>
       <td>39</td>
-      <td>Insurance Consultant</td>
-      <td>660.353.3622</td>
-      <td>2527 6472 1553 2332</td>
-      <td>09/22</td>
-      <td>Fidelia Conley</td>
-      <td>1109 Fair Terrace</td>
-      <td>Bensenville</td>
+      <td>Revenue Clerk</td>
+      <td>408-181-4095</td>
+      <td>4804 9263 5416 5157</td>
+      <td>11/23</td>
+      <td>Israel Henry</td>
+      <td>874 H Bypass</td>
+      <td>Cliffside Park</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>63</td>
-      <td>Riveter</td>
-      <td>959-796-5137</td>
-      <td>4686 8010 6785 5688</td>
-      <td>11/19</td>
-      <td>Piedad Ortega</td>
-      <td>265 Newhall Alley</td>
-      <td>Freeport</td>
+      <td>18</td>
+      <td>Office Manager</td>
+      <td>1-450-041-1977</td>
+      <td>3766 747004 22874</td>
+      <td>03/21</td>
+      <td>Eliseo Compton</td>
+      <td>1355 Anson Arcade</td>
+      <td>Alamogordo</td>
     </tr>
   </tbody>
 </table>
@@ -1085,16 +1082,16 @@ dask.bag&lt;topk-aggregate, npartitions=1&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Marble Mason           16
-Bus Driver             15
-Regulator              14
-Production Engineer    14
-Hospital Doctor        14
-Patent Agent           13
-Video Artist           13
-Accounts Assistant     13
-Quality Controller     13
-Builder                13
+Laundry Staff      15
+Bank Manager       15
+Musician           15
+Motor Mechanic     14
+Fruiterer          14
+Agent              14
+Racehorse Groom    13
+Builder            13
+Student            13
+Historian          13
 Name: occupation, dtype: int64
 </pre></div></div>
 </div>

@@ -592,7 +592,7 @@ div.rendered_html tbody tr:hover {
 <div class="highlight"><pre>
 /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/node.py:151: UserWarning: Port 8787 is already in use.
 Perhaps you already have a cluster running?
-Hosting the HTTP server on port 33679 instead
+Hosting the HTTP server on port 33837 instead
   warnings.warn(
 </pre></div></div>
 </div>
@@ -606,8 +606,8 @@ Hosting the HTTP server on port 33679 instead
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.1.0.87/5832/1</li>
-  <li><b>Dashboard: </b><a href='http://10.1.0.87:33679/status' target='_blank'>http://10.1.0.87:33679/status</a></li>
+  <li><b>Scheduler: </b>inproc://10.1.0.145/5928/1</li>
+  <li><b>Dashboard: </b><a href='http://10.1.0.145:33837/status' target='_blank'>http://10.1.0.145:33837/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -623,7 +623,7 @@ Hosting the HTTP server on port 33679 instead
 </div>
 <div class="section" id="Distributed-Training">
 <h2>Distributed Training<a class="headerlink" href="#Distributed-Training" title="Permalink to this headline">¶</a></h2>
-<p><img alt="20a5a037318c493d945ef717141f0998" src="_images/scikit-learn-logo-notext.png" /> <img alt="c16d28d5a8b24540a8200c0edc19c3f3" class="no-scaled-link" src="_images/joblib_logo.svg" width="20%" /></p>
+<p><img alt="6571643cba9f44f1a4e3cf3f90ce165e" src="_images/scikit-learn-logo-notext.png" /> <img alt="58ac20559782429cbefcd8343750291e" class="no-scaled-link" src="_images/joblib_logo.svg" width="20%" /></p>
 <p>Scikit-learn uses <a class="reference external" href="http://joblib.readthedocs.io/">joblib</a> for single-machine parallelism. This lets you train most estimators (anything that accepts an <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> parameter) using all the cores of your laptop or workstation.</p>
 <p>Alternatively, Scikit-Learn can use Dask for parallelism. This lets you train those estimators using all the cores of your <em>cluster</em> without significantly changing your code.</p>
 <p>This is most useful for training large models on medium-sized datasets. You may have a large model when searching over many hyper-parameters, or when using an ensemble method with many individual estimators. For too small datasets, training times will typically be small enough that cluster-wide parallelism isn’t helpful. For too large datasets (larger than a single machine’s memory), the scikit-learn estimators may not be able to cope (see below).</p>
@@ -767,10 +767,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.227411</td>
-      <td>0.012685</td>
-      <td>0.019135</td>
-      <td>0.001966</td>
+      <td>0.287243</td>
+      <td>0.025414</td>
+      <td>0.016644</td>
+      <td>0.001980</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>True</td>
@@ -784,10 +784,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>1</th>
-      <td>0.229613</td>
-      <td>0.003402</td>
-      <td>0.022272</td>
-      <td>0.005095</td>
+      <td>0.197634</td>
+      <td>0.045918</td>
+      <td>0.050652</td>
+      <td>0.045736</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>False</td>
@@ -801,10 +801,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>2</th>
-      <td>0.166891</td>
-      <td>0.002126</td>
-      <td>0.012325</td>
-      <td>0.000938</td>
+      <td>0.215909</td>
+      <td>0.025179</td>
+      <td>0.013604</td>
+      <td>0.002434</td>
       <td>0.001</td>
       <td>poly</td>
       <td>True</td>
@@ -818,10 +818,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>3</th>
-      <td>0.185066</td>
-      <td>0.002251</td>
-      <td>0.013511</td>
-      <td>0.004918</td>
+      <td>0.206455</td>
+      <td>0.059096</td>
+      <td>0.016147</td>
+      <td>0.004159</td>
       <td>0.001</td>
       <td>poly</td>
       <td>False</td>
@@ -835,10 +835,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>4</th>
-      <td>0.373508</td>
-      <td>0.010605</td>
-      <td>0.040563</td>
-      <td>0.003634</td>
+      <td>0.353773</td>
+      <td>0.062397</td>
+      <td>0.034142</td>
+      <td>0.004788</td>
       <td>0.001</td>
       <td>sigmoid</td>
       <td>True</td>
