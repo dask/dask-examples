@@ -20,7 +20,7 @@ jobs:
         shell: bash -l {0}
         run: |
           conda install -q pathlib nbconvert nbformat jupyter_client ipykernel
-          pip install nbsphinx dask-sphinx-theme sphinx
+          pip install nbsphinx dask-sphinx-theme>=2 sphinx
 
       - name: Execute Notebooks
         shell: bash -l {0}
@@ -31,7 +31,7 @@ jobs:
             --nbmake \
             --overwrite \
             --forked \
-            --ignore machine-learning/torch-prediction.ipynb 
+            --ignore machine-learning/torch-prediction.ipynb
 
       - name: Build
         shell: bash -l {0}
