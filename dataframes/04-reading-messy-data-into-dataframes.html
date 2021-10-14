@@ -1,292 +1,449 @@
 
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>DataFrames: Reading in messy data &mdash; Dask Examples  documentation</title>
-  
 
-  
-  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DataFrames: Reading in messy data &#8212; Dask Examples  documentation</title>
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}</script>
-        <script src="../_static/js/custom.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-  <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
-  
-  <meta name="Description" content="DataFrames: Reading in messy data">
-  <meta property="og:description" content="DataFrames: Reading in messy data">
-  <meta name="twitter:description" content="DataFrames: Reading in messy data" />
-  <meta property="og:title" content="Dask Examples  documentation - DataFrames: Reading in messy data">
-  <meta property="og:image" content="https://github.com/dask.png">
-  <meta property="og:image:secure_url" content="https://github.com/dask.png" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="380" />
-  <meta property="og:image:height" content="380" />
-  <meta property="og:url" content="dataframes/04-reading-messy-data-into-dataframes.html">
-  <meta property="og:site_name" content="Dask Examples  documentation">
-
-  <meta name="twitter:site" content="https://dask.org" />
-  <meta name="twitter:creator" content="@dask_dev" />
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:image" content="https://github.com/dask.png" />
-  <meta name="twitter:image:alt" content="Dask Examples  documentation">
-
-
-</head>
-
-<body class="wy-body-for-nav">
-
-  
-    <nav id="explore-links">
-        <a href="https://docs.dask.org/">
-        <img class="caption" src="../_static/images/dask-horizontal-white.svg"/>
-        </a>
-
-        <ul>
-        <li>
-            <a>Get Started</a>
-            <ul>
-            <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
-            <li><a href="https://examples.dask.org"> Examples </a></li>
-            <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
-            <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
-            <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
-            <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
-            <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab"> Try Online </a></li>
-            <li><a href="https://dask.org/slides"> Slides </a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a href="">Algorithms</a>
-            <ul>
-            <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
-            <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
-            <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
-            <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
-            <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
-            <li><a href="http://ml.dask.org">Machine Learning</a></li>
-            <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
-            <ul>
-            <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
-            <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
-            <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
-            <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
-            <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a>Community</a>
-            <ul>
-            <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
-            <li><a href="https://github.com/dask">Github</a></li>
-            <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
-            <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
-            <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-            <li><a href="https://youtube.com/c/dask-dev"> YouTube Channel </a></li>
-            <li><a href="https://join.slack.com/t/dask/shared_invite/zt-mfmh7quc-nIrXL6ocgiUH2haLYA914g"> Slack </a></li>
-            </ul>
-        </li>
-        </ul>
-
-    </nav>
-  
-  <div class="wy-grid-for-nav">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
 
-          
-            <a href="../index.html" class="icon icon-home"> Dask Examples
-          
+<nav class="dask-nav container-fluid">
+  <ul>
+    <li class="logo">
+      <a href="https://docs.dask.org/">
+        <img
+          class="caption"
+          src="../_static/images/dask-horizontal-white.svg"
+        />
+      </a>
+    </li>
 
-          
-          </a>
+    <li>
+      <a href="https://docs.dask.org/">Dask</a>
+    </li>
 
-          
-            
-            
-          
+    <li>
+      <a href="https://distributed.dask.org/">Distributed</a>
+    </li>
 
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
+    <li>
+      <a href="https://ml.dask.org/">Dask ML</a>
+    </li>
 
-          
-        </div>
+    <li>
+      <a href="https://examples.dask.org/">Examples</a>
+    </li>
 
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption" role="heading"><span class="caption-text">Basic Examples</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../array.html">Dask Arrays</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../bag.html">Dask Bags</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dataframe.html">Dask DataFrames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../delayed.html">Custom Workloads with Dask Delayed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../futures.html">Custom Workloads with Futures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning.html">Dask for Machine Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../xarray.html">Xarray with Dask Arrays</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Dataframes</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="01-data-access.html">DataFrames: Read and Write Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02-groupby.html">DataFrames: Groupby</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/blockwise-ensemble.html">Blockwise Ensemble Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/parallel-prediction.html">Score and Predict Large Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/torch-prediction.html">Batch Prediction with PyTorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/training-on-large-datasets.html">Train Models on Large Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/incremental.html">Incrementally Train Large Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/text-vectorization.html">Text Vectorization Pipeline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/hyperparam-opt.html">Hyperparameter optimization with Dask</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/xgboost.html">Scale XGBoost</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/voting-classifier.html">Use Voting Classifiers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/tpot.html">Automate Machine Learning with TPOT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/glm.html">Generalized Linear Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/svd.html">Singular Value Decomposition</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Applications</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/async-web-server.html">Asynchronous Computation: Web Servers + Dask</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/evolving-workflows.html">Handle Evolving Workflows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/image-processing.html">Image Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html">ETL Pipelines with Prefect</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/forecasting-with-prophet.html">Time Series Forecasting</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">User Surveys</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../surveys/2019.html">2019 Dask User Survey Results</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../surveys/2020.html">2020 Dask User Survey Results</a></li>
-</ul>
+    <li>
+      <a href="https://docs.dask.org/en/latest/ecosystem.html">Ecosystem</a>
+    </li>
 
-            
-          
-        </div>
-        
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Dask Examples</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>DataFrames: Reading in messy data</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="../_sources/dataframes/04-reading-messy-data-into-dataframes.ipynb.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
+    <li>
+      <a href="https://docs.dask.org/en/latest/support.html">Community</a>
+    </li>
   </ul>
+</nav>
 
-  
-  <hr/>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Dask Examples  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p class="caption" role="heading">
+ <span class="caption-text">
+  Basic Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../array.html">
+   Dask Arrays
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bag.html">
+   Dask Bags
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dataframe.html">
+   Dask DataFrames
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../delayed.html">
+   Custom Workloads with Dask Delayed
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../futures.html">
+   Custom Workloads with Futures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning.html">
+   Dask for Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../xarray.html">
+   Xarray with Dask Arrays
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Dataframes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01-data-access.html">
+   DataFrames: Read and Write Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-groupby.html">
+   DataFrames: Groupby
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/blockwise-ensemble.html">
+   Blockwise Ensemble Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/scale-scikit-learn.html">
+   Scale Scikit-Learn for Small Data Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/parallel-prediction.html">
+   Score and Predict Large Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/torch-prediction.html">
+   Batch Prediction with PyTorch
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/training-on-large-datasets.html">
+   Train Models on Large Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/incremental.html">
+   Incrementally Train Large Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/text-vectorization.html">
+   Text Vectorization Pipeline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/hyperparam-opt.html">
+   Hyperparameter optimization with Dask
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/xgboost.html">
+   Scale XGBoost
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/voting-classifier.html">
+   Use Voting Classifiers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/tpot.html">
+   Automate Machine Learning with TPOT
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/glm.html">
+   Generalized Linear Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/svd.html">
+   Singular Value Decomposition
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Applications
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/json-data-on-the-web.html">
+   Analyze web-hosted JSON data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/async-await.html">
+   Async/Await and Non-Blocking Execution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/async-web-server.html">
+   Asynchronous Computation: Web Servers + Dask
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/embarrassingly-parallel.html">
+   Embarrassingly parallel Workloads
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/evolving-workflows.html">
+   Handle Evolving Workflows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/image-processing.html">
+   Image Processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/prefect-etl.html">
+   ETL Pipelines with Prefect
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/satellite-imagery-geotiff.html">
+   Reading and manipulating tiled GeoTIFF datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/stencils-with-numba.html">
+   Stencil Computations with Numba
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/forecasting-with-prophet.html">
+   Time Series Forecasting
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  User Surveys
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../surveys/2019.html">
+   2019 Dask User Survey Results
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../surveys/2020.html">
+   2020 Dask User Survey Results
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
             
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/dataframes/04-reading-messy-data-into-dataframes.ipynb.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   DataFrames: Reading in messy data
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Start-Dask-Client-for-Dashboard">
+     Start Dask Client for Dashboard
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Create-artificial-dataset">
+     Create artificial dataset
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Read-CSV-files">
+     Read CSV files
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Make-some-messy-data">
+   Make some messy data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Reading-the-messy-data">
+   Reading the messy data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Building-a-delayed-reader">
+   Building a delayed reader
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Assembling-the-dask-dataframe">
+   Assembling the dask dataframe
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Now-let’s-see-if-this-works">
+     Now let’s see if this works
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Success!">
+     Success!
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
   
 <style>
 /* CSS for nbsphinx extension */
@@ -590,8 +747,8 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.1.0.145/7276/1</li>
-  <li><b>Dashboard: </b><a href='http://10.1.0.145:8787/status' target='_blank'>http://10.1.0.145:8787/status</a></li>
+  <li><b>Scheduler: </b>inproc://10.1.0.10/7801/1</li>
+  <li><b>Dashboard: </b><a href='http://10.1.0.10:8787/status' target='_blank'>http://10.1.0.10:8787/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -887,38 +1044,38 @@ data/2000-01-10.csv
   <tbody>
     <tr>
       <th>0</th>
-      <td>972</td>
-      <td>Laura</td>
-      <td>0.273973</td>
-      <td>-0.165516</td>
+      <td>980</td>
+      <td>Edith</td>
+      <td>-0.802107</td>
+      <td>-0.126604</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1002</td>
-      <td>Michael</td>
-      <td>-0.510155</td>
-      <td>0.105734</td>
+      <td>987</td>
+      <td>Frank</td>
+      <td>-0.756484</td>
+      <td>0.462854</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1001</td>
-      <td>Xavier</td>
-      <td>-0.902875</td>
-      <td>-0.856783</td>
+      <td>1021</td>
+      <td>Quinn</td>
+      <td>0.519479</td>
+      <td>-0.097142</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>978</td>
-      <td>Norbert</td>
-      <td>0.117538</td>
-      <td>0.070167</td>
+      <td>941</td>
+      <td>Zelda</td>
+      <td>0.302819</td>
+      <td>0.633706</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1020</td>
-      <td>Patricia</td>
-      <td>0.836880</td>
-      <td>0.837742</td>
+      <td>995</td>
+      <td>Frank</td>
+      <td>0.269021</td>
+      <td>0.328529</td>
     </tr>
   </tbody>
 </table>
@@ -971,45 +1128,45 @@ data/2000-01-10.csv
     </tr>
     <tr>
       <th>mean</th>
-      <td>1.000008e+03</td>
-      <td>-2.230901e-05</td>
-      <td>3.764726e-04</td>
+      <td>9.999952e+02</td>
+      <td>4.757168e-04</td>
+      <td>-3.417417e-04</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>3.159632e+01</td>
-      <td>5.773526e-01</td>
-      <td>5.770455e-01</td>
+      <td>3.160472e+01</td>
+      <td>5.771330e-01</td>
+      <td>5.775534e-01</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>8.230000e+02</td>
+      <td>8.450000e+02</td>
       <td>-9.999994e-01</td>
-      <td>-9.999990e-01</td>
+      <td>-9.999986e-01</td>
     </tr>
     <tr>
       <th>25%</th>
       <td>9.790000e+02</td>
-      <td>-4.932313e-01</td>
-      <td>-4.925213e-01</td>
+      <td>-4.943200e-01</td>
+      <td>-4.973906e-01</td>
     </tr>
     <tr>
       <th>50%</th>
       <td>1.000000e+03</td>
-      <td>9.024390e-03</td>
-      <td>7.174105e-03</td>
+      <td>9.350983e-03</td>
+      <td>5.879562e-03</td>
     </tr>
     <tr>
       <th>75%</th>
       <td>1.021000e+03</td>
-      <td>5.076600e-01</td>
-      <td>5.057808e-01</td>
+      <td>5.055723e-01</td>
+      <td>5.047963e-01</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>1.157000e+03</td>
-      <td>9.999994e-01</td>
-      <td>9.999981e-01</td>
+      <td>1.160000e+03</td>
+      <td>9.999986e-01</td>
+      <td>9.999997e-01</td>
     </tr>
   </tbody>
 </table>
@@ -1068,15 +1225,15 @@ data/2000-01-10.csv
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 id,name,x
-1010,Sarah,0.8046934484310249
-972,Hannah,-0.4497275498475606
-1050,Hannah,0.3625963996052908
-979,Dan,-0.4604754795571235
-966,George,-0.8876807248061698
-1012,Quinn,0.7306406308811328
-1000,Wendy,0.3064075365312089
-997,Yvonne,0.9811749808407844
-952,Norbert,-0.614069776601879
+1003,Hannah,-0.9442010936755584
+1033,Oliver,0.553296699143647
+1009,Ingrid,-0.5557570181099982
+1010,Sarah,-0.7304347798420137
+1012,George,0.4086170532197355
+1037,Michael,0.7891720276295682
+1033,Wendy,0.6319592880840024
+1011,Ray,-0.0777931868141643
+1007,Sarah,0.049577613260233
 </pre></div></div>
 </div>
 </div>
@@ -1133,38 +1290,38 @@ id,name,x
   <tbody>
     <tr>
       <th>0</th>
-      <td>972</td>
-      <td>Laura</td>
-      <td>0.273973</td>
-      <td>-0.165516</td>
+      <td>980</td>
+      <td>Edith</td>
+      <td>-0.802107</td>
+      <td>-0.126604</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1002</td>
-      <td>Michael</td>
-      <td>-0.510155</td>
-      <td>0.105734</td>
+      <td>987</td>
+      <td>Frank</td>
+      <td>-0.756484</td>
+      <td>0.462854</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1001</td>
-      <td>Xavier</td>
-      <td>-0.902875</td>
-      <td>-0.856783</td>
+      <td>1021</td>
+      <td>Quinn</td>
+      <td>0.519479</td>
+      <td>-0.097142</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>978</td>
-      <td>Norbert</td>
-      <td>0.117538</td>
-      <td>0.070167</td>
+      <td>941</td>
+      <td>Zelda</td>
+      <td>0.302819</td>
+      <td>0.633706</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1020</td>
-      <td>Patricia</td>
-      <td>0.836880</td>
-      <td>0.837742</td>
+      <td>995</td>
+      <td>Frank</td>
+      <td>0.269021</td>
+      <td>0.328529</td>
     </tr>
   </tbody>
 </table>
@@ -1187,7 +1344,7 @@ id,name,x
 <div class="highlight"><pre>
 distributed.worker - WARNING -  Compute Failed
 Function:  execute_task
-args:      ((subgraph_callable, (&lt;function pandas_read_text at 0x7f6f001adee0&gt;, &lt;function read_csv at 0x7f6f03897670&gt;, (&lt;function read_block_from_file at 0x7f6f00140160&gt;, &lt;OpenFile &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-07.csv&#39;&gt;, 0, 64000000, b&#39;\n&#39;), b&#39;id,name,x,y\n&#39;, {}, {&#39;id&#39;: dtype(&#39;int64&#39;), &#39;name&#39;: dtype(&#39;O&#39;), &#39;x&#39;: dtype(&#39;float64&#39;), &#39;y&#39;: dtype(&#39;float64&#39;)}, [&#39;id&#39;, &#39;name&#39;, &#39;x&#39;, &#39;y&#39;], False, False, None), &#39;read-csv-c6e9f489c3cb41d7f840704985dd949a&#39;))
+args:      ((subgraph_callable, (&lt;function pandas_read_text at 0x7f40f67c3c10&gt;, &lt;function read_csv at 0x7f40fde75790&gt;, (&lt;function read_block_from_file at 0x7f40f67aea60&gt;, &lt;OpenFile &#39;/home/runner/work/dask-examples/dask-examples/dataframes/data/2000-01-07.csv&#39;&gt;, 0, 64000000, b&#39;\n&#39;), b&#39;id,name,x,y\n&#39;, {}, {&#39;id&#39;: dtype(&#39;int64&#39;), &#39;name&#39;: dtype(&#39;O&#39;), &#39;x&#39;: dtype(&#39;float64&#39;), &#39;y&#39;: dtype(&#39;float64&#39;)}, [&#39;id&#39;, &#39;name&#39;, &#39;x&#39;, &#39;y&#39;], False, False, None), &#39;read-csv-1c406f4f5f940f732c718866ffc87179&#39;))
 kwargs:    {}
 Exception: ValueError(&#39;Length mismatch: Expected axis has 3 elements, new values have 4 elements&#39;)
 
@@ -1274,20 +1431,20 @@ Exception: ValueError(&#39;Length mismatch: Expected axis has 3 elements, new va
 <span class="ansi-green-intense-fg ansi-bold">    158</span>         colname<span class="ansi-blue-fg">,</span> path<span class="ansi-blue-fg">,</span> paths <span class="ansi-blue-fg">=</span> path
 
 <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/pandas/core/generic.py</span> in <span class="ansi-cyan-fg">__setattr__</span><span class="ansi-blue-fg">(self, name, value)</span>
-<span class="ansi-green-intense-fg ansi-bold">   5489</span>         <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">   5490</span>             object<span class="ansi-blue-fg">.</span>__getattribute__<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">-&gt; 5491</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> object<span class="ansi-blue-fg">.</span>__setattr__<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">,</span> value<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   5492</span>         <span class="ansi-green-fg">except</span> AttributeError<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">   5493</span>             <span class="ansi-green-fg">pass</span>
+<span class="ansi-green-intense-fg ansi-bold">   5498</span>         <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   5499</span>             object<span class="ansi-blue-fg">.</span>__getattribute__<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">-&gt; 5500</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> object<span class="ansi-blue-fg">.</span>__setattr__<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">,</span> value<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   5501</span>         <span class="ansi-green-fg">except</span> AttributeError<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   5502</span>             <span class="ansi-green-fg">pass</span>
 
 <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/pandas/_libs/properties.pyx</span> in <span class="ansi-cyan-fg">pandas._libs.properties.AxisProperty.__set__</span><span class="ansi-blue-fg">()</span>
 
 <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/pandas/core/generic.py</span> in <span class="ansi-cyan-fg">_set_axis</span><span class="ansi-blue-fg">(self, axis, labels)</span>
-<span class="ansi-green-intense-fg ansi-bold">    761</span>     <span class="ansi-green-fg">def</span> _set_axis<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> axis<span class="ansi-blue-fg">:</span> int<span class="ansi-blue-fg">,</span> labels<span class="ansi-blue-fg">:</span> Index<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">-&gt;</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    762</span>         labels <span class="ansi-blue-fg">=</span> ensure_index<span class="ansi-blue-fg">(</span>labels<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">--&gt; 763</span><span class="ansi-red-fg">         </span>self<span class="ansi-blue-fg">.</span>_mgr<span class="ansi-blue-fg">.</span>set_axis<span class="ansi-blue-fg">(</span>axis<span class="ansi-blue-fg">,</span> labels<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    764</span>         self<span class="ansi-blue-fg">.</span>_clear_item_cache<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    765</span>
+<span class="ansi-green-intense-fg ansi-bold">    764</span>     <span class="ansi-green-fg">def</span> _set_axis<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> axis<span class="ansi-blue-fg">:</span> int<span class="ansi-blue-fg">,</span> labels<span class="ansi-blue-fg">:</span> Index<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">-&gt;</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    765</span>         labels <span class="ansi-blue-fg">=</span> ensure_index<span class="ansi-blue-fg">(</span>labels<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">--&gt; 766</span><span class="ansi-red-fg">         </span>self<span class="ansi-blue-fg">.</span>_mgr<span class="ansi-blue-fg">.</span>set_axis<span class="ansi-blue-fg">(</span>axis<span class="ansi-blue-fg">,</span> labels<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    767</span>         self<span class="ansi-blue-fg">.</span>_clear_item_cache<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    768</span>
 
 <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/pandas/core/internals/managers.py</span> in <span class="ansi-cyan-fg">set_axis</span><span class="ansi-blue-fg">(self, axis, new_labels)</span>
 <span class="ansi-green-intense-fg ansi-bold">    214</span>     <span class="ansi-green-fg">def</span> set_axis<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> axis<span class="ansi-blue-fg">:</span> int<span class="ansi-blue-fg">,</span> new_labels<span class="ansi-blue-fg">:</span> Index<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">-&gt;</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
@@ -1382,38 +1539,38 @@ Exception: ValueError(&#39;Length mismatch: Expected axis has 3 elements, new va
   <tbody>
     <tr>
       <th>0</th>
-      <td>972</td>
-      <td>Laura</td>
-      <td>0.273973</td>
-      <td>-0.165516</td>
+      <td>980</td>
+      <td>Edith</td>
+      <td>-0.802107</td>
+      <td>-0.126604</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1002</td>
-      <td>Michael</td>
-      <td>-0.510155</td>
-      <td>0.105734</td>
+      <td>987</td>
+      <td>Frank</td>
+      <td>-0.756484</td>
+      <td>0.462854</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1001</td>
-      <td>Xavier</td>
-      <td>-0.902875</td>
-      <td>-0.856783</td>
+      <td>1021</td>
+      <td>Quinn</td>
+      <td>0.519479</td>
+      <td>-0.097142</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>978</td>
-      <td>Norbert</td>
-      <td>0.117538</td>
-      <td>0.070167</td>
+      <td>941</td>
+      <td>Zelda</td>
+      <td>0.302819</td>
+      <td>0.633706</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1020</td>
-      <td>Patricia</td>
-      <td>0.836880</td>
-      <td>0.837742</td>
+      <td>995</td>
+      <td>Frank</td>
+      <td>0.269021</td>
+      <td>0.328529</td>
     </tr>
   </tbody>
 </table>
@@ -1505,37 +1662,37 @@ Exception: ValueError(&#39;Length mismatch: Expected axis has 3 elements, new va
   <tbody>
     <tr>
       <th>0</th>
-      <td>1010</td>
-      <td>Sarah</td>
-      <td>0.804693</td>
+      <td>1003</td>
+      <td>Hannah</td>
+      <td>-0.944201</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>972</td>
-      <td>Hannah</td>
-      <td>-0.449728</td>
+      <td>1033</td>
+      <td>Oliver</td>
+      <td>0.553297</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1050</td>
-      <td>Hannah</td>
-      <td>0.362596</td>
+      <td>1009</td>
+      <td>Ingrid</td>
+      <td>-0.555757</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>979</td>
-      <td>Dan</td>
-      <td>-0.460475</td>
+      <td>1010</td>
+      <td>Sarah</td>
+      <td>-0.730435</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>966</td>
+      <td>1012</td>
       <td>George</td>
-      <td>-0.887681</td>
+      <td>0.408617</td>
       <td>NaN</td>
     </tr>
   </tbody>
@@ -1573,7 +1730,7 @@ Exception: ValueError(&#39;Length mismatch: Expected axis has 3 elements, new va
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Delayed(&#39;read_data-0bc8cac9-23ba-40f0-8c4d-cdb81d5ee4fb&#39;)
+Delayed(&#39;read_data-60193adb-526d-4bdc-991b-e619bbc36be0&#39;)
 </pre></div></div>
 </div>
 <p>It creates a delayed object, to actually run read the file we need to run <code class="docutils literal notranslate"><span class="pre">.compute()</span></code></p>
@@ -1618,38 +1775,38 @@ Delayed(&#39;read_data-0bc8cac9-23ba-40f0-8c4d-cdb81d5ee4fb&#39;)
   <tbody>
     <tr>
       <th>0</th>
-      <td>972</td>
-      <td>Laura</td>
-      <td>0.273973</td>
-      <td>-0.165516</td>
+      <td>980</td>
+      <td>Edith</td>
+      <td>-0.802107</td>
+      <td>-0.126604</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1002</td>
-      <td>Michael</td>
-      <td>-0.510155</td>
-      <td>0.105734</td>
+      <td>987</td>
+      <td>Frank</td>
+      <td>-0.756484</td>
+      <td>0.462854</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1001</td>
-      <td>Xavier</td>
-      <td>-0.902875</td>
-      <td>-0.856783</td>
+      <td>1021</td>
+      <td>Quinn</td>
+      <td>0.519479</td>
+      <td>-0.097142</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>978</td>
-      <td>Norbert</td>
-      <td>0.117538</td>
-      <td>0.070167</td>
+      <td>941</td>
+      <td>Zelda</td>
+      <td>0.302819</td>
+      <td>0.633706</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1020</td>
-      <td>Patricia</td>
-      <td>0.836880</td>
-      <td>0.837742</td>
+      <td>995</td>
+      <td>Frank</td>
+      <td>0.269021</td>
+      <td>0.328529</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1661,37 +1818,37 @@ Delayed(&#39;read_data-0bc8cac9-23ba-40f0-8c4d-cdb81d5ee4fb&#39;)
     <tr>
       <th>86395</th>
       <td>994</td>
-      <td>Wendy</td>
-      <td>0.683664</td>
-      <td>0.173054</td>
+      <td>Ingrid</td>
+      <td>0.249702</td>
+      <td>0.146756</td>
     </tr>
     <tr>
       <th>86396</th>
-      <td>1074</td>
-      <td>Sarah</td>
-      <td>0.881958</td>
-      <td>0.391513</td>
+      <td>1055</td>
+      <td>Dan</td>
+      <td>0.340303</td>
+      <td>-0.729762</td>
     </tr>
     <tr>
       <th>86397</th>
-      <td>1034</td>
-      <td>Ursula</td>
-      <td>-0.609401</td>
-      <td>0.656726</td>
+      <td>974</td>
+      <td>Edith</td>
+      <td>-0.791881</td>
+      <td>0.742652</td>
     </tr>
     <tr>
       <th>86398</th>
-      <td>949</td>
-      <td>Norbert</td>
-      <td>0.402216</td>
-      <td>-0.395646</td>
+      <td>1009</td>
+      <td>Yvonne</td>
+      <td>-0.252897</td>
+      <td>0.409456</td>
     </tr>
     <tr>
       <th>86399</th>
-      <td>997</td>
-      <td>Edith</td>
-      <td>-0.366206</td>
-      <td>0.627728</td>
+      <td>978</td>
+      <td>Hannah</td>
+      <td>-0.753007</td>
+      <td>0.015099</td>
     </tr>
   </tbody>
 </table>
@@ -1717,36 +1874,36 @@ Delayed(&#39;read_data-0bc8cac9-23ba-40f0-8c4d-cdb81d5ee4fb&#39;)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[&#39;data/2000-01-27.csv&#39;,
+[&#39;data/2000-01-03.csv&#39;,
+ &#39;data/2000-01-14.csv&#39;,
+ &#39;data/2000-01-12.csv&#39;,
+ &#39;data/2000-01-21.csv&#39;,
+ &#39;data/2000-01-27.csv&#39;,
  &#39;data/2000-01-05.csv&#39;,
  &#39;data/2000-01-18.csv&#39;,
- &#39;data/2000-01-02.csv&#39;,
- &#39;data/2000-01-12.csv&#39;,
- &#39;data/2000-01-09.csv&#39;,
- &#39;data/2000-01-19.csv&#39;,
- &#39;data/2000-01-13.csv&#39;,
- &#39;data/2000-01-21.csv&#39;,
- &#39;data/2000-01-10.csv&#39;,
- &#39;data/2000-01-20.csv&#39;,
- &#39;data/2000-01-14.csv&#39;,
- &#39;data/2000-01-25.csv&#39;,
- &#39;data/2000-01-01.csv&#39;,
- &#39;data/2000-01-11.csv&#39;,
- &#39;data/2000-01-07.csv&#39;,
- &#39;data/2000-01-03.csv&#39;,
- &#39;data/2000-01-22.csv&#39;,
- &#39;data/2000-01-15.csv&#39;,
- &#39;data/2000-01-17.csv&#39;,
- &#39;data/2000-01-04.csv&#39;,
- &#39;data/2000-01-06.csv&#39;,
- &#39;data/2000-01-28.csv&#39;,
- &#39;data/2000-01-16.csv&#39;,
- &#39;data/2000-01-23.csv&#39;,
- &#39;data/2000-01-08.csv&#39;,
- &#39;data/2000-01-30.csv&#39;,
- &#39;data/2000-01-26.csv&#39;,
  &#39;data/2000-01-24.csv&#39;,
- &#39;data/2000-01-29.csv&#39;]
+ &#39;data/2000-01-07.csv&#39;,
+ &#39;data/2000-01-01.csv&#39;,
+ &#39;data/2000-01-23.csv&#39;,
+ &#39;data/2000-01-04.csv&#39;,
+ &#39;data/2000-01-10.csv&#39;,
+ &#39;data/2000-01-02.csv&#39;,
+ &#39;data/2000-01-19.csv&#39;,
+ &#39;data/2000-01-20.csv&#39;,
+ &#39;data/2000-01-09.csv&#39;,
+ &#39;data/2000-01-08.csv&#39;,
+ &#39;data/2000-01-28.csv&#39;,
+ &#39;data/2000-01-30.csv&#39;,
+ &#39;data/2000-01-22.csv&#39;,
+ &#39;data/2000-01-16.csv&#39;,
+ &#39;data/2000-01-06.csv&#39;,
+ &#39;data/2000-01-17.csv&#39;,
+ &#39;data/2000-01-26.csv&#39;,
+ &#39;data/2000-01-11.csv&#39;,
+ &#39;data/2000-01-13.csv&#39;,
+ &#39;data/2000-01-15.csv&#39;,
+ &#39;data/2000-01-29.csv&#39;,
+ &#39;data/2000-01-25.csv&#39;]
 </pre></div></div>
 </div>
 <p>Now we run the delayed read_data function on each file in the list</p>
@@ -1766,36 +1923,36 @@ Delayed(&#39;read_data-0bc8cac9-23ba-40f0-8c4d-cdb81d5ee4fb&#39;)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[Delayed(&#39;read_data-5e620f74-2994-4747-adcc-6c51ed6239c5&#39;),
- Delayed(&#39;read_data-d074b40d-33dd-490b-8449-a21ed1f3ff9a&#39;),
- Delayed(&#39;read_data-119c0328-064f-4bf0-92e0-5d49b9b131c4&#39;),
- Delayed(&#39;read_data-d0ea01b5-67d2-4671-a4e4-fe348d318126&#39;),
- Delayed(&#39;read_data-b51e01b8-151a-42b9-88af-d3732daafba1&#39;),
- Delayed(&#39;read_data-2a23c731-c8c6-45ce-a2ff-3473b46320f3&#39;),
- Delayed(&#39;read_data-1e839eb8-ebc8-4ffb-a5de-a576d0b71421&#39;),
- Delayed(&#39;read_data-06c3cfec-e05e-4157-b20e-134db193b0c4&#39;),
- Delayed(&#39;read_data-625b04f9-6a65-4eb0-828a-e5513d6b2b79&#39;),
- Delayed(&#39;read_data-6bce75f4-2f0f-46ca-bfd6-aca9331e04b3&#39;),
- Delayed(&#39;read_data-66eeb119-9d54-4920-9815-4fd1908fd621&#39;),
- Delayed(&#39;read_data-769009a3-1061-4b84-85a3-a044e0e74192&#39;),
- Delayed(&#39;read_data-76898852-8caf-4afd-8782-391fb03b7849&#39;),
- Delayed(&#39;read_data-8a8a45c0-635f-4738-9e3e-e9081c8fe1e5&#39;),
- Delayed(&#39;read_data-3992dfba-b0eb-4b29-a697-6a80db26e037&#39;),
- Delayed(&#39;read_data-3fbc24f1-f11e-41bc-bdcb-ffa35bde3285&#39;),
- Delayed(&#39;read_data-b9161ccc-186c-4cfd-9325-a0977b9d65bc&#39;),
- Delayed(&#39;read_data-7374029b-9d1a-4991-9931-3f5b6cfded74&#39;),
- Delayed(&#39;read_data-7464ba73-c042-4441-b415-9804bf301ede&#39;),
- Delayed(&#39;read_data-133882d9-ddc8-4812-96a9-50bc7d18ae3d&#39;),
- Delayed(&#39;read_data-cd1316a2-8ba2-4f0d-a940-300e479db312&#39;),
- Delayed(&#39;read_data-fe9e3712-a93c-4335-9d3a-26b5060d7742&#39;),
- Delayed(&#39;read_data-bfb9fc06-7427-4f37-8e6c-e5f280a7568f&#39;),
- Delayed(&#39;read_data-a28333b0-6b5d-4f22-9583-81c01ceaffbe&#39;),
- Delayed(&#39;read_data-158a8f45-77f2-4b1c-add2-dc6c1c73c840&#39;),
- Delayed(&#39;read_data-b498dfa1-19ad-42ea-9cc8-522cd00fbee0&#39;),
- Delayed(&#39;read_data-777a80fc-adb5-4a81-8e9a-d608abc2135a&#39;),
- Delayed(&#39;read_data-2528afac-8f1c-41e1-b861-407ea6f5c9f8&#39;),
- Delayed(&#39;read_data-7f037725-71d4-43fe-b417-eb71d8af7771&#39;),
- Delayed(&#39;read_data-688a2563-e379-4156-ad68-dd0d2dc1b2d5&#39;)]
+[Delayed(&#39;read_data-e1a1372f-24c7-4bac-8f3e-7adc6881e749&#39;),
+ Delayed(&#39;read_data-5ee6a510-c22e-45df-adde-104df258e57e&#39;),
+ Delayed(&#39;read_data-f8e61175-4810-498f-a29c-5e39f11c0f03&#39;),
+ Delayed(&#39;read_data-8586b847-c34b-4c66-97f2-5950e4aaaba6&#39;),
+ Delayed(&#39;read_data-9d379823-f511-4fc9-914a-ec06c9b10619&#39;),
+ Delayed(&#39;read_data-7835501f-dc33-4dec-9162-259c629f4353&#39;),
+ Delayed(&#39;read_data-d83824d4-d827-4d64-a051-3e0fb171e374&#39;),
+ Delayed(&#39;read_data-ef8b9ed7-44ea-4bcf-b15d-0722ea709e98&#39;),
+ Delayed(&#39;read_data-594e5276-8a57-4560-815c-a9c7b419f4b2&#39;),
+ Delayed(&#39;read_data-02b233fe-52a3-474b-b65f-81dacd2280e6&#39;),
+ Delayed(&#39;read_data-2a2c3d29-8693-411c-b075-3cc9f892689c&#39;),
+ Delayed(&#39;read_data-7b304ec5-c5d2-4b6c-849a-253a3c06868a&#39;),
+ Delayed(&#39;read_data-48959356-354e-4c95-a93f-0c75657b25fc&#39;),
+ Delayed(&#39;read_data-ff3876d0-399e-466f-b3a0-a9199e461190&#39;),
+ Delayed(&#39;read_data-c4acc87f-cb49-4afe-ae33-ce96e63d261b&#39;),
+ Delayed(&#39;read_data-c196bd4b-c9d8-4d9a-a567-97b65d4cfdc2&#39;),
+ Delayed(&#39;read_data-ca2f68a6-29bb-4e8e-bc68-1812bf244ea6&#39;),
+ Delayed(&#39;read_data-fbdf2be2-b7f6-472e-95d3-bf1de227739c&#39;),
+ Delayed(&#39;read_data-ff7ced84-126e-4812-adce-f96bad32f4e3&#39;),
+ Delayed(&#39;read_data-40121532-8b2c-4e68-b64a-df8d283a8c6e&#39;),
+ Delayed(&#39;read_data-cbf56a76-34f4-4c6a-bc91-99ad8892390b&#39;),
+ Delayed(&#39;read_data-60176529-4a28-4dfb-9ab2-55fb489644b4&#39;),
+ Delayed(&#39;read_data-80e81611-91cc-49c8-a2eb-44f2a6d68c9f&#39;),
+ Delayed(&#39;read_data-c5a15e89-da7c-40a6-adbf-4390711e064d&#39;),
+ Delayed(&#39;read_data-c1bb86c0-3d71-4e72-a57c-b95d5224e9f0&#39;),
+ Delayed(&#39;read_data-672b364e-219f-4133-b149-2e08cb901610&#39;),
+ Delayed(&#39;read_data-d673a240-525b-4e33-8a95-ab2267d93ec2&#39;),
+ Delayed(&#39;read_data-89864954-99ab-431b-a42b-c0fcb30c569e&#39;),
+ Delayed(&#39;read_data-6dd71cfa-d55c-4a99-9a21-f01f3800efb3&#39;),
+ Delayed(&#39;read_data-685da143-9ed8-4ee8-ad2e-0fce74202927&#39;)]
 </pre></div></div>
 </div>
 <p>Then we use <a class="reference external" href="https://docs.dask.org/en/latest/dataframe-api.html#dask.dataframe.from_delayed">dask.dataframe.from_delayed</a>. This function creates a Dask DataFrame from a list of delayed objects as long as each delayed object returns a pandas dataframe. The structure of each individual dataframe returned must also be the same.</p>
@@ -1931,38 +2088,38 @@ Delayed(&#39;read_data-0bc8cac9-23ba-40f0-8c4d-cdb81d5ee4fb&#39;)
   <tbody>
     <tr>
       <th>0</th>
-      <td>1057</td>
-      <td>Oliver</td>
-      <td>-0.786602</td>
-      <td>0.821519</td>
+      <td>941</td>
+      <td>Dan</td>
+      <td>0.988892</td>
+      <td>-0.097103</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1037</td>
-      <td>Ray</td>
-      <td>0.739907</td>
-      <td>-0.630129</td>
+      <td>972</td>
+      <td>Kevin</td>
+      <td>0.123031</td>
+      <td>0.824036</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1002</td>
-      <td>Ursula</td>
-      <td>-0.486140</td>
-      <td>-0.935097</td>
+      <td>996</td>
+      <td>Xavier</td>
+      <td>0.857069</td>
+      <td>0.687743</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>994</td>
-      <td>Tim</td>
-      <td>-0.701671</td>
-      <td>-0.958318</td>
+      <td>977</td>
+      <td>Quinn</td>
+      <td>0.343273</td>
+      <td>-0.823494</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>997</td>
-      <td>Frank</td>
-      <td>0.007467</td>
-      <td>-0.768376</td>
+      <td>1085</td>
+      <td>Hannah</td>
+      <td>0.692930</td>
+      <td>-0.305394</td>
     </tr>
   </tbody>
 </table>
@@ -2023,45 +2180,45 @@ Delayed(&#39;read_data-0bc8cac9-23ba-40f0-8c4d-cdb81d5ee4fb&#39;)
     </tr>
     <tr>
       <th>mean</th>
-      <td>1.000002e+03</td>
-      <td>4.984979e-05</td>
-      <td>4.070980e-04</td>
+      <td>9.999928e+02</td>
+      <td>4.386296e-04</td>
+      <td>-3.243787e-04</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>3.159745e+01</td>
-      <td>5.773395e-01</td>
-      <td>5.770469e-01</td>
+      <td>3.160412e+01</td>
+      <td>5.771050e-01</td>
+      <td>5.775685e-01</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>8.230000e+02</td>
+      <td>8.450000e+02</td>
       <td>-9.999994e-01</td>
-      <td>-9.999990e-01</td>
+      <td>-9.999986e-01</td>
     </tr>
     <tr>
       <th>25%</th>
       <td>9.790000e+02</td>
-      <td>-4.932313e-01</td>
-      <td>-4.925213e-01</td>
+      <td>-4.943200e-01</td>
+      <td>-4.973906e-01</td>
     </tr>
     <tr>
       <th>50%</th>
       <td>1.000000e+03</td>
-      <td>9.024390e-03</td>
-      <td>7.174105e-03</td>
+      <td>9.350983e-03</td>
+      <td>5.879562e-03</td>
     </tr>
     <tr>
       <th>75%</th>
       <td>1.021000e+03</td>
-      <td>5.076600e-01</td>
-      <td>5.057808e-01</td>
+      <td>5.055723e-01</td>
+      <td>5.047963e-01</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>1.157000e+03</td>
-      <td>9.999992e-01</td>
-      <td>9.999981e-01</td>
+      <td>1.160000e+03</td>
+      <td>9.999986e-01</td>
+      <td>9.999990e-01</td>
     </tr>
   </tbody>
 </table>
@@ -2093,47 +2250,38 @@ ga('send', 'pageview');
 </script>
 <!-- End Google Analytics -->
 
-           </div>
-           
-          </div>
-          <footer>
+              </div>
+              
+        
+            
 
-  <hr/>
 
-  <div role="contentinfo">
-    <p>
-        &#169; Copyright 2018, Dask Developers.
 
-    </p>
-  </div>
+<div class='prev-next-bottom'>
     
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-</footer>
+</div>
+        
         </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Dask Developers<br/>
+        
+            &copy; Copyright 2018, Dask Developers.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
       </div>
-
-    </section>
-
-  </div>
+    </div>
   
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
   
-  
-    
-   
-
-</body>
+  </body>
 </html>

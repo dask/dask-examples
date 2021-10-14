@@ -1,304 +1,437 @@
 
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Embarrassingly parallel Workloads &mdash; Dask Examples  documentation</title>
-  
 
-  
-  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Embarrassingly parallel Workloads &#8212; Dask Examples  documentation</title>
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}</script>
-        <script src="../_static/js/custom.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Handle Evolving Workflows" href="evolving-workflows.html" />
     <link rel="prev" title="Asynchronous Computation: Web Servers + Dask" href="async-web-server.html" />
-  <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
-  
-  <meta name="Description" content="Embarrassingly parallel Workloads">
-  <meta property="og:description" content="Embarrassingly parallel Workloads">
-  <meta name="twitter:description" content="Embarrassingly parallel Workloads" />
-  <meta property="og:title" content="Dask Examples  documentation - Embarrassingly parallel Workloads">
-  <meta property="og:image" content="https://github.com/dask.png">
-  <meta property="og:image:secure_url" content="https://github.com/dask.png" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="380" />
-  <meta property="og:image:height" content="380" />
-  <meta property="og:url" content="applications/embarrassingly-parallel.html">
-  <meta property="og:site_name" content="Dask Examples  documentation">
-
-  <meta name="twitter:site" content="https://dask.org" />
-  <meta name="twitter:creator" content="@dask_dev" />
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:image" content="https://github.com/dask.png" />
-  <meta name="twitter:image:alt" content="Dask Examples  documentation">
-
-
-</head>
-
-<body class="wy-body-for-nav">
-
-  
-    <nav id="explore-links">
-        <a href="https://docs.dask.org/">
-        <img class="caption" src="../_static/images/dask-horizontal-white.svg"/>
-        </a>
-
-        <ul>
-        <li>
-            <a>Get Started</a>
-            <ul>
-            <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
-            <li><a href="https://examples.dask.org"> Examples </a></li>
-            <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
-            <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
-            <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
-            <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
-            <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab"> Try Online </a></li>
-            <li><a href="https://dask.org/slides"> Slides </a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a href="">Algorithms</a>
-            <ul>
-            <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
-            <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
-            <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
-            <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
-            <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
-            <li><a href="http://ml.dask.org">Machine Learning</a></li>
-            <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
-            <ul>
-            <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
-            <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
-            <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
-            <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
-            <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a>Community</a>
-            <ul>
-            <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
-            <li><a href="https://github.com/dask">Github</a></li>
-            <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
-            <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
-            <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-            <li><a href="https://youtube.com/c/dask-dev"> YouTube Channel </a></li>
-            <li><a href="https://join.slack.com/t/dask/shared_invite/zt-mfmh7quc-nIrXL6ocgiUH2haLYA914g"> Slack </a></li>
-            </ul>
-        </li>
-        </ul>
-
-    </nav>
-  
-  <div class="wy-grid-for-nav">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
 
-          
-            <a href="../index.html" class="icon icon-home"> Dask Examples
-          
+<nav class="dask-nav container-fluid">
+  <ul>
+    <li class="logo">
+      <a href="https://docs.dask.org/">
+        <img
+          class="caption"
+          src="../_static/images/dask-horizontal-white.svg"
+        />
+      </a>
+    </li>
 
-          
-          </a>
+    <li>
+      <a href="https://docs.dask.org/">Dask</a>
+    </li>
 
-          
-            
-            
-          
+    <li>
+      <a href="https://distributed.dask.org/">Distributed</a>
+    </li>
 
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
+    <li>
+      <a href="https://ml.dask.org/">Dask ML</a>
+    </li>
 
-          
-        </div>
+    <li>
+      <a href="https://examples.dask.org/">Examples</a>
+    </li>
 
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption" role="heading"><span class="caption-text">Basic Examples</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../array.html">Dask Arrays</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../bag.html">Dask Bags</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dataframe.html">Dask DataFrames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../delayed.html">Custom Workloads with Dask Delayed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../futures.html">Custom Workloads with Futures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning.html">Dask for Machine Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../xarray.html">Xarray with Dask Arrays</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Dataframes</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../dataframes/01-data-access.html">DataFrames: Read and Write Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dataframes/02-groupby.html">DataFrames: Groupby</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/blockwise-ensemble.html">Blockwise Ensemble Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/parallel-prediction.html">Score and Predict Large Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/torch-prediction.html">Batch Prediction with PyTorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/training-on-large-datasets.html">Train Models on Large Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/incremental.html">Incrementally Train Large Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/text-vectorization.html">Text Vectorization Pipeline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/hyperparam-opt.html">Hyperparameter optimization with Dask</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/xgboost.html">Scale XGBoost</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/voting-classifier.html">Use Voting Classifiers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/tpot.html">Automate Machine Learning with TPOT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/glm.html">Generalized Linear Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/svd.html">Singular Value Decomposition</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Applications</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="async-await.html">Async/Await and Non-Blocking Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="async-web-server.html">Asynchronous Computation: Web Servers + Dask</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Embarrassingly parallel Workloads</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Start-Dask-Client-for-Dashboard">Start Dask Client for Dashboard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Define-your-computation-calling-function">Define your computation calling function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Define-the-set-of-input-parameters-to-call-the-function">Define the set of input parameters to call the function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Use-Dask-Delayed-to-make-our-function-lazy">Use Dask Delayed to make our function lazy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Run-in-parallel">Run in parallel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Using-the-Futures-API">Using the Futures API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Doing-some-analysis-on-the-results">Doing some analysis on the results</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Handling-very-large-simulation-with-Bags">Handling very large simulation with Bags</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="evolving-workflows.html">Handle Evolving Workflows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="image-processing.html">Image Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="prefect-etl.html">ETL Pipelines with Prefect</a></li>
-<li class="toctree-l1"><a class="reference internal" href="satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stencils-with-numba.html">Stencil Computations with Numba</a></li>
-<li class="toctree-l1"><a class="reference internal" href="forecasting-with-prophet.html">Time Series Forecasting</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">User Surveys</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../surveys/2019.html">2019 Dask User Survey Results</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../surveys/2020.html">2020 Dask User Survey Results</a></li>
-</ul>
+    <li>
+      <a href="https://docs.dask.org/en/latest/ecosystem.html">Ecosystem</a>
+    </li>
 
-            
-          
-        </div>
-        
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Dask Examples</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>Embarrassingly parallel Workloads</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="../_sources/applications/embarrassingly-parallel.ipynb.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
+    <li>
+      <a href="https://docs.dask.org/en/latest/support.html">Community</a>
+    </li>
   </ul>
+</nav>
 
-  
-  <hr/>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Dask Examples  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p class="caption" role="heading">
+ <span class="caption-text">
+  Basic Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../array.html">
+   Dask Arrays
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bag.html">
+   Dask Bags
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dataframe.html">
+   Dask DataFrames
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../delayed.html">
+   Custom Workloads with Dask Delayed
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../futures.html">
+   Custom Workloads with Futures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning.html">
+   Dask for Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../xarray.html">
+   Xarray with Dask Arrays
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Dataframes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dataframes/01-data-access.html">
+   DataFrames: Read and Write Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dataframes/02-groupby.html">
+   DataFrames: Groupby
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/blockwise-ensemble.html">
+   Blockwise Ensemble Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/scale-scikit-learn.html">
+   Scale Scikit-Learn for Small Data Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/parallel-prediction.html">
+   Score and Predict Large Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/torch-prediction.html">
+   Batch Prediction with PyTorch
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/training-on-large-datasets.html">
+   Train Models on Large Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/incremental.html">
+   Incrementally Train Large Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/text-vectorization.html">
+   Text Vectorization Pipeline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/hyperparam-opt.html">
+   Hyperparameter optimization with Dask
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/xgboost.html">
+   Scale XGBoost
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/voting-classifier.html">
+   Use Voting Classifiers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/tpot.html">
+   Automate Machine Learning with TPOT
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/glm.html">
+   Generalized Linear Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/svd.html">
+   Singular Value Decomposition
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Applications
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="json-data-on-the-web.html">
+   Analyze web-hosted JSON data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="async-await.html">
+   Async/Await and Non-Blocking Execution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="async-web-server.html">
+   Asynchronous Computation: Web Servers + Dask
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Embarrassingly parallel Workloads
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="evolving-workflows.html">
+   Handle Evolving Workflows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="image-processing.html">
+   Image Processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="prefect-etl.html">
+   ETL Pipelines with Prefect
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="satellite-imagery-geotiff.html">
+   Reading and manipulating tiled GeoTIFF datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stencils-with-numba.html">
+   Stencil Computations with Numba
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="forecasting-with-prophet.html">
+   Time Series Forecasting
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  User Surveys
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../surveys/2019.html">
+   2019 Dask User Survey Results
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../surveys/2020.html">
+   2020 Dask User Survey Results
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
             
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/applications/embarrassingly-parallel.ipynb.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Start-Dask-Client-for-Dashboard">
+   Start Dask Client for Dashboard
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Define-your-computation-calling-function">
+   Define your computation calling function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Define-the-set-of-input-parameters-to-call-the-function">
+   Define the set of input parameters to call the function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Use-Dask-Delayed-to-make-our-function-lazy">
+   Use Dask Delayed to make our function lazy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Run-in-parallel">
+   Run in parallel
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Using-the-Futures-API">
+   Using the Futures API
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Doing-some-analysis-on-the-results">
+   Doing some analysis on the results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Handling-very-large-simulation-with-Bags">
+   Handling very large simulation with Bags
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
   
 <style>
 /* CSS for nbsphinx extension */
@@ -614,7 +747,7 @@ div.rendered_html tbody tr:hover {
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:42711</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:46647</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
@@ -662,8 +795,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3.35 ms, sys: 73 µs, total: 3.43 ms
-Wall time: 122 ms
+CPU times: user 14.1 ms, sys: 993 µs, total: 15.1 ms
+Wall time: 670 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -725,38 +858,38 @@ Wall time: 122 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.710841</td>
-      <td>0.933761</td>
-      <td>0.030176</td>
-      <td>0.079289</td>
+      <td>0.012075</td>
+      <td>0.007723</td>
+      <td>0.156744</td>
+      <td>0.360917</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.902306</td>
-      <td>0.305726</td>
-      <td>0.994047</td>
-      <td>0.006610</td>
+      <td>0.558360</td>
+      <td>0.085589</td>
+      <td>0.477987</td>
+      <td>0.441193</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.489321</td>
-      <td>0.578384</td>
-      <td>0.184853</td>
-      <td>0.586463</td>
+      <td>0.921142</td>
+      <td>0.821097</td>
+      <td>0.331968</td>
+      <td>0.487038</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.240242</td>
-      <td>0.493942</td>
-      <td>0.584618</td>
-      <td>0.324256</td>
+      <td>0.470979</td>
+      <td>0.451007</td>
+      <td>0.488480</td>
+      <td>0.017112</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.392373</td>
-      <td>0.198263</td>
-      <td>0.229244</td>
-      <td>0.218232</td>
+      <td>0.864072</td>
+      <td>0.968936</td>
+      <td>0.377093</td>
+      <td>0.291859</td>
     </tr>
   </tbody>
 </table>
@@ -790,8 +923,8 @@ Wall time: 122 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 110 ms, sys: 15.7 ms, total: 125 ms
-Wall time: 6.04 s
+CPU times: user 96.3 ms, sys: 25.2 ms, total: 122 ms
+Wall time: 5.12 s
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -809,16 +942,16 @@ Wall time: 6.04 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[1.7540667141062602,
- 2.208689573214757,
- 1.8390213425098947,
- 1.6430581509616942,
- 1.038111935388933,
- 1.8563985394209288,
- 1.4709971066280363,
- 1.4765075824659322,
- 1.3519093687616794,
- 2.565552202244133]
+[0.5374585663321187,
+ 1.5631291073804745,
+ 2.561244430051625,
+ 1.4275782430967583,
+ 2.501960586670158,
+ 2.1587086432208613,
+ 0.9404454286097556,
+ 2.740943011996881,
+ 1.86407510681624,
+ 2.351834708951351]
 </pre></div></div>
 </div>
 <p>Note that this is not very clever as we can easily parallelize code.</p>
@@ -856,8 +989,8 @@ Wall time: 6.04 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 931 µs, sys: 151 µs, total: 1.08 ms
-Wall time: 1.09 ms
+CPU times: user 0 ns, sys: 870 µs, total: 870 µs
+Wall time: 876 µs
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -875,7 +1008,7 @@ Wall time: 1.09 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Delayed(&#39;costly_simulation-bfb1fdd2-eade-4dc5-bfd1-5edaa340f326&#39;)
+Delayed(&#39;costly_simulation-120562b2-73d9-47e7-9144-5215df2f1629&#39;)
 </pre></div></div>
 </div>
 </div>
@@ -897,8 +1030,8 @@ Delayed(&#39;costly_simulation-bfb1fdd2-eade-4dc5-bfd1-5edaa340f326&#39;)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 47 ms, sys: 4.04 ms, total: 51.1 ms
-Wall time: 1.6 s
+CPU times: user 67.4 ms, sys: 6.19 ms, total: 73.6 ms
+Wall time: 1.65 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -907,16 +1040,16 @@ Wall time: 1.6 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-(1.7540667141062602,
- 2.208689573214757,
- 1.8390213425098947,
- 1.6430581509616942,
- 1.038111935388933,
- 1.8563985394209288,
- 1.4709971066280363,
- 1.4765075824659322,
- 1.3519093687616794,
- 2.565552202244133)
+(0.5374585663321187,
+ 1.5631291073804745,
+ 2.561244430051625,
+ 1.4275782430967583,
+ 2.501960586670158,
+ 2.1587086432208613,
+ 0.9404454286097556,
+ 2.740943011996881,
+ 1.86407510681624,
+ 2.351834708951351)
 </pre></div></div>
 </div>
 <p>Notice that this was faster than running these same computations sequentially with a for loop.</p>
@@ -966,11 +1099,11 @@ Wall time: 1.6 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-(1.7540667141062602,
- 2.208689573214757,
- 1.8390213425098947,
- 1.6430581509616942,
- 1.038111935388933)
+(0.5374585663321187,
+ 1.5631291073804745,
+ 2.561244430051625,
+ 1.4275782430967583,
+ 2.501960586670158)
 </pre></div></div>
 </div>
 </div>
@@ -1007,11 +1140,11 @@ Wall time: 1.6 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[1.7540667141062602,
- 2.208689573214757,
- 1.8390213425098947,
- 1.6430581509616942,
- 1.038111935388933]
+[0.5374585663321187,
+ 1.5631291073804745,
+ 2.561244430051625,
+ 1.4275782430967583,
+ 2.501960586670158]
 </pre></div></div>
 </div>
 <p>But the code above can be run in fewer lines with <code class="docutils literal notranslate"><span class="pre">client.map()</span></code> function, allowing to call a given function on a list of parameters.</p>
@@ -1060,7 +1193,7 @@ Wall time: 1.6 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-1.7540667141062602
+0.5374585663321187
 </pre></div></div>
 </div>
 <p>We encourage you to watch the <a class="reference external" href="../proxy/8787/status">dashboard’s status page</a> to watch on going computation.</p>
@@ -1113,44 +1246,44 @@ Wall time: 1.6 s
   </thead>
   <tbody>
     <tr>
-      <th>80</th>
-      <td>0.950137</td>
-      <td>0.291745</td>
-      <td>0.209692</td>
-      <td>0.437490</td>
-      <td>1.889064</td>
+      <th>488</th>
+      <td>0.839218</td>
+      <td>0.539117</td>
+      <td>0.757886</td>
+      <td>0.579746</td>
+      <td>2.715967</td>
     </tr>
     <tr>
-      <th>125</th>
-      <td>0.556598</td>
-      <td>0.196121</td>
-      <td>0.337949</td>
-      <td>0.348682</td>
-      <td>1.439349</td>
+      <th>330</th>
+      <td>0.242440</td>
+      <td>0.450380</td>
+      <td>0.557021</td>
+      <td>0.495924</td>
+      <td>1.745764</td>
     </tr>
     <tr>
-      <th>184</th>
-      <td>0.849852</td>
-      <td>0.736315</td>
-      <td>0.395216</td>
-      <td>0.794867</td>
-      <td>2.776250</td>
+      <th>228</th>
+      <td>0.500576</td>
+      <td>0.479788</td>
+      <td>0.010624</td>
+      <td>0.508862</td>
+      <td>1.499849</td>
     </tr>
     <tr>
-      <th>244</th>
-      <td>0.323603</td>
-      <td>0.837424</td>
-      <td>0.655208</td>
-      <td>0.194435</td>
-      <td>2.010670</td>
+      <th>313</th>
+      <td>0.906131</td>
+      <td>0.304856</td>
+      <td>0.219171</td>
+      <td>0.492022</td>
+      <td>1.922180</td>
     </tr>
     <tr>
-      <th>82</th>
-      <td>0.868114</td>
-      <td>0.934638</td>
-      <td>0.019646</td>
-      <td>0.907173</td>
-      <td>2.729570</td>
+      <th>428</th>
+      <td>0.615756</td>
+      <td>0.433848</td>
+      <td>0.327770</td>
+      <td>0.229043</td>
+      <td>1.606417</td>
     </tr>
   </tbody>
 </table>
@@ -1198,7 +1331,7 @@ Wall time: 1.6 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2.026037905711436
+1.9944680307742346
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1217,7 +1350,7 @@ Wall time: 1.6 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-263
+239
 </pre></div></div>
 </div>
 </div>
@@ -1251,8 +1384,8 @@ many tasks</a>.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 755 ms, sys: 93.7 ms, total: 848 ms
-Wall time: 9.46 s
+CPU times: user 1.08 s, sys: 86 ms, total: 1.17 s
+Wall time: 10 s
 </pre></div></div>
 </div>
 <p>Looking on Dashboard here, you should see only 100 tasks to run instead of 500, each taking 5x more time in average, because each one is actually calling our function 5 times.</p>
@@ -1288,51 +1421,56 @@ ga('send', 'pageview');
 </script>
 <!-- End Google Analytics -->
 
-           </div>
-           
-          </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="evolving-workflows.html" class="btn btn-neutral float-right" title="Handle Evolving Workflows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="async-web-server.html" class="btn btn-neutral float-left" title="Asynchronous Computation: Web Servers + Dask" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="async-web-server.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Asynchronous Computation: Web Servers + Dask</p>
+            </div>
+        </a>
     </div>
+     <div id="next">
+        <a class="right-next" href="evolving-workflows.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Handle Evolving Workflows</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &#169; Copyright 2018, Dask Developers.
-
-    </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
+</div>
+        
         </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Dask Developers<br/>
+        
+            &copy; Copyright 2018, Dask Developers.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
       </div>
-
-    </section>
-
-  </div>
+    </div>
   
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
   
-  
-    
-   
-
-</body>
+  </body>
 </html>

@@ -1,0 +1,1920 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2021 Dask User Survey Results &#8212; Dask Examples  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+
+<nav class="dask-nav container-fluid">
+  <ul>
+    <li class="logo">
+      <a href="https://docs.dask.org/">
+        <img
+          class="caption"
+          src="../_static/images/dask-horizontal-white.svg"
+        />
+      </a>
+    </li>
+
+    <li>
+      <a href="https://docs.dask.org/">Dask</a>
+    </li>
+
+    <li>
+      <a href="https://distributed.dask.org/">Distributed</a>
+    </li>
+
+    <li>
+      <a href="https://ml.dask.org/">Dask ML</a>
+    </li>
+
+    <li>
+      <a href="https://examples.dask.org/">Examples</a>
+    </li>
+
+    <li>
+      <a href="https://docs.dask.org/en/latest/ecosystem.html">Ecosystem</a>
+    </li>
+
+    <li>
+      <a href="https://docs.dask.org/en/latest/support.html">Community</a>
+    </li>
+  </ul>
+</nav>
+
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Dask Examples  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p class="caption" role="heading">
+ <span class="caption-text">
+  Basic Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../array.html">
+   Dask Arrays
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bag.html">
+   Dask Bags
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dataframe.html">
+   Dask DataFrames
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../delayed.html">
+   Custom Workloads with Dask Delayed
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../futures.html">
+   Custom Workloads with Futures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning.html">
+   Dask for Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../xarray.html">
+   Xarray with Dask Arrays
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Dataframes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dataframes/01-data-access.html">
+   DataFrames: Read and Write Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dataframes/02-groupby.html">
+   DataFrames: Groupby
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/blockwise-ensemble.html">
+   Blockwise Ensemble Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/scale-scikit-learn.html">
+   Scale Scikit-Learn for Small Data Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/parallel-prediction.html">
+   Score and Predict Large Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/torch-prediction.html">
+   Batch Prediction with PyTorch
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/training-on-large-datasets.html">
+   Train Models on Large Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/incremental.html">
+   Incrementally Train Large Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/text-vectorization.html">
+   Text Vectorization Pipeline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/hyperparam-opt.html">
+   Hyperparameter optimization with Dask
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/xgboost.html">
+   Scale XGBoost
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/voting-classifier.html">
+   Use Voting Classifiers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/tpot.html">
+   Automate Machine Learning with TPOT
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/glm.html">
+   Generalized Linear Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/svd.html">
+   Singular Value Decomposition
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Applications
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/json-data-on-the-web.html">
+   Analyze web-hosted JSON data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/async-await.html">
+   Async/Await and Non-Blocking Execution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/async-web-server.html">
+   Asynchronous Computation: Web Servers + Dask
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/embarrassingly-parallel.html">
+   Embarrassingly parallel Workloads
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/evolving-workflows.html">
+   Handle Evolving Workflows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/image-processing.html">
+   Image Processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/prefect-etl.html">
+   ETL Pipelines with Prefect
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/satellite-imagery-geotiff.html">
+   Reading and manipulating tiled GeoTIFF datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/stencils-with-numba.html">
+   Stencil Computations with Numba
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/forecasting-with-prophet.html">
+   Time Series Forecasting
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  User Surveys
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2019.html">
+   2019 Dask User Survey Results
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2020.html">
+   2020 Dask User Survey Results
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/surveys/2021.ipynb.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Contents">
+   Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Highlights">
+   Highlights
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#The-typical-Dask-user">
+     The typical Dask user
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Who-are-Dask-users?">
+   Who are Dask users?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#What-industry-do-you-work-in?">
+     What industry do you work in?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#How-easy-is-it-for-you-to-upgrade-to-newer-versions-of-Python-libraries?">
+     How easy is it for you to upgrade to newer versions of Python libraries?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#How-people-like-to-use-Dask">
+   How people like to use Dask
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#What-are-some-other-libraries-that-you-often-use-with-Dask?”">
+     What are some other libraries that you often use with Dask?”
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Dask-APIs">
+   Dask APIs
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Interactive-or-Batch?">
+     Interactive or Batch?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#How-do-you-view-Dask’s-dashboard?">
+     How do you view Dask’s dashboard?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Local-machine-or-Cluster?">
+     Local machine or Cluster?
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#If-you-use-a-cluster,-how-do-you-launch-Dask?">
+       If you use a cluster, how do you launch Dask?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#If-you-use-a-cluster,-do-you-have-a-need-for-multiple-worker-types-in-the-same-cluster?">
+       If you use a cluster, do you have a need for multiple worker types in the same cluster?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Datasets">
+     Datasets
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#How-large-are-your-datasets-typically?">
+       How large are your datasets typically?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#Where-are-your-datasets-typically-stored?">
+       Where are your datasets typically stored?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#What-file-formats-do-you-typically-work-with?">
+       What file formats do you typically work with?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Preferred-Cloud?">
+     Preferred Cloud?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Do-you-use-Dask-projects-to-deploy?">
+     Do you use Dask projects to deploy?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Diagnostics">
+   Diagnostics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Stability">
+   Stability
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#User-satisfaction,-support,-and-documentation">
+   User satisfaction, support, and documentation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#How-easy-is-Dask-to-use?">
+     How easy is Dask to use?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#How-is-Dask’s-documentation?">
+     How is Dask’s documentation?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#How-satisfied-are-you-with-maintainer-responsiveness-on-GitHub?">
+     How satisfied are you with maintainer responsiveness on GitHub?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#What-Dask-resources-have-you-used-for-support-in-the-last-six-months?">
+     What Dask resources have you used for support in the last six months?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Suggestions-for-improvement">
+   Suggestions for improvement
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Which-would-help-you-most-right-now?">
+     Which would help you most right now?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#How-can-Dask-improve?">
+     How can Dask improve?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#What-common-feature-requests-do-you-care-about-most?">
+     What common feature requests do you care about most?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Previous-survey-results">
+   Previous survey results
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="admonition-live-notebook admonition">
+<p class="admonition-title">Live Notebook</p>
+<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/surveys/2021.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=%2Ftree%2Fsurveys%2F2021.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/main/surveys/2021.ipynb">on Github</a>.</p>
+</div>
+<div class="section" id="2021-Dask-User-Survey-Results">
+<h1>2021 Dask User Survey Results<a class="headerlink" href="#2021-Dask-User-Survey-Results" title="Permalink to this headline">¶</a></h1>
+<p>This post presents the results of the 2021 Dask User Survey, which ran earlier this year. Thanks to everyone who took the time to fill out the survey! These results help us better understand the Dask community and will guide future development efforts.</p>
+<p>The raw data, as well as the start of an analysis, can be found in this binder:</p>
+<p><a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=%2Ftree%2Fsurveys%2F2021.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
+<p>Let us know if you find anything in the data.</p>
+<div class="section" id="Contents">
+<h2>Contents<a class="headerlink" href="#Contents" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#highlights">Highlights</a></p></li>
+<li><p><a class="reference external" href="#who-are-dask-users">Who are Dask users?</a></p></li>
+<li><p><a class="reference external" href="#how-people-like-to-use-dask">How people like to use Dask</a></p></li>
+<li><p><a class="reference external" href="#diagnostics">Diagnostics</a></p></li>
+<li><p><a class="reference external" href="#stability">Stability</a></p></li>
+<li><p><a class="reference external" href="#user-satisfaction">User satisfaction, support, and documentation</a></p></li>
+<li><p><a class="reference external" href="#suggestions-for-improvement">Suggestions for improvement</a></p></li>
+<li><p><a class="reference external" href="#previous-survey-results">Previous survey results</a></p></li>
+</ul>
+</div>
+<div class="section" id="Highlights">
+<h2>Highlights<a class="headerlink" href="#Highlights" title="Permalink to this headline">¶</a></h2>
+<p>We had 247 responses to the survey (roughly the same as last year, which had just under 240 responses). Overall, responses were similar to previous years.</p>
+<p>We asked 43 questions in the survey (an increase of 18 questions compared to the year before). We asked a bunch of new questions about the types of datasets people work with, the stability of Dask, and what kinds of industries people work in.</p>
+<p>Our community wants:</p>
+<ul class="simple">
+<li><p>More documentation and examples</p></li>
+<li><p>More intermediate level documentation</p></li>
+<li><p>To improve the resiliency of Dask (i.e. do computations complete?)</p></li>
+</ul>
+<p>Users also value these features:</p>
+<ul class="simple">
+<li><p>Improved scaling</p></li>
+<li><p>Ease of deployment</p></li>
+<li><p>Better scikit-learn &amp; machine learning support</p></li>
+</ul>
+<div class="section" id="The-typical-Dask-user">
+<h3>The typical Dask user<a class="headerlink" href="#The-typical-Dask-user" title="Permalink to this headline">¶</a></h3>
+<p>The survey shows us there is a lot of diversity in our community, and there is no one way to use Dask. That said, our hypothetical “typical” Dask user:</p>
+<ul class="simple">
+<li><p>Works with gigabyte sized datasets</p></li>
+<li><p>Stored on a local filesystem</p></li>
+<li><p>Has been using Dask between 1 and 3 years</p></li>
+<li><p>Uses Dask occasionally, not every day</p></li>
+<li><p>Uses Dask interactively at least part of the time</p></li>
+<li><p>Uses a compute cluster (probably)</p></li>
+<li><p>Likes to view the Dask dashboard with a web browser</p></li>
+<li><p>For the most part, Dask is stable enough for their needs, but improving the Dask’s resiliancy would be helpful</p></li>
+<li><p>Uses the Dask dataframe, delayed, and maybe the Dask Array API, alongside numpy/pandas and other python libraries</p></li>
+<li><p>The most useful thing that would help this person is more documentation, and more examples using Dask in their field.</p></li>
+<li><p>They likely work in a scientific field (perhaps geoscience, life science, physics, or astronomy), or alternatively they might work in accounting, finance, insurance, or as a tech worker.</p></li>
+</ul>
+<p>You can read the survey results from previous years here: <a class="reference external" href="https://blog.dask.org/2020/09/22/user_survey">2020 survey results</a>, <a class="reference external" href="https://blog.dask.org/2019/08/05/user-survey">2019 survey results</a>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Let&#39;s load in the survey data...</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">textwrap</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+
+<span class="n">df2019</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/2019-user-survey-results.csv.gz&quot;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Timestamp&quot;</span><span class="p">])</span>
+      <span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">&quot;How often do you use Dask?&quot;</span><span class="p">:</span> <span class="s2">&quot;I use Dask all the time, even when I sleep&quot;</span><span class="p">},</span> <span class="s2">&quot;Every day&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df2020</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/2020-user-survey-results.csv.gz&quot;</span><span class="p">)</span>
+      <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Timestamp</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Timestamp&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y/%m/</span><span class="si">%d</span><span class="s2"> %H:%M:%S %p %Z&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;datetime64[ns]&#39;</span><span class="p">))</span>
+      <span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">&quot;How often do you use Dask?&quot;</span><span class="p">:</span> <span class="s2">&quot;I use Dask all the time, even when I sleep&quot;</span><span class="p">},</span> <span class="s2">&quot;Every day&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df2021</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/2021-user-survey-results.csv.gz&quot;</span><span class="p">)</span>
+      <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Timestamp</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Timestamp&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;datetime64[ns]&#39;</span><span class="p">))</span>
+      <span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">&quot;How often do you use Dask?&quot;</span><span class="p">:</span> <span class="s2">&quot;I use Dask all the time, even when I sleep&quot;</span><span class="p">},</span> <span class="s2">&quot;Every day&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">common</span> <span class="o">=</span> <span class="n">df2019</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">df2020</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">df2021</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">added</span> <span class="o">=</span> <span class="n">df2021</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">df2020</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">dropped</span> <span class="o">=</span> <span class="n">df2020</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">df2021</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df2019</span><span class="p">,</span> <span class="n">df2020</span><span class="p">,</span> <span class="n">df2021</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Timestamp</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="s1">&#39;Timestamp&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+&lt;ipython-input-1-12a09b0fa7fb&gt;:19: FutureWarning: Using .astype to convert from timezone-aware dtype to timezone-naive dtype is deprecated and will raise in a future version.  Use obj.tz_localize(None) or obj.tz_convert(&#39;UTC&#39;).tz_localize(None) instead
+  .assign(Timestamp=lambda df: pd.to_datetime(df[&#39;Timestamp&#39;], format=&#34;%Y/%m/%d %H:%M:%S %p %Z&#34;).astype(&#39;datetime64[ns]&#39;))
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Who-are-Dask-users?">
+<h2>Who are Dask users?<a class="headerlink" href="#Who-are-Dask-users?" title="Permalink to this headline">¶</a></h2>
+<p>Most people said they use Dask occasionally, while a smaller group use Dask every day. There is a wide variety in how long people have used Dask for, with the most common response being between one and three years.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;How often do you use Dask?&quot;</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">());</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_7_0.png" src="../_images/surveys_2021_7_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;How long have you used Dask?&quot;</span>  <span class="c1"># New question in 2021</span>
+<span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;More than 3 years&quot;</span><span class="p">,</span> <span class="s2">&quot;1 - 3 years&quot;</span><span class="p">,</span> <span class="s2">&quot;3 months - 1 year&quot;</span><span class="p">,</span> <span class="s2">&quot;Less than 3 months&quot;</span><span class="p">,</span> <span class="s2">&quot;I&#39;ve never used Dask&quot;</span><span class="p">]</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(),</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_8_0.png" src="../_images/surveys_2021_8_0.png" />
+</div>
+</div>
+<p>Just over half of respondants use Dask with other people (their team or organisation), and the other half use Dask on their own.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;Do you use Dask as part of a larger group?&quot;</span>
+<span class="n">order</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;I use Dask mostly on my own&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;My team or research group also use Dask&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Beyond my group, many people throughout my institution use Dask&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(),</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_10_0.png" src="../_images/surveys_2021_10_0.png" />
+</div>
+</div>
+<p>In the last year, there has been an increase in the number of people who say that many people throughout their institution use Dask (32 people said this in 2021, compared to 19 in 2020). Between 2019 and 2020, there was a drop in the number of people who said their immediate team also uses Dask (121 people said this in 2019, compared to 94 in 2020). It’s not clear why we saw either of these changes, so it will be interesting to see what happens in future years.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s1">&#39;Do you use Dask as part of a larger group?&#39;</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">());</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_12_0.png" src="../_images/surveys_2021_12_0.png" />
+</div>
+</div>
+<div class="section" id="What-industry-do-you-work-in?">
+<h3>What industry do you work in?<a class="headerlink" href="#What-industry-do-you-work-in?" title="Permalink to this headline">¶</a></h3>
+<p>There was a wide variety of industries represented in the survey.</p>
+<p>Almost half of responses were in an industry related to science, academia, or a governmant laboratory. Geoscicence had the most responses, while life sciences, physics, and astronomy were also popular fields.</p>
+<p>Around 30 percent of responses were from people in businesss and tech. Of these, there was a roughly even split between people in accounting/finance/insurance vs other tech workers.</p>
+<p>Around 10 percent of responses belonged to manufacturing, engineering, and other industry (energy, aerospace, etc). The remaining responses were difficult to categorise.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;What industry do you work in?&quot;</span>  <span class="c1"># New question in 2021</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="n">order</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="n">data</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_14_0.png" src="../_images/surveys_2021_14_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="How-easy-is-it-for-you-to-upgrade-to-newer-versions-of-Python-libraries?">
+<h3>How easy is it for you to upgrade to newer versions of Python libraries?<a class="headerlink" href="#How-easy-is-it-for-you-to-upgrade-to-newer-versions-of-Python-libraries?" title="Permalink to this headline">¶</a></h3>
+<p>The majority of users are able to easily upgrade to newer versoins of python libraries when they want.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;How easy is it for you to upgrade to newer versions of Python libraries&quot;</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">())</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Scale from 1 (Difficult) to 4 (Easy)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_16_0.png" src="../_images/surveys_2021_16_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="How-people-like-to-use-Dask">
+<h2>How people like to use Dask<a class="headerlink" href="#How-people-like-to-use-Dask" title="Permalink to this headline">¶</a></h2>
+<p>People like to use Dask in conjunction with numpy and pandas, along with a range of other python libraries. The most popular Dask APIs are <a class="reference external" href="https://docs.dask.org/en/latest/dataframe.html">Dask Dataframes</a>, <a class="reference external" href="https://docs.dask.org/en/latest/delayed.html">Dask Delayed</a>, and <a class="reference external" href="https://docs.dask.org/en/latest/array.html">Dask Arrays</a>.</p>
+<p>The vast majority of people like to use Dask interactively with Jupyter or IPython at least part of the time, and most people view the <a class="reference external" href="https://docs.dask.org/en/latest/diagnostics-distributed.html">Dask Dashboard</a> with a web browser.</p>
+<div class="section" id="What-are-some-other-libraries-that-you-often-use-with-Dask?”">
+<h3>What are some other libraries that you often use with Dask?”<a class="headerlink" href="#What-are-some-other-libraries-that-you-often-use-with-Dask?”" title="Permalink to this headline">¶</a></h3>
+<p>The ten most common libraries people use with Dask are: <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">xarray</span></code>, <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>, <code class="docutils literal notranslate"><span class="pre">scipy</span></code>, <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, <code class="docutils literal notranslate"><span class="pre">xgboost</span></code>, <code class="docutils literal notranslate"><span class="pre">numba</span></code>, and <code class="docutils literal notranslate"><span class="pre">joblib</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;What are some other libraries that you often use with Dask?&quot;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">q</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_20_0.png" src="../_images/surveys_2021_20_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Dask-APIs">
+<h2>Dask APIs<a class="headerlink" href="#Dask-APIs" title="Permalink to this headline">¶</a></h2>
+<p>The three most popular Dask APIs people use are: 1. <a class="reference external" href="https://docs.dask.org/en/latest/dataframe.html">Dask Dataframes</a> 2. <a class="reference external" href="https://docs.dask.org/en/latest/delayed.html">Dask Delayed</a> 3. <a class="reference external" href="https://docs.dask.org/en/latest/array.html">Dask Arrays</a></p>
+<p>In 2021, we saw a small increase in the number of people who use <a class="reference external" href="https://docs.dask.org/en/latest/delayed.html">dask delayed</a>, compared with previous years. This might be a good thing, it’s possible that as people develop experience and confidence with Dask, they are more likely to start using more advanced features such as <a class="reference external" href="https://docs.dask.org/en/latest/delayed.html">delayed</a>. Besides this change, preferences were pretty simliar to the results from previous years.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">apis</span> <span class="o">=</span> <span class="n">df2021</span><span class="p">[</span><span class="s1">&#39;Dask APIs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span>
+<span class="n">top</span> <span class="o">=</span> <span class="n">apis</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">apis</span> <span class="o">=</span> <span class="n">apis</span><span class="p">[</span><span class="n">apis</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;Dask APIs&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">apis</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_22_0.png" src="../_images/surveys_2021_22_0.png" />
+</div>
+</div>
+<div class="section" id="Interactive-or-Batch?">
+<h3>Interactive or Batch?<a class="headerlink" href="#Interactive-or-Batch?" title="Permalink to this headline">¶</a></h3>
+<p>The vast majority of people like to use Dask interactively with Jupyter or IPython at least part of the time. Less than 15% of Dask users only use Dask in batch mode (submitting scripts that run in the future).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s1">&#39;Interactive or Batch?&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Interactive:  I use Dask with Jupyter or IPython when playing with data, Batch: I submit scripts that run in the future&#39;</span><span class="p">,</span> <span class="s2">&quot;Interactive and Batch&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Interactive:  I use Dask with Jupyter or IPython when playing with data&#39;</span><span class="p">,</span> <span class="s2">&quot;Interactive&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Batch: I submit scripts that run in the future&#39;</span><span class="p">,</span> <span class="s2">&quot;Batch&quot;</span><span class="p">)</span>
+<span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Interactive and Batch&quot;</span><span class="p">,</span> <span class="s2">&quot;Interactive&quot;</span><span class="p">,</span> <span class="s2">&quot;Batch&quot;</span><span class="p">]</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(),</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_24_0.png" src="../_images/surveys_2021_24_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="How-do-you-view-Dask’s-dashboard?">
+<h3>How do you view Dask’s dashboard?<a class="headerlink" href="#How-do-you-view-Dask’s-dashboard?" title="Permalink to this headline">¶</a></h3>
+<p>Most people look at the Dask dashboard using a web browser. A smaller group use the <a class="reference external" href="https://github.com/dask/dask-labextension">dask jupyterlab extension</a>.</p>
+<p>A few people are still not sure what the dashboard is all about. If that’s you too, you might like to watch <a class="reference external" href="https://youtu.be/N_GqzcuGLCY">this 20 minute video</a> that explains why the dashboard is super useful, or see the rest of the docs <a class="reference external" href="https://docs.dask.org/en/latest/diagnostics-distributed.html">here</a>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;How do you view Dask&#39;s dashboard?&quot;</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">());</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_26_0.png" src="../_images/surveys_2021_26_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Local-machine-or-Cluster?">
+<h3>Local machine or Cluster?<a class="headerlink" href="#Local-machine-or-Cluster?" title="Permalink to this headline">¶</a></h3>
+<p>Roughly two thirds of respondants use a computing cluster at least part of the time.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s1">&#39;Local machine or Cluster?&#39;</span>
+<span class="n">df</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;Cluster&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Year
+2019    0.654902
+2020    0.666667
+2021    0.630081
+Name: Local machine or Cluster?, dtype: float64
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s1">&#39;Local machine or Cluster?&#39;</span>
+<span class="n">order</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Personal laptop&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Large workstation&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Cluster of 2-10 machines&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Cluster with 10-100 machines&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Cluster with 100+ machines&#39;</span>
+<span class="p">]</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(),</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_29_0.png" src="../_images/surveys_2021_29_0.png" />
+</div>
+</div>
+<div class="section" id="If-you-use-a-cluster,-how-do-you-launch-Dask?">
+<h4>If you use a cluster, how do you launch Dask?<a class="headerlink" href="#If-you-use-a-cluster,-how-do-you-launch-Dask?" title="Permalink to this headline">¶</a></h4>
+<p>SSH is the most common way to launch Dask on a compute cluster, followed by a HPC resource manager, then Kubernetes.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;If you use a cluster, how do you launch Dask? &quot;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;HPC resource manager (SLURM, PBS, SGE, LSF or similar)&quot;</span><span class="p">,</span> <span class="s2">&quot;HPC resource manager (SLURM PBS SGE LSF or similar)&quot;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;I don&#39;t know, someone else does this for me&quot;</span><span class="p">,</span> <span class="s2">&quot;I don&#39;t know someone else does this for me&quot;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="n">order</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="n">data</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_31_0.png" src="../_images/surveys_2021_31_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="If-you-use-a-cluster,-do-you-have-a-need-for-multiple-worker-types-in-the-same-cluster?">
+<h4>If you use a cluster, do you have a need for multiple worker types in the same cluster?<a class="headerlink" href="#If-you-use-a-cluster,-do-you-have-a-need-for-multiple-worker-types-in-the-same-cluster?" title="Permalink to this headline">¶</a></h4>
+<p>Of the people who use compute clusters, a little less than half have a need for multiple worker types in the same cluster. Examples of this might include mixed workers with GPU vs no GPU, mixed workers with low or high memory allocations, etc.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;If you use a cluster, do you have a need for multiple worker / machine types (e.g. GPU / no GPU, low / high memory) in the same cluster?&quot;</span>  <span class="c1"># New question in 2021</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">());</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Do you need multiple worker/machine types on a cluster?&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_33_0.png" src="../_images/surveys_2021_33_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Datasets">
+<h3>Datasets<a class="headerlink" href="#Datasets" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="How-large-are-your-datasets-typically?">
+<h4>How large are your datasets typically?<a class="headerlink" href="#How-large-are-your-datasets-typically?" title="Permalink to this headline">¶</a></h4>
+<p>Dask users most commonly work with gigabyte sized datasets. Very few users work with petabyte sized datasets.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;How large are your datasets typically?&quot;</span>  <span class="c1"># New question in 2021</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">());</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_35_0.png" src="../_images/surveys_2021_35_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Where-are-your-datasets-typically-stored?">
+<h4>Where are your datasets typically stored?<a class="headerlink" href="#Where-are-your-datasets-typically-stored?" title="Permalink to this headline">¶</a></h4>
+<p>Most people store their data on a local filesystem.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;Where are your datasets typically stored?&quot;</span>  <span class="c1"># New question in 2021</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="n">order</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="n">data</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_37_0.png" src="../_images/surveys_2021_37_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="What-file-formats-do-you-typically-work-with?">
+<h4>What file formats do you typically work with?<a class="headerlink" href="#What-file-formats-do-you-typically-work-with?" title="Permalink to this headline">¶</a></h4>
+<p>The two most common file formats (<code class="docutils literal notranslate"><span class="pre">csv</span></code> and <code class="docutils literal notranslate"><span class="pre">parquet</span></code>) are popular among Dask Dataframe users. The <code class="docutils literal notranslate"><span class="pre">JSON</span></code> file format is also very commonly used with Dask. The fourth and fifth most common filetypes (<code class="docutils literal notranslate"><span class="pre">HDF5</span></code> and <code class="docutils literal notranslate"><span class="pre">zarr</span></code>) are popular among Dask Array users. This fits with what we know about the Dask Dataframe API being the most popular, with Dask Arrays close behind.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;What file formats do you typically work with?&quot;</span>  <span class="c1"># New question in 2021</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="n">order</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="n">data</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_39_0.png" src="../_images/surveys_2021_39_0.png" />
+</div>
+</div>
+<p>This survey question had a long tail: a very wide variety of specialized file formats were reported, most only being used by one or two individuals who replied to the survey.</p>
+<p>A lot of these specialized file formats store image data, specific to particular fields (astronomy, geoscience, microscopy, etc.).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="n">data</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;proprietary measurement format&#39;,
+ &#39;netCDF3&#39;,
+ &#39;czi&#39;,
+ &#39;specifically NetCDF4&#39;,
+ &#39;grib2&#39;,
+ &#39;in-house npy-like array format&#39;,
+ &#39;jpeg2000&#39;,
+ &#39;netCDF4 (based on HDF5)&#39;,
+ &#39;proprietary microscopy file types. Often I convert to Zarr with a loss of metadata.&#39;,
+ &#39;sas7bdat&#39;,
+ &#39;npy&#39;,
+ &#39;npy and pickle&#39;,
+ &#39;root with uproot&#39;,
+ &#39;root&#39;,
+ &#39;regular GeoTiff&#39;,
+ &#39;.npy&#39;,
+ &#39;Text&#39;,
+ &#39;VCF BAM CRAM&#39;,
+ &#39;UM&#39;,
+ &#39;CASA measurement sets&#39;,
+ &#39;Casa Tables (Radio Astronomy specific)&#39;,
+ &#39;Custom binary&#39;,
+ &#39;FITS&#39;,
+ &#39;FITS (astronomical images)&#39;,
+ &#39;FITS and a custom semi-relational table specification that I want to kill and replace with something better&#39;,
+ &#39;Feather (Arrow)&#39;,
+ &#39;GPKG&#39;,
+ &#39;GeoTIFF&#39;,
+ &#39;NetCDF4&#39;,
+ &#39;Netcdf&#39;,
+ &#39;Netcdf4&#39;,
+ &#39;PP&#39;,
+ &#39;SQL&#39;,
+ &#39;SQL query to remote DB&#39;,
+ &#39;SQL to Dataframe&#39;,
+ &#39;Seismic data (miniSEED)&#39;,
+ &#39;TFRecords&#39;,
+ &#39;TIFF&#39;,
+ &#39;Testing with all file formats. Just want it as a replacement for spark. &#39;,
+ &#39;.raw image files&#39;,
+ &#39;ugh&#39;]
+</pre></div></div>
+</div>
+<p><img alt="XKCD comic 927: Standards" src="https://imgs.xkcd.com/comics/standards_2x.png" /></p>
+<p>XKCD comic “Standards” <a class="reference external" href="https://xkcd.com/927/">https://xkcd.com/927/</a></p>
+</div>
+</div>
+<div class="section" id="Preferred-Cloud?">
+<h3>Preferred Cloud?<a class="headerlink" href="#Preferred-Cloud?" title="Permalink to this headline">¶</a></h3>
+<p>The most popular cloud solution is Amazon Web Services (AWS), followed by Google Cloud Platform (GCP) and Microsoft Azure.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;Preferred Cloud?&quot;</span>
+<span class="n">order</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Amazon Web Services (AWS)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Google Cloud Platform (GCP)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Microsoft Azure&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Digital Ocean&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(),</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_44_0.png" src="../_images/surveys_2021_44_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Do-you-use-Dask-projects-to-deploy?">
+<h3>Do you use Dask projects to deploy?<a class="headerlink" href="#Do-you-use-Dask-projects-to-deploy?" title="Permalink to this headline">¶</a></h3>
+<p>Among those who use dask projects to deploy, <a class="reference external" href="https://github.com/dask/dask-jobqueue">dask-jobqueue</a> and <a class="reference external" href="https://github.com/dask/helm-chart">dask helm chart</a> are the two most popular options. There was a wide variety of projects people used for deployment.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;Do you use Dask projects to deploy?&quot;</span>
+<span class="n">order</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;dask-jobqueue&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dask&#39;s helm chart&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dask-kubernetes&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dask&#39;s docker image at daskdev/dask&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dask-gateway&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dask-ssh&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dask-cloudprovider&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dask-yarn&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;qhub&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dask-mpi&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(),</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_46_0.png" src="../_images/surveys_2021_46_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Diagnostics">
+<h2>Diagnostics<a class="headerlink" href="#Diagnostics" title="Permalink to this headline">¶</a></h2>
+<p>We saw earlier that most people like to view the Dask Dashboard using their web browser.</p>
+<p>In the dashboard, people said the most useful diagnostics plots were:</p>
+<ol class="arabic simple">
+<li><p>The task stream plot</p></li>
+<li><p>The progress plot, and</p></li>
+<li><p>The memory useage per worker plot</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;Which Diagnostic plots are most useful?&quot;</span>  <span class="c1"># New question in 2021</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">());</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_48_0.png" src="../_images/surveys_2021_48_0.png" />
+</div>
+</div>
+<p>We also asked some new questions about diagnostics in 2021.</p>
+<p>We found that most people (65 percent) do not use <a class="reference external" href="https://distributed.dask.org/en/latest/diagnosing-performance.html#performance-reports">Dask performance reports</a>, which is a way to save the diagnostic dashboard to static HTML plots for later review.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;Do you use Dask&#39;s Performance reports?&quot;</span>  <span class="c1"># New question in 2021</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(),</span> <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Yes&quot;</span><span class="p">,</span> <span class="s2">&quot;No&quot;</span><span class="p">]);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_50_0.png" src="../_images/surveys_2021_50_0.png" />
+</div>
+</div>
+<p>Very few people use Dask’s <a class="reference external" href="https://docs.dask.org/en/latest/setup/prometheus.html">Prometheus metrics</a>. Jacob Tomlinson has an excellent article on <a class="reference external" href="https://medium.com/rapids-ai/monitoring-dask-rapids-with-prometheus-grafana-96eaf6b8f3a0">Monitoring Dask + RAPIDS with Prometheus + Grafana</a>, if you’re interested in learning more about how to use this feature.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;Do you use Dask&#39;s Prometheus Metrics?&quot;</span>  <span class="c1"># New question in 2021</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(),</span> <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Yes&quot;</span><span class="p">,</span> <span class="s2">&quot;No&quot;</span><span class="p">]);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_52_0.png" src="../_images/surveys_2021_52_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Stability">
+<h2>Stability<a class="headerlink" href="#Stability" title="Permalink to this headline">¶</a></h2>
+<p>We asked a number of questions around the stability of Dask, many of them new questions in 2021.</p>
+<p>The majority of people said Dask was resiliant enough for them (eg: computations complete). However this is an area we could improve in, as 36 percent of people are not satisfied. This was a new question 2021, so we can’t say how people opinion of Dask’s resiliancy has changed over time.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;Is Dask resilient enough for you? (e.g. computations complete).&quot;</span>  <span class="c1"># new question in 2021</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(),</span> <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Yes&quot;</span><span class="p">,</span> <span class="s2">&quot;No&quot;</span><span class="p">]);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Is Dask resilient enough for you?&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_54_0.png" src="../_images/surveys_2021_54_0.png" />
+</div>
+</div>
+<p>Most people say Dask in general is stable enough for them (eg: between different version releases). This is similar to the survey results from previous years.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;Is Dask stable enough for you?&quot;</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(),</span> <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Yes&quot;</span><span class="p">,</span> <span class="s2">&quot;No&quot;</span><span class="p">]);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_56_0.png" src="../_images/surveys_2021_56_0.png" />
+</div>
+</div>
+<p>People also say that the API of Dask is stable enough for them too.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;Is Dask&#39;s API stable enough for you?&quot;</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(),</span> <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Yes&quot;</span><span class="p">,</span> <span class="s2">&quot;No&quot;</span><span class="p">]);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_58_0.png" src="../_images/surveys_2021_58_0.png" />
+</div>
+</div>
+<p>The vast majority of people are satisfied with the current release frequency (roughly once every two weeks).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;How is Dask&#39;s release frequency?&quot;</span>  <span class="c1"># New question in 2021</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">());</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_60_0.png" src="../_images/surveys_2021_60_0.png" />
+</div>
+</div>
+<p>Most people say they would pin their code to a long term support release, if one was available for Dask.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;If Dask had Long-term support (LTS) releases, would you pin your code to use them?&quot;</span>  <span class="c1"># New question in 2021</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(),</span> <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Yes&quot;</span><span class="p">,</span> <span class="s2">&quot;No&quot;</span><span class="p">]);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Would you pin to a long term support release?&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_62_0.png" src="../_images/surveys_2021_62_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="User-satisfaction,-support,-and-documentation">
+<h2>User satisfaction, support, and documentation<a class="headerlink" href="#User-satisfaction,-support,-and-documentation" title="Permalink to this headline">¶</a></h2>
+<p>We asked a bunch of new questions about user satisfaction in the 2021 survey.</p>
+<div class="section" id="How-easy-is-Dask-to-use?">
+<h3>How easy is Dask to use?<a class="headerlink" href="#How-easy-is-Dask-to-use?" title="Permalink to this headline">¶</a></h3>
+<p>The majority of people say that Dask is moderately easy to use, the same as in previous surveys.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;On a scale of 1 - 5 (1 being hardest, 5 being easiest) how easy is Dask to use?&quot;</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">());</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;1 = Difficult, 5 = Easy&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;How easy is Dask to use?&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_65_0.png" src="../_images/surveys_2021_65_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="How-is-Dask’s-documentation?">
+<h3>How is Dask’s documentation?<a class="headerlink" href="#How-is-Dask’s-documentation?" title="Permalink to this headline">¶</a></h3>
+<p>Most people think that Dask’s documentation is pretty good.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;How is Dask&#39;s documentation?&quot;</span>  <span class="c1"># New question in 2021</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">());</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;1 = Not good, 5 = Great&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_67_0.png" src="../_images/surveys_2021_67_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="How-satisfied-are-you-with-maintainer-responsiveness-on-GitHub?">
+<h3>How satisfied are you with maintainer responsiveness on GitHub?<a class="headerlink" href="#How-satisfied-are-you-with-maintainer-responsiveness-on-GitHub?" title="Permalink to this headline">¶</a></h3>
+<p>Almost everybody who responded feels positively about Dask’s maintainer responsiveness on GitHub .</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;How satisfied are you with maintainer responsiveness on GitHub?&quot;</span>  <span class="c1"># New question in 2021</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">());</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;1 = Not satisfied, 5 = Thrilled&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_69_0.png" src="../_images/surveys_2021_69_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="What-Dask-resources-have-you-used-for-support-in-the-last-six-months?">
+<h3>What Dask resources have you used for support in the last six months?<a class="headerlink" href="#What-Dask-resources-have-you-used-for-support-in-the-last-six-months?" title="Permalink to this headline">¶</a></h3>
+<p>The documentation at <a class="reference external" href="https://dask.org/">dask.org</a> is the first place most users look for help.</p>
+<p>The breakdown of responses to this question in 2021 was very similar to previous years, with the exception that no-one seemed to know that the <a class="reference external" href="https://www.youtube.com/c/Dask-dev/videos">Dask YouTube channel</a> or Gitter chat existed in 2019.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s1">&#39;What Dask resources have you used for support in the last six months?&#39;</span>
+
+<span class="n">resource_map</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Tutorial&quot;</span><span class="p">:</span> <span class="s2">&quot;Tutorial at tutorial.dask.org&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;YouTube&quot;</span><span class="p">:</span> <span class="s2">&quot;YouTube channel&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;gitter&quot;</span><span class="p">:</span> <span class="s2">&quot;Gitter chat&quot;</span>
+<span class="p">}</span>
+
+<span class="n">df</span><span class="p">[</span><span class="n">q</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">,</span><span class="s1">&#39;, &#39;</span><span class="p">)</span>  <span class="c1"># Make separator values consistent</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">resource_map</span><span class="p">)</span>
+<span class="n">top</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top</span><span class="p">)]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_71_0.png" src="../_images/surveys_2021_71_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Suggestions-for-improvement">
+<h2>Suggestions for improvement<a class="headerlink" href="#Suggestions-for-improvement" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Which-would-help-you-most-right-now?">
+<h3>Which would help you most right now?<a class="headerlink" href="#Which-would-help-you-most-right-now?" title="Permalink to this headline">¶</a></h3>
+<p>The two top priorities people said would help most right now are both related to documentation. People want more documentation, and more examples in their field. Performance improvements were also commonly mentioned as something that would help the most right now.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;Which would help you most right now?&quot;</span>
+<span class="n">order</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;More documentation&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;More examples in my field&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Performance improvements&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;New features&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Bug fixes&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2021</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(),</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">q</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_74_0.png" src="../_images/surveys_2021_74_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="How-can-Dask-improve?">
+<h3>How can Dask improve?<a class="headerlink" href="#How-can-Dask-improve?" title="Permalink to this headline">¶</a></h3>
+<p>We also gave people the opportunity for a free text response to the question “How can Dask imporove?”</p>
+<p>Matt has previously written an <a class="reference external" href="https://blog.dask.org/2021/06/18/early-survey">early anecdotes blogpost</a> that dives into the responses to this question in more detail.</p>
+<p>He found these recurring themes:</p>
+<ul class="simple">
+<li><p>Intermediate Documentation</p></li>
+<li><p>Documentation Organization</p></li>
+<li><p>Functionality</p></li>
+<li><p>High Level Optimization</p></li>
+<li><p>Runtime Stability and Advanced Troubleshooting</p></li>
+</ul>
+<p>Since more documentation and examples were the two most requested improvements, I’ll summarize some of the steps forward in that area here:</p>
+<ul class="simple">
+<li><p>Regarding more intermediate documentation, Matt says: &gt; There is a lot of good potential material that advanced users have around performance and debugging that could be fun to publish.</p></li>
+<li><p>Matt points out that Dask has excellent <em>reference documentation</em>, but lacks a lot of good <em>narrative documentation</em>. To address this, Julia Signell is currently investigating how we could improve the organization of Dask’s documentation (you can subscribe to <a class="reference external" href="https://github.com/dask/community/issues/170">this issue thread</a> if you want to follow that discussion)</p></li>
+<li><p>Matt comments that it’s hard to have good <em>narrative documentation</em> when there are so many different <em>user narratives</em> (i.e. Dask is used by people from many different industries). This year, we added a new question to the survey asking for the industry people work in. We added this because <em>“More examples in my field”</em> has been one of the top two requests for the last three years. Now we can use that information to better target narrative documentation to the areas that need it most
+(geoscience, life science, and finance).</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">q</span> <span class="o">=</span> <span class="s1">&#39;What industry do you work in?&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">df2021</span><span class="p">[</span><span class="n">df2021</span><span class="p">[</span><span class="s2">&quot;Which would help you most right now?&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;More examples in my field&quot;</span><span class="p">]</span>
+<span class="n">order</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="n">data</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(),</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;What field do you want more documentation examples for?&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_76_0.png" src="../_images/surveys_2021_76_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="What-common-feature-requests-do-you-care-about-most?">
+<h3>What common feature requests do you care about most?<a class="headerlink" href="#What-common-feature-requests-do-you-care-about-most?" title="Permalink to this headline">¶</a></h3>
+<p>Good support for numpy and pandas is critical for most users. Users also value:</p>
+<ul class="simple">
+<li><p>Improved scaling</p></li>
+<li><p>Ease of deployment</p></li>
+<li><p>Resiliancy of Dask</p></li>
+<li><p>Better scikit-learn &amp; machine learning support</p></li>
+</ul>
+<p>Most feature requests are similar to the survey results from previous years, although there was an increase in the number of people who say better scikit-learn/ML support is critical to them. We also added a new question about Dask’s resiliancy in 2021.</p>
+<p>In the figure below you can see how people rated the importance of each feature request, for each of the three years we’ve run this survey.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">common</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;What common feature&quot;</span><span class="p">)]]</span>
+          <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">&quot;What common feature requests do you care about most?[&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;]&quot;</span><span class="p">)))</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">common</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2019</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">value_counts</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;level_0&#39;</span><span class="p">:</span> <span class="s1">&#39;Question&#39;</span><span class="p">,</span> <span class="s1">&#39;level_1&#39;</span><span class="p">:</span> <span class="s2">&quot;Importance&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;count&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Year</span><span class="o">=</span><span class="mi">2019</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">common</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2020</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">value_counts</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;level_0&#39;</span><span class="p">:</span> <span class="s1">&#39;Question&#39;</span><span class="p">,</span> <span class="s1">&#39;level_1&#39;</span><span class="p">:</span> <span class="s2">&quot;Importance&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;count&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Year</span><span class="o">=</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">common</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2021</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">value_counts</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;level_0&#39;</span><span class="p">:</span> <span class="s1">&#39;Question&#39;</span><span class="p">,</span> <span class="s1">&#39;level_1&#39;</span><span class="p">:</span> <span class="s2">&quot;Importance&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;count&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Year</span><span class="o">=</span><span class="mi">2021</span><span class="p">)</span>
+
+<span class="n">counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">common</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;level_2&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;Importance&quot;</span><span class="p">})</span>
+<span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Not relevant for me&quot;</span><span class="p">,</span> <span class="s2">&quot;Somewhat useful&quot;</span><span class="p">,</span> <span class="s1">&#39;Critical to me&#39;</span><span class="p">]</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Importance&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="s2">&quot;Feature&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">d</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/surveys_2021_78_0.png" src="../_images/surveys_2021_78_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Previous-survey-results">
+<h2>Previous survey results<a class="headerlink" href="#Previous-survey-results" title="Permalink to this headline">¶</a></h2>
+<p>Thanks to everyone who took the survey!</p>
+<p>If you want to read more about the 2021 Dask survey, the blogpost on early anecdotes from the Dask 2021 survey <a class="reference external" href="https://blog.dask.org/2021/06/18/early-survey">is available here</a>.</p>
+<p>You can read the survey results from previous years here:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.dask.org/2020/09/22/user_survey">2020 survey results</a></p></li>
+<li><p><a class="reference external" href="https://blog.dask.org/2019/08/05/user-survey">2019 survey results</a>.</p></li>
+</ul>
+</div>
+</div>
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-18218874-5', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Dask Developers<br/>
+        
+            &copy; Copyright 2018, Dask Developers.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

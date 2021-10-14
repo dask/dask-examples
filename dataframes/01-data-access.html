@@ -1,305 +1,442 @@
 
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>DataFrames: Read and Write Data &mdash; Dask Examples  documentation</title>
-  
 
-  
-  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/explore.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/nbsphinx.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DataFrames: Read and Write Data &#8212; Dask Examples  documentation</title>
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}</script>
-        <script src="../_static/js/custom.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="DataFrames: Groupby" href="02-groupby.html" />
     <link rel="prev" title="Xarray with Dask Arrays" href="../xarray.html" />
-  <link rel="shortcut icon" href="../_static/images/favicon.ico"/>
-  
-  <meta name="Description" content="DataFrames: Read and Write Data">
-  <meta property="og:description" content="DataFrames: Read and Write Data">
-  <meta name="twitter:description" content="DataFrames: Read and Write Data" />
-  <meta property="og:title" content="Dask Examples  documentation - DataFrames: Read and Write Data">
-  <meta property="og:image" content="https://github.com/dask.png">
-  <meta property="og:image:secure_url" content="https://github.com/dask.png" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="380" />
-  <meta property="og:image:height" content="380" />
-  <meta property="og:url" content="dataframes/01-data-access.html">
-  <meta property="og:site_name" content="Dask Examples  documentation">
-
-  <meta name="twitter:site" content="https://dask.org" />
-  <meta name="twitter:creator" content="@dask_dev" />
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:image" content="https://github.com/dask.png" />
-  <meta name="twitter:image:alt" content="Dask Examples  documentation">
-
-
-</head>
-
-<body class="wy-body-for-nav">
-
-  
-    <nav id="explore-links">
-        <a href="https://docs.dask.org/">
-        <img class="caption" src="../_static/images/dask-horizontal-white.svg"/>
-        </a>
-
-        <ul>
-        <li>
-            <a>Get Started</a>
-            <ul>
-            <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
-            <li><a href="https://examples.dask.org"> Examples </a></li>
-            <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
-            <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
-            <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
-            <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
-            <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab"> Try Online </a></li>
-            <li><a href="https://dask.org/slides"> Slides </a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a href="">Algorithms</a>
-            <ul>
-            <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
-            <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
-            <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
-            <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
-            <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
-            <li><a href="http://ml.dask.org">Machine Learning</a></li>
-            <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
-            <ul>
-            <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
-            <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
-            <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
-            <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
-            <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a>Community</a>
-            <ul>
-            <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
-            <li><a href="https://github.com/dask">Github</a></li>
-            <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
-            <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
-            <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-            <li><a href="https://youtube.com/c/dask-dev"> YouTube Channel </a></li>
-            <li><a href="https://join.slack.com/t/dask/shared_invite/zt-mfmh7quc-nIrXL6ocgiUH2haLYA914g"> Slack </a></li>
-            </ul>
-        </li>
-        </ul>
-
-    </nav>
-  
-  <div class="wy-grid-for-nav">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
 
-          
-            <a href="../index.html" class="icon icon-home"> Dask Examples
-          
+<nav class="dask-nav container-fluid">
+  <ul>
+    <li class="logo">
+      <a href="https://docs.dask.org/">
+        <img
+          class="caption"
+          src="../_static/images/dask-horizontal-white.svg"
+        />
+      </a>
+    </li>
 
-          
-          </a>
+    <li>
+      <a href="https://docs.dask.org/">Dask</a>
+    </li>
 
-          
-            
-            
-          
+    <li>
+      <a href="https://distributed.dask.org/">Distributed</a>
+    </li>
 
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
+    <li>
+      <a href="https://ml.dask.org/">Dask ML</a>
+    </li>
 
-          
-        </div>
+    <li>
+      <a href="https://examples.dask.org/">Examples</a>
+    </li>
 
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption" role="heading"><span class="caption-text">Basic Examples</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../array.html">Dask Arrays</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../bag.html">Dask Bags</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dataframe.html">Dask DataFrames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../delayed.html">Custom Workloads with Dask Delayed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../futures.html">Custom Workloads with Futures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning.html">Dask for Machine Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../xarray.html">Xarray with Dask Arrays</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Dataframes</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">DataFrames: Read and Write Data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Start-Dask-Client-for-Dashboard">Start Dask Client for Dashboard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Create-artificial-dataset">Create artificial dataset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Read-CSV-files">Read CSV files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Tuning-read_csv">Tuning read_csv</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Do-a-simple-computation">Do a simple computation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Write-to-Parquet">Write to Parquet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Read-from-Parquet">Read from Parquet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Select-only-the-columns-that-you-plan-to-use">Select only the columns that you plan to use</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Learn-more">Learn more</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="02-groupby.html">DataFrames: Groupby</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/blockwise-ensemble.html">Blockwise Ensemble Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/scale-scikit-learn.html">Scale Scikit-Learn for Small Data Problems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/parallel-prediction.html">Score and Predict Large Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/torch-prediction.html">Batch Prediction with PyTorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/training-on-large-datasets.html">Train Models on Large Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/incremental.html">Incrementally Train Large Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/text-vectorization.html">Text Vectorization Pipeline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/hyperparam-opt.html">Hyperparameter optimization with Dask</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/xgboost.html">Scale XGBoost</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/voting-classifier.html">Use Voting Classifiers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/tpot.html">Automate Machine Learning with TPOT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/glm.html">Generalized Linear Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/svd.html">Singular Value Decomposition</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Applications</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../applications/json-data-on-the-web.html">Analyze web-hosted JSON data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/async-await.html">Async/Await and Non-Blocking Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/async-web-server.html">Asynchronous Computation: Web Servers + Dask</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/embarrassingly-parallel.html">Embarrassingly parallel Workloads</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/evolving-workflows.html">Handle Evolving Workflows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/image-processing.html">Image Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/prefect-etl.html">ETL Pipelines with Prefect</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/satellite-imagery-geotiff.html">Reading and manipulating tiled GeoTIFF datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/stencils-with-numba.html">Stencil Computations with Numba</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applications/forecasting-with-prophet.html">Time Series Forecasting</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">User Surveys</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../surveys/2019.html">2019 Dask User Survey Results</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../surveys/2020.html">2020 Dask User Survey Results</a></li>
-</ul>
+    <li>
+      <a href="https://docs.dask.org/en/latest/ecosystem.html">Ecosystem</a>
+    </li>
 
-            
-          
-        </div>
-        
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Dask Examples</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>DataFrames: Read and Write Data</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="../_sources/dataframes/01-data-access.ipynb.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
+    <li>
+      <a href="https://docs.dask.org/en/latest/support.html">Community</a>
+    </li>
   </ul>
+</nav>
 
-  
-  <hr/>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Dask Examples  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p class="caption" role="heading">
+ <span class="caption-text">
+  Basic Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../array.html">
+   Dask Arrays
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bag.html">
+   Dask Bags
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dataframe.html">
+   Dask DataFrames
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../delayed.html">
+   Custom Workloads with Dask Delayed
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../futures.html">
+   Custom Workloads with Futures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning.html">
+   Dask for Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../xarray.html">
+   Xarray with Dask Arrays
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Dataframes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   DataFrames: Read and Write Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-groupby.html">
+   DataFrames: Groupby
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/blockwise-ensemble.html">
+   Blockwise Ensemble Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/scale-scikit-learn.html">
+   Scale Scikit-Learn for Small Data Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/parallel-prediction.html">
+   Score and Predict Large Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/torch-prediction.html">
+   Batch Prediction with PyTorch
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/training-on-large-datasets.html">
+   Train Models on Large Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/incremental.html">
+   Incrementally Train Large Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/text-vectorization.html">
+   Text Vectorization Pipeline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/hyperparam-opt.html">
+   Hyperparameter optimization with Dask
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/xgboost.html">
+   Scale XGBoost
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/voting-classifier.html">
+   Use Voting Classifiers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/tpot.html">
+   Automate Machine Learning with TPOT
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/glm.html">
+   Generalized Linear Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../machine-learning/svd.html">
+   Singular Value Decomposition
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Applications
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/json-data-on-the-web.html">
+   Analyze web-hosted JSON data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/async-await.html">
+   Async/Await and Non-Blocking Execution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/async-web-server.html">
+   Asynchronous Computation: Web Servers + Dask
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/embarrassingly-parallel.html">
+   Embarrassingly parallel Workloads
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/evolving-workflows.html">
+   Handle Evolving Workflows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/image-processing.html">
+   Image Processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/prefect-etl.html">
+   ETL Pipelines with Prefect
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/satellite-imagery-geotiff.html">
+   Reading and manipulating tiled GeoTIFF datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/stencils-with-numba.html">
+   Stencil Computations with Numba
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applications/forecasting-with-prophet.html">
+   Time Series Forecasting
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  User Surveys
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../surveys/2019.html">
+   2019 Dask User Survey Results
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../surveys/2020.html">
+   2020 Dask User Survey Results
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
             
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/dataframes/01-data-access.ipynb.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Start-Dask-Client-for-Dashboard">
+   Start Dask Client for Dashboard
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Create-artificial-dataset">
+   Create artificial dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Read-CSV-files">
+   Read CSV files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Tuning-read_csv">
+   Tuning read_csv
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Do-a-simple-computation">
+   Do a simple computation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Write-to-Parquet">
+   Write to Parquet
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Read-from-Parquet">
+   Read from Parquet
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Select-only-the-columns-that-you-plan-to-use">
+   Select only the columns that you plan to use
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Learn-more">
+   Learn more
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
   
 <style>
 /* CSS for nbsphinx extension */
@@ -619,17 +756,6 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/node.py:151: UserWarning: Port 8787 is already in use.
-Perhaps you already have a cluster running?
-Hosting the HTTP server on port 37031 instead
-  warnings.warn(
-</pre></div></div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -640,8 +766,8 @@ Hosting the HTTP server on port 37031 instead
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.1.0.145/6693/1</li>
-  <li><b>Dashboard: </b><a href='http://10.1.0.145:37031/status' target='_blank'>http://10.1.0.145:37031/status</a></li>
+  <li><b>Scheduler: </b>inproc://10.1.0.10/6912/1</li>
+  <li><b>Dashboard: </b><a href='http://10.1.0.10:8787/status' target='_blank'>http://10.1.0.10:8787/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
@@ -821,15 +947,15 @@ data/2000-01-10.csv
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 timestamp,id,name,x,y
-2000-01-01 00:00:00,986,Zelda,0.6776958999205376,0.5534070166151499
-2000-01-01 00:00:01,1001,Frank,0.42972355096063874,0.6819879096963182
-2000-01-01 00:00:02,1095,Ray,-0.8870490837044307,-0.006675175318785476
-2000-01-01 00:00:03,965,Michael,0.029346171471789306,0.6510186314559805
-2000-01-01 00:00:04,1052,Bob,-0.19915177711755572,-0.6808125942945547
-2000-01-01 00:00:05,1052,Ursula,0.903805055389099,-0.6718459509094372
-2000-01-01 00:00:06,958,Ursula,0.4578869297128165,-0.7016927026922131
-2000-01-01 00:00:07,980,Ray,0.4616883139562673,-0.35445219338733325
-2000-01-01 00:00:08,1023,Edith,0.709615477137034,0.581312563036261
+2000-01-01 00:00:00,1055,Alice,-0.8809549865149464,0.9313687721086061
+2000-01-01 00:00:01,943,Patricia,0.9357698678950424,-0.3962682580847814
+2000-01-01 00:00:02,960,Frank,-0.33017936530007463,-0.11821503964641789
+2000-01-01 00:00:03,987,Norbert,-0.02897710250845864,0.9278211177233568
+2000-01-01 00:00:04,1030,Ray,0.4323590243201192,0.850008026184847
+2000-01-01 00:00:05,1025,Alice,0.6425392681290045,0.22325949570135695
+2000-01-01 00:00:06,982,Charlie,0.6041144467632622,-0.5251232119295934
+2000-01-01 00:00:07,998,Yvonne,-0.11925354039473013,0.7345711087418381
+2000-01-01 00:00:08,975,Xavier,-0.697437162116356,0.14490096814068631
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -847,15 +973,15 @@ timestamp,id,name,x,y
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 timestamp,id,name,x,y
-2000-01-30 00:00:00,973,Quinn,0.8970484942796406,0.7308958436715629
-2000-01-30 00:00:01,970,Alice,-0.9632225520508988,-0.7048626134855303
-2000-01-30 00:00:02,993,Michael,0.3761577474249853,-0.09478349584089463
-2000-01-30 00:00:03,1063,Norbert,-0.0835835371670115,-0.41201083719521514
-2000-01-30 00:00:04,980,Frank,-0.9490467028763894,0.40267100111039666
-2000-01-30 00:00:05,1005,Wendy,0.8689685656901209,0.8010652280932398
-2000-01-30 00:00:06,997,Jerry,-0.2788255278659344,0.6808734154152256
-2000-01-30 00:00:07,1021,Michael,0.6675853525074895,0.6401897412431037
-2000-01-30 00:00:08,1022,George,0.29380148877445267,-0.2470959434119291
+2000-01-30 00:00:00,1030,Jerry,0.6747545750249477,-0.5154094952069457
+2000-01-30 00:00:01,1015,Laura,0.9496657076075676,-0.04595454783496922
+2000-01-30 00:00:02,1028,Xavier,-0.4485730715280545,0.39486990269470157
+2000-01-30 00:00:03,965,Xavier,0.70234150376389,0.6776310635880165
+2000-01-30 00:00:04,975,Zelda,0.3829260040396425,0.7361950798656991
+2000-01-30 00:00:05,1002,Norbert,0.7168669960644436,-0.9888563017508094
+2000-01-30 00:00:06,1028,Yvonne,-0.9875187525756082,-0.931000550278213
+2000-01-30 00:00:07,977,Zelda,-0.2399032895561568,0.3727977030588885
+2000-01-30 00:00:08,1044,George,-0.07397696257748199,-0.16166860794269944
 </pre></div></div>
 </div>
 <p>We can read one file with <code class="docutils literal notranslate"><span class="pre">pandas.read_csv</span></code> or many files with <code class="docutils literal notranslate"><span class="pre">dask.dataframe.read_csv</span></code></p>
@@ -905,42 +1031,42 @@ timestamp,id,name,x,y
     <tr>
       <th>0</th>
       <td>2000-01-01 00:00:00</td>
-      <td>986</td>
-      <td>Zelda</td>
-      <td>0.677696</td>
-      <td>0.553407</td>
+      <td>1055</td>
+      <td>Alice</td>
+      <td>-0.880955</td>
+      <td>0.931369</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2000-01-01 00:00:01</td>
-      <td>1001</td>
-      <td>Frank</td>
-      <td>0.429724</td>
-      <td>0.681988</td>
+      <td>943</td>
+      <td>Patricia</td>
+      <td>0.935770</td>
+      <td>-0.396268</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2000-01-01 00:00:02</td>
-      <td>1095</td>
-      <td>Ray</td>
-      <td>-0.887049</td>
-      <td>-0.006675</td>
+      <td>960</td>
+      <td>Frank</td>
+      <td>-0.330179</td>
+      <td>-0.118215</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2000-01-01 00:00:03</td>
-      <td>965</td>
-      <td>Michael</td>
-      <td>0.029346</td>
-      <td>0.651019</td>
+      <td>987</td>
+      <td>Norbert</td>
+      <td>-0.028977</td>
+      <td>0.927821</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2000-01-01 00:00:04</td>
-      <td>1052</td>
-      <td>Bob</td>
-      <td>-0.199152</td>
-      <td>-0.680813</td>
+      <td>1030</td>
+      <td>Ray</td>
+      <td>0.432359</td>
+      <td>0.850008</td>
     </tr>
   </tbody>
 </table>
@@ -1086,42 +1212,42 @@ timestamp,id,name,x,y
     <tr>
       <th>0</th>
       <td>2000-01-01 00:00:00</td>
-      <td>986</td>
-      <td>Zelda</td>
-      <td>0.677696</td>
-      <td>0.553407</td>
+      <td>1055</td>
+      <td>Alice</td>
+      <td>-0.880955</td>
+      <td>0.931369</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2000-01-01 00:00:01</td>
-      <td>1001</td>
-      <td>Frank</td>
-      <td>0.429724</td>
-      <td>0.681988</td>
+      <td>943</td>
+      <td>Patricia</td>
+      <td>0.935770</td>
+      <td>-0.396268</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2000-01-01 00:00:02</td>
-      <td>1095</td>
-      <td>Ray</td>
-      <td>-0.887049</td>
-      <td>-0.006675</td>
+      <td>960</td>
+      <td>Frank</td>
+      <td>-0.330179</td>
+      <td>-0.118215</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2000-01-01 00:00:03</td>
-      <td>965</td>
-      <td>Michael</td>
-      <td>0.029346</td>
-      <td>0.651019</td>
+      <td>987</td>
+      <td>Norbert</td>
+      <td>-0.028977</td>
+      <td>0.927821</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2000-01-01 00:00:04</td>
-      <td>1052</td>
-      <td>Bob</td>
-      <td>-0.199152</td>
-      <td>-0.680813</td>
+      <td>1030</td>
+      <td>Ray</td>
+      <td>0.432359</td>
+      <td>0.850008</td>
     </tr>
   </tbody>
 </table>
@@ -1263,8 +1389,8 @@ timestamp,id,name,x,y
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3.6 s, sys: 385 ms, total: 3.98 s
-Wall time: 4.66 s
+CPU times: user 3.88 s, sys: 489 ms, total: 4.36 s
+Wall time: 4.98 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1274,32 +1400,32 @@ Wall time: 4.66 s
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 name
-Alice      -0.000210
-Bob         0.000505
-Charlie    -0.000979
-Dan        -0.000597
-Edith       0.000579
-Frank       0.001351
-George     -0.003603
-Hannah     -0.000743
-Ingrid     -0.001777
-Jerry      -0.001242
-Kevin      -0.000207
-Laura      -0.000722
-Michael     0.000726
-Norbert     0.001616
-Oliver     -0.002389
-Patricia    0.002002
-Quinn       0.002622
-Ray         0.001092
-Sarah      -0.000845
-Tim        -0.001304
-Ursula      0.000038
-Victor      0.000993
-Wendy      -0.002207
-Xavier      0.001039
-Yvonne      0.000870
-Zelda      -0.001041
+Alice       0.000376
+Bob        -0.002012
+Charlie    -0.002091
+Dan        -0.000019
+Edith      -0.000020
+Frank      -0.001315
+George     -0.001260
+Hannah      0.001640
+Ingrid     -0.001936
+Jerry       0.000249
+Kevin       0.002209
+Laura       0.003978
+Michael     0.002059
+Norbert    -0.000161
+Oliver     -0.000092
+Patricia    0.001976
+Quinn       0.001807
+Ray        -0.001864
+Sarah      -0.001103
+Tim         0.001039
+Ursula      0.000623
+Victor      0.000403
+Wendy      -0.001168
+Xavier      0.005640
+Yvonne      0.000676
+Zelda       0.002132
 Name: x, dtype: float64
 </pre></div></div>
 </div>
@@ -1470,7 +1596,7 @@ part.13.parquet   part.20.parquet  part.28.parquet  part.9.parquet
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.11 s, sys: 129 ms, total: 1.24 s
+CPU times: user 1.18 s, sys: 168 ms, total: 1.35 s
 Wall time: 1.31 s
 </pre></div></div>
 </div>
@@ -1481,32 +1607,32 @@ Wall time: 1.31 s
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 name
-Alice      -0.000210
-Bob         0.000505
-Charlie    -0.000979
-Dan        -0.000597
-Edith       0.000579
-Frank       0.001351
-George     -0.003603
-Hannah     -0.000743
-Ingrid     -0.001777
-Jerry      -0.001242
-Kevin      -0.000207
-Laura      -0.000722
-Michael     0.000726
-Norbert     0.001616
-Oliver     -0.002389
-Patricia    0.002002
-Quinn       0.002622
-Ray         0.001092
-Sarah      -0.000845
-Tim        -0.001304
-Ursula      0.000038
-Victor      0.000993
-Wendy      -0.002207
-Xavier      0.001039
-Yvonne      0.000870
-Zelda      -0.001041
+Alice       0.000376
+Bob        -0.002012
+Charlie    -0.002091
+Dan        -0.000019
+Edith      -0.000020
+Frank      -0.001315
+George     -0.001260
+Hannah      0.001640
+Ingrid     -0.001936
+Jerry       0.000249
+Kevin       0.002209
+Laura       0.003978
+Michael     0.002059
+Norbert    -0.000161
+Oliver     -0.000092
+Patricia    0.001976
+Quinn       0.001807
+Ray        -0.001864
+Sarah      -0.001103
+Tim         0.001039
+Ursula      0.000623
+Victor      0.000403
+Wendy      -0.001168
+Xavier      0.005640
+Yvonne      0.000676
+Zelda       0.002132
 Name: x, dtype: float64
 </pre></div></div>
 </div>
@@ -1530,8 +1656,8 @@ Name: x, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 966 ms, sys: 69.9 ms, total: 1.04 s
-Wall time: 1.19 s
+CPU times: user 1.02 s, sys: 109 ms, total: 1.13 s
+Wall time: 1.42 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1541,32 +1667,32 @@ Wall time: 1.19 s
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 name
-Alice      -0.000210
-Bob         0.000505
-Charlie    -0.000979
-Dan        -0.000597
-Edith       0.000579
-Frank       0.001351
-George     -0.003603
-Hannah     -0.000743
-Ingrid     -0.001777
-Jerry      -0.001242
-Kevin      -0.000207
-Laura      -0.000722
-Michael     0.000726
-Norbert     0.001616
-Oliver     -0.002389
-Patricia    0.002002
-Quinn       0.002622
-Ray         0.001092
-Sarah      -0.000845
-Tim        -0.001304
-Ursula      0.000038
-Victor      0.000993
-Wendy      -0.002207
-Xavier      0.001039
-Yvonne      0.000870
-Zelda      -0.001041
+Alice       0.000376
+Bob        -0.002012
+Charlie    -0.002091
+Dan        -0.000019
+Edith      -0.000020
+Frank      -0.001315
+George     -0.001260
+Hannah      0.001640
+Ingrid     -0.001936
+Jerry       0.000249
+Kevin       0.002209
+Laura       0.003978
+Michael     0.002059
+Norbert    -0.000161
+Oliver     -0.000092
+Patricia    0.001976
+Quinn       0.001807
+Ray        -0.001864
+Sarah      -0.001103
+Tim         0.001039
+Ursula      0.000623
+Victor      0.000403
+Wendy      -0.001168
+Xavier      0.005640
+Yvonne      0.000676
+Zelda       0.002132
 Name: x, dtype: float64
 </pre></div></div>
 </div>
@@ -1589,51 +1715,56 @@ ga('send', 'pageview');
 </script>
 <!-- End Google Analytics -->
 
-           </div>
-           
-          </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="02-groupby.html" class="btn btn-neutral float-right" title="DataFrames: Groupby" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../xarray.html" class="btn btn-neutral float-left" title="Xarray with Dask Arrays" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../xarray.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Xarray with Dask Arrays</p>
+            </div>
+        </a>
     </div>
+     <div id="next">
+        <a class="right-next" href="02-groupby.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">DataFrames: Groupby</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &#169; Copyright 2018, Dask Developers.
-
-    </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
+</div>
+        
         </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Dask Developers<br/>
+        
+            &copy; Copyright 2018, Dask Developers.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
       </div>
-
-    </section>
-
-  </div>
+    </div>
   
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
   
-  
-    
-   
-
-</body>
+  </body>
 </html>
