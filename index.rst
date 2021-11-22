@@ -68,8 +68,10 @@ You can run these examples in a live session here: |Binder|
    :maxdepth: 1
    :caption: User Surveys
 
-   surveys/2019.ipynb
+   surveys/2021.ipynb
    surveys/2020.ipynb
+   surveys/2019.ipynb
+   
 
 .. raw:: html
 
