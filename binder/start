@@ -5,6 +5,7 @@ sed -i -e "s|DASK_DASHBOARD_URL|${JUPYTERHUB_BASE_URL}user/${JUPYTERHUB_USER}/pr
 
 # TODO: Importing of workspace via CLI is currently broken.
 # remove this workaround once https://github.com/jupyterlab/jupyterlab/issues/10805 is resolved
+mkdir -p ~/.jupyter/lab/workspaces/
 mv binder/example.jupyterlab-workspace ~/.jupyter/lab/workspaces/default-37a8.jupyterlab-workspace
 # Import the workspace
 # jupyter lab workspaces import binder/example.jupyterlab-workspace
