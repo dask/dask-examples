@@ -16,20 +16,12 @@ jobs:
         with:
           miniforge-variant: Mambaforge
           miniforge-version: latest
-          auto-activate-base: true
-          activate-environment: ""
+          environment-file: binder/environment-base.yml
+          auto-activate-base: false
 
       - name: Install dependencies
         run: |
-          mamba install conda-lock nbconvert nbformat jupyter_client \
-          ipykernel nbmake pytest
-
-      - name: Update environment file
-        run: |
-          conda-lock -f environment-base.yaml -p linux-64
-          conda-lock render --kind env conda-lock.yml
-          mamba env update -f conda-linux-64.lock.yml
-        working-directory: ./binder
+          mamba install nbconvert nbformat jupyter_client ipykernel nbmake pytest
 
       - name: Execute Notebooks
         run: |
