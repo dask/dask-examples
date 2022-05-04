@@ -44,3 +44,13 @@ guidelines:
     ```
     !pip install X
     ```
+
+Updating the Binder environment
+-------------------------------
+
+1. Install `conda-lock` from `conda-forge` or `pip`
+2. Edit/update dependencies in `binder/environment-base.yml`
+3. Change into the `binder` directory
+4. Run `conda-lock -f environment-base.yml -p linux-64` to generate a new `conda-lock.yml`
+5. Run `conda-lock render --kind env conda-lock.yml` to generate an environment file for `linux-64` platform
+6. Move `conda-linux-64.lock.yml` to `environment.yml` so that Binder picks it up
