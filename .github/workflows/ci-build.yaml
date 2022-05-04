@@ -11,6 +11,16 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v2
 
+      - name: Cache conda
+        uses: actions/cache@v2
+        env:
+          # Increase this value to reset cache if binder/environment.yml has not changed
+          CACHE_NUMBER: 0
+        with:
+          path: ~/conda_pkgs_dir
+          key:
+            ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('binder/environment.yml') }}
+
       - name: Setup Conda Environment
         uses: conda-incubator/setup-miniconda@v2
         with:
@@ -19,6 +29,7 @@ jobs:
           environment-file: binder/environment.yml
           activate-environment: dask-examples
           auto-activate-base: false
+          use-only-tar-bz2: true
 
       - name: Install testing and docs dependencies
         run: |
