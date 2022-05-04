@@ -14,15 +14,16 @@ jobs:
       - name: Setup Conda Environment
         uses: conda-incubator/setup-miniconda@v2
         with:
-          miniconda-version: "latest"
+          miniforge-variant: Mambaforge
+          miniforge-version: latest
           environment-file: binder/environment.yml
           activate-environment: dask-examples
           auto-activate-base: false
 
       - name: Install testing and docs dependencies
         run: |
-          conda install -q pathlib nbconvert nbformat jupyter_client ipykernel
-          pip install nbsphinx dask-sphinx-theme>=2 sphinx
+          mamba install nbconvert nbformat jupyter_client ipykernel nbmake \
+          pytest-xdist nbsphinx dask-sphinx-theme>=2 sphinx
 
       - name: Execute Notebooks
         run: |
