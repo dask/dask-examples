@@ -23,16 +23,14 @@ jobs:
       - name: Install testing and docs dependencies
         run: |
           mamba install nbconvert nbformat jupyter_client ipykernel nbmake \
-          pytest-xdist nbsphinx dask-sphinx-theme>=2 sphinx
+          pytest nbsphinx dask-sphinx-theme>=2 sphinx
 
       - name: Execute Notebooks
         run: |
           pytest \
             -vv \
-            -n=auto \
             --nbmake \
             --overwrite \
-            --forked \
             --ignore machine-learning/torch-prediction.ipynb \
             --ignore applications/json-data-on-the-web.ipynb
 
