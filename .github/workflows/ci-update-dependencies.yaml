@@ -1,4 +1,4 @@
-name: CI
+name: Update Dependencies
 on: [push, pull_request]
 
 concurrency:
@@ -6,7 +6,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
+  update-dependencies:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -18,45 +18,34 @@ jobs:
       - name: Cache conda
         uses: actions/cache@v2
         env:
-          # Increase this value to reset cache if binder/environment.yml has not changed
+          # Increase this value to reset cache if binder/environment-base.yml has not changed
           CACHE_NUMBER: 0
         with:
           path: ~/conda_pkgs_dir
           key:
-            ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('binder/environment.yml') }}
+            ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('binder/environment-base.yml') }}
 
       - name: Setup Conda Environment
         uses: conda-incubator/setup-miniconda@v2
         with:
           miniforge-variant: Mambaforge
           miniforge-version: latest
-          environment-file: binder/environment.yml
-          activate-environment: dask-examples
+          environment-file: binder/environment-base.yml
           auto-activate-base: false
+          activate-environment: dask-examples
           use-only-tar-bz2: true
 
-      - name: Install testing and docs dependencies
+      - name: Install dependencies
         run: |
-          mamba install nbconvert nbformat jupyter_client ipykernel nbmake \
-          pytest nbsphinx dask-sphinx-theme>=2 sphinx
+          mamba install nbconvert nbformat jupyter_client ipykernel nbmake pytest-xdist
 
       - name: Execute Notebooks
         run: |
           pytest \
             -vv \
+            -n=auto \
+            --forked \
             --nbmake \
             --overwrite \
             --ignore machine-learning/torch-prediction.ipynb \
             --ignore applications/json-data-on-the-web.ipynb
-
-      - name: Build
-        run: sphinx-build -M html . _build -v
-
-      - name: Deploy
-        if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request'}}
-        uses: JamesIves/github-pages-deploy-action@3.7.1
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: _build/html
-          CLEAN: true
