@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Handle Evolving Workflows &#8212; Dask Examples  documentation</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -25,22 +25,25 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/style.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Image Processing" href="image-processing.html" />
     <link rel="prev" title="Embarrassingly parallel Workloads" href="embarrassingly-parallel.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -91,7 +94,12 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
@@ -106,7 +114,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <p class="caption" role="heading">
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Basic Examples
  </span>
@@ -147,8 +155,13 @@
    Xarray with Dask Arrays
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resilience.html">
+   Resilience against hardware failures
+  </a>
+ </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Dataframes
  </span>
@@ -164,8 +177,18 @@
    DataFrames: Groupby
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dataframes/03-from-pandas-to-dask.html">
+   Gotcha’s from Pandas to Dask
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dataframes/04-reading-messy-data-into-dataframes.html">
+   DataFrames: Reading in messy data
+  </a>
+ </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Machine Learning
  </span>
@@ -237,7 +260,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Applications
  </span>
@@ -279,11 +302,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="satellite-imagery-geotiff.html">
-   Reading and manipulating tiled GeoTIFF datasets
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="stencils-with-numba.html">
    Stencil Computations with Numba
   </a>
@@ -294,20 +312,25 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   User Surveys
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../surveys/2019.html">
-   2019 Dask User Survey Results
+  <a class="reference internal" href="../surveys/2021.html">
+   2021 Dask User Survey Results
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../surveys/2020.html">
    2020 Dask User Survey Results
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../surveys/2019.html">
+   2019 Dask User Survey Results
   </a>
  </li>
 </ul>
@@ -326,22 +349,22 @@
 
 
           
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
     <div class="topbar container-xl fixed-top">
     <div class="topbar-contents row">
         <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
         <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
             
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
@@ -356,7 +379,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -374,7 +397,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -414,7 +437,50 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Handle Evolving Workflows</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#0:-Sequential-code">
+   0: Sequential code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Start-Dask-Client">
+   Start Dask Client
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#1:-Use-as_completed">
+   1: Use as_completed
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#2:-Use-async/await-to-handle-single-file-processing-locally">
+   2: Use async/await to handle single file processing locally
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#3:-Submit-tasks-from-tasks">
+   3: Submit tasks from tasks
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   
@@ -627,7 +693,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
@@ -708,8 +774,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">filenames</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;file.</span><span class="si">{}</span><span class="s2">.txt&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filenames</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;file.</span><span class="si">{}</span><span class="s2">.txt&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
 
 <span class="n">filenames</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
 </pre></div>
@@ -728,8 +793,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">random</span><span class="o">,</span> <span class="nn">time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span><span class="o">,</span> <span class="nn">time</span>
 
 
 <span class="k">def</span> <span class="nf">parse_file</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
@@ -748,8 +812,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="c1"># This takes around 10-20s</span>
 
@@ -768,8 +831,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 5.19 ms, sys: 193 µs, total: 5.39 ms
-Wall time: 11.8 s
+CPU times: user 7.49 ms, sys: 397 µs, total: 7.88 ms
+Wall time: 12.2 s
 </pre></div></div>
 </div>
 </div>
@@ -780,8 +843,7 @@ Wall time: 11.8 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">n_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 <span class="n">client</span>
@@ -793,25 +855,169 @@ Wall time: 11.8 s
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<table style="border: 2px solid white;">
-<tr>
-<td style="vertical-align: top; border: 0px solid white">
-<h3 style="text-align: left;">Client</h3>
-<ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>inproc://10.1.0.10/6828/1</li>
-  <li><b>Dashboard: </b><a href='http://10.1.0.10:8787/status' target='_blank'>http://10.1.0.10:8787/status</a></li>
-</ul>
-</td>
-<td style="vertical-align: top; border: 0px solid white">
-<h3 style="text-align: left;">Cluster</h3>
-<ul style="text-align: left; list-style:none; margin: 0; padding: 0;">
-  <li><b>Workers: </b>1</li>
-  <li><b>Cores: </b>6</li>
-  <li><b>Memory: </b>7.29 GB</li>
-</ul>
-</td>
+<div>
+    <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
+    <div style="margin-left: 48px;">
+        <h3 style="margin-bottom: 0px;">Client</h3>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-26f021e8-ccbb-11ec-9f9b-00224852fbbc</p>
+        <table style="width: 100%; text-align: left;">
+
+        <tr>
+
+            <td style="text-align: left;"><strong>Connection method:</strong> Cluster object</td>
+            <td style="text-align: left;"><strong>Cluster type:</strong> distributed.LocalCluster</td>
+
+        </tr>
+
+
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Dashboard: </strong> <a href="http://10.1.1.108:8787/status" target="_blank">http://10.1.1.108:8787/status</a>
+                </td>
+                <td style="text-align: left;"></td>
+            </tr>
+
+
+        </table>
+
+
+            <details>
+            <summary style="margin-bottom: 20px;"><h3 style="display: inline;">Cluster Info</h3></summary>
+            <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output">
+    <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;">
+    </div>
+    <div style="margin-left: 48px;">
+        <h3 style="margin-bottom: 0px; margin-top: 0px;">LocalCluster</h3>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">fd8b43ed</p>
+        <table style="width: 100%; text-align: left;">
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Dashboard:</strong> <a href="http://10.1.1.108:8787/status" target="_blank">http://10.1.1.108:8787/status</a>
+                </td>
+                <td style="text-align: left;">
+                    <strong>Workers:</strong> 1
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Total threads:</strong> 6
+                </td>
+                <td style="text-align: left;">
+                    <strong>Total memory:</strong> 6.78 GiB
+                </td>
+            </tr>
+
+            <tr>
+    <td style="text-align: left;"><strong>Status:</strong> running</td>
+    <td style="text-align: left;"><strong>Using processes:</strong> False</td>
 </tr>
-</table></div>
+
+
+        </table>
+
+        <details>
+            <summary style="margin-bottom: 20px;">
+                <h3 style="display: inline;">Scheduler Info</h3>
+            </summary>
+
+            <div style="">
+    <div>
+        <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
+        <div style="margin-left: 48px;">
+            <h3 style="margin-bottom: 0px;">Scheduler</h3>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-04a18d15-32f6-4c26-88f9-b7081e16e17d</p>
+            <table style="width: 100%; text-align: left;">
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Comm:</strong> inproc://10.1.1.108/8091/1
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Workers:</strong> 1
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Dashboard:</strong> <a href="http://10.1.1.108:8787/status" target="_blank">http://10.1.1.108:8787/status</a>
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Total threads:</strong> 6
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Started:</strong> Just now
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Total memory:</strong> 6.78 GiB
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <details style="margin-left: 48px;">
+        <summary style="margin-bottom: 20px;">
+            <h3 style="display: inline;">Workers</h3>
+        </summary>
+
+
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: 0</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> inproc://10.1.1.108/8091/4
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 6
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="http://10.1.1.108:45281/status" target="_blank">http://10.1.1.108:45281/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 6.78 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/applications/dask-worker-space/worker-iws8g9s0
+                        </td>
+                    </tr>
+
+
+
+
+
+                </table>
+            </details>
+            </div>
+        </div>
+
+
+    </details>
+</div>
+
+        </details>
+    </div>
+</div>
+            </details>
+
+
+    </div>
+</div></div>
 </div>
 </div>
 <div class="section" id="1:-Use-as_completed">
@@ -827,8 +1033,7 @@ Wall time: 11.8 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">as_completed</span>
 <span class="kn">import</span> <span class="nn">operator</span>
@@ -857,8 +1062,8 @@ Wall time: 11.8 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 277 ms, sys: 33.6 ms, total: 310 ms
-Wall time: 2.21 s
+CPU times: user 735 ms, sys: 99.5 ms, total: 835 ms
+Wall time: 2.54 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -867,57 +1072,46 @@ Wall time: 2.21 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[1.7512687970939034,
- 1.6673356021151453,
- 1.4889576990722637,
- 1.9786912914772332,
- 1.360271446351737,
- 1.6121362776892811,
- 1.5231517250190452,
- 1.382509099840809,
- 1.4524327279182094,
- 1.5125590667886761,
- 1.0734711579843779,
- 1.3876782918105128,
- 1.318207370990712,
- 1.4450347895300486,
- 1.3360487739000733,
- 1.223552541148377,
- 1.5300858505875923,
- 1.4246171603769913,
- 1.5085273446245466,
- 1.2223676184083971,
- 1.43162604838119,
- 1.2755078225726466,
- 1.6105012972818142,
- 1.9773747259358916,
- 1.6525315524440947,
- 1.0862692629193091,
- 1.5665387408052962,
- 1.3401393075726304,
- 1.4237487815055947,
- 1.5875028192421305,
- 1.3939880329885397,
- 1.6104617096712193,
- 1.5651215233271771,
- 1.4749964322193496,
- 1.2584166851504275,
- 1.6483589956589655,
- 1.5433386360186403,
- 1.9068681797738667,
- 1.4346533249848907,
- 1.0049871694857684,
- 1.2902387544543896,
- 1.8425957121095107,
- 1.8126350907417097,
- 1.4228033620875467,
- 1.9612434872933948,
- 1.160955907487966,
- 1.3060726953021424,
- 1.5870751986124918,
- 1.3811503643892928,
- 1.6687117306888881,
- 1.1319513583891587]
+[1.7771493881832825,
+ 1.5989449971364265,
+ 1.4647083895682038,
+ 1.6093410046198553,
+ 1.7215197541610845,
+ 1.371537378853008,
+ 1.1259393633896875,
+ 1.4044837384146427,
+ 1.6185715738927535,
+ 1.938727835589563,
+ 1.010883847270005,
+ 1.080286602740383,
+ 1.4499446389215644,
+ 1.6298724883784133,
+ 1.898600886036623,
+ 1.7706529281754873,
+ 1.4762112765418591,
+ 1.2163398449345064,
+ 1.0870973883912598,
+ 1.8631217729416747,
+ 1.262690072795965,
+ 1.1023074064623928,
+ 1.0700462809025788,
+ 1.906900467206499,
+ 1.2900829269548968,
+ 1.5426522830898093,
+ 1.877667174634254,
+ 1.5563808940742385,
+ 1.213766749814972,
+ 1.4677778938468935,
+ 1.1763502757188753,
+ 1.6256127154758158,
+ 1.2455567339374478,
+ 1.7786779181994181,
+ 1.892685721001817,
+ 1.406810589561335,
+ 1.8370841259702035,
+ 1.7615483250925195,
+ 1.3004300385775118,
+ 1.7212507601014613]
 </pre></div></div>
 </div>
 </div>
@@ -928,8 +1122,7 @@ Wall time: 2.21 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
 
 <span class="k">async</span> <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Handle the lifecycle of a single file &quot;&quot;&quot;</span>
@@ -946,8 +1139,7 @@ Wall time: 2.21 s
     <span class="n">list_of_list_of_futures</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span> <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">])</span>
     <span class="n">futures</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">list_of_list_of_futures</span><span class="p">,</span> <span class="p">[])</span>
     <span class="k">return</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">futures</span><span class="p">)</span>
-
-</pre></div>
+<br/></pre></div>
 </div>
 </div>
 <p>We now need to run this function in the same event loop as our client is running. If we had started our client asynchronously, then we could have done this:</p>
@@ -961,8 +1153,7 @@ Wall time: 2.21 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">client</span><span class="o">.</span><span class="n">sync</span><span class="p">(</span><span class="n">run_all</span><span class="p">,</span> <span class="n">filenames</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">sync</span><span class="p">(</span><span class="n">run_all</span><span class="p">,</span> <span class="n">filenames</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -972,57 +1163,57 @@ Wall time: 2.21 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[1.4656369418028088,
- 1.9785812053575818,
- 1.5797369403624604,
- 1.1948887736544673,
- 1.4658462784661896,
- 1.8519966268291916,
- 1.4531397250557365,
- 1.7311942678693972,
- 1.6274760946199658,
- 1.9697641687992165,
- 1.6198121361640752,
- 1.917000325594283,
- 1.8157061366895055,
- 1.588933101548861,
- 1.209190563475942,
- 1.0260852119991637,
- 1.1254172467339523,
- 1.1404638710263129,
- 1.9355574218684297,
- 1.6683484585133521,
- 1.2658694704085482,
- 1.0445689480402356,
- 1.4961317919808148,
- 1.868285954858894,
- 1.7683001175521826,
- 1.463930586292761,
- 1.99026364230017,
- 1.583353790621933,
- 1.2603949479104686,
- 1.7525116760557533,
- 1.8499286002831885,
- 1.0318340743421368,
- 1.6976900943324196,
- 1.5925473876173086,
- 1.859946911251538,
- 1.857008524656765,
- 1.1914818636396336,
- 1.5696734373394432,
- 1.4214351773072316,
- 1.3649036978715352,
- 1.0885241725562071,
- 1.5803962616923735,
- 1.5715105984126032,
- 1.2724763066443507,
- 1.2321635834371425,
- 1.7509194855078731,
- 1.6757744586036347,
- 1.5415369730468143,
- 1.9054351820163573,
- 1.5747565354198438,
- 1.1572372243429139]
+[1.92880908291712,
+ 1.6284766969700208,
+ 1.0996483387585392,
+ 1.522910058951456,
+ 1.8075860888581081,
+ 1.7577277034735488,
+ 1.9294192746206402,
+ 1.6557211542164048,
+ 1.405657343160466,
+ 1.4053640770941356,
+ 1.3780534953001853,
+ 1.8254959375520734,
+ 1.5308927123554232,
+ 1.4756635481702163,
+ 1.1478193871544264,
+ 1.25726359248134,
+ 1.1316585014571239,
+ 1.2454243524636661,
+ 1.5504416812423374,
+ 1.9128759501227353,
+ 1.6247462903293104,
+ 1.3691440545526636,
+ 1.3563796906969918,
+ 1.4343138832999753,
+ 1.8895867651229028,
+ 1.6251997666943756,
+ 1.5621195305443392,
+ 1.5148282303335256,
+ 1.6640232955485987,
+ 1.4026359723925323,
+ 1.6859332905381204,
+ 1.1020471884726892,
+ 1.4944413277159827,
+ 1.3196956770241757,
+ 1.211249192816574,
+ 1.4016355688640534,
+ 1.6789515181246717,
+ 1.709230648932564,
+ 1.593250197565848,
+ 1.2312695592440435,
+ 1.2014480514136578,
+ 1.8750102330920844,
+ 1.6813325076832175,
+ 1.369157091782257,
+ 1.9605744771570222,
+ 1.5264081138586518,
+ 1.3016972700695688,
+ 1.5578353474420212,
+ 1.3126566778561903,
+ 1.5522917959071096,
+ 1.4819323141081315]
 </pre></div></div>
 </div>
 </div>
@@ -1033,8 +1224,7 @@ Wall time: 2.21 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">get_client</span><span class="p">,</span> <span class="n">secede</span><span class="p">,</span> <span class="n">rejoin</span>
 
@@ -1058,8 +1248,8 @@ Wall time: 2.21 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 214 ms, sys: 32.5 ms, total: 247 ms
-Wall time: 2.21 s
+CPU times: user 366 ms, sys: 25.6 ms, total: 392 ms
+Wall time: 2.39 s
 </pre></div></div>
 </div>
 </div>
@@ -1071,61 +1261,49 @@ Wall time: 2.21 s
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', 'UA-18218874-5', 'auto');
+ga('create', 'UA-18218894-16', 'auto');
 ga('send', 'pageview');
 </script>
 <!-- End Google Analytics -->
 
               </div>
               
-        
             
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="embarrassingly-parallel.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Embarrassingly parallel Workloads</p>
-            </div>
-        </a>
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="embarrassingly-parallel.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Embarrassingly parallel Workloads</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="image-processing.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Image Processing</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="image-processing.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Image Processing</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Dask Developers<br/>
-        
-            &copy; Copyright 2018, Dask Developers.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Dask Developers<br/>
+    
+        &copy; Copyright 2018, Dask Developers.<br/>
+  </p>
+</footer>
 </main>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

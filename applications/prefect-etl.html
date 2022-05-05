@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ETL Pipelines with Prefect &#8212; Dask Examples  documentation</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -25,22 +25,25 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/style.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Reading and manipulating tiled GeoTIFF datasets" href="satellite-imagery-geotiff.html" />
+    <link rel="next" title="Stencil Computations with Numba" href="stencils-with-numba.html" />
     <link rel="prev" title="Image Processing" href="image-processing.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -91,7 +94,12 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
@@ -106,7 +114,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <p class="caption" role="heading">
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Basic Examples
  </span>
@@ -147,8 +155,13 @@
    Xarray with Dask Arrays
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resilience.html">
+   Resilience against hardware failures
+  </a>
+ </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Dataframes
  </span>
@@ -164,8 +177,18 @@
    DataFrames: Groupby
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dataframes/03-from-pandas-to-dask.html">
+   Gotcha’s from Pandas to Dask
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dataframes/04-reading-messy-data-into-dataframes.html">
+   DataFrames: Reading in messy data
+  </a>
+ </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Machine Learning
  </span>
@@ -237,7 +260,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Applications
  </span>
@@ -279,11 +302,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="satellite-imagery-geotiff.html">
-   Reading and manipulating tiled GeoTIFF datasets
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="stencils-with-numba.html">
    Stencil Computations with Numba
   </a>
@@ -294,20 +312,25 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   User Surveys
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../surveys/2019.html">
-   2019 Dask User Survey Results
+  <a class="reference internal" href="../surveys/2021.html">
+   2021 Dask User Survey Results
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../surveys/2020.html">
    2020 Dask User Survey Results
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../surveys/2019.html">
+   2019 Dask User Survey Results
   </a>
  </li>
 </ul>
@@ -326,22 +349,22 @@
 
 
           
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
     <div class="topbar container-xl fixed-top">
     <div class="topbar-contents row">
         <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
         <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
             
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
@@ -356,7 +379,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -374,7 +397,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -384,11 +407,6 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#Goal">
    Goal
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Setting-up-our-environment">
-   Setting up our environment
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -438,7 +456,69 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>ETL Pipelines with Prefect</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Goal">
+   Goal
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Extract">
+     Extract
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Transform">
+     Transform
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Load">
+     Load
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Build-the-Flow">
+   Build the Flow
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Running-the-Flow-on-Dask">
+     Running the Flow on Dask
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Next-Steps">
+   Next Steps
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Play">
+   Play
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   
@@ -651,7 +731,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
@@ -730,7 +810,6 @@ sends notifications when certain tasks are complete. Prefect was built on top of
 <p><strong>Contents</strong></p>
 <ol class="arabic simple" start="0">
 <li><p><a class="reference external" href="#Goal">Description of goal</a></p></li>
-<li><p><a class="reference external" href="#Setting-up-our-environment">Setting up our environment</a></p></li>
 <li><p>Building our Flow</p>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="#Extract">Extract</a></p></li>
@@ -746,104 +825,15 @@ sends notifications when certain tasks are complete. Prefect was built on top of
 <h2><a class="reference external" href="#Goal">Goal</a><a class="headerlink" href="#Goal" title="Permalink to this headline">¶</a></h2>
 <p>To demonstrate how Prefect and Dask work together, we are going to build and execute a standard “Extract / Transform / Load” (ETL) workflow for processing some basic image data. Most ETL workflows involve a scheduled migration of data from one database to another. In our case, we will be moving data from a file located at a known URL to our local hard disk, converting the individual file into a series of frames, and compiling those frames into a GIF. The URL references a file containing raw
 bytes such as:</p>
-<pre class="literal-block">b&quot;&quot;&quot;aÙw˜≠•∆≠≠ﬁ#!≠≠÷≠•Ω≠úΩ••µú•µîúµ•úΩ••Ω3&amp;µ•Ω! µ≠∆≠•¥4(%µú∑≠≠Œ≠î≠≠≠∆≠îµúî≠úîµE5.≠ú≠≠•Œµµﬁ••∆•≠ŒµµŒúúΩ62&amp;)1&amp;623µ•∆Ωµ÷úî•ßjxΩΩÁú•Ωµ≠Œ••≠ú•≠Ω≠∆≠µÁâUV≠µ‹ΩµŒîî•NC5µ≠Ÿôãô•î•µ•µîú≠#VHCuhl≠≠ΩôchâRIoc]™≠Á≠î•™ú»öis•ú•f7,íYfL9?îî≠≠•÷∑ò™gWVxGEΩ≠–))1qB5µ≠Ω81R,´tÜñWV</pre>
-<p>!
-HCDBB5;5?”””</p>
-<p>The steps of our workflow will be as follows: - Extract: pull the data file from a URL (speicified by a <code class="docutils literal notranslate"><span class="pre">Parameter</span></code>) to disk - Transform: split the file into multiple files, each corresponding to a single frame - Load: Store each frame individually, and compile the frames together into a GIF</p>
+<pre class="literal-block">b&quot;&quot;&quot;aÙw˜≠•∆≠≠ﬁ#!≠≠÷≠•Ω≠úΩ••µú•µîúµ•úΩ••Ω3&amp;µ•Ω! µ≠∆≠•¥4(%µú∑≠≠Œ≠î≠≠≠∆≠îµúî≠úîµE5.≠ú≠≠•Œµµﬁ••∆•≠ŒµµŒúúΩ62&amp;)1&amp;623µ•∆Ωµ÷úî•ßjxΩΩÁú•Ωµ≠Œ••≠ú•≠Ω≠∆≠µÁâUV≠µ‹ΩµŒîî•NC5µ≠Ÿôãô•î•µ•µîú≠#VHCuhl≠≠ΩôchâRIoc]™≠Á≠î•™ú»öis•ú•f7,íYfL9?îî≠≠•÷∑ò™gWVxGEΩ≠–))1qB5µ≠Ω81R,´tÜñWV!HCDBB5;5?&quot;&quot;&quot;</pre>
+<p>The steps of our workflow will be as follows:</p>
+<ol class="arabic simple">
+<li><p>Extract: pull the data file from a URL (specified by a <code class="docutils literal notranslate"><span class="pre">Parameter</span></code>) to disk</p></li>
+<li><p>Transform: split the file into multiple files, each corresponding to a single frame</p></li>
+<li><p>Load: Store each frame individually, and compile the frames together into a GIF</p></li>
+</ol>
 <p>Once we have built our Flow, we can execute it with different values for the <code class="docutils literal notranslate"><span class="pre">Parameter</span></code> or even run it on a nightly schedule.</p>
 <p><strong>NOTE:</strong> If we planned on executing this Flow in a truly distributed environment, writing the images to the local filesystem would <em>not</em> be appropriate. We would instead use an external datastore such as Google Cloud Storage, or a proper database.</p>
-</div>
-<div class="section" id="Setting-up-our-environment">
-<h2><a class="reference external" href="#Setting-up-our-environment">Setting up our environment</a><a class="headerlink" href="#Setting-up-our-environment" title="Permalink to this headline">¶</a></h2>
-<p>Before proceeding, we need to install both the <code class="docutils literal notranslate"><span class="pre">`prefect</span></code> &lt;<a class="reference external" href="https://pypi.org/project/prefect/">https://pypi.org/project/prefect/</a>&gt;`__ and <code class="docutils literal notranslate"><span class="pre">`imageio</span></code> &lt;<a class="reference external" href="https://pypi.org/project/imageio/">https://pypi.org/project/imageio/</a>&gt;`__ packages.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>pip install imageio prefect<span class="o">[</span>viz<span class="o">]</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Requirement already satisfied: imageio in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (2.9.0)
-Collecting prefect[viz]
-  Downloading prefect-0.15.6-py3-none-any.whl (568 kB)
-     |████████████████████████████████| 568 kB 20.3 MB/s
-Requirement already satisfied: pillow in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from imageio) (8.3.2)
-Requirement already satisfied: numpy in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from imageio) (1.21.2)
-Collecting python-slugify&gt;=1.2.6
-  Downloading python_slugify-5.0.2-py2.py3-none-any.whl (6.7 kB)
-Requirement already satisfied: pytz&gt;=2018.7 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from prefect[viz]) (2021.3)
-Requirement already satisfied: dask&gt;=2.17.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from prefect[viz]) (2.20.0)
-Collecting croniter&lt;2.0,&gt;=0.3.24
-  Downloading croniter-1.0.15-py2.py3-none-any.whl (16 kB)
-Requirement already satisfied: msgpack&gt;=0.6.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from prefect[viz]) (1.0.2)
-Collecting requests&lt;2.26,&gt;=2.20
-  Downloading requests-2.25.1-py2.py3-none-any.whl (61 kB)
-     |████████████████████████████████| 61 kB 17.0 MB/s
-Requirement already satisfied: urllib3&gt;=1.24.3 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from prefect[viz]) (1.26.7)
-Requirement already satisfied: distributed&gt;=2.17.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from prefect[viz]) (2.30.1)
-Collecting pendulum&gt;=2.0.4
-  Downloading pendulum-2.1.2-cp38-cp38-manylinux1_x86_64.whl (155 kB)
-     |████████████████████████████████| 155 kB 36.1 MB/s
-Collecting tabulate&gt;=0.8.0
-  Downloading tabulate-0.8.9-py3-none-any.whl (25 kB)
-Requirement already satisfied: toml&gt;=0.9.4 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from prefect[viz]) (0.10.2)
-Requirement already satisfied: cloudpickle&gt;=1.3.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from prefect[viz]) (2.0.0)
-Collecting mypy-extensions&gt;=0.4.0
-  Downloading mypy_extensions-0.4.3-py2.py3-none-any.whl (4.5 kB)
-Collecting python-box&gt;=5.1.0
-  Downloading python_box-5.4.1-py3-none-any.whl (21 kB)
-Collecting marshmallow-oneofschema&gt;=2.0.0b2
-  Downloading marshmallow_oneofschema-3.0.1-py2.py3-none-any.whl (5.8 kB)
-Collecting marshmallow&gt;=3.0.0b19
-  Downloading marshmallow-3.13.0-py2.py3-none-any.whl (47 kB)
-     |████████████████████████████████| 47 kB 13.9 MB/s
-Requirement already satisfied: pyyaml&gt;=3.13 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from prefect[viz]) (5.4.1)
-Requirement already satisfied: click&lt;8.0,&gt;=7.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from prefect[viz]) (7.1.2)
-Collecting docker&gt;=3.4.1
-  Downloading docker-5.0.3-py2.py3-none-any.whl (146 kB)
-     |████████████████████████████████| 146 kB 74.7 MB/s
-Requirement already satisfied: python-dateutil&gt;=2.7.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from prefect[viz]) (2.8.2)
-Requirement already satisfied: graphviz&gt;=0.8.3 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from prefect[viz]) (0.17)
-Requirement already satisfied: sortedcontainers!=2.0.0,!=2.0.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from distributed&gt;=2.17.0-&gt;prefect[viz]) (2.4.0)
-Requirement already satisfied: tblib&gt;=1.6.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from distributed&gt;=2.17.0-&gt;prefect[viz]) (1.7.0)
-Requirement already satisfied: setuptools in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from distributed&gt;=2.17.0-&gt;prefect[viz]) (58.2.0)
-Requirement already satisfied: toolz&gt;=0.8.2 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from distributed&gt;=2.17.0-&gt;prefect[viz]) (0.11.1)
-Requirement already satisfied: zict&gt;=0.1.3 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from distributed&gt;=2.17.0-&gt;prefect[viz]) (2.0.0)
-Requirement already satisfied: tornado&gt;=6.0.3 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from distributed&gt;=2.17.0-&gt;prefect[viz]) (6.1)
-Requirement already satisfied: psutil&gt;=5.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from distributed&gt;=2.17.0-&gt;prefect[viz]) (5.8.0)
-Requirement already satisfied: websocket-client&gt;=0.32.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from docker&gt;=3.4.1-&gt;prefect[viz]) (0.57.0)
-Collecting pytzdata&gt;=2020.1
-  Downloading pytzdata-2020.1-py2.py3-none-any.whl (489 kB)
-     |████████████████████████████████| 489 kB 60.8 MB/s
-Requirement already satisfied: six&gt;=1.5 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from python-dateutil&gt;=2.7.0-&gt;prefect[viz]) (1.16.0)
-Collecting text-unidecode&gt;=1.3
-  Downloading text_unidecode-1.3-py2.py3-none-any.whl (78 kB)
-     |████████████████████████████████| 78 kB 15.7 MB/s
-Collecting idna&lt;3,&gt;=2.5
-  Downloading idna-2.10-py2.py3-none-any.whl (58 kB)
-     |████████████████████████████████| 58 kB 14.0 MB/s
-Requirement already satisfied: chardet&lt;5,&gt;=3.0.2 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from requests&lt;2.26,&gt;=2.20-&gt;prefect[viz]) (4.0.0)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from requests&lt;2.26,&gt;=2.20-&gt;prefect[viz]) (2021.10.8)
-Requirement already satisfied: heapdict in /usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages (from zict&gt;=0.1.3-&gt;distributed&gt;=2.17.0-&gt;prefect[viz]) (1.0.1)
-Installing collected packages: idna, text-unidecode, requests, pytzdata, marshmallow, tabulate, python-slugify, python-box, pendulum, mypy-extensions, marshmallow-oneofschema, docker, croniter, prefect
-  Attempting uninstall: idna
-    Found existing installation: idna 3.1
-    Uninstalling idna-3.1:
-      Successfully uninstalled idna-3.1
-  Attempting uninstall: requests
-    Found existing installation: requests 2.26.0
-    Uninstalling requests-2.26.0:
-      Successfully uninstalled requests-2.26.0
-Successfully installed croniter-1.0.15 docker-5.0.3 idna-2.10 marshmallow-3.13.0 marshmallow-oneofschema-3.0.1 mypy-extensions-0.4.3 pendulum-2.1.2 prefect-0.15.6 python-box-5.4.1 python-slugify-5.0.2 pytzdata-2020.1 requests-2.25.1 tabulate-0.8.9 text-unidecode-1.3
-</pre></div></div>
-</div>
 <div class="section" id="Extract">
 <h3><a class="reference external" href="#Extract">Extract</a><a class="headerlink" href="#Extract" title="Permalink to this headline">¶</a></h3>
 <p>First, we will define our tasks for <em>extracting</em> the image data file from a given URL and saving it to a given file location. To do so, we will utilize two methods for creating Prefect Tasks: - the <code class="docutils literal notranslate"><span class="pre">task</span></code> decorator for converting any Python function into a task - a pre-written, configurable Task from the <a class="reference external" href="https://docs.prefect.io/guide/task_library/">Prefect “Task Library”</a> which helps us abstract some standard boilerplate</p>
@@ -851,11 +841,10 @@ Successfully installed croniter-1.0.15 docker-5.0.3 idna-2.10 marshmallow-3.13.0
 concern ourselves with temporary intermittent connection issues.</p>
 <p>Right now we are simply defining our individual tasks - we won’t actually set up our dependency structure until we create the full Flow.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">datetime</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">import</span> <span class="nn">prefect</span>
@@ -887,11 +876,10 @@ concern ourselves with temporary intermittent connection issues.</p>
 <p>Next up, we need to define our task which loads the image data file and splits it into multiple frames. In this case, each frame is delimited by 4 newlines. Note that, in the event the previous two tasks are “Skipped”, the default behavior in Prefect is to skip downstream dependencies as well. However, as with most things in Prefect, this behavior is customizable. In this case, we want this task to run regardless of whether the upstreams skipped or not, so we set the <code class="docutils literal notranslate"><span class="pre">skip_on_upstream_skip</span></code>
 flag to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nd">@task</span><span class="p">(</span><span class="n">skip_on_upstream_skip</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@task</span><span class="p">(</span><span class="n">skip_on_upstream_skip</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">load_and_split</span><span class="p">(</span><span class="n">fname</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Loads image data file at `fname` and splits it into</span>
@@ -912,11 +900,10 @@ flag to <code class="docutils literal notranslate"><span class="pre">False</span
 on, we look in <code class="docutils literal notranslate"><span class="pre">`prefect.context</span></code> &lt;<a class="reference external" href="https://docs.prefect.io/guide/core_concepts/execution.html#context">https://docs.prefect.io/guide/core_concepts/execution.html#context</a>&gt;`__.</p>
 <p>Additionally, we can “reduce” over a mapped task - in this case, we will take the collection of mapped tasks and pass them into our <code class="docutils literal notranslate"><span class="pre">combine_to_gif</span></code> task for creating and saving our GIF.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nd">@task</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@task</span>
 <span class="k">def</span> <span class="nf">write_to_disk</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Given a single image represented as bytes, writes the image</span>
@@ -931,11 +918,10 @@ on, we look in <code class="docutils literal notranslate"><span class="pre">`pre
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">imageio</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">imageio</span>
 <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
 
 
@@ -957,11 +943,10 @@ on, we look in <code class="docutils literal notranslate"><span class="pre">`pre
 <p>Finally, we need to put our tasks together into a Prefect “Flow”. Similar to Dask’s <code class="docutils literal notranslate"><span class="pre">delayed</span></code> interface, all computation is deferred and no Task code will be executed in this step. Because Prefect maintains a stricter contract between tasks and additionally needs the ability to run in non-Dask execution environments, the mechanism for deferring execution is independent of Dask.</p>
 <p>In addition to the tasks we have already defined, we introduce two “Parameters” for specifying the URL and local file location of our data. At runtime, we can optionally override these tasks to return different values.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">prefect</span> <span class="kn">import</span> <span class="n">Parameter</span><span class="p">,</span> <span class="n">Flow</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">prefect</span> <span class="kn">import</span> <span class="n">Parameter</span><span class="p">,</span> <span class="n">Flow</span>
 
 
 <span class="n">DATA_URL</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;DATA_URL&quot;</span><span class="p">,</span>
@@ -990,22 +975,21 @@ on, we look in <code class="docutils literal notranslate"><span class="pre">`pre
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/applications_prefect-etl_12_0.svg" src="../_images/applications_prefect-etl_12_0.svg" /></div>
+<img alt="../_images/applications_prefect-etl_10_0.svg" src="../_images/applications_prefect-etl_10_0.svg" /></div>
 </div>
 <div class="section" id="Running-the-Flow-on-Dask">
 <h3><a class="reference external" href="#Running-the-Flow-on-Dask">Running the Flow on Dask</a><a class="headerlink" href="#Running-the-Flow-on-Dask" title="Permalink to this headline">¶</a></h3>
 <p>Now we have built our Flow, independently of Dask. We could execute this Flow sequentially, Task after Task, but there is inherent parallelism in our mapping of the images to files that we want to exploit. Luckily, Dask makes this easy to achieve.</p>
 <p>First, we will start a local Dask cluster. Then, we will run our Flow against Prefect’s <code class="docutils literal notranslate"><span class="pre">DaskExecutor</span></code>, which will submit each Task to our Dask cluster and use Dask’s distributed scheduler for determining when and where each Task should run. Essentially, we built a Directed Acylic Graph (DAG) and are simply “submitting” that DAG to Dask for handling its execution in a distributed way.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># start our Dask cluster</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># start our Dask cluster</span>
 <span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
 
 
@@ -1013,7 +997,7 @@ on, we look in <code class="docutils literal notranslate"><span class="pre">`pre
 
 <span class="c1"># point Prefect&#39;s DaskExecutor to our Dask cluster</span>
 
-<span class="kn">from</span> <span class="nn">prefect.engine.executors</span> <span class="kn">import</span> <span class="n">DaskExecutor</span>
+<span class="kn">from</span> <span class="nn">prefect.executors</span> <span class="kn">import</span> <span class="n">DaskExecutor</span>
 
 <span class="n">executor</span> <span class="o">=</span> <span class="n">DaskExecutor</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="n">client</span><span class="o">.</span><span class="n">scheduler</span><span class="o">.</span><span class="n">address</span><span class="p">)</span>
 <span class="n">flow</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">executor</span><span class="o">=</span><span class="n">executor</span><span class="p">)</span>
@@ -1023,21 +1007,10 @@ on, we look in <code class="docutils literal notranslate"><span class="pre">`pre
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/node.py:151: UserWarning: Port 8787 is already in use.
-Perhaps you already have a cluster running?
-Hosting the HTTP server on port 42103 instead
-  warnings.warn(
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[2021-10-14 16:48:25+0000] INFO - prefect.FlowRunner | Beginning Flow run for &#39;Image ETL&#39;
-[2021-10-14 16:48:25+0000] INFO - prefect.DaskExecutor | Connecting to an existing Dask cluster at tcp://127.0.0.1:43371
+[2022-05-05 21:35:44+0000] INFO - prefect.FlowRunner | Beginning Flow run for &#39;Image ETL&#39;
+[2022-05-05 21:35:44+0000] INFO - prefect.DaskExecutor | Connecting to an existing Dask cluster at tcp://127.0.0.1:40853
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -1045,9 +1018,9 @@ Hosting the HTTP server on port 42103 instead
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-&lt;ipython-input-7-2d65d26da62c&gt;:11: UserWarning: prefect.engine.executors.DaskExecutor has been moved to `prefect.executors.DaskExecutor`, please update your imports
-  executor = DaskExecutor(address=client.scheduler.address)
-/usr/share/miniconda3/envs/dask-examples/lib/python3.8/site-packages/distributed/worker.py:3373: UserWarning: Large object of size 2.03 MB detected in task graph:
+/usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages/distributed/scheduler.py:4949: UserWarning: Scheduler already contains a plugin with name worker-status; overwriting.
+  warnings.warn(
+/usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages/distributed/worker.py:4606: UserWarning: Large object of size 1.94 MiB detected in task graph:
   {&#39;task&#39;: &lt;Task: write_to_disk&gt;, &#39;state&#39;: None, &#39;up ... _parent&#39;: True}
 Consider scattering large objects ahead of time
 with client.scatter to reduce scheduler burden and
@@ -1065,11 +1038,20 @@ keep data on workers
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[2021-10-14 16:48:31+0000] INFO - prefect.FlowRunner | Flow run SUCCESS: all reference tasks succeeded
+[2022-05-05 21:35:48+0000] INFO - prefect.FlowRunner | Flow run SUCCESS: all reference tasks succeeded
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages/prefect/executors/dask.py:329: RuntimeWarning: coroutine &#39;rpc.close_rpc&#39; was never awaited
+  scheduler_comm.close_rpc()
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1093,31 +1075,23 @@ keep data on workers
 <h2><a class="reference external" href="#Play">Play</a><a class="headerlink" href="#Play" title="Permalink to this headline">¶</a></h2>
 <p>Finally, let’s watch our creation!</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 
-<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;img src=&quot;./clip.gif&quot; alt=&quot;Rick Daskley&quot;&gt;&#39;</span><span class="p">)</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;clip.gif&quot;</span><span class="p">,</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Rick Daskley&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="output_area rendered_html docutils container">
-<img src="./clip.gif" alt="Rick Daskley"></div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;IPython.core.display.Image object&gt;
+</pre></div></div>
 </div>
 </div>
 </div>
@@ -1128,61 +1102,49 @@ keep data on workers
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', 'UA-18218874-5', 'auto');
+ga('create', 'UA-18218894-16', 'auto');
 ga('send', 'pageview');
 </script>
 <!-- End Google Analytics -->
 
               </div>
               
-        
             
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="image-processing.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Image Processing</p>
-            </div>
-        </a>
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="image-processing.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Image Processing</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="stencils-with-numba.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Stencil Computations with Numba</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="satellite-imagery-geotiff.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Reading and manipulating tiled GeoTIFF datasets</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Dask Developers<br/>
-        
-            &copy; Copyright 2018, Dask Developers.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Dask Developers<br/>
+    
+        &copy; Copyright 2018, Dask Developers.<br/>
+  </p>
+</footer>
 </main>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>
