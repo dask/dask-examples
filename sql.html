@@ -1,0 +1,2161 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Operating on Dask Dataframes with SQL &#8212; Dask Examples  documentation</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/style.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Xarray with Dask Arrays" href="xarray.html" />
+    <link rel="prev" title="Dask for Machine Learning" href="machine-learning.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+
+<nav class="dask-nav container-fluid">
+  <ul>
+    <li class="logo">
+      <a href="https://docs.dask.org/">
+        <img
+          class="caption"
+          src="_static/images/dask-horizontal-white.svg"
+        />
+      </a>
+    </li>
+
+    <li>
+      <a href="https://docs.dask.org/">Dask</a>
+    </li>
+
+    <li>
+      <a href="https://distributed.dask.org/">Distributed</a>
+    </li>
+
+    <li>
+      <a href="https://ml.dask.org/">Dask ML</a>
+    </li>
+
+    <li>
+      <a href="https://examples.dask.org/">Examples</a>
+    </li>
+
+    <li>
+      <a href="https://docs.dask.org/en/latest/ecosystem.html">Ecosystem</a>
+    </li>
+
+    <li>
+      <a href="https://docs.dask.org/en/latest/support.html">Community</a>
+    </li>
+  </ul>
+</nav>
+
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Dask Examples  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Basic Examples
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="array.html">
+   Dask Arrays
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bag.html">
+   Dask Bags
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dataframe.html">
+   Dask DataFrames
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="delayed.html">
+   Custom Workloads with Dask Delayed
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="futures.html">
+   Custom Workloads with Futures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="machine-learning.html">
+   Dask for Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Operating on Dask Dataframes with SQL
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="xarray.html">
+   Xarray with Dask Arrays
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="resilience.html">
+   Resilience against hardware failures
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dataframes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="dataframes/01-data-access.html">
+   DataFrames: Read and Write Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dataframes/02-groupby.html">
+   DataFrames: Groupby
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dataframes/03-from-pandas-to-dask.html">
+   Gotcha’s from Pandas to Dask
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dataframes/04-reading-messy-data-into-dataframes.html">
+   DataFrames: Reading in messy data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="machine-learning/blockwise-ensemble.html">
+   Blockwise Ensemble Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="machine-learning/scale-scikit-learn.html">
+   Scale Scikit-Learn for Small Data Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="machine-learning/parallel-prediction.html">
+   Score and Predict Large Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="machine-learning/torch-prediction.html">
+   Batch Prediction with PyTorch
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="machine-learning/training-on-large-datasets.html">
+   Train Models on Large Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="machine-learning/incremental.html">
+   Incrementally Train Large Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="machine-learning/text-vectorization.html">
+   Text Vectorization Pipeline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="machine-learning/hyperparam-opt.html">
+   Hyperparameter optimization with Dask
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="machine-learning/xgboost.html">
+   Scale XGBoost
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="machine-learning/voting-classifier.html">
+   Use Voting Classifiers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="machine-learning/tpot.html">
+   Automate Machine Learning with TPOT
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="machine-learning/glm.html">
+   Generalized Linear Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="machine-learning/svd.html">
+   Singular Value Decomposition
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Applications
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="applications/json-data-on-the-web.html">
+   Analyze web-hosted JSON data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="applications/async-await.html">
+   Async/Await and Non-Blocking Execution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="applications/async-web-server.html">
+   Asynchronous Computation: Web Servers + Dask
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="applications/embarrassingly-parallel.html">
+   Embarrassingly parallel Workloads
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="applications/evolving-workflows.html">
+   Handle Evolving Workflows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="applications/image-processing.html">
+   Image Processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="applications/prefect-etl.html">
+   ETL Pipelines with Prefect
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="applications/stencils-with-numba.html">
+   Stencil Computations with Numba
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="applications/forecasting-with-prophet.html">
+   Time Series Forecasting
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  User Surveys
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="surveys/2021.html">
+   2021 Dask User Survey Results
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="surveys/2020.html">
+   2020 Dask User Survey Results
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="surveys/2019.html">
+   2019 Dask User Survey Results
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/sql.ipynb.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Set-up-a-Dask-cluster">
+   Set up a Dask cluster
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Create-a-context">
+   Create a context
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Load-and-register-data">
+   Load and register data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Query-the-data">
+   Query the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Custom-functions-and-aggregations">
+   Custom functions and aggregations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Column-wise-functions">
+     Column-wise functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Row-wise-functions">
+     Row-wise functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Aggregations">
+     Aggregations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Machine-learning-in-SQL">
+   Machine learning in SQL
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Operating on Dask Dataframes with SQL</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Set-up-a-Dask-cluster">
+   Set up a Dask cluster
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Create-a-context">
+   Create a context
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Load-and-register-data">
+   Load and register data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Query-the-data">
+   Query the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Custom-functions-and-aggregations">
+   Custom functions and aggregations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Column-wise-functions">
+     Column-wise functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Row-wise-functions">
+     Row-wise functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Aggregations">
+     Aggregations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Machine-learning-in-SQL">
+   Machine learning in SQL
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="admonition-live-notebook admonition">
+<p class="admonition-title">Live Notebook</p>
+<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/sql.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/sql.ipynb"><img alt="Binder" src="https://static.mybinder.org/badge_logo.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-examples/blob/main/sql.ipynb">on Github</a>.</p>
+</div>
+<div class="section" id="Operating-on-Dask-Dataframes-with-SQL">
+<h1>Operating on Dask Dataframes with SQL<a class="headerlink" href="#Operating-on-Dask-Dataframes-with-SQL" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://dask-sql.readthedocs.io/en/stable/">Dask-SQL</a> is an open source project and Python package leveraging <a class="reference external" href="https://calcite.apache.org/">Apache Calcite</a> to provide a SQL frontend for <a class="reference external" href="https://dask.org/">Dask</a> dataframe operations, allowing SQL users to take advantage of Dask’s distributed capabilities without requiring an extensive knowledge of the dataframe API.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> pip install dask-sql
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Collecting dask-sql
+  Downloading dask_sql-2022.4.1-py3-none-any.whl (21.1 MB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">21.1/21.1 MB</span> <span class="ansi-red-fg">73.9 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Collecting jpype1&gt;=1.0.2
+  Downloading JPype1-1.3.0-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl (449 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">449.3/449.3 KB</span> <span class="ansi-red-fg">67.1 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Collecting uvicorn&gt;=0.11.3
+  Downloading uvicorn-0.17.6-py3-none-any.whl (53 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">53.6/53.6 KB</span> <span class="ansi-red-fg">14.2 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Requirement already satisfied: tabulate in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask-sql) (0.8.9)
+Requirement already satisfied: pygments in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask-sql) (2.12.0)
+Requirement already satisfied: nest-asyncio in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask-sql) (1.5.5)
+Requirement already satisfied: prompt-toolkit in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask-sql) (3.0.29)
+Collecting dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0
+  Downloading dask-2022.4.0-py3-none-any.whl (1.1 MB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">1.1/1.1 MB</span> <span class="ansi-red-fg">89.5 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Collecting fastapi&gt;=0.61.1
+  Downloading fastapi-0.78.0-py3-none-any.whl (54 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">54.6/54.6 KB</span> <span class="ansi-red-fg">11.6 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Requirement already satisfied: pandas&gt;=1.0.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask-sql) (1.4.2)
+Collecting tzlocal&gt;=2.1
+  Downloading tzlocal-4.2-py3-none-any.whl (19 kB)
+Requirement already satisfied: packaging&gt;=20.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (21.3)
+Requirement already satisfied: pyyaml&gt;=5.3.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (6.0)
+Requirement already satisfied: toolz&gt;=0.8.2 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (0.11.2)
+Requirement already satisfied: partd&gt;=0.3.10 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (1.2.0)
+Requirement already satisfied: fsspec&gt;=0.6.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (2022.3.0)
+Requirement already satisfied: cloudpickle&gt;=1.1.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (2.0.0)
+Requirement already satisfied: numpy&gt;=1.18 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (1.22.3)
+Collecting distributed==2022.04.0
+  Downloading distributed-2022.4.0-py3-none-any.whl (853 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">853.8/853.8 KB</span> <span class="ansi-red-fg">93.4 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Requirement already satisfied: sortedcontainers!=2.0.0,!=2.0.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.04.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (2.4.0)
+Requirement already satisfied: click&gt;=6.6 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.04.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (8.1.3)
+Requirement already satisfied: jinja2 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.04.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (3.1.1)
+Requirement already satisfied: zict&gt;=0.1.3 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.04.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (2.2.0)
+Requirement already satisfied: msgpack&gt;=0.6.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.04.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (1.0.3)
+Requirement already satisfied: urllib3 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.04.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (1.26.9)
+Requirement already satisfied: psutil&gt;=5.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.04.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (5.9.0)
+Requirement already satisfied: tblib&gt;=1.6.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.04.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (1.7.0)
+Requirement already satisfied: tornado&gt;=6.0.3 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.04.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (6.1)
+Collecting starlette==0.19.1
+  Downloading starlette-0.19.1-py3-none-any.whl (63 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">63.3/63.3 KB</span> <span class="ansi-red-fg">19.8 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Requirement already satisfied: pydantic!=1.7,!=1.7.1,!=1.7.2,!=1.7.3,!=1.8,!=1.8.1,&lt;2.0.0,&gt;=1.6.2 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from fastapi&gt;=0.61.1-&gt;dask-sql) (1.9.0)
+Requirement already satisfied: typing-extensions&gt;=3.10.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from starlette==0.19.1-&gt;fastapi&gt;=0.61.1-&gt;dask-sql) (4.2.0)
+Requirement already satisfied: anyio&lt;5,&gt;=3.4.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from starlette==0.19.1-&gt;fastapi&gt;=0.61.1-&gt;dask-sql) (3.5.0)
+Requirement already satisfied: python-dateutil&gt;=2.8.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from pandas&gt;=1.0.0-&gt;dask-sql) (2.8.2)
+Requirement already satisfied: pytz&gt;=2020.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from pandas&gt;=1.0.0-&gt;dask-sql) (2022.1)
+Collecting pytz-deprecation-shim
+  Downloading pytz_deprecation_shim-0.1.0.post0-py2.py3-none-any.whl (15 kB)
+Collecting asgiref&gt;=3.4.0
+  Downloading asgiref-3.5.1-py3-none-any.whl (22 kB)
+Collecting h11&gt;=0.8
+  Downloading h11-0.13.0-py3-none-any.whl (58 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">58.2/58.2 KB</span> <span class="ansi-red-fg">19.1 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Requirement already satisfied: wcwidth in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from prompt-toolkit-&gt;dask-sql) (0.2.5)
+Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from packaging&gt;=20.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (3.0.8)
+Requirement already satisfied: locket in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from partd&gt;=0.3.10-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (1.0.0)
+Requirement already satisfied: six&gt;=1.5 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from python-dateutil&gt;=2.8.1-&gt;pandas&gt;=1.0.0-&gt;dask-sql) (1.16.0)
+Collecting tzdata
+  Downloading tzdata-2022.1-py2.py3-none-any.whl (339 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">339.5/339.5 KB</span> <span class="ansi-red-fg">63.2 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Requirement already satisfied: sniffio&gt;=1.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from anyio&lt;5,&gt;=3.4.0-&gt;starlette==0.19.1-&gt;fastapi&gt;=0.61.1-&gt;dask-sql) (1.2.0)
+Requirement already satisfied: idna&gt;=2.8 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from anyio&lt;5,&gt;=3.4.0-&gt;starlette==0.19.1-&gt;fastapi&gt;=0.61.1-&gt;dask-sql) (3.3)
+Requirement already satisfied: heapdict in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from zict&gt;=0.1.3-&gt;distributed==2022.04.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (1.0.1)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from jinja2-&gt;distributed==2022.04.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (2.1.1)
+Installing collected packages: jpype1, tzdata, h11, asgiref, uvicorn, starlette, pytz-deprecation-shim, dask, tzlocal, fastapi, distributed, dask-sql
+  Attempting uninstall: dask
+    Found existing installation: dask 2022.5.0
+    Uninstalling dask-2022.5.0:
+      Successfully uninstalled dask-2022.5.0
+  Attempting uninstall: distributed
+    Found existing installation: distributed 2022.5.0
+    Uninstalling distributed-2022.5.0:
+      Successfully uninstalled distributed-2022.5.0
+<span class="ansi-red-fg">ERROR: pip&#39;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+dask-xgboost 0.1.11 requires xgboost&lt;=0.90, but you have xgboost 1.5.1 which is incompatible.</span><span class="ansi-red-fg">
+</span>Successfully installed asgiref-3.5.1 dask-2022.4.0 dask-sql-2022.4.1 distributed-2022.4.0 fastapi-0.78.0 h11-0.13.0 jpype1-1.3.0 pytz-deprecation-shim-0.1.0.post0 starlette-0.19.1 tzdata-2022.1 tzlocal-4.2 uvicorn-0.17.6
+</pre></div></div>
+</div>
+<div class="section" id="Set-up-a-Dask-cluster">
+<h2>Set up a Dask cluster<a class="headerlink" href="#Set-up-a-Dask-cluster" title="Permalink to this headline">¶</a></h2>
+<p>Setting up a Dask <a class="reference external" href="https://docs.dask.org/en/latest/deploying.html">Cluster</a> is optional, but can dramatically expand our options for distributed computation by giving us access to Dask workers on GPUs, remote machines, common cloud providers, and more). Additionally, connecting our cluster to a Dask <a class="reference external" href="https://distributed.dask.org/en/stable/client.html">Client</a> will give us access to a dashboard, which can be used to monitor the progress of active computations and diagnose issues.</p>
+<p>For this notebook, we will create a local cluster and connect it to a client. Once the client has been created, a link will appear to its associated dashboard, which can be viewed throughout the following computations.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">n_workers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">memory_limit</span><span class="o">=</span><span class="s1">&#39;1GB&#39;</span><span class="p">)</span>
+<span class="n">client</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+    <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
+    <div style="margin-left: 48px;">
+        <h3 style="margin-bottom: 0px;">Client</h3>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-2665b829-d51f-11ec-9cc2-000d3aeabb7a</p>
+        <table style="width: 100%; text-align: left;">
+
+        <tr>
+
+            <td style="text-align: left;"><strong>Connection method:</strong> Cluster object</td>
+            <td style="text-align: left;"><strong>Cluster type:</strong> distributed.LocalCluster</td>
+
+        </tr>
+
+
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Dashboard: </strong> <a href="http://127.0.0.1:8787/status" target="_blank">http://127.0.0.1:8787/status</a>
+                </td>
+                <td style="text-align: left;"></td>
+            </tr>
+
+
+        </table>
+
+
+            <details>
+            <summary style="margin-bottom: 20px;"><h3 style="display: inline;">Cluster Info</h3></summary>
+            <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output">
+    <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;">
+    </div>
+    <div style="margin-left: 48px;">
+        <h3 style="margin-bottom: 0px; margin-top: 0px;">LocalCluster</h3>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">97e33643</p>
+        <table style="width: 100%; text-align: left;">
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Dashboard:</strong> <a href="http://127.0.0.1:8787/status" target="_blank">http://127.0.0.1:8787/status</a>
+                </td>
+                <td style="text-align: left;">
+                    <strong>Workers:</strong> 2
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Total threads:</strong> 4
+                </td>
+                <td style="text-align: left;">
+                    <strong>Total memory:</strong> 1.86 GiB
+                </td>
+            </tr>
+
+            <tr>
+    <td style="text-align: left;"><strong>Status:</strong> running</td>
+    <td style="text-align: left;"><strong>Using processes:</strong> True</td>
+</tr>
+
+
+        </table>
+
+        <details>
+            <summary style="margin-bottom: 20px;">
+                <h3 style="display: inline;">Scheduler Info</h3>
+            </summary>
+
+            <div style="">
+    <div>
+        <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
+        <div style="margin-left: 48px;">
+            <h3 style="margin-bottom: 0px;">Scheduler</h3>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-fa0df5cb-483f-45c7-b97d-acee39c81521</p>
+            <table style="width: 100%; text-align: left;">
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Comm:</strong> tcp://127.0.0.1:36477
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Workers:</strong> 2
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Dashboard:</strong> <a href="http://127.0.0.1:8787/status" target="_blank">http://127.0.0.1:8787/status</a>
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Total threads:</strong> 4
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Started:</strong> Just now
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Total memory:</strong> 1.86 GiB
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <details style="margin-left: 48px;">
+        <summary style="margin-bottom: 20px;">
+            <h3 style="display: inline;">Workers</h3>
+        </summary>
+
+
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: 0</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://127.0.0.1:43777
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 2
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:43733/status" target="_blank">http://127.0.0.1:43733/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 0.93 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> tcp://127.0.0.1:43811
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/dask-worker-space/worker-xfam5l1q
+                        </td>
+                    </tr>
+
+
+
+
+
+                </table>
+            </details>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: 1</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://127.0.0.1:35861
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 2
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:41423/status" target="_blank">http://127.0.0.1:41423/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 0.93 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> tcp://127.0.0.1:37255
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/dask-worker-space/worker-wv0crsp6
+                        </td>
+                    </tr>
+
+
+
+
+
+                </table>
+            </details>
+            </div>
+        </div>
+
+
+    </details>
+</div>
+
+        </details>
+    </div>
+</div>
+            </details>
+
+
+    </div>
+</div></div>
+</div>
+</div>
+<div class="section" id="Create-a-context">
+<h2>Create a context<a class="headerlink" href="#Create-a-context" title="Permalink to this headline">¶</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">dask_sql.Context</span></code> is the Python equivalent to a SQL database, serving as an interface to register all tables and functions used in SQL queries, as well as execute the queries themselves. In typical usage, a single <code class="docutils literal notranslate"><span class="pre">Context</span></code> is created and used for the duration of a Python script or notebook.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask_sql</span> <span class="kn">import</span> <span class="n">Context</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">Context</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages/dask_sql/java.py:39: UserWarning: You are running in a conda environment, but the JAVA_PATH is not using it. If this is by mistake, set $JAVA_HOME to /usr/share/miniconda3/envs/dask-examples, instead of /usr/lib/jvm/temurin-11-jdk-amd64.
+  warnings.warn(
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Load-and-register-data">
+<h2>Load and register data<a class="headerlink" href="#Load-and-register-data" title="Permalink to this headline">¶</a></h2>
+<p>Once a <code class="docutils literal notranslate"><span class="pre">Context</span></code> has been created, there are a variety of ways to register tables in it. The simplest way to do this is through the <code class="docutils literal notranslate"><span class="pre">create_table</span></code> method, which accepts a variety of input types which Dask-SQL then uses to infer the table creation method. Supported input types include:</p>
+<ul class="simple">
+<li><p>Dask / <a class="reference external" href="https://pandas.pydata.org/">Pandas</a>-like dataframes</p></li>
+<li><p>String locations of local or remote datasets</p></li>
+<li><p><a class="reference external" href="https://github.com/apache/hive">Apache Hive</a> tables served through <a class="reference external" href="https://github.com/dropbox/PyHive">PyHive</a> or <a class="reference external" href="https://www.sqlalchemy.org/">SQLAlchemy</a></p></li>
+</ul>
+<p>Input type can also be specified explicitly by providing a <code class="docutils literal notranslate"><span class="pre">format</span></code>. When being registered, tables can optionally be persisted into memory by passing <code class="docutils literal notranslate"><span class="pre">persist=True</span></code>, which can greatly speed up repeated queries on the same table at the cost of loading the entire table into memory. For more information, see <a class="reference external" href="https://dask-sql.readthedocs.io/en/latest/pages/data_input.html">Data Loading and Input</a>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">dask.datasets</span> <span class="kn">import</span> <span class="n">timeseries</span>
+
+<span class="c1"># register and persist a dask table</span>
+<span class="n">ddf</span> <span class="o">=</span> <span class="n">timeseries</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">create_table</span><span class="p">(</span><span class="s2">&quot;dask&quot;</span><span class="p">,</span> <span class="n">ddf</span><span class="p">,</span> <span class="n">persist</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># register a pandas table (implicitly converted to a dask table)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
+<span class="n">c</span><span class="o">.</span><span class="n">create_table</span><span class="p">(</span><span class="s2">&quot;pandas&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># register a table from local storage; kwargs are passed on to the underlying table creation method</span>
+<span class="n">c</span><span class="o">.</span><span class="n">create_table</span><span class="p">(</span>
+    <span class="s2">&quot;local&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;surveys/data/2021-user-survey-results.csv.gz&quot;</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;csv&quot;</span><span class="p">,</span>
+    <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Timestamp&#39;</span><span class="p">],</span>
+    <span class="n">blocksize</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Tables can also be registered through SQL <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">WITH</span></code> or <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">AS</span></code> statements, using the <code class="docutils literal notranslate"><span class="pre">sql</span></code> method.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># replace our table from local storage</span>
+<span class="n">c</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    CREATE OR REPLACE TABLE</span>
+<span class="s2">        &quot;local&quot;</span>
+<span class="s2">    WITH (</span>
+<span class="s2">        location = &#39;surveys/data/2021-user-survey-results.csv.gz&#39;,</span>
+<span class="s2">        format = &#39;csv&#39;,</span>
+<span class="s2">        parse_dates = ARRAY [ &#39;Timestamp&#39; ]</span>
+<span class="s2">    )</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1"># create a new table from a SQL query</span>
+<span class="n">c</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    CREATE TABLE filtered AS (</span>
+<span class="s2">        SELECT id, name FROM dask WHERE name = &#39;Zelda&#39;</span>
+<span class="s2">    )</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages/dask/dataframe/io/csv.py:529: UserWarning: Warning gzip compression does not support breaking apart files
+Please ensure that each individual file can fit in memory and
+use the keyword ``blocksize=None to remove this message``
+Setting ``blocksize=None``
+  warn(
+</pre></div></div>
+</div>
+<p>All registered tables can be listed with a <code class="docutils literal notranslate"><span class="pre">SHOW</span> <span class="pre">TABLES</span></code> statement.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SHOW TABLES FROM root&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Table</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>dask</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>pandas</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>local</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>filtered</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Dask-SQL currently offers experimental GPU support, powered by the <a class="reference external" href="https://rapids.ai/">RAPIDS</a> suite of open source GPU data science libraries. Input support is currently limited to Dask / Pandas-like dataframes and data in local/remote storage, and though most queries run without issue, users should expect some bugs or undefined behavior. To register a table and mark it for use on GPUs, <code class="docutils literal notranslate"><span class="pre">gpu=True</span></code> can be passed to a standard <code class="docutils literal notranslate"><span class="pre">create_table</span></code> call, or its equivalent <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">WITH</span></code>
+query (note that this requires <a class="reference external" href="https://github.com/rapidsai/cudf">cuDF and Dask-cuDF</a>).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># register a dask table for use on GPUs (not possible in this binder)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">create_table</span><span class="p">(</span><span class="s2">&quot;gpu_dask&quot;</span><span class="p">,</span> <span class="n">ddf</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># load in a table from disk using GPU-accelerated IO operations</span>
+<span class="n">c</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    CREATE TABLE</span>
+<span class="s2">        &quot;gpu_local&quot;</span>
+<span class="s2">    WITH (</span>
+<span class="s2">        location = &#39;surveys/data/2021-user-survey-results.csv.gz&#39;,</span>
+<span class="s2">        format = &#39;csv&#39;,</span>
+<span class="s2">        parse_dates = ARRAY [ &#39;Timestamp&#39; ],</span>
+<span class="s2">        gpu = True</span>
+<span class="s2">    )</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Query-the-data">
+<h2>Query the data<a class="headerlink" href="#Query-the-data" title="Permalink to this headline">¶</a></h2>
+<p>When the <code class="docutils literal notranslate"><span class="pre">sql</span></code> method is called, Dask-SQL hands the query off to Apache Calcite to convert into a relational algebra - essentially a list of SQL tasks that must be executed in order to get a result. The relational algebra of any query can be viewed directly using the <code class="docutils literal notranslate"><span class="pre">explain</span></code> method.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="s2">&quot;SELECT AVG(x) FROM dask&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+DaskProject(EXPR$0=[/(CAST(CASE(=($1, 0), null:DOUBLE, $0)):DECIMAL(19, 15), $1)]): rowcount = 10.0, cumulative cost = {122.5 rows, 111.0 cpu, 0.0 io}, id = 83
+  DaskAggregate(group=[{}], agg#0=[$SUM0($2)], agg#1=[COUNT($2)]): rowcount = 10.0, cumulative cost = {112.5 rows, 101.0 cpu, 0.0 io}, id = 82
+    DaskTableScan(table=[[root, dask]]): rowcount = 100.0, cumulative cost = {100.0 rows, 101.0 cpu, 0.0 io}, id = 77
+
+</pre></div></div>
+</div>
+<p>From here, this relational algebra is then converted into a Dask computation graph, which ultimately returns (or in the case of <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span></code> statements, implicitly assigns) a Dask dataframe.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT AVG(x) FROM dask&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div><strong>Dask DataFrame Structure:</strong></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AVG("dask"."x")</th>
+    </tr>
+    <tr>
+      <th>npartitions=1</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div>Dask Name: rename, 107 tasks</div></div>
+</div>
+<p>Dask dataframes are lazy, meaning that at the time of their creation, none of their dependent tasks have been executed yet. To actually execute these tasks and get a result, we must call <code class="docutils literal notranslate"><span class="pre">compute</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT AVG(x) FROM dask&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AVG("dask"."x")</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.000096</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Looking at the dashboard, we can see that executing this query has triggered some Dask computations.</p>
+<p>Because the return value of a query is a Dask dataframe, it is also possible to do follow-up operations on it using Dask’s dataframe API. This can be useful if we want to perform some complex operations on a dataframe that are not possible through Dask, then follow up with some simpler operations that can easily be expressed through the dataframe API.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># perform a multi-column sort that isn&#39;t possible in Dask</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    SELECT * FROM dask ORDER BY name ASC, id DESC, x ASC</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1"># now do some follow groupby aggregations</span>
+<span class="n">res</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="s2">&quot;sum&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="s2">&quot;mean&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+    <tr>
+      <th>name</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alice</th>
+      <td>-126.901544</td>
+      <td>0.002343</td>
+    </tr>
+    <tr>
+      <th>Bob</th>
+      <td>-148.697088</td>
+      <td>-0.000854</td>
+    </tr>
+    <tr>
+      <th>Charlie</th>
+      <td>-84.438431</td>
+      <td>0.003573</td>
+    </tr>
+    <tr>
+      <th>Dan</th>
+      <td>206.268861</td>
+      <td>-0.000042</td>
+    </tr>
+    <tr>
+      <th>Edith</th>
+      <td>-338.942474</td>
+      <td>0.000508</td>
+    </tr>
+    <tr>
+      <th>Frank</th>
+      <td>264.023073</td>
+      <td>0.000965</td>
+    </tr>
+    <tr>
+      <th>George</th>
+      <td>-72.635286</td>
+      <td>-0.001355</td>
+    </tr>
+    <tr>
+      <th>Hannah</th>
+      <td>-4.955517</td>
+      <td>-0.000256</td>
+    </tr>
+    <tr>
+      <th>Ingrid</th>
+      <td>216.440282</td>
+      <td>0.003007</td>
+    </tr>
+    <tr>
+      <th>Jerry</th>
+      <td>14.913010</td>
+      <td>-0.001199</td>
+    </tr>
+    <tr>
+      <th>Kevin</th>
+      <td>39.719152</td>
+      <td>0.000796</td>
+    </tr>
+    <tr>
+      <th>Laura</th>
+      <td>246.381112</td>
+      <td>-0.004650</td>
+    </tr>
+    <tr>
+      <th>Michael</th>
+      <td>45.366581</td>
+      <td>0.001397</td>
+    </tr>
+    <tr>
+      <th>Norbert</th>
+      <td>33.946661</td>
+      <td>-0.001858</td>
+    </tr>
+    <tr>
+      <th>Oliver</th>
+      <td>-97.341229</td>
+      <td>0.000493</td>
+    </tr>
+    <tr>
+      <th>Patricia</th>
+      <td>70.142671</td>
+      <td>0.002008</td>
+    </tr>
+    <tr>
+      <th>Quinn</th>
+      <td>105.064826</td>
+      <td>0.001732</td>
+    </tr>
+    <tr>
+      <th>Ray</th>
+      <td>48.659645</td>
+      <td>0.001491</td>
+    </tr>
+    <tr>
+      <th>Sarah</th>
+      <td>168.742155</td>
+      <td>0.003262</td>
+    </tr>
+    <tr>
+      <th>Tim</th>
+      <td>-95.620623</td>
+      <td>0.001629</td>
+    </tr>
+    <tr>
+      <th>Ursula</th>
+      <td>-199.854477</td>
+      <td>-0.001135</td>
+    </tr>
+    <tr>
+      <th>Victor</th>
+      <td>-323.568537</td>
+      <td>0.000466</td>
+    </tr>
+    <tr>
+      <th>Wendy</th>
+      <td>-32.297447</td>
+      <td>0.000604</td>
+    </tr>
+    <tr>
+      <th>Xavier</th>
+      <td>-26.968621</td>
+      <td>-0.000708</td>
+    </tr>
+    <tr>
+      <th>Yvonne</th>
+      <td>35.804035</td>
+      <td>0.000937</td>
+    </tr>
+    <tr>
+      <th>Zelda</th>
+      <td>-191.463949</td>
+      <td>-0.002564</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="Custom-functions-and-aggregations">
+<h2>Custom functions and aggregations<a class="headerlink" href="#Custom-functions-and-aggregations" title="Permalink to this headline">¶</a></h2>
+<p>When standard SQL functionality is insufficient, it is possible to register custom functions for use in queries. These functions can be classified as one of the following:</p>
+<ul class="simple">
+<li><p>Column-wise functions</p></li>
+<li><p>Row-wise functions</p></li>
+<li><p>Aggregations</p></li>
+</ul>
+<div class="section" id="Column-wise-functions">
+<h3>Column-wise functions<a class="headerlink" href="#Column-wise-functions" title="Permalink to this headline">¶</a></h3>
+<p>Column-wise functions can take columns or literal values as input and return a column of an identical length. Column-wise functions can be registered in a <code class="docutils literal notranslate"><span class="pre">Context</span></code> using the <code class="docutils literal notranslate"><span class="pre">register_function</span></code> method.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="n">c</span><span class="o">.</span><span class="n">register_function</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="p">[(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)],</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Function registration requires the following inputs:</p>
+<ul class="simple">
+<li><p>A callable function</p></li>
+<li><p>A name for the function to be referred to in queries</p></li>
+<li><p>A list of tuples, representing the input variables and their respective types, which can be either Pandas or <a class="reference external" href="https://numpy.org/">NumPy</a> types</p></li>
+<li><p>A type for the output column</p></li>
+</ul>
+<p>Once a function has been registered, it can be called like any other standard SQL function.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT F(x) FROM dask&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>"F"("dask"."x")</th>
+    </tr>
+    <tr>
+      <th>timestamp</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2000-01-01 00:00:00</th>
+      <td>0.004087</td>
+    </tr>
+    <tr>
+      <th>2000-01-01 00:00:01</th>
+      <td>0.510230</td>
+    </tr>
+    <tr>
+      <th>2000-01-01 00:00:02</th>
+      <td>0.639748</td>
+    </tr>
+    <tr>
+      <th>2000-01-01 00:00:03</th>
+      <td>0.364859</td>
+    </tr>
+    <tr>
+      <th>2000-01-01 00:00:04</th>
+      <td>0.152235</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2000-01-30 23:59:55</th>
+      <td>0.057291</td>
+    </tr>
+    <tr>
+      <th>2000-01-30 23:59:56</th>
+      <td>0.027372</td>
+    </tr>
+    <tr>
+      <th>2000-01-30 23:59:57</th>
+      <td>0.402214</td>
+    </tr>
+    <tr>
+      <th>2000-01-30 23:59:58</th>
+      <td>0.286287</td>
+    </tr>
+    <tr>
+      <th>2000-01-30 23:59:59</th>
+      <td>0.011594</td>
+    </tr>
+  </tbody>
+</table>
+<p>2592000 rows × 1 columns</p>
+</div></div>
+</div>
+</div>
+<div class="section" id="Row-wise-functions">
+<h3>Row-wise functions<a class="headerlink" href="#Row-wise-functions" title="Permalink to this headline">¶</a></h3>
+<p>In some cases, it may be easier to write a custom function that processes a dict-like <code class="docutils literal notranslate"><span class="pre">row</span></code> object - otherwise known as a row-wise function. These functions can also be registered using <code class="docutils literal notranslate"><span class="pre">register_function</span></code> by passing <code class="docutils literal notranslate"><span class="pre">row_udf=True</span></code>, and used in the same manner as a column-wise function.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span>
+
+<span class="n">c</span><span class="o">.</span><span class="n">register_function</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="p">[(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)],</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="n">row_udf</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">c</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT G(x, y) FROM dask&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>"G"("dask"."x", "dask"."y")</th>
+    </tr>
+    <tr>
+      <th>timestamp</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2000-01-01 00:00:00</th>
+      <td>0.064310</td>
+    </tr>
+    <tr>
+      <th>2000-01-01 00:00:01</th>
+      <td>1.252378</td>
+    </tr>
+    <tr>
+      <th>2000-01-01 00:00:02</th>
+      <td>0.107375</td>
+    </tr>
+    <tr>
+      <th>2000-01-01 00:00:03</th>
+      <td>0.292158</td>
+    </tr>
+    <tr>
+      <th>2000-01-01 00:00:04</th>
+      <td>0.496964</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2000-01-30 23:59:55</th>
+      <td>0.328037</td>
+    </tr>
+    <tr>
+      <th>2000-01-30 23:59:56</th>
+      <td>0.355005</td>
+    </tr>
+    <tr>
+      <th>2000-01-30 23:59:57</th>
+      <td>1.191999</td>
+    </tr>
+    <tr>
+      <th>2000-01-30 23:59:58</th>
+      <td>0.140174</td>
+    </tr>
+    <tr>
+      <th>2000-01-30 23:59:59</th>
+      <td>0.563679</td>
+    </tr>
+  </tbody>
+</table>
+<p>2592000 rows × 1 columns</p>
+</div></div>
+</div>
+<p>Note that unlike column-wise functions, which are called directly using specified columns and literals as input, row-wise functions are called using <code class="docutils literal notranslate"><span class="pre">apply</span></code>, which can have unpredictable performance depending on the underlying dataframe library (e.g. Pandas, cuDF) and the function itself.</p>
+</div>
+<div class="section" id="Aggregations">
+<h3>Aggregations<a class="headerlink" href="#Aggregations" title="Permalink to this headline">¶</a></h3>
+<p>Aggregations take a single column as input and return a single value - thus, they can only be used to reduce the results of a <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> query. Aggregations can be registered using the <code class="docutils literal notranslate"><span class="pre">register_aggregation</span></code> method, which is functionally similar to <code class="docutils literal notranslate"><span class="pre">register_function</span></code> but takes a Dask <a class="reference external" href="https://docs.dask.org/en/latest/dataframe-groupby.html#aggregate">Aggregation</a> as input instead of a callable function.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dask.dataframe</span> <span class="k">as</span> <span class="nn">dd</span>
+
+<span class="n">my_sum</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">Aggregation</span><span class="p">(</span><span class="s2">&quot;my_sum&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="n">c</span><span class="o">.</span><span class="n">register_aggregation</span><span class="p">(</span><span class="n">my_sum</span><span class="p">,</span> <span class="s2">&quot;my_sum&quot;</span><span class="p">,</span> <span class="p">[(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)],</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+
+<span class="n">c</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT MY_SUM(x) FROM dask&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>"MY_SUM"("dask"."x")</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-248.213159</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Machine-learning-in-SQL">
+<h2>Machine learning in SQL<a class="headerlink" href="#Machine-learning-in-SQL" title="Permalink to this headline">¶</a></h2>
+<p>Dask-SQL has support for both model training and prediction, enabling machine learning workflows with a flexible combination of both Python and SQL. A model can be registered in a <code class="docutils literal notranslate"><span class="pre">Context</span></code> either through the <code class="docutils literal notranslate"><span class="pre">register_model</span></code> method or a <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">MODEL</span></code> statement.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask_ml.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingClassifier</span>
+
+<span class="c1"># create a dask-ml model and train it</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT x, y, x * y &gt; 0 AS target FROM dask LIMIT 50&quot;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">]],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">])</span>
+
+<span class="c1"># register this model in the context</span>
+<span class="n">c</span><span class="o">.</span><span class="n">register_model</span><span class="p">(</span><span class="s2">&quot;python_model&quot;</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">training_columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">])</span>
+
+<span class="c1"># create and train a model directly from SQL</span>
+<span class="n">c</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    CREATE MODEL sql_model WITH (</span>
+<span class="s2">        model_class = &#39;sklearn.ensemble.GradientBoostingClassifier&#39;,</span>
+<span class="s2">        wrap_predict = True,</span>
+<span class="s2">        target_column = &#39;target&#39;</span>
+<span class="s2">    ) AS (</span>
+<span class="s2">        SELECT x, y, x * y &gt; 0 AS target</span>
+<span class="s2">        FROM dask</span>
+<span class="s2">        LIMIT 50</span>
+<span class="s2">    )</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Registered models must follow the <a class="reference external" href="https://scikit-learn.org/stable/index.html">scikit-learn</a> interface by implementing a <code class="docutils literal notranslate"><span class="pre">predict</span></code> method. As with tables, all registered models can be listed with a <code class="docutils literal notranslate"><span class="pre">SHOW</span> <span class="pre">MODEL</span></code> statement.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SHOW MODELS&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Models</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>python_model</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>sql_model</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>From here, the models can be used to make predictions using the <code class="docutils literal notranslate"><span class="pre">PREDICT</span></code> keyword as part of a <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> query.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    SELECT * FROM PREDICT (</span>
+<span class="s2">        MODEL sql_model,</span>
+<span class="s2">        SELECT x, y, x * y &gt; 0 AS actual FROM dask</span>
+<span class="s2">        OFFSET 50</span>
+<span class="s2">    )</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>y</th>
+      <th>actual</th>
+      <th>target</th>
+    </tr>
+    <tr>
+      <th>timestamp</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2000-01-01 00:00:50</th>
+      <td>-0.503773</td>
+      <td>-0.373286</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2000-01-01 00:00:51</th>
+      <td>0.682471</td>
+      <td>-0.839509</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2000-01-01 00:00:52</th>
+      <td>0.310398</td>
+      <td>0.878838</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2000-01-01 00:00:53</th>
+      <td>-0.845907</td>
+      <td>0.227596</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2000-01-01 00:00:54</th>
+      <td>-0.137284</td>
+      <td>0.763969</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2000-01-30 23:59:55</th>
+      <td>0.239356</td>
+      <td>-0.088681</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2000-01-30 23:59:56</th>
+      <td>-0.165445</td>
+      <td>0.189560</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2000-01-30 23:59:57</th>
+      <td>0.634204</td>
+      <td>-0.557796</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2000-01-30 23:59:58</th>
+      <td>-0.535058</td>
+      <td>-0.394884</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2000-01-30 23:59:59</th>
+      <td>0.107675</td>
+      <td>0.671354</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+<p>2591950 rows × 4 columns</p>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-18218894-16', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="machine-learning.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Dask for Machine Learning</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="xarray.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Xarray with Dask Arrays</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Dask Developers<br/>
+    
+        &copy; Copyright 2018, Dask Developers.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

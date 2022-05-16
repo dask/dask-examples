@@ -151,6 +151,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../sql.html">
+   Operating on Dask Dataframes with SQL
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../xarray.html">
    Xarray with Dask Arrays
   </a>
@@ -1009,8 +1014,8 @@ on, we look in <code class="docutils literal notranslate"><span class="pre">`pre
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[2022-05-11 21:20:10+0000] INFO - prefect.FlowRunner | Beginning Flow run for &#39;Image ETL&#39;
-[2022-05-11 21:20:10+0000] INFO - prefect.DaskExecutor | Connecting to an existing Dask cluster at tcp://127.0.0.1:42233
+[2022-05-16 13:54:08+0000] INFO - prefect.FlowRunner | Beginning Flow run for &#39;Image ETL&#39;
+[2022-05-16 13:54:08+0000] INFO - prefect.DaskExecutor | Connecting to an existing Dask cluster at tcp://127.0.0.1:43805
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -1018,9 +1023,9 @@ on, we look in <code class="docutils literal notranslate"><span class="pre">`pre
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages/distributed/scheduler.py:4949: UserWarning: Scheduler already contains a plugin with name worker-status; overwriting.
+/usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages/distributed/scheduler.py:5782: UserWarning: Scheduler already contains a plugin with name worker-status; overwriting.
   warnings.warn(
-/usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages/distributed/worker.py:4606: UserWarning: Large object of size 1.94 MiB detected in task graph:
+/usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages/distributed/worker.py:4291: UserWarning: Large object of size 1.94 MiB detected in task graph:
   {&#39;task&#39;: &lt;Task: write_to_disk&gt;, &#39;state&#39;: None, &#39;up ... _parent&#39;: True}
 Consider scattering large objects ahead of time
 with client.scatter to reduce scheduler burden and
@@ -1038,16 +1043,7 @@ keep data on workers
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[2022-05-11 21:20:13+0000] INFO - prefect.FlowRunner | Flow run SUCCESS: all reference tasks succeeded
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages/prefect/executors/dask.py:329: RuntimeWarning: coroutine &#39;rpc.close_rpc&#39; was never awaited
-  scheduler_comm.close_rpc()
+[2022-05-16 13:54:11+0000] INFO - prefect.FlowRunner | Flow run SUCCESS: all reference tasks succeeded
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">

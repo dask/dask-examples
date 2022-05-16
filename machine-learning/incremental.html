@@ -151,6 +151,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../sql.html">
+   Operating on Dask Dataframes with SQL
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../xarray.html">
    Xarray with Dask Arrays
   </a>
@@ -834,7 +839,7 @@ div.rendered_html tbody tr:hover {
 <li><p>training, predicting, and scoring on this wrapped estimator</p></li>
 </ul>
 <p>Although this example uses Scikit-Learn’s SGDClassifer, the <code class="docutils literal notranslate"><span class="pre">Incremental</span></code> meta-estimator will work for any class that implements <code class="docutils literal notranslate"><span class="pre">partial_fit</span></code> and the <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html">scikit-learn base estimator API</a>.</p>
-<p><img alt="2827a840642c44368fe63404fbebe1b4" src="http://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" /> <img alt="8c864436d1e7423f85f74708cfadefee" class="no-scaled-link" src="http://dask.readthedocs.io/en/latest/_images/dask_horizontal.svg" width="200px" /></p>
+<p><img alt="78ba004dcfa74127b85a6f4e65891039" src="http://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" /> <img alt="f44c0f730eb546d8bc8a6325ee61f872" class="no-scaled-link" src="http://dask.readthedocs.io/en/latest/_images/dask_horizontal.svg" width="200px" /></p>
 <div class="section" id="Setup-Dask">
 <h2>Setup Dask<a class="headerlink" href="#Setup-Dask" title="Permalink to this headline">¶</a></h2>
 <p>We first start a Dask client in order to get access to the Dask dashboard, which will provide progress and performance metrics.</p>
@@ -858,7 +863,7 @@ div.rendered_html tbody tr:hover {
     <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px;">Client</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-c73e91a4-d170-11ec-a346-000d3a9cbfb9</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-5ae9526a-d520-11ec-a36a-000d3aeabb7a</p>
         <table style="width: 100%; text-align: left;">
 
         <tr>
@@ -887,7 +892,7 @@ div.rendered_html tbody tr:hover {
     </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px; margin-top: 0px;">LocalCluster</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">8ba80bb9</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">2fa685f9</p>
         <table style="width: 100%; text-align: left;">
             <tr>
                 <td style="text-align: left;">
@@ -924,11 +929,11 @@ div.rendered_html tbody tr:hover {
         <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
         <div style="margin-left: 48px;">
             <h3 style="margin-bottom: 0px;">Scheduler</h3>
-            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-b89a68b3-4510-4f08-9c69-310ea01e832d</p>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-2a0a8af5-0445-4b41-b2bf-f564cee6616a</p>
             <table style="width: 100%; text-align: left;">
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Comm:</strong> tcp://127.0.0.1:39513
+                        <strong>Comm:</strong> tcp://127.0.0.1:37241
                     </td>
                     <td style="text-align: left;">
                         <strong>Workers:</strong> 4
@@ -970,7 +975,7 @@ div.rendered_html tbody tr:hover {
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> tcp://127.0.0.1:40649
+                            <strong>Comm: </strong> tcp://127.0.0.1:36151
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 1
@@ -978,7 +983,7 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:33121/status" target="_blank">http://127.0.0.1:33121/status</a>
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:42853/status" target="_blank">http://127.0.0.1:42853/status</a>
                         </td>
                         <td style="text-align: left;">
                             <strong>Memory: </strong> 1.70 GiB
@@ -986,13 +991,13 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Nanny: </strong> tcp://127.0.0.1:43241
+                            <strong>Nanny: </strong> tcp://127.0.0.1:38191
                         </td>
                         <td style="text-align: left;"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/machine-learning/dask-worker-space/worker-kg9fkb27
+                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/machine-learning/dask-worker-space/worker-mnxdbgqw
                         </td>
                     </tr>
 
@@ -1015,7 +1020,7 @@ div.rendered_html tbody tr:hover {
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> tcp://127.0.0.1:38209
+                            <strong>Comm: </strong> tcp://127.0.0.1:46259
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 1
@@ -1023,7 +1028,7 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:43443/status" target="_blank">http://127.0.0.1:43443/status</a>
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:45189/status" target="_blank">http://127.0.0.1:45189/status</a>
                         </td>
                         <td style="text-align: left;">
                             <strong>Memory: </strong> 1.70 GiB
@@ -1031,13 +1036,13 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Nanny: </strong> tcp://127.0.0.1:34803
+                            <strong>Nanny: </strong> tcp://127.0.0.1:34131
                         </td>
                         <td style="text-align: left;"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/machine-learning/dask-worker-space/worker-b_koss3y
+                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/machine-learning/dask-worker-space/worker-xqp8qh6t
                         </td>
                     </tr>
 
@@ -1060,7 +1065,7 @@ div.rendered_html tbody tr:hover {
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> tcp://127.0.0.1:36605
+                            <strong>Comm: </strong> tcp://127.0.0.1:37543
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 1
@@ -1068,7 +1073,7 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:36049/status" target="_blank">http://127.0.0.1:36049/status</a>
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:44321/status" target="_blank">http://127.0.0.1:44321/status</a>
                         </td>
                         <td style="text-align: left;">
                             <strong>Memory: </strong> 1.70 GiB
@@ -1076,13 +1081,13 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Nanny: </strong> tcp://127.0.0.1:34601
+                            <strong>Nanny: </strong> tcp://127.0.0.1:37037
                         </td>
                         <td style="text-align: left;"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/machine-learning/dask-worker-space/worker-99mzyj37
+                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/machine-learning/dask-worker-space/worker-9tg62w8c
                         </td>
                     </tr>
 
@@ -1105,7 +1110,7 @@ div.rendered_html tbody tr:hover {
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> tcp://127.0.0.1:41841
+                            <strong>Comm: </strong> tcp://127.0.0.1:37171
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 1
@@ -1113,7 +1118,7 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:35733/status" target="_blank">http://127.0.0.1:35733/status</a>
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:41625/status" target="_blank">http://127.0.0.1:41625/status</a>
                         </td>
                         <td style="text-align: left;">
                             <strong>Memory: </strong> 1.70 GiB
@@ -1121,13 +1126,13 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Nanny: </strong> tcp://127.0.0.1:42519
+                            <strong>Nanny: </strong> tcp://127.0.0.1:38929
                         </td>
                         <td style="text-align: left;"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/machine-learning/dask-worker-space/worker-kvha8q_o
+                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/machine-learning/dask-worker-space/worker-yyrv00wh
                         </td>
                     </tr>
 
@@ -1180,7 +1185,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages/dask/base.py:1283: UserWarning: Running on a single-machine scheduler when a distributed client is active might lead to unexpected results.
+/usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages/dask/base.py:1282: UserWarning: Running on a single-machine scheduler when a distributed client is active might lead to unexpected results.
   warnings.warn(
 </pre></div></div>
 </div>
@@ -1448,7 +1453,7 @@ Incremental(estimator=SGDClassifier(loss=&#39;log&#39;), scoring=&#39;accuracy&#
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.5283
+0.5
 </pre></div></div>
 </div>
 </div>
@@ -1479,16 +1484,16 @@ Incremental(estimator=SGDClassifier(loss=&#39;log&#39;), scoring=&#39;accuracy&#
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Score: 0.5198
-Score: 0.5301
-Score: 0.5373
-Score: 0.5362
-Score: 0.5274
-Score: 0.515
-Score: 0.5546
-Score: 0.5408
-Score: 0.5421
-Score: 0.5453
+Score: 0.5049
+Score: 0.4981
+Score: 0.4975
+Score: 0.5002
+Score: 0.5041
+Score: 0.4999
+Score: 0.506
+Score: 0.5016
+Score: 0.5029
+Score: 0.5103
 </pre></div></div>
 </div>
 </div>
@@ -1590,11 +1595,11 @@ Score: 0.5453
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1,
-       0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0,
-       1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0,
-       1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0,
-       0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1])
+array([0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0,
+       1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1,
+       1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1,
+       0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1])
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1611,7 +1616,7 @@ array([1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.5453
+0.5103
 </pre></div></div>
 </div>
 </div>

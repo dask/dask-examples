@@ -37,7 +37,7 @@
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Xarray with Dask Arrays" href="xarray.html" />
+    <link rel="next" title="Operating on Dask Dataframes with SQL" href="sql.html" />
     <link rel="prev" title="Custom Workloads with Futures" href="futures.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -148,6 +148,11 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Dask for Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sql.html">
+   Operating on Dask Dataframes with SQL
   </a>
  </li>
  <li class="toctree-l1">
@@ -764,7 +769,7 @@ div.rendered_html tbody tr:hover {
     <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px;">Client</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-b26ba69f-d16f-11ec-9bf5-000d3a9cbfb9</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-0d991168-d51f-11ec-9c02-000d3aeabb7a</p>
         <table style="width: 100%; text-align: left;">
 
         <tr>
@@ -777,7 +782,7 @@ div.rendered_html tbody tr:hover {
 
             <tr>
                 <td style="text-align: left;">
-                    <strong>Dashboard: </strong> <a href="http://10.1.1.131:8787/status" target="_blank">http://10.1.1.131:8787/status</a>
+                    <strong>Dashboard: </strong> <a href="http://10.1.0.177:8787/status" target="_blank">http://10.1.0.177:8787/status</a>
                 </td>
                 <td style="text-align: left;"></td>
             </tr>
@@ -793,11 +798,11 @@ div.rendered_html tbody tr:hover {
     </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px; margin-top: 0px;">LocalCluster</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">4cb220a2</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">90603f2b</p>
         <table style="width: 100%; text-align: left;">
             <tr>
                 <td style="text-align: left;">
-                    <strong>Dashboard:</strong> <a href="http://10.1.1.131:8787/status" target="_blank">http://10.1.1.131:8787/status</a>
+                    <strong>Dashboard:</strong> <a href="http://10.1.0.177:8787/status" target="_blank">http://10.1.0.177:8787/status</a>
                 </td>
                 <td style="text-align: left;">
                     <strong>Workers:</strong> 1
@@ -830,11 +835,11 @@ div.rendered_html tbody tr:hover {
         <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
         <div style="margin-left: 48px;">
             <h3 style="margin-bottom: 0px;">Scheduler</h3>
-            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-a6d89029-114d-4bae-8e88-088118b0540a</p>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-a269a890-6076-4649-9193-dc6e30c607c2</p>
             <table style="width: 100%; text-align: left;">
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Comm:</strong> inproc://10.1.1.131/7157/1
+                        <strong>Comm:</strong> inproc://10.1.0.177/7170/1
                     </td>
                     <td style="text-align: left;">
                         <strong>Workers:</strong> 1
@@ -842,7 +847,7 @@ div.rendered_html tbody tr:hover {
                 </tr>
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Dashboard:</strong> <a href="http://10.1.1.131:8787/status" target="_blank">http://10.1.1.131:8787/status</a>
+                        <strong>Dashboard:</strong> <a href="http://10.1.0.177:8787/status" target="_blank">http://10.1.0.177:8787/status</a>
                     </td>
                     <td style="text-align: left;">
                         <strong>Total threads:</strong> 4
@@ -876,7 +881,7 @@ div.rendered_html tbody tr:hover {
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> inproc://10.1.1.131/7157/4
+                            <strong>Comm: </strong> inproc://10.1.0.177/7170/4
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 4
@@ -884,7 +889,7 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://10.1.1.131:43241/status" target="_blank">http://10.1.1.131:43241/status</a>
+                            <strong>Dashboard: </strong> <a href="http://10.1.0.177:37401/status" target="_blank">http://10.1.0.177:37401/status</a>
                         </td>
                         <td style="text-align: left;">
                             <strong>Memory: </strong> 1.86 GiB
@@ -898,7 +903,7 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/dask-worker-space/worker-tswwxxxk
+                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/dask-worker-space/worker-5377t899
                         </td>
                     </tr>
 
@@ -926,7 +931,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Distributed-Training">
 <h2>Distributed Training<a class="headerlink" href="#Distributed-Training" title="Permalink to this headline">¶</a></h2>
-<p><img alt="7ab213e9d9d84253963e2f15e25b2fb7" src="_images/scikit-learn-logo-notext.png" /> <img alt="a6737e8f2b624b2dbbf6776844a0d753" class="no-scaled-link" src="_images/joblib_logo.svg" width="20%" /></p>
+<p><img alt="94e943c933b649148ad612255f428768" src="_images/scikit-learn-logo-notext.png" /> <img alt="8969df27b7594668a303e3a67be36491" class="no-scaled-link" src="_images/joblib_logo.svg" width="20%" /></p>
 <p>Scikit-learn uses <a class="reference external" href="http://joblib.readthedocs.io/">joblib</a> for single-machine parallelism. This lets you train most estimators (anything that accepts an <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> parameter) using all the cores of your laptop or workstation.</p>
 <p>Alternatively, Scikit-Learn can use Dask for parallelism. This lets you train those estimators using all the cores of your <em>cluster</em> without significantly changing your code.</p>
 <p>This is most useful for training large models on medium-sized datasets. You may have a large model when searching over many hyper-parameters, or when using an ensemble method with many individual estimators. For too small datasets, training times will typically be small enough that cluster-wide parallelism isn’t helpful. For too large datasets (larger than a single machine’s memory), the scikit-learn estimators may not be able to cope (see below).</p>
@@ -1065,10 +1070,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.217181</td>
-      <td>0.006490</td>
-      <td>0.030303</td>
-      <td>0.004556</td>
+      <td>0.231995</td>
+      <td>0.035461</td>
+      <td>0.035028</td>
+      <td>0.008851</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>True</td>
@@ -1082,10 +1087,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>1</th>
-      <td>0.181113</td>
-      <td>0.041051</td>
-      <td>0.025269</td>
-      <td>0.006184</td>
+      <td>0.237887</td>
+      <td>0.025210</td>
+      <td>0.025970</td>
+      <td>0.003478</td>
       <td>0.001</td>
       <td>rbf</td>
       <td>False</td>
@@ -1099,10 +1104,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>2</th>
-      <td>0.163966</td>
-      <td>0.007752</td>
-      <td>0.012518</td>
-      <td>0.004721</td>
+      <td>0.182666</td>
+      <td>0.004182</td>
+      <td>0.019401</td>
+      <td>0.004381</td>
       <td>0.001</td>
       <td>poly</td>
       <td>True</td>
@@ -1116,10 +1121,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>3</th>
-      <td>0.156472</td>
-      <td>0.003624</td>
-      <td>0.011455</td>
-      <td>0.003465</td>
+      <td>0.185305</td>
+      <td>0.025074</td>
+      <td>0.020667</td>
+      <td>0.010049</td>
       <td>0.001</td>
       <td>poly</td>
       <td>False</td>
@@ -1133,10 +1138,10 @@ array([[-1.06377997,  0.67640868,  1.06935647, -0.21758002,  0.46021477,
     </tr>
     <tr>
       <th>4</th>
-      <td>0.306557</td>
-      <td>0.006322</td>
-      <td>0.030550</td>
-      <td>0.006381</td>
+      <td>0.364658</td>
+      <td>0.007712</td>
+      <td>0.031385</td>
+      <td>0.002411</td>
       <td>0.001</td>
       <td>sigmoid</td>
       <td>True</td>
@@ -1371,10 +1376,10 @@ ga('send', 'pageview');
             <p class="prev-next-title">Custom Workloads with Futures</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="xarray.html" title="next page">
+    <a class='right-next' id="next-link" href="sql.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Xarray with Dask Arrays</p>
+        <p class="prev-next-title">Operating on Dask Dataframes with SQL</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

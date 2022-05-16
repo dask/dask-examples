@@ -151,6 +151,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../sql.html">
+   Operating on Dask Dataframes with SQL
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../xarray.html">
    Xarray with Dask Arrays
   </a>
@@ -767,7 +772,7 @@ fits in memory and we won’t need to move large amounts of data between workers
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages/dask/base.py:1283: UserWarning: Running on a single-machine scheduler when a distributed client is active might lead to unexpected results.
+/usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages/dask/base.py:1282: UserWarning: Running on a single-machine scheduler when a distributed client is active might lead to unexpected results.
   warnings.warn(
 </pre></div></div>
 </div>
@@ -1044,7 +1049,7 @@ BlockwiseVotingClassifier(classes=[0, 1],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([0, 0, 1, 0, 1, 0, 1, 1, 1, 0])
+array([0, 1, 0, 1, 0, 1, 0, 0, 0, 1])
 </pre></div></div>
 </div>
 <p>With <code class="docutils literal notranslate"><span class="pre">voting=&quot;soft&quot;</span></code> we have access to <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code>, as long as the subestimator has a <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> method. These subestimators should be well-calibrated for the predictions to be meaningful. See <a class="reference external" href="https://scikit-learn.org/stable/modules/calibration.html#calibration">probability calibration</a> for more.</p>
@@ -1077,11 +1082,11 @@ array([0, 0, 1, 0, 1, 0, 1, 1, 1, 0])
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([[0.54867666, 0.45132334],
-       [0.80699039, 0.19300961],
-       [0.03797232, 0.96202768],
-       [0.71719391, 0.28280609],
-       [0.47822852, 0.52177148]])
+array([[8.28938382e-01, 1.71061618e-01],
+       [5.28356093e-04, 9.99471644e-01],
+       [8.84851141e-01, 1.15148859e-01],
+       [1.07863478e-01, 8.92136522e-01],
+       [9.92833826e-01, 7.16617444e-03]])
 </pre></div></div>
 </div>
 <p>The stages here are similar to the <code class="docutils literal notranslate"><span class="pre">voting=&quot;hard&quot;</span></code> case. Only now instead of taking the majority vote we average the probabilities predicted by each sub-estimator.</p>
@@ -1199,8 +1204,8 @@ array([[0.54867666, 0.45132334],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([ 329.21506913,  122.27956575,   25.71438949,   12.13981183,
-       -171.33331193])
+array([135.17270204, 207.59512132, -51.13265426, -32.4455166 ,
+       159.34104792])
 </pre></div></div>
 </div>
 <p>As usual with Dask-ML, scoring is done in parallel (and distributed on a cluster if you’re connected to one).</p>
@@ -1334,7 +1339,7 @@ LinearRegression()
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
--11.26230716743738
+-11.23444102707138
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1351,7 +1356,7 @@ LinearRegression()
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.19578268150546363
+0.08133408583922275
 </pre></div></div>
 </div>
 <p>This shows that ensuring your needs to be relatively uniform across partitions. Even including the standard controls to normalize whatever underlying force is generating the non-stationary data (e.g. a time trend compontent or differencing timeseries data, dummy variables for geographic regions, etc) is not sufficient when your dataset is partioned by the non-uniform variable. You would still need to either shuffle your data prior to fitting, or just sample and fit the sub-estimator on the
