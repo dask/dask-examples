@@ -663,6 +663,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
 div.rendered_html table {
   border: none;
   border-collapse: collapse;
@@ -671,10 +672,14 @@ div.rendered_html table {
   font-size: 12px;
   table-layout: fixed;
 }
+.jp-RenderedHTMLCommon thead,
 div.rendered_html thead {
   border-bottom: 1px solid black;
   vertical-align: bottom;
 }
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
 div.rendered_html tr,
 div.rendered_html th,
 div.rendered_html td {
@@ -686,12 +691,15 @@ div.rendered_html td {
   max-width: none;
   border: none;
 }
+.jp-RenderedHTMLCommon th,
 div.rendered_html th {
   font-weight: bold;
 }
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
 div.rendered_html tbody tr:nth-child(odd) {
   background: #f5f5f5;
 }
+.jp-RenderedHTMLCommon tbody tr:hover,
 div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
@@ -860,8 +868,8 @@ Importing plotly failed. Interactive plots will not work.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2.4 s, sys: 100 ms, total: 2.5 s
-Wall time: 2.54 s
+CPU times: user 2.38 s, sys: 92.4 ms, total: 2.47 s
+Wall time: 2.46 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -870,7 +878,7 @@ Wall time: 2.54 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;prophet.forecaster.Prophet at 0x7fa0b3ddfcd0&gt;
+&lt;prophet.forecaster.Prophet at 0x7f1f01fb58e0&gt;
 </pre></div></div>
 </div>
 <p>And we can make a forecast. Again, Dask isn’t involved here.</p>
@@ -932,7 +940,7 @@ Wall time: 2.54 s
     <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px;">Client</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-8dd921a2-d51f-11ec-9f8e-000d3aeabb7a</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-a6da3b7d-e5ae-11ec-a037-000d3a104ec6</p>
         <table style="width: 100%; text-align: left;">
 
         <tr>
@@ -961,7 +969,7 @@ Wall time: 2.54 s
     </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px; margin-top: 0px;">LocalCluster</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">31f39bbf</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">f2771103</p>
         <table style="width: 100%; text-align: left;">
             <tr>
                 <td style="text-align: left;">
@@ -998,11 +1006,11 @@ Wall time: 2.54 s
         <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
         <div style="margin-left: 48px;">
             <h3 style="margin-bottom: 0px;">Scheduler</h3>
-            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-90861bdd-afa1-481b-a83e-fd6533607a63</p>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-a42e0bf2-9f37-4083-97d6-3b1cb7a4fe0d</p>
             <table style="width: 100%; text-align: left;">
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Comm:</strong> tcp://127.0.0.1:34919
+                        <strong>Comm:</strong> tcp://127.0.0.1:39211
                     </td>
                     <td style="text-align: left;">
                         <strong>Workers:</strong> 2
@@ -1044,7 +1052,7 @@ Wall time: 2.54 s
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> tcp://127.0.0.1:39255
+                            <strong>Comm: </strong> tcp://127.0.0.1:38705
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 1
@@ -1052,7 +1060,7 @@ Wall time: 2.54 s
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:46037/status" target="_blank">http://127.0.0.1:46037/status</a>
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:42843/status" target="_blank">http://127.0.0.1:42843/status</a>
                         </td>
                         <td style="text-align: left;">
                             <strong>Memory: </strong> 3.39 GiB
@@ -1060,13 +1068,13 @@ Wall time: 2.54 s
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Nanny: </strong> tcp://127.0.0.1:37093
+                            <strong>Nanny: </strong> tcp://127.0.0.1:37289
                         </td>
                         <td style="text-align: left;"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/applications/dask-worker-space/worker-zvpxzpn3
+                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/applications/dask-worker-space/worker-zcmt36mz
                         </td>
                     </tr>
 
@@ -1089,7 +1097,7 @@ Wall time: 2.54 s
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> tcp://127.0.0.1:45275
+                            <strong>Comm: </strong> tcp://127.0.0.1:39947
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 1
@@ -1097,7 +1105,7 @@ Wall time: 2.54 s
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:43917/status" target="_blank">http://127.0.0.1:43917/status</a>
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:36505/status" target="_blank">http://127.0.0.1:36505/status</a>
                         </td>
                         <td style="text-align: left;">
                             <strong>Memory: </strong> 3.39 GiB
@@ -1105,13 +1113,13 @@ Wall time: 2.54 s
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Nanny: </strong> tcp://127.0.0.1:34515
+                            <strong>Nanny: </strong> tcp://127.0.0.1:36569
                         </td>
                         <td style="text-align: left;"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/applications/dask-worker-space/worker-a0zardbz
+                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/applications/dask-worker-space/worker-dbv06b8m
                         </td>
                     </tr>
 
@@ -1155,7 +1163,7 @@ Wall time: 2.54 s
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 INFO:prophet:Making 11 forecasts with cutoffs between 2010-02-15 00:00:00 and 2015-01-20 00:00:00
-INFO:prophet:Applying in parallel with &lt;Client: &#39;tcp://127.0.0.1:34919&#39; processes=2 threads=2, memory=6.78 GiB&gt;
+INFO:prophet:Applying in parallel with &lt;Client: &#39;tcp://127.0.0.1:39211&#39; processes=2 threads=2, memory=6.78 GiB&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1163,8 +1171,8 @@ INFO:prophet:Applying in parallel with &lt;Client: &#39;tcp://127.0.0.1:34919&#3
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 776 ms, sys: 106 ms, total: 883 ms
-Wall time: 26.7 s
+CPU times: user 913 ms, sys: 123 ms, total: 1.04 s
+Wall time: 26.9 s
 </pre></div></div>
 </div>
 <p>Be sure to watch the Dask Dashboard as that runs. The models are fit in parallel on the cluster. At the start there’s bit of overhead from having to move the model and data to the workers but after that the scaling looks quite nice.</p>

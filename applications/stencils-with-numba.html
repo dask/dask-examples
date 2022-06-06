@@ -703,6 +703,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
 div.rendered_html table {
   border: none;
   border-collapse: collapse;
@@ -711,10 +712,14 @@ div.rendered_html table {
   font-size: 12px;
   table-layout: fixed;
 }
+.jp-RenderedHTMLCommon thead,
 div.rendered_html thead {
   border-bottom: 1px solid black;
   vertical-align: bottom;
 }
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
 div.rendered_html tr,
 div.rendered_html th,
 div.rendered_html td {
@@ -726,12 +731,15 @@ div.rendered_html td {
   max-width: none;
   border: none;
 }
+.jp-RenderedHTMLCommon th,
 div.rendered_html th {
   font-weight: bold;
 }
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
 div.rendered_html tbody tr:nth-child(odd) {
   background: #f5f5f5;
 }
+.jp-RenderedHTMLCommon tbody tr:hover,
 div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
@@ -823,7 +831,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-346 ms ± 1.04 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+364 ms ± 7.28 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div></div>
 </div>
 <p>But if we JIT compile this function with Numba, then it runs more quickly.</p>
@@ -844,7 +852,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-171 µs ± 28.1 µs per loop (mean ± std. dev. of 7 runs, 1 loop each)
+171 µs ± 30.6 µs per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div></div>
 </div>
 <p>For those counting, that’s over 1000x faster!</p>
@@ -1189,7 +1197,7 @@ div.rendered_html tbody tr:hover {
     <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px;">Client</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-af6e9e8e-d51f-11ec-a0c1-000d3aeabb7a</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-ca20e23c-e5ae-11ec-a199-000d3a104ec6</p>
         <table style="width: 100%; text-align: left;">
 
         <tr>
@@ -1202,7 +1210,7 @@ div.rendered_html tbody tr:hover {
 
             <tr>
                 <td style="text-align: left;">
-                    <strong>Dashboard: </strong> <a href="http://10.1.0.177:8787/status" target="_blank">http://10.1.0.177:8787/status</a>
+                    <strong>Dashboard: </strong> <a href="http://10.1.0.26:8787/status" target="_blank">http://10.1.0.26:8787/status</a>
                 </td>
                 <td style="text-align: left;"></td>
             </tr>
@@ -1218,11 +1226,11 @@ div.rendered_html tbody tr:hover {
     </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px; margin-top: 0px;">LocalCluster</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">4384a58e</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">da3334c6</p>
         <table style="width: 100%; text-align: left;">
             <tr>
                 <td style="text-align: left;">
-                    <strong>Dashboard:</strong> <a href="http://10.1.0.177:8787/status" target="_blank">http://10.1.0.177:8787/status</a>
+                    <strong>Dashboard:</strong> <a href="http://10.1.0.26:8787/status" target="_blank">http://10.1.0.26:8787/status</a>
                 </td>
                 <td style="text-align: left;">
                     <strong>Workers:</strong> 1
@@ -1255,11 +1263,11 @@ div.rendered_html tbody tr:hover {
         <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
         <div style="margin-left: 48px;">
             <h3 style="margin-bottom: 0px;">Scheduler</h3>
-            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-be361491-5bce-4883-9e9d-ada20020d0cd</p>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-fc149096-545e-411b-933b-b3fda70a8b84</p>
             <table style="width: 100%; text-align: left;">
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Comm:</strong> inproc://10.1.0.177/8385/1
+                        <strong>Comm:</strong> inproc://10.1.0.26/8601/1
                     </td>
                     <td style="text-align: left;">
                         <strong>Workers:</strong> 1
@@ -1267,7 +1275,7 @@ div.rendered_html tbody tr:hover {
                 </tr>
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Dashboard:</strong> <a href="http://10.1.0.177:8787/status" target="_blank">http://10.1.0.177:8787/status</a>
+                        <strong>Dashboard:</strong> <a href="http://10.1.0.26:8787/status" target="_blank">http://10.1.0.26:8787/status</a>
                     </td>
                     <td style="text-align: left;">
                         <strong>Total threads:</strong> 4
@@ -1301,7 +1309,7 @@ div.rendered_html tbody tr:hover {
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> inproc://10.1.0.177/8385/4
+                            <strong>Comm: </strong> inproc://10.1.0.26/8601/4
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 4
@@ -1309,7 +1317,7 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://10.1.0.177:38197/status" target="_blank">http://10.1.0.177:38197/status</a>
+                            <strong>Dashboard: </strong> <a href="http://10.1.0.26:44593/status" target="_blank">http://10.1.0.26:44593/status</a>
                         </td>
                         <td style="text-align: left;">
                             <strong>Memory: </strong> 3.73 GiB
@@ -1323,7 +1331,7 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/applications/dask-worker-space/worker-c_uhxijq
+                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/applications/dask-worker-space/worker-1_gmx1a9
                         </td>
                     </tr>
 

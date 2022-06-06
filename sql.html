@@ -747,6 +747,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
 div.rendered_html table {
   border: none;
   border-collapse: collapse;
@@ -755,10 +756,14 @@ div.rendered_html table {
   font-size: 12px;
   table-layout: fixed;
 }
+.jp-RenderedHTMLCommon thead,
 div.rendered_html thead {
   border-bottom: 1px solid black;
   vertical-align: bottom;
 }
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
 div.rendered_html tr,
 div.rendered_html th,
 div.rendered_html td {
@@ -770,12 +775,15 @@ div.rendered_html td {
   max-width: none;
   border: none;
 }
+.jp-RenderedHTMLCommon th,
 div.rendered_html th {
   font-weight: bold;
 }
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
 div.rendered_html tbody tr:nth-child(odd) {
   background: #f5f5f5;
 }
+.jp-RenderedHTMLCommon tbody tr:hover,
 div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
@@ -823,84 +831,70 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Collecting dask-sql
-  Downloading dask_sql-2022.4.1-py3-none-any.whl (21.1 MB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">21.1/21.1 MB</span> <span class="ansi-red-fg">73.9 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Collecting jpype1&gt;=1.0.2
-  Downloading JPype1-1.3.0-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl (449 kB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">449.3/449.3 KB</span> <span class="ansi-red-fg">67.1 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Collecting uvicorn&gt;=0.11.3
-  Downloading uvicorn-0.17.6-py3-none-any.whl (53 kB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">53.6/53.6 KB</span> <span class="ansi-red-fg">14.2 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Requirement already satisfied: tabulate in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask-sql) (0.8.9)
-Requirement already satisfied: pygments in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask-sql) (2.12.0)
-Requirement already satisfied: nest-asyncio in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask-sql) (1.5.5)
-Requirement already satisfied: prompt-toolkit in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask-sql) (3.0.29)
-Collecting dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0
-  Downloading dask-2022.4.0-py3-none-any.whl (1.1 MB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">1.1/1.1 MB</span> <span class="ansi-red-fg">89.5 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Collecting fastapi&gt;=0.61.1
-  Downloading fastapi-0.78.0-py3-none-any.whl (54 kB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">54.6/54.6 KB</span> <span class="ansi-red-fg">11.6 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Requirement already satisfied: pandas&gt;=1.0.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask-sql) (1.4.2)
+  Downloading dask_sql-2022.6.0-py3-none-any.whl (21.1 MB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">21.1/21.1 MB</span> <span class="ansi-red-fg">65.4 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
 Collecting tzlocal&gt;=2.1
   Downloading tzlocal-4.2-py3-none-any.whl (19 kB)
-Requirement already satisfied: packaging&gt;=20.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (21.3)
-Requirement already satisfied: pyyaml&gt;=5.3.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (6.0)
-Requirement already satisfied: toolz&gt;=0.8.2 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (0.11.2)
-Requirement already satisfied: partd&gt;=0.3.10 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (1.2.0)
-Requirement already satisfied: fsspec&gt;=0.6.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (2022.3.0)
-Requirement already satisfied: cloudpickle&gt;=1.1.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (2.0.0)
-Requirement already satisfied: numpy&gt;=1.18 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (1.22.3)
-Collecting distributed==2022.04.0
-  Downloading distributed-2022.4.0-py3-none-any.whl (853 kB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">853.8/853.8 KB</span> <span class="ansi-red-fg">93.4 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Requirement already satisfied: sortedcontainers!=2.0.0,!=2.0.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.04.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (2.4.0)
-Requirement already satisfied: click&gt;=6.6 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.04.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (8.1.3)
-Requirement already satisfied: jinja2 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.04.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (3.1.1)
-Requirement already satisfied: zict&gt;=0.1.3 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.04.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (2.2.0)
-Requirement already satisfied: msgpack&gt;=0.6.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.04.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (1.0.3)
-Requirement already satisfied: urllib3 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.04.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (1.26.9)
-Requirement already satisfied: psutil&gt;=5.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.04.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (5.9.0)
-Requirement already satisfied: tblib&gt;=1.6.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.04.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (1.7.0)
-Requirement already satisfied: tornado&gt;=6.0.3 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.04.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (6.1)
+Requirement already satisfied: dask[dataframe,distributed]&lt;=2022.5.2,&gt;=2022.3.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask-sql) (2022.5.0)
+Requirement already satisfied: prompt-toolkit in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask-sql) (3.0.29)
+Collecting uvicorn&gt;=0.11.3
+  Downloading uvicorn-0.17.6-py3-none-any.whl (53 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">53.6/53.6 KB</span> <span class="ansi-red-fg">16.3 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Requirement already satisfied: pygments in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask-sql) (2.12.0)
+Requirement already satisfied: nest-asyncio in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask-sql) (1.5.5)
+Requirement already satisfied: pandas&gt;=1.0.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask-sql) (1.4.2)
+Collecting fastapi&gt;=0.61.1
+  Downloading fastapi-0.78.0-py3-none-any.whl (54 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">54.6/54.6 KB</span> <span class="ansi-red-fg">13.2 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Collecting jpype1&gt;=1.0.2
+  Downloading JPype1-1.4.0-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl (453 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">453.8/453.8 KB</span> <span class="ansi-red-fg">53.2 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Requirement already satisfied: tabulate in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask-sql) (0.8.9)
+Requirement already satisfied: pyyaml&gt;=5.3.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask[dataframe,distributed]&lt;=2022.5.2,&gt;=2022.3.0-&gt;dask-sql) (6.0)
+Requirement already satisfied: packaging&gt;=20.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask[dataframe,distributed]&lt;=2022.5.2,&gt;=2022.3.0-&gt;dask-sql) (21.3)
+Requirement already satisfied: partd&gt;=0.3.10 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask[dataframe,distributed]&lt;=2022.5.2,&gt;=2022.3.0-&gt;dask-sql) (1.2.0)
+Requirement already satisfied: fsspec&gt;=0.6.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask[dataframe,distributed]&lt;=2022.5.2,&gt;=2022.3.0-&gt;dask-sql) (2022.3.0)
+Requirement already satisfied: toolz&gt;=0.8.2 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask[dataframe,distributed]&lt;=2022.5.2,&gt;=2022.3.0-&gt;dask-sql) (0.11.2)
+Requirement already satisfied: cloudpickle&gt;=1.1.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask[dataframe,distributed]&lt;=2022.5.2,&gt;=2022.3.0-&gt;dask-sql) (2.0.0)
+Requirement already satisfied: distributed==2022.05.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask[dataframe,distributed]&lt;=2022.5.2,&gt;=2022.3.0-&gt;dask-sql) (2022.5.0)
+Requirement already satisfied: numpy&gt;=1.18 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from dask[dataframe,distributed]&lt;=2022.5.2,&gt;=2022.3.0-&gt;dask-sql) (1.22.3)
+Requirement already satisfied: zict&gt;=0.1.3 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.05.0-&gt;dask[dataframe,distributed]&lt;=2022.5.2,&gt;=2022.3.0-&gt;dask-sql) (2.2.0)
+Requirement already satisfied: sortedcontainers!=2.0.0,!=2.0.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.05.0-&gt;dask[dataframe,distributed]&lt;=2022.5.2,&gt;=2022.3.0-&gt;dask-sql) (2.4.0)
+Requirement already satisfied: msgpack&gt;=0.6.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.05.0-&gt;dask[dataframe,distributed]&lt;=2022.5.2,&gt;=2022.3.0-&gt;dask-sql) (1.0.3)
+Requirement already satisfied: urllib3 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.05.0-&gt;dask[dataframe,distributed]&lt;=2022.5.2,&gt;=2022.3.0-&gt;dask-sql) (1.26.9)
+Requirement already satisfied: locket&gt;=1.0.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.05.0-&gt;dask[dataframe,distributed]&lt;=2022.5.2,&gt;=2022.3.0-&gt;dask-sql) (1.0.0)
+Requirement already satisfied: tornado&gt;=6.0.3 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.05.0-&gt;dask[dataframe,distributed]&lt;=2022.5.2,&gt;=2022.3.0-&gt;dask-sql) (6.1)
+Requirement already satisfied: jinja2 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.05.0-&gt;dask[dataframe,distributed]&lt;=2022.5.2,&gt;=2022.3.0-&gt;dask-sql) (3.1.1)
+Requirement already satisfied: psutil&gt;=5.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.05.0-&gt;dask[dataframe,distributed]&lt;=2022.5.2,&gt;=2022.3.0-&gt;dask-sql) (5.9.0)
+Requirement already satisfied: tblib&gt;=1.6.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.05.0-&gt;dask[dataframe,distributed]&lt;=2022.5.2,&gt;=2022.3.0-&gt;dask-sql) (1.7.0)
+Requirement already satisfied: click&gt;=6.6 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from distributed==2022.05.0-&gt;dask[dataframe,distributed]&lt;=2022.5.2,&gt;=2022.3.0-&gt;dask-sql) (8.1.3)
+Requirement already satisfied: pydantic!=1.7,!=1.7.1,!=1.7.2,!=1.7.3,!=1.8,!=1.8.1,&lt;2.0.0,&gt;=1.6.2 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from fastapi&gt;=0.61.1-&gt;dask-sql) (1.9.1)
 Collecting starlette==0.19.1
   Downloading starlette-0.19.1-py3-none-any.whl (63 kB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">63.3/63.3 KB</span> <span class="ansi-red-fg">19.8 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Requirement already satisfied: pydantic!=1.7,!=1.7.1,!=1.7.2,!=1.7.3,!=1.8,!=1.8.1,&lt;2.0.0,&gt;=1.6.2 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from fastapi&gt;=0.61.1-&gt;dask-sql) (1.9.0)
-Requirement already satisfied: typing-extensions&gt;=3.10.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from starlette==0.19.1-&gt;fastapi&gt;=0.61.1-&gt;dask-sql) (4.2.0)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">63.3/63.3 KB</span> <span class="ansi-red-fg">19.5 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
 Requirement already satisfied: anyio&lt;5,&gt;=3.4.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from starlette==0.19.1-&gt;fastapi&gt;=0.61.1-&gt;dask-sql) (3.5.0)
+Requirement already satisfied: typing-extensions&gt;=3.10.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from starlette==0.19.1-&gt;fastapi&gt;=0.61.1-&gt;dask-sql) (4.2.0)
 Requirement already satisfied: python-dateutil&gt;=2.8.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from pandas&gt;=1.0.0-&gt;dask-sql) (2.8.2)
 Requirement already satisfied: pytz&gt;=2020.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from pandas&gt;=1.0.0-&gt;dask-sql) (2022.1)
 Collecting pytz-deprecation-shim
   Downloading pytz_deprecation_shim-0.1.0.post0-py2.py3-none-any.whl (15 kB)
-Collecting asgiref&gt;=3.4.0
-  Downloading asgiref-3.5.1-py3-none-any.whl (22 kB)
 Collecting h11&gt;=0.8
   Downloading h11-0.13.0-py3-none-any.whl (58 kB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">58.2/58.2 KB</span> <span class="ansi-red-fg">19.1 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">58.2/58.2 KB</span> <span class="ansi-red-fg">16.2 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Collecting asgiref&gt;=3.4.0
+  Downloading asgiref-3.5.2-py3-none-any.whl (22 kB)
 Requirement already satisfied: wcwidth in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from prompt-toolkit-&gt;dask-sql) (0.2.5)
-Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from packaging&gt;=20.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (3.0.8)
-Requirement already satisfied: locket in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from partd&gt;=0.3.10-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (1.0.0)
+Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from packaging&gt;=20.0-&gt;dask[dataframe,distributed]&lt;=2022.5.2,&gt;=2022.3.0-&gt;dask-sql) (3.0.8)
 Requirement already satisfied: six&gt;=1.5 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from python-dateutil&gt;=2.8.1-&gt;pandas&gt;=1.0.0-&gt;dask-sql) (1.16.0)
 Collecting tzdata
   Downloading tzdata-2022.1-py2.py3-none-any.whl (339 kB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">339.5/339.5 KB</span> <span class="ansi-red-fg">63.2 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
-Requirement already satisfied: sniffio&gt;=1.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from anyio&lt;5,&gt;=3.4.0-&gt;starlette==0.19.1-&gt;fastapi&gt;=0.61.1-&gt;dask-sql) (1.2.0)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">339.5/339.5 KB</span> <span class="ansi-red-fg">58.6 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
 Requirement already satisfied: idna&gt;=2.8 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from anyio&lt;5,&gt;=3.4.0-&gt;starlette==0.19.1-&gt;fastapi&gt;=0.61.1-&gt;dask-sql) (3.3)
-Requirement already satisfied: heapdict in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from zict&gt;=0.1.3-&gt;distributed==2022.04.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (1.0.1)
-Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from jinja2-&gt;distributed==2022.04.0-&gt;dask[dataframe,distributed]&lt;2022.4.1,&gt;=2022.3.0-&gt;dask-sql) (2.1.1)
-Installing collected packages: jpype1, tzdata, h11, asgiref, uvicorn, starlette, pytz-deprecation-shim, dask, tzlocal, fastapi, distributed, dask-sql
-  Attempting uninstall: dask
-    Found existing installation: dask 2022.5.0
-    Uninstalling dask-2022.5.0:
-      Successfully uninstalled dask-2022.5.0
-  Attempting uninstall: distributed
-    Found existing installation: distributed 2022.5.0
-    Uninstalling distributed-2022.5.0:
-      Successfully uninstalled distributed-2022.5.0
-<span class="ansi-red-fg">ERROR: pip&#39;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
-dask-xgboost 0.1.11 requires xgboost&lt;=0.90, but you have xgboost 1.5.1 which is incompatible.</span><span class="ansi-red-fg">
-</span>Successfully installed asgiref-3.5.1 dask-2022.4.0 dask-sql-2022.4.1 distributed-2022.4.0 fastapi-0.78.0 h11-0.13.0 jpype1-1.3.0 pytz-deprecation-shim-0.1.0.post0 starlette-0.19.1 tzdata-2022.1 tzlocal-4.2 uvicorn-0.17.6
+Requirement already satisfied: sniffio&gt;=1.1 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from anyio&lt;5,&gt;=3.4.0-&gt;starlette==0.19.1-&gt;fastapi&gt;=0.61.1-&gt;dask-sql) (1.2.0)
+Requirement already satisfied: heapdict in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from zict&gt;=0.1.3-&gt;distributed==2022.05.0-&gt;dask[dataframe,distributed]&lt;=2022.5.2,&gt;=2022.3.0-&gt;dask-sql) (1.0.1)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages (from jinja2-&gt;distributed==2022.05.0-&gt;dask[dataframe,distributed]&lt;=2022.5.2,&gt;=2022.3.0-&gt;dask-sql) (2.1.1)
+Installing collected packages: tzdata, jpype1, h11, asgiref, uvicorn, starlette, pytz-deprecation-shim, tzlocal, fastapi, dask-sql
+Successfully installed asgiref-3.5.2 dask-sql-2022.6.0 fastapi-0.78.0 h11-0.13.0 jpype1-1.4.0 pytz-deprecation-shim-0.1.0.post0 starlette-0.19.1 tzdata-2022.1 tzlocal-4.2 uvicorn-0.17.6
 </pre></div></div>
 </div>
 <div class="section" id="Set-up-a-Dask-cluster">
@@ -927,7 +921,7 @@ dask-xgboost 0.1.11 requires xgboost&lt;=0.90, but you have xgboost 1.5.1 which 
     <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px;">Client</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-2665b829-d51f-11ec-9cc2-000d3aeabb7a</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-3c7f2bc3-e5ae-11ec-9d16-000d3a104ec6</p>
         <table style="width: 100%; text-align: left;">
 
         <tr>
@@ -956,7 +950,7 @@ dask-xgboost 0.1.11 requires xgboost&lt;=0.90, but you have xgboost 1.5.1 which 
     </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px; margin-top: 0px;">LocalCluster</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">97e33643</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">772286ed</p>
         <table style="width: 100%; text-align: left;">
             <tr>
                 <td style="text-align: left;">
@@ -993,11 +987,11 @@ dask-xgboost 0.1.11 requires xgboost&lt;=0.90, but you have xgboost 1.5.1 which 
         <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
         <div style="margin-left: 48px;">
             <h3 style="margin-bottom: 0px;">Scheduler</h3>
-            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-fa0df5cb-483f-45c7-b97d-acee39c81521</p>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-701c3cdb-c1c9-4cd9-a637-bd9a52bd42b2</p>
             <table style="width: 100%; text-align: left;">
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Comm:</strong> tcp://127.0.0.1:36477
+                        <strong>Comm:</strong> tcp://127.0.0.1:44617
                     </td>
                     <td style="text-align: left;">
                         <strong>Workers:</strong> 2
@@ -1039,7 +1033,7 @@ dask-xgboost 0.1.11 requires xgboost&lt;=0.90, but you have xgboost 1.5.1 which 
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> tcp://127.0.0.1:43777
+                            <strong>Comm: </strong> tcp://127.0.0.1:36339
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 2
@@ -1047,7 +1041,7 @@ dask-xgboost 0.1.11 requires xgboost&lt;=0.90, but you have xgboost 1.5.1 which 
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:43733/status" target="_blank">http://127.0.0.1:43733/status</a>
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:42881/status" target="_blank">http://127.0.0.1:42881/status</a>
                         </td>
                         <td style="text-align: left;">
                             <strong>Memory: </strong> 0.93 GiB
@@ -1055,13 +1049,13 @@ dask-xgboost 0.1.11 requires xgboost&lt;=0.90, but you have xgboost 1.5.1 which 
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Nanny: </strong> tcp://127.0.0.1:43811
+                            <strong>Nanny: </strong> tcp://127.0.0.1:37733
                         </td>
                         <td style="text-align: left;"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/dask-worker-space/worker-xfam5l1q
+                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/dask-worker-space/worker-n6qctj6r
                         </td>
                     </tr>
 
@@ -1084,7 +1078,7 @@ dask-xgboost 0.1.11 requires xgboost&lt;=0.90, but you have xgboost 1.5.1 which 
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> tcp://127.0.0.1:35861
+                            <strong>Comm: </strong> tcp://127.0.0.1:44077
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 2
@@ -1092,7 +1086,7 @@ dask-xgboost 0.1.11 requires xgboost&lt;=0.90, but you have xgboost 1.5.1 which 
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:41423/status" target="_blank">http://127.0.0.1:41423/status</a>
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:34789/status" target="_blank">http://127.0.0.1:34789/status</a>
                         </td>
                         <td style="text-align: left;">
                             <strong>Memory: </strong> 0.93 GiB
@@ -1100,13 +1094,13 @@ dask-xgboost 0.1.11 requires xgboost&lt;=0.90, but you have xgboost 1.5.1 which 
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Nanny: </strong> tcp://127.0.0.1:37255
+                            <strong>Nanny: </strong> tcp://127.0.0.1:34385
                         </td>
                         <td style="text-align: left;"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/dask-worker-space/worker-wv0crsp6
+                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/dask-worker-space/worker-k8fln41h
                         </td>
                     </tr>
 
@@ -1220,7 +1214,7 @@ dask-xgboost 0.1.11 requires xgboost&lt;=0.90, but you have xgboost 1.5.1 which 
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages/dask/dataframe/io/csv.py:529: UserWarning: Warning gzip compression does not support breaking apart files
+/usr/share/miniconda3/envs/dask-examples/lib/python3.9/site-packages/dask/dataframe/io/csv.py:533: UserWarning: Warning gzip compression does not support breaking apart files
 Please ensure that each individual file can fit in memory and
 use the keyword ``blocksize=None to remove this message``
 Setting ``blocksize=None``
@@ -1416,7 +1410,7 @@ DaskProject(EXPR$0=[/(CAST(CASE(=($1, 0), null:DOUBLE, $0)):DECIMAL(19, 15), $1)
   <tbody>
     <tr>
       <th>0</th>
-      <td>-0.000096</td>
+      <td>-0.000204</td>
     </tr>
   </tbody>
 </table>
@@ -1473,133 +1467,133 @@ DaskProject(EXPR$0=[/(CAST(CASE(=($1, 0), null:DOUBLE, $0)):DECIMAL(19, 15), $1)
   <tbody>
     <tr>
       <th>Alice</th>
-      <td>-126.901544</td>
-      <td>0.002343</td>
+      <td>31.742613</td>
+      <td>-0.000423</td>
     </tr>
     <tr>
       <th>Bob</th>
-      <td>-148.697088</td>
-      <td>-0.000854</td>
+      <td>-125.942416</td>
+      <td>-0.000566</td>
     </tr>
     <tr>
       <th>Charlie</th>
-      <td>-84.438431</td>
-      <td>0.003573</td>
+      <td>-173.241025</td>
+      <td>0.001316</td>
     </tr>
     <tr>
       <th>Dan</th>
-      <td>206.268861</td>
-      <td>-0.000042</td>
+      <td>-24.771682</td>
+      <td>-0.001415</td>
     </tr>
     <tr>
       <th>Edith</th>
-      <td>-338.942474</td>
-      <td>0.000508</td>
+      <td>19.020397</td>
+      <td>0.000671</td>
     </tr>
     <tr>
       <th>Frank</th>
-      <td>264.023073</td>
-      <td>0.000965</td>
+      <td>-72.225644</td>
+      <td>0.001602</td>
     </tr>
     <tr>
       <th>George</th>
-      <td>-72.635286</td>
-      <td>-0.001355</td>
+      <td>-65.521746</td>
+      <td>-0.000489</td>
     </tr>
     <tr>
       <th>Hannah</th>
-      <td>-4.955517</td>
-      <td>-0.000256</td>
+      <td>80.433103</td>
+      <td>0.000813</td>
     </tr>
     <tr>
       <th>Ingrid</th>
-      <td>216.440282</td>
-      <td>0.003007</td>
+      <td>73.307436</td>
+      <td>0.000469</td>
     </tr>
     <tr>
       <th>Jerry</th>
-      <td>14.913010</td>
-      <td>-0.001199</td>
+      <td>-21.744704</td>
+      <td>0.000501</td>
     </tr>
     <tr>
       <th>Kevin</th>
-      <td>39.719152</td>
-      <td>0.000796</td>
+      <td>3.960635</td>
+      <td>0.001947</td>
     </tr>
     <tr>
       <th>Laura</th>
-      <td>246.381112</td>
-      <td>-0.004650</td>
+      <td>-297.493401</td>
+      <td>-0.002816</td>
     </tr>
     <tr>
       <th>Michael</th>
-      <td>45.366581</td>
-      <td>0.001397</td>
+      <td>246.176997</td>
+      <td>-0.002418</td>
     </tr>
     <tr>
       <th>Norbert</th>
-      <td>33.946661</td>
-      <td>-0.001858</td>
+      <td>58.748731</td>
+      <td>-0.000305</td>
     </tr>
     <tr>
       <th>Oliver</th>
-      <td>-97.341229</td>
-      <td>0.000493</td>
+      <td>457.122348</td>
+      <td>-0.001742</td>
     </tr>
     <tr>
       <th>Patricia</th>
-      <td>70.142671</td>
-      <td>0.002008</td>
+      <td>43.962322</td>
+      <td>0.000200</td>
     </tr>
     <tr>
       <th>Quinn</th>
-      <td>105.064826</td>
-      <td>0.001732</td>
+      <td>35.161192</td>
+      <td>-0.001530</td>
     </tr>
     <tr>
       <th>Ray</th>
-      <td>48.659645</td>
-      <td>0.001491</td>
+      <td>-129.918053</td>
+      <td>-0.001457</td>
     </tr>
     <tr>
       <th>Sarah</th>
-      <td>168.742155</td>
-      <td>0.003262</td>
+      <td>-254.466101</td>
+      <td>0.003014</td>
     </tr>
     <tr>
       <th>Tim</th>
-      <td>-95.620623</td>
-      <td>0.001629</td>
+      <td>-340.637660</td>
+      <td>0.002861</td>
     </tr>
     <tr>
       <th>Ursula</th>
-      <td>-199.854477</td>
-      <td>-0.001135</td>
+      <td>166.684406</td>
+      <td>0.000141</td>
     </tr>
     <tr>
       <th>Victor</th>
-      <td>-323.568537</td>
-      <td>0.000466</td>
+      <td>-93.340200</td>
+      <td>0.000039</td>
     </tr>
     <tr>
       <th>Wendy</th>
-      <td>-32.297447</td>
-      <td>0.000604</td>
+      <td>-402.436961</td>
+      <td>-0.000542</td>
     </tr>
     <tr>
       <th>Xavier</th>
-      <td>-26.968621</td>
-      <td>-0.000708</td>
+      <td>25.185510</td>
+      <td>0.003101</td>
     </tr>
     <tr>
       <th>Yvonne</th>
-      <td>35.804035</td>
-      <td>0.000937</td>
+      <td>129.346835</td>
+      <td>-0.002915</td>
     </tr>
     <tr>
       <th>Zelda</th>
-      <td>-191.463949</td>
-      <td>-0.002564</td>
+      <td>101.697996</td>
+      <td>0.000383</td>
     </tr>
   </tbody>
 </table>
@@ -1679,23 +1673,23 @@ DaskProject(EXPR$0=[/(CAST(CASE(=($1, 0), null:DOUBLE, $0)):DECIMAL(19, 15), $1)
   <tbody>
     <tr>
       <th>2000-01-01 00:00:00</th>
-      <td>0.004087</td>
+      <td>0.222819</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:01</th>
-      <td>0.510230</td>
+      <td>0.191016</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:02</th>
-      <td>0.639748</td>
+      <td>0.004259</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:03</th>
-      <td>0.364859</td>
+      <td>0.057739</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:04</th>
-      <td>0.152235</td>
+      <td>0.862008</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1703,23 +1697,23 @@ DaskProject(EXPR$0=[/(CAST(CASE(=($1, 0), null:DOUBLE, $0)):DECIMAL(19, 15), $1)
     </tr>
     <tr>
       <th>2000-01-30 23:59:55</th>
-      <td>0.057291</td>
+      <td>0.991004</td>
     </tr>
     <tr>
       <th>2000-01-30 23:59:56</th>
-      <td>0.027372</td>
+      <td>0.092758</td>
     </tr>
     <tr>
       <th>2000-01-30 23:59:57</th>
-      <td>0.402214</td>
+      <td>0.142507</td>
     </tr>
     <tr>
       <th>2000-01-30 23:59:58</th>
-      <td>0.286287</td>
+      <td>0.240764</td>
     </tr>
     <tr>
       <th>2000-01-30 23:59:59</th>
-      <td>0.011594</td>
+      <td>0.629458</td>
     </tr>
   </tbody>
 </table>
@@ -1778,23 +1772,23 @@ DaskProject(EXPR$0=[/(CAST(CASE(=($1, 0), null:DOUBLE, $0)):DECIMAL(19, 15), $1)
   <tbody>
     <tr>
       <th>2000-01-01 00:00:00</th>
-      <td>0.064310</td>
+      <td>1.045169</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:01</th>
-      <td>1.252378</td>
+      <td>1.395705</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:02</th>
-      <td>0.107375</td>
+      <td>0.220261</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:03</th>
-      <td>0.292158</td>
+      <td>0.057241</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:04</th>
-      <td>0.496964</td>
+      <td>1.080251</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1802,23 +1796,23 @@ DaskProject(EXPR$0=[/(CAST(CASE(=($1, 0), null:DOUBLE, $0)):DECIMAL(19, 15), $1)
     </tr>
     <tr>
       <th>2000-01-30 23:59:55</th>
-      <td>0.328037</td>
+      <td>1.161631</td>
     </tr>
     <tr>
       <th>2000-01-30 23:59:56</th>
-      <td>0.355005</td>
+      <td>0.123404</td>
     </tr>
     <tr>
       <th>2000-01-30 23:59:57</th>
-      <td>1.191999</td>
+      <td>0.789920</td>
     </tr>
     <tr>
       <th>2000-01-30 23:59:58</th>
-      <td>0.140174</td>
+      <td>0.795470</td>
     </tr>
     <tr>
       <th>2000-01-30 23:59:59</th>
-      <td>0.563679</td>
+      <td>1.518667</td>
     </tr>
   </tbody>
 </table>
@@ -1873,7 +1867,7 @@ DaskProject(EXPR$0=[/(CAST(CASE(=($1, 0), null:DOUBLE, $0)):DECIMAL(19, 15), $1)
   <tbody>
     <tr>
       <th>0</th>
-      <td>-248.213159</td>
+      <td>-529.18907</td>
     </tr>
   </tbody>
 </table>
@@ -2016,36 +2010,36 @@ DaskProject(EXPR$0=[/(CAST(CASE(=($1, 0), null:DOUBLE, $0)):DECIMAL(19, 15), $1)
   <tbody>
     <tr>
       <th>2000-01-01 00:00:50</th>
-      <td>-0.503773</td>
-      <td>-0.373286</td>
-      <td>True</td>
-      <td>True</td>
+      <td>-0.504911</td>
+      <td>0.859320</td>
+      <td>False</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:51</th>
-      <td>0.682471</td>
-      <td>-0.839509</td>
-      <td>False</td>
-      <td>False</td>
+      <td>-0.590298</td>
+      <td>-0.401717</td>
+      <td>True</td>
+      <td>True</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:52</th>
-      <td>0.310398</td>
-      <td>0.878838</td>
+      <td>0.168637</td>
+      <td>0.402338</td>
       <td>True</td>
       <td>True</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:53</th>
-      <td>-0.845907</td>
-      <td>0.227596</td>
+      <td>-0.425932</td>
+      <td>0.362314</td>
       <td>False</td>
       <td>False</td>
     </tr>
     <tr>
       <th>2000-01-01 00:00:54</th>
-      <td>-0.137284</td>
-      <td>0.763969</td>
+      <td>-0.682902</td>
+      <td>0.565010</td>
       <td>False</td>
       <td>False</td>
     </tr>
@@ -2058,38 +2052,38 @@ DaskProject(EXPR$0=[/(CAST(CASE(=($1, 0), null:DOUBLE, $0)):DECIMAL(19, 15), $1)
     </tr>
     <tr>
       <th>2000-01-30 23:59:55</th>
-      <td>0.239356</td>
-      <td>-0.088681</td>
+      <td>0.995492</td>
+      <td>-0.166139</td>
       <td>False</td>
       <td>False</td>
     </tr>
     <tr>
       <th>2000-01-30 23:59:56</th>
-      <td>-0.165445</td>
-      <td>0.189560</td>
-      <td>False</td>
-      <td>False</td>
+      <td>-0.304563</td>
+      <td>-0.427967</td>
+      <td>True</td>
+      <td>True</td>
     </tr>
     <tr>
       <th>2000-01-30 23:59:57</th>
-      <td>0.634204</td>
-      <td>-0.557796</td>
+      <td>0.377501</td>
+      <td>-0.412419</td>
       <td>False</td>
       <td>False</td>
     </tr>
     <tr>
       <th>2000-01-30 23:59:58</th>
-      <td>-0.535058</td>
-      <td>-0.394884</td>
-      <td>True</td>
-      <td>True</td>
+      <td>0.490677</td>
+      <td>-0.304794</td>
+      <td>False</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>2000-01-30 23:59:59</th>
-      <td>0.107675</td>
-      <td>0.671354</td>
-      <td>True</td>
-      <td>True</td>
+      <td>-0.793384</td>
+      <td>0.725284</td>
+      <td>False</td>
+      <td>False</td>
     </tr>
   </tbody>
 </table>

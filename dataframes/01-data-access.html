@@ -743,6 +743,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
 div.rendered_html table {
   border: none;
   border-collapse: collapse;
@@ -751,10 +752,14 @@ div.rendered_html table {
   font-size: 12px;
   table-layout: fixed;
 }
+.jp-RenderedHTMLCommon thead,
 div.rendered_html thead {
   border-bottom: 1px solid black;
   vertical-align: bottom;
 }
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
 div.rendered_html tr,
 div.rendered_html th,
 div.rendered_html td {
@@ -766,12 +771,15 @@ div.rendered_html td {
   max-width: none;
   border: none;
 }
+.jp-RenderedHTMLCommon th,
 div.rendered_html th {
   font-weight: bold;
 }
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
 div.rendered_html tbody tr:nth-child(odd) {
   background: #f5f5f5;
 }
+.jp-RenderedHTMLCommon tbody tr:hover,
 div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
@@ -852,7 +860,7 @@ div.rendered_html tbody tr:hover {
     <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px;">Client</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-d3cf57b8-d51f-11ec-a0f6-000d3aeabb7a</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-f0e871eb-e5ae-11ec-a25d-000d3a104ec6</p>
         <table style="width: 100%; text-align: left;">
 
         <tr>
@@ -881,7 +889,7 @@ div.rendered_html tbody tr:hover {
     </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px; margin-top: 0px;">LocalCluster</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">2fa7bc85</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">3c1dbf32</p>
         <table style="width: 100%; text-align: left;">
             <tr>
                 <td style="text-align: left;">
@@ -918,11 +926,11 @@ div.rendered_html tbody tr:hover {
         <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
         <div style="margin-left: 48px;">
             <h3 style="margin-bottom: 0px;">Scheduler</h3>
-            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-c07565c1-b560-433a-8aef-907789c5d8b7</p>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-e99ce2f0-28ac-4fc7-85bc-1b0c0a03811b</p>
             <table style="width: 100%; text-align: left;">
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Comm:</strong> tcp://127.0.0.1:39645
+                        <strong>Comm:</strong> tcp://127.0.0.1:38655
                     </td>
                     <td style="text-align: left;">
                         <strong>Workers:</strong> 1
@@ -964,7 +972,7 @@ div.rendered_html tbody tr:hover {
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> tcp://127.0.0.1:39677
+                            <strong>Comm: </strong> tcp://127.0.0.1:40199
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 4
@@ -972,7 +980,7 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:45469/status" target="_blank">http://127.0.0.1:45469/status</a>
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:33715/status" target="_blank">http://127.0.0.1:33715/status</a>
                         </td>
                         <td style="text-align: left;">
                             <strong>Memory: </strong> 1.86 GiB
@@ -980,13 +988,13 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Nanny: </strong> tcp://127.0.0.1:42877
+                            <strong>Nanny: </strong> tcp://127.0.0.1:45739
                         </td>
                         <td style="text-align: left;"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/dataframes/dask-worker-space/worker-abqga8tb
+                            <strong>Local directory: </strong> /home/runner/work/dask-examples/dask-examples/dataframes/dask-worker-space/worker-yk6_1r18
                         </td>
                     </tr>
 
@@ -1174,15 +1182,15 @@ data/2000-01-10.csv
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 timestamp,id,name,x,y
-2000-01-01 00:00:00,942,Laura,-0.6992844254899655,-0.8512182186637509
-2000-01-01 00:00:01,1001,Ingrid,-0.35655218506890174,-0.1333675368289131
-2000-01-01 00:00:02,1045,Ray,0.9308817992978557,-0.7657382399219965
-2000-01-01 00:00:03,1096,Ursula,-0.07169651020447487,0.7329341299806349
-2000-01-01 00:00:04,1028,Frank,0.4840809936405117,-0.7532100990533956
-2000-01-01 00:00:05,1002,Kevin,-0.5099252836176822,0.2589870469872313
-2000-01-01 00:00:06,986,Oliver,0.2819161947932025,0.8777597107462218
-2000-01-01 00:00:07,984,Zelda,-0.8488793864869324,-0.6648445820462445
-2000-01-01 00:00:08,984,Alice,-0.40397772883173877,0.3787940602707516
+2000-01-01 00:00:00,994,Tim,-0.9512348046174963,-0.5245599937167515
+2000-01-01 00:00:01,1037,Sarah,0.026064026515654426,-0.9831924298072945
+2000-01-01 00:00:02,952,Zelda,0.9198300763526843,-0.2400636573519186
+2000-01-01 00:00:03,1006,Jerry,-0.38412597817672367,-0.2664290764849928
+2000-01-01 00:00:04,1018,Edith,-0.49755296899353585,-0.22339106482980098
+2000-01-01 00:00:05,1054,Hannah,-0.14643921226648327,0.39699067331468485
+2000-01-01 00:00:06,999,Kevin,-0.40447896674231987,0.05896531485070722
+2000-01-01 00:00:07,1011,Norbert,0.672714574930193,-0.8496948649923768
+2000-01-01 00:00:08,1013,Wendy,0.4049309697459136,-0.5021502899612822
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1199,15 +1207,15 @@ timestamp,id,name,x,y
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 timestamp,id,name,x,y
-2000-01-30 00:00:00,1075,Yvonne,0.9804821992755703,0.9342660180942868
-2000-01-30 00:00:01,978,Sarah,-0.5156484553203295,0.7666590078530018
-2000-01-30 00:00:02,1015,Yvonne,0.31271886602653454,0.5556139994936489
-2000-01-30 00:00:03,950,Tim,-0.9611774587405728,0.6518684763812226
-2000-01-30 00:00:04,1009,Laura,0.3864817882955096,-0.40518939940779086
-2000-01-30 00:00:05,1043,Zelda,0.8163604396499844,0.1654981534399429
-2000-01-30 00:00:06,1010,Ray,0.2292042174888287,0.22972217434866016
-2000-01-30 00:00:07,980,Patricia,0.7755825145264919,-0.20503360813537785
-2000-01-30 00:00:08,1000,Jerry,-0.5041018854329813,-0.3678526026563367
+2000-01-30 00:00:00,937,Sarah,-0.6224364514343268,-0.9447867475581291
+2000-01-30 00:00:01,968,Xavier,0.3677958565707069,0.7856105052069551
+2000-01-30 00:00:02,1004,Michael,0.8754917777493256,0.11814845913783367
+2000-01-30 00:00:03,1000,Xavier,0.3096432791270294,0.08692755059796786
+2000-01-30 00:00:04,1046,Wendy,-0.3952927304185423,0.4682102482962558
+2000-01-30 00:00:05,1059,Ray,0.2788776072806072,0.08923164820859641
+2000-01-30 00:00:06,1006,Ray,0.584772482779004,0.27469549500076385
+2000-01-30 00:00:07,952,Jerry,0.05137638406591649,-0.9919201164837026
+2000-01-30 00:00:08,996,Quinn,-0.41023010997357856,-0.9209103729707753
 </pre></div></div>
 </div>
 <p>We can read one file with <code class="docutils literal notranslate"><span class="pre">pandas.read_csv</span></code> or many files with <code class="docutils literal notranslate"><span class="pre">dask.dataframe.read_csv</span></code></p>
@@ -1256,42 +1264,42 @@ timestamp,id,name,x,y
     <tr>
       <th>0</th>
       <td>2000-01-01 00:00:00</td>
-      <td>942</td>
-      <td>Laura</td>
-      <td>-0.699284</td>
-      <td>-0.851218</td>
+      <td>994</td>
+      <td>Tim</td>
+      <td>-0.951235</td>
+      <td>-0.524560</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2000-01-01 00:00:01</td>
-      <td>1001</td>
-      <td>Ingrid</td>
-      <td>-0.356552</td>
-      <td>-0.133368</td>
+      <td>1037</td>
+      <td>Sarah</td>
+      <td>0.026064</td>
+      <td>-0.983192</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2000-01-01 00:00:02</td>
-      <td>1045</td>
-      <td>Ray</td>
-      <td>0.930882</td>
-      <td>-0.765738</td>
+      <td>952</td>
+      <td>Zelda</td>
+      <td>0.919830</td>
+      <td>-0.240064</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2000-01-01 00:00:03</td>
-      <td>1096</td>
-      <td>Ursula</td>
-      <td>-0.071697</td>
-      <td>0.732934</td>
+      <td>1006</td>
+      <td>Jerry</td>
+      <td>-0.384126</td>
+      <td>-0.266429</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2000-01-01 00:00:04</td>
-      <td>1028</td>
-      <td>Frank</td>
-      <td>0.484081</td>
-      <td>-0.753210</td>
+      <td>1018</td>
+      <td>Edith</td>
+      <td>-0.497553</td>
+      <td>-0.223391</td>
     </tr>
   </tbody>
 </table>
@@ -1435,42 +1443,42 @@ timestamp,id,name,x,y
     <tr>
       <th>0</th>
       <td>2000-01-01 00:00:00</td>
-      <td>942</td>
-      <td>Laura</td>
-      <td>-0.699284</td>
-      <td>-0.851218</td>
+      <td>994</td>
+      <td>Tim</td>
+      <td>-0.951235</td>
+      <td>-0.524560</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2000-01-01 00:00:01</td>
-      <td>1001</td>
-      <td>Ingrid</td>
-      <td>-0.356552</td>
-      <td>-0.133368</td>
+      <td>1037</td>
+      <td>Sarah</td>
+      <td>0.026064</td>
+      <td>-0.983192</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2000-01-01 00:00:02</td>
-      <td>1045</td>
-      <td>Ray</td>
-      <td>0.930882</td>
-      <td>-0.765738</td>
+      <td>952</td>
+      <td>Zelda</td>
+      <td>0.919830</td>
+      <td>-0.240064</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2000-01-01 00:00:03</td>
-      <td>1096</td>
-      <td>Ursula</td>
-      <td>-0.071697</td>
-      <td>0.732934</td>
+      <td>1006</td>
+      <td>Jerry</td>
+      <td>-0.384126</td>
+      <td>-0.266429</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2000-01-01 00:00:04</td>
-      <td>1028</td>
-      <td>Frank</td>
-      <td>0.484081</td>
-      <td>-0.753210</td>
+      <td>1018</td>
+      <td>Edith</td>
+      <td>-0.497553</td>
+      <td>-0.223391</td>
     </tr>
   </tbody>
 </table>
@@ -1608,8 +1616,8 @@ timestamp,id,name,x,y
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 192 ms, sys: 26.5 ms, total: 218 ms
-Wall time: 3.08 s
+CPU times: user 209 ms, sys: 11.2 ms, total: 220 ms
+Wall time: 3.09 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1619,32 +1627,32 @@ Wall time: 3.08 s
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 name
-Alice       0.002023
-Bob        -0.003863
-Charlie     0.000606
-Dan         0.000150
-Edith      -0.000282
-Frank       0.001423
-George      0.002315
-Hannah      0.000852
-Ingrid     -0.000094
-Jerry       0.000310
-Kevin       0.001148
-Laura      -0.000501
-Michael    -0.001015
-Norbert     0.002500
-Oliver      0.001086
-Patricia    0.001096
-Quinn      -0.001556
-Ray        -0.003189
-Sarah      -0.001080
-Tim        -0.002812
-Ursula     -0.001879
-Victor     -0.002964
-Wendy       0.003376
-Xavier      0.000454
-Yvonne     -0.000145
-Zelda      -0.000064
+Alice      -0.002375
+Bob        -0.000236
+Charlie     0.002397
+Dan        -0.000063
+Edith      -0.001987
+Frank      -0.003370
+George      0.000006
+Hannah      0.000601
+Ingrid     -0.000657
+Jerry       0.000209
+Kevin       0.003895
+Laura      -0.002560
+Michael    -0.000026
+Norbert    -0.001172
+Oliver      0.000663
+Patricia   -0.002386
+Quinn      -0.001981
+Ray        -0.004077
+Sarah       0.005262
+Tim        -0.000741
+Ursula     -0.001047
+Victor     -0.001491
+Wendy      -0.000082
+Xavier     -0.002187
+Yvonne      0.002126
+Zelda       0.000719
 Name: x, dtype: float64
 </pre></div></div>
 </div>
@@ -1660,22 +1668,13 @@ Name: x, dtype: float64
 <div class="section" id="Write-to-Parquet">
 <h2>Write to Parquet<a class="headerlink" href="#Write-to-Parquet" title="Permalink to this headline">¶</a></h2>
 <p>Instead, we’ll store our data in Parquet, a format that is more efficient for computers to read and write.</p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s1">&#39;data/2000-01.parquet&#39;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;pyarrow&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-[None]
-</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
@@ -1690,14 +1689,14 @@ Name: x, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-_common_metadata  part.14.parquet  part.21.parquet  part.29.parquet
-_metadata         part.15.parquet  part.22.parquet  part.3.parquet
-part.0.parquet    part.16.parquet  part.23.parquet  part.4.parquet
-part.1.parquet    part.17.parquet  part.24.parquet  part.5.parquet
-part.10.parquet   part.18.parquet  part.25.parquet  part.6.parquet
-part.11.parquet   part.19.parquet  part.26.parquet  part.7.parquet
-part.12.parquet   part.2.parquet   part.27.parquet  part.8.parquet
-part.13.parquet   part.20.parquet  part.28.parquet  part.9.parquet
+part.0.parquet   part.16.parquet  part.23.parquet  part.4.parquet
+part.1.parquet   part.17.parquet  part.24.parquet  part.5.parquet
+part.10.parquet  part.18.parquet  part.25.parquet  part.6.parquet
+part.11.parquet  part.19.parquet  part.26.parquet  part.7.parquet
+part.12.parquet  part.2.parquet   part.27.parquet  part.8.parquet
+part.13.parquet  part.20.parquet  part.28.parquet  part.9.parquet
+part.14.parquet  part.21.parquet  part.29.parquet
+part.15.parquet  part.22.parquet  part.3.parquet
 </pre></div></div>
 </div>
 </div>
@@ -1810,8 +1809,8 @@ part.13.parquet   part.20.parquet  part.28.parquet  part.9.parquet
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 118 ms, sys: 25.6 ms, total: 144 ms
-Wall time: 922 ms
+CPU times: user 150 ms, sys: 12 ms, total: 162 ms
+Wall time: 991 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1821,32 +1820,32 @@ Wall time: 922 ms
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 name
-Alice       0.002023
-Bob        -0.003863
-Charlie     0.000606
-Dan         0.000150
-Edith      -0.000282
-Frank       0.001423
-George      0.002315
-Hannah      0.000852
-Ingrid     -0.000094
-Jerry       0.000310
-Kevin       0.001148
-Laura      -0.000501
-Michael    -0.001015
-Norbert     0.002500
-Oliver      0.001086
-Patricia    0.001096
-Quinn      -0.001556
-Ray        -0.003189
-Sarah      -0.001080
-Tim        -0.002812
-Ursula     -0.001879
-Victor     -0.002964
-Wendy       0.003376
-Xavier      0.000454
-Yvonne     -0.000145
-Zelda      -0.000064
+Alice      -0.002375
+Bob        -0.000236
+Charlie     0.002397
+Dan        -0.000063
+Edith      -0.001987
+Frank      -0.003370
+George      0.000006
+Hannah      0.000601
+Ingrid     -0.000657
+Jerry       0.000209
+Kevin       0.003895
+Laura      -0.002560
+Michael    -0.000026
+Norbert    -0.001172
+Oliver      0.000663
+Patricia   -0.002386
+Quinn      -0.001981
+Ray        -0.004077
+Sarah       0.005262
+Tim        -0.000741
+Ursula     -0.001047
+Victor     -0.001491
+Wendy      -0.000082
+Xavier     -0.002187
+Yvonne      0.002126
+Zelda       0.000719
 Name: x, dtype: float64
 </pre></div></div>
 </div>
@@ -1869,8 +1868,8 @@ Name: x, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 125 ms, sys: 6.87 ms, total: 132 ms
-Wall time: 845 ms
+CPU times: user 134 ms, sys: 4.01 ms, total: 138 ms
+Wall time: 886 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1880,32 +1879,32 @@ Wall time: 845 ms
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 name
-Alice       0.002023
-Bob        -0.003863
-Charlie     0.000606
-Dan         0.000150
-Edith      -0.000282
-Frank       0.001423
-George      0.002315
-Hannah      0.000852
-Ingrid     -0.000094
-Jerry       0.000310
-Kevin       0.001148
-Laura      -0.000501
-Michael    -0.001015
-Norbert     0.002500
-Oliver      0.001086
-Patricia    0.001096
-Quinn      -0.001556
-Ray        -0.003189
-Sarah      -0.001080
-Tim        -0.002812
-Ursula     -0.001879
-Victor     -0.002964
-Wendy       0.003376
-Xavier      0.000454
-Yvonne     -0.000145
-Zelda      -0.000064
+Alice      -0.002375
+Bob        -0.000236
+Charlie     0.002397
+Dan        -0.000063
+Edith      -0.001987
+Frank      -0.003370
+George      0.000006
+Hannah      0.000601
+Ingrid     -0.000657
+Jerry       0.000209
+Kevin       0.003895
+Laura      -0.002560
+Michael    -0.000026
+Norbert    -0.001172
+Oliver      0.000663
+Patricia   -0.002386
+Quinn      -0.001981
+Ray        -0.004077
+Sarah       0.005262
+Tim        -0.000741
+Ursula     -0.001047
+Victor     -0.001491
+Wendy      -0.000082
+Xavier     -0.002187
+Yvonne      0.002126
+Zelda       0.000719
 Name: x, dtype: float64
 </pre></div></div>
 </div>
