@@ -38,7 +38,10 @@ jobs:
       - name: Install testing and docs dependencies
         run: |
           mamba install nbconvert nbformat jupyter_client ipykernel nbmake \
-          pytest nbsphinx dask-sphinx-theme>=3.0.0 sphinx
+          pytest nbsphinx "dask-sphinx-theme>=3.0.0" sphinx
+          
+          # for debugging purposes
+          mamba env export | grep -E -v '^prefix:.*$'
 
       - name: Execute Notebooks
         run: |
