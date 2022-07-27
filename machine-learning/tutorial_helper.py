@@ -64,7 +64,7 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
     best_acc = 0.0
 
     for epoch in range(num_epochs):
-        print('Epoch {}/{}'.format(epoch, num_epochs - 1))
+        print(f'Epoch {epoch}/{num_epochs - 1}')
         print('-' * 10)
 
         # Each epoch has a training and validation phase
@@ -119,7 +119,7 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
     time_elapsed = time.time() - since
     print('Training complete in {:.0f}m {:.0f}s'.format(
         time_elapsed // 60, time_elapsed % 60))
-    print('Best val Acc: {:4f}'.format(best_acc))
+    print(f'Best val Acc: {best_acc:4f}')
 
     # load best model weights
     model.load_state_dict(best_model_wts)
@@ -154,7 +154,7 @@ def visualize_model(model, num_images=6):
     fig, axes = plt.subplots(ncols=2, nrows=images_so_far // 2,
                              figsize=(12, 12))
     for img, pred, ax in zip(images, predictions, axes.ravel()):
-        imshow(img, title="Predicted: {}".format(pred), ax=ax)
+        imshow(img, title=f"Predicted: {pred}", ax=ax)
 
     plt.tight_layout()
     return axes
