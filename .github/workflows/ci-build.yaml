@@ -1,41 +1,58 @@
 name: CI
 on: [push, pull_request]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
     steps:
       - name: Checkout source
         uses: actions/checkout@v2
 
+      - name: Cache conda
+        uses: actions/cache@v2
+        env:
+          # Increase this value to reset cache if binder/environment.yml has not changed
+          CACHE_NUMBER: 0
+        with:
+          path: ~/conda_pkgs_dir
+          key:
+            ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('binder/environment.yml') }}
+
       - name: Setup Conda Environment
         uses: conda-incubator/setup-miniconda@v2
         with:
-          miniconda-version: "latest"
+          miniforge-variant: Mambaforge
+          miniforge-version: latest
           environment-file: binder/environment.yml
           activate-environment: dask-examples
           auto-activate-base: false
+          use-only-tar-bz2: true
 
       - name: Install testing and docs dependencies
-        shell: bash -l {0}
         run: |
-          conda install -q pathlib nbconvert nbformat jupyter_client ipykernel
-          pip install nbsphinx dask-sphinx-theme>=2 sphinx
+          mamba install nbconvert nbformat jupyter_client ipykernel nbmake \
+          pytest nbsphinx "dask-sphinx-theme>=3.0.0" sphinx
+          
+          # for debugging purposes
+          mamba env export | grep -E -v '^prefix:.*$'
 
       - name: Execute Notebooks
-        shell: bash -l {0}
         run: |
-          pip install nbmake==0.1 pytest-xdist
           pytest \
-            -n=auto \
+            -vv \
             --nbmake \
             --overwrite \
-            --forked \
             --ignore machine-learning/torch-prediction.ipynb \
             --ignore applications/json-data-on-the-web.ipynb
 
       - name: Build
-        shell: bash -l {0}
         run: sphinx-build -M html . _build -v
 
       - name: Deploy

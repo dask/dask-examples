@@ -22,7 +22,9 @@ You can run these examples in a live session here: |Binder|
    delayed
    futures
    machine-learning
+   sql
    xarray
+   resilience
 
 .. toctree::
    :maxdepth: 1
@@ -30,6 +32,8 @@ You can run these examples in a live session here: |Binder|
 
    dataframes/01-data-access
    dataframes/02-groupby
+   dataframes/03-from-pandas-to-dask
+   dataframes/04-reading-messy-data-into-dataframes
 
 .. toctree::
    :maxdepth: 1
@@ -60,7 +64,6 @@ You can run these examples in a live session here: |Binder|
    applications/evolving-workflows
    applications/image-processing
    applications/prefect-etl
-   applications/satellite-imagery-geotiff
    applications/stencils-with-numba
    applications/forecasting-with-prophet
 
@@ -71,7 +74,6 @@ You can run these examples in a live session here: |Binder|
    surveys/2021.ipynb
    surveys/2020.ipynb
    surveys/2019.ipynb
-   
 
 .. raw:: html
 
@@ -82,7 +84,7 @@ You can run these examples in a live session here: |Binder|
    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-   ga('create', 'UA-18218874-5', 'auto');
+   ga('create', 'UA-18218894-16', 'auto');
    ga('send', 'pageview');
    </script>
    <!-- End Google Analytics -->

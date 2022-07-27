@@ -1,0 +1,51 @@
+name: Update Dependencies
+on: [push, pull_request]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  update-dependencies:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+
+      - name: Cache conda
+        uses: actions/cache@v2
+        env:
+          # Increase this value to reset cache if binder/environment-base.yml has not changed
+          CACHE_NUMBER: 0
+        with:
+          path: ~/conda_pkgs_dir
+          key:
+            ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('binder/environment-base.yml') }}
+
+      - name: Setup Conda Environment
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          miniforge-variant: Mambaforge
+          miniforge-version: latest
+          environment-file: binder/environment-base.yml
+          auto-activate-base: false
+          activate-environment: dask-examples
+          use-only-tar-bz2: true
+
+      - name: Install dependencies
+        run: |
+          mamba install nbconvert nbformat jupyter_client ipykernel nbmake pytest-xdist
+
+      - name: Execute Notebooks
+        run: |
+          pytest \
+            -vv \
+            -n=auto \
+            --forked \
+            --nbmake \
+            --overwrite \
+            --ignore machine-learning/torch-prediction.ipynb \
+            --ignore applications/json-data-on-the-web.ipynb

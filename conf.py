@@ -50,7 +50,7 @@ nbsphinx_prolog = """
 
 .. admonition:: Live Notebook
 
-    You can run this notebook in a `live session <https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/{{ docname }}>`_ |Binder| or view it `on Github <https://github.com/dask/dask-examples/blob/main/{{ docname }}>`_.
+    You can run this notebook in a `live session <https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/{{ docname }}>`__ |Binder| or view it `on Github <https://github.com/dask/dask-examples/blob/main/{{ docname }}>`__.
 
 .. |Binder| image:: https://static.mybinder.org/badge_logo.svg
    :target: https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab/tree/{{ docname }}
@@ -67,7 +67,7 @@ nbsphinx_epilog = """
    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-   ga('create', 'UA-18218874-5', 'auto');
+   ga('create', 'UA-18218894-16', 'auto');
    ga('send', 'pageview');
    </script>
    <!-- End Google Analytics -->
@@ -98,7 +98,9 @@ language = None
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '**.ipynb_checkpoints']
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+# Commenting this out for now, if we register dask pygments,
+# then eventually this line can be:
+# pygments_style = "dask"
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -117,7 +119,7 @@ html_theme = 'dask_sphinx_theme'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+# html_static_path = ['_static']
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
