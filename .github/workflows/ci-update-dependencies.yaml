@@ -13,10 +13,10 @@ jobs:
         shell: bash -l {0}
     steps:
       - name: Checkout source
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6.0.2
 
       - name: Cache conda
-        uses: actions/cache@v2
+        uses: actions/cache@v5.0.3
         env:
           # Increase this value to reset cache if binder/environment-base.yml has not changed
           CACHE_NUMBER: 0
@@ -26,9 +26,8 @@ jobs:
             ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('binder/environment-base.yml') }}
 
       - name: Setup Conda Environment
-        uses: conda-incubator/setup-miniconda@v2
+        uses: conda-incubator/setup-miniconda@v3.3.0
         with:
-          miniforge-variant: Mambaforge
           miniforge-version: latest
           environment-file: binder/environment-base.yml
           auto-activate-base: false

@@ -52,7 +52,7 @@ Updating the Binder environment
 2. Run a `linux/amd64` Docker container with `mamba` available. For example:
 
    ```shell
-   docker run --platform=linux/amd64 -it --rm --mount type=bind,source=$(pwd)/binder,target=/binder condaforge/mambaforge /bin/bash
+   docker run --platform=linux/amd64 -it --rm --mount type=bind,source=$(pwd)/binder,target=/binder condaforge/miniforge3 /bin/bash
    ```
 
    This mounts the `./binder` folder in `/binder` in the Docker container
@@ -66,5 +66,5 @@ Updating the Binder environment
 4. Export the environment specification:
 
    ```shell
-   mamba env export -n dask-examples --no-builds -f environment.yml
+   mamba env export -n dask-examples --no-builds | grep -v "^prefix: " > environment.yml
    ```

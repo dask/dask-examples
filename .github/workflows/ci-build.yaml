@@ -13,10 +13,10 @@ jobs:
         shell: bash -l {0}
     steps:
       - name: Checkout source
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6.0.2
 
       - name: Cache conda
-        uses: actions/cache@v2
+        uses: actions/cache@v5.0.3
         env:
           # Increase this value to reset cache if binder/environment.yml has not changed
           CACHE_NUMBER: 0
@@ -26,9 +26,8 @@ jobs:
             ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('binder/environment.yml') }}
 
       - name: Setup Conda Environment
-        uses: conda-incubator/setup-miniconda@v2
+        uses: conda-incubator/setup-miniconda@v3.3.0
         with:
-          miniforge-variant: Mambaforge
           miniforge-version: latest
           environment-file: binder/environment.yml
           activate-environment: dask-examples
@@ -57,7 +56,7 @@ jobs:
 
       - name: Deploy
         if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request'}}
-        uses: JamesIves/github-pages-deploy-action@3.7.1
+        uses: JamesIves/github-pages-deploy-action@v4.8.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
