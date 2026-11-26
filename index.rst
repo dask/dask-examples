@@ -34,6 +34,7 @@ You can run these examples in a live session here: |Binder|
    dataframes/02-groupby
    dataframes/03-from-pandas-to-dask
    dataframes/04-reading-messy-data-into-dataframes
+   dataframes/05-datashader
 
 .. toctree::
    :maxdepth: 1
